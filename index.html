@@ -450,16 +450,21 @@
 
     .cover-name-main {
       font-family: var(--font-display);
-      font-size: clamp(1.15rem, 4.8vw, 2.35rem);
-      line-height: 1.1;
+      font-size: clamp(1.4rem, 6.2vw, 2.45rem);
+      line-height: 0.95;
       font-weight: 900;
       color: var(--ink-black);
       letter-spacing: 0.015em;
       text-transform: uppercase;
-      text-wrap: balance;
-      word-break: normal;
-      overflow-wrap: break-word;
-      margin: 4px 0 2px;
+      margin: 6px 0 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .cover-name-main .name-first,
+    .cover-name-main .name-last {
+      display: block;
+      white-space: nowrap;
     }
 
     .cover-edition-sub {
@@ -773,15 +778,20 @@
 
     .identity-name-line {
       font-family: var(--font-display);
-      font-size: clamp(0.85rem, 3.8vw, 1.15rem);
-      line-height: 1.2;
+      font-size: clamp(0.95rem, 3.8vw, 1.2rem);
+      line-height: 1.05;
       font-weight: 900;
       color: var(--ink-black);
-      letter-spacing: 0.02em;
+      letter-spacing: 0.015em;
       text-transform: uppercase;
-      word-break: normal;
-      overflow-wrap: break-word;
-      text-wrap: balance;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .identity-name-line .name-first,
+    .identity-name-line .name-last {
+      display: block;
+      white-space: nowrap;
     }
 
     .identity-sub-line {
@@ -1080,6 +1090,70 @@
       white-space: nowrap;
     }
 
+    /* MANHWA STATS HUD GRID */
+    .manhwa-stats-hud-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 12px 0 10px;
+    }
+    @media (min-width: 600px) {
+      .manhwa-stats-hud-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .stat-hud-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--panel-border-inner);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+    .stat-hud-num {
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 3.2vw, 1.4rem);
+      font-weight: 900;
+      color: var(--accent-primary);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+    .stat-hud-lbl {
+      font-family: var(--font-system);
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .stat-hud-sub {
+      font-family: var(--font-body);
+      font-size: 0.6875rem;
+      color: var(--text-main);
+      margin-top: 2px;
+      font-weight: 500;
+    }
+    .manhwa-genre-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 14px;
+    }
+    .genre-hud-pill {
+      font-family: var(--font-system);
+      font-size: 0.625rem;
+      font-weight: 700;
+      background: var(--bg-subtle);
+      border: 1px solid var(--panel-border-outer);
+      color: var(--accent-primary);
+      padding: 2px 8px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
     /* TANKOBON GRID */
     .tankobon-grid {
       display: grid;
@@ -1352,7 +1426,10 @@
         </div>
 
         <div class="cover-title-group">
-          <h1 class="cover-name-main">KRISHNENDU&nbsp;BISWAS</h1>
+          <h1 class="cover-name-main">
+            <span class="name-first">KRISHNENDU</span>
+            <span class="name-last">BISWAS</span>
+          </h1>
           <span class="cover-edition-sub">SYSTEM AWAKENING RECORD</span>
         </div>
 
@@ -1430,7 +1507,10 @@
             <img src="assets/avatar_192.webp" alt="Krishnendu Biswas avatar" class="avatar-img" width="68" height="68">
           </div>
           <div class="identity-text-box">
-            <h2 class="identity-name-line">KRISHNENDU BISWAS</h2>
+            <h2 class="identity-name-line">
+              <span class="name-first">KRISHNENDU</span>
+              <span class="name-last">BISWAS</span>
+            </h2>
             <div class="identity-sub-line">LEVEL 23 &nbsp;|&nbsp; AI Agent Systems &amp; ML</div>
           </div>
         </div>
@@ -1540,8 +1620,41 @@
           <span>COMPLETED</span>
         </div>
         <h3 class="chapter-title-main">Chapter 01: Reader's&nbsp;Archive</h3>
-        <p class="chapter-summary-text">37,000+ chapters read across 460 series on Mihon. 55 series on Daily Read shelf. The cultural and philosophical foundation of this chronicle.</p>
-        <div class="chapter-narrative-quote">[ System Analysis: 37,000+ chapters of progression fantasy, murim, and system novels ingested across 460 series. Tap any cover to open its reading link. ]</div>
+        <p class="chapter-summary-text">37,809+ chapters read across 475 series on Mihon. 55 series on Daily Read shelf. The cultural and philosophical foundation of this chronicle.</p>
+        <div class="chapter-narrative-quote">[ System Analysis: 37,809 chapters of progression fantasy, murim, and system novels ingested across 475 series. Tap any cover to open its reading link. ]</div>
+
+        <!-- STATS HUD GRID -->
+        <div class="manhwa-stats-hud-grid">
+          <div class="stat-hud-card">
+            <span class="stat-hud-lbl">[ CHAPTERS READ ]</span>
+            <span class="stat-hud-num">37,809</span>
+            <span class="stat-hud-sub">across 475 series</span>
+          </div>
+          <div class="stat-hud-card">
+            <span class="stat-hud-lbl">[ DAILY READ SHELF ]</span>
+            <span class="stat-hud-num">55</span>
+            <span class="stat-hud-sub">actively tracked</span>
+          </div>
+          <div class="stat-hud-card">
+            <span class="stat-hud-lbl">[ ALL-TIME FAVOURITE ]</span>
+            <span class="stat-hud-num" style="font-size: 1.05rem;">Eleceed</span>
+            <span class="stat-hud-sub">422 chs read</span>
+          </div>
+          <div class="stat-hud-card">
+            <span class="stat-hud-lbl">[ MOST INGESTED ]</span>
+            <span class="stat-hud-num" style="font-size: 1.05rem;">Magic Emperor</span>
+            <span class="stat-hud-sub">866 chs read</span>
+          </div>
+        </div>
+
+        <div class="manhwa-genre-pills-row">
+          <span class="genre-hud-pill">#Action</span>
+          <span class="genre-hud-pill">#Murim / Martial Arts</span>
+          <span class="genre-hud-pill">#Progression Fantasy</span>
+          <span class="genre-hud-pill">#System / Reincarnation</span>
+          <span class="genre-hud-pill">#Tower Climbing</span>
+        </div>
+
         <div class="tankobon-grid">
           
         <a href="https://qimanga.com/series/4190634673-eleceed" target="_blank" rel="noopener noreferrer" class="tankobon-shelf-item" data-title="Eleceed" aria-label="Eleceed - Open reading link">
@@ -2234,8 +2347,8 @@
           <img src="assets/avatar_512.webp" alt="Krishnendu Biswas portrait" class="desktop-avatar-img" width="96" height="96">
         </div>
 
-        <h2 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; text-align: center; text-transform: uppercase; margin-bottom: 2px; white-space: nowrap;">KRISHNENDU&nbsp;BISWAS</h2>
-        <div style="font-family: var(--font-system); font-size: 0.75rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin-bottom: 10px;">LEVEL 23 | Agent Systems / Machine Learning</div>
+        <h2 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; text-align: center; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.02em;">KRISHNENDU BISWAS</h2>
+        <div style="font-family: var(--font-system); font-size: 0.75rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin-bottom: 10px;">LEVEL 23 &nbsp;|&nbsp; AI Agent Systems &amp; ML</div>
         
         <p style="font-size: 0.8125rem; line-height: 1.4; color: var(--text-muted); margin-bottom: 14px;">Builds AI agent systems. MBA, IIM Ranchi. Published researcher.</p>
 
@@ -2390,7 +2503,40 @@
 
         <!-- TAB 2: ARCHIVE -->
         <div class="tab-panel" id="tab-archive" role="tabpanel" aria-labelledby="btn-tab-archive">
-          <div style="font-family: var(--font-system); font-size: 0.75rem; font-weight: 700; color: var(--accent-primary); margin: 6px 0;">[&nbsp;READER'S ARCHIVE: 23 SERIES DISPLAYED (37,000+ CHAPTERS TOTAL)&nbsp;]</div>
+          <div style="font-family: var(--font-system); font-size: 0.75rem; font-weight: 700; color: var(--accent-primary); margin: 6px 0;">[&nbsp;READER'S ARCHIVE: 23 CURATED SERIES &bull; 37,809 CHAPTERS TOTAL&nbsp;]</div>
+          
+          <!-- STATS HUD GRID DESKTOP -->
+          <div class="manhwa-stats-hud-grid">
+            <div class="stat-hud-card">
+              <span class="stat-hud-lbl">[ CHAPTERS READ ]</span>
+              <span class="stat-hud-num">37,809</span>
+              <span class="stat-hud-sub">across 475 series</span>
+            </div>
+            <div class="stat-hud-card">
+              <span class="stat-hud-lbl">[ DAILY READ SHELF ]</span>
+              <span class="stat-hud-num">55</span>
+              <span class="stat-hud-sub">actively tracked</span>
+            </div>
+            <div class="stat-hud-card">
+              <span class="stat-hud-lbl">[ ALL-TIME FAVOURITE ]</span>
+              <span class="stat-hud-num" style="font-size: 1.05rem;">Eleceed</span>
+              <span class="stat-hud-sub">422 chs read</span>
+            </div>
+            <div class="stat-hud-card">
+              <span class="stat-hud-lbl">[ MOST INGESTED ]</span>
+              <span class="stat-hud-num" style="font-size: 1.05rem;">Magic Emperor</span>
+              <span class="stat-hud-sub">866 chs read</span>
+            </div>
+          </div>
+
+          <div class="manhwa-genre-pills-row">
+            <span class="genre-hud-pill">#Action</span>
+            <span class="genre-hud-pill">#Murim / Martial Arts</span>
+            <span class="genre-hud-pill">#Progression Fantasy</span>
+            <span class="genre-hud-pill">#System / Reincarnation</span>
+            <span class="genre-hud-pill">#Tower Climbing</span>
+          </div>
+
           <div class="tankobon-grid">
             
         <a href="https://qimanga.com/series/4190634673-eleceed" target="_blank" rel="noopener noreferrer" class="tankobon-shelf-item" data-title="Eleceed" aria-label="Eleceed - Open reading link">
