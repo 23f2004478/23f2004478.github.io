@@ -24,7 +24,7 @@
       --bg-card: #FFFFFF;
       --bg-subtle: #F1F4F9;
       --panel-bg: #FFFFFF;
-      --panel-bg-translucent: rgba(255, 255, 255, 0.94);
+      --panel-bg-translucent: rgba(255, 255, 255, 0.96);
       --panel-border-outer: #9AC2E6;
       --panel-border-inner: rgba(14, 116, 144, 0.22);
       --panel-gutter: #E2EAF2;
@@ -51,12 +51,12 @@
       --success: #15803D;
       --success-soft: #DCFCE7;
 
-      --tone-dot: rgba(17, 20, 24, 0.12);
+      --tone-dot: rgba(17, 20, 24, 0.15);
       --border-ink: 2px solid var(--ink-black);
       --border-thick: 3px solid var(--ink-black);
       --border-thin: 1px solid var(--panel-border-outer);
 
-      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06);
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
       --shadow-panel: 0 4px 16px -2px rgba(15, 23, 42, 0.08);
       --shadow-elevation: 0 8px 24px -4px rgba(15, 23, 42, 0.12);
 
@@ -70,7 +70,7 @@
       --radius-lg: 12px;
       --radius-pill: 9999px;
 
-      /* Motion tokens (Damped spring oscillator values per MOTION_SPEC) */
+      /* Motion tokens */
       --spr-tap: linear(0, 0.19, 0.5, 0.75, 0.9, 0.98, 1.01, 1.015, 1);
       --t-tap: 150ms;
       --spr-snap: linear(0, 0.21, 0.57, 0.85, 1, 1.055, 1.054, 1.034, 1.014, 1);
@@ -79,9 +79,6 @@
       --t-settle: 400ms;
       --spr-stamp: linear(0, 0.44, 1.01, 1.2, 1.12, 1, 0.96, 0.975, 1, 1.008, 1);
       --t-stamp: 450ms;
-      --spr-flick: linear(0, 0.14, 0.41, 0.66, 0.83, 0.94, 0.99, 1.015, 1.02, 1.01, 1);
-      --t-flick: 400ms;
-      --t-exit: 240ms;
     }
 
     [data-theme="dark"] {
@@ -103,244 +100,167 @@
       --text-sub: #94A3B8;
 
       --accent-primary: #38BDF8;
-      --accent-deep: #7DD3FC;
-      --accent-hover: #0284C7;
-      --accent-soft: rgba(56, 189, 248, 0.14);
+      --accent-deep: #0284C7;
+      --accent-hover: #7DD3FC;
+      --accent-soft: rgba(56, 189, 248, 0.15);
 
-      --obi-red: #E63820;
-      --obi-red-hover: #FF4A30;
+      --obi-red: #DC2626;
+      --obi-red-hover: #EF4444;
       --obi-text: #FFFFFF;
-      --obi-sub: #FFE0D9;
+      --obi-sub: #FEE2E2;
 
-      --gold: #FBBF24;
-      --gold-soft: rgba(245, 158, 11, 0.16);
-      --success: #4ADE80;
-      --success-soft: rgba(74, 222, 128, 0.15);
+      --gold: #F59E0B;
+      --gold-soft: rgba(245, 158, 11, 0.15);
+      --success: #22C55E;
+      --success-soft: rgba(34, 197, 94, 0.15);
 
-      --tone-dot: rgba(255, 255, 255, 0.1);
-      --border-ink: 2px solid var(--panel-border-outer);
-      --border-thick: 3px solid var(--panel-border-outer);
-      --border-thin: 1px solid var(--panel-border-outer);
-
-      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
-      --shadow-panel: 0 6px 24px -2px rgba(0, 0, 0, 0.55);
-      --shadow-elevation: 0 8px 28px -4px rgba(0, 0, 0, 0.7);
+      --tone-dot: rgba(248, 250, 252, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --shadow-panel: 0 4px 16px -2px rgba(0, 0, 0, 0.45);
+      --shadow-elevation: 0 8px 24px -4px rgba(0, 0, 0, 0.55);
     }
 
-    @supports not (animation-timing-function: linear(0, 1)) {
-      :root {
-        --spr-tap: ease-out;
-        --spr-snap: cubic-bezier(.2, .9, .3, 1.2);
-        --spr-settle: ease-out;
-        --spr-stamp: cubic-bezier(.3, 1.6, .5, 1);
-        --spr-flick: ease-out;
-      }
-    }
-
-    /* Global reset */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      min-width: 0;
     }
 
     html {
-      scroll-behavior: smooth;
-      background-color: var(--bg-field);
-      color: var(--text-main);
       font-family: var(--font-body);
-      font-size: 15px;
-      line-height: 1.5;
-      -webkit-text-size-adjust: 100%;
-      overflow-x: hidden;
+      color: var(--text-main);
+      background-color: var(--bg-field);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
     }
 
     body {
       min-height: 100vh;
-      background-color: var(--bg-field);
-      color: var(--text-main);
       overflow-x: hidden;
-      position: relative;
+      background-color: var(--bg-field);
     }
 
-    ::selection {
-      background-color: var(--obi-red);
-      color: #FFFFFF;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .ring-breath {
-        animation: none !important;
-      }
-      .manga-cover-hero {
-        transition: opacity 0.2s ease !important;
-        transform: none !important;
-      }
-    }
-
-    /* Halftone and Speedlines Textures */
+    /* Global Manga Halftone Screentone */
     .tone-halftone {
-      background-image: radial-gradient(circle, var(--tone-dot) 1.2px, transparent 1.2px);
-      background-size: 6px 6px;
+      background-image: radial-gradient(var(--tone-dot) 1.2px, transparent 1.2px);
+      background-size: 8px 8px;
     }
 
+    /* Dynamic Manga Speedlines */
     .tone-speedlines {
-      background: conic-gradient(
-        from 0deg at 50% 50%,
-        rgba(17,20,24,0.035) 0deg 3deg, transparent 3deg 20deg,
-        rgba(17,20,24,0.035) 20deg 23deg, transparent 23deg 45deg,
-        rgba(17,20,24,0.035) 45deg 48deg, transparent 48deg 70deg,
-        rgba(17,20,24,0.035) 70deg 73deg, transparent 73deg 90deg,
-        rgba(17,20,24,0.035) 90deg 93deg, transparent 93deg 120deg,
-        rgba(17,20,24,0.035) 120deg 123deg, transparent 123deg 150deg,
-        rgba(17,20,24,0.035) 150deg 153deg, transparent 153deg 180deg,
-        rgba(17,20,24,0.035) 180deg 183deg, transparent 183deg 210deg,
-        rgba(17,20,24,0.035) 210deg 213deg, transparent 213deg 240deg,
-        rgba(17,20,24,0.035) 240deg 243deg, transparent 243deg 270deg,
-        rgba(17,20,24,0.035) 270deg 273deg, transparent 273deg 300deg,
-        rgba(17,20,24,0.035) 300deg 303deg, transparent 303deg 330deg,
-        rgba(17,20,24,0.035) 330deg 333deg, transparent 333deg 360deg
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(17, 20, 24, 0.08) 0deg 2.5deg,
+        transparent 2.5deg 8deg,
+        rgba(17, 20, 24, 0.12) 8deg 10deg,
+        transparent 10deg 15deg
       );
     }
 
     [data-theme="dark"] .tone-speedlines {
-      background: conic-gradient(
-        from 0deg at 50% 50%,
-        rgba(255,255,255,0.04) 0deg 3deg, transparent 3deg 20deg,
-        rgba(255,255,255,0.04) 20deg 23deg, transparent 23deg 45deg,
-        rgba(255,255,255,0.04) 45deg 48deg, transparent 48deg 70deg,
-        rgba(255,255,255,0.04) 70deg 73deg, transparent 73deg 90deg,
-        rgba(255,255,255,0.04) 90deg 93deg, transparent 93deg 120deg,
-        rgba(255,255,255,0.04) 120deg 123deg, transparent 123deg 150deg,
-        rgba(255,255,255,0.04) 150deg 153deg, transparent 153deg 180deg,
-        rgba(255,255,255,0.04) 180deg 183deg, transparent 183deg 210deg,
-        rgba(255,255,255,0.04) 210deg 213deg, transparent 213deg 240deg,
-        rgba(255,255,255,0.04) 240deg 243deg, transparent 243deg 270deg,
-        rgba(255,255,255,0.04) 270deg 273deg, transparent 273deg 300deg,
-        rgba(255,255,255,0.04) 300deg 303deg, transparent 303deg 330deg,
-        rgba(255,255,255,0.04) 330deg 333deg, transparent 333deg 360deg
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(248, 250, 252, 0.07) 0deg 2.5deg,
+        transparent 2.5deg 8deg,
+        rgba(248, 250, 252, 0.1) 8deg 10deg,
+        transparent 10deg 15deg
       );
     }
 
-    /* Crop marks on manga print proofs */
+    /* Registration / Crop Marks (Trim boundary) */
     .reg-mark {
       position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 14px;
+      height: 14px;
       pointer-events: none;
-      z-index: 10;
+      z-index: 5;
     }
     .reg-mark::before, .reg-mark::after {
       content: '';
       position: absolute;
-      background-color: var(--ink-black);
+      background-color: var(--ink-muted);
     }
-    .reg-mark::before { top: 5px; left: 0; width: 12px; height: 1.5px; }
-    .reg-mark::after { top: 0; left: 5px; width: 1.5px; height: 12px; }
-    .reg-tl { top: 6px; left: 6px; }
-    .reg-tr { top: 6px; right: 6px; }
-    .reg-bl { bottom: 6px; left: 6px; }
-    .reg-br { bottom: 6px; right: 6px; }
+    .reg-tl { top: 2px; left: 2px; }
+    .reg-tl::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
+    .reg-tl::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
 
-    /* System Corner Brackets */
+    .reg-tr { top: 2px; right: 2px; }
+    .reg-tr::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
+    .reg-tr::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
+
+    .reg-bl { bottom: 2px; left: 2px; }
+    .reg-bl::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
+    .reg-bl::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
+
+    .reg-br { bottom: 2px; right: 2px; }
+    .reg-br::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
+    .reg-br::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
+
+    /* Corner Bracket Accents */
     .corner-bracket {
       position: absolute;
-      width: 8px;
-      height: 8px;
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
       border-color: var(--accent-primary);
       border-style: solid;
-      pointer-events: none;
-      z-index: 5;
+      transition: all 0.2s ease;
     }
-    .c-tl { top: 2px; left: 2px; border-width: 2px 0 0 2px; }
-    .c-tr { top: 2px; right: 2px; border-width: 2px 2px 0 0; }
-    .c-bl { bottom: 2px; left: 2px; border-width: 0 0 2px 2px; }
-    .c-br { bottom: 2px; right: 2px; border-width: 0 2px 2px 0; }
+    .c-tl { top: 0; left: 0; border-width: 2px 0 0 2px; }
+    .c-tr { top: 0; right: 0; border-width: 2px 2px 0 0; }
+    .c-bl { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+    .c-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 
-    /* Universal UI Controls & Badges */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      min-height: 44px;
-      padding: 8px 12px;
-      border-radius: var(--radius-sm);
-      font-family: var(--font-system);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid var(--panel-border-outer);
-      background: var(--bg-paper);
-      color: var(--accent-deep);
-      transition: all 160ms ease;
-      touch-action: manipulation;
-    }
-
-    .btn:hover, .btn:focus-visible {
-      background: var(--accent-primary);
-      color: #FFFFFF;
-      border-color: var(--accent-primary);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
-    }
-
+    /* Badges & Chips */
     .badge {
       display: inline-flex;
       align-items: center;
-      padding: 2px 6px;
-      border-radius: var(--radius-sm);
+      gap: 4px;
       font-family: var(--font-system);
       font-size: 0.6875rem;
       font-weight: 700;
-      line-height: 1.2;
-      text-transform: uppercase;
       letter-spacing: 0.04em;
+      padding: 3px 7px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      white-space: nowrap;
     }
-
     .badge-primary {
       background: var(--accent-soft);
       color: var(--accent-primary);
       border: 1px solid var(--panel-border-inner);
     }
-
     .badge-gold {
       background: var(--gold-soft);
       color: var(--gold);
-      border: 1px solid rgba(180, 83, 9, 0.25);
+      border: 1px solid var(--gold);
     }
 
-    .badge-red {
-      background: var(--obi-red);
-      color: #FFFFFF;
-    }
-
-    /* Global Top Navigation Bar */
+    /* ==========================================================================
+       TOP HUD BAR (MOBILE & SHARED)
+       ========================================================================== */
     .global-top-hud {
-      position: fixed;
+      position: sticky;
       top: 0;
       left: 0;
       right: 0;
       height: 48px;
-      background: var(--panel-bg-translucent);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--panel-border-outer);
+      background: var(--panel-bg);
+      border-bottom: 1.5px solid var(--panel-border-outer);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 14px;
+      padding: 0 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    @media (min-width: 1024px) and (orientation: landscape) {
+      .global-top-hud {
+        display: none;
+      }
     }
 
     .hud-brand {
@@ -350,21 +270,21 @@
       font-family: var(--font-system);
       font-size: 0.8125rem;
       font-weight: 700;
-      color: var(--accent-primary);
+      color: var(--text-main);
       letter-spacing: 0.04em;
-      white-space: nowrap;
     }
 
     .hud-telemetry {
       display: none;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
       font-family: var(--font-system);
       font-size: 0.75rem;
-      color: var(--text-sub);
+      font-weight: 600;
+      color: var(--text-muted);
     }
 
-    @media (min-width: 680px) {
+    @media (min-width: 480px) {
       .hud-telemetry {
         display: flex;
       }
@@ -377,241 +297,286 @@
     }
 
     .theme-toggle-btn {
-      min-height: 38px;
-      min-width: 38px;
+      background: var(--bg-subtle);
+      border: 1px solid var(--panel-border-outer);
+      color: var(--text-main);
       padding: 4px 10px;
+      min-height: 40px;
+      border-radius: var(--radius-sm);
       font-family: var(--font-system);
       font-size: 0.75rem;
       font-weight: 700;
-      background: var(--bg-paper);
-      border: 1px solid var(--panel-border-outer);
-      color: var(--text-main);
-      border-radius: var(--radius-sm);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: background 0.15s ease, color 0.15s ease;
+      justify-content: center;
+      transition: background 150ms ease, border-color 150ms ease;
     }
 
     .theme-toggle-btn:hover {
-      background: var(--accent-primary);
-      color: #FFFFFF;
+      background: var(--accent-soft);
+      border-color: var(--accent-primary);
     }
 
     /* ==========================================================================
-       PHONE LAYOUT: WEBTOON VERTICAL SCROLL + COVER OPENING TRANSITION (<1024px)
+       MOBILE WEBTOON VERTICAL LAYOUT (<1024px)
        ========================================================================== */
     .mobile-webtoon-shell {
-      display: block;
       width: 100%;
-      max-width: 100%;
-      padding-top: 48px;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 40px;
       box-sizing: border-box;
-      overflow-x: hidden;
+      position: relative;
     }
 
     @media (min-width: 1024px) and (orientation: landscape) {
       .mobile-webtoon-shell {
-        display: none !important;
+        display: none;
       }
     }
 
-    /* Cover Stage on Phone */
+    /* Stage for Manga Cover */
     .cover-viewport-stage {
-      min-height: calc(100vh - 48px);
-      max-height: 844px;
+      min-height: calc(100svh - 48px);
+      padding: 12px 14px 20px;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      padding: 10px 12px 14px;
-      position: relative;
+      justify-content: center;
       box-sizing: border-box;
-      width: 100%;
-      max-width: 440px;
-      margin: 0 auto;
+      position: relative;
+      scroll-margin-top: 56px;
     }
 
+    /* Manga Volume Cover Card (Direction A: Tight composition, high contrast) */
     .manga-cover-card {
       position: relative;
       width: 100%;
+      max-width: 370px;
       background: var(--bg-paper);
-      border: var(--border-thick);
-      box-shadow: 6px 8px 0 var(--ink-black);
-      padding: 14px 12px 10px;
+      border: 2.5px solid var(--ink-black);
+      border-radius: var(--radius-sm);
+      box-shadow: 4px 4px 0 var(--ink-black), var(--shadow-elevation);
+      padding: 14px 14px 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      gap: 10px;
       overflow: hidden;
+      transform-origin: center top;
+      transition: transform 0.2s ease, opacity 0.2s ease;
       box-sizing: border-box;
-      min-height: calc(100vh - 72px);
-      max-height: 770px;
-      transform-origin: top center;
-      transition: transform 0.4s var(--spr-settle), opacity 0.3s ease;
     }
 
     .cover-header-strip {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: var(--border-ink);
-      padding-bottom: 6px;
-      margin-bottom: 8px;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--ink-black);
+      padding: 0 4px 6px 4px;
+      flex-shrink: 0;
     }
 
     .cover-series-pill {
-      font-family: var(--font-accent);
-      font-size: 0.85rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      color: var(--ink-black);
+      font-family: var(--font-system);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.06em;
     }
 
     .cover-tankobon-badge {
-      font-family: var(--font-accent);
-      font-size: 0.75rem;
-      font-weight: 800;
       background: var(--ink-black);
-      color: var(--bg-paper);
-      padding: 1px 6px;
-      border-radius: var(--radius-sm);
+      color: #FFFFFF;
+      font-family: var(--font-system);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 2px;
+      letter-spacing: 0.04em;
     }
 
+    /* Title Block overlapping the Art Panel */
     .cover-title-group {
-      position: relative;
-      z-index: 5;
-      text-align: left;
-      margin: 4px 0 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 2px 4px 0;
+      z-index: 3;
     }
 
     .cover-vol-pill {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 4px;
-      background: var(--ink-black);
-      color: var(--bg-paper);
-      padding: 2px 6px;
-      font-family: var(--font-accent);
-      font-weight: 900;
-      font-size: 1rem;
-      margin-bottom: 4px;
+      font-family: var(--font-system);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--obi-red);
+      letter-spacing: 0.06em;
     }
 
     .cover-vol-pill span {
-      font-size: 0.75rem;
-      color: var(--obi-sub);
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
     .cover-name-main {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 6.5vw, 2.4rem);
-      line-height: 1.02;
+      font-size: clamp(1.85rem, 7.8vw, 2.75rem);
+      line-height: 0.95;
+      font-weight: 900;
       color: var(--ink-black);
       letter-spacing: -0.02em;
+      text-transform: uppercase;
       word-break: break-word;
+      margin: 2px 0;
     }
 
     .cover-edition-sub {
-      font-family: var(--font-accent);
-      font-size: 0.8125rem;
-      font-weight: 800;
-      color: var(--ink-muted);
-      letter-spacing: 0.04em;
-      margin-top: 2px;
+      font-family: var(--font-system);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.08em;
     }
 
-    /* Central Sigil Art on Cover */
+    /* Full-Bleed High Contrast Manga Art Panel */
     .cover-center-art {
       position: relative;
-      height: 110px;
-      margin: 4px auto;
-      width: 100%;
+      width: calc(100% + 28px);
+      margin: 2px -14px 4px;
+      height: 168px;
+      background: var(--ink-black);
+      border-top: 2px solid var(--ink-black);
+      border-bottom: 2px solid var(--ink-black);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      border: 1px dashed var(--panel-border-inner);
-      background: var(--bg-subtle);
+      flex-shrink: 0;
+    }
+
+    .art-speedlines-layer {
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(
+        from 0deg,
+        rgba(255, 255, 255, 0.16) 0deg 3deg,
+        transparent 3deg 9deg,
+        rgba(255, 255, 255, 0.22) 9deg 12deg,
+        transparent 12deg 18deg
+      );
+    }
+
+    .art-halftone-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.2) 1.5px, transparent 1.5px);
+      background-size: 6px 6px;
     }
 
     .sigil-disc {
-      width: 76px;
-      height: 76px;
+      position: relative;
+      z-index: 2;
+      width: 84px;
+      height: 84px;
       border-radius: 50%;
-      border: 2px solid var(--accent-primary);
+      background: #FFFFFF;
+      border: 3.5px solid var(--ink-black);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8), 0 0 16px rgba(0, 0, 0, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
       font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--accent-primary);
-      background: var(--bg-paper);
-      box-shadow: 0 0 14px var(--accent-soft);
-      position: relative;
-      z-index: 2;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--ink-black);
+      letter-spacing: -0.04em;
     }
 
+    [data-theme="dark"] .sigil-disc {
+      background: #111418;
+      color: #FFFFFF;
+      border-color: #38BDF8;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.4), 0 0 16px rgba(56, 189, 248, 0.3);
+    }
+
+    /* Solid Ink Bold Outline DO-DOOON! SFX */
     .sfx-cover-tag {
       position: absolute;
       right: 12px;
-      bottom: 6px;
+      bottom: 8px;
       font-family: var(--font-display);
-      font-size: 1.3rem;
-      color: var(--ink-black);
-      opacity: 0.12;
-      transform: rotate(-10deg);
+      font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+      font-weight: 900;
+      color: #FFFFFF;
+      letter-spacing: -0.02em;
+      transform: rotate(-10deg) skew(-4deg);
+      z-index: 4;
       pointer-events: none;
+      -webkit-text-stroke: 1.5px var(--ink-black);
+      filter: drop-shadow(3px 3px 0 var(--ink-black));
+      line-height: 1;
+      opacity: 1;
     }
 
-    /* Vermilion Obi Band on Cover */
+    /* Vermilion Obi Band */
     .cover-obi-band {
       position: relative;
       background: var(--obi-red);
-      color: var(--obi-text);
-      padding: 10px 10px 8px;
-      border: var(--border-thick);
-      margin: 6px 0;
-      cursor: pointer;
-      transition: transform 0.3s var(--spr-flick), background 0.15s ease;
-      z-index: 6;
+      color: #FFFFFF;
+      padding: 10px 12px;
       border-radius: var(--radius-sm);
+      box-shadow: 0 3px 8px rgba(217, 43, 24, 0.35);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform var(--t-tap) var(--spr-tap), background-color 150ms ease;
+      border: 1px solid rgba(255, 255, 255, 0.25);
     }
 
     .cover-obi-band:hover {
       background: var(--obi-red-hover);
+      transform: translateY(-1px);
+    }
+
+    .cover-obi-band:active {
+      transform: translateY(1px);
     }
 
     .obi-head-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 4px;
+      font-family: var(--font-system);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
     }
 
     .obi-tag-mark {
-      font-family: var(--font-accent);
-      font-size: 0.75rem;
-      font-weight: 900;
-      background: #000000;
-      color: #FFFFFF;
+      background: rgba(0, 0, 0, 0.35);
       padding: 1px 5px;
+      border-radius: 2px;
     }
 
     .obi-action-cue {
-      font-family: var(--font-system);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--obi-sub);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: opacity 0.2s ease;
+    }
+
+    .obi-action-cue.is-scrolling {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .obi-copy-line {
-      font-family: var(--font-body);
-      font-weight: 700;
-      font-size: 0.875rem;
+      font-size: 0.8125rem;
+      font-weight: 600;
       line-height: 1.35;
       color: #FFFFFF;
-      margin-bottom: 6px;
     }
 
     .obi-titles-row {
@@ -624,104 +589,103 @@
       background: rgba(0, 0, 0, 0.35);
       border: 1px solid rgba(255, 255, 255, 0.4);
       color: #FFFFFF;
-      font-family: var(--font-accent);
-      font-weight: 800;
-      font-size: 0.75rem;
-      padding: 2px 5px;
-      border-radius: var(--radius-sm);
+      font-family: var(--font-system);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 2px;
       white-space: nowrap;
     }
 
-    /* Colophon Strip at Cover Footer */
+    /* Colophon & Contact Buttons */
     .cover-colophon-strip {
-      border-top: var(--border-ink);
-      padding-top: 6px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      position: relative;
-      z-index: 5;
+      gap: 8px;
+      padding-top: 4px;
+      border-top: 1.5px solid var(--ink-black);
     }
 
     .isbn-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       font-family: var(--font-system);
       font-size: 0.6875rem;
       font-weight: 700;
-      color: var(--ink-muted);
+      color: var(--text-sub);
     }
 
     .barcode-svg {
-      height: 14px;
-      width: 70px;
+      height: 13px;
+      width: 60px;
     }
 
     .cover-chips-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      width: 100%;
     }
 
     .cover-chip-btn {
       min-height: 44px;
+      padding: 6px 4px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg-card);
-      border: var(--border-ink);
-      color: var(--ink-black);
-      text-decoration: none;
-      font-family: var(--font-accent);
-      font-weight: 800;
-      font-size: 0.8125rem;
-      letter-spacing: 0.04em;
-      transition: background 0.15s ease, color 0.15s ease;
+      text-align: center;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--ink-black);
       border-radius: var(--radius-sm);
+      font-family: var(--font-system);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      text-decoration: none;
+      transition: all 140ms ease;
     }
 
     .cover-chip-btn:hover {
-      background: var(--ink-black);
-      color: var(--bg-paper);
+      background: var(--accent-primary);
+      color: #FFFFFF;
+      border-color: var(--accent-primary);
     }
 
-    /* Webtoon Chronicle Container */
+    /* ==========================================================================
+       SCROLL-LINKED TRANSITION STYLES (Smooth, gap closed, no cut frames)
+       ========================================================================== */
     .webtoon-chronicle {
-      width: 100%;
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 12px 14px 60px;
+      padding: 0 14px 24px;
       box-sizing: border-box;
+      margin-top: 0;
+      transition: margin-top 0.2s ease;
     }
 
-    /* Status Window Panel */
+    /* System Status Window */
     .system-panel {
       position: relative;
       background: var(--panel-bg);
-      border: 1px solid var(--panel-border-outer);
+      border: 2px solid var(--panel-border-outer);
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-panel);
-      padding: 14px 12px;
-      margin-bottom: 14px;
+      padding: 16px;
       box-sizing: border-box;
-      width: 100%;
-      max-width: 100%;
-      overflow-wrap: break-word;
+      scroll-margin-top: 60px;
+      margin-top: 10px;
     }
 
     .panel-tag-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--panel-border-inner);
-      padding-bottom: 6px;
-      margin-bottom: 10px;
       font-family: var(--font-system);
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--accent-primary);
+      letter-spacing: 0.05em;
+      border-bottom: 1px dashed var(--panel-border-inner);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
     }
 
     .hero-identity-flex {
@@ -752,7 +716,7 @@
 
     @keyframes ring-breath-anim {
       0%, 100% { opacity: 0.55; }
-      50% { opacity: 0.9; }
+      50% { opacity: 0.95; }
     }
 
     .avatar-img-frame {
@@ -778,7 +742,7 @@
 
     .hero-name {
       font-family: var(--font-accent);
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 900;
       line-height: 1.15;
       color: var(--text-main);
@@ -861,7 +825,7 @@
 
     .slot-details {
       min-width: 0;
-      padding-right: 28px;
+      padding-right: 32px;
     }
 
     .slot-title {
@@ -886,9 +850,9 @@
       border: 1px solid var(--gold);
       color: var(--gold);
       font-family: var(--font-system);
-      font-size: 0.625rem;
+      font-size: 0.6875rem;
       font-weight: 700;
-      padding: 1px 4px;
+      padding: 2px 5px;
       border-radius: 2px;
       background: var(--gold-soft);
       line-height: 1;
@@ -928,7 +892,7 @@
       border-color: var(--accent-primary);
     }
 
-    /* Radar SVG Matrix */
+    /* Radar SVG Matrix with 5 labeled axes */
     .radar-box {
       margin-top: 10px;
       padding-top: 10px;
@@ -940,14 +904,22 @@
     }
 
     .radar-svg {
-      max-width: 200px;
+      max-width: 240px;
       height: auto;
       display: block;
     }
 
+    .radar-axis-label {
+      font-family: var(--font-system);
+      font-size: 8.5px;
+      font-weight: 700;
+      fill: var(--text-sub);
+    }
+
     /* Chapter Section in Webtoon */
     .webtoon-chapter {
-      margin-top: 20px;
+      margin-top: 24px;
+      scroll-margin-top: 60px;
     }
 
     .chapter-heading-box {
@@ -965,7 +937,7 @@
 
     .chapter-main-title {
       font-family: var(--font-accent);
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       font-weight: 900;
       color: var(--text-main);
       line-height: 1.2;
@@ -994,7 +966,7 @@
 
     .appraisal-card:hover, .appraisal-card:focus-visible {
       border-color: var(--accent-primary);
-      box-shadow: 0 0 8px var(--accent-soft);
+      box-shadow: var(--shadow-panel);
     }
 
     .appraisal-card-head {
@@ -1155,7 +1127,7 @@
       background: var(--obi-red);
       color: #FFFFFF;
       font-family: var(--font-system);
-      font-size: 0.625rem;
+      font-size: 0.6875rem;
       font-weight: 700;
       padding: 1px 4px;
       border-radius: 2px;
@@ -1168,7 +1140,7 @@
       background: var(--gold);
       color: #FFFFFF;
       font-family: var(--font-system);
-      font-size: 0.625rem;
+      font-size: 0.6875rem;
       font-weight: 700;
       padding: 1px 4px;
       border-radius: 2px;
@@ -1208,7 +1180,7 @@
     }
 
     .tankobon-genre-chip {
-      font-size: 0.625rem;
+      font-size: 0.6875rem;
       color: var(--ink-sub);
     }
 
@@ -1261,10 +1233,10 @@
     .console-shortcuts-hint {
       font-family: var(--font-system);
       font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--text-sub);
+      font-weight: 700;
+      color: var(--text-main);
       background: var(--bg-subtle);
-      padding: 2px 8px;
+      padding: 4px 10px;
       border-radius: var(--radius-sm);
       border: 1px solid var(--panel-border-inner);
     }
@@ -1273,9 +1245,9 @@
     .console-main-grid {
       flex: 1;
       display: grid;
-      grid-template-columns: 360px minmax(0, 1fr) 320px;
-      gap: 14px;
-      padding: 12px 16px;
+      grid-template-columns: 330px minmax(0, 1fr) 290px;
+      gap: 12px;
+      padding: 10px 14px;
       overflow: hidden;
       box-sizing: border-box;
       height: calc(100vh - 48px);
@@ -1283,13 +1255,13 @@
 
     @media (min-width: 1400px) {
       .console-main-grid {
-        grid-template-columns: 400px minmax(0, 1fr) 360px;
-        gap: 18px;
-        padding: 16px 24px;
+        grid-template-columns: 380px minmax(0, 1fr) 330px;
+        gap: 16px;
+        padding: 12px 18px;
       }
     }
 
-    /* Left Rail: Character Card */
+    /* Left Rail: Character Card (Compact, no dead bottom space) */
     .console-left-rail {
       background: var(--panel-bg);
       border: 1px solid var(--panel-border-outer);
@@ -1298,24 +1270,24 @@
       padding: 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       position: relative;
       overflow-y: auto;
       max-height: 100%;
+      box-sizing: border-box;
     }
 
     .char-card-header {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
       border-bottom: var(--border-ink);
-      padding-bottom: 8px;
-      margin-bottom: 10px;
+      padding-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .char-name-display {
       font-family: var(--font-display);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       line-height: 1.1;
       color: var(--ink-black);
       letter-spacing: -0.02em;
@@ -1324,8 +1296,8 @@
     .char-avatar-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
+      gap: 10px;
+      margin-bottom: 8px;
     }
 
     .char-identity-text {
@@ -1356,29 +1328,33 @@
       display: flex;
       align-items: center;
       gap: 4px;
-      padding: 8px 10px;
+      padding: 4px 8px;
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--panel-border-outer);
       flex-shrink: 0;
+      flex-wrap: nowrap;
+      height: 48px;
       overflow-x: auto;
     }
 
     .realm-tab-btn {
-      min-height: 38px;
-      padding: 4px 12px;
+      min-height: 40px;
+      height: 40px;
+      padding: 4px 8px;
       border: 1px solid transparent;
       background: transparent;
       color: var(--text-sub);
       font-family: var(--font-system);
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
       font-weight: 700;
       border-radius: var(--radius-sm);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
       transition: all 140ms ease;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .realm-tab-btn:hover {
@@ -1404,14 +1380,14 @@
     .realm-viewport {
       flex: 1;
       overflow-y: auto;
-      padding: 16px;
+      padding: 14px;
       box-sizing: border-box;
       -webkit-overflow-scrolling: touch;
     }
 
     .realm-pane {
       display: none;
-      animation: realmFade 0.25s var(--spr-settle);
+      animation: realmFade 0.2s var(--spr-settle);
     }
 
     .realm-pane.is-active {
@@ -1419,7 +1395,7 @@
     }
 
     @keyframes realmFade {
-      from { opacity: 0; transform: translateY(4px); }
+      from { opacity: 0; transform: translateY(3px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -1440,22 +1416,22 @@
       padding: 14px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       overflow-y: auto;
       max-height: 100%;
       position: relative;
+      box-sizing: border-box;
     }
 
     .telemetry-log-stack {
       display: flex;
       flex-direction: column;
       gap: 6px;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
     .telemetry-entry {
       background: var(--bg-subtle);
-      border-left: 2px solid var(--accent-primary);
+      border-left: 2.5px solid var(--accent-primary);
       padding: 6px 8px;
       font-family: var(--font-system);
       font-size: 0.75rem;
@@ -1500,7 +1476,7 @@
       font-family: var(--font-display);
       font-size: 1.6rem;
       color: var(--accent-primary);
-      box-shadow: 0 0 20px var(--accent-soft);
+      box-shadow: 0 0 16px var(--accent-soft);
       animation: pulse 1s infinite alternate ease-in-out;
     }
 
@@ -1592,9 +1568,10 @@
           <div class="cover-edition-sub">TANKOBON EDITION / 2026</div>
         </div>
 
-        <!-- Center Sigil Graphic -->
-        <div class="cover-center-art tone-halftone">
-          <div class="tone-speedlines" style="position:absolute; inset:0;"></div>
+        <!-- Full-Bleed High Contrast Manga Art Panel -->
+        <div class="cover-center-art">
+          <div class="art-speedlines-layer"></div>
+          <div class="art-halftone-overlay"></div>
           <div class="sigil-disc">KB</div>
           <div class="sfx-cover-tag">DO-DOOON!</div>
         </div>
@@ -1603,7 +1580,7 @@
         <div class="cover-obi-band" id="coverObiBand" role="button" tabindex="0" aria-label="Official Obi Band. Scroll or tap to open volume.">
           <div class="obi-head-row">
             <span class="obi-tag-mark">OFFICIAL OBI BAND</span>
-            <span class="obi-action-cue">SCROLL TO OPEN &darr;</span>
+            <span class="obi-action-cue" id="obiActionCue">SCROLL TO OPEN &darr;</span>
           </div>
           <p class="obi-copy-line">
             Builds AI agent systems. MBA, IIM Ranchi. Published researcher.
@@ -1650,7 +1627,7 @@
       </div>
     </section>
 
-    <!-- WEBTOON CHRONICLE: SYSTEM WINDOW & CHAPTERS -->
+    <!-- WEBTOON CHRONICLE: SYSTEM WINDOW & ALL 11 CHAPTERS -->
     <main class="webtoon-chronicle" id="webtoonMain">
 
       <!-- SYSTEM STATUS WINDOW -->
@@ -1734,31 +1711,40 @@
           <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-cmd-btn">[ GitHub ]</a>
         </div>
 
-        <!-- Radar Attribute Chart -->
+        <!-- Radar Attribute Chart with 5 Labeled Axes -->
         <div class="radar-box">
           <div style="font-family:var(--font-system); font-size:0.75rem; font-weight:700; color:var(--accent-primary);">
             [ PARAMETER MATRIX: 5 AXES ]
           </div>
-          <svg class="radar-svg" width="200" height="170" viewBox="0 0 220 190" role="img" aria-label="5-point attribute polygon">
-            <polygon points="110,20 195,78 163,170 57,170 25,78" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <polygon points="110,48 165,86 144,148 76,148 55,86" fill="none" stroke="var(--panel-border-inner)" stroke-width="1" stroke-dasharray="2,2"/>
-            <polygon points="110,75 137,94 127,125 93,125 83,94" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <line x1="110" y1="105" x2="110" y2="20" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <line x1="110" y1="105" x2="195" y2="78" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <line x1="110" y1="105" x2="163" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <line x1="110" y1="105" x2="57" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <line x1="110" y1="105" x2="25" y2="78" stroke="var(--panel-border-inner)" stroke-width="1"/>
-            <polygon points="110,24 186,81 154,162 64,158 34,83" fill="rgba(3, 105, 161, 0.16)" stroke="var(--accent-primary)" stroke-width="2"/>
-            <circle cx="110" cy="24" r="3.5" fill="var(--accent-primary)"/>
-            <circle cx="186" cy="81" r="3.5" fill="var(--accent-primary)"/>
-            <circle cx="154" cy="162" r="3.5" fill="var(--accent-primary)"/>
-            <circle cx="64" cy="158" r="3.5" fill="var(--accent-primary)"/>
-            <circle cx="34" cy="83" r="3.5" fill="var(--accent-primary)"/>
+          <svg class="radar-svg" width="240" height="200" viewBox="0 0 240 200" role="img" aria-label="5-axis parameter matrix diagram">
+            <!-- Background Web Rings -->
+            <polygon points="120,28 200,86 169,170 71,170 40,86" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <polygon points="120,53 173,92 153,148 87,148 67,92" fill="none" stroke="var(--panel-border-inner)" stroke-width="1" stroke-dasharray="2,2"/>
+            <polygon points="120,78 147,97 136,126 104,126 93,97" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <!-- Axis Spokes -->
+            <line x1="120" y1="105" x2="120" y2="28" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <line x1="120" y1="105" x2="200" y2="86" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <line x1="120" y1="105" x2="169" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <line x1="120" y1="105" x2="71" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <line x1="120" y1="105" x2="40" y2="86" stroke="var(--panel-border-inner)" stroke-width="1"/>
+            <!-- Active Hunter Profile Area -->
+            <polygon points="120,32 192,89 161,162 78,158 48,91" fill="rgba(3, 105, 161, 0.18)" stroke="var(--accent-primary)" stroke-width="2"/>
+            <circle cx="120" cy="32" r="3.5" fill="var(--accent-primary)"/>
+            <circle cx="192" cy="89" r="3.5" fill="var(--accent-primary)"/>
+            <circle cx="161" cy="162" r="3.5" fill="var(--accent-primary)"/>
+            <circle cx="78" cy="158" r="3.5" fill="var(--accent-primary)"/>
+            <circle cx="48" cy="91" r="3.5" fill="var(--accent-primary)"/>
+            <!-- 5 Axis Text Labels -->
+            <text x="120" y="18" text-anchor="middle" class="radar-axis-label">AGENT ARCHITECTURE</text>
+            <text x="206" y="88" text-anchor="start" class="radar-axis-label">PRODUCTION</text>
+            <text x="175" y="184" text-anchor="start" class="radar-axis-label">SCROLLS & RESEARCH</text>
+            <text x="65" y="184" text-anchor="end" class="radar-axis-label">DUAL CULTIVATION</text>
+            <text x="34" y="88" text-anchor="end" class="radar-axis-label">APPLIED ML</text>
           </svg>
         </div>
       </section>
 
-      <!-- CHAPTER 1: READER'S ARCHIVE -->
+      <!-- CHAPTER 01: READER'S ARCHIVE -->
       <section class="webtoon-chapter" id="chapter-archive">
         <div class="chapter-heading-box">
           <div class="chapter-num-badge">CHAPTER 01</div>
@@ -1777,11 +1763,11 @@
           </div>
           <div class="archive-stat-tile">
             <span class="archive-stat-figure">Eleceed</span>
-            <span class="archive-stat-sub">FAVOURITE (460 CH)</span>
+            <span class="archive-stat-sub">FAVOURITE (422 CH)</span>
           </div>
           <div class="archive-stat-tile">
             <span class="archive-stat-figure">55</span>
-            <span class="archive-stat-sub">UNREAD IN VAULT</span>
+            <span class="archive-stat-sub">ON DAILY READ SHELF</span>
           </div>
         </div>
 
@@ -1970,18 +1956,18 @@
         </div>
       </section>
 
-      <!-- CHAPTER 2: THE FAMILIAR -->
+      <!-- CHAPTER 02: THE FAMILIAR -->
       <section class="webtoon-chapter" id="ch-familiar">
         <div class="chapter-heading-box">
           <div class="chapter-num-badge">CHAPTER 02</div>
           <h3 class="chapter-main-title">THE FAMILIAR</h3>
-          <p class="chapter-summary-text">Autonomous Multi-Agent VPS Mesh operating 24/7 on a cloud VPS with human approval gates.</p>
+          <p class="chapter-summary-text">Multi-agent system operating 24/7 on a cloud VPS with human approval gates.</p>
         </div>
 
         <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
           <div class="appraisal-card-head">
-            <h4 class="card-title-text">Autonomous Multi-Agent VPS Mesh</h4>
-            <span class="badge badge-primary">AGENT MESH</span>
+            <h4 class="card-title-text">Multi-Agent System on a Cloud VPS</h4>
+            <span class="badge badge-primary">AGENT RUNTIME</span>
           </div>
           <p class="card-plain-body">
             Runs his own multi-agent system (Hermes Agent) on a cloud VPS: specialist agents (finance, career, academics, outreach drafting, infra, cleanup) orchestrated via Discord and Telegram with human approval gates.
@@ -2003,8 +1989,8 @@
         </article>
       </section>
 
-      <!-- CHAPTER 3: DUNGEONS (QUALITYKIOSK 2026) -->
-      <section class="webtoon-chapter" id="ch-dungeons">
+      <!-- CHAPTER 03: DUNGEONS: QUALITYKIOSK 2026 -->
+      <section class="webtoon-chapter" id="ch-dungeons-qk">
         <div class="chapter-heading-box">
           <div class="chapter-num-badge">CHAPTER 03</div>
           <h3 class="chapter-main-title">DUNGEONS: QUALITYKIOSK 2026</h3>
@@ -2014,7 +2000,7 @@
         <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
           <div class="appraisal-card-head">
             <h4 class="card-title-text">Full-Stack Enterprise Banking Intelligence Platform</h4>
-            <span class="badge badge-gold">ENTERPRISE RAID</span>
+            <span class="badge badge-gold">144 COMMITS</span>
           </div>
           <p class="card-plain-body">
             Solo-built an end-to-end NestJS + React enterprise estimation platform, pushing 144 commits in 7 weeks across 7 apps and 3 Python tools.
@@ -2033,6 +2019,15 @@
             </ul>
           </div>
         </article>
+      </section>
+
+      <!-- CHAPTER 04: DUNGEONS: EARLIER RAIDS -->
+      <section class="webtoon-chapter" id="ch-dungeons-earlier">
+        <div class="chapter-heading-box">
+          <div class="chapter-num-badge">CHAPTER 04</div>
+          <h3 class="chapter-main-title">DUNGEONS: EARLIER RAIDS</h3>
+          <p class="chapter-summary-text">Tata Steel quantitative compensation benchmarking and large-scale social tech infrastructure.</p>
+        </div>
 
         <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
           <div class="appraisal-card-head">
@@ -2052,15 +2047,16 @@
               <li>Social Impact: Evaluated 390+ rural students across foundational metrics in Jharkhand.</li>
               <li>Global Rural Bootcamp: Served as technical lead orchestrating infrastructure for 3K+ applicants.</li>
               <li>Learning Platform: Built web application and quiz portal serving 8K+ active users.</li>
+              <li>Senior Executive Member: Corporate Relations & Placement Committee at IIM Ranchi.</li>
             </ul>
           </div>
         </article>
       </section>
 
-      <!-- CHAPTER 4: SCROLLS & TITLES -->
+      <!-- CHAPTER 05: SCROLLS: PEER-REVIEWED RESEARCH -->
       <section class="webtoon-chapter" id="ch-scrolls">
         <div class="chapter-heading-box">
-          <div class="chapter-num-badge">CHAPTER 04</div>
+          <div class="chapter-num-badge">CHAPTER 05</div>
           <h3 class="chapter-main-title">SCROLLS: PEER-REVIEWED RESEARCH</h3>
           <p class="chapter-summary-text">Published in Springer FICTA 2026; presented systematic review at 10th Pan-IIM WMC 2025.</p>
         </div>
@@ -2087,10 +2083,10 @@
         </article>
       </section>
 
-      <!-- CHAPTER 5: DUAL CULTIVATION -->
+      <!-- CHAPTER 06: DUAL CULTIVATION -->
       <section class="webtoon-chapter" id="ch-cultivation">
         <div class="chapter-heading-box">
-          <div class="chapter-num-badge">CHAPTER 05</div>
+          <div class="chapter-num-badge">CHAPTER 06</div>
           <h3 class="chapter-main-title">DUAL CULTIVATION</h3>
           <p class="chapter-summary-text">Simultaneous rigorous cultivation at IIM Ranchi (IPM) and IIT Madras (BS Data Science).</p>
         </div>
@@ -2117,18 +2113,18 @@
         </article>
       </section>
 
-      <!-- CHAPTER 6: SIDE QUESTS & TECHNIQUES -->
+      <!-- CHAPTER 07: SIDE QUESTS: MACHINE LEARNING LABS -->
       <section class="webtoon-chapter" id="ch-sidequests">
         <div class="chapter-heading-box">
-          <div class="chapter-num-badge">CHAPTER 06</div>
-          <h3 class="chapter-main-title">SIDE QUESTS & TECHNIQUES</h3>
-          <p class="chapter-summary-text">Experimental ML models, Kaggle competitions, and specialized tools.</p>
+          <div class="chapter-num-badge">CHAPTER 07</div>
+          <h3 class="chapter-main-title">SIDE QUESTS: MACHINE LEARNING LABS</h3>
+          <p class="chapter-summary-text">8 applied machine learning models, competitive benchmarks, and full-stack software builds.</p>
         </div>
 
         <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
           <div class="appraisal-card-head">
             <h4 class="card-title-text">Applied Machine Learning & Labs</h4>
-            <span class="badge badge-primary">MODEL VAULT</span>
+            <span class="badge badge-primary">8 TECHNIQUES</span>
           </div>
           <p class="card-plain-body">
             LoRA MCQ ensemble (0.74242 MAP@3), toxic comment classifier on 198K comments (F1 0.8293, 100-trial Optuna), customer churn (90K records, 0.6365 F1), FastAPI RAG assistant.
@@ -2152,10 +2148,10 @@
         </article>
       </section>
 
-      <!-- CHAPTER 7: SEALS & BADGES -->
+      <!-- CHAPTER 08: SEALS & BADGES -->
       <section class="webtoon-chapter" id="ch-seals">
         <div class="chapter-heading-box">
-          <div class="chapter-num-badge">CHAPTER 07</div>
+          <div class="chapter-num-badge">CHAPTER 08</div>
           <h3 class="chapter-main-title">SEALS & BADGES</h3>
           <p class="chapter-summary-text">Industry certifications, hackathon recognitions, and professional credentials.</p>
         </div>
@@ -2166,7 +2162,7 @@
             <span class="badge badge-gold">SEALS VERIFIED</span>
           </div>
           <p class="card-plain-body">
-            Microsoft PL-300 Power BI (751/700), Lean Six Sigma Green Belt (Grant Thornton), anyLogistix Supply Chain Twins (IIM Mumbai), Odoo Hackathon Top 50 of 500.
+            Microsoft PL-300 Power BI (scored 751 (pass mark 700)), Lean Six Sigma Green Belt (Grant Thornton), anyLogistix Supply Chain Twins (IIM Mumbai), Odoo Hackathon Top 50 of 500.
           </p>
           <div class="tap-cue">
             <span>&#10022;</span>
@@ -2174,30 +2170,60 @@
           </div>
           <div class="appraisal-expansion">
             <ul class="appraisal-details-list">
-              <li>Microsoft Certified: Power BI Data Analyst Associate (PL-300), Score: 751/700.</li>
-              <li>Lean Six Sigma Green Belt: Certified by Grant Thornton.</li>
-              <li>Digital Supply Chain Twins: Certified in anyLogistix at IIM Mumbai.</li>
+              <li>Microsoft Certified: Power BI Data Analyst Associate (PL-300), scored 751 (pass mark 700).</li>
+              <li>Lean Six Sigma Green Belt: Certified by Grant Thornton in DMAIC process optimization.</li>
+              <li>Digital Supply Chain Twins: Certified in dynamic simulation using anyLogistix at IIM Mumbai.</li>
               <li>Odoo x Paradox 36-Hour Hackathon at IIT Madras: Ranked Top 50 of 500 teams.</li>
             </ul>
           </div>
         </article>
       </section>
 
-      <!-- CHAPTER 8: OFF PANEL & ORIGIN -->
+      <!-- CHAPTER 09: OFF PANEL -->
       <section class="webtoon-chapter" id="ch-offpanel">
         <div class="chapter-heading-box">
-          <div class="chapter-num-badge">CHAPTER 08</div>
-          <h3 class="chapter-main-title">OFF PANEL & ORIGIN</h3>
-          <p class="chapter-summary-text">Personal lore, origin point, and foundational stats.</p>
+          <div class="chapter-num-badge">CHAPTER 09</div>
+          <h3 class="chapter-main-title">OFF PANEL</h3>
+          <p class="chapter-summary-text">Personal lore, reading immersion, and life beyond the terminal.</p>
         </div>
 
         <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
           <div class="appraisal-card-head">
-            <h4 class="card-title-text">Personal Lore & Origin Awakening</h4>
-            <span class="badge badge-primary">ORIGIN POINT</span>
+            <h4 class="card-title-text">Personal Lore & Pastimes</h4>
+            <span class="badge badge-primary">LIFE BEYOND TERMINAL</span>
           </div>
           <p class="card-plain-body">
-            Age 23, from India, based in Ranchi. Passionate about manhwa and web novels with 37k+ chapters read (Favourite: Eleceed), music, and fintech. Origin: Class X ICSE 3rd rank in school.
+            Passionate about manhwa and web novels with 37,000+ chapters read (Favourite: Eleceed), focus audio, and fintech process architecture.
+          </p>
+          <div class="tap-cue">
+            <span>&#10022;</span>
+            <span class="tap-cue-text">System Appraisal</span>
+          </div>
+          <div class="appraisal-expansion">
+            <ul class="appraisal-details-list">
+              <li>Manhwa & Web Novels: 37,000+ chapters read across 460 series with deep immersion in progression fantasy and murim lore.</li>
+              <li>Focus Audio: Ambient soundscapes and soundtracks engineered for deep coding and research flow.</li>
+              <li>Fintech & Process Innovation: Exploring frictionless workflow design and automation.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- CHAPTER 10: AWAKENING (TUTORIAL) -->
+      <section class="webtoon-chapter" id="ch-awakening">
+        <div class="chapter-heading-box">
+          <div class="chapter-num-badge">CHAPTER 10</div>
+          <h3 class="chapter-main-title">AWAKENING (TUTORIAL)</h3>
+          <p class="chapter-summary-text">The origin zone: Class X ICSE foundation and school honors.</p>
+        </div>
+
+        <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="appraisal-card-head">
+            <h4 class="card-title-text">Origins: Class X Foundations</h4>
+            <span class="badge badge-primary">ORIGIN AWAKENING</span>
+          </div>
+          <p class="card-plain-body">
+            The starting zone of the chronicle: foundational academic discipline in science and mathematics. Secured 3rd rank across the entire school in Class X ICSE board examinations.
           </p>
           <div class="tap-cue">
             <span>&#10022;</span>
@@ -2206,8 +2232,38 @@
           <div class="appraisal-expansion">
             <ul class="appraisal-details-list">
               <li>Origins: Third of the School in Class X ICSE board examinations.</li>
-              <li>Interests: Multi-agent systems, GenAI architectures, process innovation, fintech, and webtoon craft.</li>
               <li>Location: Ranchi, Jharkhand, India.</li>
+              <li>Foundation: Grounded discipline that led into dual cultivation at IIM Ranchi and IIT Madras.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- CHAPTER 11: EPILOGUE -->
+      <section class="webtoon-chapter" id="ch-epilogue">
+        <div class="chapter-heading-box">
+          <div class="chapter-num-badge">CHAPTER 11</div>
+          <h3 class="chapter-main-title">EPILOGUE</h3>
+          <p class="chapter-summary-text">Chronicle synchronized. Open transmission coordinates.</p>
+        </div>
+
+        <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+          <div class="appraisal-card-head">
+            <h4 class="card-title-text">To Be Continued...</h4>
+            <span class="badge badge-primary">LIVE TRANSMISSION</span>
+          </div>
+          <p class="card-plain-body">
+            The chronicle continues to update in real time. Reach out through any of the verified channels below.
+          </p>
+          <div class="tap-cue">
+            <span>&#10022;</span>
+            <span class="tap-cue-text">System Appraisal</span>
+          </div>
+          <div class="appraisal-expansion">
+            <ul class="appraisal-details-list">
+              <li>Email: krishnendureads@gmail.com</li>
+              <li>LinkedIn: https://linkedin.com/in/krshnndu</li>
+              <li>GitHub: https://github.com/krshnndu</li>
             </ul>
           </div>
         </article>
@@ -2316,13 +2372,24 @@
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Contact Command Bar -->
-        <div class="contact-actions-bar" style="margin-top: auto; margin-bottom: 0;">
-          <a href="mailto:krishnendureads@gmail.com" class="contact-cmd-btn">[ Email ]</a>
-          <a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-cmd-btn">[ LinkedIn ]</a>
-          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-cmd-btn">[ GitHub ]</a>
+          <!-- Contact Command Bar directly under slots -->
+          <div class="contact-actions-bar" style="margin-top: 10px; margin-bottom: 8px;">
+            <a href="mailto:krishnendureads@gmail.com" class="contact-cmd-btn">[ Email ]</a>
+            <a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-cmd-btn">[ LinkedIn ]</a>
+            <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-cmd-btn">[ GitHub ]</a>
+          </div>
+
+          <!-- Character Sync Footer -->
+          <div style="background: var(--bg-subtle); padding: 8px 10px; border-radius: var(--radius-sm); border: 1px solid var(--panel-border-inner); margin-top: 6px;">
+            <div style="display:flex; justify-content:space-between; font-family:var(--font-system); font-size:0.6875rem; font-weight:700; color:var(--accent-primary);">
+              <span>HUNTER REGISTRY</span>
+              <span>100% SYNCED</span>
+            </div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:2px; line-height:1.3;">
+              Active in multi-agent orchestration, LLM systems, and empirical ML research.
+            </div>
+          </div>
         </div>
       </aside>
 
@@ -2333,7 +2400,7 @@
         <div class="corner-bracket c-bl"></div>
         <div class="corner-bracket c-br"></div>
 
-        <!-- Tab Controls (Keys 1-6) -->
+        <!-- Tab Controls (Keys 1-6) with ample padding and fit -->
         <nav class="realm-tabs-bar" role="tablist" aria-label="Realm Navigation">
           <button class="realm-tab-btn is-active" id="tab-1" role="tab" aria-selected="true" aria-controls="realm-1" data-realm="1">
             <span class="realm-tab-key">1</span>
@@ -2341,7 +2408,7 @@
           </button>
           <button class="realm-tab-btn" id="tab-2" role="tab" aria-selected="false" aria-controls="realm-2" data-realm="2">
             <span class="realm-tab-key">2</span>
-            <span>Reader's Archive</span>
+            <span>Archive</span>
           </button>
           <button class="realm-tab-btn" id="tab-3" role="tab" aria-selected="false" aria-controls="realm-3" data-realm="3">
             <span class="realm-tab-key">3</span>
@@ -2364,16 +2431,17 @@
         <!-- Realm Content Viewport -->
         <div class="realm-viewport">
 
-          <!-- REALM 1: QUEST LOG -->
+          <!-- REALM 1: QUEST LOG (All 11 chapters cleanly numbered and visible) -->
           <div class="realm-pane is-active" id="realm-1" role="tabpanel" aria-labelledby="tab-1">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-              <h2 style="font-family:var(--font-accent); font-size:1.4rem; font-weight:900;">QUEST LOG: MAJOR RAIDS & BUILDS</h2>
-              <span class="badge badge-primary">NEWEST FIRST</span>
+              <h2 style="font-family:var(--font-accent); font-size:1.4rem; font-weight:900;">QUEST LOG: 11 CHRONICLE CHAPTERS</h2>
+              <span class="badge badge-primary">ALL 11 ACTIVE</span>
             </div>
 
+            <!-- Chapter 02 Card -->
             <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
               <div class="appraisal-card-head">
-                <h3 class="card-title-text">Chapter 02: The Familiar (Autonomous Multi-Agent VPS Mesh)</h3>
+                <h3 class="card-title-text">Chapter 02: The Familiar (Multi-Agent System on a Cloud VPS)</h3>
                 <span class="badge badge-primary">ACTIVE RUNTIME</span>
               </div>
               <p class="card-plain-body">
@@ -2390,9 +2458,10 @@
               </div>
             </article>
 
+            <!-- Chapter 03 Card -->
             <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
               <div class="appraisal-card-head">
-                <h3 class="card-title-text">Chapter 03: Dungeons (QualityKiosk Technologies 2026)</h3>
+                <h3 class="card-title-text">Chapter 03: Dungeons: QualityKiosk 2026 Platform Raid</h3>
                 <span class="badge badge-gold">144 COMMITS</span>
               </div>
               <p class="card-plain-body">
@@ -2410,9 +2479,10 @@
               </div>
             </article>
 
+            <!-- Chapter 04 Card -->
             <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
               <div class="appraisal-card-head">
-                <h3 class="card-title-text">Tata Steel & Social Impact Raids</h3>
+                <h3 class="card-title-text">Chapter 04: Dungeons: Earlier Raids (Tata Steel & Social Tech)</h3>
                 <span class="badge badge-primary">ANALYST & LEAD</span>
               </div>
               <p class="card-plain-body">
@@ -2428,6 +2498,137 @@
                 </ul>
               </div>
             </article>
+
+            <!-- Chapter 05 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 05: Scrolls (Springer FICTA 2026 & Pan-IIM WMC)</h3>
+                <span class="badge badge-gold">PEER REVIEWED</span>
+              </div>
+              <p class="card-plain-body">
+                Published "Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data" in Springer FICTA 2026. RoBERTa + SVMSMOTE achieving 74.19% recall on Confused class.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Springer FICTA 2026: 74.19% recall on minority Confused dialogue class.</li>
+                  <li>Pan-IIM WMC 2025: Presented GenAI in Marketing systematic review covering 29 Scopus-indexed articles via PRISMA.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 06 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 06: Dual Cultivation (IIM Ranchi & IIT Madras)</h3>
+                <span class="badge badge-primary">DOUBLE DEGREE</span>
+              </div>
+              <p class="card-plain-body">
+                Simultaneous dual cultivation: IPM at IIM Ranchi (BBA 2025, MBA phase 2025 to 2027) alongside IIT Madras BS in Data Science (Diploma in Programming 2026, Topper Badges in 7 of first 14 courses).
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>IIT Madras BS Data Science: Awarded Topper Badges in 7 of first 14 courses.</li>
+                  <li>IIM Ranchi: Senior Executive Member, Corporate Relations & Placement Committee.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 07 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 07: Side Quests: Machine Learning Labs</h3>
+                <span class="badge badge-primary">8 TECHNIQUES</span>
+              </div>
+              <p class="card-plain-body">
+                8 applied ML models and tools: DeBERTa ensemble (0.74242 MAP@3), 198K toxic comments classifier (F1 0.8293, Optuna), customer churn (90K records), FastAPI RAG assistant.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Kaggle DeBERTa-v3 ensemble: 0.74242 MAP@3.</li>
+                  <li>Toxic comment classification: F1 0.8293 on 198K comments.</li>
+                  <li>Customer churn: 0.6365 F1 on 90K rows.</li>
+                  <li>RAG Virtual Teaching Assistant: FastAPI + vector SQLite.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 08 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 08: Seals & Badges (Certifications & Hackathons)</h3>
+                <span class="badge badge-gold">SEALS VERIFIED</span>
+              </div>
+              <p class="card-plain-body">
+                Microsoft PL-300 Power BI (scored 751 (pass mark 700)), Lean Six Sigma Green Belt (Grant Thornton), anyLogistix Supply Chain Twins (IIM Mumbai), Odoo Hackathon Top 50 of 500.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Microsoft PL-300: scored 751 (pass mark 700).</li>
+                  <li>Lean Six Sigma Green Belt: Grant Thornton.</li>
+                  <li>anyLogistix Digital Supply Chain Twins: IIM Mumbai.</li>
+                  <li>Odoo x Paradox Hackathon: Top 50 of 500 at IIT Madras.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 09 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 09: Off Panel (Life Beyond the Terminal)</h3>
+                <span class="badge badge-primary">LORE</span>
+              </div>
+              <p class="card-plain-body">
+                37,000+ chapters of manhwa and web novels read across 460 series (all-time favourite: Eleceed), focus audio soundscapes, and fintech process architecture.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Progression fantasy & murim reading immersion.</li>
+                  <li>Focus audio for engineering flow.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 10 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 10: Awakening (Class X ICSE Foundations)</h3>
+                <span class="badge badge-primary">ORIGIN POINT</span>
+              </div>
+              <p class="card-plain-body">
+                The starting zone of the chronicle: secured 3rd rank across the entire school in Class X ICSE board examinations.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Origins: Third of the School in Class X ICSE.</li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- Chapter 11 Card -->
+            <article class="appraisal-card" tabindex="0" role="button" aria-expanded="false">
+              <div class="appraisal-card-head">
+                <h3 class="card-title-text">Chapter 11: Epilogue (Transmission Coordinates)</h3>
+                <span class="badge badge-primary">COORDINATES</span>
+              </div>
+              <p class="card-plain-body">
+                Chronicle synchronized and active in real time. Reach out via Email (krishnendureads@gmail.com), LinkedIn, or GitHub.
+              </p>
+              <div class="tap-cue"><span>&#10022;</span><span class="tap-cue-text">System Appraisal</span></div>
+              <div class="appraisal-expansion">
+                <ul class="appraisal-details-list">
+                  <li>Email: krishnendureads@gmail.com</li>
+                  <li>LinkedIn: https://linkedin.com/in/krshnndu</li>
+                  <li>GitHub: https://github.com/krshnndu</li>
+                </ul>
+              </div>
+            </article>
+
           </div>
 
           <!-- REALM 2: READER'S ARCHIVE -->
@@ -2448,11 +2649,11 @@
               </div>
               <div class="archive-stat-tile">
                 <span class="archive-stat-figure">Eleceed</span>
-                <span class="archive-stat-sub">FAVOURITE (460 CH)</span>
+                <span class="archive-stat-sub">FAVOURITE (422 CH)</span>
               </div>
               <div class="archive-stat-tile">
                 <span class="archive-stat-figure">55</span>
-                <span class="archive-stat-sub">UNREAD IN VAULT</span>
+                <span class="archive-stat-sub">ON DAILY READ SHELF</span>
               </div>
             </div>
 
@@ -2708,7 +2909,7 @@
               </div>
               <div class="appraisal-expansion" style="display:block;">
                 <ul class="appraisal-details-list">
-                  <li><strong>Microsoft Certified PL-300:</strong> Power BI Data Analyst Associate (Score: 751/700).</li>
+                  <li><strong>Microsoft Certified PL-300:</strong> Power BI Data Analyst Associate (scored 751 (pass mark 700)).</li>
                   <li><strong>Lean Six Sigma Green Belt:</strong> Certified by Grant Thornton.</li>
                   <li><strong>Digital Supply Chain Twins:</strong> Certified in anyLogistix at IIM Mumbai.</li>
                   <li><strong>Odoo x Paradox 36-Hour Hackathon:</strong> Ranked Top 50 of 500 teams at IIT Madras.</li>
@@ -2756,21 +2957,30 @@
           </div>
 
           <div style="display:flex; justify-content:center; margin-bottom:10px;">
-            <svg class="radar-svg" width="180" height="155" viewBox="0 0 220 190" role="img" aria-label="5-point attribute polygon">
-              <polygon points="110,20 195,78 163,170 57,170 25,78" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <polygon points="110,48 165,86 144,148 76,148 55,86" fill="none" stroke="var(--panel-border-inner)" stroke-width="1" stroke-dasharray="2,2"/>
-              <polygon points="110,75 137,94 127,125 93,125 83,94" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <line x1="110" y1="105" x2="110" y2="20" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <line x1="110" y1="105" x2="195" y2="78" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <line x1="110" y1="105" x2="163" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <line x1="110" y1="105" x2="57" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <line x1="110" y1="105" x2="25" y2="78" stroke="var(--panel-border-inner)" stroke-width="1"/>
-              <polygon points="110,24 186,81 154,162 64,158 34,83" fill="rgba(3, 105, 161, 0.16)" stroke="var(--accent-primary)" stroke-width="2"/>
-              <circle cx="110" cy="24" r="3.5" fill="var(--accent-primary)"/>
-              <circle cx="186" cy="81" r="3.5" fill="var(--accent-primary)"/>
-              <circle cx="154" cy="162" r="3.5" fill="var(--accent-primary)"/>
-              <circle cx="64" cy="158" r="3.5" fill="var(--accent-primary)"/>
-              <circle cx="34" cy="83" r="3.5" fill="var(--accent-primary)"/>
+            <svg class="radar-svg" width="220" height="175" viewBox="0 0 240 200" role="img" aria-label="5-axis parameter matrix diagram">
+              <!-- Background Web Rings -->
+              <polygon points="120,28 200,86 169,170 71,170 40,86" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <polygon points="120,53 173,92 153,148 87,148 67,92" fill="none" stroke="var(--panel-border-inner)" stroke-width="1" stroke-dasharray="2,2"/>
+              <polygon points="120,78 147,97 136,126 104,126 93,97" fill="none" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <!-- Axis Spokes -->
+              <line x1="120" y1="105" x2="120" y2="28" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <line x1="120" y1="105" x2="200" y2="86" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <line x1="120" y1="105" x2="169" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <line x1="120" y1="105" x2="71" y2="170" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <line x1="120" y1="105" x2="40" y2="86" stroke="var(--panel-border-inner)" stroke-width="1"/>
+              <!-- Active Hunter Profile Area -->
+              <polygon points="120,32 192,89 161,162 78,158 48,91" fill="rgba(3, 105, 161, 0.18)" stroke="var(--accent-primary)" stroke-width="2"/>
+              <circle cx="120" cy="32" r="3.5" fill="var(--accent-primary)"/>
+              <circle cx="192" cy="89" r="3.5" fill="var(--accent-primary)"/>
+              <circle cx="161" cy="162" r="3.5" fill="var(--accent-primary)"/>
+              <circle cx="78" cy="158" r="3.5" fill="var(--accent-primary)"/>
+              <circle cx="48" cy="91" r="3.5" fill="var(--accent-primary)"/>
+              <!-- 5 Axis Text Labels -->
+              <text x="120" y="18" text-anchor="middle" class="radar-axis-label">AGENT ARCHITECTURE</text>
+              <text x="206" y="88" text-anchor="start" class="radar-axis-label">PRODUCTION</text>
+              <text x="175" y="184" text-anchor="start" class="radar-axis-label">SCROLLS & RESEARCH</text>
+              <text x="65" y="184" text-anchor="end" class="radar-axis-label">DUAL CULTIVATION</text>
+              <text x="34" y="88" text-anchor="end" class="radar-axis-label">APPLIED ML</text>
             </svg>
           </div>
 
@@ -2785,7 +2995,7 @@
             </div>
           </div>
 
-          <!-- Telemetry Feed -->
+          <!-- Rich Telemetry Feed -->
           <div class="panel-tag-header">
             <span>[ SYSTEM TELEMETRY ]</span>
             <span>LIVE LOG</span>
@@ -2801,16 +3011,28 @@
             </div>
             <div class="telemetry-entry">
               <div>[ HARNESS ACTIVE ]</div>
-              <div class="telemetry-time">Cloud VPS multi-agent mesh</div>
+              <div class="telemetry-time">Multi-agent system on a cloud VPS</div>
+            </div>
+            <div class="telemetry-entry">
+              <div>[ RAID CLEARED ]</div>
+              <div class="telemetry-time">QualityKiosk: 144 commits in 7 weeks</div>
             </div>
             <div class="telemetry-entry">
               <div>[ EVIDENCE SEALED ]</div>
-              <div class="telemetry-time">Microsoft PL-300: 751/700</div>
+              <div class="telemetry-time">Microsoft PL-300: scored 751 (pass mark 700)</div>
+            </div>
+            <div class="telemetry-entry">
+              <div>[ BADGE UNLOCKED ]</div>
+              <div class="telemetry-time">IIT Madras Topper: 7 of first 14 courses</div>
+            </div>
+            <div class="telemetry-entry">
+              <div>[ MODEL BENCHMARK ]</div>
+              <div class="telemetry-time">DeBERTa-v3 ensemble: 0.74242 MAP@3</div>
             </div>
           </div>
         </div>
 
-        <div style="font-family:var(--font-system); font-size:0.6875rem; color:var(--text-sub); text-align:center; padding-top:8px; border-top:1px dashed var(--panel-border-inner);">
+        <div style="font-family:var(--font-system); font-size:0.6875rem; color:var(--text-sub); text-align:center; padding-top:8px; border-top:1px dashed var(--panel-border-inner); margin-top:8px;">
           krishnendu.me | Static System Build
         </div>
       </aside>
@@ -2875,6 +3097,9 @@
       // 2. Mobile Cover Smooth Scroll Transition
       const coverObiBand = document.getElementById('coverObiBand');
       const statusWindow = document.getElementById('statusWindow');
+      const obiActionCue = document.getElementById('obiActionCue');
+      const mangaCoverCard = document.getElementById('mangaCoverCard');
+
       if (coverObiBand && statusWindow) {
         coverObiBand.addEventListener('click', function() {
           statusWindow.scrollIntoView({ behavior: 'smooth' });
@@ -2887,23 +3112,41 @@
         });
       }
 
-      // Scroll-linked cover transform on mobile
-      const mangaCoverCard = document.getElementById('mangaCoverCard');
-      window.addEventListener('scroll', function() {
-        if (window.innerWidth < 1024 && mangaCoverCard) {
+      // Scroll-linked cover transform and "SCROLL TO OPEN" cue hiding on mobile
+      let ticking = false;
+      function onScroll() {
+        if (window.innerWidth < 1024) {
           const scrollY = window.scrollY || document.documentElement.scrollTop;
-          const maxH = window.innerHeight * 0.8;
-          if (scrollY > 10) {
-            const progress = Math.min(1, scrollY / maxH);
-            const translateY = progress * -30;
-            const scale = 1 - (progress * 0.05);
-            const opacity = Math.max(0, 1 - (progress * 1.3));
-            mangaCoverCard.style.transform = `translateY(${translateY}px) scale(${scale})`;
-            mangaCoverCard.style.opacity = opacity;
-          } else {
-            mangaCoverCard.style.transform = 'none';
-            mangaCoverCard.style.opacity = '1';
+          if (obiActionCue) {
+            if (scrollY > 15) {
+              obiActionCue.classList.add('is-scrolling');
+            } else {
+              obiActionCue.classList.remove('is-scrolling');
+            }
           }
+
+          if (mangaCoverCard) {
+            const maxH = window.innerHeight * 0.7;
+            if (scrollY > 10) {
+              const progress = Math.min(1, scrollY / maxH);
+              const translateY = progress * -25;
+              const scale = 1 - (progress * 0.05);
+              const opacity = Math.max(0, 1 - (progress * 1.25));
+              mangaCoverCard.style.transform = `translateY(${translateY}px) scale(${scale})`;
+              mangaCoverCard.style.opacity = opacity;
+            } else {
+              mangaCoverCard.style.transform = 'none';
+              mangaCoverCard.style.opacity = '1';
+            }
+          }
+        }
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          window.requestAnimationFrame(onScroll);
+          ticking = true;
         }
       }, { passive: true });
 
@@ -2954,7 +3197,7 @@
             switchRealm(5);
           } else if (hash === '#offpanel' || hash === '#ch-offpanel') {
             switchRealm(6);
-          } else if (hash === '#questlog' || hash === '#ch-familiar' || hash === '#ch-dungeons') {
+          } else if (hash === '#questlog' || hash === '#ch-familiar' || hash === '#ch-dungeons-qk' || hash === '#ch-dungeons-earlier') {
             switchRealm(1);
           }
         }
