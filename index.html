@@ -172,32 +172,33 @@
       );
     }
 
-    /* Registration / Crop Marks (Trim boundary) */
+    /* Registration / Crop Marks (Trim boundary - positioned safely outside text area) */
     .reg-mark {
       position: absolute;
       width: 14px;
       height: 14px;
       pointer-events: none;
       z-index: 5;
+      opacity: 0.45;
     }
     .reg-mark::before, .reg-mark::after {
       content: '';
       position: absolute;
       background-color: var(--ink-muted);
     }
-    .reg-tl { top: 2px; left: 2px; }
+    .reg-tl { top: -4px; left: -4px; }
     .reg-tl::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
     .reg-tl::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
 
-    .reg-tr { top: 2px; right: 2px; }
+    .reg-tr { top: -4px; right: -4px; }
     .reg-tr::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
     .reg-tr::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
 
-    .reg-bl { bottom: -6px; left: -6px; }
+    .reg-bl { bottom: -4px; left: -4px; }
     .reg-bl::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
     .reg-bl::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
 
-    .reg-br { bottom: -6px; right: -6px; }
+    .reg-br { bottom: -4px; right: -4px; }
     .reg-br::before { top: 6px; left: 0; width: 14px; height: 1.5px; }
     .reg-br::after { top: 0; left: 6px; width: 1.5px; height: 14px; }
 
@@ -272,12 +273,19 @@
 
     .hud-sys-tag {
       font-family: var(--font-system);
-      font-size: 0.75rem;
+      font-size: 0.6875rem;
       font-weight: 700;
       color: var(--accent-primary);
-      letter-spacing: 0.06em;
+      letter-spacing: 0.05em;
       white-space: nowrap;
       flex: none;
+      background: var(--bg-subtle);
+      border: 1.5px solid var(--panel-border-outer);
+      border-radius: var(--radius-sm);
+      padding: 0 8px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
     }
 
     .hud-name-text {
@@ -301,9 +309,9 @@
     }
 
     .theme-toggle-btn {
-      height: 36px;
-      min-height: 36px;
-      min-width: 76px;
+      height: 32px;
+      min-height: 32px;
+      min-width: 72px;
       padding: 0 10px;
       background: var(--bg-subtle);
       border: 1.5px solid var(--ink-black);
@@ -442,14 +450,14 @@
 
     .cover-name-main {
       font-family: var(--font-display);
-      font-size: clamp(1.45rem, 6.2vw, 2.35rem);
-      line-height: 1.05;
+      font-size: clamp(1.35rem, 5.8vw, 2.35rem);
+      line-height: 1.1;
       font-weight: 900;
       color: var(--ink-black);
-      letter-spacing: -0.01em;
+      letter-spacing: 0.015em;
       text-transform: uppercase;
       text-wrap: balance;
-      margin: 2px 0;
+      margin: 4px 0 2px;
     }
 
     .cover-edition-sub {
@@ -749,8 +757,8 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      object-fit: cover;
-      object-position: center 15%;
+      object-fit: contain;
+      object-position: center center;
       display: block;
       background: var(--bg-subtle);
     }
@@ -758,17 +766,18 @@
     .identity-text-box {
       min-width: 0;
       flex: 1 1 auto;
+      padding-right: 4px;
     }
 
     .identity-name-line {
       font-family: var(--font-display);
-      font-size: clamp(1rem, 4.5vw, 1.25rem);
-      line-height: 1.1;
+      font-size: clamp(0.95rem, 4.2vw, 1.25rem);
+      line-height: 1.15;
       font-weight: 900;
       color: var(--ink-black);
-      letter-spacing: -0.01em;
+      letter-spacing: 0.01em;
       text-transform: uppercase;
-      text-wrap: balance;
+      word-break: break-word;
     }
 
     .identity-sub-line {
@@ -776,10 +785,9 @@
       font-size: 0.6875rem;
       font-weight: 700;
       color: var(--accent-primary);
-      margin-top: 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin-top: 3px;
+      line-height: 1.3;
+      white-space: normal;
     }
 
     .identity-body-copy {
@@ -1322,7 +1330,6 @@
         </div>
 
         <div class="cover-title-group">
-          <span class="cover-vol-pill">[&nbsp;VOL.&nbsp;23&nbsp;CHRONICLE&nbsp;]</span>
           <h1 class="cover-name-main">KRISHNENDU&nbsp;BISWAS</h1>
           <span class="cover-edition-sub">SYSTEM AWAKENING RECORD</span>
         </div>
@@ -1338,7 +1345,7 @@
         <!-- Vermilion Obi Band -->
         <div class="cover-obi-band" id="coverObiBand" role="button" tabindex="0" aria-label="Open Chronicle Volume">
           <div class="obi-head-row">
-            <span class="obi-tag-mark">[&nbsp;VOL.&nbsp;23&nbsp;]</span>
+            <span class="obi-tag-mark">[&nbsp;CHRONICLE&nbsp;]</span>
             <span class="obi-action-cue">TAP TO OPEN ▼</span>
           </div>
           <p class="obi-copy-line">Builds AI agent systems. MBA, IIM Ranchi. Published researcher.</p>
@@ -1402,7 +1409,7 @@
           </div>
           <div class="identity-text-box">
             <h2 class="identity-name-line">KRISHNENDU&nbsp;BISWAS</h2>
-            <div class="identity-sub-line">LEVEL 23 | Agent Systems / Machine Learning</div>
+            <div class="identity-sub-line">LEVEL 23 &nbsp;|&nbsp; AI Agent Systems &amp; ML</div>
           </div>
         </div>
 
