@@ -43,6 +43,7 @@
   --space-6: 24px;
   --space-8: 32px;
   --space-10: 40px;
+  --space-12: 48px;
   --space-16: 64px;
   --space-24: 96px;
 }
@@ -210,10 +211,18 @@ body {
   align-items: center;
   min-height: 44px;
   letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
 .brand:hover {
   color: var(--accent);
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1.0625rem;
+    white-space: nowrap;
+  }
 }
 
 .main-nav {
@@ -224,7 +233,7 @@ body {
 }
 
 .nav-link {
-  color: var(--muted);
+  color: var(--ink);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -232,15 +241,17 @@ body {
   align-items: center;
   min-height: 44px;
   padding: 0 4px;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  border-bottom: 2px solid transparent;
 }
 
 .nav-link:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .nav-link[aria-current="page"] {
   color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .nav-actions {
@@ -344,12 +355,12 @@ body {
 .btn-secondary {
   background-color: transparent;
   color: var(--ink);
-  border: 1px solid var(--rule);
+  border: 1px solid var(--ink);
 }
 
 .btn-secondary:hover {
   background-color: var(--box-bg);
-  border-color: var(--muted);
+  border-color: var(--ink);
   color: var(--ink);
 }
 
@@ -406,15 +417,15 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline-offset: 3px;
 }
 
-/* Sections */
+/* Sections - Proportionate spacing (reduced ~35% from oversized ~240px air) */
 .section {
-  padding-top: var(--space-16);
-  padding-bottom: var(--space-16);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
   border-bottom: 1px solid var(--rule);
 }
 
 .section-header {
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
 .section-title {
@@ -424,12 +435,13 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .section-desc {
   font-size: 1.0625rem;
   color: var(--muted);
+  max-width: var(--measure);
 }
 
 /* Hero Section */
 .hero-section {
-  padding-top: var(--space-10);
-  padding-bottom: var(--space-16);
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-8);
   border-bottom: 1px solid var(--rule);
 }
 
@@ -437,13 +449,14 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-8);
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 960px) {
   .hero-grid {
     grid-template-columns: 7fr 5fr;
     gap: var(--space-10);
+    align-items: start;
   }
 }
 
@@ -490,20 +503,11 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   flex-direction: column;
 }
 
-.hero-name {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--ink);
-  line-height: 1.2;
-}
-
 .hero-role-badge {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  color: var(--muted);
-  margin-top: 2px;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
 }
 
 .hero-headline {
@@ -545,7 +549,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  color: var(--muted);
+  color: var(--ink);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -553,7 +557,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .social-link:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .social-link svg {
@@ -574,6 +578,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
     border: 1px solid var(--rule);
     border-radius: 6px;
     padding: var(--space-6);
+    margin-top: 0;
   }
 }
 
@@ -640,7 +645,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   text-decoration: underline;
 }
 
-/* Case Study Ledger Rows (Work Section) */
+/* Case Study Ledger Rows (Work Section) - Grid aligned flush with section title */
 .ledger-list {
   display: flex;
   flex-direction: column;
@@ -663,11 +668,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   .ledger-row {
     grid-template-columns: 8fr 4fr;
     align-items: start;
-    padding: var(--space-6) var(--space-3);
-    border-radius: 4px;
-  }
-  .ledger-row:hover {
-    background-color: var(--box-bg);
+    padding: var(--space-6) 0;
+    gap: var(--space-6);
   }
 }
 
@@ -715,8 +717,9 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .tag {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
   background-color: var(--badge-bg-subtle);
   color: var(--ink);
   padding: 3px 8px;
@@ -1112,7 +1115,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .footer-link {
   font-size: 0.875rem;
-  color: var(--muted);
+  color: var(--ink);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -1120,7 +1123,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 }
 
 .footer-link:hover {
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .archive-footer-link {
@@ -1297,6 +1300,37 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .case-section li strong {
   color: var(--ink);
+}
+
+/* Architecture Diagram Styles */
+.architecture-diagram-wrap {
+  margin: var(--space-6) 0;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background-color: var(--box-bg);
+  padding: var(--space-6);
+  overflow-x: auto;
+}
+
+.architecture-diagram {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  height: auto;
+}
+
+/* Accessibility helper */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* Metrics Table */
