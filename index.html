@@ -1,34 +1,2639 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Krishnendu Biswas</title>
-<meta name="description" content="Krishnendu Biswas, Ranchi, India. New site coming soon.">
-<style>
-:root{--bg:#FAFAF7;--ink:#16181D;--muted:#5B6170;--accent:#2F6BE6;--border:#E6E6E1}
-@media (prefers-color-scheme:dark){:root{--bg:#0F1115;--ink:#ECEDE8;--muted:#A0A6B3;--accent:#7FA3FF;--border:#2A2E38}}
-*{box-sizing:border-box;margin:0}
-body{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bg);color:var(--ink);font:17px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-main{max-width:420px;width:100%}
-.tag{font:500 12px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--border);display:inline-block;padding:4px 10px;border-radius:999px;margin-bottom:20px}
-h1{font-size:34px;line-height:1.15;margin-bottom:8px}
-p{color:var(--muted);margin-bottom:28px}
-nav{display:flex;flex-direction:column;gap:10px}
-a{display:block;min-height:48px;padding:12px 16px;border:1px solid var(--border);border-radius:10px;color:var(--ink);text-decoration:none;font-weight:500}
-a:hover,a:focus-visible{border-color:var(--accent);color:var(--accent);outline:none}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Krishnendu Biswas | Status Window Chronicle</title>
+  <meta name="description" content="Personal chronicle of Krishnendu Biswas. MBA student, data scientist, agent orchestrator based in Ranchi, India.">
+  <meta name="author" content="Krishnendu Biswas">
+  <meta name="theme-color" content="#FAFAF7" id="meta-theme-color">
+  
+  <style>
+    /* -------------------------------------------------------------
+       DESIGN TOKENS & PALETTE (LIGHT PRIMARY, DARK NIGHT READING)
+       NO EM DASH OR EN DASH ANYWHERE IN THIS FILE.
+       ------------------------------------------------------------- */
+    :root {
+      --bg: #FAFAF7;
+      --surface: #FFFFFF;
+      --surface-card: #FFFFFF;
+      --surface-translucent: rgba(255, 255, 255, 0.92);
+      --ink: #16181D;
+      --muted: #5B6170;
+      --muted-light: #7E8696;
+      --border: #E6E6E1;
+      --border-accent: #C7D8FC;
+      --accent: #2F6BE6;
+      --accent-soft: #E8EFFD;
+      --accent-hover: #1E51BD;
+      --gold: #C9960C;
+      --gold-soft: #FDF6E3;
+      --success: #1E8E5A;
+      --success-soft: #E6F6ED;
+      --danger: #C8423B;
+      --glow: rgba(47, 107, 230, 0.14);
+      --shadow-sm: 0 1px 3px rgba(22, 24, 29, 0.05);
+      --shadow-md: 0 4px 14px rgba(22, 24, 29, 0.08);
+      --shadow-lg: 0 10px 30px rgba(22, 24, 29, 0.12);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-pill: 9999px;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --header-height: 56px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0F1115;
+      --surface: #171A21;
+      --surface-card: #1C2029;
+      --surface-translucent: rgba(23, 26, 33, 0.94);
+      --ink: #ECEDE8;
+      --muted: #A0A6B3;
+      --muted-light: #788090;
+      --border: #2A2E38;
+      --border-accent: #374668;
+      --accent: #7FA3FF;
+      --accent-soft: #1B2742;
+      --accent-hover: #9BB8FF;
+      --gold: #E7BE4F;
+      --gold-soft: #2E2713;
+      --success: #4FC28A;
+      --success-soft: #122B1E;
+      --danger: #E06A63;
+      --glow: rgba(127, 163, 255, 0.22);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Global reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--ink);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Container */
+    .app-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 16px 120px 16px;
+      position: relative;
+    }
+
+    /* Pinned Top Bar */
+    .top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--header-height);
+      background: var(--surface-translucent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .top-bar-inner {
+      max-width: 680px;
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 3px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent);
+      transition: width 150ms ease-out;
+    }
+
+    .top-status-indicator {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .status-pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: var(--radius-md);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 180ms ease;
+      touch-action: manipulation;
+    }
+
+    .btn-sm {
+      min-height: 36px;
+      padding: 4px 10px;
+      font-size: 13px;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-icon {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      border-radius: var(--radius-md);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover, .btn-primary:focus-visible {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn-outline {
+      background: var(--surface);
+      color: var(--ink);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover, .btn-outline:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border-color: var(--border);
+    }
+
+    .btn-ghost:hover, .btn-ghost:focus-visible {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    /* Chapter 0: Cover */
+    .cover-hero {
+      margin-top: calc(var(--header-height) + 24px);
+      padding: 32px 20px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+    }
+
+    .avatar-wrapper {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px auto;
+      border-radius: 20px;
+      background: var(--accent-soft);
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px var(--glow);
+    }
+
+    .avatar-monogram {
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+    }
+
+    .system-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero-title {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-location {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .hero-tagline {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 24px;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 480px) {
+      .hero-actions {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .contact-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      transition: all 160ms ease;
+    }
+
+    .contact-link:hover, .contact-link:focus-visible {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--surface);
+    }
+
+    /* Chapter Section */
+    .chapter-section {
+      margin-top: 40px;
+      padding-top: 20px;
+      scroll-margin-top: calc(var(--header-height) + 16px);
+    }
+
+    .chapter-header {
+      margin-bottom: 20px;
+    }
+
+    .chapter-number-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 10px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .chapter-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .chapter-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 4px;
+    }
+
+    .chapter-subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted-light);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .chapter-intro {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Fact Cards Grid */
+    .cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Fact Card */
+    .fact-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease, transform 120ms ease;
+      position: relative;
+      overflow: hidden;
+      outline: none;
+    }
+
+    .fact-card:hover, .fact-card:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px var(--glow);
+    }
+
+    .fact-card:active {
+      transform: scale(0.99);
+    }
+
+    .fact-card[aria-expanded="true"] {
+      border-color: var(--accent);
+      background: var(--surface);
+      box-shadow: 0 4px 18px var(--glow);
+    }
+
+    .card-inner {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.3;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .badge-stat {
+      background: var(--bg);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .badge-accent {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+    }
+
+    .fact-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+
+    .card-prompt {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+
+    .prompt-icon {
+      font-size: 11px;
+    }
+
+    .appraisal-view {
+      border-top: 1px dashed var(--border-accent);
+      padding-top: 10px;
+      animation: fadeIn 200ms ease-out;
+    }
+
+    .appraisal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+
+    .system-pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 6px var(--gold);
+    }
+
+    .appraisal-text {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink);
+      font-weight: 500;
+      background: var(--accent-soft);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent);
+      margin-bottom: 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Closing note */
+    .closing-note-box {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .system-glyph {
+      color: var(--accent);
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .closing-note-text {
+      font-size: 14px;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    /* Floating Status Button */
+    .floating-status-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 90;
+      min-height: 48px;
+      padding: 10px 18px;
+      border-radius: var(--radius-pill);
+      background: var(--accent);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-lg), 0 0 16px var(--glow);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 180ms ease, background-color 180ms ease;
+    }
+
+    .floating-status-fab:hover, .floating-status-fab:focus-visible {
+      transform: translateY(-2px);
+      background: var(--accent-hover);
+    }
+
+    /* Modals & Bottom Sheets */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(15, 17, 21, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (min-width: 640px) {
+      .modal-backdrop {
+        align-items: center;
+        padding: 24px;
+      }
+    }
+
+    .modal-dialog {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      width: 100%;
+      max-width: 620px;
+      max-height: 85vh;
+      border-top-left-radius: var(--radius-lg);
+      border-top-right-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      transform: translateY(40px);
+      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+    }
+
+    @media (min-width: 640px) {
+      .modal-dialog {
+        border-radius: var(--radius-lg);
+        transform: scale(0.96);
+      }
+    }
+
+    .modal-backdrop.open .modal-dialog {
+      transform: translateY(0);
+    }
+
+    @media (min-width: 640px) {
+      .modal-backdrop.open .modal-dialog {
+        transform: scale(1);
+      }
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--surface);
+    }
+
+    .modal-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .modal-title {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+
+    .modal-subtitle {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .modal-close-btn {
+      min-width: 44px;
+      min-height: 44px;
+      padding: 8px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 150ms ease;
+    }
+
+    .modal-close-btn:hover, .modal-close-btn:focus-visible {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    /* Status Window specifics */
+    .status-summary-card {
+      background: var(--accent-soft);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .hunter-profile {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hunter-name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .hunter-role {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--accent);
+    }
+
+    .hunter-level {
+      text-align: right;
+    }
+
+    .level-num {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .level-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .stats-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .stat-item {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      cursor: pointer;
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    .stat-item:hover, .stat-item:focus-visible {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .stat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .stat-name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .stat-val {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .stat-bar-track {
+      width: 100%;
+      height: 6px;
+      background: var(--border);
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      margin-bottom: 6px;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: var(--radius-pill);
+    }
+
+    .stat-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* Synopsis Modal specifics */
+    .synopsis-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .synopsis-section-title {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+
+    .synopsis-entry {
+      padding: 8px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .synopsis-entry-head {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .synopsis-entry-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .synopsis-entry-sub {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .synopsis-entry-body {
+      font-size: 13px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .synopsis-bullet-list {
+      list-style-type: disc;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--ink);
+    }
+
+    .synopsis-cert-item {
+      font-size: 13px;
+      color: var(--ink);
+      padding: 3px 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      margin-top: 60px;
+      padding: 30px 16px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-log {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+  </style>
 </head>
 <body>
-<main>
-<span class="tag">Chapter loading</span>
-<h1>Krishnendu Biswas</h1>
-<p>23, Ranchi, India. A new site is being written. Until then, find me here.</p>
-<nav>
-<a href="mailto:krishnendureads@gmail.com">krishnendureads@gmail.com</a>
-<a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener">LinkedIn</a>
-<a href="https://github.com/krshnndu" target="_blank" rel="noopener">GitHub</a>
-</nav>
-</main>
+
+  <!-- Pinned Top Bar -->
+  <header class="top-bar" role="banner">
+    <div class="top-bar-inner">
+      <div class="top-status-indicator">
+        <span class="status-pulse-dot"></span>
+        <span id="active-chapter-label">CH. 00 COVER</span>
+      </div>
+
+      <div class="top-actions">
+        <button type="button" class="btn btn-sm btn-outline" id="btn-open-synopsis-top" aria-label="Open 10 second synopsis">
+          <span>Synopsis (10s)</span>
+        </button>
+
+        <button type="button" class="btn btn-sm btn-ghost" id="btn-theme-toggle" aria-label="Toggle Night reading theme">
+          <span id="theme-toggle-icon">☾</span>
+          <span id="theme-toggle-text">Night</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="reading-progress-bar"></div>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <main id="main-content" role="main">
+
+      <!-- Chapter 0: Cover / Hero -->
+      <section class="cover-hero" id="chapter-0" data-chapter-num="0" data-chapter-title="Cover">
+        <div class="avatar-wrapper">
+          <span class="avatar-monogram">KB</span>
+        </div>
+
+        <div class="system-banner">
+          <span>[ SYSTEM NOTIFICATION: CANDIDATE DETECTED ]</span>
+        </div>
+
+        <h1 class="hero-title">Krishnendu Biswas</h1>
+        <p class="hero-location">23, Ranchi, India</p>
+        <p class="hero-tagline">"The System has selected a 23 year old in Ranchi. This is his chronicle."</p>
+
+        <div class="hero-actions">
+          <a href="#chapter-1" class="btn btn-primary" id="btn-start-reading">
+            <span>Start Reading</span>
+            <span>↓</span>
+          </a>
+          <button type="button" class="btn btn-outline" id="btn-open-synopsis-hero">
+            <span>Synopsis, 10 seconds</span>
+          </button>
+        </div>
+
+        <div class="contact-bar">
+          <a href="mailto:krishnendureads@gmail.com" class="contact-link" aria-label="Send email to Krishnendu">
+            <span>✉</span>
+            <span>Email</span>
+          </a>
+          <a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Visit LinkedIn profile">
+            <span>↗</span>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Visit GitHub profile">
+            <span>⌥</span>
+            <span>GitHub</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Chapters 1 to 9 -->
+      
+        <section class="chapter-section" id="chapter-1" data-chapter-num="1" data-chapter-title="Awakening">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 01</span>
+            </div>
+            <h3 class="chapter-title">Awakening</h3>
+            <p class="chapter-subtitle">The Initial Awakening</p>
+            <p class="chapter-intro">The System initializes. The first chronicle milestone was etched before the dual path began.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="card-c10" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Class X Milestone (ICSE)</h4>
+                    <span class="card-subtitle">School Rank 3</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">Rank 3</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Completed Class X under the ICSE curriculum, securing 3rd rank across the school.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Title acquired: Third in School. Foundational academic discipline established.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-2" data-chapter-num="2" data-chapter-title="Dual Cultivation">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 02</span>
+            </div>
+            <h3 class="chapter-title">Dual Cultivation</h3>
+            <p class="chapter-subtitle">Two Parallel Training Arcs</p>
+            <p class="chapter-intro">Most people pick one training arc. He enrolled in two demanding institutions simultaneously.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="card-iimr" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">IIM Ranchi: IPM Path</h4>
+                    <span class="card-subtitle">BBA 2025, MBA Phase 2025 to 2027</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">IPM Dual Degree</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Integrated Programme in Management at IIM Ranchi: BBA completed in 2025, currently in the MBA phase.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Management cultivation in progress: business strategy, analytics, and organizational operations.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-iitm" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">IIT Madras: BS in Data Science</h4>
+                    <span class="card-subtitle">Diploma in Programming 2026</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">IIT Madras BS</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">BS Degree in Data Science &amp; Applications at IIT Madras, earning the Diploma in Programming.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Technical cultivation: rigorous programming, algorithms, and applied machine learning.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-topper" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">IIT Madras Topper Badges</h4>
+                    <span class="card-subtitle">7 of First 14 Courses</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">7 Topper Badges</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Awarded official Topper Badges in 7 of the first 14 courses within the IIT Madras BS Data Science program.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Badge count: 7 of 14 courses conquered with top honors. Top tier mastery recognized.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-3" data-chapter-num="3" data-chapter-title="Dungeons">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 03</span>
+            </div>
+            <h3 class="chapter-title">Dungeons</h3>
+            <p class="chapter-subtitle">Enterprise Battlefield Records</p>
+            <p class="chapter-intro">Field experience in enterprise environments: architecting platforms, conducting analytics, and delivering measurable impact.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="card-qk-platform" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">QualityKiosk: Solo Platform Build</h4>
+                    <span class="card-subtitle">Data &amp; AI Intern (Apr to Jun 2026)</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">144 Commits</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Solo-built a NestJS and React enterprise platform with 144 commits in 7 weeks, delivering 7 applications and 3 Python tools.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">144 commits in 7 weeks. Solo build. 7 apps and 3 Python utilities deployed on AWS EC2 with 5-stage push-to-deploy pipeline.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-qk-engine" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">QualityKiosk: Process Complexity Engine</h4>
+                    <span class="card-subtitle">RMS Scoring &amp; Data Harmonization</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">349 Processes</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Scored 349 banking processes into 56 modules across 11 domains with an RMS complexity engine, harmonizing QA data across 82 banking applications.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">349 processes classified into 56 modules. Harmonized 82 apps and reshaped 18,456 rows across 61 workbooks.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-qk-spec" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">QualityKiosk: Spec-First Engineering</h4>
+                    <span class="card-subtitle">Deterministic Engines &amp; EARS Blueprint</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">136 Unit Tests</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Built 2 deterministic TypeScript estimation engines with 136 unit tests, driven by a 1,322-line EARS specification and a 402-line monorepo blueprint.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">136 unit tests. Zero ambiguity. Spec-first architecture drove deterministic calculation outputs.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-tata" role="button" tabindex="0" aria-expanded="false" data-stat="Research">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Tata Steel: Compensation Benchmarking</h4>
+                    <span class="card-subtitle">Research Analyst (Apr to Jun 2025)</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Research</span>
+                    <span class="badge badge-accent">IR &amp; Rewards</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Conducted quantitative compensation benchmarking for the Industrial Relations &amp; Rewards division.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Enterprise compensation data mapped, normalized, and benchmarked across industrial standards.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-social" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">IIM Ranchi: Social Impact Intern</h4>
+                    <span class="card-subtitle">Jan to Feb 2024</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">8K+ Users</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Assessed 390+ rural students, led tech for a global rural bootcamp with 3K+ applicants, and built a quiz platform used by 8K+ users.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Scale achieved: 390+ assessments, 3K+ applicants, and 8K+ active platform users.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="card-committee" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Institutional Leadership</h4>
+                    <span class="card-subtitle">Senior Executive Member</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">Student Leadership</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Senior Executive Member, Corporate Relations &amp; Placement Committee, IIM Ranchi.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Current party role: Senior Executive Member, Corporate Relations &amp; Placement Committee.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-4" data-chapter-num="4" data-chapter-title="Side Quests">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 04</span>
+            </div>
+            <h3 class="chapter-title">Side Quests</h3>
+            <p class="chapter-subtitle">Specialized Projects &amp; Algorithms</p>
+            <p class="chapter-intro">Independent quests across natural language processing, competitive modeling, and full stack systems.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="quest-kaggle" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Kaggle MCQ Ranking</h4>
+                    <span class="card-subtitle">LoRA DeBERTa-v3 + RoBERTa</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">0.74242 MAP@3</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">LoRA fine-tuned DeBERTa-v3 and RoBERTa ensemble for multiple choice question ranking.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Leaderboard metric: 0.74242 MAP@3 achieved on Kaggle public leaderboard.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-toxic" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Toxic Comment Classification</h4>
+                    <span class="card-subtitle">198K Comments, 100-Trial Optuna</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">F1: 0.8293</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">NLP classification model trained on 198K comments, optimized using a 100-trial Optuna hyperparameter study.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">F1-Macro improved from 0.6221 to 0.8293 on held-out evaluation set.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-churn" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Customer Churn Prediction</h4>
+                    <span class="card-subtitle">90K Rows Dataset</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">0.6365 F1</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Predictive churn modeling on 90,000 customer records with hyperparameter-tuned Random Forest.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Evaluation metric: Tuned Random Forest achieved 0.6365 F1 score.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-rag" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">RAG Virtual Teaching Assistant</h4>
+                    <span class="card-subtitle">FastAPI + SQLite Vector Store</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">FastAPI RAG</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Retrieval-Augmented Generation virtual teaching assistant built with FastAPI, dense embeddings, and a SQLite vector store.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Deterministic semantic search with sub-second retrieval over academic knowledge bases.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-iescp" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">IESCP Influencer Platform</h4>
+                    <span class="card-subtitle">Full Stack Flask Application</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">50+ Users</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Built an influencer-sponsor campaign platform using Flask and relational database architecture.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Deployed production app successfully serving 50+ active platform users.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-vc" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">VC Deal Analytics Dashboard</h4>
+                    <span class="card-subtitle">Power BI Star Schema</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">7 DAX Measures</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Interactive venture capital deal analytics dashboard built on synthetic dealflow data with 7 DAX measures.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Star schema modeling with 7 custom DAX metrics for investment pipeline tracking.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-kmeans" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Consumer Segmentation</h4>
+                    <span class="card-subtitle">K-means++ Clustering</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">0.540 Silhouette</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Unsupervised consumer market segmentation on 62 respondents using K-means++ clustering.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Cluster validation metric: Silhouette score of 0.540 achieved.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-ols" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Econometric State Modeling</h4>
+                    <span class="card-subtitle">5-Regressor OLS Regression</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">28 States</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Cross-sectional econometrics study estimating macroeconomic indicators across 28 Indian states.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">5-regressor OLS model fitted and validated across all 28 Indian states.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="quest-hackathon" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Odoo x Paradox Hackathon</h4>
+                    <span class="card-subtitle">36-Hour Hackathon at IIT Madras</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">Top 50 of 500</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Competed in the 36-hour Odoo x Paradox hackathon hosted at IIT Madras, finishing in the Top 50 of 500 teams.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Competitive outcome: Top 50 placement out of 500 competing teams.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-5" data-chapter-num="5" data-chapter-title="Scrolls">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 05</span>
+            </div>
+            <h3 class="chapter-title">Scrolls</h3>
+            <p class="chapter-subtitle">Peer-Reviewed Publications</p>
+            <p class="chapter-intro">Scholarly contributions to natural language processing and technology adoption.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="scroll-ficta" role="button" tabindex="0" aria-expanded="false" data-stat="Research">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Affect Detection in Chatbots</h4>
+                    <span class="card-subtitle">Springer FICTA 2026</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Research</span>
+                    <span class="badge badge-accent">Springer 2026</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Published &#x27;Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data&#x27; in Springer.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Architecture: RoBERTa + SVMSMOTE achieving 74.19% recall on the highly imbalanced Confused class.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="scroll-wmc" role="button" tabindex="0" aria-expanded="false" data-stat="Research">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">GenAI in Marketing: PRISMA Review</h4>
+                    <span class="card-subtitle">10th Pan-IIM WMC 2025</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Research</span>
+                    <span class="badge badge-accent">Pan-IIM WMC</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Presented a systematic review on Generative AI in Marketing at the 10th Pan-IIM World Management Conference.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Methodology: PRISMA systematic literature review synthesizing 29 Scopus indexed research articles.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-6" data-chapter-num="6" data-chapter-title="Seals">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 06</span>
+            </div>
+            <h3 class="chapter-title">Seals</h3>
+            <p class="chapter-subtitle">Industry Certifications</p>
+            <p class="chapter-intro">Verified credentials in business intelligence, quality management, and supply chain simulation.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="seal-pl300" role="button" tabindex="0" aria-expanded="false" data-stat="Analysis">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Microsoft Certified: PL-300</h4>
+                    <span class="card-subtitle">Power BI Data Analyst Associate</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Analysis</span>
+                    <span class="badge badge-accent">Score: 751/700</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Achieved Microsoft certification for Power BI Data Analyst Associate, scoring 751 out of 700 required.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Official Microsoft credential: score 751 / 700 verified.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="seal-sixsigma" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Lean Six Sigma Green Belt</h4>
+                    <span class="card-subtitle">Grant Thornton</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">Green Belt</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Certified Lean Six Sigma Green Belt through Grant Thornton, covering DMAIC and process optimization.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Quality management credential: DMAIC methodology, root cause analysis, and variance reduction.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="seal-supplychain" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Digital Supply Chain Twins</h4>
+                    <span class="card-subtitle">anyLogistix &amp; IIM Mumbai</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">anyLogistix</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Certified in Digital Supply Chain Twins using anyLogistix dynamic simulation at IIM Mumbai.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Simulation credential: discrete event modeling and supply chain network risk optimization.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-7" data-chapter-num="7" data-chapter-title="The Familiar">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 07</span>
+            </div>
+            <h3 class="chapter-title">The Familiar</h3>
+            <p class="chapter-subtitle">Autonomous Multi-Agent Orchestration</p>
+            <p class="chapter-intro">A signature personal build: orchestrating autonomous AI agents to manage research, operations, and execution.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="card-familiar-hermes" role="button" tabindex="0" aria-expanded="false" data-stat="Build">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Hermes Multi-Agent Architecture</h4>
+                    <span class="card-subtitle">Cloud VPS Orchestration</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Build</span>
+                    <span class="badge badge-accent">Multi-Agent System</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Runs his own multi-agent system (Hermes Agent) on a cloud VPS: multiple specialist agent profiles (finance, career, academics, outreach drafting, infrastructure, cleanup) orchestrated through Discord and Telegram, governed by strict human approval gates.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Architecture: Specialist agent roles, deterministic pipelines, sandboxed execution, and human gate verification before any external action.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+            <div class="closing-note-box">
+              <span class="system-glyph">◈</span>
+              <p class="closing-note-text">Lately he builds small agents like these for other people&#x27;s chores too.</p>
+            </div>
+            
+        </section>
+        
+        <section class="chapter-section" id="chapter-8" data-chapter-num="8" data-chapter-title="Off Panel">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 08</span>
+            </div>
+            <h3 class="chapter-title">Off Panel</h3>
+            <p class="chapter-subtitle">Personal Interests &amp; Pastimes</p>
+            <p class="chapter-intro">System offline. The rest is just me: manhwa, web novels, music, and an interest in process innovation and fintech.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="off-manhwa" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Manhwa &amp; Web Novels</h4>
+                    <span class="card-subtitle">Chapter in progress</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">Reading Arc</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Avid reader of webtoons, manhwa, and progression fantasy stories. The inspiration behind this chronicle&#x27;s status window interface.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">System note: Infinite reading log. Vertical-scroll format natively translated to this site.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="off-music" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Music &amp; Soundscapes</h4>
+                    <span class="card-subtitle">Chapter in progress</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">Audio Track</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Soundtracks for deep focus, algorithmic thinking, and long coding sessions.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">System note: Harmonic resonance detected during focus blocks.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+            <article class="fact-card" id="off-fintech" role="button" tabindex="0" aria-expanded="false" data-stat="Business">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Fintech &amp; Process Innovation</h4>
+                    <span class="card-subtitle">Chapter in progress</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Business</span>
+                    <span class="badge badge-accent">Systems Focus</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">Passionate about eliminating operational friction, automating repetitive workflows, and exploring financial technology architecture.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">System note: Constant search for zero-friction systems and deterministic reliability.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+        <section class="chapter-section" id="chapter-9" data-chapter-num="9" data-chapter-title="Epilogue">
+          <div class="chapter-header">
+            <div class="chapter-number-pill">
+              <span class="chapter-dot"></span>
+              <span>CH. 09</span>
+            </div>
+            <h3 class="chapter-title">Epilogue</h3>
+            <p class="chapter-subtitle">Chronicle Complete</p>
+            <p class="chapter-intro">You have reached the end of the current chronicle log. Say hello or review the structured synopsis.</p>
+          </div>
+          <div class="cards-grid">
+            
+            <article class="fact-card" id="epilogue-status" role="button" tabindex="0" aria-expanded="false" data-stat="Lore">
+              <div class="card-inner">
+                <div class="card-header">
+                  <div class="card-title-group">
+                    <h4 class="card-title">Chronicle Status: Logged</h4>
+                    <span class="card-subtitle">System Record Updated</span>
+                  </div>
+                  <div class="card-badges">
+                    <span class="badge badge-stat">Lore</span>
+                    <span class="badge badge-accent">Level 9 Reached</span>
+                  </div>
+                </div>
+
+                <div class="card-body plain-view">
+                  <p class="fact-text">All nine chapters recorded. Level 9 status reached.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">✦</span>
+                    <span class="prompt-text">Tap to Appraise</span>
+                  </div>
+                </div>
+
+                <div class="card-body appraisal-view" style="display:none;">
+                  <div class="appraisal-tag">
+                    <span class="system-pulse"></span>
+                    <span>SYSTEM APPRAISAL</span>
+                  </div>
+                  <p class="appraisal-text">Achievement unlocked: Chronicle Complete. All stats verified and recorded.</p>
+                  <div class="card-prompt">
+                    <span class="prompt-icon">↩</span>
+                    <span class="prompt-text">Tap to Collapse</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+            
+          </div>
+          
+        </section>
+        
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <p class="footer-log">[ SYSTEM RECORD: 9 OF 9 CHAPTERS LOGGED ]</p>
+      <div class="footer-links">
+        <a href="mailto:krishnendureads@gmail.com" class="contact-link">Email</a>
+        <a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+      </div>
+      <p class="footer-log" style="font-size: 11px;">krishnendu.me | Static System Build</p>
+    </footer>
+  </div>
+
+  <!-- Floating Status Window FAB -->
+  <button type="button" class="floating-status-fab" id="fab-status-window" aria-label="Open System Status Window">
+    <span>❖</span>
+    <span>STATUS</span>
+    <span class="badge" style="background: rgba(255,255,255,0.25); color: #FFFFFF;" id="fab-level-badge">LV. 1</span>
+  </button>
+
+  <!-- Status Window Modal -->
+  <div class="modal-backdrop" id="modal-status" role="dialog" aria-modal="true" aria-labelledby="status-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title" id="status-modal-title">[ SYSTEM STATUS WINDOW ]</h2>
+          <span class="modal-subtitle">Verified Hunter Stats & Attribute Progression</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-modal-status" aria-label="Close status window">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="status-summary-card">
+          <div class="hunter-profile">
+            <span class="hunter-name">Krishnendu Biswas</span>
+            <span class="hunter-role">Candidate: MBA student, data scientist, agent orchestrator</span>
+          </div>
+          <div class="hunter-level">
+            <div class="level-num" id="modal-level-num">LV. 1</div>
+            <div class="level-label">Progression</div>
+          </div>
+        </div>
+
+        <div class="stats-container">
+          
+        <div class="stat-item" data-target="chapter-3" role="button" tabindex="0">
+          <div class="stat-header">
+            <span class="stat-name">Build</span>
+            <span class="stat-val">94 / 100</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 94%;"></div>
+          </div>
+          <p class="stat-desc">Full stack architecture, agent orchestration, deterministic engines</p>
+        </div>
+        
+        <div class="stat-item" data-target="chapter-4" role="button" tabindex="0">
+          <div class="stat-header">
+            <span class="stat-name">Analysis</span>
+            <span class="stat-val">91 / 100</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 91%;"></div>
+          </div>
+          <p class="stat-desc">ML modeling, NLP, optimization, statistical regression</p>
+        </div>
+        
+        <div class="stat-item" data-target="chapter-5" role="button" tabindex="0">
+          <div class="stat-header">
+            <span class="stat-name">Research</span>
+            <span class="stat-val">88 / 100</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 88%;"></div>
+          </div>
+          <p class="stat-desc">Peer reviewed publication, PRISMA systematic review</p>
+        </div>
+        
+        <div class="stat-item" data-target="chapter-2" role="button" tabindex="0">
+          <div class="stat-header">
+            <span class="stat-name">Business</span>
+            <span class="stat-val">86 / 100</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 86%;"></div>
+          </div>
+          <p class="stat-desc">Management strategy, Six Sigma, supply chain twins, impact</p>
+        </div>
+        
+        <div class="stat-item" data-target="chapter-1" role="button" tabindex="0">
+          <div class="stat-header">
+            <span class="stat-name">Lore</span>
+            <span class="stat-val">95 / 100</span>
+          </div>
+          <div class="stat-bar-track">
+            <div class="stat-bar-fill" style="width: 95%;"></div>
+          </div>
+          <p class="stat-desc">School rank, topper badges, webtoon reading, Ranchi base</p>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Synopsis Modal (10s Executive Summary) -->
+  <div class="modal-backdrop" id="modal-synopsis" role="dialog" aria-modal="true" aria-labelledby="synopsis-modal-title">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <h2 class="modal-title" id="synopsis-modal-title">[ EXECUTIVE SYNOPSIS ]</h2>
+          <span class="modal-subtitle">10 Second Direct Factual Overview</span>
+        </div>
+        <button type="button" class="modal-close-btn" id="close-modal-synopsis" aria-label="Close synopsis">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Summary</h3>
+          <p class="synopsis-entry-body">Krishnendu Biswas is an MBA student at IIM Ranchi and programming graduate from IIT Madras. He specializes in full stack systems, machine learning pipelines, and autonomous multi-agent orchestration.</p>
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Education</h3>
+          
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">IIM Ranchi</span>
+            <span class="synopsis-entry-sub">Integrated Programme in Management (IPM: BBA 2025, MBA Phase 2025 to 2027)</span>
+          </div>
+          <p class="synopsis-entry-body">Dual degree path in management and business analytics</p>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">IIT Madras</span>
+            <span class="synopsis-entry-sub">BS Degree in Data Science &amp; Applications (Diploma in Programming 2026)</span>
+          </div>
+          <p class="synopsis-entry-body">Awarded Topper Badges in 7 of the first 14 courses</p>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Schooling</span>
+            <span class="synopsis-entry-sub">Class X (ICSE)</span>
+          </div>
+          <p class="synopsis-entry-body">Secured 3rd rank in school</p>
+        </div>
+        
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Experience & Leadership</h3>
+          
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Data &amp; AI Intern - QualityKiosk Technologies</span>
+            <span class="synopsis-entry-sub">Apr to Jun 2026</span>
+          </div>
+          <ul class="synopsis-bullet-list">
+            <li>Solo-built NestJS and React platform with 144 commits in 7 weeks across 7 applications and 3 Python tools</li><li>Scored 349 banking processes into 56 modules across 11 domains with an RMS complexity engine</li><li>Harmonized QA data across 82 banking apps; automated reshaping of 18,456 rows across 61 workbooks</li><li>Created 2 deterministic TypeScript estimation engines with 136 unit tests and 5-stage EC2 deploy</li>
+          </ul>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Research Analyst - Tata Steel</span>
+            <span class="synopsis-entry-sub">Apr to Jun 2025</span>
+          </div>
+          <ul class="synopsis-bullet-list">
+            <li>Conducted compensation benchmarking for Industrial Relations &amp; Rewards division</li>
+          </ul>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Social Impact Intern - IIM Ranchi</span>
+            <span class="synopsis-entry-sub">Jan to Feb 2024</span>
+          </div>
+          <ul class="synopsis-bullet-list">
+            <li>Assessed 390+ rural students and led tech for global rural bootcamp with 3K+ applicants</li><li>Built web and quiz platform supporting 8K+ active users</li>
+          </ul>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Senior Executive Member - Corporate Relations &amp; Placement Committee, IIM Ranchi</span>
+            <span class="synopsis-entry-sub">Current</span>
+          </div>
+          <ul class="synopsis-bullet-list">
+            <li>Institutional student leadership role at IIM Ranchi</li>
+          </ul>
+        </div>
+        
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Research Publications</h3>
+          
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data</span>
+            <span class="synopsis-entry-sub">Springer, FICTA 2026</span>
+          </div>
+          <p class="synopsis-entry-body">RoBERTa + SVMSMOTE, 74.19% recall on Confused class</p>
+        </div>
+        
+        <div class="synopsis-entry">
+          <div class="synopsis-entry-head">
+            <span class="synopsis-entry-title">Systematic Review of GenAI in Marketing</span>
+            <span class="synopsis-entry-sub">10th Pan-IIM WMC 2025</span>
+          </div>
+          <p class="synopsis-entry-body">PRISMA methodology across 29 Scopus articles</p>
+        </div>
+        
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Certifications & Competitions</h3>
+          <ul class="synopsis-bullet-list">
+            <li class='synopsis-cert-item'>Microsoft Certified: Power BI Data Analyst Associate (PL-300: 751/700)</li><li class='synopsis-cert-item'>Lean Six Sigma Green Belt (Grant Thornton)</li><li class='synopsis-cert-item'>Digital Supply Chain Twins (anyLogistix, IIM Mumbai)</li>
+            <li class="synopsis-cert-item">Odoo x Paradox 36-Hour Hackathon at IIT Madras: Top 50 of 500 teams</li>
+          </ul>
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Multi-Agent Systems</h3>
+          <p class="synopsis-entry-body">Operates custom Hermes Agent infrastructure on a cloud VPS with specialized role profiles, Discord/Telegram interfaces, and human approval gates.</p>
+        </div>
+
+        <div class="synopsis-section">
+          <h3 class="synopsis-section-title">Contact</h3>
+          <div class="footer-links" style="justify-content: flex-start; gap: 8px;">
+            <a href="mailto:krishnendureads@gmail.com" class="contact-link">krishnendureads@gmail.com</a>
+            <a href="https://linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link">LinkedIn</a>
+            <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer" class="contact-link">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript Island -->
+  <script>
+    (function() {
+      'use strict';
+
+      // 1. Theme Toggle & Persistence
+      const themeKey = 'krishnendu_theme';
+      const rootHtml = document.documentElement;
+      const themeToggleBtn = document.getElementById('btn-theme-toggle');
+      const themeIcon = document.getElementById('theme-toggle-icon');
+      const themeText = document.getElementById('theme-toggle-text');
+      const metaThemeColor = document.getElementById('meta-theme-color');
+
+      function setTheme(theme) {
+        rootHtml.setAttribute('data-theme', theme);
+        try {
+          localStorage.setItem(themeKey, theme);
+        } catch (e) {}
+
+        if (theme === 'dark') {
+          themeIcon.textContent = '☀';
+          themeText.textContent = 'Day';
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#0F1115');
+        } else {
+          themeIcon.textContent = '☾';
+          themeText.textContent = 'Night';
+          if (metaThemeColor) metaThemeColor.setAttribute('content', '#FAFAF7');
+        }
+      }
+
+      // Initialize theme (default light)
+      let savedTheme = 'light';
+      try {
+        savedTheme = localStorage.getItem(themeKey) || 'light';
+      } catch (e) {}
+      setTheme(savedTheme);
+
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+          const current = rootHtml.getAttribute('data-theme') || 'light';
+          const next = current === 'dark' ? 'light' : 'dark';
+          setTheme(next);
+        });
+      }
+
+      // 2. Fact Card Tap-to-Appraise Mechanics
+      const factCards = document.querySelectorAll('.fact-card');
+      factCards.forEach(function(card) {
+        function toggleAppraise() {
+          const isExpanded = card.getAttribute('aria-expanded') === 'true';
+          const nextState = !isExpanded;
+          card.setAttribute('aria-expanded', String(nextState));
+
+          const plainView = card.querySelector('.plain-view');
+          const appraisalView = card.querySelector('.appraisal-view');
+
+          if (nextState) {
+            if (plainView) plainView.style.display = 'none';
+            if (appraisalView) appraisalView.style.display = 'block';
+          } else {
+            if (plainView) plainView.style.display = 'block';
+            if (appraisalView) appraisalView.style.display = 'none';
+          }
+        }
+
+        card.addEventListener('click', toggleAppraise);
+        card.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleAppraise();
+          }
+        });
+      });
+
+      // 3. Modals Management (Status Window & Synopsis)
+      const modalStatus = document.getElementById('modal-status');
+      const modalSynopsis = document.getElementById('modal-synopsis');
+      const fabStatus = document.getElementById('fab-status-window');
+      const btnOpenSynopsisTop = document.getElementById('btn-open-synopsis-top');
+      const btnOpenSynopsisHero = document.getElementById('btn-open-synopsis-hero');
+      const closeStatusBtn = document.getElementById('close-modal-status');
+      const closeSynopsisBtn = document.getElementById('close-modal-synopsis');
+
+      function openModal(modal) {
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      if (fabStatus) fabStatus.addEventListener('click', () => openModal(modalStatus));
+      if (btnOpenSynopsisTop) btnOpenSynopsisTop.addEventListener('click', () => openModal(modalSynopsis));
+      if (btnOpenSynopsisHero) btnOpenSynopsisHero.addEventListener('click', () => openModal(modalSynopsis));
+      if (closeStatusBtn) closeStatusBtn.addEventListener('click', () => closeModal(modalStatus));
+      if (closeSynopsisBtn) closeSynopsisBtn.addEventListener('click', () => closeModal(modalSynopsis));
+
+      [modalStatus, modalSynopsis].forEach(function(m) {
+        if (!m) return;
+        m.addEventListener('click', function(e) {
+          if (e.target === m) closeModal(m);
+        });
+      });
+
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeModal(modalStatus);
+          closeModal(modalSynopsis);
+        }
+      });
+
+      // Stat items jump to chapter
+      const statItems = document.querySelectorAll('.stat-item');
+      statItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+          const targetId = item.getAttribute('data-target');
+          if (targetId) {
+            closeModal(modalStatus);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+      // 4. Reading Progress & Chapter Tracking via IntersectionObserver
+      const progressBar = document.getElementById('reading-progress-bar');
+      const activeChapterLabel = document.getElementById('active-chapter-label');
+      const fabLevelBadge = document.getElementById('fab-level-badge');
+      const modalLevelNum = document.getElementById('modal-level-num');
+
+      function updateProgress() {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
+        if (progressBar) {
+          progressBar.style.width = progress + '%';
+        }
+      }
+
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      const sections = document.querySelectorAll('section[data-chapter-num]');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              const num = parseInt(entry.target.getAttribute('data-chapter-num') || '0', 10);
+              const title = entry.target.getAttribute('data-chapter-title') || '';
+              const chStr = num === 0 ? 'CH. 00 COVER' : (num < 10 ? 'CH. 0' + num + ' ' + title.toUpperCase() : 'CH. ' + num + ' ' + title.toUpperCase());
+              
+              if (activeChapterLabel) activeChapterLabel.textContent = chStr;
+              const level = Math.max(1, num);
+              if (fabLevelBadge) fabLevelBadge.textContent = 'LV. ' + level;
+              if (modalLevelNum) modalLevelNum.textContent = 'LV. ' + level;
+            }
+          });
+        }, {
+          rootMargin: '-20% 0px -70% 0px',
+          threshold: 0
+        });
+
+        sections.forEach(function(sec) {
+          observer.observe(sec);
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
