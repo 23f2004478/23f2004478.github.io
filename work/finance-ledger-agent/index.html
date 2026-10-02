@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Automated Finance Ledger Agent | Krishnendu Biswas</title>
-  <meta name="description" content="Autonomous receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <meta name="description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
   <link rel="canonical" href="https://krishnendu.me/work/finance-ledger-agent/">
   
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://krishnendu.me/work/finance-ledger-agent/">
   <meta property="og:title" content="Automated Finance Ledger Agent | Krishnendu Biswas">
-  <meta property="og:description" content="Autonomous receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <meta property="og:description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
   <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://krishnendu.me/work/finance-ledger-agent/">
   <meta name="twitter:title" content="Automated Finance Ledger Agent | Krishnendu Biswas">
-  <meta name="twitter:description" content="Autonomous receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <meta name="twitter:description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.svg">
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Automated Finance Ledger Agent",
-  "description": "Autonomous receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.",
+  "description": "Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.",
   "author": {
     "@type": "Person",
     "name": "Krishnendu Biswas",
@@ -81,7 +81,7 @@
         </ul>
         
         <h1 class="case-header-title">Automated Finance Ledger Agent</h1>
-        <p class="case-header-sub">Engineered an autonomous personal finance pipeline ingesting digital receipts from read-only Gmail to a self-hosted Firefly III ledger with deterministic idempotency and refund netting.</p>
+        <p class="case-header-sub">Engineered an automated personal finance pipeline ingesting digital receipts from read-only Gmail to a self-hosted Firefly III ledger with deterministic idempotency and refund netting.</p>
         
         <div class="case-fact-strip">
           <div class="fact-item">
@@ -112,17 +112,17 @@
     <div class="container case-body">
       <section class="case-section">
         <h2>The Financial Data Ingestion Problem</h2>
-        <p>Maintaining an accurate double-entry ledger of personal and business expenses usually fails for two distinct reasons:</p>
+        <p>Maintaining an accurate double-entry ledger of expenses usually fails for three distinct reasons:</p>
         <ul>
-          <li><strong>Manual tracking friction:</strong> Entering receipts manually after each purchase leads to cognitive fatigue, missing transactions, and delayed reporting.</li>
-          <li><strong>Aggregator surveillance and brittle connections:</strong> Commercial aggregators require direct banking credentials, sell aggregated user telemetry, and often fail on multi-item receipts, order cancellations, and refunds.</li>
+          <li><strong>Manual tracking friction:</strong> Entering receipts manually after each purchase leads to fatigue, missing transactions, and delayed reporting.</li>
+          <li><strong>Aggregator surveillance and brittle connections:</strong> Commercial aggregators require direct banking credentials, sell user telemetry, and often fail on multi-item receipts, order cancellations, and refunds.</li>
           <li><strong>Unstructured confirmation formats:</strong> Transaction emails arrive across dozens of changing HTML layouts, plain text invoices, and PDF attachments requiring robust extraction that does not hallucinate numbers.</li>
         </ul>
       </section>
 
       <section class="case-section">
         <h2>System Architecture</h2>
-        <p>The system runs as an autonomous scheduled pipeline executing four deterministic stages from ingestion to ledger synchronization.</p>
+        <p>The system runs as a scheduled pipeline executing four deterministic stages from ingestion to ledger synchronization.</p>
 
         <div class="architecture-diagram-wrap">
           <svg class="architecture-diagram" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-finance-title svg-finance-desc">
@@ -255,7 +255,7 @@
         <h2>Security &amp; Operational Governance</h2>
         <ul>
           <li><strong>Read-only mailbox access:</strong> The application possesses zero email modification, deletion, or transmission capabilities.</li>
-          <li><strong>Local credential vault:</strong> OAuth refresh tokens and API secrets reside in filesystem-restricted (0600) files on a private Linux VPS.</li>
+          <li><strong>Local credential vault:</strong> OAuth refresh tokens and API secrets reside in filesystem-restricted files with locked-down secrets handling on a private Linux VPS.</li>
           <li><strong>No financial figures in public artifacts:</strong> Operating in alignment with confidentiality rules, no spending numbers or merchant names are logged in public portfolios.</li>
           <li><strong>Self-hosted data sovereignty:</strong> All ledger databases and parsed records remain exclusively on private, encrypted self-hosted infrastructure.</li>
         </ul>
@@ -275,8 +275,8 @@
       </section>
 
       <nav class="case-footer-nav" aria-label="Case study navigation">
-        <a href="/work/multi-agent-platform/" class="btn btn-secondary">&larr; Previous: Multi-Agent Platform</a>
-        <a href="/work/qualitykiosk-estimation-platform/" class="btn btn-primary">Next Case: QualityKiosk Platform &rarr;</a>
+        <a href="/work/reliability-security/" class="btn btn-secondary">&larr; Reliability &amp; Security</a>
+        <a href="/work/linkedin-studio/" class="btn btn-primary">Next Case: Personal LinkedIn Studio &rarr;</a>
       </nav>
     </div>
   </main>
@@ -292,7 +292,8 @@
         <div class="footer-nav-group">
           <div class="footer-group-title">Navigation</div>
           <ul class="footer-links">
-            <li><a href="/#work" class="footer-link">Selected Work</a></li>
+            <li><a href="/#work" class="footer-link">AI Agent Systems</a></li>
+            <li><a href="/#data-ml" class="footer-link">Data &amp; ML Work</a></li>
             <li><a href="/#experience" class="footer-link">Experience</a></li>
             <li><a href="/#research" class="footer-link">Research Papers</a></li>
             <li><a href="/#credentials" class="footer-link">Credentials</a></li>
