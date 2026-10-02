@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart MCQ Solver: LoRA Fine-Tuning | Krishnendu Biswas</title>
+  <meta name="description" content="Fine-tuning DeBERTa-v3 and RoBERTa models using Low-Rank Adaptation (LoRA) for multiple-choice ranking.">
+  <link rel="canonical" href="https://krishnendu.me/work/smart-mcq-solver-lora/">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://krishnendu.me/work/smart-mcq-solver-lora/">
+  <meta property="og:title" content="Smart MCQ Solver: LoRA Fine-Tuning | Krishnendu Biswas">
+  <meta property="og:description" content="Fine-tuning DeBERTa-v3 and RoBERTa models using Low-Rank Adaptation (LoRA) for multiple-choice ranking.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-mcq-solver.svg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://krishnendu.me/work/smart-mcq-solver-lora/">
+  <meta name="twitter:title" content="Smart MCQ Solver: LoRA Fine-Tuning | Krishnendu Biswas">
+  <meta name="twitter:description" content="Fine-tuning DeBERTa-v3 and RoBERTa models using Low-Rank Adaptation (LoRA) for multiple-choice ranking.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-mcq-solver.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Smart MCQ Solver: Parameter-Efficient Fine-Tuning with LoRA",
+  "description": "Fine-tuning DeBERTa-v3 and RoBERTa models using Low-Rank Adaptation (LoRA) for multiple-choice ranking.",
+  "author": {
+    "@type": "Person",
+    "name": "Krishnendu Biswas",
+    "url": "https://krishnendu.me"
+  },
+  "url": "https://krishnendu.me/work/smart-mcq-solver-lora/"
+}
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="/" class="brand">Krishnendu Biswas</a>
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#experience" class="nav-link">Experience</a></li>
+          <li><a href="/#research" class="nav-link">Research</a></li>
+          <li><a href="/#credentials" class="nav-link">Credentials</a></li>
+          <li><a href="/#contact" class="nav-link">Work with me</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+        </button>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="case-study-hero">
+      <div class="container">
+        <ul class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li aria-current="page">Smart MCQ Solver</li>
+        </ul>
+        
+        <h1 class="case-header-title">Smart MCQ Solver: Parameter-Efficient Fine-Tuning with LoRA</h1>
+        <p class="case-header-sub">Fine-tuning transformer architectures using Low-Rank Adaptation (LoRA) on query and value projections, combined into a 70:30 weighted ensemble for question ranking.</p>
+        
+        <div class="case-fact-strip">
+          <div class="fact-item">
+            <span class="fact-label">Context</span>
+            <span class="fact-value">IIT Madras DL Project</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Timeline</span>
+            <span class="fact-value">May 2026 to Jul 2026</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Architecture</span>
+            <span class="fact-value">DeBERTa-v3 & RoBERTa</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Framework</span>
+            <span class="fact-value">PyTorch, PEFT, Hugging Face</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container case-body">
+      <section class="case-section">
+        <h2>Problem Statement & Formulation</h2>
+        <p>Multiple-choice answer selection across complex scientific domains requires models to capture subtle semantic nuances rather than relying on surface token overlap. Given a prompt question and 5 candidate options, the objective is to rank options such that the correct answer appears in the top 3 predictions.</p>
+        <p>The primary evaluation metric was <strong>Mean Average Precision at 3 (MAP@3)</strong> over a dataset of 2,000 training questions and 500 unseen test questions. Full fine-tuning of multi-hundred-million parameter transformers presents severe compute overhead and vulnerability to catastrophic forgetting on specialized domains.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Technical Methodology & Training Pipeline</h2>
+        
+        <h3>1. Parameter-Efficient Fine-Tuning with LoRA</h3>
+        <p>To achieve efficient adaptation without modifying full model weights, I applied Low-Rank Adaptation (LoRA) via Hugging Face PEFT:</p>
+        <ul>
+          <li><strong>Target Modules:</strong> Injected low-rank decomposition matrices into the query and value attention projection layers (<code>q_proj</code>, <code>v_proj</code>).</li>
+          <li><strong>Hyperparameters:</strong> Configured rank <strong>r = 8</strong>, scaling factor <strong>alpha = 16</strong>, and a dropout rate of <strong>0.1</strong> to prevent co-adaptation of adapter weights.</li>
+          <li><strong>Trainable Parameter Reduction:</strong> Reduced trainable parameters to under 1% of total model capacity while retaining full base model contextual representations.</li>
+        </ul>
+
+        <h3>2. Multi-Architecture Training & Ensembling</h3>
+        <p>Trained two distinct transformer backbones using identical LoRA configurations:</p>
+        <ul>
+          <li><code>microsoft/deberta-v3-base</code>: Utilizes disentangled attention and enhanced mask decoder mechanisms, providing superior syntactic understanding.</li>
+          <li><code>roberta-base</code>: Provides strong contextual bidirectional embeddings.</li>
+        </ul>
+        <p>Constructed a <strong>70:30 weighted probability ensemble</strong> favoring DeBERTa-v3 while incorporating RoBERTa's probability distribution to reduce prediction variance on edge cases.</p>
+
+        <h3>3. Experiment Tracking with Weights & Biases</h3>
+        <p>Monitored training runs via Weights & Biases (W&B), tracking cross-entropy loss trajectories, validation MAP@3 curves, learning rate warmups with cosine decay, and gradient norm stability across training epochs.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Verified Results & Benchmark Metrics</h2>
+        <div class="metrics-table-wrap">
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Evaluation Parameter</th>
+                <th>Measured Value</th>
+                <th>Context & Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Public Leaderboard Score</td>
+                <td class="num">0.74242 MAP@3</td>
+                <td>Evaluated across 500 unseen scientific multiple-choice items</td>
+              </tr>
+              <tr>
+                <td>Training Dataset</td>
+                <td class="num">2,000 Questions</td>
+                <td>5-option scientific questions formatted for ranking</td>
+              </tr>
+              <tr>
+                <td>Adapter Rank & Alpha</td>
+                <td class="num">r = 8, alpha = 16</td>
+                <td>Applied to query and value attention projection matrices</td>
+              </tr>
+              <tr>
+                <td>Ensemble Ratio</td>
+                <td class="num">70:30 Blend</td>
+                <td>Weighted combination of DeBERTa-v3 and RoBERTa predictions</td>
+              </tr>
+              <tr>
+                <td>Experiment Logging</td>
+                <td class="num">W&B Runs</td>
+                <td>Systematic evaluation of learning rates, warmup, and decay</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Machine Learning Insights</h2>
+        <ul>
+          <li><strong>Low-rank efficiency:</strong> LoRA adapters deliver competitive ranking accuracy on scientific multiple-choice questions while drastically cutting GPU memory requirements during training.</li>
+          <li><strong>Disentangled attention advantage:</strong> DeBERTa-v3 consistently outperformed RoBERTa on scientific reasoning due to separate position and content embeddings.</li>
+          <li><strong>Ensemble stability:</strong> Combining representations from different pre-training schemes smoothed output probability spikes and improved rank consistency.</li>
+        </ul>
+      </section>
+
+      <nav class="case-footer-nav" aria-label="Case study navigation">
+        <a href="/work/qualitykiosk-estimation-platform/" class="btn btn-secondary">&larr; Previous: QualityKiosk Platform</a>
+        <a href="/work/comment-classification/" class="btn btn-primary">Next: Comment Classification &rarr;</a>
+      </nav>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">Krishnendu Biswas</div>
+        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
+      </div>
+      <div class="footer-nav-col">
+        <div class="footer-nav-group">
+          <div class="footer-group-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="/#work" class="footer-link">Selected Work</a></li>
+            <li><a href="/#experience" class="footer-link">Experience</a></li>
+            <li><a href="/#research" class="footer-link">Research Papers</a></li>
+            <li><a href="/#credentials" class="footer-link">Credentials</a></li>
+            <li><a href="/#contact" class="footer-link">Work with me</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <div class="footer-group-title">Direct Links</div>
+          <ul class="footer-links">
+            <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" class="footer-link">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/krshnndu/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/krshnndu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="footer-link" target="_blank" rel="noopener noreferrer">Resume PDF</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <a href="/archive/" class="archive-footer-link">Off the clock: reading archive</a>
+    </div>
+  </footer>
+</body>
+</html>

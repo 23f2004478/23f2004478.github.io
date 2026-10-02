@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VC Deal Analytics Dashboard in Power BI | Krishnendu Biswas</title>
+  <meta name="description" content="3-page interactive Power BI dashboard featuring 7 custom DAX measures and a 50,000-row star schema.">
+  <link rel="canonical" href="https://krishnendu.me/work/vc-deal-analytics-power-bi/">
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://krishnendu.me/work/vc-deal-analytics-power-bi/">
+  <meta property="og:title" content="VC Deal Analytics Dashboard in Power BI | Krishnendu Biswas">
+  <meta property="og:description" content="3-page interactive Power BI dashboard featuring 7 custom DAX measures and a 50,000-row star schema.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-vc-deal-analytics.svg">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://krishnendu.me/work/vc-deal-analytics-power-bi/">
+  <meta name="twitter:title" content="VC Deal Analytics Dashboard in Power BI | Krishnendu Biswas">
+  <meta name="twitter:description" content="3-page interactive Power BI dashboard featuring 7 custom DAX measures and a 50,000-row star schema.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-vc-deal-analytics.svg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/theme.js" defer></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Venture Capital Deal Analytics Dashboard in Power BI",
+  "description": "3-page interactive Power BI dashboard featuring 7 custom DAX measures and a 50,000-row star schema.",
+  "author": {
+    "@type": "Person",
+    "name": "Krishnendu Biswas",
+    "url": "https://krishnendu.me"
+  },
+  "url": "https://krishnendu.me/work/vc-deal-analytics-power-bi/"
+}
+  </script>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="/" class="brand">Krishnendu Biswas</a>
+      <nav aria-label="Main Navigation">
+        <ul class="main-nav">
+          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#experience" class="nav-link">Experience</a></li>
+          <li><a href="/#research" class="nav-link">Research</a></li>
+          <li><a href="/#credentials" class="nav-link">Credentials</a></li>
+          <li><a href="/#contact" class="nav-link">Work with me</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+        </button>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="case-study-hero">
+      <div class="container">
+        <ul class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li aria-current="page">VC Deal Analytics</li>
+        </ul>
+        
+        <h1 class="case-header-title">Venture Capital Deal Analytics Dashboard in Power BI</h1>
+        <p class="case-header-sub">Engineered a 50,000-row star schema dimensional model, authored 7 core DAX measures, and built a 3-page interactive executive dashboard with AI diagnostics.</p>
+        
+        <div class="case-fact-strip">
+          <div class="fact-item">
+            <span class="fact-label">Context</span>
+            <span class="fact-value">IIM Ranchi DWDV Elective</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Timeline</span>
+            <span class="fact-value">Aug 2026</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Certification</span>
+            <span class="fact-value">Power BI Associate (PL-300)</span>
+          </div>
+          <div class="fact-item">
+            <span class="fact-label">Architecture</span>
+            <span class="fact-value">Star Schema + DAX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container case-body">
+      <section class="case-section">
+        <h2>The Reporting Challenge in Venture Capital</h2>
+        <p>Venture capital investment committees manage complex multi-vintage portfolios across various financing stages (Seed, Series A, Series B, Growth) and diverse industry verticals. Monitoring capital deployment velocity, round valuations, and realized exit multiples typically requires consolidating messy spreadsheets across multiple fund managers.</p>
+        <p>The objective was designing a production-grade, self-service Power BI report that delivers immediate visibility into capital concentration, stage progression, and return drivers.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Dimensional Modeling & Data Architecture</h2>
+        <p>To model multi-stage venture capital investments in Business Intelligence, I generated a synthetic <strong>50,000-row transactional dataset</strong> using a deterministic Python script, structuring a clean star schema in Power BI:</p>
+        <ul>
+          <li><strong>Fact Table (<code>Fact_Deals</code>):</strong> 50,000 investment transaction rows capturing deal dates, investment amounts, equity percentages, round valuations, and exit returns.</li>
+          <li><strong>Dimension Tables:</strong> 4 distinct dimension tables providing slicing capability:
+            <ul>
+              <li><code>Dim_Company</code>: Company identifiers, founding year, geography, and operational status.</li>
+              <li><code>Dim_Sector</code>: Industry categorization (Fintech, SaaS, Healthtech, Climate, E-commerce).</li>
+              <li><code>Dim_Stage</code>: Investment stage classifications from Pre-Seed to Pre-IPO.</li>
+              <li><code>Dim_Calendar</code>: Contiguous date table supporting time-intelligence calculations.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Core DAX Measures & Business Logic</h2>
+        <p>Authored <strong>7 fundamental DAX measures</strong> enforcing defensive division guards and time-intelligence logic:</p>
+        <ul>
+          <li><strong>Total Invested Capital:</strong> <code>SUM(Fact_Deals[InvestmentAmount])</code></li>
+          <li><strong>Average Deal Size:</strong> <code>AVERAGE(Fact_Deals[InvestmentAmount])</code></li>
+          <li><strong>Exit Valuation Multiple (MOIC):</strong> <code>DIVIDE(SUM(Fact_Deals[ExitValue]), SUM(Fact_Deals[InvestmentAmount]), 0)</code></li>
+          <li><strong>Total Closed Deals:</strong> <code>DISTINCTCOUNT(Fact_Deals[DealID])</code></li>
+          <li><strong>Year-over-Year Investment Growth:</strong> <code>VAR PriorYear = CALCULATE([Total Invested Capital], SAMEPERIODLASTYEAR(Dim_Calendar[Date])) RETURN DIVIDE([Total Invested Capital] - PriorYear, PriorYear, 0)</code></li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Dashboard Layout & AI Diagnostics</h2>
+        <p>The completed report spans 3 dedicated pages containing <strong>8 visual charts</strong> and <strong>4 executive KPI summary cards</strong>:</p>
+        <ul>
+          <li><strong>Page 1: Portfolio Overview:</strong> Macro trends in capital deployed, cumulative deals, and vintage performance.</li>
+          <li><strong>Page 2: Sector & Stage Breakdown:</strong> Allocation matrix visualizing capital concentration and median round valuations across sectors.</li>
+          <li><strong>Page 3: Returns & Exit Drivers:</strong> Exit multiple distributions and vintage cohort analysis.</li>
+          <li><strong>AI Diagnostics Visuals:</strong> Integrated Power BI <em>Key Influencers</em> and <em>Decomposition Tree</em> visuals to allow investment partners to interactively explore what factors drive top-quartile exit multiples.</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Verified Metrics & Deliverables</h2>
+        <div class="metrics-table-wrap">
+          <table class="metrics-table">
+            <thead>
+              <tr>
+                <th>Deliverable Component</th>
+                <th>Scope Metric</th>
+                <th>Implementation Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fact Table Volume</td>
+                <td class="num">50,000 Rows</td>
+                <td>Transactional investment dataset generated in Python</td>
+              </tr>
+              <tr>
+                <td>Data Model Architecture</td>
+                <td class="num">1 Fact + 4 Dims</td>
+                <td>Clean star schema optimized for fast DAX evaluation</td>
+              </tr>
+              <tr>
+                <td>Custom DAX Measures</td>
+                <td class="num">7 Core Measures</td>
+                <td>Time intelligence, YoY growth, and defensive ratio calculations</td>
+              </tr>
+              <tr>
+                <td>Interactive Report Pages</td>
+                <td class="num">3 Pages</td>
+                <td>8 visual charts, 4 KPI cards, interactive cross-filtering</td>
+              </tr>
+              <tr>
+                <td>AI Diagnostic Integration</td>
+                <td class="num">2 AI Visuals</td>
+                <td>Key Influencers and Decomposition Tree</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Key Business Intelligence Insights</h2>
+        <ul>
+          <li><strong>Star schemas accelerate DAX:</strong> Designing clean one-to-many relationships without bi-directional cross-filtering keeps report query times sub-second even over large fact tables.</li>
+          <li><strong>Defensive DAX prevents errors:</strong> Using <code>DIVIDE()</code> with explicit zero fallbacks prevents divide-by-zero errors in ratio cards.</li>
+          <li><strong>Transparent dataset labeling:</strong> Clearly labeling synthetic data in analytics portfolios demonstrates dimensional modeling competence while preserving professional credibility.</li>
+        </ul>
+      </section>
+
+      <nav class="case-footer-nav" aria-label="Case study navigation">
+        <a href="/work/customer-exit-prediction/" class="btn btn-secondary">&larr; Previous: Customer Exit Prediction</a>
+        <a href="/#work" class="btn btn-primary">Back to Selected Work &rarr;</a>
+      </nav>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="footer-brand">Krishnendu Biswas</div>
+        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
+      </div>
+      <div class="footer-nav-col">
+        <div class="footer-nav-group">
+          <div class="footer-group-title">Navigation</div>
+          <ul class="footer-links">
+            <li><a href="/#work" class="footer-link">Selected Work</a></li>
+            <li><a href="/#experience" class="footer-link">Experience</a></li>
+            <li><a href="/#research" class="footer-link">Research Papers</a></li>
+            <li><a href="/#credentials" class="footer-link">Credentials</a></li>
+            <li><a href="/#contact" class="footer-link">Work with me</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav-group">
+          <div class="footer-group-title">Direct Links</div>
+          <ul class="footer-links">
+            <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" class="footer-link">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/krshnndu/" class="footer-link" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="https://github.com/krshnndu" class="footer-link" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+            <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="footer-link" target="_blank" rel="noopener noreferrer">Resume PDF</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <a href="/archive/" class="archive-footer-link">Off the clock: reading archive</a>
+    </div>
+  </footer>
+</body>
+</html>
