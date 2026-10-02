@@ -11,6 +11,13 @@
 
   // Function to get current theme
   function getTheme() {
+    try {
+      var urlParams = new URLSearchParams(window.location.search);
+      var paramTheme = urlParams.get('theme');
+      if (paramTheme === 'light' || paramTheme === 'dark') {
+        return paramTheme;
+      }
+    } catch (e) {}
     var stored = localStorage.getItem(storageKey);
     if (stored === 'light' || stored === 'dark') {
       return stored;
