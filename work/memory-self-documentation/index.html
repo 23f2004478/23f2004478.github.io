@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Episodic Memory and Self-Documentation Systems | Krishnendu Biswas</title>
-  <meta name="description" content="Episodic vector memory with local embeddings, curated persistent state with automated rollbacks, append-only autobiography ledger, and daily telemetry reporting.">
+  <title>Memory Systems & Self-Documentation Ledger | Krishnendu Biswas</title>
+  <meta name="description" content="Hybrid memory architecture combining episodic vector retrieval, local embeddings, append-only genesis ledgers, and automated daily progress telemetry.">
   <link rel="canonical" href="https://krishnendu.me/work/memory-self-documentation/">
   
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://krishnendu.me/work/memory-self-documentation/">
-  <meta property="og:title" content="Episodic Memory and Self-Documentation Systems | Krishnendu Biswas">
-  <meta property="og:description" content="Episodic vector memory with local embeddings, curated persistent state with automated rollbacks, append-only autobiography ledger, and daily telemetry reporting.">
+  <meta property="og:title" content="Memory Systems & Self-Documentation Ledger | Krishnendu Biswas">
+  <meta property="og:description" content="Hybrid memory architecture combining episodic vector retrieval, local embeddings, append-only genesis ledgers, and automated daily progress telemetry.">
   <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://krishnendu.me/work/memory-self-documentation/">
-  <meta name="twitter:title" content="Episodic Memory and Self-Documentation Systems | Krishnendu Biswas">
-  <meta name="twitter:description" content="Episodic vector memory with local embeddings, curated persistent state with automated rollbacks, append-only autobiography ledger, and daily telemetry reporting.">
+  <meta name="twitter:title" content="Memory Systems & Self-Documentation Ledger | Krishnendu Biswas">
+  <meta name="twitter:description" content="Hybrid memory architecture combining episodic vector retrieval, local embeddings, append-only genesis ledgers, and automated daily progress telemetry.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.svg">
 
   <!-- Favicon -->
@@ -33,8 +33,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Episodic Memory and Self-Documentation Systems",
-  "description": "Episodic vector memory with local embeddings, curated persistent state with automated rollbacks, append-only autobiography ledger, and daily telemetry reporting.",
+  "headline": "Memory Systems & Self-Documentation Ledger",
+  "description": "Hybrid memory architecture combining episodic vector retrieval, local embeddings, append-only genesis ledgers, and automated daily progress telemetry.",
   "author": {
     "@type": "Person",
     "name": "Krishnendu Biswas",
@@ -52,210 +52,120 @@
       <a href="/" class="brand">Krishnendu Biswas</a>
       <nav aria-label="Main Navigation">
         <ul class="main-nav">
-          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#work" class="nav-link">Work</a></li>
           <li><a href="/#internships" class="nav-link">Internships</a></li>
           <li><a href="/#research" class="nav-link">Research</a></li>
           <li><a href="/#credentials" class="nav-link">Credentials</a></li>
           <li><a href="/#contact" class="nav-link">Work with me</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 0 0 0 21 12.79z"></path></svg>
         </button>
-        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
-        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-sm btn-primary header-resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="/#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="/#internships" class="mobile-nav-link">Internships</a></li>
+        <li><a href="/#research" class="mobile-nav-link">Research</a></li>
+        <li><a href="/#credentials" class="mobile-nav-link">Credentials</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Work with me</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">Download Resume PDF</a></li>
+      </ul>
     </div>
   </header>
+  <main id="main" class="case-study-page">
+    <div class="container case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/#work">Work</a> / <span class="crumb-current">Memory Systems &amp; Self-Documentation</span>
+      </nav>
 
-  <main id="main">
-    <div class="case-study-hero">
-      <div class="container">
-        <ul class="breadcrumbs">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#work">Work</a></li>
-          <li aria-current="page">Episodic Memory &amp; Self-Documentation</li>
-        </ul>
-        
-        <h1 class="case-header-title">Episodic Memory and Self-Documentation Systems</h1>
-        <p class="case-header-sub">Episodic vector memory with local embeddings, curated persistent state with automated rollbacks, append-only autobiography ledger, and daily telemetry reporting.</p>
-        
-        <div class="case-fact-strip">
-          <div class="fact-item">
-            <span class="fact-label">Embedding Engine</span>
-            <span class="fact-value">Local bge-small Embeddings</span>
+      <header class="case-header">
+        <h1 class="case-title">Memory Systems &amp; Self-Documentation Ledger</h1>
+        <p class="case-lede">
+          Engineering a persistent, auditable memory architecture combining episodic vector recall with local embeddings, append-only JSONL ledgers, and automated daily progress reporting with time telemetry.
+        </p>
+
+        <div class="case-specs-grid">
+          <div class="spec-card">
+            <span class="spec-label">VECTOR MEMORY</span>
+            <span class="spec-value">Episodic &amp; Semantic</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Semantic Store</span>
-            <span class="fact-value">Hindsight Vector Memory</span>
+          <div class="spec-card">
+            <span class="spec-label">EMBEDDINGS</span>
+            <span class="spec-value">Local bge-small</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">State History</span>
-            <span class="fact-value">Autobiography Ledger G:xxxx</span>
+          <div class="spec-card">
+            <span class="spec-label">AUDIT LEDGER</span>
+            <span class="spec-value">Append-Only JSONL</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Reporting</span>
-            <span class="fact-value">Automated Daily HTML Reports</span>
+          <div class="spec-card">
+            <span class="spec-label">DAILY REPORTING</span>
+            <span class="spec-value">Automated STAR Briefings</span>
           </div>
         </div>
 
-        <div class="notice-banner">
-          <span class="notice-icon" aria-hidden="true">i</span>
-          <p><strong>System Notice:</strong> Private system, architecture shown here. Embeddings run on open-source bge-small models. The multi-tiered memory architecture, ledger schema, telemetry aggregation, and daily reporting engine were designed and implemented by Krishnendu Biswas.</p>
+        <div class="case-notice-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div>
+            <strong>Private System:</strong> Internal knowledge management architecture. Schemas, snapshot mechanisms, and telemetry reporting are documented below.
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container case-body">
-      <section class="case-section">
-        <h2>The Context Loss &amp; State Drift Challenge</h2>
-        <p>In complex multi-agent environments operating over weeks and months, maintaining accurate historical context without degrading prompt performance is a major engineering hurdle:</p>
-        <ul>
-          <li><strong>Prompt Window Saturation:</strong> Raw conversation logs quickly exceed practical context windows, increasing inference costs and causing the model to lose focus on immediate task instructions.</li>
-          <li><strong>Privacy &amp; Local Embedding Requirements:</strong> Sending private conversational logs, system memories, and personal state to external embedding APIs introduces data leakage risks.</li>
-          <li><strong>State Corruption &amp; Hallucinatory Drift:</strong> Over time, unconstrained memory updates can accumulate contradictory facts, outdated conventions, and corrupted instructions that degrade subsequent turns.</li>
-          <li><strong>Operational Opacity:</strong> Without structured self-documentation and time-tracking, it is difficult to audit what each agent accomplished, verify where compute hours were spent, or trace historical architectural changes.</li>
-        </ul>
-      </section>
+      </header>
 
       <section class="case-section">
-        <h2>System Architecture</h2>
-        <p>The estate employs a four-tier memory and documentation architecture that separates semantic recall, durable factual state, chronological platform history, and executive operational reporting.</p>
+        <h2>Memory Tier Architecture</h2>
+        <div class="diagram-wrapper">
+          <svg class="arch-diagram" viewBox="0 0 800 300" width="100%" height="auto" role="img" aria-label="Memory systems and self documentation architecture" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .d-box { fill: var(--bg-alt); stroke: var(--rule); stroke-width: 1.5; rx: 4; }
+              .d-accent-box { fill: var(--accent-light); stroke: var(--accent); stroke-width: 1.5; rx: 4; }
+              .d-text { font-family: var(--font-sans); font-size: 13px; fill: var(--ink); text-anchor: middle; }
+              .d-title { font-family: var(--font-serif); font-size: 14px; font-weight: 600; fill: var(--ink); text-anchor: middle; }
+              .d-mono { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-muted); text-anchor: middle; }
+            </style>
+            <!-- 3 Columns -->
+            <rect x="30" y="40" width="220" height="220" class="d-box"/>
+            <text x="140" y="70" class="d-title">1. Episodic Vector Recall</text>
+            <text x="140" y="95" class="d-mono">Local bge-small embeddings</text>
+            <text x="140" y="125" class="d-text">Past conversation recall</text>
+            <text x="140" y="150" class="d-text">Semantic search across turns</text>
+            <text x="140" y="175" class="d-text">Context preservation</text>
 
-        <div class="architecture-diagram-wrap">
-          <svg class="architecture-diagram" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-mem-title svg-mem-desc">
-            <title id="svg-mem-title">Memory and Self-Documentation System Architecture</title>
-            <desc id="svg-mem-desc">Architecture diagram displaying four memory layers: Episodic Vector Memory using local bge-small embeddings, Curated Persistent State with atomic backups, the Append-Only Autobiography Ledger with G:xxxx IDs, and the Daily Progress Report Engine generating HTML summaries.</desc>
-            
-            <!-- Background Card -->
-            <rect width="720" height="440" rx="6" fill="var(--box-bg)" stroke="var(--rule)" stroke-width="1"/>
-            
-            <!-- Layer 1: Episodic Vector Memory -->
-            <rect x="30" y="30" width="310" height="160" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="185" y="58" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">1. Episodic Vector Memory</text>
-            <text x="185" y="80" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--accent)" text-anchor="middle">Local bge-small Embeddings</text>
-            <text x="185" y="105" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Semantic search over prior transcripts</text>
-            <text x="185" y="125" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Zero cloud API leakage of private state</text>
-            <text x="185" y="145" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Sub-50ms local embedding retrieval</text>
-            
-            <!-- Layer 2: Curated Persistent State -->
-            <rect x="380" y="30" width="310" height="160" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="535" y="58" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">2. Curated Persistent State</text>
-            <text x="535" y="80" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--accent)" text-anchor="middle">Compact Markdown Facts</text>
-            <text x="535" y="105" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Strict character limits per profile</text>
-            <text x="535" y="125" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Atomic snapshot backups before edits</text>
-            <text x="535" y="145" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Automated rollback &amp; guard audits</text>
-            
-            <!-- Connecting Arrows to Downstream Layers -->
-            <path d="M185 190 L185 240" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            <path d="M535 190 L535 240" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Layer 3: Autobiography Ledger -->
-            <rect x="30" y="240" width="310" height="160" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="185" y="268" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">3. Autobiography Ledger</text>
-            <text x="185" y="290" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--accent)" text-anchor="middle">Append-Only IDs (G:0001..G:0019)</text>
-            <text x="185" y="315" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Chronological genesis milestones</text>
-            <text x="185" y="335" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Platform migrations &amp; architecture shifts</text>
-            <text x="185" y="355" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Immutable audit trail of estate evolution</text>
-            
-            <!-- Layer 4: Daily Progress Reports -->
-            <rect x="380" y="240" width="310" height="160" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="535" y="268" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">4. Daily Progress Report Engine</text>
-            <text x="535" y="290" font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--accent)" text-anchor="middle">Automated Nightly Telemetry</text>
-            <text x="535" y="315" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Per-profile time allocation analytics</text>
-            <text x="535" y="335" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">STAR-formatted daily accomplishments</text>
-            <text x="535" y="355" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Responsive HTML email delivery to inbox</text>
+            <rect x="290" y="40" width="220" height="220" class="d-accent-box"/>
+            <text x="400" y="70" class="d-title">2. Curated Fact Store</text>
+            <text x="400" y="95" class="d-mono">Declarative Markdown</text>
+            <text x="400" y="125" class="d-text">Strict 2,200 char budget</text>
+            <text x="400" y="150" class="d-text">Automated backup snapshots</text>
+            <text x="400" y="175" class="d-text">One-step rollback scripts</text>
+
+            <rect x="550" y="40" width="220" height="220" class="d-box"/>
+            <text x="660" y="70" class="d-title">3. Historical Ledger &amp; Reports</text>
+            <text x="660" y="95" class="d-mono">Append-only JSONL + Telemetry</text>
+            <text x="660" y="125" class="d-text">Dated genesis milestones</text>
+            <text x="660" y="150" class="d-text">Automated daily HTML reports</text>
+            <text x="660" y="175" class="d-text">Per-profile time allocation</text>
           </svg>
         </div>
-
-        <div class="sr-only">
-          <p>Text description of architecture: The memory system operates across four integrated layers. Layer 1 uses local bge-small embeddings to provide episodic semantic search across past conversations without cloud leakage. Layer 2 maintains curated persistent markdown facts with strict char budgets and automated rollback backups. Layer 3 maintains an append-only autobiography ledger with unique G:xxxx IDs tracking platform milestones. Layer 4 aggregates per-profile execution time and STAR accomplishments into automated nightly HTML progress emails.</p>
-        </div>
-
-        <h3>1. Episodic Vector Memory with Local Embeddings</h3>
-        <p>To recall relevant information across hundreds of historical sessions without saturating prompt windows:</p>
-        <ul>
-          <li>The platform integrates a local vector memory index powered by open-source <strong>bge-small embeddings</strong> running directly on the Linux host.</li>
-          <li>Conversations, research findings, and task summaries are chunked, vectorized, and indexed locally.</li>
-          <li>When an agent begins a task, it dynamically retrieves relevant context slices based on semantic proximity, ensuring high precision while keeping token usage bounded.</li>
-          <li>Zero private operational logs or sensitive notes are transmitted to third-party embedding APIs.</li>
-        </ul>
-
-        <h3>2. Curated Persistent State with Rollback Safety</h3>
-        <p>Core facts, user preferences, and operational invariants reside in compact persistent memory stores:</p>
-        <ul>
-          <li><strong>Hard Character Budgets:</strong> Memory files enforce strict size caps, preventing prompt bloat and forcing agents to consolidate or prune outdated information.</li>
-          <li><strong>Atomic Snapshots &amp; Rollback:</strong> Before any memory modification is committed, an atomic snapshot is preserved on disk. If an edit fails validation or introduces inconsistencies, the system rolls back immediately.</li>
-          <li><strong>Context Guard Validation:</strong> An automated validator script (<code>md_guard.py</code>) audits context files before every git commit, verifying structural integrity and syntax rules.</li>
-        </ul>
-
-        <h3>3. The Append-Only Autobiography Ledger</h3>
-        <p>To preserve complete provenance over platform evolution, the system maintains a structured, append-only history ledger indexed with alphanumeric IDs (<code>G:0001</code> through <code>G:0019</code>):</p>
-        <ul>
-          <li><strong>Milestone Provenance:</strong> Documents every foundational transition, including the initial Lima VM setup on September 11, 2026, the migration to Azure VPS on September 20, 2026, the 12-profile estate partitioning, and the implementation of offsite disaster recovery mirroring.</li>
-          <li><strong>Decision Traceability:</strong> Ensures that all architectural changes, schema migrations, and policy shifts carry verifiable dates and structural rationale.</li>
-        </ul>
-
-        <h3>4. Daily Progress Reporting &amp; Time Telemetry</h3>
-        <p>A nightly systemd daemon compiles an executive summary of platform operations:</p>
-        <ul>
-          <li><strong>Time Allocation Tracking:</strong> Calculates exact execution hours and token consumption across each of the 12 domain profiles.</li>
-          <li><strong>STAR-Formatted Accomplishments:</strong> Extracts completed kanban tasks and summarizes daily milestones in Situation-Task-Action-Result structure.</li>
-          <li><strong>HTML Email Dispatch:</strong> Formats the report into a clean, mobile-responsive HTML email delivered directly to Krishnendu's personal inbox every evening.</li>
-        </ul>
       </section>
 
       <section class="case-section">
-        <h2>Engineering Scope: Framework vs Custom Build</h2>
-        <div class="metrics-table-wrap">
-          <table class="metrics-table">
-            <thead>
-              <tr>
-                <th>Component</th>
-                <th>Layer</th>
-                <th>Authorship &amp; Implementation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Vector Memory Retrieval</td>
-                <td>Framework / Plugin</td>
-                <td>Hindsight memory plugin integrating local embedding stores.</td>
-              </tr>
-              <tr>
-                <td>Local Embedding Daemon</td>
-                <td>Infrastructure</td>
-                <td>Configured local bge-small embedding service on Ubuntu VPS.</td>
-              </tr>
-              <tr>
-                <td>Curated Memory &amp; Rollback Engine</td>
-                <td>Custom</td>
-                <td>Atomic snapshot mechanics, character budgeting, and context guardrails (<code>md_guard.py</code>).</td>
-              </tr>
-              <tr>
-                <td>Autobiography Ledger (G:xxxx)</td>
-                <td>Custom</td>
-                <td>Append-only schema, event logging conventions, and milestone indexing.</td>
-              </tr>
-              <tr>
-                <td>Daily Progress Report Engine</td>
-                <td>Custom</td>
-                <td>Telemetry aggregator, STAR formatter, and responsive HTML email delivery script.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="case-section">
-        <h2>Human Approval Gates &amp; Safety Controls</h2>
-        <ul>
-          <li><strong>Memory Modification Audit:</strong> Significant updates to standing conventions and operating rules require explicit human sign-off.</li>
-          <li><strong>Private Email Routing:</strong> Daily progress emails are hardcoded to deliver exclusively to Krishnendu's verified inbox.</li>
-        </ul>
+        <h2>Design &amp; Implementation Details</h2>
+        <p>
+          To maintain long-term consistency across agent workflows without unbounded prompt bloat, memory is stratified into three distinct layers:
+        </p>
+        <ol>
+          <li><strong>Episodic Vector Store:</strong> Indexes historical interactions using local embeddings, allowing semantic recall of past technical decisions.</li>
+          <li><strong>Curated Core Memory:</strong> High-signal facts and standing conventions managed under strict character caps with automated pre-modification snapshots.</li>
+          <li><strong>Autobiography Ledger &amp; Progress Reporting:</strong> Append-only event tracking in structured JSONL paired with an automated nightly reporting daemon that sends scannable HTML status briefings.</li>
+        </ol>
       </section>
 
       <section class="case-section">
@@ -263,35 +173,30 @@
         <ul class="tag-list">
           <li class="tag">Python 3.12</li>
           <li class="tag">bge-small Embeddings</li>
-          <li class="tag">SQLite</li>
-          <li class="tag">Jinja2</li>
-          <li class="tag">systemd</li>
-          <li class="tag">HTML Email Engine</li>
-          <li class="tag">Ubuntu 24.04 LTS</li>
-          <li class="tag">Azure VPS</li>
+          <li class="tag">JSONL</li>
+          <li class="tag">Markdown</li>
+          <li class="tag">SMTP Dispatcher</li>
         </ul>
       </section>
 
       <nav class="case-footer-nav" aria-label="Case study navigation">
-        <a href="/work/model-routing-tiered-compute/" class="btn btn-secondary">&larr; Model Routing &amp; Compute</a>
-        <a href="/work/reliability-security/" class="btn btn-primary">Next Case: Reliability &amp; Security &rarr;</a>
+        <a href="/work/model-routing-tiered-compute/" class="btn btn-secondary">&larr; Previous Case</a>
+        <a href="/work/reliability-security/" class="btn btn-primary">Next Case: Reliability &amp; Vaults &rarr;</a>
       </nav>
     </div>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand-col">
         <div class="footer-brand">Krishnendu Biswas</div>
-        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">Data and AI systems builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
         <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
       </div>
       <div class="footer-nav-col">
         <div class="footer-nav-group">
           <div class="footer-group-title">Navigation</div>
           <ul class="footer-links">
-            <li><a href="/#work" class="footer-link">AI Agent Systems</a></li>
-            <li><a href="/#data-ml" class="footer-link">Data &amp; ML Work</a></li>
+            <li><a href="/#work" class="footer-link">Selected Work</a></li>
             <li><a href="/#internships" class="footer-link">Internships</a></li>
             <li><a href="/#research" class="footer-link">Research Papers</a></li>
             <li><a href="/#credentials" class="footer-link">Credentials</a></li>

@@ -10,7 +10,7 @@
   /* Color Palette - Light Theme (Default Paper & Ink) */
   --paper: #F6F3EC;
   --ink: #19181A;
-  --muted: #383530;
+  --muted: #4F4B46;
   --rule: #D9D3C7;
   --rule-subtle: #E6E1D8;
   --box-bg: #EFECE4;
@@ -53,7 +53,7 @@
   :root:not([data-theme="light"]) {
     --paper: #141416;
     --ink: #ECE7DC;
-    --muted: #B5B0A6;
+    --muted: #A8A39B;
     --rule: #2D2C30;
     --rule-subtle: #232226;
     --box-bg: #1B1B1E;
@@ -75,7 +75,7 @@
 [data-theme="dark"] {
   --paper: #141416;
   --ink: #ECE7DC;
-  --muted: #B5B0A6;
+  --muted: #A8A39B;
   --rule: #2D2C30;
   --rule-subtle: #232226;
   --box-bg: #1B1B1E;
@@ -96,7 +96,7 @@
 [data-theme="light"] {
   --paper: #F6F3EC;
   --ink: #19181A;
-  --muted: #383530;
+  --muted: #4F4B46;
   --rule: #D9D3C7;
   --rule-subtle: #E6E1D8;
   --box-bg: #EFECE4;
@@ -260,18 +260,6 @@ body {
   gap: var(--space-3);
 }
 
-@media (max-width: 767px) {
-  .site-header .btn-sm {
-    display: none;
-  }
-  .nav-wrap {
-    gap: var(--space-2);
-  }
-  .nav-actions {
-    gap: var(--space-2);
-  }
-}
-
 /* Theme Toggle Button */
 .theme-toggle {
   background: transparent;
@@ -389,7 +377,6 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: -0.015em;
-  text-wrap: balance;
 }
 
 h1 { font-size: 2.25rem; }
@@ -430,7 +417,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   outline-offset: 3px;
 }
 
-/* Sections - Proportionate spacing */
+/* Sections - Proportionate spacing (reduced ~35% from oversized ~240px air) */
 .section {
   padding-top: var(--space-10);
   padding-bottom: var(--space-10);
@@ -443,7 +430,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .section-title {
   margin-bottom: var(--space-2);
-  text-wrap: balance;
 }
 
 .section-desc {
@@ -529,7 +515,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   line-height: 1.2;
   margin-bottom: var(--space-4);
   color: var(--ink);
-  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
@@ -599,7 +584,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .preview-tag {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
   text-transform: uppercase;
@@ -614,7 +599,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-weight: 600;
   margin-bottom: var(--space-3);
   line-height: 1.3;
-  text-wrap: balance;
 }
 
 .preview-metric-box {
@@ -661,7 +645,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   text-decoration: underline;
 }
 
-/* Case Study Ledger Rows (Work Section) */
+/* Case Study Ledger Rows (Work Section) - Grid aligned flush with section title */
 .ledger-list {
   display: flex;
   flex-direction: column;
@@ -711,7 +695,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-weight: 600;
   color: var(--ink);
   line-height: 1.3;
-  text-wrap: balance;
 }
 
 .ledger-row:hover .ledger-title {
@@ -762,7 +745,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .outcome-label {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
@@ -785,89 +768,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   line-height: 1.4;
 }
 
-/* Build Log Timeline Strip */
-.build-log-strip {
-  margin-top: var(--space-8);
-  padding: var(--space-6);
-  background-color: var(--box-bg);
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-}
-
-.build-log-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  margin-bottom: var(--space-4);
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: var(--space-2);
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.build-log-title {
-  font-family: var(--font-display);
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: var(--ink);
-  text-wrap: balance;
-}
-
-.build-log-badge {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.build-log-timeline {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-4);
-}
-
-@media (min-width: 768px) {
-  .build-log-timeline {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-6);
-  }
-}
-
-@media (min-width: 960px) {
-  .build-log-timeline {
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--space-4);
-  }
-}
-
-.build-log-step {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.build-log-date {
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.build-log-step-title {
-  font-weight: 600;
-  font-size: 0.9375rem;
-  color: var(--ink);
-}
-
-.build-log-desc {
-  font-size: 0.875rem;
-  color: var(--muted);
-  line-height: 1.45;
-  margin-bottom: 0;
-}
-
 /* Secondary Projects List */
 .secondary-projects {
   margin-top: var(--space-10);
@@ -880,7 +780,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: var(--space-4);
-  text-wrap: balance;
 }
 
 .secondary-grid {
@@ -907,7 +806,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: var(--space-1);
-  text-wrap: balance;
 }
 
 .secondary-card-desc {
@@ -1010,7 +908,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   color: var(--ink);
   margin-bottom: var(--space-2);
   line-height: 1.4;
-  text-wrap: balance;
 }
 
 .research-meta {
@@ -1053,7 +950,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-weight: 600;
   border-bottom: 1px solid var(--rule);
   padding-bottom: var(--space-2);
-  text-wrap: balance;
 }
 
 .cred-list {
@@ -1081,7 +977,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .cred-year {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--accent);
 }
 
@@ -1135,7 +1031,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: var(--space-2);
-  text-wrap: balance;
 }
 
 .work-option-desc {
@@ -1204,7 +1099,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .footer-group-title {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--accent);
   text-transform: uppercase;
@@ -1266,28 +1161,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   color: var(--muted);
   margin-bottom: var(--space-4);
   list-style: none;
-  flex-wrap: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-}
-
-.breadcrumbs li {
-  white-space: nowrap;
-  flex-shrink: 0;
 }
 
 .breadcrumbs li + li::before {
   content: "/";
   color: var(--rule);
   margin-right: var(--space-2);
-}
-
-.breadcrumbs li:last-child {
-  flex-shrink: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-width: 0;
 }
 
 .breadcrumbs a {
@@ -1303,7 +1182,6 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   font-size: 2.25rem;
   line-height: 1.2;
   margin-bottom: var(--space-3);
-  text-wrap: balance;
 }
 
 @media (min-width: 768px) {
@@ -1337,7 +1215,7 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 
 .fact-label {
   font-family: var(--font-mono);
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: var(--muted);
   text-transform: uppercase;
@@ -1399,14 +1277,12 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   margin-bottom: var(--space-4);
   border-bottom: 1px solid var(--rule-subtle);
   padding-bottom: var(--space-2);
-  text-wrap: balance;
 }
 
 .case-section h3 {
   font-size: 1.25rem;
   margin-top: var(--space-6);
   margin-bottom: var(--space-3);
-  text-wrap: balance;
 }
 
 .case-section ul {
@@ -1511,4 +1387,62 @@ a:focus-visible, button:focus-visible, input:focus-visible {
   margin-top: var(--space-10);
   flex-wrap: wrap;
   gap: var(--space-4);
+}
+
+/* Build log timeline strip */
+.build-log-section {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg-alt);
+}
+.build-log-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+@media (max-width: 768px) {
+  .build-log-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .header-resume-btn {
+    display: none !important;
+  }
+}
+.build-log-card {
+  padding: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.build-log-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.25rem;
+  font-weight: 600;
+}
+.build-log-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.build-log-desc {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Secondary section styling */
+.section-subtitle-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }

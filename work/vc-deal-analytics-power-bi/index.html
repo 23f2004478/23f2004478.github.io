@@ -52,22 +52,33 @@
       <a href="/" class="brand">Krishnendu Biswas</a>
       <nav aria-label="Main Navigation">
         <ul class="main-nav">
-          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#work" class="nav-link">Work</a></li>
           <li><a href="/#internships" class="nav-link">Internships</a></li>
           <li><a href="/#research" class="nav-link">Research</a></li>
           <li><a href="/#credentials" class="nav-link">Credentials</a></li>
           <li><a href="/#contact" class="nav-link">Work with me</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 0 0 0 21 12.79z"></path></svg>
         </button>
-        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
-        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-sm btn-primary header-resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="/#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="/#internships" class="mobile-nav-link">Internships</a></li>
+        <li><a href="/#research" class="mobile-nav-link">Research</a></li>
+        <li><a href="/#credentials" class="mobile-nav-link">Credentials</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Work with me</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">Download Resume PDF</a></li>
+      </ul>
     </div>
   </header>
 
@@ -107,7 +118,7 @@
     <div class="container case-body">
       <section class="case-section">
         <h2>The Reporting Challenge in Venture Capital</h2>
-        <p>Venture capital investment teams manage complex multi-vintage portfolios across various financing stages (Seed, Series A, Series B, Growth) and diverse industry verticals. Monitoring capital deployment velocity, round valuations, and realized exit multiples typically requires consolidating messy spreadsheets across multiple fund managers.</p>
+        <p>Venture capital investment committees manage complex multi-vintage portfolios across various financing stages (Seed, Series A, Series B, Growth) and diverse industry verticals. Monitoring capital deployment velocity, round valuations, and realized exit multiples typically requires consolidating messy spreadsheets across multiple fund managers.</p>
         <p>The objective was designing a production-grade, self-service Power BI report that delivers immediate visibility into capital concentration, stage progression, and return drivers.</p>
       </section>
 
@@ -207,11 +218,11 @@
       </nav>
     </div>
   </main>
-  <footer class="site-footer">
+    <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand-col">
         <div class="footer-brand">Krishnendu Biswas</div>
-        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">Data and AI systems builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
         <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
       </div>
       <div class="footer-nav-col">
@@ -240,5 +251,7 @@
       <a href="/archive/" class="archive-footer-link">Off the clock: reading archive</a>
     </div>
   </footer>
+</body>
+</html>
 </body>
 </html>

@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | Krishnendu Biswas</title>
+  <title>404: Page Not Found | Krishnendu Biswas</title>
   <meta name="description" content="The requested page could not be found.">
   <link rel="canonical" href="https://krishnendu.me/404.html">
   
   <!-- Open Graph / Social -->
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:url" content="https://krishnendu.me/404.html">
-  <meta property="og:title" content="Page Not Found | Krishnendu Biswas">
+  <meta property="og:title" content="404: Page Not Found | Krishnendu Biswas">
   <meta property="og:description" content="The requested page could not be found.">
   <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://krishnendu.me/404.html">
-  <meta name="twitter:title" content="Page Not Found | Krishnendu Biswas">
+  <meta name="twitter:title" content="404: Page Not Found | Krishnendu Biswas">
   <meta name="twitter:description" content="The requested page could not be found.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.svg">
 
@@ -29,14 +29,6 @@
   
   <link rel="stylesheet" href="/styles.css">
   <script src="/theme.js" defer></script>
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Page Not Found | Krishnendu Biswas",
-  "url": "https://krishnendu.me/404.html"
-}
-  </script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -46,40 +38,49 @@
       <a href="/" class="brand">Krishnendu Biswas</a>
       <nav aria-label="Main Navigation">
         <ul class="main-nav">
-          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#work" class="nav-link">Work</a></li>
           <li><a href="/#internships" class="nav-link">Internships</a></li>
           <li><a href="/#research" class="nav-link">Research</a></li>
           <li><a href="/#credentials" class="nav-link">Credentials</a></li>
           <li><a href="/#contact" class="nav-link">Work with me</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 0 0 0 21 12.79z"></path></svg>
         </button>
-        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
-        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-sm btn-primary header-resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="/#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="/#internships" class="mobile-nav-link">Internships</a></li>
+        <li><a href="/#research" class="mobile-nav-link">Research</a></li>
+        <li><a href="/#credentials" class="mobile-nav-link">Credentials</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Work with me</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">Download Resume PDF</a></li>
+      </ul>
+    </div>
   </header>
-
-  <main id="main">
-    <div class="container" style="padding-top: var(--space-24); padding-bottom: var(--space-24); text-align: center;">
-      <h1 style="font-size: 3rem; margin-bottom: var(--space-4);">Page Not Found</h1>
-      <p style="margin-left: auto; margin-right: auto; margin-bottom: var(--space-8);">The ledger page or file you requested does not exist at this location.</p>
-      <div style="display: flex; justify-content: center; gap: var(--space-4); flex-wrap: wrap;">
-        <a href="/" class="btn btn-primary">Return to homepage</a>
-        <a href="/#work" class="btn btn-secondary">Browse selected work</a>
-      </div>
+  <main id="main" class="error-page">
+    <div class="container error-container" style="padding: 6rem 0; text-align: center;">
+      <h1 style="font-family: var(--font-serif); font-size: 3rem; margin-bottom: 1rem;">404: Page Not Found</h1>
+      <p style="color: var(--ink-muted); max-width: 480px; margin: 0 auto 2rem auto;">
+        The link you followed may be outdated or the page has been restructured into the new professional case study architecture.
+      </p>
+      <a href="/" class="btn btn-primary">Return to Portfolio Home</a>
     </div>
   </main>
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand-col">
         <div class="footer-brand">Krishnendu Biswas</div>
-        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">Data and AI systems builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
         <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
       </div>
       <div class="footer-nav-col">

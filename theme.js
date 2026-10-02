@@ -67,7 +67,8 @@
     }
   });
 
-  function initEvents() {
+  // Attach event listeners after DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function () {
     updateButtons(getTheme());
 
     var toggles = document.querySelectorAll('.theme-toggle');
@@ -84,11 +85,5 @@
         mobileToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
       });
     }
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initEvents);
-  } else {
-    initEvents();
-  }
+  });
 })();

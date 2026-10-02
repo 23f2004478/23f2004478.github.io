@@ -4,21 +4,21 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi-Agent Operations Platform | Krishnendu Biswas</title>
-  <meta name="description" content="Production multi-agent platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
+  <meta name="description" content="Personal multi-agent operations platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
   <link rel="canonical" href="https://krishnendu.me/work/multi-agent-platform/">
   
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://krishnendu.me/work/multi-agent-platform/">
   <meta property="og:title" content="Multi-Agent Operations Platform | Krishnendu Biswas">
-  <meta property="og:description" content="Production multi-agent platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
+  <meta property="og:description" content="Personal multi-agent operations platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
   <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://krishnendu.me/work/multi-agent-platform/">
   <meta name="twitter:title" content="Multi-Agent Operations Platform | Krishnendu Biswas">
-  <meta name="twitter:description" content="Production multi-agent platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
+  <meta name="twitter:description" content="Personal multi-agent operations platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.svg">
 
   <!-- Favicon -->
@@ -34,7 +34,7 @@
   "@context": "https://schema.org",
   "@type": "TechArticle",
   "headline": "Multi-Agent Operations Platform",
-  "description": "Production multi-agent platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.",
+  "description": "Personal multi-agent operations platform designed on Hermes Agent across 12 domain profiles, 31 scheduled jobs, loopback model routing, and kanban orchestration.",
   "author": {
     "@type": "Person",
     "name": "Krishnendu Biswas",
@@ -52,227 +52,191 @@
       <a href="/" class="brand">Krishnendu Biswas</a>
       <nav aria-label="Main Navigation">
         <ul class="main-nav">
-          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#work" class="nav-link">Work</a></li>
           <li><a href="/#internships" class="nav-link">Internships</a></li>
           <li><a href="/#research" class="nav-link">Research</a></li>
           <li><a href="/#credentials" class="nav-link">Credentials</a></li>
           <li><a href="/#contact" class="nav-link">Work with me</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 0 0 0 21 12.79z"></path></svg>
         </button>
-        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
-        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-sm btn-primary header-resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="/#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="/#internships" class="mobile-nav-link">Internships</a></li>
+        <li><a href="/#research" class="mobile-nav-link">Research</a></li>
+        <li><a href="/#credentials" class="mobile-nav-link">Credentials</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Work with me</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">Download Resume PDF</a></li>
+      </ul>
     </div>
   </header>
+  <main id="main" class="case-study-page">
+    <div class="container case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/#work">Work</a> / <span class="crumb-current">Multi-Agent Operations Platform</span>
+      </nav>
 
-  <main id="main">
-    <div class="case-study-hero">
-      <div class="container">
-        <ul class="breadcrumbs">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#work">Work</a></li>
-          <li aria-current="page">Multi-Agent Operations Platform</li>
-        </ul>
-        
-        <h1 class="case-header-title">Multi-Agent Operations Platform</h1>
-        <p class="case-header-sub">Designed and operating a personal multi-agent estate on Hermes Agent across 12 domain profiles, 31 scheduled workflows, loopback model proxying, and kanban-driven task orchestration with human approval gates.</p>
-        
-        <div class="case-fact-strip">
-          <div class="fact-item">
-            <span class="fact-label">Platform</span>
-            <span class="fact-value">Hermes Agent on Linux</span>
+      <header class="case-header">
+        <h1 class="case-title">Multi-Agent Operations Platform</h1>
+        <p class="case-lede">
+          Designed and operating a multi-agent estate on the open-source Hermes Agent framework across 12 domain profiles, 31 scheduled workflows, loopback model proxying, and kanban task orchestration with human approval gates.
+        </p>
+
+        <div class="case-specs-grid">
+          <div class="spec-card">
+            <span class="spec-label">PLATFORM RUNTIME</span>
+            <span class="spec-value">Hermes Agent on Linux</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Scale</span>
-            <span class="fact-value">12 Profiles · 31 Jobs</span>
+          <div class="spec-card">
+            <span class="spec-label">ESTATE SCALE</span>
+            <span class="spec-value">12 Profiles · 31 Jobs</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Skills &amp; Logic</span>
-            <span class="fact-value">341 Skill Files</span>
+          <div class="spec-card">
+            <span class="spec-label">PROCEDURAL SKILLS</span>
+            <span class="spec-value">341 Skill Files</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Infrastructure</span>
-            <span class="fact-value">Azure VPS · systemd · SQLite</span>
+          <div class="spec-card">
+            <span class="spec-label">INFRASTRUCTURE</span>
+            <span class="spec-value">Azure VPS · systemd · SQLite</span>
           </div>
         </div>
 
-        <div class="notice-banner">
-          <span class="notice-icon" aria-hidden="true">i</span>
-          <p><strong>System Notice:</strong> Private system, architecture shown here. Framework execution provided by Hermes Agent (open source, Nous Research). All profile boundaries, state coordination, routing policies, and disaster recovery scripts were designed and implemented by Krishnendu Biswas.</p>
+        <div class="case-notice-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div>
+            <strong>Private System:</strong> This is an internal operational platform running 24/7. System architecture, governance protocols, and verified telemetry are shared below.
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container case-body">
-      <section class="case-section">
-        <h2>The Multi-Domain Operational Challenge</h2>
-        <p>Running agentic workflows across divergent domains presents severe architectural challenges when scaling beyond a single conversational assistant:</p>
-        <ul>
-          <li><strong>Context pollution across domains:</strong> Giving a single agent access to personal finance, academic papers, consulting projects, and system infrastructure causes prompt degradation, tool misuse, and accidental data exposure across contexts.</li>
-          <li><strong>Runaway execution and tool loops:</strong> Agents running unattended can get trapped in repetitive reasoning loops or trigger unverified external side effects without human oversight.</li>
-          <li><strong>State synchronization and handoffs:</strong> Multi-step deliverables require clean decoupling between high-level decomposition and specialized implementation, with verified artifacts handed off across worker agents.</li>
-          <li><strong>Disaster recovery and security:</strong> Credentials and long-term memory must remain protected against leakages, with complete automated estate recovery from bare-metal backups.</li>
-        </ul>
-      </section>
+      </header>
 
       <section class="case-section">
-        <h2>System Architecture</h2>
-        <p>The platform was initialized on September 11, 2026 within a local macOS Lima VM, and migrated on September 20, 2026 to a dedicated cloud VPS running Ubuntu 24.04 with systemd services. The architecture decouples ingress, orchestration, execution, model routing, and governance into isolated layers.</p>
+        <h2>Architecture Diagram</h2>
+        <div class="diagram-wrapper">
+          <svg class="arch-diagram" viewBox="0 0 800 360" width="100%" height="auto" role="img" aria-label="Multi-agent platform architecture diagram" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .d-box { fill: var(--bg-alt); stroke: var(--rule); stroke-width: 1.5; rx: 4; }
+              .d-accent-box { fill: var(--accent-light); stroke: var(--accent); stroke-width: 1.5; rx: 4; }
+              .d-text { font-family: var(--font-sans); font-size: 13px; fill: var(--ink); text-anchor: middle; }
+              .d-title { font-family: var(--font-serif); font-size: 14px; font-weight: 600; fill: var(--ink); text-anchor: middle; }
+              .d-mono { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-muted); text-anchor: middle; }
+              .d-line { stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 4; }
+              .d-arrow { stroke: var(--accent); stroke-width: 2; marker-end: url(#arrow); fill: none; }
+            </style>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+            <!-- Ingress -->
+            <rect x="30" y="40" width="140" height="90" class="d-box"/>
+            <text x="100" y="70" class="d-title">Messaging Ingress</text>
+            <text x="100" y="92" class="d-mono">Telegram &amp; Discord</text>
+            <text x="100" y="110" class="d-text">Channel-based routing</text>
 
-        <div class="architecture-diagram-wrap">
-          <svg class="architecture-diagram" viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-arch-title svg-arch-desc">
-            <title id="svg-arch-title">Multi-Agent Platform Architecture Diagram</title>
-            <desc id="svg-arch-desc">Architecture diagram showing Telegram and Discord ingress flowing to the Default Router, which coordinates 12 isolated domain profiles via a shared SQLite Kanban board. Tasks access the 9Router loopback proxy for tiered compute offload, monitored by medic and janitor governance daemons.</desc>
+            <path d="M 170 85 L 240 85" class="d-arrow"/>
+
+            <!-- Router / Orchestrator -->
+            <rect x="240" y="40" width="160" height="90" class="d-accent-box"/>
+            <text x="320" y="70" class="d-title">Hub &amp; Router Profile</text>
+            <text x="320" y="92" class="d-mono">default orchestrator</text>
+            <text x="320" y="110" class="d-text">Triage &amp; Kanban dispatch</text>
+
+            <path d="M 400 85 L 470 85" class="d-arrow"/>
+
+            <!-- 12 Domain Profiles -->
+            <rect x="470" y="30" width="300" height="190" class="d-box"/>
+            <text x="620" y="55" class="d-title">12 Domain Profiles (MECE Lanes)</text>
+            <text x="620" y="75" class="d-mono">Isolated environments &amp; skills</text>
             
-            <!-- Background Card -->
-            <rect width="720" height="440" rx="6" fill="var(--box-bg)" stroke="var(--rule)" stroke-width="1"/>
-            
-            <!-- Ingress Layer -->
-            <rect x="30" y="30" width="180" height="70" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="120" y="55" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">Ingress Gateways</text>
-            <text x="120" y="78" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Telegram &amp; Discord Bot API</text>
-            
-            <!-- Arrow 1 -->
-            <path d="M210 65 L260 65" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Router Layer -->
-            <rect x="265" y="30" width="190" height="70" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
-            <text x="360" y="55" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--accent)" text-anchor="middle">Default Orchestrator</text>
-            <text x="360" y="78" font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)" text-anchor="middle">Channel Routing &amp; Decomposition</text>
-            
-            <!-- Arrow 2 (Down to Kanban & Profiles) -->
-            <path d="M360 100 L360 145" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Kanban State Layer -->
-            <rect x="180" y="145" width="360" height="55" rx="4" fill="var(--badge-bg-subtle)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="360" y="168" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">Task Coordination: SQLite Kanban Board</text>
-            <text x="360" y="187" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Task Lifecycle: Todo &rarr; Ready &rarr; Running &rarr; Review &rarr; Done</text>
-            
-            <!-- Arrow 3 (Down to Profiles) -->
-            <path d="M360 200 L360 235" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Domain Profiles Grid -->
-            <rect x="30" y="235" width="660" height="90" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="360" y="258" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)" text-anchor="middle">12 Isolated Domain Profiles (Mutually Exclusive Lanes)</text>
-            
-            <!-- Profile Badges inside -->
-            <g font-family="'JetBrains Mono', monospace" font-size="11" fill="var(--ink)">
-              <rect x="45" y="272" width="85" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="87" y="288" text-anchor="middle">Career</text>
-              
-              <rect x="140" y="272" width="95" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="187" y="288" text-anchor="middle">Academics</text>
-              
-              <rect x="245" y="272" width="80" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="285" y="288" text-anchor="middle">Finance</text>
-              
-              <rect x="335" y="272" width="85" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="377" y="288" text-anchor="middle">Consulting</text>
-              
-              <rect x="430" y="272" width="80" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="470" y="288" text-anchor="middle">Research</text>
-              
-              <rect x="520" y="272" width="75" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="557" y="288" text-anchor="middle">Infra</text>
-              
-              <rect x="605" y="272" width="70" height="24" rx="3" fill="var(--box-bg)" stroke="var(--rule)"/>
-              <text x="640" y="288" text-anchor="middle">Ops</text>
-            </g>
-            <text x="360" y="315" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">+ Health Monitor (Medic), Cleanup (Janitor), Academic Ops, Socials</text>
-            
-            <!-- Bottom Row: 9Router and Governance -->
-            <rect x="30" y="345" width="310" height="65" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="185" y="370" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">9Router Loopback Proxy</text>
-            <text x="185" y="392" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Tiered Compute Offload: Med / High / Max</text>
-            
-            <rect x="380" y="345" width="310" height="65" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="535" y="370" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">Safety, Audits &amp; DR Capsules</text>
-            <text x="535" y="392" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Hourly Medic Drift Audit &middot; Encrypted Releases</text>
+            <rect x="490" y="90" width="130" height="35" class="d-box"/>
+            <text x="555" y="112" class="d-text">Finance (Firefly)</text>
+
+            <rect x="630" y="90" width="125" height="35" class="d-box"/>
+            <text x="692" y="112" class="d-text">Infra &amp; Backups</text>
+
+            <rect x="490" y="135" width="130" height="35" class="d-box"/>
+            <text x="555" y="157" class="d-text">Research &amp; Lit</text>
+
+            <rect x="630" y="135" width="125" height="35" class="d-box"/>
+            <text x="692" y="157" class="d-text">Consulting</text>
+
+            <rect x="490" y="178" width="265" height="30" class="d-box"/>
+            <text x="622" y="198" class="d-mono">Medic (Drift) · Janitor (Cleanup)</text>
+
+            <!-- Bottom Row: Loopback Model Gateway & Vault -->
+            <rect x="30" y="240" width="370" height="85" class="d-box"/>
+            <text x="215" y="268" class="d-title">9Router Loopback Gateway &amp; Compute Tiers</text>
+            <text x="215" y="290" class="d-mono">Localhost 20128 · Provider Fallback</text>
+            <text x="215" y="308" class="d-text">Exact scripts first &rarr; Tiered LLM routing</text>
+
+            <rect x="470" y="240" width="300" height="85" class="d-box"/>
+            <text x="620" y="268" class="d-title">Storage &amp; Disaster Recovery</text>
+            <text x="620" y="290" class="d-mono">SQLite WAL · systemd · Vaults</text>
+            <text x="620" y="308" class="d-text">Encrypted offsite capsules to GitHub</text>
           </svg>
         </div>
-
-        <div class="sr-only">
-          <p>Text description of architecture: Telegram and Discord channels connect to specific agent profiles via a multi-bot gateway. The Default Orchestrator triages requests, decomposes tasks, and logs them to a shared SQLite Kanban board. 12 domain profiles execute tasks within isolated directory environments. High-reasoning subtasks route through a local 9Router proxy with automatic fallback across compute tiers. Continuous governance is maintained through hourly medic drift audits, janitor cleanup proposals, locked-down secrets handling in vault, and encrypted offsite backups.</p>
-        </div>
-
-        <h3>1. Multi-Profile Domain Isolation</h3>
-        <p>Rather than running a monolithic prompt, the estate partitions operational concerns across <strong>12 domain profiles</strong> with mutually exclusive context boundaries:</p>
-        <ul>
-          <li><strong>Domain Lanes:</strong> Distinct profiles dedicated to career tracking, academic coursework, personal finance ingestion, server infrastructure, market research, consulting delivery, and daily personal operations.</li>
-          <li><strong>Independent Memory &amp; State:</strong> Each profile maintains its own dedicated workspace, personal notes, and tool permissions, preventing cross-domain context contamination.</li>
-          <li><strong>Procedural Skills:</strong> Profiles dynamically load relevant procedures from a catalog of <strong>341 skill files</strong> (combining custom scripts and third-party tools) rather than cluttering system prompts.</li>
-        </ul>
-
-        <h3>2. Asynchronous Kanban Orchestration</h3>
-        <p>Cross-agent collaboration runs asynchronously over a central SQLite-backed Kanban board:</p>
-        <ul>
-          <li>The orchestrator profile decomposes high-level goals into scoped child cards with explicit dependency chains.</li>
-          <li>Domain workers claim ready tasks, log heartbeats during long operations, and transition tasks to structured review states upon completion.</li>
-          <li>Structured handoffs enforce machine-readable metadata and human-readable summaries before downstream promotion.</li>
-          <li><strong>Real-World Platform Delivery:</strong> As a concrete example of self-directed platform execution, this website was planned by a max-tier reasoning model and implemented by the consulting profile over kanban handoffs; the reviewer gate caught and resolved visual defects before sign-off.</li>
-        </ul>
-
-        <h3>3. Tiered Compute Routing via Loopback Proxy</h3>
-        <p>To balance latency, capability, and execution cost, local tool calls connect through <strong>9Router</strong>, a loopback model proxy running as a local service:</p>
-        <ul>
-          <li><strong>Tiered Offload:</strong> Routine mechanical automation executes on lightweight models, while complex system design, deep document analysis, and long code generation automatically offload to high and maximum reasoning tiers.</li>
-          <li><strong>Graceful Fallback:</strong> Automatic failover prevents pipeline stalls when upstream provider endpoints experience transient rate limits or outages.</li>
-        </ul>
-
-        <h3>4. Governance, Continuous Auditing, and Disaster Recovery</h3>
-        <p>Reliable agent operations require continuous health monitoring and zero-loss disaster recovery:</p>
-        <ul>
-          <li><strong>Hourly Medic Daemon:</strong> A dedicated health-monitor profile runs hourly audits checking for configuration drift, orphaned tasks, tool permission mismatches, and route integrity.</li>
-          <li><strong>Janitor Cleanup Proposals:</strong> Stale temporary files and scratch workspaces are identified automatically; actual file deletions require explicit human confirmation.</li>
-          <li><strong>Encrypted Backup Capsules:</strong> Production state, configuration files, and procedural databases are packaged into encrypted capsules and pushed offsite to private GitHub Releases.</li>
-          <li><strong>Automated Disaster Recovery:</strong> A verified restore script (<code>restore.sh</code>) allows complete bare-metal recovery of the entire 12-profile estate onto a fresh Linux VPS in minutes.</li>
-        </ul>
       </section>
 
       <section class="case-section">
-        <h2>Engineering Scope: Framework vs Custom Build</h2>
-        <p>To maintain absolute technical honesty regarding system authorship:</p>
-        
-        <div class="metrics-table-wrap">
-          <table class="metrics-table">
+        <h2>Problem Statement &amp; Design Goals</h2>
+        <p>
+          Managing multi-faceted academic, research, software consulting, and personal finance workflows with general-purpose AI chat leads to context contamination, drift, and lack of reproducible execution. The goal was to engineer a robust, self-documenting multi-agent operating environment hosted on private cloud infrastructure with strictly separated domains, auditable telemetry, and human approval gates on all real-world side effects.
+        </p>
+      </section>
+
+      <section class="case-section">
+        <h2>Architecture &amp; Platform Separation</h2>
+        <p>The platform is organized into three distinct operational layers:</p>
+        <ol>
+          <li>
+            <strong>Messaging Ingress &amp; Routing Gateway:</strong> Incoming events from Telegram and Discord channels are routed directly to specific profile listeners based on domain boundaries.
+          </li>
+          <li>
+            <strong>Domain Profile Partitioning:</strong> 12 dedicated profiles operate with isolated configurations, cron schedules, and procedural memory (e.g., <code>finance</code>, <code>infra</code>, <code>academic-researcher</code>, <code>workhorse</code>).
+          </li>
+          <li>
+            <strong>Supervisory Health &amp; Governance:</strong> The <code>medic</code> profile audits the estate hourly for configuration drift and skill scope integrity, while <code>janitor</code> manages temporary file pruning under explicit human confirmation.
+          </li>
+        </ol>
+      </section>
+
+      <section class="case-section">
+        <h2>Built by Krishnendu vs. Open-Source Foundation</h2>
+        <div class="table-wrap">
+          <table class="data-table">
             <thead>
               <tr>
                 <th>Component</th>
-                <th>Layer</th>
-                <th>Authorship &amp; Implementation</th>
+                <th>Authorship</th>
+                <th>Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Agent Core &amp; Tool Runtime</td>
-                <td>Framework</td>
-                <td>Hermes Agent (open-source runtime by Nous Research).</td>
+                <td>Agent Framework Core</td>
+                <td>Open Source</td>
+                <td>Hermes Agent runtime developed by Nous Research.</td>
               </tr>
               <tr>
-                <td>Multi-Profile Estate Architecture</td>
-                <td>Custom</td>
-                <td>Designed 12 isolated profile scopes, context boundaries, and role permissions.</td>
+                <td>Multi-Profile Architecture</td>
+                <td>Krishnendu Biswas</td>
+                <td>Designed the 12-profile MECE partitioning, systemd daemonization, and gateway routing.</td>
               </tr>
               <tr>
-                <td>Task Scheduling &amp; Daemons</td>
-                <td>Custom</td>
-                <td>Configured 31 scheduled cron jobs and Linux systemd services on Azure VPS.</td>
-              </tr>
-              <tr>
-                <td>Model Routing Proxy Integration</td>
-                <td>Custom</td>
-                <td>Loopback 9Router proxy configuration, tiered fallback rules, and reasoning offload harnesses.</td>
-              </tr>
-              <tr>
-                <td>Security &amp; Disaster Recovery</td>
-                <td>Custom</td>
-                <td>Locked-down secrets handling, encrypted offsite backup pipeline, and automated restore script (<code>restore.sh</code>).</td>
+                <td>Operational Automation</td>
+                <td>Krishnendu Biswas</td>
+                <td>Wrote 31 scheduled jobs, kanban handoff pipelines, and telemetry daemons in Python and Bash.</td>
               </tr>
               <tr>
                 <td>Procedural Skills Library</td>
@@ -288,10 +252,10 @@
         <h2>Strict Operating Rules &amp; Safety Guardrails</h2>
         <p>The entire platform operates under non-negotiable safety invariants enforced in software:</p>
         <ul>
-          <li><strong>Human approval gates for side effects:</strong> The platform is strictly prohibited from sending outbound emails, publishing code to main branches, executing financial payments, or deleting persistent files without explicit human sign-off.</li>
-          <li><strong>Zero secrets in conversation:</strong> API keys and credentials are stored in locked-down permission vault files. Origin-bound password autofill prevents credential exposure in model contexts or chat transcripts.</li>
+          <li><strong>Human-in-the-loop gates for side effects:</strong> The platform is strictly prohibited from sending outbound emails, publishing code to main branches, executing financial payments, or deleting persistent files without explicit human sign-off.</li>
+          <li><strong>Zero secrets in conversation:</strong> API keys and credentials are stored in filesystem-restricted vault files. Origin-bound password autofill prevents credential exposure in model contexts or chat transcripts.</li>
           <li><strong>Isolated execution workspaces:</strong> Multi-step jobs execute inside ephemeral scratch directories, preventing accidental modification of core system configurations.</li>
-          <li><strong>Deterministic verification first:</strong> Scripts and automated test suites validate outcomes before human handoff.</li>
+          <li><strong>Real-world artifact generation:</strong> As a concrete example of platform delivery, this website redesign was planned by the high reasoning tier and executed across kanban task handoffs by the consulting profile.</li>
         </ul>
       </section>
 
@@ -301,7 +265,7 @@
           <li class="tag">Hermes Agent</li>
           <li class="tag">Python 3.12</li>
           <li class="tag">Bash</li>
-          <li class="tag">SQLite</li>
+          <li class="tag">SQLite WAL</li>
           <li class="tag">systemd</li>
           <li class="tag">Ubuntu 24.04 LTS</li>
           <li class="tag">Azure VPS</li>
@@ -314,24 +278,22 @@
 
       <nav class="case-footer-nav" aria-label="Case study navigation">
         <a href="/" class="btn btn-secondary">&larr; Back to Portfolio</a>
-        <a href="/work/model-routing-tiered-compute/" class="btn btn-primary">Next Case: Model Routing and Tiered Compute &rarr;</a>
+        <a href="/work/model-routing-tiered-compute/" class="btn btn-primary">Next Case: Model Routing &rarr;</a>
       </nav>
     </div>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand-col">
         <div class="footer-brand">Krishnendu Biswas</div>
-        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">Data and AI systems builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
         <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
       </div>
       <div class="footer-nav-col">
         <div class="footer-nav-group">
           <div class="footer-group-title">Navigation</div>
           <ul class="footer-links">
-            <li><a href="/#work" class="footer-link">AI Agent Systems</a></li>
-            <li><a href="/#data-ml" class="footer-link">Data &amp; ML Work</a></li>
+            <li><a href="/#work" class="footer-link">Selected Work</a></li>
             <li><a href="/#internships" class="footer-link">Internships</a></li>
             <li><a href="/#research" class="footer-link">Research Papers</a></li>
             <li><a href="/#credentials" class="footer-link">Credentials</a></li>

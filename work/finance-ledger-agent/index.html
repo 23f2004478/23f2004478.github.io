@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automated Finance Ledger Agent | Krishnendu Biswas</title>
-  <meta name="description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <title>Finance Ledger & Spend Ingestion Agent | Krishnendu Biswas</title>
+  <meta name="description" content="Automated personal finance synchronization streaming Gmail order receipts into deterministic parsing pipelines and a self-hosted Firefly III ledger.">
   <link rel="canonical" href="https://krishnendu.me/work/finance-ledger-agent/">
   
   <!-- Open Graph / Social -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://krishnendu.me/work/finance-ledger-agent/">
-  <meta property="og:title" content="Automated Finance Ledger Agent | Krishnendu Biswas">
-  <meta property="og:description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <meta property="og:title" content="Finance Ledger & Spend Ingestion Agent | Krishnendu Biswas">
+  <meta property="og:description" content="Automated personal finance synchronization streaming Gmail order receipts into deterministic parsing pipelines and a self-hosted Firefly III ledger.">
   <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://krishnendu.me/work/finance-ledger-agent/">
-  <meta name="twitter:title" content="Automated Finance Ledger Agent | Krishnendu Biswas">
-  <meta name="twitter:description" content="Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.">
+  <meta name="twitter:title" content="Finance Ledger & Spend Ingestion Agent | Krishnendu Biswas">
+  <meta name="twitter:description" content="Automated personal finance synchronization streaming Gmail order receipts into deterministic parsing pipelines and a self-hosted Firefly III ledger.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.svg">
 
   <!-- Favicon -->
@@ -33,8 +33,8 @@
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Automated Finance Ledger Agent",
-  "description": "Automated receipt parsing pipeline syncing read-only Gmail transaction data to a self-hosted Firefly III ledger with deterministic idempotency.",
+  "headline": "Finance Ledger & Spend Ingestion Agent",
+  "description": "Automated personal finance synchronization streaming Gmail order receipts into deterministic parsing pipelines and a self-hosted Firefly III ledger.",
   "author": {
     "@type": "Person",
     "name": "Krishnendu Biswas",
@@ -52,248 +52,163 @@
       <a href="/" class="brand">Krishnendu Biswas</a>
       <nav aria-label="Main Navigation">
         <ul class="main-nav">
-          <li><a href="/#work" class="nav-link" aria-current="page">Work</a></li>
+          <li><a href="/#work" class="nav-link">Work</a></li>
           <li><a href="/#internships" class="nav-link">Internships</a></li>
           <li><a href="/#research" class="nav-link">Research</a></li>
           <li><a href="/#credentials" class="nav-link">Credentials</a></li>
           <li><a href="/#contact" class="nav-link">Work with me</a></li>
         </ul>
       </nav>
-      <div class="nav-actions">
-        <button type="button" class="theme-toggle" aria-label="Toggle dark mode" aria-pressed="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle visual theme">
+          <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 0 0 0 21 12.79z"></path></svg>
         </button>
-        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Resume</a>
-        <button type="button" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" fill="currentColor"/></svg>
+        <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-sm btn-primary header-resume-btn" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="mobile-menu-btn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span></span><span></span><span></span>
         </button>
       </div>
+    </div>
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <ul class="mobile-nav-list">
+        <li><a href="/#work" class="mobile-nav-link">Work</a></li>
+        <li><a href="/#internships" class="mobile-nav-link">Internships</a></li>
+        <li><a href="/#research" class="mobile-nav-link">Research</a></li>
+        <li><a href="/#credentials" class="mobile-nav-link">Credentials</a></li>
+        <li><a href="/#contact" class="mobile-nav-link">Work with me</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">Download Resume PDF</a></li>
+      </ul>
     </div>
   </header>
+  <main id="main" class="case-study-page">
+    <div class="container case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/#work">Work</a> / <span class="crumb-current">Finance Ledger Agent</span>
+      </nav>
 
-  <main id="main">
-    <div class="case-study-hero">
-      <div class="container">
-        <ul class="breadcrumbs">
-          <li><a href="/">Home</a></li>
-          <li><a href="/#work">Work</a></li>
-          <li aria-current="page">Automated Finance Ledger Agent</li>
-        </ul>
-        
-        <h1 class="case-header-title">Automated Finance Ledger Agent</h1>
-        <p class="case-header-sub">Engineered an automated personal finance pipeline ingesting digital receipts from read-only Gmail to a self-hosted Firefly III ledger with deterministic idempotency and refund netting.</p>
-        
-        <div class="case-fact-strip">
-          <div class="fact-item">
-            <span class="fact-label">Pipeline Ingress</span>
-            <span class="fact-value">Read-Only Gmail Scope</span>
+      <header class="case-header">
+        <h1 class="case-title">Finance Ledger &amp; Spend Ingestion Agent</h1>
+        <p class="case-lede">
+          An automated spend reconciliation pipeline ingesting e-commerce and utility receipts via read-only Gmail scopes, executing deterministic regex parsers, and synchronizing normalized transactions into a self-hosted Firefly III ledger.
+        </p>
+
+        <div class="case-specs-grid">
+          <div class="spec-card">
+            <span class="spec-label">DATA SOURCE</span>
+            <span class="spec-value">Gmail Read-Only OAuth</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Parsing Method</span>
-            <span class="fact-value">Deterministic + LLM Fallback</span>
+          <div class="spec-card">
+            <span class="spec-label">LEDGER CORE</span>
+            <span class="spec-value">Firefly III (Self-Hosted)</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Destination</span>
-            <span class="fact-value">Firefly III (Self-Hosted)</span>
+          <div class="spec-card">
+            <span class="spec-label">PARSER ENGINE</span>
+            <span class="spec-value">Deterministic Regex + LLM Edge</span>
           </div>
-          <div class="fact-item">
-            <span class="fact-label">Reliability</span>
-            <span class="fact-value">Idempotent Hashes · IST Timestamps</span>
+          <div class="spec-card">
+            <span class="spec-label">IDEMPOTENCY</span>
+            <span class="spec-value">External Transaction Hash</span>
           </div>
         </div>
 
-        <div class="notice-banner">
-          <span class="notice-icon" aria-hidden="true">i</span>
-          <p><strong>System Notice:</strong> Private system, architecture shown here. In compliance with strict privacy and security policies, no financial figures, spend totals, or merchant identities are disclosed.</p>
+        <div class="case-notice-box">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          <div>
+            <strong>Private System:</strong> Personal financial accounting pipeline. Operating architecture and data normalization rules are shared below with zero financial numbers or merchant names.
+          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="container case-body">
-      <section class="case-section">
-        <h2>The Financial Data Ingestion Problem</h2>
-        <p>Maintaining an accurate double-entry ledger of expenses usually fails for three distinct reasons:</p>
-        <ul>
-          <li><strong>Manual tracking friction:</strong> Entering receipts manually after each purchase leads to fatigue, missing transactions, and delayed reporting.</li>
-          <li><strong>Aggregator surveillance and brittle connections:</strong> Commercial aggregators require direct banking credentials, sell user telemetry, and often fail on multi-item receipts, order cancellations, and refunds.</li>
-          <li><strong>Unstructured confirmation formats:</strong> Transaction emails arrive across dozens of changing HTML layouts, plain text invoices, and PDF attachments requiring robust extraction that does not hallucinate numbers.</li>
-        </ul>
-      </section>
+      </header>
 
       <section class="case-section">
-        <h2>System Architecture</h2>
-        <p>The system runs as a scheduled pipeline executing four deterministic stages from ingestion to ledger synchronization.</p>
+        <h2>Ingestion Pipeline Diagram</h2>
+        <div class="diagram-wrapper">
+          <svg class="arch-diagram" viewBox="0 0 800 280" width="100%" height="auto" role="img" aria-label="Finance ledger agent pipeline architecture" xmlns="http://www.w3.org/2000/svg">
+            <style>
+              .d-box { fill: var(--bg-alt); stroke: var(--rule); stroke-width: 1.5; rx: 4; }
+              .d-accent-box { fill: var(--accent-light); stroke: var(--accent); stroke-width: 1.5; rx: 4; }
+              .d-text { font-family: var(--font-sans); font-size: 13px; fill: var(--ink); text-anchor: middle; }
+              .d-title { font-family: var(--font-serif); font-size: 14px; font-weight: 600; fill: var(--ink); text-anchor: middle; }
+              .d-mono { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-muted); text-anchor: middle; }
+              .d-arrow { stroke: var(--accent); stroke-width: 2; marker-end: url(#arrow4); fill: none; }
+            </style>
+            <defs>
+              <marker id="arrow4" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--accent)" />
+              </marker>
+            </defs>
+            <!-- Gmail Ingestion -->
+            <rect x="30" y="50" width="200" height="180" class="d-box"/>
+            <text x="130" y="80" class="d-title">1. Email Ingestion</text>
+            <text x="130" y="105" class="d-mono">Read-Only Gmail Scope</text>
+            <text x="130" y="135" class="d-text">Scheduled receipt scanner</text>
+            <text x="130" y="160" class="d-text">MIME multipart decoding</text>
+            <text x="130" y="185" class="d-text">HTML / Text extraction</text>
 
-        <div class="architecture-diagram-wrap">
-          <svg class="architecture-diagram" viewBox="0 0 720 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-finance-title svg-finance-desc">
-            <title id="svg-finance-title">Finance Ledger Agent Pipeline Architecture</title>
-            <desc id="svg-finance-desc">Architecture diagram showing read-only Gmail ingestion flowing into dual-path parsers with deterministic extraction and LLM fallback, through an idempotency and refund netting engine, and finally synchronizing to a self-hosted Firefly III ledger.</desc>
-            
-            <!-- Background Card -->
-            <rect width="720" height="400" rx="6" fill="var(--box-bg)" stroke="var(--rule)" stroke-width="1"/>
-            
-            <!-- Stage 1: Ingestion -->
-            <rect x="30" y="40" width="140" height="100" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="100" y="70" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">1. Ingestion</text>
-            <text x="100" y="92" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Gmail API</text>
-            <text x="100" y="110" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">(Read-Only OAuth)</text>
-            
-            <!-- Arrow 1 -->
-            <path d="M170 90 L210 90" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Stage 2: Dual-Path Extraction -->
-            <rect x="210" y="40" width="160" height="100" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="290" y="70" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">2. Dual-Path Parser</text>
-            <text x="290" y="92" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Deterministic DOM/Regex</text>
-            <text x="290" y="110" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--accent)" text-anchor="middle">+ LLM Fallback (Ambiguous)</text>
-            
-            <!-- Arrow 2 -->
-            <path d="M370 90 L410 90" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Stage 3: Normalization & Idempotency -->
-            <rect x="410" y="40" width="140" height="100" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="480" y="70" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--ink)" text-anchor="middle">3. Normalization</text>
-            <text x="480" y="92" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Idempotent Hashes</text>
-            <text x="480" y="110" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Refund Netting &middot; IST</text>
-            
-            <!-- Arrow 3 -->
-            <path d="M550 90 L590 90" stroke="var(--accent)" stroke-width="2" fill="none"/>
-            
-            <!-- Stage 4: Firefly III Sync -->
-            <rect x="590" y="40" width="100" height="100" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
-            <text x="640" y="75" font-family="'Fraunces', Georgia, serif" font-size="13" font-weight="600" fill="var(--accent)" text-anchor="middle">4. Ledger</text>
-            <text x="640" y="97" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">Firefly III</text>
-            <text x="640" y="115" font-family="'Source Sans 3', sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">REST API</text>
-            
-            <!-- Bottom Detail Panel -->
-            <rect x="30" y="170" width="660" height="195" rx="4" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
-            <text x="50" y="200" font-family="'Fraunces', Georgia, serif" font-size="14" font-weight="600" fill="var(--ink)">Pipeline Operating Principles</text>
-            
-            <g font-family="'Source Sans 3', sans-serif" font-size="12" fill="var(--muted)">
-              <text x="50" y="230">&bull; <tspan font-weight="600" fill="var(--ink)">Deterministic First:</tspan> 95%+ of structured merchant emails parse via pure regex and DOM trees without model inference.</text>
-              <text x="50" y="260">&bull; <tspan font-weight="600" fill="var(--ink)">Constrained Fallback:</tspan> LLM invocation occurs strictly when deterministic schemas fail, enforcing strict JSON outputs.</text>
-              <text x="50" y="290">&bull; <tspan font-weight="600" fill="var(--ink)">Idempotent Keys:</tspan> Hashes computed from order identifiers and timestamps ensure re-runs never create duplicate entries.</text>
-              <text x="50" y="320">&bull; <tspan font-weight="600" fill="var(--ink)">Automated Netting:</tspan> Return and refund events are matched against original transactions to keep category totals accurate.</text>
-            </g>
+            <path d="M 230 140 L 290 140" class="d-arrow"/>
+
+            <!-- Parser Engine -->
+            <rect x="290" y="50" width="220" height="180" class="d-accent-box"/>
+            <text x="400" y="80" class="d-title">2. Normalization Engine</text>
+            <text x="400" y="105" class="d-mono">Deterministic Parsers</text>
+            <text x="400" y="135" class="d-text">Regex item &amp; tax extraction</text>
+            <text x="400" y="160" class="d-text">Idempotent hash generation</text>
+            <text x="400" y="185" class="d-text">Refund netting logic</text>
+
+            <path d="M 510 140 L 570 140" class="d-arrow"/>
+
+            <!-- Firefly III -->
+            <rect x="570" y="50" width="200" height="180" class="d-box"/>
+            <text x="670" y="80" class="d-title">3. Ledger Sync</text>
+            <text x="670" y="105" class="d-mono">Self-Hosted Firefly III</text>
+            <text x="670" y="135" class="d-text">Double-entry accounting</text>
+            <text x="670" y="160" class="d-text">Category classification</text>
+            <text x="670" y="185" class="d-text">Zero duplicate entries</text>
           </svg>
         </div>
-
-        <div class="sr-only">
-          <p>Text description of architecture: 1. Read-only Gmail API ingests digital receipt emails. 2. A dual-path parser processes known schemas with deterministic DOM extractors, using a constrained LLM fallback only for novel formats. 3. Normalization generates idempotent external IDs, nets refunds against parent categories, and standardizes to IST timestamps. 4. Verified transactions are posted to a self-hosted Firefly III double-entry ledger via REST API.</p>
-        </div>
-
-        <h3>1. Ingestion via Read-Only Scopes</h3>
-        <p>The pipeline accesses the mailbox strictly through a minimal read-only OAuth scope (<code>gmail.readonly</code>). It searches for transaction identifiers, order confirmations, and invoice attachments without permission to draft, send, or delete emails.</p>
-
-        <h3>2. Dual-Path Parser &amp; LLM Fallback Boundary</h3>
-        <p>To ensure high throughput and zero hallucinated numbers, the extraction engine utilizes a two-tier approach:</p>
-        <ul>
-          <li><strong>Deterministic Tier (Primary):</strong> Known vendor layouts are parsed using explicit HTML DOM traversals and regex extractors. This processes structured transactions instantly with zero token expenditure.</li>
-          <li><strong>LLM Fallback Tier (Secondary):</strong> When novel or irregular receipt emails fail pattern matching, an isolated model extracts the line items, taxes, discounts, and order numbers into a strict JSON schema with type validation.</li>
-        </ul>
-
-        <h3>3. Idempotency &amp; Refund Netting Engine</h3>
-        <p>Before submitting any transaction to the ledger, the data passes through a normalization layer:</p>
-        <ul>
-          <li><strong>Deterministic External IDs:</strong> Each transaction receives a unique hash generated from the merchant order identifier and transaction date. Re-running the ingestion job on overlapping time windows safely updates metadata without creating duplicate ledger rows.</li>
-          <li><strong>Automated Refund Netting:</strong> Cancellation and refund emails are automatically identified and mapped back to the original purchase category, preserving accurate net expenditure reports.</li>
-          <li><strong>Timezone Normalization:</strong> All purchase timestamps are standardized to Indian Standard Time (IST) to ensure consistency across international vendors.</li>
-        </ul>
-
-        <h3>4. Synchronization to Firefly III</h3>
-        <p>Normalized payloads are dispatched to a self-hosted instance of <strong>Firefly III</strong> over a secure REST API. Transactions are categorized, tagged with order identifiers, and balanced across asset and expense accounts.</p>
       </section>
 
       <section class="case-section">
-        <h2>Engineering Scope: Framework vs Custom Build</h2>
-        <div class="metrics-table-wrap">
-          <table class="metrics-table">
-            <thead>
-              <tr>
-                <th>Component</th>
-                <th>Layer</th>
-                <th>Authorship &amp; Implementation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Double-Entry Ledger Platform</td>
-                <td>Open Source Core</td>
-                <td>Firefly III self-hosted personal finance platform.</td>
-              </tr>
-              <tr>
-                <td>Gmail Ingestion Engine</td>
-                <td>Custom</td>
-                <td>Engineered OAuth handshake, mailbox querying, and email payload decoders.</td>
-              </tr>
-              <tr>
-                <td>Deterministic Extraction Parsers</td>
-                <td>Custom</td>
-                <td>Wrote DOM traversal rules and regex schemas for high-frequency merchants.</td>
-              </tr>
-              <tr>
-                <td>LLM Fallback Harness</td>
-                <td>Custom</td>
-                <td>Engineered structured JSON schema prompts with strict validation checks.</td>
-              </tr>
-              <tr>
-                <td>Idempotency &amp; Refund Netting</td>
-                <td>Custom</td>
-                <td>Implemented deterministic hashing and category refund reconciliation logic.</td>
-              </tr>
-              <tr>
-                <td>System Automation</td>
-                <td>Custom</td>
-                <td>Automated systemd timer execution, run logging, and error alerting.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <section class="case-section">
-        <h2>Security &amp; Operational Governance</h2>
+        <h2>Engineering Highlights</h2>
+        <p>
+          Manual expense tracking suffers from friction and missing entries. This system automates ingestion while adhering to strict privacy and data consistency rules:
+        </p>
         <ul>
-          <li><strong>Read-only mailbox access:</strong> The application possesses zero email modification, deletion, or transmission capabilities.</li>
-          <li><strong>Local credential vault:</strong> OAuth refresh tokens and API secrets reside in filesystem-restricted files with locked-down secrets handling on a private Linux VPS.</li>
-          <li><strong>No financial figures in public artifacts:</strong> Operating in alignment with confidentiality rules, no spending numbers or merchant names are logged in public portfolios.</li>
-          <li><strong>Self-hosted data sovereignty:</strong> All ledger databases and parsed records remain exclusively on private, encrypted self-hosted infrastructure.</li>
+          <li><strong>Deterministic Precision:</strong> 95%+ of incoming order formats are parsed using pure regular expressions and structural ASTs, guaranteeing zero hallucinated line items or amounts.</li>
+          <li><strong>Idempotency Guarantees:</strong> Transactions generate a deterministic external ID from order numbers and timestamps, preventing duplicate ledger entries upon re-runs.</li>
+          <li><strong>Refund Netting:</strong> Return transactions automatically map to their originating purchase, maintaining accurate net category totals.</li>
         </ul>
       </section>
 
       <section class="case-section">
         <h2>Technology Stack</h2>
         <ul class="tag-list">
+          <li class="tag">Firefly III</li>
           <li class="tag">Python 3.12</li>
-          <li class="tag">Firefly III (Self-Hosted)</li>
-          <li class="tag">Gmail API (Read-Only)</li>
-          <li class="tag">SQLite / MySQL</li>
-          <li class="tag">systemd</li>
-          <li class="tag">Linux (Ubuntu)</li>
+          <li class="tag">OAuth 2.0</li>
           <li class="tag">REST API</li>
+          <li class="tag">Docker</li>
         </ul>
       </section>
 
       <nav class="case-footer-nav" aria-label="Case study navigation">
-        <a href="/work/reliability-security/" class="btn btn-secondary">&larr; Reliability &amp; Security</a>
-        <a href="/work/linkedin-studio/" class="btn btn-primary">Next Case: Personal LinkedIn Studio &rarr;</a>
+        <a href="/work/reliability-security/" class="btn btn-secondary">&larr; Previous Case</a>
+        <a href="/work/linkedin-studio/" class="btn btn-primary">Next Case: LinkedIn Studio &rarr;</a>
       </nav>
     </div>
   </main>
-
   <footer class="site-footer">
     <div class="container footer-grid">
       <div class="footer-brand-col">
         <div class="footer-brand">Krishnendu Biswas</div>
-        <p class="footer-copy">Data and AI builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
+        <p class="footer-copy">Data and AI systems builder. MBA candidate at IIM Ranchi and Diploma in Programming from IIT Madras.</p>
         <p class="footer-copy">(c) 2026 Krishnendu Biswas. All rights reserved.</p>
       </div>
       <div class="footer-nav-col">
         <div class="footer-nav-group">
           <div class="footer-group-title">Navigation</div>
           <ul class="footer-links">
-            <li><a href="/#work" class="footer-link">AI Agent Systems</a></li>
-            <li><a href="/#data-ml" class="footer-link">Data &amp; ML Work</a></li>
+            <li><a href="/#work" class="footer-link">Selected Work</a></li>
             <li><a href="/#internships" class="footer-link">Internships</a></li>
             <li><a href="/#research" class="footer-link">Research Papers</a></li>
             <li><a href="/#credentials" class="footer-link">Credentials</a></li>
