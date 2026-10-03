@@ -1,294 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart MCQ Solver LoRA Fine-Tuning Case Study | Krishnendu Biswas</title>
-  <meta name="description" content="Parameter-efficient fine-tuning on DeBERTa-v3 and RoBERTa base models in a 70:30 ensemble achieving 0.74242 MAP@3.">
-  <link rel="canonical" href="https://krishnendu.me/projects/mcq/">
-  <meta property="og:title" content="Smart MCQ Solver LoRA Fine-Tuning Case Study | Krishnendu Biswas">
-  <meta property="og:description" content="Parameter-efficient fine-tuning on DeBERTa-v3 and RoBERTa base models in a 70:30 ensemble achieving 0.74242 MAP@3.">
-  <meta property="og:url" content="https://krishnendu.me/projects/mcq/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Smart MCQ Solver LoRA Fine-Tuning Case Study | Krishnendu Biswas">
-  <meta name="twitter:description" content="Parameter-efficient fine-tuning on DeBERTa-v3 and RoBERTa base models in a 70:30 ensemble achieving 0.74242 MAP@3.">
-  
-  <link rel="stylesheet" href="/assets/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="/" class="brand-link" aria-label="Krishnendu Biswas Home">
-          <span class="brand-name">Krishnendu Biswas</span>
-          <span class="brand-badge" aria-label="Portfolio version 2">v2</span>
-        </a>
-      </div>
-
-      <nav class="desktop-nav" aria-label="Main Navigation">
-        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link is-active" aria-current="page">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
-      </nav>
-
-      <div class="header-actions">
-        <button id="search-trigger" class="action-btn" aria-label="Open search dialog (Press Cmd+K or Ctrl+K)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span class="kbd-hint" aria-hidden="true">Cmd+K</span>
-        </button>
-
-        <button id="theme-toggle" class="action-btn" aria-label="Toggle theme (System / Light / Dark)">
-          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-
-        <button id="menu-toggle" class="mobile-menu-btn action-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-    <div class="drawer-header">
-      <span class="brand-name">Krishnendu Biswas</span>
-      <button id="drawer-close" class="action-btn" aria-label="Close mobile menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link is-active" aria-current="page">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
-    </nav>
-    <div class="drawer-footer">
-      <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
-    </div>
-  </div>
-  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
-
-  
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <div class="container">
-            <ol class="breadcrumb-list">
-              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item"><a href="/projects/">Projects</a></li><li class="breadcrumb-item is-active" aria-current="page">Smart MCQ</li>
-            </ol>
-          </div>
-        </nav>
-        
-
-  <main id="main-content">
-    
-    <section class="page-header">
-      <div class="container">
-        <div class="eyebrow">Project Case Study &bull; GenAI &amp; PEFT</div>
-        <h1 class="page-title">Smart MCQ Solver: Transformer LoRA Optimization</h1>
-        <p class="page-lede">
-          Parameter-efficient fine-tuning of DeBERTa-v3 and RoBERTa base models using LoRA (r=8, alpha=16),
-          combined in a 70:30 probability ensemble achieving 0.74242 MAP@3 on Kaggle public leaderboard.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="grid grid-3 mb-4">
-          <div class="stat-card">
-            <div class="stat-value">0.74242</div>
-            <div class="stat-label">Public Leaderboard MAP@3</div>
-            <div class="stat-sub">Evaluated on 500 unseen questions</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value">70:30</div>
-            <div class="stat-label">Ensemble Ratio</div>
-            <div class="stat-sub">70% DeBERTa-v3 + 30% RoBERTa</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-value">r=8, &alpha;=16</div>
-            <div class="stat-label">LoRA Parameters</div>
-            <div class="stat-sub">Query &amp; Value projection targets</div>
-          </div>
-        </div>
-
-        <div class="card mb-4">
-          <div class="card-header">
-            <h2 class="card-title">LoRA Architecture &amp; Ensemble Pipeline</h2>
-            <span class="card-tag">Figures D10 &amp; D11</span>
-          </div>
-          <div class="card-body">
-            <div class="diagram-wrap"><svg class="diag-wide" viewBox="0 0 720 220" width="720" height="220" role="img" aria-labelledby="d10-title d10-desc">
-  <title id="d10-title">Smart MCQ LoRA Architecture &amp; Ensemble Flow</title>
-  <desc id="d10-desc">Parameter-efficient fine-tuning on DeBERTa-v3 and RoBERTa base models combined in a 70:30 ensemble achieving 0.74242 MAP@3.</desc>
-  <defs>
-    <marker id="arrow10" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--accent)"/>
-    </marker>
-  </defs>
-
-  <rect x="10" y="10" width="700" height="200" rx="4" fill="var(--box)" stroke="var(--rule)"/>
-
-  <!-- Model 1: DeBERTa-v3 -->
-  <rect x="30" y="30" width="220" height="70" rx="3" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="45" y="52" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--accent)">microsoft/deberta-v3-base</text>
-  <text x="45" y="70" font-family="var(--font-body)" font-size="10" fill="var(--ink)">LoRA r=8, alpha=16, dropout=0.1</text>
-  <text x="45" y="86" font-family="var(--font-mono)" font-size="9" fill="var(--muted)">Target: query_proj, value_proj</text>
-
-  <!-- Model 2: RoBERTa-base -->
-  <rect x="30" y="115" width="220" height="70" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
-  <text x="45" y="137" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)">roberta-base</text>
-  <text x="45" y="155" font-family="var(--font-body)" font-size="10" fill="var(--ink)">LoRA r=8, alpha=16, dropout=0.1</text>
-  <text x="45" y="171" font-family="var(--font-mono)" font-size="9" fill="var(--muted)">Target: query, value</text>
-
-  <!-- Ensemble Node -->
-  <rect x="310" y="70" width="150" height="75" rx="3" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="385" y="96" font-family="var(--font-display)" font-size="12" font-weight="600" fill="var(--accent)" text-anchor="middle">70:30 Ensemble</text>
-  <text x="385" y="114" font-family="var(--font-body)" font-size="10" fill="var(--ink)" text-anchor="middle">70% DeBERTa + 30% RoBERTa</text>
-  <text x="385" y="130" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">Probability Average</text>
-
-  <!-- Output / Metric Tile (D11 integrated) -->
-  <rect x="520" y="55" width="170" height="105" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
-  <text x="605" y="82" font-family="var(--font-mono)" font-size="11" fill="var(--muted)" text-anchor="middle">MAP@3 Metric</text>
-  <text x="605" y="118" font-family="var(--font-mono)" font-size="22" font-weight="600" fill="var(--accent)" text-anchor="middle">0.74242</text>
-  <text x="605" y="142" font-family="var(--font-body)" font-size="9.5" fill="var(--ink)" text-anchor="middle">Kaggle public leaderboard</text>
-
-  <!-- Connectors -->
-  <path d="M 250 65 L 305 95" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
-  <path d="M 250 150 L 305 120" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
-  <line x1="460" y1="107" x2="515" y2="107" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart MCQ solver | Krishnendu Biswas</title>
+<meta name="description" content="LoRA fine-tuning of DeBERTa-v3-base and RoBERTa-base. 70:30 ensemble, MAP@3 0.74242 on 500 unseen questions.">
+<link rel="canonical" href="https://krishnendu.me/projects/mcq/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://krishnendu.me/projects/mcq/">
+<meta property="og:title" content="Smart MCQ solver | Krishnendu Biswas">
+<meta property="og:description" content="LoRA fine-tuning of DeBERTa-v3-base and RoBERTa-base. 70:30 ensemble, MAP@3 0.74242 on 500 unseen questions.">
+<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../../styles.css">
+<script src="../../site.js" defer></script>
+</head><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
+<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="1.5"/><path d="M2 6l8 5 8-5"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="15" height="15" rx="2.5"/><path d="M6 8.5v5M6 6v.01M9.5 13.5v-3c0-1.1.9-2 2-2s2 .9 2 2v3"/><path d="M9.5 10.5v3"/></symbol>
+<symbol id="i-github" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15c-2.2-.5-4-2.5-4-5a6 6 0 0112 0c0 2.5-1.8 4.5-4 5"/><path d="M10 4a4 4 0 00-4 4v.5c0 1 .5 2 1.5 2.5"/><path d="M10 4a4 4 0 014 4v.5c0 1-.5 2-1.5 2.5"/><path d="M7.5 17v-2c0-1 .5-1.5 1-1.5h3c.5 0 1 .5 1 1.5v2"/><path d="M6.5 17c.5-1.5.5-2.5 0-3.5M13.5 17c-.5-1.5-.5-2.5 0-3.5"/></symbol>
+<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13h5"/></symbol>
+<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
+<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
+<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
+<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
+<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
 </svg>
-<details class="diagram-data-toggle">
-  <summary>Show data: Smart MCQ Fine-Tuning &amp; Evaluation</summary>
-  <div class="table-wrap diagram-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Base Model</th>
-          <th>PEFT Method</th>
-          <th>LoRA Hyperparameters</th>
-          <th>Ensemble Weight</th>
-          <th>Public Leaderboard MAP@3</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>microsoft/deberta-v3-base</td>
-          <td>LoRA (SEQ_CLS)</td>
-          <td>r=8, alpha=16, dropout=0.1 on query_proj, value_proj</td>
-          <td>70%</td>
-          <td rowspan="2"><strong>0.74242 MAP@3</strong> (evaluated on 500 unseen questions on Kaggle public leaderboard)</td>
-        </tr>
-        <tr>
-          <td>roberta-base</td>
-          <td>LoRA (SEQ_CLS)</td>
-          <td>r=8, alpha=16, dropout=0.1 on query, value</td>
-          <td>30%</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</details></div>
-          </div>
-        </div>
-
-        <div class="content-block">
-          <h2>Fine-Tuning Architecture</h2>
-          <p>
-            Formulated multiple-choice question answering as a 5-option sequence classification ranking task across 2K questions,
-            optimizing Mean Average Precision at 3 (MAP@3) as the official metric.
-          </p>
-          <p>
-            Implemented Low-Rank Adaptation (LoRA) parameter-efficient fine-tuning on two transformer architectures:
-          </p>
-          <ul>
-            <li><strong>microsoft/deberta-v3-base:</strong> LoRA rank r=8, alpha=16, dropout 0.1 on query_proj and value_proj layers (task_type=SEQ_CLS).</li>
-            <li><strong>roberta-base:</strong> LoRA rank r=8, alpha=16, dropout 0.1 on query and value projection layers.</li>
-          </ul>
-
-          <h2>Ensemble &amp; Evaluation</h2>
-          <p>
-            Combined predicted class probabilities using a weighted 70:30 ensemble (70% DeBERTa-v3 + 30% RoBERTa).
-            Training dynamics were logged via Weights &amp; Biases, achieving a verified 0.74242 MAP@3 on Kaggle's public leaderboard
-            across 500 unseen test questions.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col">
-        <h3 class="footer-heading">Krishnendu Biswas</h3>
-        <p class="footer-desc">AI agent systems, machine learning engineering, and deterministic data pipelines.</p>
-        <p class="footer-contact">
-          <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a><br>
-          <a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/krshnndu</a><br>
-          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">github.com/krshnndu</a>
-        </p>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-subheading">Navigation</h4>
-        <ul class="footer-links">
-          <li><a href="/work/">Work &amp; Agent Systems</a></li>
-          <li><a href="/projects/">ML &amp; Analytics Projects</a></li>
-          <li><a href="/internships/">Internships &amp; Experience</a></li>
-          <li><a href="/credentials/">Credentials &amp; Education</a></li>
-          <li><a href="/about/">About &amp; Philosophy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-subheading">Verification &amp; Artifacts</h4>
-        <ul class="footer-links">
-          <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" download>Verified Resume (PDF)</a></li>
-          <li><a href="https://github.com/krshnndu/krshnndu.github.io" target="_blank" rel="noopener noreferrer">Source Repository</a></li>
-          <li><a href="/about/#verification">Fact Grounding Standard</a></li>
-          <li><span class="footer-meta">Zero third-party trackers</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p class="footer-copy">&copy; 2026 Krishnendu Biswas. Built with semantic HTML, vanilla CSS, and accessible vector graphics.</p>
-      <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <span>Top</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-head" role="banner">
+  <div class="wrap head-in">
+    <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main">
+      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
       </button>
-    </div>
-  </footer>
-
-  <!-- Search Modal -->
-  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
-    <div class="search-dialog-inner">
-      <div class="search-header">
-        <label for="search-input" id="search-dialog-title" class="sr-only">Search krishnendu.me</label>
-        <input type="search" id="search-input" class="search-input" placeholder="Search systems, projects, metrics, skills..." autocomplete="off">
-        <button id="search-close" class="action-btn" aria-label="Close search dialog">Esc</button>
-      </div>
-      <div id="search-results" class="search-results" role="region" aria-live="polite">
-        <p class="search-empty">Type keywords to search across all 18 pages...</p>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Keyboard Shortcuts Dialog -->
-  <dialog id="kbd-dialog" class="kbd-dialog" aria-labelledby="kbd-dialog-title">
-    <div class="kbd-dialog-inner">
-      <div class="kbd-header">
-        <h3 id="kbd-dialog-title">Keyboard Shortcuts</h3>
-        <button id="kbd-close" class="action-btn" aria-label="Close shortcuts dialog">Esc</button>
-      </div>
-      <div class="kbd-body">
-        <div class="kbd-row"><kbd>Cmd</kbd> + <kbd>K</kbd> <span>Open Search</span></div>
-        <div class="kbd-row"><kbd>T</kbd> <span>Toggle Color Theme</span></div>
-        <div class="kbd-row"><kbd>?</kbd> <span>Show Keyboard Shortcuts</span></div>
-        <div class="kbd-row"><kbd>Esc</kbd> <span>Close Dialog / Drawer</span></div>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="/assets/main.js" defer></script>
-</body>
+      <ul class="nav-list" id="navlist" hidden><li><a href="/work/">Work</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li></ul>
+    </nav>
+    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" aria-label="Download resume PDF">
+      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
+    </a>
+    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#lora">LoRA fine-tuning</a></li><li><a href="#results">Results</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/projects/"><svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg> Projects</a></nav><div class="page-head"><h1>Smart MCQ solver: transformer ensemble with LoRA fine-tuning</h1><p class="deck">Applied machine learning, including parameter-efficient fine-tuning (LoRA) of two transformer models. MAP@3 0.74242 on Kaggle public leaderboard, 500 unseen questions.</p></div><div class="panel"><dl class="glance"><div><dt>Period</dt><dd>May 2026 to Jul 2026</dd></div><div><dt>Stack</dt><dd>Python, HuggingFace PEFT, DeBERTa-v3-base, RoBERTa-base, Weights and Biases</dd></div><div><dt>Metric</dt><dd>MAP@3</dd></div><div><dt>Evaluation</dt><dd>Kaggle public leaderboard, 500 unseen questions</dd></div></dl></div><h2 id="context">Context</h2><p>5-option MCQ ranking over 2,000 training questions. The objective is MAP@3: the mean average precision at 3, which rewards putting the correct answer in the top 3 ranked positions.</p><p>Four NLP architectures were benchmarked. DeBERTa-v3-base and RoBERTa-base produced the strongest individual scores; a weighted ensemble outperformed either alone.</p><h2 id="lora">LoRA fine-tuning</h2><div class="panel"><dl class="kv"><dt>Base models</dt><dd>microsoft/deberta-v3-base and roberta-base</dd><dt>Task type</dt><dd>SEQ_CLS (sequence classification)</dd><dt>LoRA rank r</dt><dd>8</dd><dt>Alpha</dt><dd>16</dd><dt>Dropout</dt><dd>0.1</dd><dt>Target modules</dt><dd>query_proj, value_proj (DeBERTa); query, value (RoBERTa)</dd><dt>Ensemble</dt><dd>70:30 DeBERTa:RoBERTa weighted blend</dd><dt>Logging</dt><dd>Weights and Biases run logs on disk</dd></dl></div><h2 id="results">Results</h2><ul class="outcome"><li>MAP@3 on Kaggle public leaderboard: <span class="mono">0.74242</span></li><li>Evaluated on 500 unseen questions (held-out test set, Kaggle public leaderboard)</li><li>Training set: 2,000 questions</li></ul><p class="sources small">Score from Kaggle public leaderboard. No private leaderboard rank is shown.</p><h2 id="limits">Limits</h2><ul class="limits"><li>Only the public leaderboard score is shown. No final private-set score is available.</li><li>This is parameter-efficient fine-tuning (LoRA/PEFT), not full fine-tuning or training from scratch.</li><li>The adapters are trained on course-provided data; no claims are made about generalization to other MCQ domains.</li></ul><nav class="pager" aria-label="Projects"><a href="/projects/comment-classification/"><svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg> Comment classification</a><a href="/projects/customer-exit/">Customer exit prediction <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
+<footer class="site-foot" role="contentinfo">
+  <div class="wrap">
+    <p>Figures recounted from project artefacts; last checked 2026-10-03.</p>
+    <ul class="foot-links">
+      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
+      <li><a href="/archive/" rel="noopener">Archive</a></li>
+      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+    </ul>
+  </div>
+</footer>
 </html>

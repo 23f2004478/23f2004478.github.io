@@ -1,281 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reliability, Security & Disaster Recovery | Krishnendu Biswas</title>
-  <meta name="description" content="Hourly health audits, encrypted backup capsules, offsite GitHub mirror, and clean VPS disaster recovery runbook.">
-  <link rel="canonical" href="https://krishnendu.me/work/reliability/">
-  <meta property="og:title" content="Reliability, Security & Disaster Recovery | Krishnendu Biswas">
-  <meta property="og:description" content="Hourly health audits, encrypted backup capsules, offsite GitHub mirror, and clean VPS disaster recovery runbook.">
-  <meta property="og:url" content="https://krishnendu.me/work/reliability/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Reliability, Security & Disaster Recovery | Krishnendu Biswas">
-  <meta name="twitter:description" content="Hourly health audits, encrypted backup capsules, offsite GitHub mirror, and clean VPS disaster recovery runbook.">
-  
-  <link rel="stylesheet" href="/assets/style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
-</head>
-<body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <a href="/" class="brand-link" aria-label="Krishnendu Biswas Home">
-          <span class="brand-name">Krishnendu Biswas</span>
-          <span class="brand-badge" aria-label="Portfolio version 2">v2</span>
-        </a>
-      </div>
-
-      <nav class="desktop-nav" aria-label="Main Navigation">
-        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link is-active" aria-current="page">Work</a><a href="/projects/" class="nav-link">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
-      </nav>
-
-      <div class="header-actions">
-        <button id="search-trigger" class="action-btn" aria-label="Open search dialog (Press Cmd+K or Ctrl+K)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span class="kbd-hint" aria-hidden="true">Cmd+K</span>
-        </button>
-
-        <button id="theme-toggle" class="action-btn" aria-label="Toggle theme (System / Light / Dark)">
-          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-        </button>
-
-        <button id="menu-toggle" class="mobile-menu-btn action-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-    <div class="drawer-header">
-      <span class="brand-name">Krishnendu Biswas</span>
-      <button id="drawer-close" class="action-btn" aria-label="Close mobile menu">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link is-active" aria-current="page">Work</a><a href="/projects/" class="drawer-link">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
-    </nav>
-    <div class="drawer-footer">
-      <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
-    </div>
-  </div>
-  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
-
-  
-        <nav class="breadcrumbs" aria-label="Breadcrumb">
-          <div class="container">
-            <ol class="breadcrumb-list">
-              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item"><a href="/work/">Work</a></li><li class="breadcrumb-item is-active" aria-current="page">Reliability</li>
-            </ol>
-          </div>
-        </nav>
-        
-
-  <main id="main-content">
-    
-    <section class="page-header">
-      <div class="container">
-        <div class="eyebrow">Case Study 04 &bull; Security &amp; Continuity</div>
-        <h1 class="page-title">Reliability, Security &amp; Disaster Recovery</h1>
-        <p class="page-lede">
-          Robust operating safeguards including hourly drift audits, encrypted backup capsules,
-          offsite release mirroring, and scripted VPS restoration.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="content-block">
-          <h2>Disaster Recovery Pipeline</h2>
-          <p>
-            The estate incorporates automated backup and recovery mechanisms designed to restore complete system operations
-            on a fresh Ubuntu VPS within minutes of a catastrophic cloud failure.
-          </p>
-        </div>
-
-        <div class="card mb-4">
-          <div class="card-header">
-            <h3 class="card-title">Disaster Recovery &amp; Security Pipeline</h3>
-            <span class="card-tag">Figure D6</span>
-          </div>
-          <div class="card-body">
-            <div class="diagram-wrap"><svg class="diag-wide" viewBox="0 0 720 220" width="720" height="220" role="img" aria-labelledby="d6-title d6-desc">
-  <title id="d6-title">Backup and Disaster Recovery Pipeline</title>
-  <desc id="d6-desc">Hourly health audits leading to encrypted backup capsules, offsite GitHub release mirroring, and scripted VPS restoration.</desc>
-  <defs>
-    <marker id="arrow6" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--accent)"/>
-    </marker>
-  </defs>
-
-  <rect x="10" y="10" width="700" height="200" rx="4" fill="var(--box)" stroke="var(--rule)"/>
-
-  <!-- Main Pipeline -->
-  <rect x="30" y="40" width="130" height="60" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
-  <text x="95" y="65" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">Hourly Audit</text>
-  <text x="95" y="82" font-family="var(--font-body)" font-size="9" fill="var(--muted)" text-anchor="middle">Medic Health Check</text>
-
-  <rect x="200" y="40" width="140" height="60" rx="3" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
-  <text x="270" y="65" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--accent)" text-anchor="middle">Encrypted Capsule</text>
-  <text x="270" y="82" font-family="var(--font-body)" font-size="9" fill="var(--ink)" text-anchor="middle">Encrypted Tarball</text>
-
-  <rect x="380" y="40" width="140" height="60" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
-  <text x="450" y="65" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">Offsite Mirror</text>
-  <text x="450" y="82" font-family="var(--font-body)" font-size="9" fill="var(--muted)" text-anchor="middle">GitHub Releases API</text>
-
-  <rect x="560" y="40" width="130" height="60" rx="3" fill="var(--paper)" stroke="var(--data-b)" stroke-width="1.5"/>
-  <text x="625" y="65" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--data-b)" text-anchor="middle">Scripted Restore</text>
-  <text x="625" y="82" font-family="var(--font-body)" font-size="9" fill="var(--ink)" text-anchor="middle">Fresh VPS Runbook</text>
-
-  <!-- Connectors -->
-  <line x1="160" y1="70" x2="195" y2="70" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow6)"/>
-  <line x1="340" y1="70" x2="375" y2="70" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow6)"/>
-  <line x1="520" y1="70" x2="555" y2="70" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow6)"/>
-
-  <!-- Security Rail -->
-  <rect x="30" y="130" width="660" height="50" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-dasharray="3,2"/>
-  <text x="50" y="152" font-family="var(--font-mono)" font-size="10" font-weight="600" fill="var(--accent)">Security Controls:</text>
-  <text x="175" y="152" font-family="var(--font-body)" font-size="9.5" fill="var(--ink)">Locked-down secrets handling &bull; Origin-bound credential vault &bull; Guard scripts on context files &bull; Zero secrets in chat</text>
-  <text x="50" y="168" font-family="var(--font-body)" font-size="9" fill="var(--muted)">All external integrations authenticate via OAuth 2.0 PKCE or token vault proxies.</text>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reliability and security | Krishnendu Biswas</title>
+<meta name="description" content="Three-layer reliability: hourly health checks, encrypted backup, scripted restore to fresh VPS.">
+<link rel="canonical" href="https://krishnendu.me/work/reliability/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://krishnendu.me/work/reliability/">
+<meta property="og:title" content="Reliability and security | Krishnendu Biswas">
+<meta property="og:description" content="Three-layer reliability: hourly health checks, encrypted backup, scripted restore to fresh VPS.">
+<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="stylesheet" href="../styles.css">
+<script src="../site.js" defer></script>
+</head><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
+<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="1.5"/><path d="M2 6l8 5 8-5"/></symbol>
+<symbol id="i-linkedin" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="15" height="15" rx="2.5"/><path d="M6 8.5v5M6 6v.01M9.5 13.5v-3c0-1.1.9-2 2-2s2 .9 2 2v3"/><path d="M9.5 10.5v3"/></symbol>
+<symbol id="i-github" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15c-2.2-.5-4-2.5-4-5a6 6 0 0112 0c0 2.5-1.8 4.5-4 5"/><path d="M10 4a4 4 0 00-4 4v.5c0 1 .5 2 1.5 2.5"/><path d="M10 4a4 4 0 014 4v.5c0 1-.5 2-1.5 2.5"/><path d="M7.5 17v-2c0-1 .5-1.5 1-1.5h3c.5 0 1 .5 1 1.5v2"/><path d="M6.5 17c.5-1.5.5-2.5 0-3.5M13.5 17c-.5-1.5-.5-2.5 0-3.5"/></symbol>
+<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13h5"/></symbol>
+<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
+<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
+<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
+<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
+<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
+<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
+<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
+<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
 </svg>
-<details class="diagram-data-toggle">
-  <summary>Show data: Reliability and Security Controls</summary>
-  <div class="table-wrap diagram-table">
-    <table>
-      <thead>
-        <tr>
-          <th>Stage</th>
-          <th>Frequency / Trigger</th>
-          <th>Mechanism</th>
-          <th>Security Guardrail</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Health Audit</td>
-          <td>Hourly cron</td>
-          <td>Medic profile checks daemons, disk usage, and state integrity</td>
-          <td>Read-only inspection</td>
-        </tr>
-        <tr>
-          <td>Backup Capsule</td>
-          <td>Daily cron / manual</td>
-          <td>Encrypted archive containing memory ledgers, skills, and configuration</td>
-          <td>Symmetric AES-256 encryption with offline keys</td>
-        </tr>
-        <tr>
-          <td>Offsite Mirror</td>
-          <td>Post-backup</td>
-          <td>Uploaded to private GitHub Releases via authenticated API</td>
-          <td>Encrypted payload; no plaintext storage</td>
-        </tr>
-        <tr>
-          <td>Disaster Recovery</td>
-          <td>On-demand</td>
-          <td>Automated bash restore script deploying to clean Ubuntu VPS</td>
-          <td>Full state recovery verified by runbook</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</details></div>
-          </div>
-        </div>
-
-        <div class="content-block">
-          <h2>Security Controls &amp; Invariants</h2>
-          <ul>
-            <li><strong>Restricted File Permissions:</strong> Sensitive configuration files are restricted to local owner read/write permissions (chmod 600/700).</li>
-            <li><strong>Credential Vault:</strong> Secrets and API keys are stored in encrypted vaults with origin-bound autofill, preventing token leakage into chat contexts.</li>
-            <li><strong>Integrity Guard Scripts:</strong> Automated pre-commit and post-edit guard scripts enforce strict schema consistency on all context markdown files.</li>
-            <li><strong>Medic Audit Daemon:</strong> Hourly medic health checks verify systemd service states, disk capacity, and memory ledger health.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-    
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-col">
-        <h3 class="footer-heading">Krishnendu Biswas</h3>
-        <p class="footer-desc">AI agent systems, machine learning engineering, and deterministic data pipelines.</p>
-        <p class="footer-contact">
-          <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a><br>
-          <a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/krshnndu</a><br>
-          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">github.com/krshnndu</a>
-        </p>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-subheading">Navigation</h4>
-        <ul class="footer-links">
-          <li><a href="/work/">Work &amp; Agent Systems</a></li>
-          <li><a href="/projects/">ML &amp; Analytics Projects</a></li>
-          <li><a href="/internships/">Internships &amp; Experience</a></li>
-          <li><a href="/credentials/">Credentials &amp; Education</a></li>
-          <li><a href="/about/">About &amp; Philosophy</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-subheading">Verification &amp; Artifacts</h4>
-        <ul class="footer-links">
-          <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" download>Verified Resume (PDF)</a></li>
-          <li><a href="https://github.com/krshnndu/krshnndu.github.io" target="_blank" rel="noopener noreferrer">Source Repository</a></li>
-          <li><a href="/about/#verification">Fact Grounding Standard</a></li>
-          <li><span class="footer-meta">Zero third-party trackers</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="container footer-bottom">
-      <p class="footer-copy">&copy; 2026 Krishnendu Biswas. Built with semantic HTML, vanilla CSS, and accessible vector graphics.</p>
-      <button id="back-to-top" class="back-to-top" aria-label="Back to top">
-        <span>Top</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="site-head" role="banner">
+  <div class="wrap head-in">
+    <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main">
+      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
+        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
       </button>
-    </div>
-  </footer>
-
-  <!-- Search Modal -->
-  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
-    <div class="search-dialog-inner">
-      <div class="search-header">
-        <label for="search-input" id="search-dialog-title" class="sr-only">Search krishnendu.me</label>
-        <input type="search" id="search-input" class="search-input" placeholder="Search systems, projects, metrics, skills..." autocomplete="off">
-        <button id="search-close" class="action-btn" aria-label="Close search dialog">Esc</button>
-      </div>
-      <div id="search-results" class="search-results" role="region" aria-live="polite">
-        <p class="search-empty">Type keywords to search across all 18 pages...</p>
-      </div>
-    </div>
-  </dialog>
-
-  <!-- Keyboard Shortcuts Dialog -->
-  <dialog id="kbd-dialog" class="kbd-dialog" aria-labelledby="kbd-dialog-title">
-    <div class="kbd-dialog-inner">
-      <div class="kbd-header">
-        <h3 id="kbd-dialog-title">Keyboard Shortcuts</h3>
-        <button id="kbd-close" class="action-btn" aria-label="Close shortcuts dialog">Esc</button>
-      </div>
-      <div class="kbd-body">
-        <div class="kbd-row"><kbd>Cmd</kbd> + <kbd>K</kbd> <span>Open Search</span></div>
-        <div class="kbd-row"><kbd>T</kbd> <span>Toggle Color Theme</span></div>
-        <div class="kbd-row"><kbd>?</kbd> <span>Show Keyboard Shortcuts</span></div>
-        <div class="kbd-row"><kbd>Esc</kbd> <span>Close Dialog / Drawer</span></div>
-      </div>
-    </div>
-  </dialog>
-
-  <script src="/assets/main.js" defer></script>
-</body>
+      <ul class="nav-list" id="navlist" hidden><li><a href="/work/" aria-current="page">Work</a></li><li><a href="/projects/">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li></ul>
+    </nav>
+    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" aria-label="Download resume PDF">
+      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
+    </a>
+    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+      <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+      <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+    </button>
+  </div>
+</header>
+<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/work/"><svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg> Work</a></nav><div class="page-head"><h1>Reliability and security</h1><p class="deck">Encrypted backup capsules, GitHub Releases offsite mirror, scripted restore, hourly health checks.</p></div><div class="banner"><p>Built on <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a> (open source, Nous Research). I did not write Hermes; many skills are third-party. I designed the partitioning, routing, guardrails, and the scripts that hold them together.</p></div><h2 id="context">Context</h2><p>A single-server AI platform is fragile. A disk failure or misconfigured update should be recoverable from a fresh VPS in one scripted run. The reliability design has three layers: detection (hourly health checks), backup (encrypted capsules mirrored offsite), and restore (scripted, tested procedure).</p><h2 id="architecture">Architecture</h2><ul class='timeline'><li><strong>Hourly health checks</strong>: medic profile audits all profile daemons, cron jobs, and key scripts</li><li><strong>Encrypted backup capsules</strong>: periodic snapshots encrypted at rest</li><li><strong>Offsite mirror</strong>: GitHub Releases, rolling 3-release retention</li><li><strong>Scripted restore</strong>: clone to running platform on a fresh VPS</li><li><strong>Secrets handling</strong>: credential vault with origin-bound fill; no secrets in chat or logs</li></ul><h2 id="limits">Limits</h2><ul class='limits'><li>No restore time is claimed; the procedure has not been tested under production load.</li><li>GitHub Releases is a single-provider offsite target; a GitHub outage would block offsite access.</li></ul><nav class="pager" aria-label="Case studies"><a href="/work/memory/"><svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg> Memory</a><a href="/work/finance/">Finance ledger <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
+<footer class="site-foot" role="contentinfo">
+  <div class="wrap">
+    <p>Figures recounted from project artefacts; last checked 2026-10-03.</p>
+    <ul class="foot-links">
+      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
+      <li><a href="/archive/" rel="noopener">Archive</a></li>
+      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+    </ul>
+  </div>
+</footer>
 </html>
