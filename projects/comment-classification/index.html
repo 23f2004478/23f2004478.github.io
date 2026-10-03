@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comment Classification Machine Learning Case Study | Krishnendu Biswas</title>
+  <meta name="description" content="Feature engineering over 198K comments, 100-trial Optuna LightGBM study, and 3-model blend reaching 0.8293 F1-Macro.">
+  <link rel="canonical" href="https://krishnendu.me/projects/comment-classification/">
+  <meta property="og:title" content="Comment Classification Machine Learning Case Study | Krishnendu Biswas">
+  <meta property="og:description" content="Feature engineering over 198K comments, 100-trial Optuna LightGBM study, and 3-model blend reaching 0.8293 F1-Macro.">
+  <meta property="og:url" content="https://krishnendu.me/projects/comment-classification/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Comment Classification Machine Learning Case Study | Krishnendu Biswas">
+  <meta name="twitter:description" content="Feature engineering over 198K comments, 100-trial Optuna LightGBM study, and 3-model blend reaching 0.8293 F1-Macro.">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="Krishnendu Biswas Home">
+          <span class="brand-name">Krishnendu Biswas</span>
+          <span class="brand-badge" aria-label="Portfolio version 2">v2</span>
+        </a>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link is-active" aria-current="page">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="search-trigger" class="action-btn" aria-label="Open search dialog (Press Cmd+K or Ctrl+K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="kbd-hint" aria-hidden="true">Cmd+K</span>
+        </button>
+
+        <button id="theme-toggle" class="action-btn" aria-label="Toggle theme (System / Light / Dark)">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button id="menu-toggle" class="mobile-menu-btn action-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <span class="brand-name">Krishnendu Biswas</span>
+      <button id="drawer-close" class="action-btn" aria-label="Close mobile menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link is-active" aria-current="page">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
+    </div>
+  </div>
+  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+  
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <div class="container">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item"><a href="/projects/">Projects</a></li><li class="breadcrumb-item is-active" aria-current="page">Comment Classification</li>
+            </ol>
+          </div>
+        </nav>
+        
+
+  <main id="main-content">
+    
+    <section class="page-header">
+      <div class="container">
+        <div class="eyebrow">Project Case Study &bull; NLP &amp; Ensembles</div>
+        <h1 class="page-title">Comment Classification: Feature Engineering &amp; Predictive Modelling</h1>
+        <p class="page-lede">
+          Class-imbalanced text classification over 198K comments, feature screening, 100-trial Optuna LightGBM tuning,
+          and Nelder-Mead 3-model blend optimization achieving 0.8293 F1-Macro on 39.6K held-out rows.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3 mb-4">
+          <div class="stat-card">
+            <div class="stat-value">0.8293</div>
+            <div class="stat-label">3-Model Blend F1-Macro</div>
+            <div class="stat-sub">Evaluated on 39.6K held-out rows</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">198K</div>
+            <div class="stat-label">Comments Analyzed</div>
+            <div class="stat-sub">Across 4 imbalanced label classes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">100</div>
+            <div class="stat-label">Optuna Study Trials</div>
+            <div class="stat-sub">0.807 CV F1, 62 trials pruned</div>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-header">
+            <h2 class="card-title">Validation F1-Macro Comparison</h2>
+            <span class="card-tag">Figure D8</span>
+          </div>
+          <div class="card-body">
+            <div class="diagram-wrap"><svg viewBox="0 0 720 240" width="720" height="240" role="img" aria-labelledby="d8-title d8-desc">
+  <title id="d8-title">Comment Classification F1-Macro by Model</title>
+  <desc id="d8-desc">Validation F1-Macro score comparison: Logistic Regression (0.6221), LightGBM (0.8202), and 3-Model Blend (0.8293) on 39.6K held-out rows.</desc>
+  
+  <rect x="10" y="10" width="700" height="220" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Chart Area -->
+  <!-- Y-Axis Gridlines & Labels -->
+  <g font-family="var(--font-mono)" font-size="10" fill="var(--muted)">
+    <text x="40" y="180">0.0</text>
+    <text x="40" y="145">0.3</text>
+    <text x="40" y="110">0.6</text>
+    <text x="40" y="75">0.9</text>
+    <line x1="70" y1="175" x2="680" y2="175" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="70" y1="140" x2="680" y2="140" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="70" y1="105" x2="680" y2="105" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="70" y1="70" x2="680" y2="70" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+  </g>
+
+  <!-- Bar 1: Logistic Regression (0.6221) -->
+  <!-- Height calculation: 0.6221 * 116.6px = 72.5px; y = 175 - 72.5 = 102.5 -->
+  <rect x="120" y="102.5" width="100" height="72.5" rx="3" fill="var(--data-b)"/>
+  <text x="170" y="92" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">0.6221</text>
+  <text x="170" y="195" font-family="var(--font-body)" font-size="11" fill="var(--ink)" text-anchor="middle">Logistic Regression</text>
+  <text x="170" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">Baseline n-grams</text>
+
+  <!-- Bar 2: LightGBM Tuned (0.8202) -->
+  <!-- Height: 0.8202 * 116.6 = 95.6px; y = 175 - 95.6 = 79.4 -->
+  <rect x="310" y="79.4" width="100" height="95.6" rx="3" fill="var(--data-n)"/>
+  <text x="360" y="69" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">0.8202</text>
+  <text x="360" y="195" font-family="var(--font-body)" font-size="11" fill="var(--ink)" text-anchor="middle">LightGBM (Tuned)</text>
+  <text x="360" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">100-Trial Optuna</text>
+
+  <!-- Bar 3: 3-Model Blend (0.8293) -->
+  <!-- Height: 0.8293 * 116.6 = 96.7px; y = 175 - 96.7 = 78.3 -->
+  <rect x="500" y="78.3" width="100" height="96.7" rx="3" fill="var(--accent)"/>
+  <text x="550" y="68" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--accent)" text-anchor="middle">0.8293</text>
+  <text x="550" y="195" font-family="var(--font-body)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">3-Model Blend</text>
+  <text x="550" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" text-anchor="middle">+0.0091 Blend Gain</text>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: Comment Classification Evaluation</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Model Architecture</th>
+          <th>F1-Macro Score</th>
+          <th>Held-out Test Rows</th>
+          <th>Tuning &amp; Optimization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Logistic Regression</td>
+          <td>0.6221</td>
+          <td>39.6K rows</td>
+          <td>Baseline text features and TF-IDF n-grams</td>
+        </tr>
+        <tr>
+          <td>LightGBM</td>
+          <td>0.8202</td>
+          <td>39.6K rows</td>
+          <td>100-trial Optuna hyperparameter study (0.807 CV F1, 62 trials pruned)</td>
+        </tr>
+        <tr>
+          <td>3-Model Ensemble Blend</td>
+          <td>0.8293</td>
+          <td>39.6K rows</td>
+          <td>Nelder-Mead class probability threshold optimization</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Methodology &amp; Engineering Decisions</h2>
+          <h3>1. Feature Engineering &amp; Statistical Screening</h3>
+          <p>
+            Engineered over 10,000 word and character-level n-grams combined with behavioral text signals.
+            Screened 11 tabular predictors across 198K rows using chi-square and Kruskal-Wallis statistical tests,
+            ranking predictors on test statistics to eliminate noisy dimensions.
+          </p>
+
+          <h3>2. Hyperparameter Optimization</h3>
+          <p>
+            Conducted a 100-trial Optuna study optimizing 10 hyperparameters for LightGBM.
+            Implemented median pruning on 3-fold cross-validation, pruning 62 unpromising trials early to focus compute
+            on high-potential regions, reaching a best cross-validation score of 0.807 CV F1.
+          </p>
+
+          <h3>3. Ensemble Optimization</h3>
+          <p>
+            Combined baseline models into a 3-model blend. Using Nelder-Mead simplex optimization to tune 4 per-class
+            probability decision thresholds, the ensemble achieved a 0.8293 F1-Macro score on the 39.6K held-out evaluation dataset,
+            representing a +0.0091 gain over the tuned standalone LightGBM model.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h3 class="footer-heading">Krishnendu Biswas</h3>
+        <p class="footer-desc">AI agent systems, machine learning engineering, and deterministic data pipelines.</p>
+        <p class="footer-contact">
+          <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a><br>
+          <a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/krshnndu</a><br>
+          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">github.com/krshnndu</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/work/">Work &amp; Agent Systems</a></li>
+          <li><a href="/projects/">ML &amp; Analytics Projects</a></li>
+          <li><a href="/internships/">Internships &amp; Experience</a></li>
+          <li><a href="/credentials/">Credentials &amp; Education</a></li>
+          <li><a href="/about/">About &amp; Philosophy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Verification &amp; Artifacts</h4>
+        <ul class="footer-links">
+          <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" download>Verified Resume (PDF)</a></li>
+          <li><a href="https://github.com/krshnndu/krshnndu.github.io" target="_blank" rel="noopener noreferrer">Source Repository</a></li>
+          <li><a href="/about/#verification">Fact Grounding Standard</a></li>
+          <li><span class="footer-meta">Zero third-party trackers</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Krishnendu Biswas. Built with semantic HTML, vanilla CSS, and accessible vector graphics.</p>
+      <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <span>Top</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-inner">
+      <div class="search-header">
+        <label for="search-input" id="search-dialog-title" class="sr-only">Search krishnendu.me</label>
+        <input type="search" id="search-input" class="search-input" placeholder="Search systems, projects, metrics, skills..." autocomplete="off">
+        <button id="search-close" class="action-btn" aria-label="Close search dialog">Esc</button>
+      </div>
+      <div id="search-results" class="search-results" role="region" aria-live="polite">
+        <p class="search-empty">Type keywords to search across all 18 pages...</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Keyboard Shortcuts Dialog -->
+  <dialog id="kbd-dialog" class="kbd-dialog" aria-labelledby="kbd-dialog-title">
+    <div class="kbd-dialog-inner">
+      <div class="kbd-header">
+        <h3 id="kbd-dialog-title">Keyboard Shortcuts</h3>
+        <button id="kbd-close" class="action-btn" aria-label="Close shortcuts dialog">Esc</button>
+      </div>
+      <div class="kbd-body">
+        <div class="kbd-row"><kbd>Cmd</kbd> + <kbd>K</kbd> <span>Open Search</span></div>
+        <div class="kbd-row"><kbd>T</kbd> <span>Toggle Color Theme</span></div>
+        <div class="kbd-row"><kbd>?</kbd> <span>Show Keyboard Shortcuts</span></div>
+        <div class="kbd-row"><kbd>Esc</kbd> <span>Close Dialog / Drawer</span></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

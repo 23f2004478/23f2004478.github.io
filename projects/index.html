@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Machine Learning & Data Science Projects | Krishnendu Biswas</title>
+  <meta name="description" content="Portfolio of machine learning models, transformer fine-tuning, clustering, and econometrics projects by Krishnendu Biswas.">
+  <link rel="canonical" href="https://krishnendu.me/projects/">
+  <meta property="og:title" content="Machine Learning & Data Science Projects | Krishnendu Biswas">
+  <meta property="og:description" content="Portfolio of machine learning models, transformer fine-tuning, clustering, and econometrics projects by Krishnendu Biswas.">
+  <meta property="og:url" content="https://krishnendu.me/projects/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Machine Learning & Data Science Projects | Krishnendu Biswas">
+  <meta name="twitter:description" content="Portfolio of machine learning models, transformer fine-tuning, clustering, and econometrics projects by Krishnendu Biswas.">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="Krishnendu Biswas Home">
+          <span class="brand-name">Krishnendu Biswas</span>
+          <span class="brand-badge" aria-label="Portfolio version 2">v2</span>
+        </a>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link is-active" aria-current="page">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="search-trigger" class="action-btn" aria-label="Open search dialog (Press Cmd+K or Ctrl+K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="kbd-hint" aria-hidden="true">Cmd+K</span>
+        </button>
+
+        <button id="theme-toggle" class="action-btn" aria-label="Toggle theme (System / Light / Dark)">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button id="menu-toggle" class="mobile-menu-btn action-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <span class="brand-name">Krishnendu Biswas</span>
+      <button id="drawer-close" class="action-btn" aria-label="Close mobile menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link is-active" aria-current="page">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
+    </div>
+  </div>
+  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+  
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <div class="container">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item is-active" aria-current="page">Projects</li>
+            </ol>
+          </div>
+        </nav>
+        
+
+  <main id="main-content">
+    
+    <section class="page-header">
+      <div class="container">
+        <div class="eyebrow">Machine Learning &bull; Analytics &bull; Econometrics</div>
+        <h1 class="page-title">Data Science &amp; Machine Learning Projects</h1>
+        <p class="page-lede">
+          Applied machine learning, transformer optimization, clustering, and econometric research
+          with full metric verification, reproducible notebooks, and rigorous validation.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-2 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">NLP &bull; Classification</span>
+              <span class="card-tag">F1-Macro 0.8293</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/comment-classification/">Toxic Comment Classification</a></h2>
+            <p class="card-text">Feature engineering over 198K comments, 100-trial Optuna hyperparameter study (0.807 CV F1), and Nelder-Mead 3-model blend optimization reaching 0.8293 F1-Macro on 39.6K held-out rows.</p>
+            <div class="my-3"><div class="diagram-wrap"><svg viewBox="0 0 720 240" width="720" height="240" role="img" aria-labelledby="d8-title d8-desc">
+  <title id="d8-title">Comment Classification F1-Macro by Model</title>
+  <desc id="d8-desc">Validation F1-Macro score comparison: Logistic Regression (0.6221), LightGBM (0.8202), and 3-Model Blend (0.8293) on 39.6K held-out rows.</desc>
+  
+  <rect x="10" y="10" width="700" height="220" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Chart Area -->
+  <!-- Y-Axis Gridlines & Labels -->
+  <g font-family="var(--font-mono)" font-size="10" fill="var(--muted)">
+    <text x="40" y="180">0.0</text>
+    <text x="40" y="145">0.3</text>
+    <text x="40" y="110">0.6</text>
+    <text x="40" y="75">0.9</text>
+    <line x1="70" y1="175" x2="680" y2="175" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="70" y1="140" x2="680" y2="140" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="70" y1="105" x2="680" y2="105" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+    <line x1="70" y1="70" x2="680" y2="70" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2,2"/>
+  </g>
+
+  <!-- Bar 1: Logistic Regression (0.6221) -->
+  <!-- Height calculation: 0.6221 * 116.6px = 72.5px; y = 175 - 72.5 = 102.5 -->
+  <rect x="120" y="102.5" width="100" height="72.5" rx="3" fill="var(--data-b)"/>
+  <text x="170" y="92" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">0.6221</text>
+  <text x="170" y="195" font-family="var(--font-body)" font-size="11" fill="var(--ink)" text-anchor="middle">Logistic Regression</text>
+  <text x="170" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">Baseline n-grams</text>
+
+  <!-- Bar 2: LightGBM Tuned (0.8202) -->
+  <!-- Height: 0.8202 * 116.6 = 95.6px; y = 175 - 95.6 = 79.4 -->
+  <rect x="310" y="79.4" width="100" height="95.6" rx="3" fill="var(--data-n)"/>
+  <text x="360" y="69" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">0.8202</text>
+  <text x="360" y="195" font-family="var(--font-body)" font-size="11" fill="var(--ink)" text-anchor="middle">LightGBM (Tuned)</text>
+  <text x="360" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">100-Trial Optuna</text>
+
+  <!-- Bar 3: 3-Model Blend (0.8293) -->
+  <!-- Height: 0.8293 * 116.6 = 96.7px; y = 175 - 96.7 = 78.3 -->
+  <rect x="500" y="78.3" width="100" height="96.7" rx="3" fill="var(--accent)"/>
+  <text x="550" y="68" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--accent)" text-anchor="middle">0.8293</text>
+  <text x="550" y="195" font-family="var(--font-body)" font-size="11" font-weight="600" fill="var(--ink)" text-anchor="middle">3-Model Blend</text>
+  <text x="550" y="210" font-family="var(--font-mono)" font-size="9" fill="var(--accent)" text-anchor="middle">+0.0091 Blend Gain</text>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: Comment Classification Evaluation</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Model Architecture</th>
+          <th>F1-Macro Score</th>
+          <th>Held-out Test Rows</th>
+          <th>Tuning &amp; Optimization</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Logistic Regression</td>
+          <td>0.6221</td>
+          <td>39.6K rows</td>
+          <td>Baseline text features and TF-IDF n-grams</td>
+        </tr>
+        <tr>
+          <td>LightGBM</td>
+          <td>0.8202</td>
+          <td>39.6K rows</td>
+          <td>100-trial Optuna hyperparameter study (0.807 CV F1, 62 trials pruned)</td>
+        </tr>
+        <tr>
+          <td>3-Model Ensemble Blend</td>
+          <td>0.8293</td>
+          <td>39.6K rows</td>
+          <td>Nelder-Mead class probability threshold optimization</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div></div>
+            <a href="/projects/comment-classification/" class="btn btn-secondary btn-sm">Read Full Project Case Study</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">BFSI &bull; Retention</span>
+              <span class="card-tag">Val F1 0.6365</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/customer-exit/">Customer Exit Churn Prediction</a></h2>
+            <p class="card-text">Predictive modelling across 90,000 banking customer records. Benchmarked 8 classifiers; tuned Random Forest won with 0.6365 validation F1 (0.6456 CV F1) prioritizing minority churn recall.</p>
+            <div class="my-3"><div class="diagram-wrap"><svg viewBox="0 0 740 340" width="740" height="340" role="img" aria-labelledby="d9-title d9-desc">
+  <title id="d9-title">Customer Exit Prediction Classifier Benchmarks</title>
+  <desc id="d9-desc">Validation F1 scores across 8 baseline classifiers and 3 tuned models on 90,000 banking churn records.</desc>
+  
+  <rect x="10" y="10" width="720" height="320" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Panel 1: 8 Baseline Classifiers -->
+  <text x="25" y="32" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)">Validation F1 Across 8 Initial Classifiers (90,000 Rows)</text>
+  
+  <g font-family="var(--font-mono)" font-size="10" fill="var(--ink)">
+    <!-- 1. AdaBoost: 0.4604 -->
+    <text x="25" y="58">AdaBoost</text>
+    <rect x="140" y="47" width="184" height="15" rx="2" fill="var(--data-n)"/>
+    <text x="330" y="58" fill="var(--muted)">0.4604</text>
+
+    <!-- 2. Decision Tree: 0.5033 -->
+    <text x="25" y="80">Decision Tree</text>
+    <rect x="140" y="69" width="201" height="15" rx="2" fill="var(--data-n)"/>
+    <text x="347" y="80" fill="var(--muted)">0.5033</text>
+
+    <!-- 3. Logistic Reg: 0.5509 -->
+    <text x="25" y="102">Logistic Reg.</text>
+    <rect x="140" y="91" width="220" height="15" rx="2" fill="var(--data-n)"/>
+    <text x="366" y="102" fill="var(--muted)">0.5509</text>
+
+    <!-- 4. Extra Trees: 0.5736 -->
+    <text x="25" y="124">Extra Trees</text>
+    <rect x="140" y="113" width="229" height="15" rx="2" fill="var(--data-n)"/>
+    <text x="375" y="124" fill="var(--muted)">0.5736</text>
+
+    <!-- 5. Random Forest: 0.5796 -->
+    <text x="25" y="146">Random Forest</text>
+    <rect x="140" y="135" width="232" height="15" rx="2" fill="var(--data-b)"/>
+    <text x="378" y="146" fill="var(--muted)">0.5796</text>
+
+    <!-- 6. Gradient Boost: 0.6006 -->
+    <text x="25" y="168">Gradient Boost</text>
+    <rect x="140" y="157" width="240" height="15" rx="2" fill="var(--data-n)"/>
+    <text x="386" y="168" fill="var(--muted)">0.6006</text>
+
+    <!-- 7. XGBoost: 0.6277 -->
+    <text x="25" y="190">XGBoost (GPU)</text>
+    <rect x="140" y="179" width="251" height="15" rx="2" fill="var(--accent)"/>
+    <text x="397" y="190" fill="var(--accent)">0.6277</text>
+
+    <!-- 8. LightGBM: 0.6277 -->
+    <text x="25" y="212">LightGBM (GPU)</text>
+    <rect x="140" y="201" width="251" height="15" rx="2" fill="var(--accent)"/>
+    <text x="397" y="212" fill="var(--accent)">0.6277</text>
+  </g>
+
+  <!-- Panel 2: Tuned Models Box -->
+  <g transform="translate(450, 40)">
+    <rect x="0" y="0" width="260" height="180" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+    <text x="15" y="25" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--accent)">Tuned Models (RandomizedSearchCV)</text>
+    
+    <g font-family="var(--font-mono)" font-size="10" fill="var(--ink)">
+      <text x="15" y="55">Tuned XGBoost:</text>
+      <text x="185" y="55" font-weight="600">F1 0.6309</text>
+
+      <text x="15" y="80">Tuned LightGBM:</text>
+      <text x="185" y="80" font-weight="600">F1 0.6334</text>
+
+      <line x1="15" y1="95" x2="245" y2="95" stroke="var(--rule)"/>
+
+      <text x="15" y="115" font-weight="600" fill="var(--accent)">Tuned Random Forest (Winner):</text>
+      <text x="25" y="135" fill="var(--ink)">Validation F1:</text>
+      <text x="185" y="135" font-weight="600" fill="var(--accent)">0.6365</text>
+      <text x="25" y="152" fill="var(--muted)">Best CV F1: 0.6456 &bull; Acc: 0.8414</text>
+      <text x="25" y="167" fill="var(--muted)">Precision: 0.6181 &bull; Recall: 0.6561</text>
+    </g>
+  </g>
+
+  <!-- Honest Note Footer -->
+  <rect x="25" y="240" width="685" height="70" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="40" y="262" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)">Imbalance Metric Judgement:</text>
+  <text x="40" y="280" font-family="var(--font-body)" font-size="10" fill="var(--ink)">Accuracy (0.8414) flatters a skewed class distribution where non-churn dominates. F1 (0.6365) and CV F1 (0.6456)</text>
+  <text x="40" y="296" font-family="var(--font-body)" font-size="10" fill="var(--muted)">honestly balance precision (0.6181) and recall (0.6561). Target evaluation focuses on minority churn retention.</text>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: Customer Exit Model Comparison</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Classifier</th>
+          <th>Initial Val F1</th>
+          <th>Tuned Val F1</th>
+          <th>Accuracy</th>
+          <th>Precision / Recall</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Random Forest</td>
+          <td>0.5796</td>
+          <td><strong>0.6365</strong> (Winner)</td>
+          <td>0.8414</td>
+          <td>P: 0.6181 / R: 0.6561 (CV F1: 0.6456)</td>
+        </tr>
+        <tr>
+          <td>LightGBM (GPU)</td>
+          <td>0.6277</td>
+          <td>0.6334</td>
+          <td>-</td>
+          <td>RandomizedSearchCV optimized</td>
+        </tr>
+        <tr>
+          <td>XGBoost (GPU)</td>
+          <td>0.6277</td>
+          <td>0.6309</td>
+          <td>-</td>
+          <td>RandomizedSearchCV optimized</td>
+        </tr>
+        <tr>
+          <td>Gradient Boosting</td>
+          <td>0.6006</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Baseline benchmark</td>
+        </tr>
+        <tr>
+          <td>Extra Trees</td>
+          <td>0.5736</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Baseline benchmark</td>
+        </tr>
+        <tr>
+          <td>Logistic Regression</td>
+          <td>0.5509</td>
+          <td>-</td>
+          <td>-</td>
+          <td>IterativeImputer + Scaler</td>
+        </tr>
+        <tr>
+          <td>Decision Tree</td>
+          <td>0.5033</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Gini impurity split criterion</td>
+        </tr>
+        <tr>
+          <td>AdaBoost</td>
+          <td>0.4604</td>
+          <td>-</td>
+          <td>-</td>
+          <td>Baseline benchmark</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div></div>
+            <a href="/projects/customer-exit/" class="btn btn-secondary btn-sm">Read Full Project Case Study</a>
+          </div>
+        </div>
+
+        <div class="grid grid-2 mb-4">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">GenAI &bull; PEFT</span>
+              <span class="card-tag">MAP@3 0.74242</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/mcq/">Smart MCQ Solver (LoRA Fine-Tuning)</a></h2>
+            <p class="card-text">Parameter-efficient fine-tuning of DeBERTa-v3-base and RoBERTa-base (r=8, alpha=16, dropout 0.1) in a 70:30 probability ensemble, scoring 0.74242 MAP@3 on Kaggle public leaderboard.</p>
+            <div class="my-3"><div class="diagram-wrap"><svg class="diag-wide" viewBox="0 0 720 220" width="720" height="220" role="img" aria-labelledby="d10-title d10-desc">
+  <title id="d10-title">Smart MCQ LoRA Architecture &amp; Ensemble Flow</title>
+  <desc id="d10-desc">Parameter-efficient fine-tuning on DeBERTa-v3 and RoBERTa base models combined in a 70:30 ensemble achieving 0.74242 MAP@3.</desc>
+  <defs>
+    <marker id="arrow10" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="700" height="200" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Model 1: DeBERTa-v3 -->
+  <rect x="30" y="30" width="220" height="70" rx="3" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="45" y="52" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--accent)">microsoft/deberta-v3-base</text>
+  <text x="45" y="70" font-family="var(--font-body)" font-size="10" fill="var(--ink)">LoRA r=8, alpha=16, dropout=0.1</text>
+  <text x="45" y="86" font-family="var(--font-mono)" font-size="9" fill="var(--muted)">Target: query_proj, value_proj</text>
+
+  <!-- Model 2: RoBERTa-base -->
+  <rect x="30" y="115" width="220" height="70" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="45" y="137" font-family="var(--font-mono)" font-size="11" font-weight="600" fill="var(--ink)">roberta-base</text>
+  <text x="45" y="155" font-family="var(--font-body)" font-size="10" fill="var(--ink)">LoRA r=8, alpha=16, dropout=0.1</text>
+  <text x="45" y="171" font-family="var(--font-mono)" font-size="9" fill="var(--muted)">Target: query, value</text>
+
+  <!-- Ensemble Node -->
+  <rect x="310" y="70" width="150" height="75" rx="3" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+  <text x="385" y="96" font-family="var(--font-display)" font-size="12" font-weight="600" fill="var(--accent)" text-anchor="middle">70:30 Ensemble</text>
+  <text x="385" y="114" font-family="var(--font-body)" font-size="10" fill="var(--ink)" text-anchor="middle">70% DeBERTa + 30% RoBERTa</text>
+  <text x="385" y="130" font-family="var(--font-mono)" font-size="9" fill="var(--muted)" text-anchor="middle">Probability Average</text>
+
+  <!-- Output / Metric Tile (D11 integrated) -->
+  <rect x="520" y="55" width="170" height="105" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="605" y="82" font-family="var(--font-mono)" font-size="11" fill="var(--muted)" text-anchor="middle">MAP@3 Metric</text>
+  <text x="605" y="118" font-family="var(--font-mono)" font-size="22" font-weight="600" fill="var(--accent)" text-anchor="middle">0.74242</text>
+  <text x="605" y="142" font-family="var(--font-body)" font-size="9.5" fill="var(--ink)" text-anchor="middle">Kaggle public leaderboard</text>
+
+  <!-- Connectors -->
+  <path d="M 250 65 L 305 95" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
+  <path d="M 250 150 L 305 120" fill="none" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
+  <line x1="460" y1="107" x2="515" y2="107" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow10)"/>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: Smart MCQ Fine-Tuning &amp; Evaluation</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Base Model</th>
+          <th>PEFT Method</th>
+          <th>LoRA Hyperparameters</th>
+          <th>Ensemble Weight</th>
+          <th>Public Leaderboard MAP@3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>microsoft/deberta-v3-base</td>
+          <td>LoRA (SEQ_CLS)</td>
+          <td>r=8, alpha=16, dropout=0.1 on query_proj, value_proj</td>
+          <td>70%</td>
+          <td rowspan="2"><strong>0.74242 MAP@3</strong> (evaluated on 500 unseen questions on Kaggle public leaderboard)</td>
+        </tr>
+        <tr>
+          <td>roberta-base</td>
+          <td>LoRA (SEQ_CLS)</td>
+          <td>r=8, alpha=16, dropout=0.1 on query, value</td>
+          <td>30%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div></div>
+            <a href="/projects/mcq/" class="btn btn-secondary btn-sm">Read Full Project Case Study</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">BI &bull; Data Modelling</span>
+              <span class="card-tag">50,000 Fact Rows</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/vc-dashboard/">VC Deal Analytics Power BI Dashboard</a></h2>
+            <p class="card-text">Star schema data model in Python and Power BI across 50,000 synthetic deal records, 4 dimensions, and 7 DAX measures with Key Influencers and Decomposition Tree visuals.</p>
+            <div class="my-3"><div class="diagram-wrap"><svg class="diag-wide" viewBox="0 0 740 300" width="740" height="300" role="img" aria-labelledby="d14-title d14-desc">
+  <title id="d14-title">VC Deal Analytics Star Schema Architecture</title>
+  <desc id="d14-desc">Star schema with central FactDeals table (50,000 synthetic rows) connected to DimCompanies, DimInvestors, DimSectors, and DimDate dimension tables.</desc>
+  <defs>
+    <marker id="arrow14" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="720" height="280" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Top Synthetic Warning Banner -->
+  <rect x="25" y="22" width="690" height="28" rx="3" fill="var(--paper)" stroke="var(--data-b)" stroke-dasharray="3,2"/>
+  <text x="370" y="40" font-family="var(--font-mono)" font-size="10" font-weight="600" fill="var(--data-b)" text-anchor="middle">Modelling exercise on synthetic data &bull; 50,000 Fact Rows &bull; 7 DAX Measures</text>
+
+  <!-- Central Fact Table -->
+  <rect x="270" y="80" width="200" height="180" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="370" y="105" font-family="var(--font-mono)" font-size="12" font-weight="600" fill="var(--accent)" text-anchor="middle">FactDeals</text>
+  <text x="370" y="122" font-family="var(--font-mono)" font-size="9.5" fill="var(--muted)" text-anchor="middle">50,000 Records</text>
+  <line x1="285" y1="130" x2="455" y2="130" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="9" fill="var(--ink)">
+    <text x="285" y="148">&bull; Deal_ID (PK)</text>
+    <text x="285" y="166">&bull; Company_ID (FK)</text>
+    <text x="285" y="184">&bull; Investor_ID (FK)</text>
+    <text x="285" y="202">&bull; Sector_ID (FK)</text>
+    <text x="285" y="220">&bull; Date_ID (FK)</text>
+    <text x="285" y="238">&bull; Invested_Capital, Valuation</text>
+    <text x="285" y="254">&bull; Realized_MOIC, Status</text>
+  </g>
+
+  <!-- Dimension 1: DimCompanies (Top Left) -->
+  <rect x="35" y="65" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="125" y="85" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimCompanies</text>
+  <line x1="45" y1="92" x2="205" y2="92" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="45" y="108">&bull; Company_ID (PK)</text>
+    <text x="45" y="123">&bull; Name, Country, Stage</text>
+    <text x="45" y="138">&bull; Founding_Year</text>
+  </g>
+
+  <!-- Dimension 2: DimInvestors (Bottom Left) -->
+  <rect x="35" y="170" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="125" y="190" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimInvestors</text>
+  <line x1="45" y1="197" x2="205" y2="197" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="45" y="213">&bull; Investor_ID (PK)</text>
+    <text x="45" y="228">&bull; Investor_Name, Type</text>
+    <text x="45" y="243">&bull; Lead_Partner</text>
+  </g>
+
+  <!-- Dimension 3: DimSectors (Top Right) -->
+  <rect x="525" y="65" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="615" y="85" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimSectors</text>
+  <line x1="535" y1="92" x2="695" y2="92" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="535" y="108">&bull; Sector_ID (PK)</text>
+    <text x="535" y="123">&bull; Sector_Name, Vertical</text>
+    <text x="535" y="138">&bull; Macro_Category</text>
+  </g>
+
+  <!-- Dimension 4: DimDate (Bottom Right) -->
+  <rect x="525" y="170" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="615" y="190" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimDate</text>
+  <line x1="535" y1="197" x2="695" y2="197" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="535" y="213">&bull; Date_ID (PK)</text>
+    <text x="535" y="228">&bull; Date, Year, Quarter</text>
+    <text x="535" y="243">&bull; Month, Fiscal_Period</text>
+  </g>
+
+  <!-- Relationship Connectors (1:N) -->
+  <line x1="215" y1="107" x2="265" y2="135" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="215" y1="212" x2="265" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="525" y1="107" x2="475" y2="135" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="525" y1="212" x2="475" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: VC Analytics Star Schema Structure</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Table Name</th>
+          <th>Type</th>
+          <th>Row Count</th>
+          <th>Key Fields &amp; Analytics Measures</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FactDeals</td>
+          <td>Fact Table</td>
+          <td>50,000 (synthetic)</td>
+          <td>Deal_ID, Company_ID, Investor_ID, Sector_ID, Date_ID, Invested_Capital, Valuation, Realized_MOIC</td>
+        </tr>
+        <tr>
+          <td>DimCompanies</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Company_ID, Name, Country, Stage, Founding_Year</td>
+        </tr>
+        <tr>
+          <td>DimInvestors</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Investor_ID, Investor_Name, Type, Lead_Partner</td>
+        </tr>
+        <tr>
+          <td>DimSectors</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Sector_ID, Sector_Name, Vertical, Macro_Category</td>
+        </tr>
+        <tr>
+          <td>DimDate</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Date_ID, Date, Year, Quarter, Month, Fiscal_Period</td>
+        </tr>
+        <tr>
+          <td>Power BI Implementation</td>
+          <td>Dashboard Views</td>
+          <td>3 Pages, 8 Charts, 4 KPIs</td>
+          <td>7 DAX measures (SAMEPERIODLASTYEAR, CALCULATE filters, DIVIDE guards); Key Influencers &amp; Decomposition Tree visuals</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div></div>
+            <a href="/projects/vc-dashboard/" class="btn btn-secondary btn-sm">Read Full Project Case Study</a>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">Unsupervised &bull; Segmentation</span>
+              <span class="card-tag">Silhouette 0.540</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/consumer-spend/">Consumer Spend Segmentation (K-Means++)</a></h2>
+            <p class="card-text">Clustering analysis over 62 survey respondents into 5 actionable spend personas. Rigorous feature selection showed 2-dimension model (0.540 silhouette) outperformed 3-dimension and age models.</p>
+            <a href="/projects/consumer-spend/" class="btn btn-secondary btn-sm mt-3">Read Full Project Case Study</a>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-badge">Econometrics &bull; OLS</span>
+              <span class="card-tag">28 Indian States</span>
+            </div>
+            <h2 class="card-title"><a href="/projects/migration/">Determinants of Internal Migration in India (R)</a></h2>
+            <p class="card-text">5-regressor multiple linear regression study in R (lm()) evaluating state-level migration determinants. Found per-capita income (p=0.0021), poverty (p=0.0247), and unemployment (p=0.0183) statistically significant.</p>
+            <a href="/projects/migration/" class="btn btn-secondary btn-sm mt-3">Read Full Project Case Study</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h3 class="footer-heading">Krishnendu Biswas</h3>
+        <p class="footer-desc">AI agent systems, machine learning engineering, and deterministic data pipelines.</p>
+        <p class="footer-contact">
+          <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a><br>
+          <a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/krshnndu</a><br>
+          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">github.com/krshnndu</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/work/">Work &amp; Agent Systems</a></li>
+          <li><a href="/projects/">ML &amp; Analytics Projects</a></li>
+          <li><a href="/internships/">Internships &amp; Experience</a></li>
+          <li><a href="/credentials/">Credentials &amp; Education</a></li>
+          <li><a href="/about/">About &amp; Philosophy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Verification &amp; Artifacts</h4>
+        <ul class="footer-links">
+          <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" download>Verified Resume (PDF)</a></li>
+          <li><a href="https://github.com/krshnndu/krshnndu.github.io" target="_blank" rel="noopener noreferrer">Source Repository</a></li>
+          <li><a href="/about/#verification">Fact Grounding Standard</a></li>
+          <li><span class="footer-meta">Zero third-party trackers</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Krishnendu Biswas. Built with semantic HTML, vanilla CSS, and accessible vector graphics.</p>
+      <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <span>Top</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-inner">
+      <div class="search-header">
+        <label for="search-input" id="search-dialog-title" class="sr-only">Search krishnendu.me</label>
+        <input type="search" id="search-input" class="search-input" placeholder="Search systems, projects, metrics, skills..." autocomplete="off">
+        <button id="search-close" class="action-btn" aria-label="Close search dialog">Esc</button>
+      </div>
+      <div id="search-results" class="search-results" role="region" aria-live="polite">
+        <p class="search-empty">Type keywords to search across all 18 pages...</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Keyboard Shortcuts Dialog -->
+  <dialog id="kbd-dialog" class="kbd-dialog" aria-labelledby="kbd-dialog-title">
+    <div class="kbd-dialog-inner">
+      <div class="kbd-header">
+        <h3 id="kbd-dialog-title">Keyboard Shortcuts</h3>
+        <button id="kbd-close" class="action-btn" aria-label="Close shortcuts dialog">Esc</button>
+      </div>
+      <div class="kbd-body">
+        <div class="kbd-row"><kbd>Cmd</kbd> + <kbd>K</kbd> <span>Open Search</span></div>
+        <div class="kbd-row"><kbd>T</kbd> <span>Toggle Color Theme</span></div>
+        <div class="kbd-row"><kbd>?</kbd> <span>Show Keyboard Shortcuts</span></div>
+        <div class="kbd-row"><kbd>Esc</kbd> <span>Close Dialog / Drawer</span></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VC Deal Analytics Power BI Star Schema Case Study | Krishnendu Biswas</title>
+  <meta name="description" content="Star schema data model across 50,000 synthetic deal rows, 4 dimensions, 7 DAX measures, and Key Influencers visuals.">
+  <link rel="canonical" href="https://krishnendu.me/projects/vc-dashboard/">
+  <meta property="og:title" content="VC Deal Analytics Power BI Star Schema Case Study | Krishnendu Biswas">
+  <meta property="og:description" content="Star schema data model across 50,000 synthetic deal rows, 4 dimensions, 7 DAX measures, and Key Influencers visuals.">
+  <meta property="og:url" content="https://krishnendu.me/projects/vc-dashboard/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VC Deal Analytics Power BI Star Schema Case Study | Krishnendu Biswas">
+  <meta name="twitter:description" content="Star schema data model across 50,000 synthetic deal rows, 4 dimensions, 7 DAX measures, and Key Influencers visuals.">
+  
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="/" class="brand-link" aria-label="Krishnendu Biswas Home">
+          <span class="brand-name">Krishnendu Biswas</span>
+          <span class="brand-badge" aria-label="Portfolio version 2">v2</span>
+        </a>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link is-active" aria-current="page">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="search-trigger" class="action-btn" aria-label="Open search dialog (Press Cmd+K or Ctrl+K)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <span class="kbd-hint" aria-hidden="true">Cmd+K</span>
+        </button>
+
+        <button id="theme-toggle" class="action-btn" aria-label="Toggle theme (System / Light / Dark)">
+          <svg class="sun-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <button id="menu-toggle" class="mobile-menu-btn action-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="drawer-header">
+      <span class="brand-name">Krishnendu Biswas</span>
+      <button id="drawer-close" class="action-btn" aria-label="Close mobile menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link is-active" aria-current="page">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
+    </nav>
+    <div class="drawer-footer">
+      <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
+    </div>
+  </div>
+  <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
+
+  
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <div class="container">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item"><a href="/projects/">Projects</a></li><li class="breadcrumb-item is-active" aria-current="page">VC Dashboard</li>
+            </ol>
+          </div>
+        </nav>
+        
+
+  <main id="main-content">
+    
+    <section class="page-header">
+      <div class="container">
+        <div class="eyebrow">Project Case Study &bull; Data Modelling</div>
+        <h1 class="page-title">Venture Capital Deal Analytics Dashboard</h1>
+        <p class="page-lede">
+          Star schema data model in Python and Power BI across 50,000 synthetic deal records,
+          authoring 7 DAX measures, 3 dashboard pages, and AI decomposition tree visuals.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card mb-4">
+          <div class="card-header">
+            <h2 class="card-title">Star Schema Data Model</h2>
+            <span class="card-tag">Figure D14</span>
+          </div>
+          <div class="card-body">
+            <div class="diagram-wrap"><svg class="diag-wide" viewBox="0 0 740 300" width="740" height="300" role="img" aria-labelledby="d14-title d14-desc">
+  <title id="d14-title">VC Deal Analytics Star Schema Architecture</title>
+  <desc id="d14-desc">Star schema with central FactDeals table (50,000 synthetic rows) connected to DimCompanies, DimInvestors, DimSectors, and DimDate dimension tables.</desc>
+  <defs>
+    <marker id="arrow14" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--accent)"/>
+    </marker>
+  </defs>
+
+  <rect x="10" y="10" width="720" height="280" rx="4" fill="var(--box)" stroke="var(--rule)"/>
+
+  <!-- Top Synthetic Warning Banner -->
+  <rect x="25" y="22" width="690" height="28" rx="3" fill="var(--paper)" stroke="var(--data-b)" stroke-dasharray="3,2"/>
+  <text x="370" y="40" font-family="var(--font-mono)" font-size="10" font-weight="600" fill="var(--data-b)" text-anchor="middle">Modelling exercise on synthetic data &bull; 50,000 Fact Rows &bull; 7 DAX Measures</text>
+
+  <!-- Central Fact Table -->
+  <rect x="270" y="80" width="200" height="180" rx="4" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
+  <text x="370" y="105" font-family="var(--font-mono)" font-size="12" font-weight="600" fill="var(--accent)" text-anchor="middle">FactDeals</text>
+  <text x="370" y="122" font-family="var(--font-mono)" font-size="9.5" fill="var(--muted)" text-anchor="middle">50,000 Records</text>
+  <line x1="285" y1="130" x2="455" y2="130" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="9" fill="var(--ink)">
+    <text x="285" y="148">&bull; Deal_ID (PK)</text>
+    <text x="285" y="166">&bull; Company_ID (FK)</text>
+    <text x="285" y="184">&bull; Investor_ID (FK)</text>
+    <text x="285" y="202">&bull; Sector_ID (FK)</text>
+    <text x="285" y="220">&bull; Date_ID (FK)</text>
+    <text x="285" y="238">&bull; Invested_Capital, Valuation</text>
+    <text x="285" y="254">&bull; Realized_MOIC, Status</text>
+  </g>
+
+  <!-- Dimension 1: DimCompanies (Top Left) -->
+  <rect x="35" y="65" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="125" y="85" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimCompanies</text>
+  <line x1="45" y1="92" x2="205" y2="92" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="45" y="108">&bull; Company_ID (PK)</text>
+    <text x="45" y="123">&bull; Name, Country, Stage</text>
+    <text x="45" y="138">&bull; Founding_Year</text>
+  </g>
+
+  <!-- Dimension 2: DimInvestors (Bottom Left) -->
+  <rect x="35" y="170" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="125" y="190" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimInvestors</text>
+  <line x1="45" y1="197" x2="205" y2="197" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="45" y="213">&bull; Investor_ID (PK)</text>
+    <text x="45" y="228">&bull; Investor_Name, Type</text>
+    <text x="45" y="243">&bull; Lead_Partner</text>
+  </g>
+
+  <!-- Dimension 3: DimSectors (Top Right) -->
+  <rect x="525" y="65" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="615" y="85" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimSectors</text>
+  <line x1="535" y1="92" x2="695" y2="92" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="535" y="108">&bull; Sector_ID (PK)</text>
+    <text x="535" y="123">&bull; Sector_Name, Vertical</text>
+    <text x="535" y="138">&bull; Macro_Category</text>
+  </g>
+
+  <!-- Dimension 4: DimDate (Bottom Right) -->
+  <rect x="525" y="170" width="180" height="85" rx="3" fill="var(--paper)" stroke="var(--rule)"/>
+  <text x="615" y="190" font-family="var(--font-mono)" font-size="10.5" font-weight="600" fill="var(--ink)" text-anchor="middle">DimDate</text>
+  <line x1="535" y1="197" x2="695" y2="197" stroke="var(--rule)"/>
+  <g font-family="var(--font-mono)" font-size="8.5" fill="var(--muted)">
+    <text x="535" y="213">&bull; Date_ID (PK)</text>
+    <text x="535" y="228">&bull; Date, Year, Quarter</text>
+    <text x="535" y="243">&bull; Month, Fiscal_Period</text>
+  </g>
+
+  <!-- Relationship Connectors (1:N) -->
+  <line x1="215" y1="107" x2="265" y2="135" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="215" y1="212" x2="265" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="525" y1="107" x2="475" y2="135" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+  <line x1="525" y1="212" x2="475" y2="185" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arrow14)"/>
+</svg>
+<details class="diagram-data-toggle">
+  <summary>Show data: VC Analytics Star Schema Structure</summary>
+  <div class="table-wrap diagram-table">
+    <table>
+      <thead>
+        <tr>
+          <th>Table Name</th>
+          <th>Type</th>
+          <th>Row Count</th>
+          <th>Key Fields &amp; Analytics Measures</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>FactDeals</td>
+          <td>Fact Table</td>
+          <td>50,000 (synthetic)</td>
+          <td>Deal_ID, Company_ID, Investor_ID, Sector_ID, Date_ID, Invested_Capital, Valuation, Realized_MOIC</td>
+        </tr>
+        <tr>
+          <td>DimCompanies</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Company_ID, Name, Country, Stage, Founding_Year</td>
+        </tr>
+        <tr>
+          <td>DimInvestors</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Investor_ID, Investor_Name, Type, Lead_Partner</td>
+        </tr>
+        <tr>
+          <td>DimSectors</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Sector_ID, Sector_Name, Vertical, Macro_Category</td>
+        </tr>
+        <tr>
+          <td>DimDate</td>
+          <td>Dimension</td>
+          <td>-</td>
+          <td>Date_ID, Date, Year, Quarter, Month, Fiscal_Period</td>
+        </tr>
+        <tr>
+          <td>Power BI Implementation</td>
+          <td>Dashboard Views</td>
+          <td>3 Pages, 8 Charts, 4 KPIs</td>
+          <td>7 DAX measures (SAMEPERIODLASTYEAR, CALCULATE filters, DIVIDE guards); Key Influencers &amp; Decomposition Tree visuals</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details></div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Modelling Scope &amp; Architecture</h2>
+          <p>
+            Developed as part of the IIM Ranchi Data Warehousing and Data Visualisation curriculum (Term IV).
+            Engineered a clean dimensional star schema in Python and Power BI over 50,000 synthetic deal records
+            connecting a central FactDeals table to DimCompanies, DimInvestors, DimSectors, and DimDate.
+          </p>
+
+          <h2>DAX Calculations &amp; Visuals</h2>
+          <p>
+            Authored 7 core DAX measures incorporating time-intelligence (SAMEPERIODLASTYEAR for YoY deal pacing),
+            context filtering with CALCULATE, and mathematical safety guards with DIVIDE.
+          </p>
+          <p>
+            Configured 3 analytical report pages with 8 charts, 4 KPI cards, and two advanced Power BI AI visuals:
+            Key Influencers to identify top drivers of valuation multiples, and a Decomposition Tree to break down invested capital by sector vertical.
+          </p>
+          <p class="card-footer-note">
+            Note: This project is framed strictly as a dimensional modelling and visualisation exercise on synthetic data.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-col">
+        <h3 class="footer-heading">Krishnendu Biswas</h3>
+        <p class="footer-desc">AI agent systems, machine learning engineering, and deterministic data pipelines.</p>
+        <p class="footer-contact">
+          <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a><br>
+          <a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/krshnndu</a><br>
+          <a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">github.com/krshnndu</a>
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="/work/">Work &amp; Agent Systems</a></li>
+          <li><a href="/projects/">ML &amp; Analytics Projects</a></li>
+          <li><a href="/internships/">Internships &amp; Experience</a></li>
+          <li><a href="/credentials/">Credentials &amp; Education</a></li>
+          <li><a href="/about/">About &amp; Philosophy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="footer-subheading">Verification &amp; Artifacts</h4>
+        <ul class="footer-links">
+          <li><a href="/resume/Krishnendu-Biswas-Resume.pdf" download>Verified Resume (PDF)</a></li>
+          <li><a href="https://github.com/krshnndu/krshnndu.github.io" target="_blank" rel="noopener noreferrer">Source Repository</a></li>
+          <li><a href="/about/#verification">Fact Grounding Standard</a></li>
+          <li><span class="footer-meta">Zero third-party trackers</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p class="footer-copy">&copy; 2026 Krishnendu Biswas. Built with semantic HTML, vanilla CSS, and accessible vector graphics.</p>
+      <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <span>Top</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Search Modal -->
+  <dialog id="search-dialog" class="search-dialog" aria-labelledby="search-dialog-title">
+    <div class="search-dialog-inner">
+      <div class="search-header">
+        <label for="search-input" id="search-dialog-title" class="sr-only">Search krishnendu.me</label>
+        <input type="search" id="search-input" class="search-input" placeholder="Search systems, projects, metrics, skills..." autocomplete="off">
+        <button id="search-close" class="action-btn" aria-label="Close search dialog">Esc</button>
+      </div>
+      <div id="search-results" class="search-results" role="region" aria-live="polite">
+        <p class="search-empty">Type keywords to search across all 18 pages...</p>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Keyboard Shortcuts Dialog -->
+  <dialog id="kbd-dialog" class="kbd-dialog" aria-labelledby="kbd-dialog-title">
+    <div class="kbd-dialog-inner">
+      <div class="kbd-header">
+        <h3 id="kbd-dialog-title">Keyboard Shortcuts</h3>
+        <button id="kbd-close" class="action-btn" aria-label="Close shortcuts dialog">Esc</button>
+      </div>
+      <div class="kbd-body">
+        <div class="kbd-row"><kbd>Cmd</kbd> + <kbd>K</kbd> <span>Open Search</span></div>
+        <div class="kbd-row"><kbd>T</kbd> <span>Toggle Color Theme</span></div>
+        <div class="kbd-row"><kbd>?</kbd> <span>Show Keyboard Shortcuts</span></div>
+        <div class="kbd-row"><kbd>Esc</kbd> <span>Close Dialog / Drawer</span></div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/assets/main.js" defer></script>
+</body>
+</html>

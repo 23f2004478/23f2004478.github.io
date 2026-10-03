@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 Page Not Found | Krishnendu Biswas</title>
-  <meta name="description" content="The requested page could not be located on krishnendu.me.">
-  <link rel="canonical" href="https://krishnendu.me/404.html">
-  <meta property="og:title" content="404 Page Not Found | Krishnendu Biswas">
-  <meta property="og:description" content="The requested page could not be located on krishnendu.me.">
-  <meta property="og:url" content="https://krishnendu.me/404.html">
+  <title>Consumer Spend Segmentation K-Means++ Case Study | Krishnendu Biswas</title>
+  <meta name="description" content="Clustering 62 consumer survey respondents into 5 spend personas. Feature selection validated a 0.540 silhouette score.">
+  <link rel="canonical" href="https://krishnendu.me/projects/consumer-spend/">
+  <meta property="og:title" content="Consumer Spend Segmentation K-Means++ Case Study | Krishnendu Biswas">
+  <meta property="og:description" content="Clustering 62 consumer survey respondents into 5 spend personas. Feature selection validated a 0.540 silhouette score.">
+  <meta property="og:url" content="https://krishnendu.me/projects/consumer-spend/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="404 Page Not Found | Krishnendu Biswas">
-  <meta name="twitter:description" content="The requested page could not be located on krishnendu.me.">
+  <meta name="twitter:title" content="Consumer Spend Segmentation K-Means++ Case Study | Krishnendu Biswas">
+  <meta name="twitter:description" content="Clustering 62 consumer survey respondents into 5 spend personas. Feature selection validated a 0.540 silhouette score.">
   
   <link rel="stylesheet" href="/assets/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>KB</text></svg>">
@@ -30,7 +30,7 @@
       </div>
 
       <nav class="desktop-nav" aria-label="Main Navigation">
-        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
+        <a href="/" class="nav-link">Home</a><a href="/work/" class="nav-link">Work</a><a href="/projects/" class="nav-link is-active" aria-current="page">Projects</a><a href="/internships/" class="nav-link">Internships</a><a href="/credentials/" class="nav-link">Credentials</a><a href="/about/" class="nav-link">About</a>
       </nav>
 
       <div class="header-actions">
@@ -59,7 +59,7 @@
       </button>
     </div>
     <nav class="drawer-nav">
-      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
+      <a href="/" class="drawer-link">Home</a><a href="/work/" class="drawer-link">Work</a><a href="/projects/" class="drawer-link is-active" aria-current="page">Projects</a><a href="/internships/" class="drawer-link">Internships</a><a href="/credentials/" class="drawer-link">Credentials</a><a href="/about/" class="drawer-link">About</a>
     </nav>
     <div class="drawer-footer">
       <a href="/resume/Krishnendu-Biswas-Resume.pdf" class="btn btn-primary" download>Download Resume PDF</a>
@@ -68,21 +68,97 @@
   <div id="drawer-backdrop" class="drawer-backdrop" aria-hidden="true"></div>
 
   
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <div class="container">
+            <ol class="breadcrumb-list">
+              <li class="breadcrumb-item"><a href="/">Home</a></li><li class="breadcrumb-item"><a href="/projects/">Projects</a></li><li class="breadcrumb-item is-active" aria-current="page">Consumer Spend</li>
+            </ol>
+          </div>
+        </nav>
+        
 
   <main id="main-content">
     
-    <section class="section text-center py-5">
+    <section class="page-header">
       <div class="container">
-        <div class="eyebrow">Error 404</div>
-        <h1 class="page-title">Page Not Found</h1>
-        <p class="page-lede mb-4">
-          The requested page could not be located. You can return to the homepage or explore one of the main sections below.
+        <div class="eyebrow">Project Case Study &bull; Unsupervised Learning</div>
+        <h1 class="page-title">Consumer Spend Segmentation: K-Means++</h1>
+        <p class="page-lede">
+          Cluster analysis over 62 consumer survey respondents into 5 actionable spend personas,
+          with rigorous feature selection proving the 2-dimension model outscored richer alternatives.
         </p>
+      </div>
+    </section>
 
-        <div class="hero-actions justify-center mb-4">
-          <a href="/" class="btn btn-primary">Return to Homepage</a>
-          <a href="/work/" class="btn btn-secondary">Multi-Agent Work</a>
-          <a href="/projects/" class="btn btn-outline">ML Projects</a>
+    <section class="section">
+      <div class="container">
+        <div class="grid grid-3 mb-4">
+          <div class="stat-card">
+            <div class="stat-value">0.540</div>
+            <div class="stat-label">Silhouette Score</div>
+            <div class="stat-sub">Optimal 2-dimension cluster separation</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">5</div>
+            <div class="stat-label">Target Personas</div>
+            <div class="stat-sub">Derived from centroid expenditure means</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value">62</div>
+            <div class="stat-label">Survey Respondents</div>
+            <div class="stat-sub">Ages 18 to 22 student consumer sample</div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h2>Feature Selection &amp; Model Evaluation</h2>
+          <p>
+            Applied K-Means++ clustering over 62 survey respondents across monthly expenditure dimensions.
+            The optimal cluster count k=5 was determined via the WCSS elbow method and validated with a 0.540 silhouette score.
+          </p>
+
+          <div class="table-wrap my-3">
+            <table>
+              <thead>
+                <tr>
+                  <th>Feature Dimension Set</th>
+                  <th>Scaling Applied</th>
+                  <th>Best k</th>
+                  <th>Silhouette Score</th>
+                  <th>Outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Personal Care + Fast Food</td>
+                  <td>Unscaled</td>
+                  <td>5 (confirmed)</td>
+                  <td><strong>0.540</strong></td>
+                  <td>Selected winning model (clean separation on shared spend scale)</td>
+                </tr>
+                <tr>
+                  <td>All 3 Spend Categories</td>
+                  <td>Scaled</td>
+                  <td>2</td>
+                  <td>0.433</td>
+                  <td>Rejected (adding clothing spend degraded cluster separation)</td>
+                </tr>
+                <tr>
+                  <td>3 Spend Dimensions + Age</td>
+                  <td>Scaled</td>
+                  <td>2</td>
+                  <td>0.351</td>
+                  <td>Rejected (zero variance across narrow 18-22 age cohort)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Segment Centroid Personas</h2>
+          <p>
+            Centroids mapped directly to distinct targeting cohorts, including a 6-member premium cohort (high spend across all categories),
+            an 18-member price-conscious group, and an 11-member fast-food-led segment.
+          </p>
         </div>
       </div>
     </section>
