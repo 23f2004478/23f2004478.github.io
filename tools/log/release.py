@@ -63,9 +63,14 @@ def save(d, st, event):
 
 
 def commit(msg):
+    # Stage only the log surface and pages the renderer touches; .gitignore keeps bytecode out.
     git("add", "-A", "log", "tools/log", "index.html", "styles.css", "sitemap.xml")
-    if git("status", "--porcelain", check=False):
-        git("add", "-A")
+    git("add", "-u")  # nav link edits on existing pages, tracked files only
+    staged = git("diff", "--cached", "--name-only", check=False).split()
+    leaked = [f for f in staged if f.endswith((".pyc", ".pyo")) or "__pycache__" in f]
+    if leaked:
+        raise SystemExit("refusing to commit bytecode: %s" % leaked[:3])
+    if staged:
         git("commit", "-q", "-m", msg)
 
 
