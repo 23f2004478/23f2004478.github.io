@@ -1,0 +1,33 @@
+{
+ "slug": "cloud-migration",
+ "date": "2026-09-20",
+ "title": "Moved the agents from laptop to cloud server",
+ "status": "shipped",
+ "category": "infra",
+ "what_changed": "Hermes Agent, the open-source framework my agents run on, moved from a Linux virtual machine on my MacBook Pro to a cloud server running Ubuntu [G:0011]. The model gateway (9Router, which sends each request to a model) and the provider sync now run as system services on that server [G:0012].",
+ "why_it_matters": "The agents keep working when the laptop is closed. Scheduled jobs and the daily progress report no longer depend on my machine being awake.",
+ "result": "The move is dated 20 Sep 2026 by the provider's billing record and the server's first boot log, not by memory [G:0009] [G:0010] [G:0011]. Gateway and sync were deployed as services on 21 Sep 2026 [G:0012].",
+ "lesson": "The date of this move rests on a billing record and a boot log rather than my memory. I now log every milestone to an append-only ledger with an ID before I write about it.",
+ "diagram": {
+  "template": "before_after",
+  "title": "Before and after the move to a cloud server",
+  "desc": "Left: the laptop setup, a Linux virtual machine on a MacBook Pro running Hermes Agent and the model gateway. Right: the cloud server running Ubuntu with Hermes Agent, and the model gateway and provider sync as system services. Arrow between them labelled moved 20 Sep 2026.",
+  "before_title": "Before: MacBook Pro",
+  "before_items": ["Linux virtual machine", "Hermes Agent", "Model gateway"],
+  "after_title": "After: cloud server, Ubuntu",
+  "after_items": ["Hermes Agent", "Model gateway, as a service", "Provider sync, as a service"],
+  "arrow": "Moved 20 Sep 2026",
+  "caption": "The laptop setup on the left, the cloud server on the right. Dates from the billing record and boot log."
+ },
+ "sources": [
+  {"tag": "G:0009", "label": "Ledger: first billed day of the cloud server (billing record, amount withheld)"},
+  {"tag": "G:0010", "label": "Ledger: cloud server first boot, from the system boot log"},
+  {"tag": "G:0011", "label": "Ledger: agent runtime moved from laptop to cloud server"},
+  {"tag": "G:0012", "label": "Ledger: model gateway and provider sync deployed as system services"}
+ ],
+ "numbers": [
+  {"value": "20", "tag": "G:0011", "what": "day of the move"},
+  {"value": "21", "tag": "G:0012", "what": "day services started"},
+  {"value": "2026", "tag": "G:0011", "what": "year"}
+ ]
+}

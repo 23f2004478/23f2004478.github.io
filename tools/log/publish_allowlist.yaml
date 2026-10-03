@@ -1,0 +1,31 @@
+# Build log publish allowlist. Default deny: a field not named here never reaches a page.
+# Read by stats_snapshot.py, build_log_entry.py and privacy_gate.py.
+ledger:
+  require_flag: true
+  fields: [id, ts, precision, public_title, category]
+  timeline_precisions: [day, exact]
+kanban:
+  require_tag: pub
+  fields: [id, title, status, duration_hours]
+  read_body: false
+cron:
+  fields: [count]
+token_logs:
+  fields: [calls_by_model]
+  per_session_text: false
+daily_reports:
+  quote: false
+stats_raw:
+  strip: [window_days, generated, profiles_including_router, skills_unique, scheduled_jobs, agent_runs, active_build_hours, tasks_shipped]
+  topology: [router, profiles, count_including_router]
+  modelmix: [window_days, calls_by_model]
+  timeline: [runs_per_day]
+banned_phrases: [autonomous, self-healing, self healing, zero-touch, zero touch, revolutionary, 10x, Dual Cultivation]
+budgets:
+  title_words: 8
+  what_changed: 60
+  why_it_matters: 50
+  result: 40
+  lesson: 50
+  total_soft: 200
+  total_hard: 250

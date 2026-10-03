@@ -1,0 +1,40 @@
+{
+ "slug": "site-rebuild-fact-audit",
+ "date": "2026-10-03",
+ "title": "Rebuilt this site; fact audit caught invented claims",
+ "status": "shipped",
+ "category": "site",
+ "what_changed": "This site went from a game-themed page to a professional portfolio. A planning model wrote the spec, a builder agent worked through it from a task board, and served screenshots were reviewed before it went live [K:t_fe967bff]. The diagrams and charts are now 14 inline SVG figures, each with a data table.",
+ "why_it_matters": "Every number on the site now traces to a source line: 380 numbers in all [K:t_fe967bff]. A script measures diagram text on 23 pages at 3 screen widths. Rows under the 13px floor went from 18 to 0 [K:t_fe967bff].",
+ "result": "Merged and live on 3 Oct 2026, with 0 failing rows on the text size check [K:t_fe967bff].",
+ "lesson": "A coordinator draft invented model names, metrics and certifications; the fact audit caught it and the pages were rebuilt [K:t_2e5cde57]. A reviewer agent on Gemini 3.7 Flash approved a build with visible defects, so agent approval is no longer final. One build fell back from Opus 5.5 to Sonnet 4.6 [K:t_d2253e4b].",
+ "diagram": {
+  "template": "pipeline",
+  "title": "How a site change moves from plan to merge",
+  "desc": "Five steps left to right: plan, build, fact audit, screenshot review, merge. A return arrow runs from fact audit back to build, labelled fabricated draft discarded.",
+  "steps": ["Plan", "Build", "Fact audit", "Screenshot review", "Merge"],
+  "accent_step": 2,
+  "loop_from": 2,
+  "loop_to": 1,
+  "loop_label": "Fabricated draft discarded",
+  "caption": "The fact audit sits between build and review. When it fails, the build goes back with the invented claims listed."
+ },
+ "sources": [
+  {"tag": "K:t_d2253e4b", "label": "Task card: v2 visual redesign with diagrams and charts, including the reviewer run and the model fallback"},
+  {"tag": "K:t_fe967bff", "label": "Task card: v2.1 diagram polish, facts map and diagram text size check"},
+  {"tag": "K:t_2e5cde57", "label": "Task card: v1.2 agent case studies, where the invented copy was found"}
+ ],
+ "numbers": [
+  {"value": "14", "tag": "K:t_d2253e4b", "what": "inline SVG figures", "evidence": {"file": "SITE:index.html", "pattern": "id=\"d1-data\"", "note": "figure ids d1 to d14 counted across site pages at 4e0355f"}},
+  {"value": "380", "tag": "K:t_fe967bff", "what": "numbers mapped to a source line", "evidence": {"file": "WORK:v21/BUILD_REPORT_v21_round5.md", "pattern": "381 rows after this round", "note": "381 lines including the header row = 380 mapped numbers"}},
+  {"value": "23", "tag": "K:t_fe967bff", "what": "pages measured", "evidence": {"file": "WORK:v21/measure_round4_after.txt", "pattern": "pages 23 failing rows 0"}},
+  {"value": "3", "tag": "K:t_fe967bff", "what": "screen widths measured (360, 390, 1440)", "evidence": {"file": "WORK:inputs/log/svg_measure.mjs", "pattern": "for (const w of [360, 390, 1440])"}},
+  {"value": "13", "tag": "K:t_fe967bff", "what": "minimum rendered diagram text in px", "evidence": {"file": "WORK:inputs/log/svg_measure.mjs", "pattern": "r.min < 13"}},
+  {"value": "18", "tag": "K:t_fe967bff", "what": "failing rows before", "evidence": {"file": "WORK:v21/measure_round4_before.txt", "pattern": "pages 23 failing rows 18"}},
+  {"value": "0", "tag": "K:t_fe967bff", "what": "failing rows after", "evidence": {"file": "WORK:v21/measure_round4_after.txt", "pattern": "pages 23 failing rows 0"}},
+  {"value": "3.7", "tag": "K:t_d2253e4b", "what": "reviewer run #48 model", "evidence": {"file": "WORK:inputs/log/model_proof.txt", "pattern": "run #48 workhorse"}},
+  {"value": "5.5", "tag": "K:t_d2253e4b", "what": "run #46 pinned model", "evidence": {"file": "WORK:inputs/log/model_proof.txt", "pattern": "run #46 workhorse"}},
+  {"value": "4.6", "tag": "K:t_d2253e4b", "what": "run #46 fallback model", "evidence": {"file": "WORK:inputs/log/model_proof.txt", "pattern": "ag/claude-sonnet-4-6': 194"}},
+  {"value": "3 Oct 2026", "tag": "K:t_fe967bff", "what": "date merged and live", "evidence": {"file": "WORK:inputs/log/model_proof.txt", "pattern": "2026-10-03", "note": "parent handoff t_fe967bff: main 989ca9c live verified"}}
+ ]
+}

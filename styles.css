@@ -234,3 +234,72 @@ span.mono,.fact.mono,dt.mono{white-space:nowrap;overflow-wrap:normal;word-break:
 @media print{.sources-d > *{display:block}}
 .show-data::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;transform:translateY(-50%)}
 .fig .dg.compact{max-width:400px;margin:0 auto}
+/* build log */
+.dg .axis{stroke:var(--muted);stroke-width:1}
+.dg .rule-a{stroke:var(--accent-ink);stroke-opacity:.45;stroke-width:1}
+.dg .mono-n{font-family:var(--mono);fill:var(--ink)}
+.dg .c-infra{fill:var(--accent)}
+.dg .c-cap{fill:var(--data-b)}
+.dg .c-site{fill:var(--ink)}
+.dg .c-proc{fill:var(--paper);stroke:var(--ink);stroke-width:1.5}
+.log-head{padding-bottom:var(--s4)}
+.log-head .frame{color:var(--muted);max-width:60ch}
+.newest{margin:var(--s4) 0 0;display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);align-items:baseline}
+.newest a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.strip-h{font-family:var(--sans);font-size:1.0625rem;font-weight:600;margin:var(--s6) 0 var(--s2)}
+.strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0 0 var(--s3);padding:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.strip div{padding:var(--s3) var(--s3) var(--s3) 0;min-width:0}
+.strip div:nth-child(even){border-left:1px solid var(--rule);padding-left:var(--s3)}
+.strip div:nth-child(n+3){border-top:1px solid var(--rule)}
+.strip dt{font-family:var(--mono);font-size:1.25rem;line-height:1.3;color:var(--ink);white-space:nowrap}
+.strip dd{margin:0;line-height:1.35}
+.strip .lab{display:block;font-weight:600}
+.strip .unit{display:block;font-size:.9375rem;color:var(--muted)}
+@media (min-width:1024px){
+  .strip{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .strip div{padding-left:var(--s4)}
+  .strip div:first-child{padding-left:0}
+  .strip div+div{border-left:1px solid var(--rule)}
+  .strip div:nth-child(n+3){border-top:0}
+}
+.pair{display:grid;gap:0 var(--s8)}
+.pair .fig{margin-top:var(--s4)}
+@media (min-width:1024px){.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.pair .fig .dg.wide,.pair .fig .dg.topo-w{max-width:520px}
+.fig .dg.narrow.chart,.fig .dg.topo-n{max-width:440px}
+.entry-page{max-width:46rem}
+.entry-page .page-head{padding-bottom:var(--s2)}
+.entry-page .page-head h1{max-width:20ch}
+.entry-page h2{font-size:clamp(1.375rem,1.2rem + .7vw,1.75rem);margin:var(--s10) 0 var(--s3)}
+.entry-page .entry-fig{margin:var(--s8) 0}
+sup.src{font-size:.75rem;color:var(--muted)}
+sup.src a{text-decoration:none;padding:12px 2px;min-width:0;margin-left:2px}
+sup.src a:hover{text-decoration:underline}
+.src-list{list-style:none;padding:0;margin:var(--s3) 0}
+.src-list li{border-top:1px solid var(--rule);padding:var(--s3) 0}
+.src-list li:last-child{border-bottom:1px solid var(--rule)}
+.src-list li:target{background:var(--box)}
+.src-list .mono{margin-right:var(--s2)}
+.arch{list-style:none;padding:0;margin:0}
+.arch li{border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:0 var(--s4);align-items:baseline}
+.arch li:last-child{border-bottom:1px solid var(--rule)}
+.arch .when{color:var(--muted);min-width:7.5rem}
+.arch a{display:inline-flex;align-items:center;min-height:44px}
+.latest{display:grid;gap:var(--s6);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:var(--s2) 0 var(--s6);margin-top:var(--s8)}
+.latest h2{margin:var(--s6) 0 var(--s2);font-size:clamp(1.375rem,1.2rem + .7vw,1.75rem)}
+.latest h3{margin:0 0 var(--s2);font-size:1.25rem}
+.latest h3 a{color:var(--ink);text-decoration:none;display:inline-flex;min-height:44px;align-items:center}
+.latest h3 a:hover{color:var(--accent);text-decoration:underline}
+.latest p{margin-bottom:var(--s2)}
+.latest .meta{margin:0}
+.latest-txt a[href="/log/"]{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px}
+.latest-fig{display:block;width:240px;max-width:100%;color:var(--ink)}
+.latest-fig .dg{display:block;width:100%;height:auto}
+@media (min-width:768px){.latest{grid-template-columns:minmax(0,1fr) 240px;align-items:center}}
+@media (max-width:767px){.latest-fig{display:none}}
+.log-links{margin-top:var(--s4)}
+.strip-note{margin-top:var(--s2)}
+.dg .mono-n.t-a{fill:var(--accent-ink)}
+.dg .mono-n.t-on-n{fill:var(--on-n)}
+.entry-page .page-head h1{font-size:clamp(2rem,1.6rem + 1.6vw,2.75rem);max-width:22ch}
+.arch li{padding:var(--s1) 0}
