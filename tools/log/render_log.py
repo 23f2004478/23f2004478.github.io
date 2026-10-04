@@ -202,9 +202,10 @@ def standing_figures(data):
                  % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category", "Ledger ID"], "tl-fig")
     out.append('<div class="pair">%s%s</div>' % (topo, tlf))
     w, n = S.model_bars(mm, "lm")
-    rows = [[m["name"], S.thousands(m["calls"]), m["share_pct"] + "%", m["id"]] for m in mm["models"]]
-    out.append(figure("lm", w, n, "Model calls in the %s-day window, by model, %s calls in total. Bars start at zero. Names are as logged, including fallback models."
-                      % (mm["window_days"], S.thousands(mm["total_calls"])), rows, ["Model", "Calls", "Share", "Logged id"]))
+    rows = [[m["name"], S.thousands(m["calls"]), m["share_pct"] + "%"] for m in mm["models"]]
+    out.append(figure("lm", w, n, "Model calls in the %s-day window, by model, %s calls in total. Bars start at zero. Names are as logged, including fallback models. "
+                      "Raw model ids are on the sources page."
+                      % (mm["window_days"], S.thousands(mm["total_calls"])), rows, ["Model", "Calls", "Share"]))
     w, n = S.model_trend(hist, "lmt")
     rows = [[wk["end"], ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))]
             for wk in hist["weeks"]]
