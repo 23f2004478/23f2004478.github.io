@@ -97,15 +97,21 @@ def page(path, title, desc, ld, main):
 
 # ------------------------------------------------------------------ text helpers
 
-def tags_html(text):
+def tags_html(text, counter=None):
     # Visible mark is a CSS counter number (see .fn.src in styles.css), not the raw tag text,
     # so the inline citation reads as a small footnote instead of noise like "[K:t_...]".
-    # The link points at this entry's own Sources list at the bottom of the same page, where
-    # the full tag is still printed; privacy_gate still sees the full tag via aria-label.
+    # The link points at this entry's own Sources list at the bottom of the same page. The
+    # aria-label carries a plain sequential label, never the raw tag: the tag itself is kept
+    # machine-readable only as the data-src attribute on that Sources list item.
     def sub(m):
         tag = "%s:%s" % (m.group(1), m.group(2))
-        return '<sup class="fn src"><a href="#%s" aria-label="Source %s"></a></sup>' % (
-            anchor(tag), esc(tag))
+        if counter is not None:
+            counter[0] += 1
+            lab = "Source %d" % counter[0]
+        else:
+            lab = "Source"
+        return '<sup class="fn src"><a href="#%s" aria-label="%s"></a></sup>' % (
+            anchor(tag), esc(lab))
     parts, last = [], 0
     for m in TAG_RE.finditer(text):
         parts.append(esc(text[last:m.start()].rstrip()))
@@ -201,9 +207,9 @@ def standing_figures(data):
     topo = figure("lt", w, n, "%s profiles, router included. Domain names only; one profile is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Profile", "Role"], "topo-fig")
     w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
-    rows = [[d["date"], d["title"], S.CAT_LABEL[d["category"]], d["id"]] for d in tl["ledger"]]
+    rows = [[d["date"], d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
     tlf = figure("ltl", w, n, "Public ledger milestones in the last %d days, %d dots. Undated or private milestones are not drawn."
-                 % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category", "Ledger ID"], "tl-fig")
+                 % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category"], "tl-fig")
     out.append('<div class="pair">%s%s</div>' % (topo, tlf))
     w, n = S.model_bars(mm, "lm")
     rows = [[m["name"], S.thousands(m["calls"]), m["share_pct"] + "%"] for m in mm["models"]]
@@ -251,13 +257,16 @@ def render_index(entries, data):
 def render_entry(e, prev_e, next_e):
     url = entry_url(e)
     body = []
+    counter = [0]
     for key, label in FIELDS:
-        body.append('<h2 id="%s">%s</h2><p>%s</p>' % (key.replace("_", "-"), label, tags_html(e[key])))
+        body.append('<h2 id="%s">%s</h2><p>%s</p>' % (key.replace("_", "-"), label, tags_html(e[key], counter)))
     body.append(entry_figure(e, "e-" + e["slug"][:6]))
-    body.append('<h2 id="result">Result</h2><p>%s</p>' % tags_html(e["result"]))
+    body.append('<h2 id="result">Result</h2><p>%s</p>' % tags_html(e["result"], counter))
     if e.get("lesson"):
-        body.append('<h2 id="lesson">Lesson</h2><p>%s</p>' % tags_html(e["lesson"]))
-    src = "".join('<li id="%s"><span class="mono">%s</span> %s</li>' % (anchor(s["tag"]), esc(s["tag"]), esc(s["label"]))
+        body.append('<h2 id="lesson">Lesson</h2><p>%s</p>' % tags_html(e["lesson"], counter))
+    # The tag is kept as a data-src attribute (machine-readable for privacy_gate and the
+    # number check) rather than printed in visible text; only the plain-language label shows.
+    src = "".join('<li id="%s" data-src="%s">%s</li>' % (anchor(s["tag"]), esc(s["tag"]), esc(s["label"]))
                   for s in e["sources"])
     body.append('<h2 id="sources">Sources</h2><ul class="src-list">%s</ul><p class="small muted">Reviewed and approved by me before publishing. '
                 '<a href="/log/sources/">How I source these numbers</a></p>' % src)
@@ -308,7 +317,7 @@ def render_sources(entries, data):
     for e in entries:
         for s in e["sources"]:
             tags.setdefault(s["tag"], (s["label"], []))[1].append(e)
-    rows = "".join('<li id="%s"><span class="mono">%s</span> %s. Cited in: %s.</li>' % (
+    rows = "".join('<li id="%s" data-src="%s">%s. Cited in: %s.</li>' % (
         anchor(t), esc(t), esc(lab), ", ".join('<a href="%s">%s</a>' % (entry_url(e), esc(e["title"])) for e in es))
         for t, (lab, es) in sorted(tags.items()))
     cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), esc(c["unit"])) for c in data["strip"]["cells"])
@@ -344,7 +353,8 @@ def entry_html_for_feed(e):
     parts.append("<p><strong>Result</strong>: %s</p>" % esc(plain(e["result"])))
     if e.get("lesson"):
         parts.append("<p><strong>Lesson</strong>: %s</p>" % esc(plain(e["lesson"])))
-    parts.append("<p>Sources: %s</p>" % esc(", ".join(s["tag"] for s in e["sources"])))
+    parts.append("<p>Sources: %s</p>" % ", ".join(
+        '<span data-src="%s">%s</span>' % (esc(s["tag"]), esc(s["label"])) for s in e["sources"]))
     return "".join(parts)
 
 
