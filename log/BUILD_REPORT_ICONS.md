@@ -167,6 +167,68 @@ Crops: log/shots_icons/hero_1440.png, log/shots_icons/hero_390.png.
     here for the record rather than silently left unexamined.
   These are noted for a follow-up fact-audit card, not fixed here.
 
+## 6. Favicon-16 legibility fix (coordinator review round 2)
+
+Coordinator review of c36a199 found one fail: assets/favicon-16x16.png read as an
+L-shaped blob at 16x nearest-neighbour upscale, not a K. Flagged root cause was
+stroke width; actual root cause, confirmed by pixel inspection, was a rendering bug
+in the html wrapper, not the glyph geometry:
+
+- render.py built the per-size HTML page by string concatenation, but the template
+  string still used literal doubled braces (`{{...}}`) left over from an earlier
+  str.format() version. In plain concatenation those braces are not substituted, so
+  `margin:0` et al. never reached the page CSS. Chrome's default 8px body margin then
+  clipped the top-left 8px off every small render, cutting the K down to the single
+  corner fragment the coordinator saw as a blob. Fixed by un-doubling the braces.
+- A second, related bug in the Chrome-screenshot capture path: CDP's default screenshot
+  compositing forces an opaque white background regardless of the page's CSS
+  `background:transparent`, so the tile's rounded corners were shipping as square white
+  corners instead of transparent. Replaced the capture path with a dedicated CDP
+  renderer (render_cdp.mjs) that calls `Emulation.setDefaultBackgroundColorOverride`
+  with alpha 0 before each screenshot.
+- With both bugs fixed, the full glyph renders inside the tile instead of a clipped
+  corner. Measured stroke widths on the regenerated favicon-16x16.png (opaque-pixel run
+  length at the glyph's horizontal midline, y=6..9): 4-5px at the stem/diagonal
+  convergence, which is above the coordinator's 3px-stem floor, with no antialiased
+  softening at the full-pixel sample rows. The K is now the geometry originally
+  authored in svg_defs.py, rendered at its real bounding box, not a hand-redrawn
+  bolder glyph -- the fix was render-pipeline correctness, not stroke-weight tuning.
+- Regenerated and copied into assets/ via finalize.py: favicon.svg (unchanged content,
+  same md5 9cf6a874... as before -- confirms the bug was in rendering, not the source
+  glyph), favicon-16x16.png, favicon-32x32.png, favicon-512.png, apple-touch-icon.png,
+  icon-192.png, favicon.ico (assets/ and repo root, multi-size 16+32+48).
+  apple-touch-icon.png and icon-192.png also changed (both were affected by the same
+  8px-clip bug, just less visibly at 180px/192px) -- confirmed full-bleed glyph with no
+  corner offset via pixel bbox after the fix.
+- New md5 (all differ from both the c36a199 build and the archive/ counterparts):
+  favicon-16x16.png 42e06763b4950bed9638ef89a5476bf7,
+  favicon-32x32.png 0bf90847f7696e000006950715f53097,
+  favicon-512.png 669d04654892be26ef810254fdde2d59,
+  apple-touch-icon.png 30d290fb261d8ee6fb369b286b2ab943,
+  icon-192.png 9dcf401b647ee725524ab5b10c4ed229,
+  favicon.ico b4415c152d6998b68d28aaa06904faa0.
+- Contact sheet regenerated at log/shots_icons/favicon_contact_sheet.png with the
+  coordinator's exact spec: favicon-16x16.png upscaled 16x nearest-neighbour (256px on
+  screen, not the earlier 4x/64px), favicon-32x32.png at 8x. contact_sheet.py in
+  favicon_build/ was changed to do this per-size instead of a flat 4x cap.
+- vision_analyze was retried twice this session and failed both times with the same
+  "HERMES_MODEL_ADMISSION_CONSUMED" / upstream 404 error as the prior session (see
+  Known issues below) -- still no working vision backend to eyeball the contact sheet.
+  Legibility is therefore asserted from the pixel evidence above (full non-clipped bbox,
+  4-5px solid stroke width at the midline, byte-identical source SVG to the pre-bug
+  render) plus the 16x contact sheet left for the coordinator's own look, not from a
+  model's visual confirmation.
+- Gate suite re-run after the fix, no regressions: fact_gate.sh (pre-existing items only,
+  same 4 flagged in section 5, none new -- see note below), privacy_gate.py PASS (0
+  findings, 13 targets scanned), svg_measure.mjs 27 pages / 81 rows / 0 fails across
+  360/390/1440.
+- fact_gate.sh this run counted "autonomous: 4" vs. "3" in section 5's note above. The
+  4th hit is archive/index.html line 2198 ("autonomous tool search"), inside the frozen
+  archive/ tree this card must not touch (not a new occurrence -- archive/ was untouched
+  by both c36a199 and this fix, confirmed via git diff --stat on that path). The
+  section-5 count of 3 undercounted it; corrected here for the record, not fixed, since
+  archive/ is out of scope by the standing rule.
+
 ## Known issues this session
 
 - Vision-based screenshot review (auxiliary.vision.model) returned
