@@ -65,9 +65,12 @@ def head(title, desc, path, ld, extra=""):
 <meta property="og:description" content="%(d)s">
 <meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
 <meta name="twitter:card" content="summary">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#1F5C4A">
 <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="/log/feed.xml">
 <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="/log/feed.json">
 <link rel="stylesheet" href="/styles.css">
