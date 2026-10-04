@@ -267,7 +267,7 @@ span.mono,.fact.mono,dt.mono{white-space:nowrap;overflow-wrap:normal;word-break:
 @media (min-width:1024px){.pair{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
 .pair .fig .dg.wide,.pair .fig .dg.topo-w{max-width:520px}
 .fig .dg.narrow.chart,.fig .dg.topo-n{max-width:440px}
-.entry-page{max-width:46rem}
+.entry-page{max-width:46rem;counter-reset:fn}
 .entry-page .page-head{padding-bottom:var(--s2)}
 .entry-page .page-head h1{max-width:20ch}
 .entry-page h2{font-size:clamp(1.375rem,1.2rem + .7vw,1.75rem);margin:var(--s10) 0 var(--s3)}
@@ -275,6 +275,8 @@ span.mono,.fact.mono,dt.mono{white-space:nowrap;overflow-wrap:normal;word-break:
 sup.src{font-size:.75rem;color:var(--muted)}
 sup.src a{text-decoration:none;padding:12px 2px;min-width:0;margin-left:2px}
 sup.src a:hover{text-decoration:underline}
+.fn.src{counter-increment:fn}
+.fn.src a::before{content:"[" counter(fn) "]"}
 .src-list{list-style:none;padding:0;margin:var(--s3) 0}
 .src-list li{border-top:1px solid var(--rule);padding:var(--s3) 0}
 .src-list li:last-child{border-bottom:1px solid var(--rule)}

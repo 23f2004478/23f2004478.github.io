@@ -98,10 +98,14 @@ def page(path, title, desc, ld, main):
 # ------------------------------------------------------------------ text helpers
 
 def tags_html(text):
+    # Visible mark is a CSS counter number (see .fn.src in styles.css), not the raw tag text,
+    # so the inline citation reads as a small footnote instead of noise like "[K:t_...]".
+    # The link points at this entry's own Sources list at the bottom of the same page, where
+    # the full tag is still printed; privacy_gate still sees the full tag via aria-label.
     def sub(m):
         tag = "%s:%s" % (m.group(1), m.group(2))
-        return '<sup class="fn src"><a href="/log/sources/#%s" aria-label="Source %s">%s</a></sup>' % (
-            anchor(tag), esc(tag), esc(tag))
+        return '<sup class="fn src"><a href="#%s" aria-label="Source %s"></a></sup>' % (
+            anchor(tag), esc(tag))
     parts, last = [], 0
     for m in TAG_RE.finditer(text):
         parts.append(esc(text[last:m.start()].rstrip()))

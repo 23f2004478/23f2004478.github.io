@@ -382,7 +382,8 @@ def _mb_narrow(mm, uid):
         anchor = "start" if tk == 0 else ("end" if tk == top else "middle")
         o.append('<line class="axis" x1="%s" y1="%s" x2="%s" y2="%s"/>' % (_n(x), _n(y), _n(x), _n(y + 6)))
         o.append(t(x, y + 8 + fs, thousands(tk), fs, "t-s", anchor=anchor))
-    H = int(y + fs + 14)
+    o.append(t(bx0 + (bx1 - bx0) / 2, y + 2 * fs + 16, "Model calls in the window (count)", fs, "t-s", anchor="middle"))
+    H = int(y + 2 * fs + 24)
     o[0] = head("narrow chart", W, H, uid, _mb_title(mm), _mb_desc(mm))
     o.append("</svg>")
     return "".join(o)
@@ -411,11 +412,7 @@ def _mt(hist, uid, W, fs, nweeks):
     cw = (W - lw - 2) / len(weeks)
     o: list = [""]
     from common import MONTHS
-    hy = fs + 2
-    for i, we in enumerate(weeks):
-        dd = date.fromisoformat(we)
-        o.append(t(lw + i * cw + cw / 2, hy, "%d %s" % (dd.day, MONTHS[dd.month - 1]), fs - (0 if narrow else 1), "t-s", anchor="middle"))
-    y = hy + 10
+    y = 2
     ch = 30
     for nm in names:
         o.append(t(1, y + fs + 2, nm, fs, weight="600"))
@@ -432,10 +429,18 @@ def _mt(hist, uid, W, fs, nweeks):
                 o.append('<rect class="bar-n" x="%s" y="%s" width="%s" height="%s"/>' % (_n(x), _n(y + ch - max(h, 1.5)), _n(min(14, cw - 8)), _n(max(h, 1.5))))
             o.append(t(x + min(14, cw - 8) + 4, y + ch - 3, thousands(v), fs - (0 if narrow else 1), "mono-n"))
         y += ch + 8
+    # Date label sits directly under its own column, right below that column's last bar,
+    # not in a shared header far from the bars (ambiguous once several model rows stack up).
+    dy = y + fs
+    for i, we in enumerate(weeks):
+        dd = date.fromisoformat(we)
+        o.append(t(lw + i * cw + cw / 2, dy, "%d %s" % (dd.day, MONTHS[dd.month - 1]), fs - (0 if narrow else 1), "t-s", anchor="middle"))
+    y = dy + 6
+    o.append(t(lw + (len(weeks) * cw) / 2, y + fs + 6, "Model calls per week (count)", fs - (0 if narrow else 1), "t-s", anchor="middle"))
     unmeasured = [w for w in weeks if w not in data]
-    H = int(y + 2)
-    desc = ("Small multiples: one row per model, one column per week ending on the date shown, bar height on a shared "
-            "zero-based scale. %d of %d weeks shown have no measurement and are left empty." % (len(unmeasured), len(weeks)))
+    H = int(y + 2 * fs + 14)
+    desc = ("Small multiples: one row per model, one column per week ending on the date shown below its own column, bar "
+            "height on a shared zero-based scale. %d of %d weeks shown have no measurement and are left empty." % (len(unmeasured), len(weeks)))
     o[0] = head(("narrow" if narrow else "wide") + " chart", W, H, uid, "Model calls per week, %d weeks" % len(weeks), desc)
     o.append("</svg>")
     return "".join(o)
