@@ -191,7 +191,9 @@ def standing_figures(data):
     tp, tl, mm, hist = data["topology"], data["timeline"], data["modelmix"], data["modelmix_weeks"]
     out = []
     w, n = S.topology(tp, "lt")
-    rows = [[tp["router"], "Routes messages and hands work to profiles"]] + [[p, "Domain profile"] for p in tp["profiles"]]
+    rows = [[tp["router"], "Routes messages and hands work to profiles"]] + [
+        [p, "Domain profile (the builder agent that does scoped, approved work)" if p == "workhorse" else "Domain profile"]
+        for p in tp["profiles"]]
     topo = figure("lt", w, n, "%s profiles, router included. Domain names only; one profile is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Profile", "Role"], "topo-fig")
     w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
@@ -204,12 +206,10 @@ def standing_figures(data):
     out.append(figure("lm", w, n, "Model calls in the %s-day window, by model, %s calls in total. Bars start at zero. Names are as logged, including fallback models."
                       % (mm["window_days"], S.thousands(mm["total_calls"])), rows, ["Model", "Calls", "Share", "Logged id"]))
     w, n = S.model_trend(hist, "lmt")
-    rows = []
-    for we in hist["week_ends"]:
-        wk = next((x for x in hist["weeks"] if x["end"] == we), None)
-        rows.append([we, "not measured" if wk is None else ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))])
-    out.append(figure("lmt", w, n, "Model calls per week. History starts with the week ending %s; the %d earlier weeks were not measured and stay empty."
-                      % (human_date(hist["week_ends"][-1]), hist["weeks_shown"] - hist["weeks_measured"]), rows, ["Week ending", "Calls by model"]))
+    rows = [[wk["end"], ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))]
+            for wk in hist["weeks"]]
+    out.append(figure("lmt", w, n, "Model calls per week. Tracking started %s; weeks before that were not measured and are left out."
+                      % human_date(hist["weeks"][0]["end"]), rows, ["Week ending", "Calls by model"]))
     return out
 
 

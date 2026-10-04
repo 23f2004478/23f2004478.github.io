@@ -402,7 +402,7 @@ def model_trend(hist, uid):
 
 
 def _mt(hist, uid, W, fs, nweeks):
-    weeks = hist["week_ends"][-nweeks:]
+    weeks = [w["end"] for w in hist["weeks"]][-nweeks:]
     data = {w["end"]: w["calls_by_name"] for w in hist["weeks"]}
     names = hist["names"]
     top = max([v for w in hist["weeks"] for v in w["calls_by_name"].values()] or [1])

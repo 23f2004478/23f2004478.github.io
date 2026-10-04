@@ -29,6 +29,7 @@ MODEL_NAMES = {
     "ag/gemini-3.7-flash-high": "Gemini 3.7 Flash (high)",
     "ag/gemini-3.7-flash-medium": "Gemini 3.7 Flash (medium)",
     "ag/gemini-3.6-flash-high": "Gemini 3.6 Flash (high)",
+    "claude-sonnet-5-5": "Sonnet 5.5",
     "fable": "Fable",
 }
 
@@ -116,7 +117,7 @@ def build(raw_dir, ledger_path, flags_path, allow_path):
             {"key": "model_calls", "label": "Model calls", "unit": "calls across %d models" % len(models),
              "value": total if models else NM},
             cell("scheduled_jobs", "Scheduled jobs", "enabled jobs across profiles"),
-            cell("skills_unique", "Skills", "distinct skill folders"),
+            cell("skills_unique", "Skills", "distinct skill folders, each a reusable step-by-step procedure"),
         ],
     }
     topology = {
