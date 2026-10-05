@@ -42,8 +42,9 @@ ul,ol{max-width:68ch}
 .skip{position:absolute;left:var(--s4);top:-60px;background:var(--accent);color:var(--accent-ink);padding:var(--s2) var(--s4);z-index:20;min-height:44px;display:inline-flex;align-items:center}
 .skip:focus{top:var(--s2)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 var(--gut)}
-.icon{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.icon.brand{fill:currentColor;stroke:none}
+.icon{display:inline-block;width:20px;height:20px;vertical-align:middle;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.icon.brand{fill:currentColor!important;stroke:none!important}
+.icon.brand path,.icon.brand g{fill:currentColor!important}
 
 /* header */
 .site-head{border-bottom:1px solid var(--rule)}
@@ -331,12 +332,7 @@ html{scrollbar-color:var(--rule) var(--paper);accent-color:var(--accent);caret-c
 .btn.primary:hover{text-decoration:none;background:var(--ink);border-color:var(--ink);color:var(--paper)}
 .hero-links{margin-bottom:var(--s6)}
 .hero-links a{gap:var(--s2)}
-.proof{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.proof div{padding:var(--s4) var(--s4) var(--s4) 0;min-width:0}
-.proof div+div{border-left:1px solid var(--rule);padding-left:var(--s4)}
-.proof dt{font-family:var(--serif);font-size:clamp(2.25rem,1.9rem + 1.2vw,3rem);line-height:1;font-weight:500;color:var(--ink);font-variant-numeric:lining-nums tabular-nums;margin-bottom:var(--s2)}
-.proof dd{margin:0;font-size:1rem;line-height:1.35;color:var(--ink)}
-.proof-note{margin:var(--s2) 0 0}
+
 .hero-fig{margin:0}
 .gate-dg{display:block;width:100%;max-width:400px;height:auto;margin:0 auto;color:var(--ink)}
 .gate-dg .g-edge{fill:none;stroke:currentColor;stroke-width:1.25}
@@ -381,12 +377,19 @@ main p,main li,main dd,main figcaption{text-wrap:pretty}
 .nav-resume{display:none}
 @media (max-width:899px){.nav-list .nav-resume{display:block}}
 /* 3-figure strip: 1 column under 768 with hairlines between rows, 3 columns from 768 */
-.proof{grid-template-columns:minmax(0,1fr)}
-.proof div+div{border-left:0;padding-left:0;border-top:1px solid var(--rule)}
-.proof div{padding:var(--s3) 0;display:grid;grid-template-columns:4.5rem minmax(0,1fr);gap:0 var(--s3);align-items:baseline}
-.proof dt{margin:0}
-.proof .cap{display:block;font-size:.9375rem;color:var(--muted);margin-top:2px}
-@media (min-width:768px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}.proof div{display:block;padding:var(--s4) var(--s4) var(--s4) 0}.proof div+div{border-top:0;border-left:1px solid var(--rule);padding-left:var(--s4)}.proof dt{margin-bottom:var(--s2)}}
+.proof{display:grid;grid-template-columns:1fr;margin:var(--s4) 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.proof div{display:flex;flex-direction:column;gap:var(--s1);padding:var(--s3) 0;border-top:1px solid var(--rule);min-width:0}
+.proof div:first-child{border-top:0}
+.proof div+div{border-left:0;padding-left:0}
+.proof dt{font-family:var(--serif);font-size:clamp(2rem,1.8rem + 1vw,2.75rem);line-height:1.05;font-weight:600;color:var(--ink);margin:0}
+.proof dd{font-size:.9375rem;line-height:1.4;color:var(--muted);margin:0}
+.proof-note{margin:var(--s2) 0 0}
+@media (min-width:768px){
+  .proof{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .proof div{display:block;padding:var(--s4) var(--s4) var(--s4) 0;border-top:0}
+  .proof div+div{border-left:1px solid var(--rule);padding-left:var(--s4)}
+  .proof dt{margin-bottom:var(--s2)}
+}
 /* t_d78b5aad: diagram box strokes >= 3:1 site-wide (rule token was 1.37:1); case-list arrows aligned at the row edge */
 .dg .k-b{stroke:var(--data-n)}
 .rows h3 a{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
