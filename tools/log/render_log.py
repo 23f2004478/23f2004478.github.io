@@ -400,15 +400,16 @@ def render_home_card(entries):
     s = re.sub(re.escape(HOME_START) + ".*?" + re.escape(HOME_END), "", s, flags=re.S)
     if entries:
         e = entries[0]
-        card = ('%s<section class="section wrap" id="build-log" aria-labelledby="h-latest"><div class="latest">'
-                '<div class="latest-txt"><h2 id="h-latest">Latest from the build log</h2>'
-                '<p class="meta"><time datetime="%s">%s</time></p><h3><a href="%s">%s</a></h3><p>%s</p>'
-                '<p><a href="/log/">All build log entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p></div>'
-                '<a class="latest-fig" href="%s" tabindex="-1" aria-hidden="true">%s</a></div></section>%s'
-                % (HOME_START, e["date"], esc(human_date(e["date"])), entry_url(e), esc(e["title"]),
-                   esc(first_sentence(e["what_changed"])), entry_url(e), thumb(e, "hl"), HOME_END))
+        # Home revamp (t_16489b85): the newest entry is one line under the platform story,
+        # not its own block. Still a <section id="build-log"> so privacy_gate scans it.
+        card = ('%s<section class="wrap log-line" id="build-log" aria-labelledby="h-latest">'
+                '<h2 id="h-latest" class="sr-only">Latest from the build log</h2>'
+                '<p><span class="muted">Build log, <time datetime="%s">%s</time>:</span> '
+                '<a href="%s">%s</a> <a class="log-all" href="/log/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>'
+                '</section>%s'
+                % (HOME_START, e["date"], esc(human_date(e["date"])), entry_url(e), esc(e["title"]), HOME_END))
         i = s.index('id="agent-systems"')
-        i = s.rindex("<section", 0, i)
+        i = s.index("</section>", i) + len("</section>")
         s = s[:i] + card + s[i:]
     p.write_text(s, encoding="utf-8")
 
