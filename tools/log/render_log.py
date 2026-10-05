@@ -210,7 +210,7 @@ def standing_figures(data):
     topo = figure("lt", w, n, "%s profiles, router included. Domain names only; one profile is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Profile", "Role"], "topo-fig")
     w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
-    rows = [[d["date"], d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
+    rows = [[human_date(d["date"]), d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
     tlf = figure("ltl", w, n, "Public ledger milestones in the last %d days, %d dots. Undated or private milestones are not drawn."
                  % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category"], "tl-fig")
     out.append('<div class="pair">%s%s</div>' % (topo, tlf))

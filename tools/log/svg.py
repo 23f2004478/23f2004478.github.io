@@ -46,6 +46,12 @@ def t(x, y, s, fs, cls="", anchor=None, weight=None):
     return '<text%s x="%s" y="%s" font-size="%s"%s%s>%s</text>' % (c, _n(x), _n(y), fs, a, w, esc(s))
 
 
+def _hd(iso):
+    """'2026-09-11' -> '11 Sep 2026' (site-wide visible date format)."""
+    y, m, d = iso[:10].split("-")
+    return "%d %s %s" % (int(d), "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()[int(m) - 1], y)
+
+
 def _n(v):
     v = round(v, 1)
     return str(int(v)) if v == int(v) else str(v)
@@ -299,7 +305,7 @@ def _tl(tl, uid, W, fs, end_iso, days):
     axis_y = ly + 20 + (maxl + 1) * (2 * r + 3) + 6
     for x, lvl, dt in dots:
         cy = axis_y - 8 - lvl * (2 * r + 3)
-        o.append('<circle class="%s" cx="%s" cy="%s" r="%s"><title>%s, %s</title></circle>' % (CAT_CLASS[dt["category"]], _n(x), _n(cy), r, esc(dt["date"]), esc(dt["title"])))
+        o.append('<circle class="%s" cx="%s" cy="%s" r="%s"><title>%s, %s</title></circle>' % (CAT_CLASS[dt["category"]], _n(x), _n(cy), r, esc(_hd(dt["date"])), esc(dt["title"])))
     o.append('<line class="axis" x1="%s" y1="%s" x2="%s" y2="%s"/>' % (x0, _n(axis_y), x1, _n(axis_y)))
     # month ticks on the 1st of each month inside the window
     m = date(start.year, start.month, 1)
@@ -316,7 +322,7 @@ def _tl(tl, uid, W, fs, end_iso, days):
         o.append(t(x, axis_y + 8 + fs, "1 %s" % MONTHS[tk.month - 1], fs, "t-s", anchor=anchor))
     H = int(axis_y + 14 + fs)
     desc = "Dot timeline of public ledger milestones from %s to %s, coloured by category. %d dated milestones shown." % (
-        start.isoformat(), end.isoformat(), len(dots))
+        _hd(start.isoformat()), _hd(end.isoformat()), len(dots))
     o[0] = head("wide" if W > 400 else "narrow", W, H, uid, "Public milestones, last %d days" % days, desc)
     o.append("</svg>")
     return "".join(o)
