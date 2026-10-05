@@ -200,13 +200,20 @@ def entry_rows(entries):
     return '<ul class="rows" role="list">%s</ul>' % "".join(out)
 
 
+IO_IN = "I dictate, check the text, then send it"
+IO_OUT = "What needs me lands in Google Tasks"
+
+
 def standing_figures(data):
     tp, tl, mm, hist = data["topology"], data["timeline"], data["modelmix"], data["modelmix_weeks"]
     out = []
+    # input and output ends: owner method (inputs/home/AGENT_SYSTEMS_FACTS_v2.md INPUT AND OUTPUT). Fixed copy, not stats.
+    tp = dict(tp, input=IO_IN, output=IO_OUT)
     w, n = S.topology(tp, "lt")
-    rows = [[tp["router"], "Routes messages and hands work to profiles"]] + [
+    rows = [["Input (before the server)", IO_IN + ". Built-in voice plugins are skipped so I can read what got written."],
+            [tp["router"], "Routes messages and hands work to profiles"]] + [
         [p, "Domain profile (the builder agent that does scoped, approved work)" if p == "workhorse" else "Domain profile"]
-        for p in tp["profiles"]]
+        for p in tp["profiles"]] + [["Output (after the server)", IO_OUT + ". Important items only."]]
     topo = figure("lt", w, n, "%s profiles, router included. Domain names only; one profile is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Profile", "Role"], "topo-fig")
     w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
@@ -220,7 +227,7 @@ def standing_figures(data):
                       "Raw model ids are on the sources page."
                       % (mm["window_days"], S.thousands(mm["total_calls"])), rows, ["Model", "Calls", "Share"]))
     w, n = S.model_trend(hist, "lmt")
-    rows = [[wk["end"], ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))]
+    rows = [[human_date(wk["end"]), ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))]
             for wk in hist["weeks"]]
     out.append(figure("lmt", w, n, "Model calls per week. Tracking started %s; weeks before that were not measured and are left out."
                       % human_date(hist["weeks"][0]["end"]), rows, ["Week ending", "Calls by model"]))

@@ -254,10 +254,31 @@ def _topo(tp, uid, W, cols, fs):
     o.insert(2, '<rect class="k-d" x="1" y="1" width="%s" height="%s" rx="4"/>' % (W - 2, H - 2))
     o.insert(3, t(inner_x, title_y, "Cloud server, Ubuntu", fs, weight="600"))
     n = tp["count_including_router"]
+    # input and output ends (owner, 2026-10-05): dictated text in above the server, Google Tasks out below it
+    io_in, io_out = tp.get("input"), tp.get("output")
+    top = 0
+    pre, post = [], []
+    if io_in:
+        pre.append('<rect class="k-n" x="%s" y="1" width="%s" height="%s" rx="3"/>' % (inner_x, inner_w, bh))
+        pre.append(t(W / 2, 1 + bh / 2 + fs / 2 - 1, io_in, fs, anchor="middle", weight="600"))
+        pre.append('<path class="edge" d="M%s %sV%s" marker-end="url(#%s-ah)"/>' % (_n(W / 2), 1 + bh, 1 + bh + 20, uid))
+        top = 1 + bh + 22
+    if io_out:
+        y0 = top + H
+        post.append('<path class="edge" d="M%s %sV%s" marker-end="url(#%s-ah)"/>' % (_n(W / 2), y0, y0 + 20, uid))
+        post.append('<rect class="k-n" x="%s" y="%s" width="%s" height="%s" rx="3"/>' % (inner_x, y0 + 22, inner_w, bh))
+        post.append(t(W / 2, y0 + 22 + bh / 2 + fs / 2 - 1, io_out, fs, anchor="middle", weight="600"))
+    total = top + H + ((22 + bh + 1) if io_out else 0)
     desc = ("Inside one cloud server: a messaging gateway feeds the router profile, which hands work to %d domain "
             "profiles: %s. One profile is shown only as institute work, private. Model calls from every profile "
             "go through the model gateway. %s profiles in total, router included." % (len(tp["profiles"]), ", ".join(profiles), n))
-    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, H, uid, "Agent estate: %s profiles, router included" % n, desc)
+    if io_in:
+        desc = "Above the server: %s. " % io_in + desc
+    if io_out:
+        desc += " Below the server: %s." % io_out
+    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, total, uid, "Agent estate: %s profiles, router included" % n, desc)
+    body = "".join(o[2:])
+    o = [o[0], o[1]] + pre + (['<g transform="translate(0 %s)">' % top, body, "</g>"] if top else [body]) + post
     o.append("</svg>")
     return "".join(o)
 
