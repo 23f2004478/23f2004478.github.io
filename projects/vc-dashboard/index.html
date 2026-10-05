@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VC deal analytics dashboard | Krishnendu Biswas</title>
-<meta name="description" content="Three-page Power BI modelling exercise on synthetic data: star schema with a 50,000-row fact table and 4 dimensions, 7 DAX measures.">
-<link rel="canonical" href="https://krishnendu.me/projects/vc-dashboard/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krishnendu.me/projects/vc-dashboard/">
-<meta property="og:title" content="VC deal analytics dashboard | Krishnendu Biswas">
-<meta property="og:description" content="Three-page Power BI modelling exercise on synthetic data: star schema with a 50,000-row fact table and 4 dimensions, 7 DAX measures.">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VC deal analytics dashboard | Krishnendu Biswas</title>
+  <meta name="description" content="Power BI deal analytics dashboard on a synthetic 50,000-row star schema with 7 DAX measures and 2 AI visuals.">
+  <link rel="canonical" href="https://krishnendu.me/projects/vc-dashboard/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/projects/vc-dashboard/">
+  <meta property="og:title" content="VC deal analytics dashboard | Krishnendu Biswas">
+  <meta property="og:description" content="Power BI deal analytics dashboard on a synthetic 50,000-row star schema with 7 DAX measures and 2 AI visuals.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-projects-vc-dashboard.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-projects-vc-dashboard.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="VC deal analytics dashboard | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VC deal analytics dashboard | Krishnendu Biswas">
+  <meta name="twitter:description" content="Power BI deal analytics dashboard on a synthetic 50,000-row star schema with 7 DAX measures and 2 AI visuals.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-projects-vc-dashboard.png">
+  <meta name="twitter:image:alt" content="VC deal analytics dashboard | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "TechArticle",
-      "@id": "https://krishnendu.me/projects/vc-dashboard/#article",
-      "url": "https://krishnendu.me/projects/vc-dashboard/",
-      "headline": "Venture capital deal analytics dashboard",
-      "name": "VC deal analytics dashboard | Krishnendu Biswas",
-      "description": "Three-page Power BI modelling exercise on synthetic data: star schema with a 50,000-row fact table and 4 dimensions, 7 DAX measures.",
-      "author": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "publisher": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
-      "inLanguage": "en"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -59,60 +56,171 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "VC deal analytics",
+          "name": "VC deal analytics dashboard",
           "item": "https://krishnendu.me/projects/vc-dashboard/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/projects/vc-dashboard/#article",
+      "headline": "VC deal analytics dashboard | Krishnendu Biswas",
+      "description": "Power BI deal analytics dashboard on a synthetic 50,000-row star schema with 7 DAX measures and 2 AI visuals.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      }
     }
   ]
 }
-</script>
-<script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
-<body><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
-<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 6.5l7.5 5 7.5-5"/></symbol>
-<symbol id="i-linkedin" viewBox="0 0 20 20"><path fill="currentColor" d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z"/></symbol>
-<symbol id="i-github" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z"/></symbol>
-<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13.5h4"/></symbol>
-<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
-<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
-<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
-<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
-<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
-<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
-<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
-<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
 </svg>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-head" role="banner">
-  <div class="wrap head-in">
+<header class="site-head wrap">
+  <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
-    <nav class="nav" aria-label="Main">
-      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-list" id="navlist" hidden><li><a href="/work/">Work</a></li><li><a href="/log/">Log</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li><li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist" hidden>
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
     </nav>
-    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="View resume PDF in new tab">
-      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
-    </a>
-    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
+    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
   </div>
 </header>
-<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#built">What I built</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/projects/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Projects</a></nav><div class="page-head"><h1>VC deal analytics dashboard: Power BI on a synthetic star schema</h1><p class="deck">3-page Power BI dashboard. 50,000-row fact table and 4 dimensions engineered in Python. 7 DAX measures, Key Influencers, and Decomposition Tree. Synthetic data, modelling exercise.</p></div><div class="banner"><p>Synthetic data, modelling exercise on course-provided dataset. No market data is claimed. Numbers in the dashboard are generated, not observed.</p></div><div class="panel"><dl class="glance"><div><dt>Period</dt><dd>Aug 2026</dd></div><div><dt>Stack</dt><dd>Power BI, Python (NumPy, pandas), DAX</dd></div><div><dt>Context</dt><dd>IIM Ranchi DWDV elective, Term IV</dd></div><div><dt>Status</dt><dd>Synthetic data, modelling exercise</dd></div></dl></div><h2 id="context">Context</h2><p>IIM Ranchi Data Warehousing and Data Visualization (DWDV) elective. Task: design a star schema, populate it with synthetic data, build a Power BI dashboard with DAX measures, and present findings. The dataset was generated with NumPy (random seed 42); MOIC values are literally np.random.uniform(3.0, 15.0). No real venture capital data.</p><h2 id="built">What I built</h2><div class="fig center"><figure class="fig "><svg class="dg chart compact" viewBox="-6 0 372 308" role="img" aria-labelledby="d14-t d14-d" xmlns="http://www.w3.org/2000/svg"><title id="d14-t">VC deal analytics: star schema (synthetic data, modelling exercise)</title><desc id="d14-d">Schema diagram: one fact table with 50,000 rows at centre. Four dimension tables around it. 7 DAX measures, 3 pages, 8 charts, 4 KPI cards, Key Influencers, Decomposition Tree. Dataset is synthetic (NumPy random seed 42).</desc><defs><marker id="d14-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><rect class="k-b" x="0" y="4" width="150" height="44" rx="3"/><text class="t-m" x="75.0" y="32" font-size="15" text-anchor="middle">Dim: Company</text><rect class="k-b" x="210" y="4" width="150" height="44" rx="3"/><text class="t-m" x="285.0" y="32" font-size="15" text-anchor="middle">Dim: Sector</text><rect class="k-b" x="0" y="200" width="150" height="44" rx="3"/><text class="t-m" x="75.0" y="228" font-size="15" text-anchor="middle">Dim: Stage</text><rect class="k-b" x="210" y="200" width="150" height="44" rx="3"/><text class="t-m" x="285.0" y="228" font-size="15" text-anchor="middle">Dim: Geography</text><rect class="k-a" x="105" y="96" width="150" height="56" rx="3"/><text class="t-a" x="180" y="119" font-size="15" text-anchor="middle" font-weight="600">Fact: Deals</text><text class="t-a" x="180" y="140" font-size="15" text-anchor="middle">50,000 rows</text><path class="edge" d="M75 48L130 96"/><path class="edge" d="M285 48L230 96"/><path class="edge" d="M75 200L130 152"/><path class="edge" d="M285 200L230 152"/><text class="t-s" x="180" y="276" font-size="15" text-anchor="middle">7 DAX measures, 3 pages, 8 charts, 4 KPI cards,</text><text class="t-s" x="180" y="298" font-size="15" text-anchor="middle">Key Influencers, Decomp Tree</text></svg><figcaption>Star schema for VC deal analytics dashboard. Synthetic data (np.random.seed(42)). Modelling exercise. <button class="show-data" type="button" aria-expanded="false" aria-controls="d14-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d14-data"><table><caption>Star schema for VC deal analytics dashboard. Synthetic data (np.random.seed(42)). Modelling exercise.</caption><thead><tr><th scope="col">Element</th><th scope="col">Count</th></tr></thead><tbody><tr><th scope="row">Fact rows (synthetic)</th><td>50,000</td></tr><tr><th scope="row">Dimensions</th><td>4</td></tr><tr><th scope="row">DAX measures</th><td>7</td></tr><tr><th scope="row">Dashboard pages</th><td>3</td></tr><tr><th scope="row">Charts</th><td>8</td></tr><tr><th scope="row">KPI cards</th><td>4</td></tr><tr><th scope="row">AI visuals</th><td>2</td></tr></tbody></table></div></figure></div><ul><li>Star schema in Python: 50,000-row fact table, 4 dimension tables.</li><li>3-page Power BI dashboard: 8 charts, 4 KPI cards on exit and valuation.</li><li>7 DAX measures: YoY growth via SAMEPERIODLASTYEAR, CALCULATE filters, DIVIDE guards.</li><li>2 Power BI AI visuals: Key Influencers and Decomposition Tree to rank MOIC and capital drivers.</li></ul><h2 id="limits">Limits</h2><ul class="limits"><li>Dataset is synthetic. No real deal data, no real exits, no market insight.</li><li>Dashboard has 3 pages (not 4). Smart Narrative, anomaly detection, forecasting, and bookmarks mentioned in the report are not present in the .pbix file.</li><li>The 25%-weight group project component is not claimed.</li></ul><nav class="pager" aria-label="Projects"><a href="/projects/customer-exit/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Customer exit prediction</a></nav></div></div></main>
-<footer class="site-foot" role="contentinfo">
-  <div class="wrap">
-    <p>Figures recounted from project artefacts; last checked 3 Oct 2026.</p>
-    <ul class="foot-links">
-      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
-      <li><a href="/archive/" rel="noopener">Archive</a></li>
-      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">VC deal analytics dashboard</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head">
+    <h1>VC deal analytics dashboard: Power BI on a synthetic star schema</h1>
+    <p class="deck">A 3-page Power BI deal analytics dashboard engineered on a 50,000-row synthetic star schema, with 7 custom DAX measures and 2 native AI visuals for valuation driver analysis.</p>
+
+    <div class="panel">
+      <dl class="kv">
+        <dt>Deliverable</dt><dd>3-Page Power BI Dashboard &middot; 8 Charts &middot; 4 KPI Cards</dd>
+        <dt>Data Modeling</dt><dd>Star Schema &middot; 50,000-Row Fact Table &middot; 4 Dimensions</dd>
+        <dt>DAX Measures</dt><dd class="mono">7 Custom Measures (YoY Growth, CALCULATE Filters, DIVIDE Guards)</dd>
+        <dt>AI Visuals</dt><dd>Key Influencers &middot; Decomposition Tree</dd>
+      </dl>
+    </div>
+
+    <h2>Context and Synthetic Data Note</h2>
+    <p>Authored for the Data Visualization &amp; Decision Making (DWDV) elective at IIM Ranchi. The underlying dataset was generated synthetically in Python using deterministic random seeds to simulate multi-stage venture capital deal activity, sector deployment, and exit valuations.</p>
+
+    <h2>Star Schema Data Modeling</h2>
+    <p>The schema centers on a 50,000-row fact table representing investment tranches, joined to four dimension tables via one-to-many relationships:</p>
+    <ul>
+      <li><strong>Dim_Company:</strong> Industry sector, founding year, geography, and operating stage.</li>
+      <li><strong>Dim_Investor:</strong> Lead fund, investor tier, and syndicate size.</li>
+      <li><strong>Dim_Date:</strong> Standard fiscal calendar hierarchy for time-intelligence calculations.</li>
+      <li><strong>Dim_Exit:</strong> Exit vehicle (M&amp;A, IPO, secondary) and return multiples.</li>
     </ul>
+
+    <h2>DAX Engineering and AI Visuals</h2>
+    <p>Authored 7 DAX measures implementing time-intelligence (YoY growth via SAMEPERIODLASTYEAR), dynamic multi-filter aggregations using CALCULATE, and mathematical safety guards using DIVIDE.</p>
+    
+    <p>Configured two native Power BI AI visuals to assist exploratory analysis: the <strong>Key Influencers</strong> visual to rank factors driving high exit multiples, and the <strong>Decomposition Tree</strong> visual to allow interactive breakdown of invested capital across sectors and geographies.</p>
+
+    <h2>Limits</h2>
+    <p>The dataset is entirely synthetic and designed for dashboard architecture demonstration, not market analysis.</p>
+
+    <h2>Stack</h2>
+    <p class="mono">Microsoft Power BI &middot; DAX &middot; PowerQuery &middot; Python &middot; Star Schema Modeling</p>
+  </article>
+<nav class="pager wrap" aria-label="Project navigation">
+  <div class="pager-prev"><a href="/projects/customer-exit/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Customer exit prediction</a></div>
+  <div class="pager-next"><a href="/projects/">All projects <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
+<script src="/site.js" defer></script>
 </body>
 </html>

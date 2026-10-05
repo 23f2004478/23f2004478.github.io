@@ -20,7 +20,6 @@ PERSON = SITE_URL + "/#person"
 STATUS = {"shipped": "Shipped", "in progress": "In progress", "paused": "Paused", "retired": "Retired"}
 CATEGORY = {"infra": "Infrastructure", "capability": "Capability", "site": "Site", "process": "Process"}
 FIELDS = [("what_changed", "What changed"), ("why_it_matters", "Why it matters")]
-NAV_LI = '<li><a href="/log/">Log</a></li>'
 
 
 def esc(s):
@@ -35,53 +34,83 @@ def shell():
     m = s.index('<main id="main">')
     f = s.index("</main>") + len("</main>")
     top = s[b:m]
-    top = top.replace(' aria-current="page"', "")
-    top = add_nav(top)
+    top = re.sub(r'\s*aria-current="page"', '', top)
     top = top.replace('<a href="/log/">Log</a>', '<a href="/log/" aria-current="page">Log</a>')
     return top, s[f:]
 
 
-def add_nav(html):
-    if re.search(r'<li><a href="/log/"[^>]*>Log</a></li>', html):
-        return html
-    return re.sub(r'(<li><a href="/work/"[^>]*>Work</a></li>)', r"\1" + NAV_LI, html, count=1)
+def og_image_for_path(path):
+    p = path.strip("/")
+    if p == "log":
+        return "og-log.png"
+    if p == "log/sources":
+        return "og-log-sources.png"
+    if p == "log/archive":
+        return "og-log-archive.png"
+    if "cloud-migration" in p:
+        return "og-log-cloud-migration.png"
+    if "site-rebuild-fact-audit" in p:
+        return "og-log-site-rebuild-fact-audit.png"
+    return "og-log.png"
 
 
 def head(title, desc, path, ld, extra=""):
     url = SITE_URL + path
+    og_img_name = og_image_for_path(path)
+    img_url = SITE_URL + "/og/" + og_img_name
+    img_alt = "%s, share card for krishnendu.me" % title
+    is_art = path.count("/") > 3
+    ogt = "article" if is_art else "website"
+    
+    art_meta = ""
+    if is_art:
+        art_meta = """  <meta property="article:published_time" content="%(pub)s">
+  <meta property="article:author" content="%(person)s">
+""" % {"pub": ld["@graph"][0].get("datePublished", ""), "person": PERSON}
+
     return """<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>%(t)s</title>
-<meta name="description" content="%(d)s">
-<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
-<link rel="canonical" href="%(u)s">
-<meta property="og:type" content="%(ogt)s">
-<meta property="og:site_name" content="Krishnendu Biswas">
-<meta property="og:url" content="%(u)s">
-<meta property="og:title" content="%(t)s">
-<meta property="og:description" content="%(d)s">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<meta name="twitter:card" content="summary">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="/log/feed.xml">
-<link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="/log/feed.json">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>%(t)s</title>
+  <meta name="description" content="%(d)s">
+  <link rel="canonical" href="%(u)s">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="%(ogt)s">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="%(u)s">
+  <meta property="og:title" content="%(t)s">
+  <meta property="og:description" content="%(d)s">
+  <meta property="og:image" content="%(img)s">
+  <meta property="og:image:secure_url" content="%(img)s">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="%(img_alt)s">
+%(art_meta)s  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="%(t)s">
+  <meta name="twitter:description" content="%(d)s">
+  <meta name="twitter:image" content="%(img)s">
+  <meta name="twitter:image:alt" content="%(img_alt)s">
+  <script type="application/ld+json">
 %(ld)s
-</script>%(x)s
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>""" % {"t": esc(title), "d": esc(desc), "u": url, "ld": json.dumps(ld, indent=2, ensure_ascii=False),
-             "x": extra, "ogt": "article" if path.count("/") > 3 else "website"}
+             "ogt": ogt, "img": img_url, "img_alt": esc(img_alt), "art_meta": art_meta}
 
 
 def crumbs(items):
@@ -101,11 +130,6 @@ def page(path, title, desc, ld, main):
 # ------------------------------------------------------------------ text helpers
 
 def tags_html(text, counter=None):
-    # Visible mark is a CSS counter number (see .fn.src in styles.css), not the raw tag text,
-    # so the inline citation reads as a small footnote instead of noise like "[K:t_...]".
-    # The link points at this entry's own Sources list at the bottom of the same page. The
-    # aria-label carries a plain sequential label, never the raw tag: the tag itself is kept
-    # machine-readable only as the data-src attribute on that Sources list item.
     def sub(m):
         tag = "%s:%s" % (m.group(1), m.group(2))
         if counter is not None:
@@ -178,8 +202,6 @@ def thumb(e, uid):
 
 def strip_html(strip):
     cells = []
-    # estate counts (jobs, skills) live on /work/platform/ only: owner rule "212 ... only on /work/platform/",
-    # job count = facts CORRECTIONS 35, not this weekly snapshot. Run counts stay here.
     for c in [c for c in strip["cells"] if c["key"] not in ESTATE_KEYS]:
         v = c["value"]
         shown = S.thousands(v) if isinstance(v, int) else str(v)
@@ -211,7 +233,6 @@ IO_OUT = "What needs me lands in Google Tasks"
 def standing_figures(data):
     tp, tl, mm, hist = data["topology"], data["timeline"], data["modelmix"], data["modelmix_weeks"]
     out = []
-    # input and output ends: owner method (inputs/home/AGENT_SYSTEMS_FACTS_v2.md INPUT AND OUTPUT). Fixed copy, not stats.
     tp = dict(tp, input=IO_IN, output=IO_OUT)
     w, n = S.topology(tp, "lt")
     rows = [["Input (before the server)", IO_IN + ". Built-in voice plugins are skipped so I can read what got written."],
@@ -245,7 +266,8 @@ def render_index(entries, data):
     if newest:
         lead = ('<p class="newest">Newest: <a href="%s">%s</a> <span class="mono muted">%s</span></p>'
                 % (entry_url(newest), esc(newest["title"]), esc(human_date(newest["date"]))))
-    main = ('<div class="wrap page-head log-head"><h1>Build log</h1>'
+    main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li aria-current="page">Build log</li></ol></nav>'
+            '<div class="wrap page-head log-head"><h1>Build log</h1>'
             '<p class="deck">What I build and run with agents, reviewed before publishing.</p>'
             '<p class="frame">Built on open-source <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a>. '
             'I review every entry before it goes live. New entries on Wednesday and Sunday evenings.</p>%s</div>'
@@ -278,8 +300,6 @@ def render_entry(e, prev_e, next_e):
     body.append('<h2 id="result">Result</h2><p>%s</p>' % tags_html(e["result"], counter))
     if e.get("lesson"):
         body.append('<h2 id="lesson">Lesson</h2><p>%s</p>' % tags_html(e["lesson"], counter))
-    # The tag is kept as a data-src attribute (machine-readable for privacy_gate and the
-    # number check) rather than printed in visible text; only the plain-language label shows.
     src = "".join('<li id="%s" data-src="%s">%s</li>' % (anchor(s["tag"]), esc(s["tag"]), esc(s["label"]))
                   for s in e["sources"])
     body.append('<h2 id="sources">Sources</h2><ul class="src-list">%s</ul><p class="small muted">Reviewed and approved by me before publishing. '
@@ -290,10 +310,10 @@ def render_entry(e, prev_e, next_e):
     pager += ('<a href="%s">Newer: %s <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>' % (entry_url(next_e), esc(next_e["title"]))
               if next_e else '<a href="/log/archive/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>')
     pager += "</nav>"
-    main = ('<article class="wrap entry-page"><nav class="crumb" aria-label="Breadcrumb"><a href="/log/">'
-            '<svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Build log</a></nav>'
+    main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">%s</li></ol></nav>'
+            '<article class="wrap entry-page">'
             '<header class="page-head"><h1>%s</h1><p class="meta"><time datetime="%s">%s</time> &middot; %s &middot; %s</p></header>'
-            '%s%s</article>' % (esc(e["title"]), e["date"], esc(human_date(e["date"])), STATUS[e["status"]],
+            '%s%s</article>' % (esc(e["title"]), esc(e["title"]), e["date"], esc(human_date(e["date"])), STATUS[e["status"]],
                                 CATEGORY[e["category"]], "".join(body), pager))
     desc = plain(e["what_changed"])
     desc = desc if len(desc) <= 155 else desc[:desc.rfind(" ", 0, 150)] + "..."
@@ -316,8 +336,8 @@ def render_archive(entries):
         items = "".join('<li><span class="mono when">%s</span> <a href="%s">%s</a></li>' % (esc(human_date(e["date"])), entry_url(e), esc(e["title"]))
                         for e in groups[ym])
         parts.append('<h2 id="m-%s">%s %s</h2><ul class="arch">%s</ul>' % (ym, MONTHS_LONG[int(m) - 1], y, items))
-    main = ('<div class="wrap"><nav class="crumb" aria-label="Breadcrumb"><a href="/log/"><svg class="icon flip" aria-hidden="true">'
-            '<use href="#i-arr"/></svg> Build log</a></nav><div class="page-head"><h1>All entries</h1>'
+    main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">Archive</li></ol></nav>'
+            '<div class="wrap"><div class="page-head"><h1>All entries</h1>'
             '<p class="deck">Every build log entry, newest first, grouped by month.</p></div>%s</div>' % "".join(parts))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": SITE_URL + "/log/archive/#webpage", "url": SITE_URL + "/log/archive/",
@@ -337,8 +357,8 @@ def render_sources(entries, data):
     cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), esc(c["unit"])) for c in data["strip"]["cells"])
     names = "".join("<li>%s is logged as <span class=\"mono\">%s</span>.</li>" % (esc(m["name"]), esc(m["id"]))
                     for m in data["modelmix"]["models"] if m["name"] != m["id"])
-    main = ('<div class="wrap"><nav class="crumb" aria-label="Breadcrumb"><a href="/log/"><svg class="icon flip" aria-hidden="true">'
-            '<use href="#i-arr"/></svg> Build log</a></nav><div class="page-head"><h1>How I source these numbers</h1>'
+    main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">How I source these numbers</li></ol></nav>'
+            '<div class="wrap"><div class="page-head"><h1>How I source these numbers</h1>'
             '<p class="deck">Every number in an entry carries a tag that points to where it came from.</p></div>'
             '<h2 id="tags">Tag formats</h2><ul class="src-list">'
             '<li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone gets an ID when it happens, and the ID never changes.</li>'
@@ -374,32 +394,71 @@ def entry_html_for_feed(e):
 
 def rfc822(d):
     dt = date.fromisoformat(d)
-    return "%s, %d %s %d 20:00:00 +0530" % (["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday()], dt.day,
-                                             ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dt.month - 1], dt.year)
+    return "%s, %02d %s %d 20:00:00 +0530" % (["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday()], dt.day,
+                                              ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dt.month - 1], dt.year)
 
 
 def render_feeds(entries):
     items = []
     for e in entries:
         u = SITE_URL + entry_url(e)
-        items.append("<item><title>%s</title><link>%s</link><guid isPermaLink=\"true\">%s</guid><pubDate>%s</pubDate>"
-                     "<description>%s</description><content:encoded><![CDATA[%s]]></content:encoded></item>"
-                     % (esc(e["title"]), u, u, rfc822(e["date"]), esc(plain(e["what_changed"])), entry_html_for_feed(e)))
+        img_name = og_image_for_path(entry_url(e))
+        img_path = SITE / "og" / img_name
+        img_len = str(img_path.stat().st_size) if img_path.exists() else "25000"
+        img_url = SITE_URL + "/og/" + img_name
+        
+        items.append(f"""    <item>
+      <title>{esc(e["title"])}</title>
+      <link>{u}</link>
+      <guid isPermaLink="true">{u}</guid>
+      <pubDate>{rfc822(e["date"])}</pubDate>
+      <description>{esc(plain(e["what_changed"]))}</description>
+      <enclosure url="{img_url}" length="{img_len}" type="image/png" />
+      <content:encoded><![CDATA[{entry_html_for_feed(e)}]]></content:encoded>
+    </item>""")
+        
     last = rfc822(entries[0]["date"]) if entries else rfc822(date.today().isoformat())
-    rss = ('<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" '
-           'xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Build log | Krishnendu Biswas</title><link>%s/log/</link>'
-           '<atom:link href="%s/log/feed.xml" rel="self" type="application/rss+xml"/>'
-           '<description>What I build and run with agents, reviewed before publishing.</description><language>en</language>'
-           '<lastBuildDate>%s</lastBuildDate>%s</channel></rss>\n' % (SITE_URL, SITE_URL, last, "".join(items)))
+    rss = f"""<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Build log | Krishnendu Biswas</title>
+    <link>{SITE_URL}/log/</link>
+    <atom:link href="{SITE_URL}/log/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>What I build and run with agents, reviewed before publishing.</description>
+    <language>en</language>
+    <lastBuildDate>{last}</lastBuildDate>
+{"".join(items)}
+  </channel>
+</rss>
+"""
     (LOG / "feed.xml").write_text(rss, encoding="utf-8")
-    jf = {"version": "https://jsonfeed.org/version/1.1", "title": "Build log | Krishnendu Biswas",
-          "home_page_url": SITE_URL + "/log/", "feed_url": SITE_URL + "/log/feed.json",
-          "description": "What I build and run with agents, reviewed before publishing.", "language": "en",
-          "authors": [{"name": "Krishnendu Biswas", "url": SITE_URL + "/"}],
-          "items": [{"id": SITE_URL + entry_url(e), "url": SITE_URL + entry_url(e), "title": e["title"],
-                     "summary": plain(e["what_changed"]), "content_html": entry_html_for_feed(e),
-                     "date_published": iso_dt(e["date"]), "tags": [e["category"], e["status"]]} for e in entries]}
-    (LOG / "feed.json").write_text(json.dumps(jf, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    
+    jf_items = []
+    for e in entries:
+        img_name = og_image_for_path(entry_url(e))
+        img_url = SITE_URL + "/og/" + img_name
+        jf_items.append({
+            "id": SITE_URL + entry_url(e),
+            "url": SITE_URL + entry_url(e),
+            "title": e["title"],
+            "summary": plain(e["what_changed"]),
+            "image": img_url,
+            "content_html": entry_html_for_feed(e),
+            "date_published": iso_dt(e["date"]),
+            "tags": [e["category"], e["status"]]
+        })
+        
+    jf = {
+        "version": "https://jsonfeed.org/version/1.1",
+        "title": "Build log | Krishnendu Biswas",
+        "home_page_url": SITE_URL + "/log/",
+        "feed_url": SITE_URL + "/log/feed.json",
+        "description": "What I build and run with agents, reviewed before publishing.",
+        "language": "en",
+        "authors": [{"name": "Krishnendu Biswas", "url": SITE_URL + "/"}],
+        "items": jf_items
+    }
+    (LOG / "feed.json").write_text(json.dumps(jf, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 HOME_START, HOME_END = "<!-- build-log:start -->", "<!-- build-log:end -->"
@@ -411,57 +470,25 @@ def render_home_card(entries):
     s = re.sub(re.escape(HOME_START) + ".*?" + re.escape(HOME_END), "", s, flags=re.S)
     if entries:
         e = entries[0]
-        # Home revamp (t_16489b85): the newest entry is one line under the platform story,
-        # not its own block. Still a <section id="build-log"> so privacy_gate scans it.
         card = ('%s<section class="wrap log-line" id="build-log" aria-labelledby="h-latest">'
                 '<h2 id="h-latest" class="sr-only">Latest from the build log</h2>'
                 '<p><span class="muted">Build log, <time datetime="%s">%s</time>:</span> '
                 '<a href="%s">%s</a> <a class="log-all" href="/log/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>'
                 '</section>%s'
                 % (HOME_START, e["date"], esc(human_date(e["date"])), entry_url(e), esc(e["title"]), HOME_END))
-        i = s.index('id="agent-systems"')
-        i = s.index("</section>", i) + len("</section>")
-        s = s[:i] + card + s[i:]
-    p.write_text(s, encoding="utf-8")
-
-
-def nav_everywhere():
-    changed = []
-    for p in sorted(SITE.rglob("*.html")):
-        rel = p.relative_to(SITE).as_posix()
-        if rel.startswith(("archive/", "tools/", ".git/")):
-            continue
-        s = p.read_text(encoding="utf-8")
-        if 'id="navlist"' not in s or rel.startswith("log/"):
-            continue
-        n = add_nav(s)
-        if n != s:
-            p.write_text(n, encoding="utf-8")
-            changed.append(rel)
-    return changed
-
-
-SM_START, SM_END = "<!-- build-log:start -->", "<!-- build-log:end -->"
-
-
-def render_sitemap(entries):
-    p = SITE / "sitemap.xml"
-    s = p.read_text(encoding="utf-8")
-    s = re.sub(r"\s*" + re.escape(SM_START) + ".*?" + re.escape(SM_END), "", s, flags=re.S)
-    newest = entries[0]["date"] if entries else date.today().isoformat()
-    urls = [("/log/", newest, "weekly", "0.8"), ("/log/archive/", newest, "weekly", "0.5"),
-            ("/log/sources/", newest, "monthly", "0.4")]
-    urls += [(entry_url(e), e["date"], "monthly", "0.7") for e in entries]
-    block = "\n  " + SM_START + "".join(
-        "\n  <url>\n    <loc>%s%s</loc>\n    <lastmod>%s</lastmod>\n    <changefreq>%s</changefreq>\n    <priority>%s</priority>\n  </url>"
-        % (SITE_URL, u, d, c, pr) for u, d, c, pr in urls) + "\n  " + SM_END
-    s = s.replace("\n</urlset>", block + "\n</urlset>")
+        if 'id="leadership"' in s:
+            i = s.index('id="leadership"')
+            i = s.index("</section>", i) + len("</section>")
+            s = s[:i] + "\n  " + card + s[i:]
+        elif 'id="agent-systems"' in s:
+            i = s.index('id="agent-systems"')
+            i = s.index("</section>", i) + len("</section>")
+            s = s[:i] + "\n  " + card + s[i:]
     p.write_text(s, encoding="utf-8")
 
 
 def main():
     entries = load_entries()
-    render_sitemap(entries)
     data = {k: read_json(DATA / (k + ".json")) for k in ("strip", "topology", "modelmix", "timeline", "modelmix_weeks")}
     render_index(entries, data)
     chrono = list(reversed(entries))
@@ -471,10 +498,7 @@ def main():
     render_sources(entries, data)
     render_feeds(entries)
     render_home_card(entries)
-    changed = nav_everywhere()
-    print("rendered %d entries; nav link added to %d existing pages" % (len(entries), len(changed)))
-    for c in changed:
-        print("  nav:", c)
+    print("Rendered build log pages, feeds, and entries successfully.")
 
 
 if __name__ == "__main__":

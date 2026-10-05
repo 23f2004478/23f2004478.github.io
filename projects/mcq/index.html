@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart MCQ solver | Krishnendu Biswas</title>
-<meta name="description" content="LoRA fine-tuning of DeBERTa-v3-base and RoBERTa-base. 70:30 ensemble, MAP@3 0.74242 on 500 unseen questions.">
-<link rel="canonical" href="https://krishnendu.me/projects/mcq/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krishnendu.me/projects/mcq/">
-<meta property="og:title" content="Smart MCQ solver | Krishnendu Biswas">
-<meta property="og:description" content="LoRA fine-tuning of DeBERTa-v3-base and RoBERTa-base. 70:30 ensemble, MAP@3 0.74242 on 500 unseen questions.">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart MCQ solver | Krishnendu Biswas</title>
+  <meta name="description" content="Parameter-efficient fine-tuning (LoRA) of DeBERTa-v3 and RoBERTa for multiple-choice ranking, scoring 0.74242 MAP@3 on 500 unseen questions.">
+  <link rel="canonical" href="https://krishnendu.me/projects/mcq/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/projects/mcq/">
+  <meta property="og:title" content="Smart MCQ solver | Krishnendu Biswas">
+  <meta property="og:description" content="Parameter-efficient fine-tuning (LoRA) of DeBERTa-v3 and RoBERTa for multiple-choice ranking, scoring 0.74242 MAP@3 on 500 unseen questions.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-projects-mcq.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-projects-mcq.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Smart MCQ solver | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Smart MCQ solver | Krishnendu Biswas">
+  <meta name="twitter:description" content="Parameter-efficient fine-tuning (LoRA) of DeBERTa-v3 and RoBERTa for multiple-choice ranking, scoring 0.74242 MAP@3 on 500 unseen questions.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-projects-mcq.png">
+  <meta name="twitter:image:alt" content="Smart MCQ solver | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "TechArticle",
-      "@id": "https://krishnendu.me/projects/mcq/#article",
-      "url": "https://krishnendu.me/projects/mcq/",
-      "headline": "Smart MCQ solver via parameter-efficient fine-tuning (LoRA)",
-      "name": "Smart MCQ solver | Krishnendu Biswas",
-      "description": "Fine-tuned microsoft/deberta-v3-base and roberta-base with LoRA (r=8, alpha=16) for 5-option MCQ ranking, scoring 0.74242 MAP@3 on Kaggle test data.",
-      "author": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "publisher": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
-      "inLanguage": "en"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -63,56 +60,161 @@
           "item": "https://krishnendu.me/projects/mcq/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/projects/mcq/#article",
+      "headline": "Smart MCQ solver | Krishnendu Biswas",
+      "description": "Parameter-efficient fine-tuning (LoRA) of DeBERTa-v3 and RoBERTa for multiple-choice ranking, scoring 0.74242 MAP@3 on 500 unseen questions.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      }
     }
   ]
 }
-</script>
-<script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
-<body><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
-<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 6.5l7.5 5 7.5-5"/></symbol>
-<symbol id="i-linkedin" viewBox="0 0 20 20"><path fill="currentColor" d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z"/></symbol>
-<symbol id="i-github" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z"/></symbol>
-<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13.5h4"/></symbol>
-<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
-<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
-<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
-<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
-<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
-<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
-<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
-<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
 </svg>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-head" role="banner">
-  <div class="wrap head-in">
+<header class="site-head wrap">
+  <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
-    <nav class="nav" aria-label="Main">
-      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-list" id="navlist" hidden><li><a href="/work/">Work</a></li><li><a href="/log/">Log</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li><li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist" hidden>
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
     </nav>
-    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="View resume PDF in new tab">
-      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
-    </a>
-    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
+    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
   </div>
 </header>
-<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#lora">LoRA fine-tuning</a></li><li><a href="#results">Results</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/projects/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Projects</a></nav><div class="page-head"><h1>Smart MCQ solver: transformer ensemble with LoRA fine-tuning</h1><p class="deck">Applied machine learning, including parameter-efficient fine-tuning (LoRA) of two transformer models. MAP@3 0.74242 on Kaggle public leaderboard, 500 unseen questions.</p></div><div class="panel"><dl class="glance"><div><dt>Period</dt><dd>May 2026 to Jul 2026</dd></div><div><dt>Stack</dt><dd>Python, HuggingFace PEFT, DeBERTa-v3-base, RoBERTa-base, Weights and Biases</dd></div><div><dt>Metric</dt><dd>MAP@3</dd></div><div><dt>Evaluation</dt><dd>Kaggle public leaderboard, 500 unseen questions</dd></div></dl></div><h2 id="context">Context</h2><p>5-option MCQ ranking over 2,000 training questions. The objective is MAP@3: the mean average precision at 3, which rewards putting the correct answer in the top 3 ranked positions.</p><p>Four NLP architectures were benchmarked. DeBERTa-v3-base and RoBERTa-base produced the strongest individual scores; a weighted ensemble outperformed either alone.</p><h2 id="lora">LoRA fine-tuning</h2><div class="fig center"><figure class="fig "><svg class="dg wide chart" viewBox="0 0 560 278" role="img" overflow="hidden" aria-labelledby="d10w-t d10w-d" xmlns="http://www.w3.org/2000/svg"><title id="d10w-t">Smart MCQ solver: LoRA config and ensemble flow</title><desc id="d10w-d">Config card: DeBERTa-v3-base and RoBERTa-base both use r=8, alpha=16, dropout 0.1, on query and value projections, task_type SEQ_CLS. 70:30 weighted ensemble. MAP@3 0.74242 on 500 unseen questions.</desc><defs><marker id="d10w-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><rect class="k-b" x="10" y="10" width="540" height="258" rx="3"/><text class="t-s" x="24" y="35" font-size="13">Base models</text><text class="t-m mono" x="160" y="35" font-size="13">deberta-v3-base / roberta-base</text><text class="t-s" x="24" y="61" font-size="13">LoRA rank r</text><text class="t-m mono" x="160" y="61" font-size="13">8</text><text class="t-s" x="24" y="87" font-size="13">Alpha</text><text class="t-m mono" x="160" y="87" font-size="13">16</text><text class="t-s" x="24" y="113" font-size="13">Dropout</text><text class="t-m mono" x="160" y="113" font-size="13">0.1</text><text class="t-s" x="24" y="139" font-size="13">Target modules</text><text class="t-m mono" x="160" y="139" font-size="13">query_proj, value_proj (DeBERTa);</text><text class="t-m mono" x="160" y="157" font-size="13">query, value (RoBERTa)</text><text class="t-s" x="24" y="183" font-size="13">Task type</text><text class="t-m mono" x="160" y="183" font-size="13">SEQ_CLS</text><text class="t-s" x="24" y="209" font-size="13">Ensemble</text><text class="t-m mono" x="160" y="209" font-size="13">70:30 DeBERTa:RoBERTa</text><text class="t-s" x="24" y="235" font-size="13">Evaluation</text><text class="t-m mono" x="160" y="235" font-size="13">MAP@3 on Kaggle public leaderboard</text></svg><svg class="dg narrow chart" viewBox="0 0 340 453" role="img" aria-labelledby="d10n-t d10n-d" xmlns="http://www.w3.org/2000/svg"><title id="d10n-t">Smart MCQ solver: LoRA config (mobile view)</title><desc id="d10n-d">LoRA configuration parameters for DeBERTa-v3 and RoBERTa adapters.</desc><defs><marker id="d10n-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><rect class="k-b" x="6" y="6" width="328" height="441" rx="3"/><text class="t-s" x="20" y="34" font-size="14" text-anchor="start">Base models</text><text class="t-m mono" x="20" y="54" font-size="14" text-anchor="start">deberta-v3-base /</text><text class="t-m mono" x="20" y="73" font-size="14" text-anchor="start">roberta-base</text><text class="t-s" x="20" y="108" font-size="14" text-anchor="start">LoRA rank &amp; alpha</text><text class="t-m mono" x="20" y="128" font-size="14" text-anchor="start">r = 8, alpha = 16,</text><text class="t-m mono" x="20" y="147" font-size="14" text-anchor="start">dropout = 0.1</text><text class="t-s" x="20" y="182" font-size="14" text-anchor="start">Target modules</text><text class="t-m mono" x="20" y="202" font-size="14" text-anchor="start">DeBERTa: query_proj, value_proj</text><text class="t-m mono" x="20" y="221" font-size="14" text-anchor="start">RoBERTa: query, value</text><text class="t-s" x="20" y="256" font-size="14" text-anchor="start">Task type</text><text class="t-m mono" x="20" y="276" font-size="14" text-anchor="start">SEQ_CLS</text><text class="t-m mono" x="20" y="295" font-size="14" text-anchor="start">(sequence classification)</text><text class="t-s" x="20" y="330" font-size="14" text-anchor="start">Ensemble blend</text><text class="t-m mono" x="20" y="350" font-size="14" text-anchor="start">70% DeBERTa : 30% RoBERTa</text><text class="t-s" x="20" y="385" font-size="14" text-anchor="start">Evaluation</text><text class="t-m" x="20" y="405" font-size="14" text-anchor="start">MAP@3 on Kaggle public</text><text class="t-m" x="20" y="424" font-size="14" text-anchor="start">leaderboard, 500 unseen questions</text></svg><figcaption>LoRA fine-tuning config for both adapters. Ensemble: 70% DeBERTa, 30% RoBERTa. <button class="show-data" type="button" aria-expanded="false" aria-controls="d10-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d10-data"><table><caption>LoRA fine-tuning config for both adapters. Ensemble: 70% DeBERTa, 30% RoBERTa.</caption><thead><tr><th scope="col">Parameter</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">Base models</th><td>deberta-v3-base / roberta-base</td></tr><tr><th scope="row">LoRA rank r</th><td>8</td></tr><tr><th scope="row">Alpha</th><td>16</td></tr><tr><th scope="row">Dropout</th><td>0.1</td></tr><tr><th scope="row">Target modules</th><td>query_proj, value_proj (DeBERTa); query, value (RoBERTa)</td></tr><tr><th scope="row">Task type</th><td>SEQ_CLS</td></tr><tr><th scope="row">Ensemble</th><td>70:30 DeBERTa:RoBERTa</td></tr><tr><th scope="row">Evaluation</th><td>MAP@3 on Kaggle public leaderboard</td></tr></tbody></table></div></figure></div><div class="fig center"><figure class="fig "><svg class="dg chart compact" viewBox="0 0 340 84" role="img" overflow="hidden" aria-labelledby="d11-t d11-d" xmlns="http://www.w3.org/2000/svg"><title id="d11-t">MAP@3 on Kaggle public leaderboard: 0.74242</title><desc id="d11-d">Single MAP@3 score of 0.74242 on 500 unseen questions, Kaggle public leaderboard.</desc><defs><marker id="d11-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><rect class="k-b" x="20" y="10" width="300" height="62" rx="3"/><text class="t-m" x="170.0" y="36" font-size="14" text-anchor="middle">MAP@3 public leaderboard</text><text class="t-a mono" x="170.0" y="55" font-size="22" font-weight="600" text-anchor="middle" style="fill:var(--accent)">0.74242</text><text class="t-s" x="170.0" y="72" font-size="14" text-anchor="middle">500 unseen questions</text></svg><figcaption>MAP@3 0.74242 on Kaggle public leaderboard. 500 unseen questions. <button class="show-data" type="button" aria-expanded="false" aria-controls="d11-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d11-data"><table><caption>MAP@3 0.74242 on Kaggle public leaderboard. 500 unseen questions.</caption><thead><tr><th scope="col">Metric</th><th scope="col">Value</th></tr></thead><tbody><tr><th scope="row">MAP@3</th><td>0.74242</td></tr><tr><th scope="row">Evaluation</th><td>Kaggle public leaderboard</td></tr><tr><th scope="row">Questions</th><td>500 unseen</td></tr></tbody></table></div></figure></div><div class="panel"><dl class="kv"><dt>Task type</dt><dd>SEQ_CLS (sequence classification)</dd><dt>LoRA rank r</dt><dd>8</dd><dt>Alpha</dt><dd>16</dd><dt>Dropout</dt><dd>0.1</dd><dt>Target modules</dt><dd>query_proj, value_proj (DeBERTa); query, value (RoBERTa)</dd><dt>Ensemble</dt><dd>70:30 DeBERTa:RoBERTa weighted blend</dd><dt>Logging</dt><dd>Weights and Biases run logs on disk</dd></dl></div><h2 id="results">Results</h2><ul class="outcome"><li>MAP@3 on Kaggle public leaderboard: <span class="mono">0.74242</span></li><li>Evaluated on 500 unseen questions (held-out test set, Kaggle public leaderboard)</li><li>Training set: 2,000 questions</li></ul><p class="sources small">Score from Kaggle public leaderboard. No private leaderboard rank is shown.</p><h2 id="limits">Limits</h2><ul class="limits"><li>Only the public leaderboard score is shown. No final private-set score is available.</li><li>This is parameter-efficient fine-tuning (LoRA/PEFT), not full fine-tuning or training from scratch.</li><li>The adapters are trained on course-provided data; no claims are made about generalization to other MCQ domains.</li></ul><nav class="pager" aria-label="Projects"><a href="/projects/comment-classification/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Comment classification</a><a href="/projects/customer-exit/">Customer exit prediction <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
-<footer class="site-foot" role="contentinfo">
-  <div class="wrap">
-    <p>Figures recounted from project artefacts; last checked 3 Oct 2026.</p>
-    <ul class="foot-links">
-      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
-      <li><a href="/archive/" rel="noopener">Archive</a></li>
-      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Smart MCQ solver</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head">
+    <h1>Smart MCQ solver: transformer ensemble with LoRA fine-tuning</h1>
+    <p class="deck">Parameter-efficient fine-tuning (LoRA) of DeBERTa-v3 and RoBERTa for 5-option multiple-choice question ranking, achieving 0.74242 MAP@3 on 500 unseen questions.</p>
+
+    <div class="panel">
+      <dl class="kv">
+        <dt>Primary Metric</dt><dd class="mono">0.74242 MAP@3</dd>
+        <dt>Model Architectures</dt><dd>DeBERTa-v3-base &middot; RoBERTa-base (70:30 Ensemble)</dd>
+        <dt>Tuning Method</dt><dd class="mono">LoRA (r=8, alpha=16, dropout=0.1)</dd>
+        <dt>Evaluation Corpus</dt><dd>2,000 Questions (500 Unseen Test Set)</dd>
+      </dl>
+    </div>
+
+    <h2>Problem Formulation</h2>
+    <p>Multiple-choice question answering requires ranking five plausible options for a given prompt. The competition metric was Mean Average Precision at 3 (MAP@3), which heavily rewards placing the correct option in the top rank while giving partial credit for second or third-place placements.</p>
+
+    <h2>What I Built</h2>
+    <p>Rather than full fine-tuning of all transformer weights, I applied Low-Rank Adaptation (LoRA) to adapt pretrained language models efficiently:</p>
+    <ul>
+      <li><strong>microsoft/deberta-v3-base:</strong> LoRA rank r=8, alpha=16, dropout 0.1, targeted at the query_proj and value_proj attention projections.</li>
+      <li><strong>roberta-base:</strong> LoRA rank r=8, alpha=16, dropout 0.1, targeted at query and value matrices.</li>
+      <li><strong>Ensemble blending:</strong> Combined predicted probability distributions using a 70:30 weighted blend (DeBERTa-v3 : RoBERTa).</li>
     </ul>
+
+    <h2>Results &amp; Verification</h2>
+    <p>The 70:30 LoRA ensemble generalized effectively on unseen test data, scoring <strong>0.74242 MAP@3</strong> on 500 test questions on Kaggle. Weights &amp; Biases experiment tracking logs and safetensor adapter weights are preserved as verifiable artefacts.</p>
+
+    <h2>Stack</h2>
+    <p class="mono">PyTorch &middot; Hugging Face Transformers &middot; PEFT (LoRA) &middot; Weights &amp; Biases &middot; Python</p>
+  </article>
+<nav class="pager wrap" aria-label="Project navigation">
+  <div class="pager-prev"><a href="/projects/comment-classification/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Comment classification</a></div>
+  <div class="pager-next"><a href="/projects/customer-exit/">Customer exit prediction <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
+<script src="/site.js" defer></script>
 </body>
 </html>

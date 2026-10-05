@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Comment classification | Krishnendu Biswas</title>
-<meta name="description" content="F1-Macro from 0.6221 to 0.8293 on 39.6K held-out rows. 198K comments, 100-trial Optuna, 3-model blend.">
-<link rel="canonical" href="https://krishnendu.me/projects/comment-classification/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krishnendu.me/projects/comment-classification/">
-<meta property="og:title" content="Comment classification | Krishnendu Biswas">
-<meta property="og:description" content="F1-Macro from 0.6221 to 0.8293 on 39.6K held-out rows. 198K comments, 100-trial Optuna, 3-model blend.">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comment classification | Krishnendu Biswas</title>
+  <meta name="description" content="Feature engineering and predictive modelling over 198,000 comments across four imbalanced classes, achieving 0.8293 F1-Macro.">
+  <link rel="canonical" href="https://krishnendu.me/projects/comment-classification/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/projects/comment-classification/">
+  <meta property="og:title" content="Comment classification | Krishnendu Biswas">
+  <meta property="og:description" content="Feature engineering and predictive modelling over 198,000 comments across four imbalanced classes, achieving 0.8293 F1-Macro.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-projects-comment-classification.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-projects-comment-classification.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Comment classification | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comment classification | Krishnendu Biswas">
+  <meta name="twitter:description" content="Feature engineering and predictive modelling over 198,000 comments across four imbalanced classes, achieving 0.8293 F1-Macro.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-projects-comment-classification.png">
+  <meta name="twitter:image:alt" content="Comment classification | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "TechArticle",
-      "@id": "https://krishnendu.me/projects/comment-classification/#article",
-      "url": "https://krishnendu.me/projects/comment-classification/",
-      "headline": "Multi-class comment classification pipeline (198k samples)",
-      "name": "Comment classification | Krishnendu Biswas",
-      "description": "Evaluated 198,000 comments across 4 classes; engineered 10,000+ n-gram features and behavioral signals; achieved 0.8293 F1-Macro via LightGBM and Nelder-Mead threshold tuning.",
-      "author": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "publisher": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
-      "inLanguage": "en"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -63,56 +60,159 @@
           "item": "https://krishnendu.me/projects/comment-classification/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/projects/comment-classification/#article",
+      "headline": "Comment classification | Krishnendu Biswas",
+      "description": "Feature engineering and predictive modelling over 198,000 comments across four imbalanced classes, achieving 0.8293 F1-Macro.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      }
     }
   ]
 }
-</script>
-<script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
-<body><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
-<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 6.5l7.5 5 7.5-5"/></symbol>
-<symbol id="i-linkedin" viewBox="0 0 20 20"><path fill="currentColor" d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z"/></symbol>
-<symbol id="i-github" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z"/></symbol>
-<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13.5h4"/></symbol>
-<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
-<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
-<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
-<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
-<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
-<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
-<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
-<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
 </svg>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-head" role="banner">
-  <div class="wrap head-in">
+<header class="site-head wrap">
+  <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
-    <nav class="nav" aria-label="Main">
-      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-list" id="navlist" hidden><li><a href="/work/">Work</a></li><li><a href="/log/">Log</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li><li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist" hidden>
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
     </nav>
-    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="View resume PDF in new tab">
-      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
-    </a>
-    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
+    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
   </div>
 </header>
-<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#what">What I did</a></li><li><a href="#results">Results</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/projects/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Projects</a></nav><div class="page-head"><h1>Comment classification: feature engineering and predictive modelling</h1><p class="deck">F1-Macro from 0.6221 to 0.8293 on 39.6K held-out rows. 198K comments, 4 label classes, 100-trial Optuna study, 3-model blend.</p></div><div class="panel"><dl class="glance"><div><dt>Period</dt><dd>Jan 2026 to Mar 2026</dd></div><div><dt>Stack</dt><dd>Python, LightGBM, scikit-learn, Optuna, Nelder-Mead</dd></div><div><dt>Metric</dt><dd>F1-Macro (imbalanced classes)</dd></div><div><dt>Held-out set</dt><dd>39.6K rows</dd></div></dl></div><h2 id="context">Context</h2><p>198K comments across 4 label classes. The target distribution is imbalanced, so accuracy flatters the majority class. F1-Macro weights all classes equally and is the appropriate metric here.</p><h2 id="what">What I did</h2><ul><li>Analyzed 198K comments across 4 label classes with F1-Macro as the primary metric.</li><li>Screened 11 tabular predictors over 198K rows with chi-square and Kruskal-Wallis tests, ranked by test statistic.</li><li>Engineered 10K+ word and character-level n-grams with behavioral signals to detect obfuscated and toxic patterns.</li><li>Ran a 100-trial Optuna study over 10 LightGBM hyperparameters, median-pruning 62 trials on 3-fold CV. Best CV F1: 0.807.</li><li>Built a 3-model blend (Logistic Regression, LightGBM, one additional), optimizing 4 per-class multipliers with Nelder-Mead.</li></ul><div class="fig center"><figure class="fig "><svg class="dg wide chart" viewBox="0 0 680 162" role="img" aria-labelledby="d8w-t d8w-d" xmlns="http://www.w3.org/2000/svg"><title id="d8w-t">F1-Macro by model, comment classification, 39.6K held-out rows</title><desc id="d8w-d">Bar chart of F1-Macro: 3-model blend 0.8293 (final), LightGBM 0.8202 (Optuna tuned), Logistic Regression 0.6221 (baseline). Axis 0 to 1.</desc><defs><marker id="d8w-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><path class="grid" d="M250.0 4V110"/><text class="t-s mono" x="250.0" y="130" font-size="15" text-anchor="middle">0</text><path class="grid" d="M340.0 4V110"/><text class="t-s mono" x="340.0" y="130" font-size="15" text-anchor="middle">0.25</text><path class="grid" d="M430.0 4V110"/><text class="t-s mono" x="430.0" y="130" font-size="15" text-anchor="middle">0.50</text><path class="grid" d="M520.0 4V110"/><text class="t-s mono" x="520.0" y="130" font-size="15" text-anchor="middle">0.75</text><path class="grid" d="M610.0 4V110"/><text class="t-s mono" x="610.0" y="130" font-size="15" text-anchor="middle">1.00</text><text class="t-m" x="238" y="30.0" font-size="15" text-anchor="end" font-weight="600">3-model blend (final)</text><rect class="bar-a" x="250" y="15.0" width="298.5" height="20"/><text class="t-m mono" x="556.548" y="30.0" font-size="15" text-anchor="start">0.8293</text><text class="t-m" x="238" y="64.0" font-size="15" text-anchor="end">LightGBM (Optuna tuned)</text><rect class="bar-n" x="250" y="49.0" width="295.3" height="20"/><text class="t-m mono" x="553.2719999999999" y="64.0" font-size="15" text-anchor="start">0.8202</text><text class="t-m" x="238" y="98.0" font-size="15" text-anchor="end">Logistic Regression (baseline)</text><rect class="bar-n" x="250" y="83.0" width="224.0" height="20"/><text class="t-m mono" x="481.956" y="98.0" font-size="15" text-anchor="start">0.6221</text><text class="t-s" x="250" y="156" font-size="15" text-anchor="start">F1-Macro (0 to 1)</text></svg><svg class="dg narrow chart" viewBox="0 0 340 204" role="img" aria-labelledby="d8n-t d8n-d" xmlns="http://www.w3.org/2000/svg"><title id="d8n-t">F1-Macro by model, comment classification, 39.6K held-out rows</title><desc id="d8n-d">Bar chart of F1-Macro: 3-model blend 0.8293 (final), LightGBM 0.8202 (Optuna tuned), Logistic Regression 0.6221 (baseline). Axis 0 to 1.</desc><defs><marker id="d8n-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><path class="grid" d="M2.0 6V156"/><path class="grid" d="M64.5 6V156"/><path class="grid" d="M127.0 6V156"/><path class="grid" d="M189.5 6V156"/><path class="grid" d="M252.0 6V156"/><text class="t-s mono" x="2.0" y="174" font-size="15" text-anchor="start">0</text><text class="t-s mono" x="127.0" y="174" font-size="15" text-anchor="middle">0.5</text><text class="t-s mono" x="252.0" y="174" font-size="15" text-anchor="middle">1</text><text class="t-m" x="2" y="22" font-size="15" text-anchor="start" font-weight="600">3-model blend (final)</text><rect class="bar-a" x="2" y="30" width="207.3" height="16"/><text class="t-m mono" x="215.32500000000002" y="43" font-size="15" text-anchor="start">0.8293</text><text class="t-m" x="2" y="72" font-size="15" text-anchor="start">LightGBM (Optuna tuned)</text><rect class="bar-n" x="2" y="80" width="205.1" height="16"/><text class="t-m mono" x="213.05" y="93" font-size="15" text-anchor="start">0.8202</text><text class="t-m" x="2" y="122" font-size="15" text-anchor="start">Logistic Regression (baseline)</text><rect class="bar-n" x="2" y="130" width="155.5" height="16"/><text class="t-m mono" x="163.525" y="143" font-size="15" text-anchor="start">0.6221</text><text class="t-s" x="2" y="198" font-size="15" text-anchor="start">F1-Macro (0 to 1)</text></svg><figcaption>F1-Macro on 39.6K held-out rows. Baseline: Logistic Regression 0.6221. Final: 3-model blend 0.8293 (+0.2072). 198K comments total; 100-trial Optuna study. <button class="show-data" type="button" aria-expanded="false" aria-controls="d8-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d8-data"><table><caption>F1-Macro on 39.6K held-out rows. Baseline: Logistic Regression 0.6221. Final: 3-model blend 0.8293 (+0.2072). 198K comments total; 100-trial Optuna study.</caption><thead><tr><th scope="col">Model</th><th scope="col">F1-Macro</th></tr></thead><tbody><tr><th scope="row">Logistic Regression</th><td>0.6221</td></tr><tr><th scope="row">LightGBM (Optuna tuned)</th><td>0.8202</td></tr><tr><th scope="row">3-model blend (final)</th><td>0.8293</td></tr></tbody></table></div></figure></div><h2 id="results">Results</h2><ul class="outcome"><li>Baseline (Logistic Regression): F1-Macro <span class="mono">0.6221</span></li><li>LightGBM (Optuna tuned): F1-Macro <span class="mono">0.8202</span></li><li>3-model blend (final): F1-Macro <span class="mono">0.8293</span> on 39.6K held-out rows</li><li>Gain over baseline: <span class="mono">+0.2072</span></li></ul><p class="sources small">Figures from executed notebook; last checked 3 Oct 2026. No leaderboard rank shown.</p><h2 id="limits">Limits</h2><ul class="limits"><li>Competition leaderboard rank is not shown; the rank figure in some earlier versions was unsourced.</li><li>Optuna tuning completed for LightGBM only; XGBoost studies have zero recorded values.</li><li>Nelder-Mead tunes 4 per-class multipliers on the blend, not per-model weights. Its gain is +0.0021, from 0.8293 to 0.8313. LightGBM alone scores 0.8202.</li></ul><nav class="pager" aria-label="Projects"><a href="/projects/mcq/">Smart MCQ solver <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
-<footer class="site-foot" role="contentinfo">
-  <div class="wrap">
-    <p>Figures recounted from project artefacts; last checked 3 Oct 2026.</p>
-    <ul class="foot-links">
-      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
-      <li><a href="/archive/" rel="noopener">Archive</a></li>
-      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Comment classification</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head">
+    <h1>Comment classification: feature engineering and predictive modelling</h1>
+    <p class="deck">Feature engineering over 198,000 user comments across four imbalanced classes, lifting validation F1-Macro from 0.6221 baseline to 0.8293 with Optuna-tuned LightGBM.</p>
+
+    <div class="panel">
+      <dl class="kv">
+        <dt>Primary Metric</dt><dd class="mono">0.8293 F1-Macro (39.6K Held-Out Rows)</dd>
+        <dt>Dataset Scale</dt><dd>198,000 Comments &middot; 4 Label Classes</dd>
+        <dt>Feature Corpus</dt><dd>10,000+ Word &amp; Character n-grams + Behavioral Signals</dd>
+        <dt>Hyperparameter Tuning</dt><dd class="mono">100-Trial Optuna Study (LightGBM)</dd>
+      </dl>
+    </div>
+
+    <h2>Context and Objective</h2>
+    <p>Detecting toxic and obfuscated user comments requires handling subtle spelling variations, character substitutions, and severe class skew across multi-class labels. The primary evaluation metric was F1-Macro to prevent majority neutral comments from dominating model scoring.</p>
+
+    <h2>Feature Engineering and Statistical Screening</h2>
+    <p>I engineered over 10,000 word and character-level n-grams combined with behavioral text signals (capitalization ratios, punctuation density, symbol sequences). To prevent dimensionality explosion, 11 tabular predictors were screened across 198,000 rows using chi-square tests and Kruskal-Wallis non-parametric rankings.</p>
+
+    <h2>Optimization and Results</h2>
+    <ul>
+      <li><strong>Optuna Hyperparameter Search:</strong> Executed a 100-trial study over 10 LightGBM parameters, using 3-fold cross-validation with median pruning to stop unpromising branches early.</li>
+      <li><strong>Performance Progression:</strong> Baseline Logistic Regression achieved 0.6221 F1-Macro. Tuned LightGBM reached 0.8202 F1-Macro. A 3-model ensemble blend achieved the final score of <strong>0.8293 F1-Macro</strong> on 39,600 held-out evaluation rows.</li>
     </ul>
+
+    <h2>Stack</h2>
+    <p class="mono">Python &middot; scikit-learn &middot; LightGBM &middot; Optuna &middot; pandas &middot; numpy</p>
+  </article>
+<nav class="pager wrap" aria-label="Project navigation">
+  <div class="pager-prev"><a href="/projects/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> All projects</a></div>
+  <div class="pager-next"><a href="/projects/mcq/">Smart MCQ solver <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
+<script src="/site.js" defer></script>
 </body>
 </html>

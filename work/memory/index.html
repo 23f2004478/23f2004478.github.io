@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memory and self-documentation | Krishnendu Biswas</title>
-<meta name="description" content="Layered memory: built-in curated memory with backups and rollback, the LCM-X context engine for long sessions, an append-only ledger, and a daily progress report built from them.">
-<link rel="canonical" href="https://krishnendu.me/work/memory/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krishnendu.me/work/memory/">
-<meta property="og:title" content="Memory and self-documentation | Krishnendu Biswas">
-<meta property="og:description" content="Layered memory: built-in curated memory with backups and rollback, the LCM-X context engine for long sessions, an append-only ledger, and a daily progress report built from them.">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Memory and self-documentation | Krishnendu Biswas</title>
+  <meta name="description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <link rel="canonical" href="https://krishnendu.me/work/memory/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/work/memory/">
+  <meta property="og:title" content="Memory and self-documentation | Krishnendu Biswas">
+  <meta property="og:description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-work-memory.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-memory.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Memory and self-documentation | Krishnendu Biswas">
+  <meta name="twitter:description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-work-memory.png">
+  <meta name="twitter:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "TechArticle",
-      "@id": "https://krishnendu.me/work/memory/#article",
-      "url": "https://krishnendu.me/work/memory/",
-      "headline": "Tiered memory and self-documenting agent architecture",
-      "name": "Memory and self-documentation | Krishnendu Biswas",
-      "description": "Layered memory: built-in curated memory with backups and rollback, the LCM-X context engine for long sessions, an append-only ledger, and a daily progress report built from them.",
-      "author": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "publisher": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
-      "inLanguage": "en"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -53,66 +50,169 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Work",
+          "name": "Agent systems",
           "item": "https://krishnendu.me/work/"
         },
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Memory architecture",
+          "name": "Memory and self-documentation",
           "item": "https://krishnendu.me/work/memory/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/work/memory/#article",
+      "headline": "Memory and self-documentation | Krishnendu Biswas",
+      "description": "Curated persistent memory and the LCM-X context engine, preserving history without token explosion.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      }
     }
   ]
 }
-</script>
-<script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
-<body><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
-<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 6.5l7.5 5 7.5-5"/></symbol>
-<symbol id="i-linkedin" viewBox="0 0 20 20"><path fill="currentColor" d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z"/></symbol>
-<symbol id="i-github" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z"/></symbol>
-<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13.5h4"/></symbol>
-<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
-<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
-<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
-<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
-<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
-<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
-<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
-<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
 </svg>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-head" role="banner">
-  <div class="wrap head-in">
+<header class="site-head wrap">
+  <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
-    <nav class="nav" aria-label="Main">
-      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-list" id="navlist" hidden><li><a href="/work/" aria-current="page">Work</a></li><li><a href="/log/">Log</a></li><li><a href="/projects/">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li><li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist" hidden>
+      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
     </nav>
-    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="View resume PDF in new tab">
-      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
-    </a>
-    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
+    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
   </div>
 </header>
-<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/work/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Work</a></nav><div class="page-head"><h1>Memory and self-documentation</h1><p class="deck">Built-in curated memory, the LCM-X context engine, append-only autobiography ledger, daily progress reports.</p></div><div class="banner"><p>Built on <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a> (open source, Nous Research). I did not write Hermes; many skills are third-party. I designed the partitioning, routing, guardrails, and the scripts that hold them together.</p></div><h2 id="context">Context</h2><p>An agent that forgets everything between sessions cannot build on past work. An agent that carries everything forward accumulates noise. The solution is layered memory: volatile session context, curated persistent facts, a lossless context engine that compacts long sessions into searchable summaries, and an append-only ledger for the full record.</p><h2 id="architecture">Architecture</h2><div class="fig center"><figure class="fig "><svg class="dg wide chart" viewBox="0 0 680 262" role="img" overflow="hidden" aria-labelledby="d5w-t d5w-d" xmlns="http://www.w3.org/2000/svg"><title id="d5w-t">Memory architecture: three memory layers plus the daily report built from them</title><desc id="d5w-d">Stack diagram bottom to top: autobiography ledger (append-only, ID-addressed), persistent memory (curated, backed up), LCM-X context engine (session compaction, searchable summaries), daily progress report (HTML email, STAR highlights).</desc><rect class="k-a" x="1" y="4" width="678" height="54" rx="3"/><text class="t-a" x="340" y="27" font-size="16" text-anchor="middle">Daily progress report</text><text class="t-a" x="340" y="47" font-size="15" text-anchor="middle">HTML email, STAR highlights, per-profile telemetry</text><rect class="k-b" x="1" y="68" width="678" height="54" rx="3"/><text class="t-m" x="340" y="91" font-size="16" text-anchor="middle">LCM-X context engine</text><text class="t-s" x="340" y="111" font-size="15" text-anchor="middle">Compacts sessions into searchable summaries</text><rect class="k-b" x="1" y="132" width="678" height="54" rx="3"/><text class="t-m" x="340" y="155" font-size="16" text-anchor="middle">Persistent memory</text><text class="t-s" x="340" y="175" font-size="15" text-anchor="middle">Curated facts, backed up, rollback-capable</text><rect class="k-n" x="1" y="196" width="678" height="54" rx="3"/><text class="t-m" x="340" y="219" font-size="16" text-anchor="middle">Autobiography ledger</text><text class="t-s" x="340" y="239" font-size="15" text-anchor="middle">Append-only, ID-addressed, never edited</text></svg><svg class="dg narrow chart" viewBox="0 0 340 330" role="img" overflow="hidden" aria-labelledby="d5n-t d5n-d" xmlns="http://www.w3.org/2000/svg"><title id="d5n-t">Memory architecture: three memory layers plus the daily report built from them</title><desc id="d5n-d">Stack diagram bottom to top: autobiography ledger (append-only, ID-addressed), persistent memory (curated, backed up), LCM-X context engine (session compaction, searchable summaries), daily progress report (HTML email, STAR highlights).</desc><rect class="k-a" x="1" y="2" width="338" height="74" rx="3"/><text class="t-a" x="16" y="26" font-size="15">Daily progress report</text><text class="t-a" x="16" y="47" font-size="14">HTML email, STAR highlights,</text><text class="t-a" x="16" y="66" font-size="14">per-profile telemetry</text><rect class="k-b" x="1" y="84" width="338" height="74" rx="3"/><text class="t-m" x="16" y="108" font-size="15">LCM-X context engine</text><text class="t-s" x="16" y="129" font-size="14">Compacts sessions into searchable</text><text class="t-s" x="16" y="148" font-size="14">summaries, lossless</text><rect class="k-b" x="1" y="166" width="338" height="74" rx="3"/><text class="t-m" x="16" y="190" font-size="15">Persistent memory</text><text class="t-s" x="16" y="211" font-size="14">Curated facts, backed up,</text><text class="t-s" x="16" y="230" font-size="14">rollback-capable</text><rect class="k-n" x="1" y="248" width="338" height="74" rx="3"/><text class="t-m" x="16" y="272" font-size="15">Autobiography ledger</text><text class="t-s" x="16" y="293" font-size="14">Append-only, ID-addressed,</text><text class="t-s" x="16" y="312" font-size="14">never edited</text></svg><figcaption>Three memory layers plus the daily report built from them. Bottom (oldest, most stable) to top (most recent, most volatile). <button class="show-data" type="button" aria-expanded="false" aria-controls="d5-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d5-data"><table><caption>Three memory layers plus the daily report built from them. Bottom (oldest, most stable) to top (most recent, most volatile).</caption><thead><tr><th scope="col">Layer</th><th scope="col">Description</th></tr></thead><tbody><tr><th scope="row">Autobiography ledger</th><td>Append-only, ID-addressed, never edited</td></tr><tr><th scope="row">Persistent memory</th><td>Curated facts, backed up, rollback-capable</td></tr><tr><th scope="row">LCM-X context engine</th><td>Compacts long sessions into searchable summaries, lossless</td></tr><tr><th scope="row">Daily progress report</th><td>HTML email, STAR highlights, per-profile telemetry</td></tr></tbody></table></div></figure></div><h2 id="limits">Limits</h2><ul class='limits'><li>The LCM-X engine summarizes long sessions; finding an old detail sometimes means searching the summary index instead of an instant recall.</li><li>The daily report is self-reported by the agents, not verified by an external observer.</li></ul><nav class="pager" aria-label="Case studies"><a href="/work/routing/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Model routing</a><a href="/work/reliability/">Reliability <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
-<footer class="site-foot" role="contentinfo">
-  <div class="wrap">
-    <p>Figures recounted from project artefacts; last checked 3 Oct 2026.</p>
-    <ul class="foot-links">
-      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
-      <li><a href="/archive/" rel="noopener">Archive</a></li>
-      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/work/">Agent systems</a></li><li aria-current="page">Memory and self-documentation</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head">
+    <h1>Memory and self-documentation: curated persistent memory and LCM-X context engine</h1>
+    <p class="deck">Two-tier memory architecture: curated persistent memory with character budgets, plus LCM-X, a lossless context memory engine that compacts long sessions into searchable summary graphs.</p>
+
+    <div class="panel">
+      <dl class="kv">
+        <dt>Active Engine</dt><dd class="mono">LCM-X (lcm.db) &middot; Curated Persistent Memory</dd>
+        <dt>Journaling</dt><dd>Append-Only Autobiography Ledger &middot; Daily Progress Reports</dd>
+        <dt>Past Prototyping Note</dt><dd>Local vector embeddings and Hindsight were used in the laptop phase (11 to 20 Sep 2026) only</dd>
+      </dl>
+    </div>
+
+    <h2>Problem</h2>
+    <p>As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Naive truncation causes the model to forget earlier architectural decisions, while stuffing entire raw transcripts causes attention degradation and hallucination.</p>
+
+    <h2>What I Built</h2>
+    <ul>
+      <li><strong>Curated Persistent Memory:</strong> Profile-specific markdown stores holding durable operational notes and user context under strict character caps, backed by automatic atomic backups and version rollback.</li>
+      <li><strong>LCM-X Context Engine:</strong> A lossless context memory engine backed by SQLite (lcm.db) that compacts older session turns into structured hierarchical summary DAGs, enabling rapid semantic and keyword retrieval without deleting raw history.</li>
+      <li><strong>Autobiography Ledger &amp; Daily Reporting:</strong> An append-only ledger recording every major system milestone (G:0001 to G:0019) and an automated daily report engine generating plain-English progress summaries with per-profile time telemetry.</li>
     </ul>
+
+    <h2>Outcome</h2>
+    <p>Zero loss of project decisions across session boundaries. Fast context recovery during retries and multi-agent hand-offs.</p>
+
+    <h2>Stack</h2>
+    <p class="mono">LCM-X &middot; SQLite &middot; Python &middot; systemd &middot; Linux</p>
+  </article>
+<nav class="pager wrap" aria-label="Case study navigation">
+  <div class="pager-prev"><a href="/work/routing/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Model routing and tiered compute</a></div>
+  <div class="pager-next"><a href="/work/reliability/">Reliability and security <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
+<script src="/site.js" defer></script>
 </body>
 </html>

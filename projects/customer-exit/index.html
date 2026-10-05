@@ -1,46 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Customer exit prediction | Krishnendu Biswas</title>
-<meta name="description" content="Benchmarked 8 classifiers on 90,000 banking records; the tuned Random Forest reached 0.6365 validation F1 on imbalanced data.">
-<link rel="canonical" href="https://krishnendu.me/projects/customer-exit/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://krishnendu.me/projects/customer-exit/">
-<meta property="og:title" content="Customer exit prediction | Krishnendu Biswas">
-<meta property="og:description" content="Benchmarked 8 classifiers on 90,000 banking records; the tuned Random Forest reached 0.6365 validation F1 on imbalanced data.">
-<meta property="og:image" content="https://krishnendu.me/og/og-home.svg">
-<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2">
-<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#1F5C4A">
-<link rel="stylesheet" href="/styles.css">
-<script src="/site.js" defer></script>
-<script type="application/ld+json">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Customer exit prediction | Krishnendu Biswas</title>
+  <meta name="description" content="8-classifier benchmark on 90,000 banking customer records with severe class imbalance, achieving validation F1 of 0.6365.">
+  <link rel="canonical" href="https://krishnendu.me/projects/customer-exit/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/projects/customer-exit/">
+  <meta property="og:title" content="Customer exit prediction | Krishnendu Biswas">
+  <meta property="og:description" content="8-classifier benchmark on 90,000 banking customer records with severe class imbalance, achieving validation F1 of 0.6365.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-projects-customer-exit.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-projects-customer-exit.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Customer exit prediction | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Customer exit prediction | Krishnendu Biswas">
+  <meta name="twitter:description" content="8-classifier benchmark on 90,000 banking customer records with severe class imbalance, achieving validation F1 of 0.6365.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-projects-customer-exit.png">
+  <meta name="twitter:image:alt" content="Customer exit prediction | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    {
-      "@type": "TechArticle",
-      "@id": "https://krishnendu.me/projects/customer-exit/#article",
-      "url": "https://krishnendu.me/projects/customer-exit/",
-      "headline": "Customer exit and churn prediction benchmark (90k records)",
-      "name": "Customer exit prediction | Krishnendu Biswas",
-      "description": "Benchmarked 8 classifiers on 90,000 banking records; the tuned Random Forest reached 0.6365 validation F1 on imbalanced data.",
-      "author": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "publisher": {
-        "@id": "https://krishnendu.me/#person"
-      },
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
-      "inLanguage": "en"
-    },
     {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -63,56 +60,230 @@
           "item": "https://krishnendu.me/projects/customer-exit/"
         }
       ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/projects/customer-exit/#article",
+      "headline": "Customer exit prediction | Krishnendu Biswas",
+      "description": "8-classifier benchmark on 90,000 banking customer records with severe class imbalance, achieving validation F1 of 0.6365.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      }
     }
   ]
 }
-</script>
-<script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  </script>
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
-<body><svg xmlns="http://www.w3.org/2000/svg" hidden style="position:absolute;width:0;height:0" aria-hidden="true">
-<symbol id="i-mail" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 6.5l7.5 5 7.5-5"/></symbol>
-<symbol id="i-linkedin" viewBox="0 0 20 20"><path fill="currentColor" d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z"/></symbol>
-<symbol id="i-github" viewBox="0 0 20 20"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z"/></symbol>
-<symbol id="i-pdf" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z"/><path d="M12 2v4h4"/><path d="M7 10.5h6M7 13.5h4"/></symbol>
-<symbol id="i-ext" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 4h5.5v5.5M16 4l-7 7"/><path d="M9 4H4.5A1.5 1.5 0 003 5.5v10A1.5 1.5 0 004.5 17h10a1.5 1.5 0 001.5-1.5V11"/></symbol>
-<symbol id="i-arr" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></symbol>
-<symbol id="i-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.9 4.9l1.4 1.4M13.7 13.7l1.4 1.4M4.9 15.1l1.4-1.4M13.7 6.3l1.4-1.4"/></symbol>
-<symbol id="i-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11.5a7 7 0 11-9-9 5.5 5.5 0 109 9z"/></symbol>
-<symbol id="i-menu" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 6h14M3 10h14M3 14h14"/></symbol>
-<symbol id="i-close" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></symbol>
-<symbol id="i-check" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l5 5L16 6"/></symbol>
-<symbol id="i-print" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="12" width="12" height="5" rx="1"/><path d="M4 12V5a1 1 0 011-1h10a1 1 0 011 1v7"/><path d="M4 8h12M7 15h6"/></symbol>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
 </svg>
-<a class="skip" href="#main">Skip to main content</a>
-<header class="site-head" role="banner">
-  <div class="wrap head-in">
+<header class="site-head wrap">
+  <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
-    <nav class="nav" aria-label="Main">
-      <button class="icon-btn menu-btn" aria-controls="navlist" aria-expanded="false" aria-label="Toggle navigation">
-        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      </button>
-      <ul class="nav-list" id="navlist" hidden><li><a href="/work/">Work</a></li><li><a href="/log/">Log</a></li><li><a href="/projects/" aria-current="page">Projects</a></li><li><a href="/#research">Research</a></li><li><a href="/credentials/">Credentials</a></li><li><a href="/#contact">Contact</a></li><li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li></ul>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist" hidden>
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
     </nav>
-    <a class="head-act" href="/resume/Krishnendu-Biswas-Resume.pdf" target="_blank" rel="noopener noreferrer" aria-label="View resume PDF in new tab">
-      <svg class="icon" aria-hidden="true"><use href="#i-pdf"/></svg><span class="lbl">Resume</span>
-    </a>
-    <button class="icon-btn theme-btn" aria-label="Toggle dark mode" aria-pressed="false">
+    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
+    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
   </div>
 </header>
-<main id="main"><div class="wrap case"><nav class="toc" aria-label="On this page"><p class="toc-title" role="heading" aria-level="2">On this page</p><ol><li><a href="#context">Context</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#limits">Limits</a></li></ol></nav><div class="case-body"><nav class="crumb" aria-label="Breadcrumb"><a href="/projects/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Projects</a></nav><div class="page-head"><h1>Customer exit prediction: 8-classifier benchmark on 90,000 rows</h1><p class="deck">Financial institution churn. 8 classifiers benchmarked on validation F1. Tuned Random Forest: F1 0.6365, accuracy 0.8414. Accuracy flatters a skewed target; F1 is the honest number.</p></div><div class="panel"><dl class="glance"><div><dt>Period</dt><dd>T2 2026</dd></div><div><dt>Stack</dt><dd>Python, scikit-learn, LightGBM, XGBoost, RandomizedSearchCV, IterativeImputer</dd></div><div><dt>Metric</dt><dd>F1 (imbalanced binary classification)</dd></div><div><dt>Training rows</dt><dd>90,000</dd></div></dl></div><h2 id="context">Context</h2><p>Predicting customer exit (churn) at a financial institution. The target is imbalanced: most customers do not exit. Accuracy 0.8414 is the flattering number; F1 0.6365 is the honest one. Features include credit score, country, gender, age, tenure, account balance, product count, card ownership, activity flag, and estimated salary.</p><h2 id="approach">Approach</h2><ul><li>Missing values in credit_score, country, acc_balance, and prod_count imputed with mode (categorical) and IterativeImputer (numerical).</li><li>8 classifiers benchmarked on validation F1.</li><li>Top 3 (Random Forest, LightGBM, XGBoost) tuned with RandomizedSearchCV against F1.</li></ul><div class="fig center"><figure class="fig "><svg class="dg wide chart" viewBox="0 0 680 332" role="img" aria-labelledby="d9w-t d9w-d" xmlns="http://www.w3.org/2000/svg"><title id="d9w-t">Validation F1 for 8 untuned baseline classifiers, customer exit prediction, 90,000 rows</title><desc id="d9w-d">Horizontal bar chart, axis 0 to 1. XGBoost and LightGBM tie at 0.6277, then Gradient Boosting 0.6006, Random Forest 0.5796, Extra Trees 0.5736, Logistic Regression 0.5509, Decision Tree 0.5033, AdaBoost 0.4604. All untuned baselines.</desc><defs><marker id="d9w-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><path class="grid" d="M250.0 4V280"/><text class="t-s mono" x="250.0" y="300" font-size="15" text-anchor="middle">0</text><path class="grid" d="M340.0 4V280"/><text class="t-s mono" x="340.0" y="300" font-size="15" text-anchor="middle">0.25</text><path class="grid" d="M430.0 4V280"/><text class="t-s mono" x="430.0" y="300" font-size="15" text-anchor="middle">0.50</text><path class="grid" d="M520.0 4V280"/><text class="t-s mono" x="520.0" y="300" font-size="15" text-anchor="middle">0.75</text><path class="grid" d="M610.0 4V280"/><text class="t-s mono" x="610.0" y="300" font-size="15" text-anchor="middle">1.00</text><text class="t-m" x="238" y="30.0" font-size="15" text-anchor="end" font-weight="600">XGBoost</text><rect class="bar-a" x="250" y="15.0" width="226.0" height="20"/><text class="t-m mono" x="483.972" y="30.0" font-size="15" text-anchor="start">0.6277 tie</text><text class="t-m" x="238" y="64.0" font-size="15" text-anchor="end" font-weight="600">LightGBM</text><rect class="bar-a" x="250" y="49.0" width="226.0" height="20"/><text class="t-m mono" x="483.972" y="64.0" font-size="15" text-anchor="start">0.6277 tie</text><text class="t-m" x="238" y="98.0" font-size="15" text-anchor="end">Gradient Boosting</text><rect class="bar-n" x="250" y="83.0" width="216.2" height="20"/><text class="t-m mono" x="474.216" y="98.0" font-size="15" text-anchor="start">0.6006</text><text class="t-m" x="238" y="132.0" font-size="15" text-anchor="end">Random Forest</text><rect class="bar-n" x="250" y="117.0" width="208.7" height="20"/><text class="t-m mono" x="466.656" y="132.0" font-size="15" text-anchor="start">0.5796</text><text class="t-m" x="238" y="166.0" font-size="15" text-anchor="end">Extra Trees</text><rect class="bar-n" x="250" y="151.0" width="206.5" height="20"/><text class="t-m mono" x="464.496" y="166.0" font-size="15" text-anchor="start">0.5736</text><text class="t-m" x="238" y="200.0" font-size="15" text-anchor="end">Logistic Regression</text><rect class="bar-n" x="250" y="185.0" width="198.3" height="20"/><text class="t-m mono" x="456.32399999999996" y="200.0" font-size="15" text-anchor="start">0.5509</text><text class="t-m" x="238" y="234.0" font-size="15" text-anchor="end">Decision Tree</text><rect class="bar-n" x="250" y="219.0" width="181.2" height="20"/><text class="t-m mono" x="439.188" y="234.0" font-size="15" text-anchor="start">0.5033</text><text class="t-m" x="238" y="268.0" font-size="15" text-anchor="end">AdaBoost</text><rect class="bar-n" x="250" y="253.0" width="165.7" height="20"/><text class="t-m mono" x="423.744" y="268.0" font-size="15" text-anchor="start">0.4604</text><text class="t-s" x="250" y="326" font-size="15" text-anchor="start">Validation F1 (0 to 1)</text></svg><svg class="dg narrow chart" viewBox="0 0 340 454" role="img" aria-labelledby="d9n-t d9n-d" xmlns="http://www.w3.org/2000/svg"><title id="d9n-t">Validation F1 for 8 untuned baseline classifiers, customer exit prediction, 90,000 rows</title><desc id="d9n-d">Horizontal bar chart, axis 0 to 1. XGBoost and LightGBM tie at 0.6277, then Gradient Boosting 0.6006, Random Forest 0.5796, Extra Trees 0.5736, Logistic Regression 0.5509, Decision Tree 0.5033, AdaBoost 0.4604. All untuned baselines.</desc><defs><marker id="d9n-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs><path class="grid" d="M2.0 6V406"/><path class="grid" d="M64.5 6V406"/><path class="grid" d="M127.0 6V406"/><path class="grid" d="M189.5 6V406"/><path class="grid" d="M252.0 6V406"/><text class="t-s mono" x="2.0" y="424" font-size="15" text-anchor="start">0</text><text class="t-s mono" x="127.0" y="424" font-size="15" text-anchor="middle">0.5</text><text class="t-s mono" x="252.0" y="424" font-size="15" text-anchor="middle">1</text><text class="t-m" x="2" y="22" font-size="15" text-anchor="start" font-weight="600">XGBoost</text><rect class="bar-a" x="2" y="30" width="156.9" height="16"/><text class="t-m mono" x="164.925" y="43" font-size="15" text-anchor="start">0.6277 tie</text><text class="t-m" x="2" y="72" font-size="15" text-anchor="start" font-weight="600">LightGBM</text><rect class="bar-a" x="2" y="80" width="156.9" height="16"/><text class="t-m mono" x="164.925" y="93" font-size="15" text-anchor="start">0.6277 tie</text><text class="t-m" x="2" y="122" font-size="15" text-anchor="start">Gradient Boosting</text><rect class="bar-n" x="2" y="130" width="150.2" height="16"/><text class="t-m mono" x="158.15" y="143" font-size="15" text-anchor="start">0.6006</text><text class="t-m" x="2" y="172" font-size="15" text-anchor="start">Random Forest</text><rect class="bar-n" x="2" y="180" width="144.9" height="16"/><text class="t-m mono" x="152.9" y="193" font-size="15" text-anchor="start">0.5796</text><text class="t-m" x="2" y="222" font-size="15" text-anchor="start">Extra Trees</text><rect class="bar-n" x="2" y="230" width="143.4" height="16"/><text class="t-m mono" x="151.4" y="243" font-size="15" text-anchor="start">0.5736</text><text class="t-m" x="2" y="272" font-size="15" text-anchor="start">Logistic Regression</text><rect class="bar-n" x="2" y="280" width="137.7" height="16"/><text class="t-m mono" x="145.725" y="293" font-size="15" text-anchor="start">0.5509</text><text class="t-m" x="2" y="322" font-size="15" text-anchor="start">Decision Tree</text><rect class="bar-n" x="2" y="330" width="125.8" height="16"/><text class="t-m mono" x="133.825" y="343" font-size="15" text-anchor="start">0.5033</text><text class="t-m" x="2" y="372" font-size="15" text-anchor="start">AdaBoost</text><rect class="bar-n" x="2" y="380" width="115.1" height="16"/><text class="t-m mono" x="123.1" y="393" font-size="15" text-anchor="start">0.4604</text><text class="t-s" x="2" y="448" font-size="15" text-anchor="start">Validation F1 (0 to 1)</text></svg><figcaption>8 classifiers on 90,000 rows (financial institution churn). The bars are untuned baselines; XGBoost and LightGBM tie at 0.6277. The tuned Random Forest (F1 0.6365) is in Results. Accuracy (0.8414) flatters a skewed target, so F1 is the metric to read. <button class="show-data" type="button" aria-expanded="false" aria-controls="d9-data" hidden>Show data</button></figcaption><div class="dtable sr-only" id="d9-data"><table><caption>8 classifiers on 90,000 rows (financial institution churn). Accuracy 0.8414 flatters a skewed target; F1 is the relevant metric. Tuned Random Forest: F1 0.6365, accuracy 0.8414, precision 0.6181, recall 0.6561.</caption><thead><tr><th scope="col">Classifier</th><th scope="col">F1 (validation)</th></tr></thead><tbody><tr><th scope="row">AdaBoost</th><td>0.4604</td></tr><tr><th scope="row">Decision Tree</th><td>0.5033</td></tr><tr><th scope="row">Logistic Regression</th><td>0.5509</td></tr><tr><th scope="row">Extra Trees</th><td>0.5736</td></tr><tr><th scope="row">Random Forest</th><td>0.5796</td></tr><tr><th scope="row">Gradient Boosting</th><td>0.6006</td></tr><tr><th scope="row">XGBoost</th><td>0.6277</td></tr><tr><th scope="row">LightGBM</th><td>0.6277</td></tr><tr><th scope="row">Tuned Random Forest</th><td>0.6365</td></tr><tr><th scope="row">Tuned LightGBM</th><td>0.6334</td></tr><tr><th scope="row">Tuned XGBoost</th><td>0.6309</td></tr></tbody></table></div></figure></div><h2 id="results">Results</h2><ul class="outcome"><li>Tuned Random Forest: F1 <span class="mono">0.6365</span>, accuracy <span class="mono">0.8414</span>, precision <span class="mono">0.6181</span>, recall <span class="mono">0.6561</span></li><li>Best CV F1: <span class="mono">0.6456</span></li><li>Tuned LightGBM: <span class="mono">0.6334</span> &middot; Tuned XGBoost: <span class="mono">0.6309</span></li><li>XGBoost and LightGBM were GPU-accelerated</li></ul><p class="sources small">Figures from executed notebook (50 retained outputs); last checked 3 Oct 2026.</p><h2 id="limits">Limits</h2><ul class="limits"><li>Accuracy 0.8414 flatters a skewed target. Lead with F1 0.6365.</li><li>Feature importance (Balance_to_Salary_Ratio as top predictor) is mentioned in presentation script but not output-verified in the notebook.</li><li>No Gini or other single-threshold metrics are claimed. F1 is the primary metric throughout.</li></ul><nav class="pager" aria-label="Projects"><a href="/projects/mcq/"><svg class="icon flip" aria-hidden="true"><use href="#i-arr"/></svg> Smart MCQ solver</a><a href="/projects/vc-dashboard/">VC deal analytics <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></nav></div></div></main>
-<footer class="site-foot" role="contentinfo">
-  <div class="wrap">
-    <p>Figures recounted from project artefacts; last checked 3 Oct 2026.</p>
-    <ul class="foot-links">
-      <li><a href="https://krishnendu.me/" rel="noopener">krishnendu.me</a></li>
-      <li><a href="/archive/" rel="noopener">Archive</a></li>
-      <li><a href="#" onclick="window.print();return false"><svg class="icon" aria-hidden="true"><use href="#i-print"/></svg> Print</a></li>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li aria-current="page">Customer exit prediction</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head">
+    <h1>Customer exit prediction: 8-classifier benchmark on 90,000 rows</h1>
+    <p class="deck">Benchmarked 8 classifiers on 90,000 customer records from a financial institution. Highlighted why accuracy (0.8414) is flattering while F1 (0.6365) measures true minority churn capture.</p>
+
+    <div class="panel">
+      <dl class="kv">
+        <dt>Winning Model</dt><dd>Tuned Random Forest (RandomizedSearchCV)</dd>
+        <dt>Validation Metrics</dt><dd class="mono">F1 0.6365 &middot; Accuracy 0.8414 &middot; Recall 0.6561</dd>
+        <dt>Dataset Scale</dt><dd>90,000 Training Records &middot; 10 Predictors</dd>
+        <dt>Missing Value Policy</dt><dd>IterativeImputer (Numerical) &middot; Mode Imputation (Categorical)</dd>
+      </dl>
+    </div>
+
+    <h2>Context and Objective</h2>
+    <p>Predicting customer attrition in retail banking is complicated by class imbalance: the majority of customers remain active, so a naive baseline predicting zero churn achieves high accuracy while capturing none of the business risk. We benchmarked models using validation F1 and recall on the exit class.</p>
+
+    <h2>Data Pipeline and Model Benchmarking</h2>
+    <p>The dataset contained missing values across credit score, country, account balance, and product count. Numerical fields were imputed using an IterativeImputer (multivariate feature imputation), while categorical variables received mode imputation.</p>
+    
+    <p>We benchmarked 8 classification algorithms on validation F1:</p>
+    <ul>
+      <li>Decision Tree: 0.5033 F1</li>
+      <li>Logistic Regression: 0.5509 F1</li>
+      <li>Extra Trees: 0.5736 F1</li>
+      <li>Random Forest (baseline): 0.5796 F1</li>
+      <li>Gradient Boosting: 0.6006 F1</li>
+      <li>LightGBM (baseline): 0.6277 F1</li>
+      <li>XGBoost (baseline): 0.6277 F1</li>
     </ul>
+
+    <h2>Hyperparameter Tuning and Final Outcome</h2>
+    <p>The top 3 models were tuned with RandomizedSearchCV optimizing for F1. The tuned Random Forest achieved the highest validation F1 score of <strong>0.6365</strong> with an accuracy of <strong>0.8414</strong> and recall of <strong>0.6561</strong> (best CV F1 0.6456). Tuned LightGBM reached 0.6334 and tuned XGBoost reached 0.6309.</p>
+
+    <div class="chart-wrap">
+  <h3 class="chart-title">Customer exit prediction: classifier benchmark comparison</h3>
+  <svg class="dg chart-svg" viewBox="0 0 680 320" role="img" aria-labelledby="exit-chart-t exit-chart-d" xmlns="http://www.w3.org/2000/svg">
+    <title id="exit-chart-t">Validation F1 comparison of 8 classifiers on 90,000 records</title>
+    <desc id="exit-chart-d">Horizontal bar chart showing validation F1 scores across untuned baselines and tuned models.</desc>
+    <!-- Grid rules -->
+    <line class="grid" x1="200" y1="20" x2="200" y2="270"/>
+    <line class="grid" x1="310" y1="20" x2="310" y2="270"/>
+    <line class="grid" x1="420" y1="20" x2="420" y2="270"/>
+    <line class="grid" x1="530" y1="20" x2="530" y2="270"/>
+    <line class="grid" x1="640" y1="20" x2="640" y2="270"/>
+
+    <!-- Tuned models -->
+    <text class="t-s" x="185" y="42" font-size="13" text-anchor="end" font-weight="600">Tuned Random Forest</text>
+    <rect class="bar-a" x="200" y="28" width="410" height="20" rx="2"/>
+    <text class="mono mono-n" x="618" y="43" font-size="13">0.6365 F1</text>
+
+    <text class="t-s" x="185" y="66" font-size="13" text-anchor="end">Tuned LightGBM</text>
+    <rect class="bar-a" x="200" y="52" width="408" height="20" rx="2"/>
+    <text class="mono mono-n" x="616" y="67" font-size="13">0.6334 F1</text>
+
+    <text class="t-s" x="185" y="90" font-size="13" text-anchor="end">Tuned XGBoost</text>
+    <rect class="bar-a" x="200" y="76" width="406" height="20" rx="2"/>
+    <text class="mono mono-n" x="614" y="91" font-size="13">0.6309 F1</text>
+
+    <!-- Baselines -->
+    <text class="t-s" x="185" y="120" font-size="13" text-anchor="end">Baseline XGBoost</text>
+    <rect class="bar-n" x="200" y="106" width="404" height="20" rx="2"/>
+    <text class="mono mono-n" x="612" y="121" font-size="13">0.6277 F1</text>
+
+    <text class="t-s" x="185" y="144" font-size="13" text-anchor="end">Baseline LightGBM</text>
+    <rect class="bar-n" x="200" y="130" width="404" height="20" rx="2"/>
+    <text class="mono mono-n" x="612" y="145" font-size="13">0.6277 F1</text>
+
+    <text class="t-s" x="185" y="168" font-size="13" text-anchor="end">Gradient Boosting</text>
+    <rect class="bar-n" x="200" y="154" width="387" height="20" rx="2"/>
+    <text class="mono mono-n" x="595" y="169" font-size="13">0.6006 F1</text>
+
+    <text class="t-s" x="185" y="192" font-size="13" text-anchor="end">Random Forest</text>
+    <rect class="bar-n" x="200" y="178" width="373" height="20" rx="2"/>
+    <text class="mono mono-n" x="581" y="193" font-size="13">0.5796 F1</text>
+
+    <text class="t-s" x="185" y="216" font-size="13" text-anchor="end">Extra Trees</text>
+    <rect class="bar-n" x="200" y="202" width="369" height="20" rx="2"/>
+    <text class="mono mono-n" x="577" y="217" font-size="13">0.5736 F1</text>
+
+    <text class="t-s" x="185" y="240" font-size="13" text-anchor="end">Logistic Regression</text>
+    <rect class="bar-n" x="200" y="226" width="355" height="20" rx="2"/>
+    <text class="mono mono-n" x="563" y="241" font-size="13">0.5509 F1</text>
+
+    <text class="t-s" x="185" y="264" font-size="13" text-anchor="end">Decision Tree</text>
+    <rect class="bar-n" x="200" y="250" width="324" height="20" rx="2"/>
+    <text class="mono mono-n" x="532" y="265" font-size="13">0.5033 F1</text>
+
+    <!-- Axis line & label -->
+    <line class="axis" x1="200" y1="280" x2="640" y2="280"/>
+    <text class="t-s" x="200" y="298" font-size="13">0.0</text>
+    <text class="t-s" x="420" y="298" font-size="13" text-anchor="middle">Validation F1 Score</text>
+    <text class="t-s" x="640" y="298" font-size="13" text-anchor="end">0.70</text>
+  </svg>
+  <p class="chart-caption">Validation F1, 8 untuned baselines plus 3 tuned models, 90,000 rows.</p>
+</div>
+
+    <h2>Stack</h2>
+    <p class="mono">Python &middot; scikit-learn &middot; XGBoost &middot; LightGBM &middot; pandas &middot; matplotlib</p>
+  </article>
+<nav class="pager wrap" aria-label="Project navigation">
+  <div class="pager-prev"><a href="/projects/mcq/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Smart MCQ solver</a></div>
+  <div class="pager-next"><a href="/projects/vc-dashboard/">VC deal analytics dashboard <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
+<script src="/site.js" defer></script>
 </body>
 </html>
