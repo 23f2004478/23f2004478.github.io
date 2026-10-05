@@ -178,7 +178,9 @@ def thumb(e, uid):
 
 def strip_html(strip):
     cells = []
-    for c in strip["cells"]:
+    # estate counts (jobs, skills) live on /work/platform/ only: owner rule "212 ... only on /work/platform/",
+    # job count = facts CORRECTIONS 35, not this weekly snapshot. Run counts stay here.
+    for c in [c for c in strip["cells"] if c["key"] not in ESTATE_KEYS]:
         v = c["value"]
         shown = S.thousands(v) if isinstance(v, int) else str(v)
         cells.append('<div><dt class="mono">%s</dt><dd><span class="lab">%s</span><span class="unit">%s</span></dd></div>'
@@ -188,7 +190,8 @@ def strip_html(strip):
     return ('<section class="wrap strip-sec" aria-labelledby="h-week"><h2 id="h-week" class="strip-h">This week'
             '<span class="muted"> &middot; %s days to %s</span></h2><dl class="strip">%s</dl>'
             '<p class="small muted strip-note">Counts from the build board and model call logs. Institute work is excluded. '
-            '<a href="/log/sources/#counting">How these are counted</a></p></section>'
+            '<a href="/log/sources/#counting">How these are counted</a>. Profile, job and skill counts are on '
+            '<a href="/work/platform/">the platform page</a>.</p></section>'
             % (strip["window_days"], esc(when), "".join(cells)))
 
 
@@ -200,6 +203,7 @@ def entry_rows(entries):
     return '<ul class="rows" role="list">%s</ul>' % "".join(out)
 
 
+ESTATE_KEYS = ("scheduled_jobs", "skills_unique")
 IO_IN = "I dictate, check the text, then send it"
 IO_OUT = "What needs me lands in Google Tasks"
 
