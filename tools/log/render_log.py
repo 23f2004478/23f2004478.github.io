@@ -374,8 +374,8 @@ def entry_html_for_feed(e):
 
 def rfc822(d):
     dt = date.fromisoformat(d)
-    return "%s, %02d %s %d 20:00:00 +0530" % (["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday()], dt.day,
-                                              ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dt.month - 1], dt.year)
+    return "%s, %d %s %d 20:00:00 +0530" % (["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"][dt.weekday()], dt.day,
+                                             ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dt.month - 1], dt.year)
 
 
 def render_feeds(entries):
