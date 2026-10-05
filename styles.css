@@ -42,14 +42,14 @@ ul,ol{max-width:68ch}
 .skip{position:absolute;left:var(--s4);top:-60px;background:var(--accent);color:var(--accent-ink);padding:var(--s2) var(--s4);z-index:20;min-height:44px;display:inline-flex;align-items:center}
 .skip:focus{top:var(--s2)}
 .wrap{max-width:1120px;margin:0 auto;padding:0 var(--gut)}
-.icon{display:inline-block;width:20px;height:20px;vertical-align:middle;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.icon.brand{fill:currentColor!important;stroke:none!important}
+.icon{display:inline-block;width:20px;height:20px;vertical-align:middle;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;padding:0;margin:0}
+.icon.brand{fill:currentColor!important;stroke:none!important;padding:0!important;margin:0!important}
 .icon.brand path,.icon.brand g{fill:currentColor!important}
 
 /* header */
 .site-head{border-bottom:1px solid var(--rule)}
 .head-in{display:flex;align-items:center;gap:var(--s2);min-height:64px;flex-wrap:wrap}
-.brand{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;margin-right:auto;padding:10px 0}
+a.brand{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:var(--ink);text-decoration:none;margin-right:auto;padding:10px 0}
 .nav{display:contents}
 .nav-list{list-style:none;margin:0;padding:0;display:flex;gap:var(--s1)}
 .nav-list a,.head-act{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px;padding:0 var(--s3);color:var(--ink);text-decoration:none;border-radius:2px}
