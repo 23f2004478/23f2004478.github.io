@@ -381,3 +381,7 @@ main p,main li,main dd,main figcaption{text-wrap:pretty}
 .proof dt{margin:0}
 .proof .cap{display:block;font-size:.9375rem;color:var(--muted);margin-top:2px}
 @media (min-width:768px){.proof{grid-template-columns:repeat(3,minmax(0,1fr))}.proof div{display:block;padding:var(--s4) var(--s4) var(--s4) 0}.proof div+div{border-top:0;border-left:1px solid var(--rule);padding-left:var(--s4)}.proof dt{margin-bottom:var(--s2)}}
+/* t_d78b5aad: diagram box strokes >= 3:1 site-wide (rule token was 1.37:1); case-list arrows aligned at the row edge */
+.dg .k-b{stroke:var(--data-n)}
+.rows h3 a{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s3)}
+.rows h3 a::after{flex:none}
