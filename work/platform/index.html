@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Multi-agent operations platform | Krishnendu Biswas</title>
-  <meta name="description" content="Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs, 224 distinct skills.">
+  <meta name="description" content="Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs across 12 agents.">
   <link rel="canonical" href="https://krishnendu.me/work/platform/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/platform/">
   <meta property="og:title" content="Multi-agent operations platform | Krishnendu Biswas">
-  <meta property="og:description" content="Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs, 224 distinct skills.">
+  <meta property="og:description" content="Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs across 12 agents.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-platform.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-platform.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Multi-agent operations platform | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Multi-agent operations platform | Krishnendu Biswas">
-  <meta name="twitter:description" content="Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs, 224 distinct skills.">
+  <meta name="twitter:description" content="Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs across 12 agents.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-platform.png">
   <meta name="twitter:image:alt" content="Multi-agent operations platform | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/platform/#article",
       "headline": "Multi-agent operations platform | Krishnendu Biswas",
-      "description": "Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs, 224 distinct skills.",
+      "description": "Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. 39 recurring jobs across 12 agents.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -182,15 +182,14 @@
 
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
-    <h1 style="view-transition-name: cs-platform;">Multi-agent operations platform: MECE 12-profile estate with human review gates</h1>
-    <p class="deck">Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. Built on open-source Hermes Agent.</p>
+    <h1 style="view-transition-name: cs-platform;">Multi-agent operations platform: MECE 12-agent estate with human review gates</h1>
+    <p class="deck">Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. Built on open-source Hermes Agent.</p>
 
     <div class="panel">
       <p class="small muted">Built on Hermes Agent (open source, Nous Research). Private system; architecture and verified telemetry shown here.</p>
       <dl class="kv">
-        <dt>Profiles</dt><dd class="mono">12 Profiles (11 Domain Profiles + 1 Router)</dd>
+        <dt>Agents</dt><dd class="mono">12 Agents (11 Domain Agents + 1 Router)</dd>
         <dt>Recurring Jobs</dt><dd class="mono">39 Enabled Scheduled Jobs (Recounted 6 Oct 2026)</dd>
-        <dt>Skill Library</dt><dd class="mono">224 Distinct Skills across Estate (Recounted 6 Oct 2026)</dd>
         <dt>Human Gate</dt><dd>Mandatory Approval for Deletes, Sends, Commits, Deploys</dd>
       </dl>
     </div>
@@ -199,13 +198,13 @@
     <p>Running multi-domain automation through a single monolithic agent leads to prompt pollution, inconsistent tool permissions, and unpredictable actions. An agent drafting an email should not have access to production deployment keys, and a financial parser should not manage social media drafts.</p>
 
     <h2>What I Built</h2>
-    <p>I structured an estate partitioned into 12 Mutually Exclusive, Collectively Exhaustive (MECE) profiles. Each profile operates with scoped permissions, its own persistent memory, and dedicated skill sets:</p>
+    <p>I structured an estate partitioned into 12 Mutually Exclusive, Collectively Exhaustive (MECE) agents. Each agent operates with scoped permissions, its own persistent memory, and dedicated skill sets:</p>
     <ul>
-      <li><strong>Central Router:</strong> Receives inbound messages from Discord or Telegram, classifies intent, and delegates tasks to domain profiles.</li>
-      <li><strong>Domain Profiles:</strong> 11 specialized profiles (academic-researcher, candidate, exam-helper, finance, infra, janitor, medic, personal-ops, placecommer, socials, workhorse).</li>
+      <li><strong>Central Router:</strong> Receives inbound messages from Discord or Telegram, classifies intent, and delegates tasks to domain agents.</li>
+      <li><strong>Domain Agents:</strong> 11 specialized agents (academic researcher, candidate, exam helper, finance, infra, janitor, medic, personal ops, socials, workhorse, plus one private-scope agent not described here).</li>
       <li><strong>Kanban Coordination:</strong> Complex tasks are decomposed into structured kanban cards containing objective, context, and acceptance criteria.</li>
       <li><strong>Human Review Gate:</strong> Irreversible side effects (sending communications, modifying financial records, merging pull requests) pause at review gates until I sign off.</li>
-      <li><strong>Continuous Maintenance:</strong> A medic profile audits configuration drift hourly; a janitor profile flags cleanup opportunities and acts only upon approval.</li>
+      <li><strong>Continuous Maintenance:</strong> A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.</li>
     </ul>
 
     <h2>How a Request Moves</h2>
@@ -236,7 +235,7 @@
             <td>Automated</td>
           </tr>
           <tr>
-            <th scope="row">3. Router Profile</th>
+            <th scope="row">3. Router Agent</th>
             <td>default</td>
             <td>Classifies request and spawns task card</td>
             <td>Automated</td>
@@ -244,7 +243,7 @@
           <tr>
             <th scope="row">4. Task Card</th>
             <td>Kanban Engine</td>
-            <td>Dispatches card to assigned domain profile</td>
+            <td>Dispatches card to assigned domain agent</td>
             <td>Automated</td>
           </tr>
           <tr>
@@ -275,8 +274,38 @@
       </table>
     </div>
 
+    <h2>Hosting and Access</h2>
+    <p>The runtime moved from a MacBook Linux VM to an Azure cloud VPS (Ubuntu 24.04, systemd services) on 20 Sep 2026, so the agents run 24/7 without my laptop being on.</p>
+    <ul>
+      <li><strong>Azure Cloud VPS:</strong> Every agent runs here as a systemd-managed service. The model gateway and provider sync restart on their own after a reboot.</li>
+      <li><strong>Tailscale mesh:</strong> Tailscale, a WireGuard-based private network, links my devices to the server over encrypted tunnels.</li>
+      <li><strong>Termius mobile access:</strong> From my phone I open an SSH session in Termius over that mesh to check or restart a service without a laptop.</li>
+      <li><strong>Workspace isolation:</strong> Each agent has its own working directory, persistent memory, scoped tools and skills. Each domain keeps its own data in its own workspace.</li>
+    </ul>
+
+    <figure class="fig" role="group" aria-label="Access and isolation diagram">
+      <svg viewBox="0 0 720 150" role="img" aria-labelledby="acc-t acc-d" style="width:100%;height:auto;max-width:720px">
+        <title id="acc-t">Access path to the Azure server</title>
+        <desc id="acc-d">Phone and laptop connect over the Tailscale mesh to the Azure VPS, which hosts isolated agent workspaces.</desc>
+        <g font-family="'Source Sans 3',sans-serif" font-size="14" fill="var(--ink)">
+          <rect x="8" y="40" width="150" height="70" rx="22" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="83" y="70" text-anchor="middle">Phone (Termius)</text>
+          <text x="83" y="92" text-anchor="middle">Laptop (SSH)</text>
+          <rect x="285" y="40" width="150" height="70" rx="22" fill="var(--paper)" stroke="var(--forest)" stroke-width="1.5"/>
+          <text x="360" y="70" text-anchor="middle">Tailscale mesh</text>
+          <text x="360" y="92" text-anchor="middle">WireGuard</text>
+          <rect x="562" y="40" width="150" height="70" rx="22" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="637" y="70" text-anchor="middle">Azure VPS</text>
+          <text x="637" y="92" text-anchor="middle">isolated workspaces</text>
+          <path d="M158 75 C 205 55, 240 95, 285 75" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M435 75 C 480 55, 520 95, 562 75" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <figcaption class="small muted">Devices reach the server only through the encrypted mesh.</figcaption>
+    </figure>
+
     <h2>Verified Outcome</h2>
-    <p>The platform runs 39 enabled recurring scheduled jobs across 12 profiles with 224 distinct skills on disk. This entire website was designed, built, fact-audited, and verified through this exact multi-agent kanban pipeline.</p>
+    <p>The platform runs 39 enabled recurring scheduled jobs across 12 agents. This entire website was designed, built, fact-audited, and verified through this exact multi-agent kanban pipeline.</p>
 
     <h2>Stack</h2>
     <p class="mono">Hermes Agent &middot; Python &middot; systemd &middot; 9Router &middot; Discord &middot; Telegram &middot; SQLite</p>

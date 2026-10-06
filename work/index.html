@@ -81,16 +81,16 @@
         "@id": "https://krishnendu.me/#person"
       },
       "mainEntityOfPage": "https://krishnendu.me/work/",
-      "isPartOf": {
-        "@id": "https://krishnendu.me/#website"
-      },
       "datePublished": "2026-10-06T00:00:00+05:30",
       "dateModified": "2026-10-06T00:00:00+05:30",
       "image": "https://krishnendu.me/og/og-work.png",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
-      "inLanguage": "en"
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://krishnendu.me/#website"
+      }
     }
   ]
 }
@@ -175,10 +175,10 @@
 
   <article class="wrap page-head">
     <h1>Agent systems</h1>
-    <p class="deck">I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes; my contribution is the operational design: MECE profile boundaries, deterministic routing, kanban task hand-offs, and human review gates before anything irreversible runs.</p>
+    <p class="deck">I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes; my contribution is the operational design: MECE agent boundaries, deterministic routing, kanban task hand-offs, and human review gates before anything irreversible runs.</p>
 
     <div class="panel">
-      <p>The platform runs 39 enabled recurring jobs across 12 agent profiles (11 domain profiles plus 1 central router), supported by 224 distinct skills across the estate. Irreversible operations (such as message dispatches, financial mutations, git merges, and cloud server provisioning) pause at mandatory approval gates until I verify them.</p>
+      <p>The platform runs 39 enabled recurring jobs across 12 agents (11 domain agents plus 1 central router). Irreversible operations (such as message dispatches, financial mutations, git merges, and cloud server provisioning) pause at mandatory approval gates until I verify them.</p>
       <p>Every case study below details a distinct subsystem: how requests move from dictation to execution, how model providers are routed with fallback resilience, how context memory is compacted without losing past decisions, how server state is mirrored offsite, how receipts are parsed deterministically, and how public posts are drafted with authentic voice constraints.</p>
     </div>
 
@@ -189,9 +189,9 @@
         <li>
           <div>
             <h3><a href="/work/platform/" style="view-transition-name: cs-platform;">Multi-agent operations platform</a></h3>
-            <p>Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. Includes hourly medic drift monitoring and janitor cleanups.</p>
+            <p>Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. Includes hourly medic drift monitoring and janitor cleanups.</p>
           </div>
-          <div class="fact mono">12 PROFILES &middot; 39 JOBS</div>
+          <div class="fact mono">12 AGENTS &middot; 39 JOBS</div>
         </li>
         <li>
           <div>

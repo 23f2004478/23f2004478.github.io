@@ -204,6 +204,14 @@
       <li><strong>Secrets Handling:</strong> Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents never print credentials in chat, transcripts, or logs.</li>
     </ul>
 
+    <h2>Privacy and Egress Controls</h2>
+    <ul>
+      <li><strong>IP rotation proxies:</strong> Agent web fetches leave through a pool of rotating proxy addresses rather than one fixed address.</li>
+      <li><strong>Stealth, anti-tracking egress:</strong> Egress is set up to resist tracking: outbound agent traffic is not tied to my own address or identity.</li>
+      <li><strong>Local PII scrubbing gates:</strong> Before text leaves the server for any external model, a local gate on the server scrubs personal identifiers first.</li>
+      <li><strong>Encrypted offsite backups:</strong> Backup capsules are encrypted, mirrored to a private GitHub Releases repository, and verified weekly.</li>
+    </ul>
+
     <h2>Outcome</h2>
     <p>Complete reproducible disaster recovery, verified weekly. Continuous configuration drift detection with zero secrets exposed.</p>
 

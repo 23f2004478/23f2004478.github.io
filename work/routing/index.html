@@ -198,13 +198,20 @@
 
     <h2>What I Built</h2>
     <ul>
-      <li><strong>9Router Gateway:</strong> A local proxy sitting between agent profiles and external AI APIs, intercepting model requests and routing them through fallback provider chains.</li>
+      <li><strong>9Router Gateway:</strong> A local proxy sitting between agents and external AI APIs, intercepting model requests and routing them through fallback provider chains.</li>
       <li><strong>Tiered Compute Offload:</strong> Tasks are categorized into three difficulty tiers: medium (mechanical refactors, formatting), high (multi-file implementation, test generation), and max (architecture planning, deep fact audits).</li>
       <li><strong>Deterministic First Rule:</strong> Exact computations (mathematical formulas, file system queries, regex extractions) must execute in native Python or Bash before passing structured context to an LLM.</li>
     </ul>
 
+    <h2>How the Gateway Pools Models</h2>
+    <ul>
+      <li><strong>9Router pooling:</strong> 9Router listens on a loopback port on the server and presents one endpoint to every agent. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next in the fallback chain, with an Anthropic OAuth fallback path.</li>
+      <li><strong>Model selection rationale:</strong> High-volume background work (scraping, telemetry, sweeps) goes to Gemini 3.7 Flash, about 65 percent of tokens. Deep multi-file reasoning and audits go to Claude Opus, about 25 percent. Deterministic code, tests and generator scripts go to Claude Sonnet 5.5, about 10 percent. Shares are approximate token volume.</li>
+      <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.</li>
+    </ul>
+
     <h2>Outcome</h2>
-    <p>Zero agent task aborts from transient provider rate limits or token exhaustion. Deterministic scripts handle bulk data filtering locally, reducing context overhead and ensuring predictable computational behavior across all 12 profiles.</p>
+    <p>Zero agent task aborts from transient provider rate limits or token exhaustion. Deterministic scripts handle bulk data filtering locally, reducing context overhead and ensuring predictable computational behavior across all 12 agents.</p>
 
     <h2>Limits</h2>
     <p>Fallback chains introduce slight latency variations when switching between upstream providers, requiring graceful timeout management.</p>

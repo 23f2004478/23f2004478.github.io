@@ -106,7 +106,7 @@ def head(title, desc, path, ld, extra=""):
   <meta name="twitter:image:alt" content="%(img_alt)s">
   <script type="application/ld+json">
 %(ld)s
-  </script>
+</script>
   <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>""" % {"t": esc(title), "d": esc(desc), "u": url, "ld": json.dumps(ld, indent=2, ensure_ascii=False),
@@ -342,6 +342,8 @@ def render_archive(entries):
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": SITE_URL + "/log/archive/#webpage", "url": SITE_URL + "/log/archive/",
          "name": "All entries | Build log", "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
+         "mainEntityOfPage": SITE_URL + "/log/archive/", "datePublished": "2026-10-06T00:00:00+05:30",
+         "dateModified": "2026-10-06T00:00:00+05:30", "image": SITE_URL + "/og/og-log-archive.png", "inLanguage": "en",
          "breadcrumb": crumbs([("Home", "/"), ("Build log", "/log/"), ("All entries", "/log/archive/")])}]}
     page("/log/archive/", "All entries | Build log", "Every build log entry, newest first, grouped by month.", ld, main)
 
