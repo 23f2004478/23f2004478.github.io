@@ -2,7 +2,7 @@
  * metric_popovers.js: popover behaviour for the homepage metric cards.
  * Desktop: hover (150ms) or click opens; mobile: bottom sheet on tap.
  * Close: X button (click, tap, Enter, Space), Escape, click outside. Focus returns to the card summary.
- * v6: delegated close handler in capture phase, hover re-open suppressed right after an explicit close,
+ * v6: delegated close handler in capture phase, direct touch/click bindings, hover re-open suppressed right after an explicit close,
  * panels flip to the right edge when they would leave the viewport.
  */
 (function() {
@@ -47,6 +47,7 @@
     pops.forEach(function(pop) {
       pop.classList.add('is-js-active');
       var summary = pop.querySelector('summary');
+      var closeBtn = pop.querySelector('.panel-close');
       pop._suppressUntil = 0;
 
       if (isFinePointer) {
@@ -74,6 +75,17 @@
             openPop(pop);
           }
         });
+      }
+
+      if (closeBtn) {
+        function handleDirectClose(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
+        }
+        closeBtn.addEventListener('click', handleDirectClose);
+        closeBtn.addEventListener('touchend', handleDirectClose);
       }
     });
 

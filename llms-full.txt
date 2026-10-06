@@ -67,17 +67,17 @@ Daily average 6.9 h/day
 Longest day 13.9 h (28 Sep 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Full operating rhythm breakdown →
-132,578
+132,614
 Agent replies
-Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,064 messages, most of them dictated.
+Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,065 messages, most of them dictated.
 Turn volume & human leverage
-My messages (dictated or typed) 3,064
-Agent replies 132,578
-Tool executions 131,674
+My messages (dictated or typed) 3,065
+Agent replies 132,614
+Tool executions 131,708
 About 43 agent messages for every message I sent, counting scheduled jobs.
 Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
 See human approval gates →
-8.05 B
+8.07 B
 Tokens processed
 Most of these are tokens my agents read, not write.
 Token volume (all sources)
@@ -89,16 +89,16 @@ Fri
 Sun
 Less
 More
-Through my model gateway 6.96 B
+Through my model gateway 6.98 B
 Claude, called directly by my agents 1.07 B
 Claude Code CLI 16.7 M
 Peak day 1.13 B (6 Oct 2026)
-Among Gemini, Claude Opus and Claude Sonnet: Gemini 65.4%, Opus 29.7%, Sonnet 4.9% of tokens logged.
+Among Gemini, Claude Opus and Claude Sonnet: Gemini 65.5%, Opus 29.6%, Sonnet 4.9% of tokens logged.
 Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
 Explore model routing and compute tiering →
 11
 Specialist agents
-1 router plus 10 domain agents running 39 recurring scheduled jobs on one Hermes install.
+1 router plus 10 domain agents running 40 recurring scheduled jobs on one Hermes install.
 Estate topology (10 domain agents)
 Academics
 Career prep
@@ -110,7 +110,7 @@ Personal ops
 Institute work, private
 Socials
 Consulting
-39 recurring jobs run on the Hermes built-in scheduler.
+40 recurring jobs run on the Hermes built-in scheduler.
 Inspect platform topology →
 Hours, tokens and messages are measured on the server at every build. Last build 7 Oct 2026. How these are counted
 ## How a request moves
@@ -452,9 +452,9 @@ Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
 Fable: Architectural planning, design system direction, and exhaustive fact audits.
 Measured empirical split, share of Hermes-tracked tokens:
 Gemini Flash
-65.4%
+65.5%
 Claude Opus
-29.7%
+29.6%
 Claude Sonnet
 4.9%
 Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.

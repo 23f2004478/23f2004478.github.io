@@ -37,10 +37,23 @@
     };
     s(false);
     q.addEventListener('change', function() { s(false); });
-    m.addEventListener('click', function() { s(!n.classList.contains('is-open')); });
-    n.addEventListener('click', function(e) { if (q.matches && e.target.closest('a')) s(false); });
+    m.addEventListener('click', function(e) {
+      e.stopPropagation();
+      s(!n.classList.contains('is-open'));
+    });
+    n.addEventListener('click', function(e) {
+      if (q.matches && e.target.closest('a')) s(false);
+    });
+    d.addEventListener('click', function(e) {
+      if (q.matches && n.classList.contains('is-open') && !m.contains(e.target) && !n.contains(e.target)) {
+        s(false);
+      }
+    });
     d.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && n.classList.contains('is-open')) { s(false); m.focus(); }
+      if (e.key === 'Escape' && n.classList.contains('is-open')) {
+        s(false);
+        m.focus();
+      }
     });
   }
 
@@ -166,6 +179,9 @@
       '    <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"></circle><path d="M14 14l4 4"></path></svg>',
       '    <input type="text" class="search-input" placeholder="Search pages, projects, case studies, logs..." autocomplete="off" spellcheck="false" aria-label="Search site">',
       '    <span class="search-kbd">' + kbdHint + '</span>',
+      '    <button type="button" class="icon-btn search-close" aria-label="Close search (Esc)">',
+      '      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg>',
+      '    </button>',
       '  </div>',
       '  <ul class="search-results" id="search-results-list" role="listbox" aria-label="Search results"></ul>',
       '  <div class="search-foot">',
@@ -182,6 +198,13 @@
     d.body.appendChild(backdrop);
     input = backdrop.querySelector('.search-input');
     resultsList = backdrop.querySelector('.search-results');
+    var closeBtn = backdrop.querySelector('.search-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeSearch();
+      });
+    }
 
     backdrop.addEventListener('click', function(e) {
       if (e.target === backdrop) closeSearch();
@@ -1397,7 +1420,7 @@
  * metric_popovers.js: popover behaviour for the homepage metric cards.
  * Desktop: hover (150ms) or click opens; mobile: bottom sheet on tap.
  * Close: X button (click, tap, Enter, Space), Escape, click outside. Focus returns to the card summary.
- * v6: delegated close handler in capture phase, hover re-open suppressed right after an explicit close,
+ * v6: delegated close handler in capture phase, direct touch/click bindings, hover re-open suppressed right after an explicit close,
  * panels flip to the right edge when they would leave the viewport.
  */
 (function() {
@@ -1442,6 +1465,7 @@
     pops.forEach(function(pop) {
       pop.classList.add('is-js-active');
       var summary = pop.querySelector('summary');
+      var closeBtn = pop.querySelector('.panel-close');
       pop._suppressUntil = 0;
 
       if (isFinePointer) {
@@ -1469,6 +1493,17 @@
             openPop(pop);
           }
         });
+      }
+
+      if (closeBtn) {
+        function handleDirectClose(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
+        }
+        closeBtn.addEventListener('click', handleDirectClose);
+        closeBtn.addEventListener('touchend', handleDirectClose);
       }
     });
 

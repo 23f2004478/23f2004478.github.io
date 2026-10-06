@@ -43,6 +43,9 @@
       '    <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"></circle><path d="M14 14l4 4"></path></svg>',
       '    <input type="text" class="search-input" placeholder="Search pages, projects, case studies, logs..." autocomplete="off" spellcheck="false" aria-label="Search site">',
       '    <span class="search-kbd">' + kbdHint + '</span>',
+      '    <button type="button" class="icon-btn search-close" aria-label="Close search (Esc)">',
+      '      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M1 1l12 12M13 1L1 13"/></svg>',
+      '    </button>',
       '  </div>',
       '  <ul class="search-results" id="search-results-list" role="listbox" aria-label="Search results"></ul>',
       '  <div class="search-foot">',
@@ -59,6 +62,13 @@
     d.body.appendChild(backdrop);
     input = backdrop.querySelector('.search-input');
     resultsList = backdrop.querySelector('.search-results');
+    var closeBtn = backdrop.querySelector('.search-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        closeSearch();
+      });
+    }
 
     backdrop.addEventListener('click', function(e) {
       if (e.target === backdrop) closeSearch();

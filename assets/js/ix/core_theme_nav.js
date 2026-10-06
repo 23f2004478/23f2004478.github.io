@@ -29,10 +29,23 @@
     };
     s(false);
     q.addEventListener('change', function() { s(false); });
-    m.addEventListener('click', function() { s(!n.classList.contains('is-open')); });
-    n.addEventListener('click', function(e) { if (q.matches && e.target.closest('a')) s(false); });
+    m.addEventListener('click', function(e) {
+      e.stopPropagation();
+      s(!n.classList.contains('is-open'));
+    });
+    n.addEventListener('click', function(e) {
+      if (q.matches && e.target.closest('a')) s(false);
+    });
+    d.addEventListener('click', function(e) {
+      if (q.matches && n.classList.contains('is-open') && !m.contains(e.target) && !n.contains(e.target)) {
+        s(false);
+      }
+    });
     d.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && n.classList.contains('is-open')) { s(false); m.focus(); }
+      if (e.key === 'Escape' && n.classList.contains('is-open')) {
+        s(false);
+        m.focus();
+      }
     });
   }
 
