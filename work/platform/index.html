@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Multi-agent operations platform | Krishnendu Biswas</title>
-  <meta name="description" content="MECE 12-agent estate with human review gates, kanban hand-offs, and verified telemetry across 39 scheduled daily jobs.">
+  <meta name="description" content="11 agents with my approval on risky steps, task-card hand-offs, and 39 recurring scheduled jobs.">
   <link rel="canonical" href="https://krishnendu.me/work/platform/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/platform/">
   <meta property="og:title" content="Multi-agent operations platform | Krishnendu Biswas">
-  <meta property="og:description" content="MECE 12-agent estate with human review gates, kanban hand-offs, and verified telemetry across 39 scheduled daily jobs.">
+  <meta property="og:description" content="11 agents with my approval on risky steps, task-card hand-offs, and 39 recurring scheduled jobs.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-platform.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-platform.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Multi-agent operations platform | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Multi-agent operations platform | Krishnendu Biswas">
-  <meta name="twitter:description" content="MECE 12-agent estate with human review gates, kanban hand-offs, and verified telemetry across 39 scheduled daily jobs.">
+  <meta name="twitter:description" content="11 agents with my approval on risky steps, task-card hand-offs, and 39 recurring scheduled jobs.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-platform.png">
   <meta name="twitter:image:alt" content="Multi-agent operations platform | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/platform/#article",
       "headline": "Multi-agent operations platform | Krishnendu Biswas",
-      "description": "MECE 12-agent estate with human review gates, kanban hand-offs, and verified telemetry across 39 scheduled daily jobs.",
+      "description": "11 agents with my approval on risky steps, task-card hand-offs, and 39 recurring scheduled jobs.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -184,36 +182,37 @@
 
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
-    <h1 style="view-transition-name: cs-platform;">Multi-agent operations platform: MECE 12-agent estate with human review gates</h1>
-    <p class="deck">Twelve agents that hand work to each other on kanban cards, with a review gate before anything risky. Built on open-source Hermes Agent.</p>
+    <h1 style="view-transition-name: cs-platform;">Multi-agent operations platform: 11 agents, each with its own job, and my approval on risky steps</h1>
+    <p class="deck">Eleven agents that hand work to each other on task cards, with a review step before anything risky. Built on open-source Hermes Agent.</p>
 
     <div class="panel">
       <p class="small muted">Built on Hermes Agent (open source, Nous Research). Private system; architecture and verified telemetry shown here.</p>
       <dl class="kv">
-        <dt>Agents</dt><dd class="mono">12 Agents (11 Domain Agents + 1 Router)</dd>
+        <dt>Agents</dt><dd class="mono">11 Agents (10 Domain Agents + 1 Router)</dd>
         <dt>Recurring Jobs</dt><dd class="mono">39 Enabled Scheduled Jobs (Recounted 6 Oct 2026)</dd>
         <dt>Human Gate</dt><dd>Mandatory Approval for Deletes, Sends, Commits, Deploys</dd>
       </dl>
     </div>
 
     <h2>Problem and Motivation</h2>
-    <p>Running multi-domain automation through a single monolithic agent leads to prompt pollution, inconsistent tool permissions, and unpredictable actions. An agent drafting an email should not have access to production deployment keys, and a financial parser should not manage social media drafts.</p>
+    <p>One agent doing everything mixes up instructions from different jobs and gets more access than any single job needs. An agent drafting an email should not have access to production deployment keys, and a financial parser should not manage social media drafts.</p>
 
     <h2 id="topology">Multi-agent topology</h2>
-    <p>I structured an estate partitioned into 12 Mutually Exclusive, Collectively Exhaustive (MECE) agents. Each agent operates with scoped permissions, its own persistent memory, and dedicated skill sets:</p>
+    <p>I split the work across 11 agents, each owning one area with no overlap. Each agent operates with scoped permissions, its own persistent memory, and dedicated skill sets:</p>
     <ul>
       <li><strong>Central Router:</strong> Receives inbound messages from Discord or Telegram, classifies intent, and delegates tasks to domain agents.</li>
-      <li><strong>Domain Agents:</strong> 11 specialized agents (academic researcher, candidate, exam helper, finance, infra, janitor, medic, personal ops, socials, workhorse, plus one private-scope agent not described here).</li>
+      <li><strong>Domain agents:</strong> 10 agents (academics, career prep, finance, infrastructure, cleanup, health checks, personal tasks, socials, consulting, plus one private agent for institute work not described here).</li>
+      <li><strong>Tiered Compute Offload (Fable):</strong> When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.</li>
       <li><strong>Kanban Coordination:</strong> Complex tasks are decomposed into structured kanban cards containing objective, context, and acceptance criteria.</li>
-      <li><strong>Human Review Gate:</strong> Irreversible side effects (sending communications, modifying financial records, merging pull requests) pause at review gates until I sign off.</li>
+      <li><strong>Human Review Gate:</strong> Anything I would regret waits for my approval: sends, deletes and public pushes.</li>
       <li><strong>Continuous Maintenance:</strong> A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.</li>
     </ul>
 
     <h2 id="hours">Hours with my agents, by day</h2>
-    <p class="deck">Time I spent working with my agents across Discord, Telegram, and Hermes CLI, sessionized by a 15-minute idle gap.</p>
+    <p class="deck">Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.</p>
     
     <div class="stats-row">
-      <div class="stat-item"><span class="stat-val">142.8 h</span><span class="stat-lbl">Total hours</span></div>
+      <div class="stat-item"><span class="stat-val">143.5 h</span><span class="stat-lbl">Total hours</span></div>
       <div class="stat-item"><span class="stat-val">21</span><span class="stat-lbl">Active days</span></div>
       <div class="stat-item"><span class="stat-val">6.8 h</span><span class="stat-lbl">Avg / active day</span></div>
       <div class="stat-item"><span class="stat-val">13.9 h</span><span class="stat-lbl">Longest day (2026-09-28)</span></div>
@@ -230,7 +229,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="10.2" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 10.2 h"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td data-date="2026-10-07" data-value="2.1" data-level="2" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 2.1 h (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="10.2" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 10.2 h"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td data-date="2026-10-07" data-value="2.8" data-level="2" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 2.8 h (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -260,7 +259,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1125819747" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 1.13 B tokens"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td data-date="2026-10-07" data-value="274071604" data-level="3" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 274.1 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1125819747" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 1.13 B tokens"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td data-date="2026-10-07" data-value="430322716" data-level="3" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 430.3 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -294,8 +293,8 @@
           </tr>
           <tr>
             <th scope="row">2. Gateway</th>
-            <td>9Router</td>
-            <td>Routes inbound webhook to agent runtime</td>
+            <td>Hermes gateway</td>
+            <td>Hermes gateway passes my Discord or Telegram message to the router agent</td>
             <td>Automated</td>
           </tr>
           <tr>
@@ -339,20 +338,20 @@
     </div>
 
     <h2 id="approvals">Human review gate</h2>
-    <p>Anything irreversible waits for my approval. Git pushes, outbound emails, file deletions, and financial writes pause at approval gates until I inspect and approve them.</p>
+    <p>Anything I would regret waits for my approval: sends, deletes and public pushes. Outbound emails, file deletions, and public git pushes pause at approval gates until I inspect and approve them.</p>
 
     <h2>Access from any device</h2>
     <p>I can run the whole platform from my phone, so work continues when my laptop is closed or not with me. Three pieces make that work.</p>
     <ul>
       <li><strong>Private mesh:</strong> Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). I reach the server over the mesh, from those three devices.</li>
-      <li><strong>Termius:</strong> Termius is the SSH client on my phone and laptop. It connects over the mesh, so I can check a service or restart one from the phone.</li>
+      <li><strong>Termius:</strong> I sometimes SSH in via Termius from my phone or laptop over Tailscale. It connects over the mesh, so I can check a service or restart one from the phone.</li>
       <li><strong>Dictation:</strong> I dictate on my phone or Mac (Dictate on Android, FreeFlow on Mac), read the transcript, then send it on Discord or Telegram. The router agent picks it up from there.</li>
     </ul>
 
     <h2>Host and isolation</h2>
     <p>Every agent runs on one rented cloud server and stays inside its own workspace. The host is an Azure VPS named hermes-cloud running Ubuntu 24.04, and the runtime moved there from a MacBook Linux VM on 20 Sep 2026, so the agents run around the clock.</p>
     <ul>
-      <li><strong>systemd user services:</strong> Each long running piece, including the model gateway and provider sync, is a systemd user service that restarts on its own after a reboot.</li>
+      <li><strong>systemd services:</strong> Each long running piece, such as the model gateway and the chat gateway, runs as a system service that restarts on its own after a reboot.</li>
       <li><strong>Workspace isolation:</strong> Each agent has its own working directory, persistent memory, scoped tools and skills. Each domain keeps its own data in its own workspace.</li>
     </ul>
 
@@ -391,7 +390,7 @@
     </figure>
 
     <h2>Verified Outcome</h2>
-    <p>The platform runs 39 enabled recurring scheduled jobs across 12 agents. This entire website was designed, built, fact-audited, and verified through this exact multi-agent kanban pipeline.</p>
+    <p>The platform runs 39 recurring scheduled jobs across 11 agents. I build this website through the same pipeline: a planning card, a builder agent, and a review step before each release.</p>
 
     <h2>Stack</h2>
     <p class="mono">Hermes Agent &middot; Python &middot; systemd &middot; 9Router &middot; Discord &middot; Telegram &middot; SQLite</p>
@@ -426,7 +425,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

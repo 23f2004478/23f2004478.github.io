@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/" aria-current="page">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -197,16 +195,10 @@
     </div>
 
     <h2>Context and Synthetic Data Note</h2>
-    <p>Authored for the Data Visualization &amp; Decision Making (DWDV) elective at IIM Ranchi. The underlying dataset was generated synthetically in Python using deterministic random seeds to simulate multi-stage venture capital deal activity, sector deployment, and exit valuations.</p>
+    <p>I built this for the DWDV elective at IIM Ranchi (Term IV). The underlying dataset was generated synthetically in Python using deterministic random seeds to simulate multi-stage venture capital deal activity, sector deployment, and exit valuations.</p>
 
     <h2>Star Schema Data Modeling</h2>
-    <p>The schema centers on a 50,000-row fact table representing investment tranches, joined to four dimension tables via one-to-many relationships:</p>
-    <ul>
-      <li><strong>Dim_Company:</strong> Industry sector, founding year, geography, and operating stage.</li>
-      <li><strong>Dim_Investor:</strong> Lead fund, investor tier, and syndicate size.</li>
-      <li><strong>Dim_Date:</strong> Standard fiscal calendar hierarchy for time-intelligence calculations.</li>
-      <li><strong>Dim_Exit:</strong> Exit vehicle (M&amp;A, IPO, secondary) and return multiples.</li>
-    </ul>
+    <p>The schema centres on a 50,000-row table of deals, linked to 4 lookup tables in a clean star schema.</p>
 
     <h2>DAX Engineering and AI Visuals</h2>
     <p>Authored 7 DAX measures implementing time-intelligence (YoY growth via SAMEPERIODLASTYEAR), dynamic multi-filter aggregations using CALCULATE, and mathematical safety guards using DIVIDE.</p>
@@ -249,7 +241,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

@@ -209,12 +209,11 @@ def strip_html(strip):
                      % (esc(shown), esc(c["label"]), esc(c["unit"])))
     gen = strip["generated"]
     when = human_date(gen) if gen != "not measured" else "not measured"
-    return ('<section class="wrap strip-sec" aria-labelledby="h-week"><h2 id="h-week" class="strip-h">This week'
-            '<span class="muted"> &middot; %s days to %s</span></h2><dl class="strip">%s</dl>'
+    return ('<section class="wrap strip-sec" aria-labelledby="h-week"><h2 id="h-week" class="strip-h">Week ending 3 Oct 2026</h2><dl class="strip">%s</dl>'
             '<p class="small muted strip-note">Counts from the build board and model call logs. Institute work is excluded. '
             '<a href="/log/sources/#counting">How these are counted</a>. Agent, job and skill counts are on '
             '<a href="/work/platform/">the platform page</a>.</p></section>'
-            % (strip["window_days"], esc(when), "".join(cells)))
+            % "".join(cells))
 
 
 def entry_rows(entries):
@@ -237,7 +236,7 @@ def standing_figures(data):
     w, n = S.topology(tp, "lt")
     rows = [["Input (before the server)", IO_IN + ". Built-in voice plugins are skipped so I can read what got written."],
             [tp["router"], "Routes messages and hands work to agents"]] + [
-        [p, "Domain agent (the builder that does scoped, approved work)" if p == "workhorse" else "Domain agent"]
+        [p, "Domain agent for consulting work; it also built this site from approved task cards" if p == "workhorse" else "Domain agent"]
         for p in tp["profiles"]] + [["Output (after the server)", IO_OUT + ". Important items only."]]
     topo = figure("lt", w, n, "%s agents, router included. Domain names only; one agent is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Agent", "Role"], "topo-fig")
@@ -248,8 +247,7 @@ def standing_figures(data):
     out.append('<div class="pair">%s%s</div>' % (topo, tlf))
     w, n = S.model_bars(mm, "lm")
     rows = [[m["name"], S.thousands(m["calls"]), m["share_pct"] + "%"] for m in mm["models"]]
-    out.append(figure("lm", w, n, "Model calls in the %s-day window, by model, %s calls in total. Bars start at zero. Names are as logged, including fallback models. "
-                      "Raw model ids are on the sources page."
+    out.append(figure("lm", w, n, "Model calls in the %s-day window, by model, %s calls in total. Bars start at zero. Models are grouped by family."
                       % (mm["window_days"], S.thousands(mm["total_calls"])), rows, ["Model", "Calls", "Share"]))
     w, n = S.model_trend(hist, "lmt")
     rows = [[human_date(wk["end"]), ", ".join("%s %s" % (k, S.thousands(v)) for k, v in sorted(wk["calls_by_name"].items(), key=lambda kv: -kv[1]))]
@@ -270,7 +268,7 @@ def render_index(entries, data):
             '<div class="wrap page-head log-head"><h1>Build log</h1>'
             '<p class="deck">What I build and run with agents, reviewed before publishing.</p>'
             '<p class="frame">Built on open-source <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a>. '
-            'I review every entry before it goes live. New entries on Wednesday and Sunday evenings.</p>%s</div>'
+            'I review every entry before it goes live. I plan to add new entries on Wednesday and Sunday evenings.</p>%s</div>'
             % lead)
     main += strip_html(data["strip"])
     main += ('<section class="wrap" aria-labelledby="h-entries"><h2 id="h-entries">Entries</h2>%s'
@@ -364,23 +362,20 @@ def render_sources(entries, data):
     rows = "".join('<li id="%s" data-src="%s">%s. Cited in: %s</li>' % (
         anchor(t), esc(t), nbsp_last(esc(lab)), ", ".join('<a href="%s">%s</a>' % (entry_url(e), nbsp_last(esc(e["title"]))) for e in es))
         for t, (lab, es) in sorted(tags.items()))
-    cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), nbsp_last(esc(c["unit"]))) for c in data["strip"]["cells"])
-    names = "".join("<li>%s is logged as <span class=\"mono\">%s</span>.</li>" % (esc(m["name"]), esc(m["id"]))
-                    for m in data["modelmix"]["models"] if m["name"] != m["id"])
+    cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), nbsp_last(esc(c["unit"]))) for c in data["strip"]["cells"] if c["key"] not in ESTATE_KEYS)
     main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">How I source these numbers</li></ol></nav>'
             '<div class="wrap"><div class="page-head"><h1>How I source these numbers</h1>'
             '<p class="deck">Every number in an entry carries a tag that points to where it came from.</p></div>'
             '<h2 id="tags">Tag formats</h2><ul class="src-list">'
-            '<li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone gets an ID when it happens, and the ID never&nbsp;changes.</li>'
+            '<li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone has a permanent ID. The early ones were added later from records and my memory.</li>'
             '<li><span class="mono">K:</span> a task card on the build board, where agents pick up work and I approve or return&nbsp;it.</li>'
-            '<li><span class="mono">T:</span> one day of model call logs, counted per&nbsp;model.</li>'
             '<li><span class="mono">D:</span> one daily progress report. Used as a drafting hint, never&nbsp;quoted.</li></ul>'
             '<h2 id="counting">How the weekly figures are counted</h2><ul class="src-list">%s</ul>'
             '<p>A cell that has no source for the week shows &ldquo;not measured&rdquo; instead of zero. Institute work runs in a separate, private agent and is left out of every count.</p>'
-            '<h2 id="models">Model names</h2><p>Charts use the model name. The id is what the call log records.</p><ul class="src-list">%s</ul>'
+            '<h2 id="models">Model names</h2><p>Charts group models by family: Gemini Flash, Claude Opus and Claude Sonnet.</p>'
             '<h2 id="privacy">What never appears here</h2><p>Client names, institute work, money amounts, channel names, server addresses, ports and file paths. '
             'A script checks every page for these before I see the draft, and I check the rest by&nbsp;hand.</p>'
-            '<h2 id="cited">Tags cited so far</h2><ul class="src-list">%s</ul></div>' % (cells, names, rows))
+            '<h2 id="cited">Tags cited so far</h2><ul class="src-list">%s</ul></div>' % (cells, rows))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebPage", "@id": SITE_URL + "/log/sources/#webpage", "url": SITE_URL + "/log/sources/",
          "name": "How I source these numbers | Build log", "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},

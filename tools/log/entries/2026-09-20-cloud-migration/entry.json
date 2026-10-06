@@ -7,7 +7,7 @@
  "what_changed": "Hermes Agent, the open-source framework my agents run on, moved from a Linux virtual machine on my MacBook (M1 Max) to a cloud server running Ubuntu [G:0011]. The model gateway (9Router, which sends each request to a model) and the provider sync now run as system services on that server [G:0012].",
  "why_it_matters": "The agents keep working when the laptop is closed. Scheduled jobs and the daily progress report no longer depend on my machine being awake.",
  "result": "Gateway and sync were deployed as services on 21 Sep 2026 [G:0012].",
- "lesson": "The date of this move rests on a billing record and a boot log rather than my memory. I now log every milestone to an append-only ledger with an ID before I write about it.",
+ "lesson": "The date of this move rests on a billing record and a boot log rather than my memory. I now log milestones to an append-only ledger with an ID and cite that ID when I write about them.",
  "diagram": {
   "template": "before_after",
   "title": "Before and after the move to a cloud server",
@@ -21,7 +21,7 @@
  },
  "sources": [
   {"tag": "G:0009", "label": "Ledger: first billed day of the cloud server (billing record, amount withheld)"},
-  {"tag": "G:0010", "label": "Ledger: cloud server first boot, from the system boot log"},
+  {"tag": "G:0010", "label": "Ledger: cloud server first boot on 20 Sep, from the system boot log"},
   {"tag": "G:0011", "label": "Ledger: agent runtime moved from laptop to cloud server"},
   {"tag": "G:0012", "label": "Ledger: model gateway and provider sync deployed as system services"}
  ],

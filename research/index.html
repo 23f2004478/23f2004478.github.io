@@ -183,11 +183,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/work/">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
       <li><a href="/research/" aria-current="page">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -216,7 +214,7 @@
 
   <article class="wrap page-head" data-ix="toc">
     <h1>Research</h1>
-    <p class="deck">Two research papers: one conference publication in Springer Nature proceedings on rare-class emotion detection in educational dialogues, and one systematic literature review on generative AI in marketing presented at the 10th Pan-IIM World Management Conference.</p>
+    <p class="deck">Two research papers: one paper accepted for publication in Springer Nature conference proceedings (FICTA 2026) on spotting rare emotions in student chatbot conversations, and one systematic literature review on generative AI in marketing presented at the 10th Pan-IIM World Management Conference.</p>
 
     <!-- Paper 1 -->
     <section class="entry" id="ficta-2026" aria-labelledby="h-p1">
@@ -227,17 +225,16 @@
       <p>Educational dialogues contain severe class imbalance. Critical emotional states like confusion and frustration indicate when a learner is struggling, but they appear far less frequently than neutral or positive acknowledgments. Conventional classification algorithms optimize for overall accuracy, which allows them to score well while failing to detect the minority emotional states where pedagogical intervention is most needed.</p>
       
       <h3>Methodology</h3>
-      <p>We fine-tuned RoBERTa on tokenized educational conversation transcripts and applied Support Vector Machine Synthetic Minority Over-sampling Technique (SVMSMOTE) in the representation space. This oversampled difficult boundary instances of the minority classes without introducing excessive synthetic noise into the majority decision regions. Models were evaluated using per-class recall and macro-averaged F1 rather than standard accuracy.</p>
+      <p>I paired RoBERTa, a pretrained language model, with SVMSMOTE, a method that creates extra examples of the rare emotion classes so the model sees enough of them. I judged the models by how many of the rare Confused cases they caught (recall), not by overall accuracy.</p>
 
       <h3>Key Findings</h3>
-      <p>The proposed RoBERTa plus SVMSMOTE architecture achieved a <strong>74.19% recall</strong> on the rare Confused emotion class. This represents a substantial improvement over baseline transformer architectures without synthetic oversampling, which achieved less than 52% recall on the same class.</p>
+      <p>The proposed RoBERTa plus SVMSMOTE architecture achieved a <strong>74.19% recall</strong> on the rare Confused emotion class, compared to less than 52% recall for baseline architectures without synthetic oversampling.</p>
 
       <div class="panel">
         <dl class="kv">
           <dt>Venue</dt><dd>Springer Nature (FICTA 2026)</dd>
           <dt>Primary Metric</dt><dd class="mono">74.19% Rare-Class Recall</dd>
           <dt>Architecture</dt><dd>RoBERTa + SVMSMOTE</dd>
-          <dt>Stack</dt><dd>Python, PyTorch, Hugging&nbsp;Face, scikit-learn</dd>
         </dl>
       </div>
     </section>
@@ -248,28 +245,63 @@
       <p class="meta">Presented at the 10th Pan-IIM World Management Conference 2025 &middot; IIM Ranchi</p>
       
       <h3>Context and Objective</h3>
-      <p>Enterprise interest in generative AI for marketing automation has grown rapidly, but academic literature remained fragmented across practitioner whitepapers and narrow technical benchmarks. This study synthesized empirical findings on generative AI adoption across content creation, customer journey personalization, and organizational transformation.</p>
+      <p>Enterprise interest in generative AI for marketing automation has grown rapidly, but academic literature remained fragmented across practitioner whitepapers and narrow technical benchmarks. The review pulls together what published studies say about how companies use generative AI in marketing.</p>
 
       <h3>Review Protocol</h3>
-      <p>We conducted a structured systematic literature review following the PRISMA (Preferred Reporting Items for Systematic Reviews and Meta-Analyses) protocol. We screened 29 Scopus-indexed peer-reviewed articles published between 2020 and 2025, categorizing them across technology readiness, consumer perception, and regulatory compliance.</p>
+      <p>Following the PRISMA review method, I reviewed 29 Scopus articles published from 2020 to 2025 across technology readiness, consumer adoption, and regulatory considerations.</p>
 
       <h3>Synthesis and Proposed Agenda</h3>
-      <p>The review established five core dimensions for future research: algorithmic bias in personalized ad copy, consumer trust in synthetic media, workflow hand-offs between human marketers and generative models, intellectual property governance, and ROI measurement standards for automated campaigns.</p>
+      <p>The review synthesised research priorities across algorithmic transparency in personalized marketing, consumer trust in synthetic media, workflow hand-offs between marketers and generative models, and data governance for automated campaigns.</p>
 
       <div class="panel">
         <dl class="kv">
           <dt>Venue</dt><dd>10th Pan-IIM World Management Conference (WMC 2025)</dd>
           <dt>Method</dt><dd>PRISMA Systematic Literature Review</dd>
           <dt>Corpus</dt><dd class="mono">29 Scopus-Indexed Articles (2020 to 2025)</dd>
-          <dt>Focus</dt><dd>Enterprise Marketing Automation & Governance</dd>
+          <dt>Focus</dt><dd>Generative AI in marketing</dd>
         </dl>
       </div>
+    </section>
+    <!-- Credentials & Education Summary -->
+    <section class="section" id="credentials-summary" data-ix="reveal" aria-labelledby="h-creds">
+      <h2 id="h-creds">Degrees &amp; Credentials</h2>
+      <ul class="rows" role="list" data-ix="filters">
+        <li>
+          <div>
+            <h3>MBA Candidate (Class of 2027)</h3>
+            <p>Indian Institute of Management Ranchi (IIM Ranchi). Concentration in Operations, Data, and Strategy.</p>
+          </div>
+          <div class="fact mono">2025 to 2027 &middot; IIM RANCHI</div>
+        </li>
+        <li>
+          <div>
+            <h3>BS in Data Science &amp; Applications (Diploma in Programming Completed)</h3>
+            <p>IIT Madras CODE. Completed Foundational and Diploma in Programming levels with 7 course topper badges.</p>
+          </div>
+          <div class="fact mono">IIT MADRAS &middot; DIPLOMA</div>
+        </li>
+        <li>
+          <div>
+            <h3>Microsoft Certified: Power BI Data Analyst Associate (PL-300)</h3>
+            <p>Proctored certification covering data modeling, DAX formulas, Power Query, and star schema architectures.</p>
+          </div>
+          <div class="fact mono">MICROSOFT &middot; PL-300</div>
+        </li>
+        <li>
+          <div>
+            <h3>Lean Six Sigma Green Belt</h3>
+            <p>Grant Thornton certification in DMAIC methodology, process optimization, and operational efficiency.</p>
+          </div>
+          <div class="fact mono">GRANT THORNTON &middot; DMAIC</div>
+        </li>
+      </ul>
+      <p class="small" style="margin-top:var(--s4);"><a class="btn" href="/credentials/">View full credentials &amp; syllabi <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
     </section>
   </article>
 
   <nav class="pager wrap" aria-label="Section navigation">
-    <div class="pager-prev"><a href="/projects/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Machine learning projects</a></div>
-    <div class="pager-next"><a href="/credentials/">Credentials & Education <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+    <div class="pager-prev"><a href="/internships/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Internships</a></div>
+    <div class="pager-next"><a href="/log/">Build log <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
   </nav>
 </main>
 <footer class="site-foot wrap">
@@ -296,7 +328,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

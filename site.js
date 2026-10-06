@@ -295,10 +295,17 @@
   // Global keyboard shortcuts
   d.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
-      if (backdrop && !backdrop.hidden && e.key === 'Escape') {
+      if (backdrop && !backdrop.hidden && (e.key === 'Escape' || e.key === 'Esc')) {
         closeSearch();
       }
       return;
+    }
+
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      if (backdrop && !backdrop.hidden) {
+        closeSearch();
+        return;
+      }
     }
 
     // Cmd+K or Ctrl+K or '/'
@@ -1063,13 +1070,12 @@
 /**
  * Feature: copy_email
  * Hook: [data-ix~="copy_email"], a[href^="mailto:"]
- * Interactive email copy button with aria-live toast notification
+ * Interactive email copy button with fallback and aria-live toast notification
  */
 (function() {
   'use strict';
   var d = document;
 
-  // Global toast helper
   var toastEl = null;
   var toastTimer = null;
 
@@ -1087,9 +1093,42 @@
     if (toastTimer) clearTimeout(toastTimer);
     toastTimer = setTimeout(function() {
       toastEl.classList.remove('is-visible');
-    }, 2000);
+    }, 2500);
   }
   window.showToast = showToast;
+
+  function copyText(text, onSuccess, onError) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
+        fallbackCopy(text, onSuccess, onError);
+      });
+    } else {
+      fallbackCopy(text, onSuccess, onError);
+    }
+  }
+
+  function fallbackCopy(text, onSuccess, onError) {
+    try {
+      var ta = d.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.top = '-9999px';
+      ta.style.left = '-9999px';
+      ta.setAttribute('readonly', '');
+      d.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      var ok = d.execCommand('copy');
+      d.body.removeChild(ta);
+      if (ok) {
+        onSuccess();
+      } else if (onError) {
+        onError();
+      }
+    } catch (err) {
+      if (onError) onError();
+    }
+  }
 
   function setupCopyEmail() {
     var mailLinks = d.querySelectorAll('[data-ix~="copy_email"], a[href^="mailto:"]');
@@ -1097,26 +1136,31 @@
       if (link.dataset.copySetup) return;
       link.dataset.copySetup = 'true';
 
-      var email = link.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
+      var rawHref = link.getAttribute('href') || '';
+      var email = rawHref.replace(/^mailto:/i, '').split('?')[0].trim();
+      if (!email) return;
 
-      // Add a quick copy button if it's a prominent contact row or text
       var btn = d.createElement('button');
       btn.type = 'button';
       btn.className = 'icon-btn copy-email-btn';
       btn.setAttribute('aria-label', 'Copy email address ' + email);
       btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg>';
 
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        navigator.clipboard.writeText(email).then(function() {
-          showToast('Email copied: ' + email);
-        }).catch(function() {
+      function doCopy(e) {
+        if (e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+        copyText(email, function() {
+          showToast('Email copied to clipboard: ' + email);
+        }, function() {
           showToast('Email: ' + email);
         });
-      });
+      }
 
-      if (link.parentNode && (link.classList.contains('reach-item') || link.closest('.foot-links') || link.closest('.hero-contact'))) {
+      btn.addEventListener('click', doCopy);
+
+      if (link.parentNode && (link.classList.contains('reach-item') || link.closest('.foot-links') || link.closest('.hero-contact') || link.closest('.textlinks') || link.closest('.reach-row'))) {
         link.parentNode.insertBefore(btn, link.nextSibling);
       }
     });
@@ -1350,137 +1394,119 @@
 
 // === Module: metric_popovers (metric_popovers.js) ===
 /**
- * metric_popovers.js: Interactive popover behavior for homepage headline metrics.
- * Supports hover on desktop (150ms delay), bottom sheet on mobile, roving focus, ESC, and click outside.
+ * metric_popovers.js: popover behaviour for the homepage metric cards.
+ * Desktop: hover (150ms) or click opens; mobile: bottom sheet on tap.
+ * Close: X button (click, tap, Enter, Space), Escape, click outside. Focus returns to the card summary.
+ * v6: delegated close handler in capture phase, hover re-open suppressed right after an explicit close,
+ * panels flip to the right edge when they would leave the viewport.
  */
 (function() {
   function initMetricPopovers() {
-    const pops = Array.from(document.querySelectorAll('.metric-pop, [data-ix~="metric_pop"]'));
+    var pops = Array.prototype.slice.call(document.querySelectorAll('.metric-pop, [data-ix~="metric_pop"]'));
     if (!pops.length) return;
 
-    let wasMobile = window.innerWidth < 768;
-    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var wasMobile = window.innerWidth < 768;
+    var isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    pops.forEach(pop => {
+    function place(pop) {
+      var panel = pop.querySelector('.metric-panel');
+      pop.classList.remove('open-above', 'open-right');
+      if (window.innerWidth < 768 || !panel) return;
+      var rect = pop.getBoundingClientRect();
+      if (window.innerHeight - rect.bottom < 360 && rect.top > 360) pop.classList.add('open-above');
+      var w = panel.offsetWidth || 320;
+      if (rect.left + w > document.documentElement.clientWidth - 8) pop.classList.add('open-right');
+    }
+
+    function openPop(pop) {
+      clearTimeout(pop._closeT);
+      pops.forEach(function(p) { if (p !== pop && p.open) closePop(p, false); });
+      if (!pop.open) pop.open = true;
+      var s = pop.querySelector('summary');
+      if (s) s.setAttribute('aria-expanded', 'true');
+      place(pop);
+    }
+
+    function closePop(pop, restoreFocus) {
+      clearTimeout(pop._openT);
+      clearTimeout(pop._closeT);
+      var s = pop.querySelector('summary');
+      if (pop.open) pop.open = false;
+      pop.classList.remove('open-above', 'open-right');
+      if (s) {
+        s.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) s.focus({ preventScroll: true });
+      }
+    }
+
+    pops.forEach(function(pop) {
       pop.classList.add('is-js-active');
-      const summary = pop.querySelector('summary');
-      const panel = pop.querySelector('.metric-panel');
-      const closeBtn = pop.querySelector('.panel-close');
-      const titleLink = pop.querySelector('.metric-title');
+      var summary = pop.querySelector('summary');
+      pop._suppressUntil = 0;
 
-      let openTimer = null;
-      let closeTimer = null;
-
-      function openPop() {
-        clearTimeout(closeTimer);
-        // Close siblings
-        pops.forEach(p => {
-          if (p !== pop && p.open) p.open = false;
-        });
-
-        if (!pop.open) {
-          pop.open = true;
-        }
-
-        // Check vertical space on desktop
-        if (window.innerWidth >= 768 && panel) {
-          const rect = pop.getBoundingClientRect();
-          const spaceBelow = window.innerHeight - rect.bottom;
-          if (spaceBelow < 360 && rect.top > 360) {
-            pop.classList.add('open-above');
-          } else {
-            pop.classList.remove('open-above');
-          }
-        }
-      }
-
-      function closePop() {
-        clearTimeout(openTimer);
-        if (pop.open) {
-          pop.open = false;
-          pop.classList.remove('open-above');
-        }
-      }
-
-      // Fine pointer hover handlers
       if (isFinePointer) {
-        pop.addEventListener('mouseenter', () => {
-          clearTimeout(closeTimer);
-          openTimer = setTimeout(openPop, 150);
+        pop.addEventListener('mouseenter', function() {
+          clearTimeout(pop._closeT);
+          if (Date.now() < pop._suppressUntil) return;
+          pop._openT = setTimeout(function() { openPop(pop); }, 150);
         });
-
-        pop.addEventListener('mouseleave', () => {
-          clearTimeout(openTimer);
-          closeTimer = setTimeout(closePop, 200);
-        });
-      }
-
-      // Title link click should navigate directly
-      if (titleLink) {
-        titleLink.addEventListener('click', (e) => {
-          e.stopPropagation();
+        pop.addEventListener('mouseleave', function() {
+          clearTimeout(pop._openT);
+          var ae = document.activeElement;
+          if (pop.contains(ae) && ae !== summary) return;
+          pop._closeT = setTimeout(function() { closePop(pop, false); }, 200);
         });
       }
 
-      // Close button
-      if (closeBtn) {
-        closeBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          closePop();
-          if (summary) summary.focus();
-        });
-      }
-
-      // Summary click toggle
       if (summary) {
-        summary.addEventListener('click', (e) => {
-          // If clicked on child interactive elements, do not toggle
+        summary.addEventListener('click', function(e) {
           if (e.target.closest('a, button')) return;
           e.preventDefault();
-          
-          if (!pop.open) {
-            openPop();
+          if (pop.open) {
+            pop._suppressUntil = Date.now() + 600;
+            closePop(pop, false);
           } else {
-            closePop();
+            openPop(pop);
           }
         });
       }
     });
 
-    // Global click outside to close
-    document.addEventListener('click', (e) => {
-      pops.forEach(pop => {
-        if (pop.open && !pop.contains(e.target)) {
-          pop.open = false;
-          pop.classList.remove('open-above');
+    // Delegated close: every X, however it is activated (mouse, touch, pen, keyboard Enter/Space)
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest && e.target.closest('.panel-close');
+      if (btn) {
+        var pop = btn.closest('.metric-pop');
+        if (pop) {
+          e.preventDefault();
+          e.stopPropagation();
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
+        }
+        return;
+      }
+      pops.forEach(function(pop) {
+        if (pop.open && !pop.contains(e.target)) closePop(pop, false);
+      });
+    }, true);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape' && e.key !== 'Esc') return;
+      pops.forEach(function(pop) {
+        if (pop.open) {
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
         }
       });
     });
 
-    // Global ESC key to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' || e.key === 'Esc') {
-        pops.forEach(pop => {
-          if (pop.open) {
-            pop.open = false;
-            pop.classList.remove('open-above');
-            const s = pop.querySelector('summary');
-            if (s) s.focus();
-          }
-        });
-      }
-    });
-
-    // Viewport resize across 768px closes all
-    window.addEventListener('resize', () => {
-      const isMobile = window.innerWidth < 768;
+    window.addEventListener('resize', function() {
+      var isMobile = window.innerWidth < 768;
       if (isMobile !== wasMobile) {
         wasMobile = isMobile;
-        pops.forEach(p => {
-          p.open = false;
-          p.classList.remove('open-above');
-        });
+        pops.forEach(function(p) { closePop(p, false); });
+      } else {
+        pops.forEach(function(p) { if (p.open) place(p); });
       }
     });
   }

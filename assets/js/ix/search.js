@@ -172,10 +172,17 @@
   // Global keyboard shortcuts
   d.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) {
-      if (backdrop && !backdrop.hidden && e.key === 'Escape') {
+      if (backdrop && !backdrop.hidden && (e.key === 'Escape' || e.key === 'Esc')) {
         closeSearch();
       }
       return;
+    }
+
+    if (e.key === 'Escape' || e.key === 'Esc') {
+      if (backdrop && !backdrop.hidden) {
+        closeSearch();
+        return;
+      }
     }
 
     // Cmd+K or Ctrl+K or '/'

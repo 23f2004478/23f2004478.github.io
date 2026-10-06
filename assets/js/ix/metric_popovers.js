@@ -1,135 +1,117 @@
 /**
- * metric_popovers.js: Interactive popover behavior for homepage headline metrics.
- * Supports hover on desktop (150ms delay), bottom sheet on mobile, roving focus, ESC, and click outside.
+ * metric_popovers.js: popover behaviour for the homepage metric cards.
+ * Desktop: hover (150ms) or click opens; mobile: bottom sheet on tap.
+ * Close: X button (click, tap, Enter, Space), Escape, click outside. Focus returns to the card summary.
+ * v6: delegated close handler in capture phase, hover re-open suppressed right after an explicit close,
+ * panels flip to the right edge when they would leave the viewport.
  */
 (function() {
   function initMetricPopovers() {
-    const pops = Array.from(document.querySelectorAll('.metric-pop, [data-ix~="metric_pop"]'));
+    var pops = Array.prototype.slice.call(document.querySelectorAll('.metric-pop, [data-ix~="metric_pop"]'));
     if (!pops.length) return;
 
-    let wasMobile = window.innerWidth < 768;
-    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var wasMobile = window.innerWidth < 768;
+    var isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
-    pops.forEach(pop => {
+    function place(pop) {
+      var panel = pop.querySelector('.metric-panel');
+      pop.classList.remove('open-above', 'open-right');
+      if (window.innerWidth < 768 || !panel) return;
+      var rect = pop.getBoundingClientRect();
+      if (window.innerHeight - rect.bottom < 360 && rect.top > 360) pop.classList.add('open-above');
+      var w = panel.offsetWidth || 320;
+      if (rect.left + w > document.documentElement.clientWidth - 8) pop.classList.add('open-right');
+    }
+
+    function openPop(pop) {
+      clearTimeout(pop._closeT);
+      pops.forEach(function(p) { if (p !== pop && p.open) closePop(p, false); });
+      if (!pop.open) pop.open = true;
+      var s = pop.querySelector('summary');
+      if (s) s.setAttribute('aria-expanded', 'true');
+      place(pop);
+    }
+
+    function closePop(pop, restoreFocus) {
+      clearTimeout(pop._openT);
+      clearTimeout(pop._closeT);
+      var s = pop.querySelector('summary');
+      if (pop.open) pop.open = false;
+      pop.classList.remove('open-above', 'open-right');
+      if (s) {
+        s.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) s.focus({ preventScroll: true });
+      }
+    }
+
+    pops.forEach(function(pop) {
       pop.classList.add('is-js-active');
-      const summary = pop.querySelector('summary');
-      const panel = pop.querySelector('.metric-panel');
-      const closeBtn = pop.querySelector('.panel-close');
-      const titleLink = pop.querySelector('.metric-title');
+      var summary = pop.querySelector('summary');
+      pop._suppressUntil = 0;
 
-      let openTimer = null;
-      let closeTimer = null;
-
-      function openPop() {
-        clearTimeout(closeTimer);
-        // Close siblings
-        pops.forEach(p => {
-          if (p !== pop && p.open) p.open = false;
-        });
-
-        if (!pop.open) {
-          pop.open = true;
-        }
-
-        // Check vertical space on desktop
-        if (window.innerWidth >= 768 && panel) {
-          const rect = pop.getBoundingClientRect();
-          const spaceBelow = window.innerHeight - rect.bottom;
-          if (spaceBelow < 360 && rect.top > 360) {
-            pop.classList.add('open-above');
-          } else {
-            pop.classList.remove('open-above');
-          }
-        }
-      }
-
-      function closePop() {
-        clearTimeout(openTimer);
-        if (pop.open) {
-          pop.open = false;
-          pop.classList.remove('open-above');
-        }
-      }
-
-      // Fine pointer hover handlers
       if (isFinePointer) {
-        pop.addEventListener('mouseenter', () => {
-          clearTimeout(closeTimer);
-          openTimer = setTimeout(openPop, 150);
+        pop.addEventListener('mouseenter', function() {
+          clearTimeout(pop._closeT);
+          if (Date.now() < pop._suppressUntil) return;
+          pop._openT = setTimeout(function() { openPop(pop); }, 150);
         });
-
-        pop.addEventListener('mouseleave', () => {
-          clearTimeout(openTimer);
-          closeTimer = setTimeout(closePop, 200);
-        });
-      }
-
-      // Title link click should navigate directly
-      if (titleLink) {
-        titleLink.addEventListener('click', (e) => {
-          e.stopPropagation();
+        pop.addEventListener('mouseleave', function() {
+          clearTimeout(pop._openT);
+          var ae = document.activeElement;
+          if (pop.contains(ae) && ae !== summary) return;
+          pop._closeT = setTimeout(function() { closePop(pop, false); }, 200);
         });
       }
 
-      // Close button
-      if (closeBtn) {
-        closeBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          closePop();
-          if (summary) summary.focus();
-        });
-      }
-
-      // Summary click toggle
       if (summary) {
-        summary.addEventListener('click', (e) => {
-          // If clicked on child interactive elements, do not toggle
+        summary.addEventListener('click', function(e) {
           if (e.target.closest('a, button')) return;
           e.preventDefault();
-          
-          if (!pop.open) {
-            openPop();
+          if (pop.open) {
+            pop._suppressUntil = Date.now() + 600;
+            closePop(pop, false);
           } else {
-            closePop();
+            openPop(pop);
           }
         });
       }
     });
 
-    // Global click outside to close
-    document.addEventListener('click', (e) => {
-      pops.forEach(pop => {
-        if (pop.open && !pop.contains(e.target)) {
-          pop.open = false;
-          pop.classList.remove('open-above');
+    // Delegated close: every X, however it is activated (mouse, touch, pen, keyboard Enter/Space)
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest && e.target.closest('.panel-close');
+      if (btn) {
+        var pop = btn.closest('.metric-pop');
+        if (pop) {
+          e.preventDefault();
+          e.stopPropagation();
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
+        }
+        return;
+      }
+      pops.forEach(function(pop) {
+        if (pop.open && !pop.contains(e.target)) closePop(pop, false);
+      });
+    }, true);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key !== 'Escape' && e.key !== 'Esc') return;
+      pops.forEach(function(pop) {
+        if (pop.open) {
+          pop._suppressUntil = Date.now() + 600;
+          closePop(pop, true);
         }
       });
     });
 
-    // Global ESC key to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' || e.key === 'Esc') {
-        pops.forEach(pop => {
-          if (pop.open) {
-            pop.open = false;
-            pop.classList.remove('open-above');
-            const s = pop.querySelector('summary');
-            if (s) s.focus();
-          }
-        });
-      }
-    });
-
-    // Viewport resize across 768px closes all
-    window.addEventListener('resize', () => {
-      const isMobile = window.innerWidth < 768;
+    window.addEventListener('resize', function() {
+      var isMobile = window.innerWidth < 768;
       if (isMobile !== wasMobile) {
         wasMobile = isMobile;
-        pops.forEach(p => {
-          p.open = false;
-          p.classList.remove('open-above');
-        });
+        pops.forEach(function(p) { closePop(p, false); });
+      } else {
+        pops.forEach(function(p) { if (p.open) place(p); });
       }
     });
   }

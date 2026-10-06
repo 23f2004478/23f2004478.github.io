@@ -1,4 +1,4 @@
-# Krishnendu Biswas
+# Krishnendu Biswas: full text of krishnendu.me
 
 > AI systems developer and second-year MBA student at IIM Ranchi and BS in Data Science and Applications student at IIT Madras (Diploma in Programming completed). Builds and operates a personal multi-agent platform on open-source Hermes Agent with human approval gates.
 
@@ -22,9 +22,741 @@
 - Build log: https://krishnendu.me/log/
 
 ## Key Verified Facts
-- Multi-Agent Operations: 39 enabled recurring jobs running across 12 agents (11 domain agents plus 1 router).
-- Human Approval Gate: Irreversible operations (deletes, sends, commits, deploys) pause for mandatory human approval.
+- Multi-Agent Operations: about 40 recurring scheduled jobs running across 11 agents (10 domain agents plus 1 router).
+- Human Approval Gate: Anything I would regret waits for my approval: sends, deletes and public pushes.
 - QualityKiosk Internship: 2 deterministic TypeScript estimation engines (1,027 lines), 136 unit tests (68 Excel parity), 18,456 standardized QA rows.
 - Research Publication: 74.19% recall on rare Confused emotion class using RoBERTa with SVMSMOTE, accepted for publication in Springer Nature proceedings, Smart Innovation, Systems and Technologies series, Scopus indexed (FICTA 2026).
 - PRISMA Review: Systematic literature review of 29 Scopus articles on generative AI in marketing (10th Pan-IIM WMC 2025).
-- Certifications: Microsoft Certified Power BI Data Analyst Associate (PL-300, earned Jun 2025), Lean Six Sigma Green Belt (Grant Thornton).
+- Certifications: Lean Six Sigma Green Belt (Grant Thornton, 2025). Microsoft Certified: Power BI Data Analyst Associate (PL-300), earned Jun 2025, expired Jun 2026.
+
+
+This file is the long form of llms.txt: the readable text of each main page.
+
+
+
+# Home
+Source: https://krishnendu.me/
+
+Data and AI systems, run with a human gate
+##
+I build AI agent platforms and run them every day.
+Anything I would regret waits for my approval: sends, deletes and public pushes.
+Second-year MBA student, IIM Ranchi, class of 2027. BS in Data Science and Applications student at IIT Madras, Diploma in Programming completed. The platform runs on open-source Hermes Agent. The design is mine: which agent owns what, and where work stops for me.
+See the platform
+Resume (PDF)
+Reach me:
+Email ·
+LinkedIn ·
+GitHub
+Hover or tap any card for daily heatmaps and system breakdowns
+13.9 h
+Longest day with my agents
+On 28 Sep 2026, mostly by voice from my phone. Active on 21 days since 13 Sep 2026.
+Daily rhythm (21 active days)
+Hours with agents by day
+Sep Oct
+Mon
+Wed
+Fri
+Sun
+Less
+More
+Total hours 143.5 h
+Active days 21
+Daily average 6.8 h/day
+Longest day 13.9 h (28 Sep 2026)
+A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
+Full operating rhythm breakdown →
+132,343
+Agent replies
+Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,060 messages, most of them dictated.
+Turn volume & human leverage
+My messages (dictated or typed) 3,060
+Agent replies 132,343
+Tool executions 131,447
+About 43 agent messages for every message I sent, counting scheduled jobs.
+Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
+See human approval gates →
+7.95 B
+Tokens processed
+Most of these are tokens my agents read, not write.
+Token volume (all sources)
+Tokens processed by day
+Sep Oct
+Mon
+Wed
+Fri
+Sun
+Less
+More
+Through my model gateway 6.86 B
+Claude, called directly by my agents 1.07 B
+Claude Code CLI 16.7 M
+Peak day 1.13 B (6 Oct 2026)
+Among Gemini, Claude Opus and Claude Sonnet: Gemini 64.9%, Opus 30.1%, Sonnet 5.0% of tokens logged.
+Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
+Explore model routing and compute tiering →
+11
+Specialist agents
+1 router plus 10 domain agents running 39 recurring scheduled jobs on one Hermes install.
+Estate topology (10 domain agents)
+Academics
+Career prep
+Finance
+Infrastructure
+Cleanup
+Health checks
+Personal ops
+Institute work, private
+Socials
+Consulting
+39 recurring jobs run on the Hermes built-in scheduler.
+Inspect platform topology →
+Hours, tokens and messages are measured on the server at every build. Last build 7 Oct 2026. How these are counted
+## How a request moves
+From a voice note on my phone to a finished, tracked result, with anything I would regret waiting for my approval: sends, deletes and public pushes.
+01
+Input
+## Any-Device Ingest
+I dictate on my phone or Mac (FreeFlow, Dictate) and send it on Discord or Telegram. I sometimes SSH in via Termius from my phone or laptop over Tailscale.
+02
+Router
+## Central Triage & Router
+A router agent reads the request, checks which domain owns it, and files a kanban task for the right specialist.
+03
+Agents
+## 10 specialist agents
+Specialist agents run around the clock on an Azure server, each with its own workspace, memory and tools.
+04
+Models
+## Model choice
+Harder tasks go to stronger models; routine ones go to faster, cheaper ones. Plain scripts run first.
+05
+waits for me
+## The Human Gate
+Anything I would regret waits for my approval: sends, deletes and public pushes.
+06
+Output
+## Delivery & Ledger Sync
+Results land in Google Tasks, GitHub, the Firefly III ledger, or a chat message to me.
+Show the full eight step path
+Step by step routing and approval flow
+Step
+What happens
+Gating
+1. Input
+Instruction dictated, read, and sent via Discord or Telegram
+Input by human
+2. Gateway
+The Hermes gateway passes the message to the agent that owns that channel
+Automated
+3. Router agent
+Classifies the task and dispatches to domain agent
+Automated
+4. Domain agent
+A domain agent such as finance or socials does the work
+Automated
+5. Kanban card
+Task structured with input, output, and acceptance criteria
+Automated
+6. Approval gate
+Deletes, sends, commits, and deploys wait for human sign-off
+Human gate
+7. Task worker
+Domain agent executes the approved step
+Automated after gate
+8. Output
+Result written to Firefly III, git branch, or local ledger
+Automated
+## Six agent systems, one person signing off
+I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
+A router and 10 domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate. A medic agent checks for drift every hour. A janitor suggests cleanups and acts only after I say yes.
+This site went through the same flow. The review step caught defects, and a separate fact audit caught more.
+11 Sep 2026
+Started on my MacBook inside a Linux virtual machine, with models and memory running locally (only during this laptop phase, 11 to 20 Sep 2026) and secure logins to outside tools.
+20 Sep 2026
+Moved the whole runtime to an Azure server on Ubuntu 24.04, run by systemd.
+Since then
+Daily progress reports showing time per agent, clean non-overlapping jobs for each agent, encrypted backups, and a running log of what the system has done.
+## Six case studies
+## Multi-agent operations platform
+Eleven agents that hand work to each other on task cards, with a review step before anything risky.
+11 AGENTS
+## Model routing and tiered compute
+One local gateway in front of several model providers, with fallback. Plain scripts do exact calculations before any model is called.
+TIERED COMPUTE
+## Memory and self-documentation
+Curated long-term notes, plus LCM-X, which compacts long sessions into searchable summaries without deleting history.
+LCM-X ENGINE
+## Reliability and security
+Encrypted backups copied offsite to GitHub Releases, and a scripted restore to a fresh server.
+ENCRYPTED BACKUPS
+## Finance ledger agent
+Reads receipts from Gmail with read-only access and parses them with fixed rules. The model only sees text the rules cannot read.
+DETERMINISTIC
+## Personal LinkedIn studio
+A local drafting tool that checks posts against a written profile of how I write. I publish every post myself.
+HUMAN GATE
+The code is private. Each case study shows the architecture.
+All six case studies
+## What I bring
+01
+## Systems that stop before they do damage
+On my platform, deletes, sends, commits and deploys wait for my sign-off. A medic agent audits drift every hour. A janitor proposes cleanups and acts only after I say yes.
+02
+## Code that is checked before it ships
+At QualityKiosk I built two TypeScript estimation engines with 136 unit tests, 68 of them confirming the code matches the original Excel model. 144 commits in 7 weeks, solo, across 10 backend modules.
+03
+## The honest metric, not the flattering one
+My churn model reports accuracy 0.8414 and F1 0.6365; I lead with F1. Comment classification used F1-Macro because the classes were imbalanced. The paper reports recall on the rarest class.
+04
+## Both sides of the table
+Business training at IIM Ranchi and programming at IIT Madras. Lean Six Sigma Green Belt, and Power BI PL-300 (earned Jun 2025, now expired). Pay benchmarking at Tata Steel on one side, agent platform design on the other.
+## Internships
+## QualityKiosk Technologies, Navi Mumbai: Data and AI Intern
+Apr 2026 to Jun 2026 · Internal tooling for banking QA; code confidential
+Built 2 deterministic TypeScript estimation engines (1,027 lines) with 136 unit tests, 68 of them checking parity with the original Excel model.
+Harmonized QA data across 82 banking apps and 7 departments into one analytical dataset.
+Automated Azure DevOps test-case prep in Python, standardizing 18,456 rows across 61 QA workbooks written by the QA team.
+Delivered 7 internal applications for estimation, tracking, and QA standardization on one platform, plus 3 standalone tools.
+## Tata Steel, Jamshedpur: Research Analyst
+Apr 2025 to Jun 2025 · Compensation benchmarking
+Analyzed compensation data across 20+ firms and 50+ job profiles to find regional pay gaps.
+Structured 1,000+ compensation records to benchmark pay across job clusters.
+Standardized 25+ allowance types so firms could be compared on the same terms.
+## IIM Ranchi: Social Impact Intern
+Jan 2024 to Feb 2024 · Unnat Bharat Abhiyan
+Assessed 390+ rural students with Pratham and Unnat Bharat Abhiyan, and digitized the results.
+Ran sanitation and digital literacy drives for 140+ villagers.
+All internship details
+## Machine learning projects
+Each project uses the score that suits the problem: a balanced score across uneven classes, a top-3 ranking score for the quiz solver, and a precision-recall score for churn.
+## Smart MCQ solver (LoRA fine-tuning)
+Fine-tuned DeBERTa-v3-base and RoBERTa-base with LoRA and blended them 70:30. Scored 0.74242 MAP@3 on 500 unseen questions.
+0.74242 MAP@3
+## Comment classification
+Four imbalanced classes, an Optuna-tuned LightGBM and a 3-model blend, scored with F1-Macro on held-out rows.
+0.8293 F1-MACRO
+## Customer exit prediction
+Compared 8 classifiers on 90,000 rows from a financial institution. The tuned Random Forest reached validation F1 of 0.6365.
+0.6365 F1
+All projects, including a Power BI build on synthetic data
+## Research and achievements
+## Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data
+Accepted for publication in Springer Nature proceedings, FICTA 2026
+RoBERTa with SVMSMOTE reached 74.19% recall on the rare Confused class.
+## Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research Agenda
+10th Pan-IIM World Management Conference 2025, IIM Ranchi
+A PRISMA review of 29 Scopus articles published from 2020 to 2025.
+Both papers in detail
+## Certifications
+Microsoft Certified: Power BI Data Analyst Associate (PL-300), earned Jun 2025, expired Jun 2026 2025
+Lean Six Sigma Green Belt, Grant Thornton 2025
+All credentials and education
+## Who is Krishnendu Biswas?
+Krishnendu Biswas is a second-year MBA student at IIM Ranchi (class of 2027) who builds AI agent platforms and runs them every day with a human approval gate. He is pursuing the BS Degree in Data Science and Applications at IIT Madras (Diploma in Programming completed), is a Senior Executive Member of the IIM Ranchi Corporate Relations and Placement Committee, and is an author of a paper accepted for publication in Springer Nature FICTA 2026 proceedings, a Scopus indexed series.
+## Leadership
+## Corporate Relations and Placement Committee, IIM Ranchi
+Senior Executive Member (2026); Executive Member (2025)
+## Global Rural Bootcamp Tech Lead
+3K+ applicants, 8K+ platform users, 100+ active participants
+Built the bootcamp website and its quiz platform.
+## Student Council, St. Claret School
+Head Boy (2020)
+Elected Head Boy in Class X.
+## Latest from the build log
+Build log, 3 Oct 2026 : Rebuilt this site and ran a fact audit on its numbers All entries
+## Work with me
+I am in final placements at IIM Ranchi (second-year MBA, class of 2027). Email reaches me fastest.
+krishnendu.biswasi22@iimranchi.ac.in
+LinkedIn
+GitHub
+Resume (PDF)
+
+
+# Work
+Source: https://krishnendu.me/work/
+
+## Work
+AI agent systems and machine learning projects. The agent platform runs on open-source Hermes Agent with human approval gates. Machine learning projects focus on NLP fine-tuning, class imbalance, and analytics dashboards.
+The platform runs 39 recurring scheduled jobs across 11 agents: 10 that each own one area, plus 1 that routes my requests. Operations like sending emails, deleting data, or public git pushes pause at approval gates until I verify them.
+## Agent systems (6 case studies)
+## Multi-agent operations platform
+Eleven agents that hand work to each other on task cards, with a review step before anything risky. Includes hourly medic drift monitoring and janitor cleanups.
+11 AGENTS · 39 JOBS
+## Model routing and tiered compute
+One gateway on my server in front of most of my model accounts, so a failed call moves to a backup model. Claude models are called directly. Plain Python and Bash scripts perform exact calculations before any model is invoked.
+GATEWAY & FALLBACK
+## Memory and self-documentation
+Each agent keeps short curated notes, and a context engine (LCM-X) summarises long chats into searchable summaries while keeping the full original messages on disk.
+CHAT MEMORY
+## Reliability and security
+Encrypted nightly backups copied offsite to cloud storage and a private GitHub repository, locked-down secrets, and a written, scripted runbook to rebuild the server from scratch.
+ENCRYPTED BACKUPS
+## Finance ledger agent
+Reads my receipt emails (read-only access), turns them into ledger entries with fixed parsing rules, and nets refunds against the original order in my self-hosted Firefly III finance app.
+RULE-BASED PARSING
+## Personal LinkedIn studio
+Local drafting environment that screens technical posts against voice notes and anti-AI writing patterns. Every post is manually reviewed and published by me.
+HUMAN PUBLISHES
+Private operational platform. Architecture, system boundaries, and verified telemetry are presented across each case study.
+## Machine learning & analytics projects (4 projects)
+## Smart MCQ solver (LoRA fine-tuning)
+Parameter-efficient fine-tuning of DeBERTa-v3 and RoBERTa using LoRA adapters for 5-option multiple-choice ranking. Blended in a 70:30 ensemble achieving 0.74242 MAP@3 on 500 unseen questions.
+0.74242 MAP@3
+## Comment classification
+Feature engineering over 198,000 comments across four imbalanced label classes. Engineered 10,000+ n-grams, screened tabular features, and tuned LightGBM with Optuna to reach 0.8293 F1-Macro.
+0.8293 F1-MACRO
+## Customer exit prediction
+Compared 8 classifiers on 90,000 customer records from a financial institution. Tuned a Random Forest to a validation F1 of 0.6365 (accuracy 0.8414).
+0.6365 F1
+## VC deal analytics dashboard
+Power BI deal analytics dashboard built on a 50,000-row synthetic star schema. Engineered 7 DAX measures and configured 2 AI visuals for valuation driver ranking.
+POWER BI · STAR SCHEMA
+View all projects & full specs
+
+
+# Multi-agent platform
+Source: https://krishnendu.me/work/platform/
+
+## Multi-agent operations platform: 11 agents, each with its own job, and my approval on risky steps
+Eleven agents that hand work to each other on task cards, with a review step before anything risky. Built on open-source Hermes Agent.
+Built on Hermes Agent (open source, Nous Research). Private system; architecture and verified telemetry shown here.
+Agents
+11 Agents (10 Domain Agents + 1 Router)
+Recurring Jobs
+39 Enabled Scheduled Jobs (Recounted 6 Oct 2026)
+Human Gate
+Mandatory Approval for Deletes, Sends, Commits, Deploys
+## Problem and Motivation
+One agent doing everything mixes up instructions from different jobs and gets more access than any single job needs. An agent drafting an email should not have access to production deployment keys, and a financial parser should not manage social media drafts.
+## Multi-agent topology
+I split the work across 11 agents, each owning one area with no overlap. Each agent operates with scoped permissions, its own persistent memory, and dedicated skill sets:
+Central Router: Receives inbound messages from Discord or Telegram, classifies intent, and delegates tasks to domain agents.
+Domain agents: 10 agents (academics, career prep, finance, infrastructure, cleanup, health checks, personal tasks, socials, consulting, plus one private agent for institute work not described here).
+Tiered Compute Offload (Fable): When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.
+Kanban Coordination: Complex tasks are decomposed into structured kanban cards containing objective, context, and acceptance criteria.
+Human Review Gate: Anything I would regret waits for my approval: sends, deletes and public pushes.
+Continuous Maintenance: A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.
+## Hours with my agents, by day
+Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.
+143.5 h Total hours
+21 Active days
+6.8 h Avg / active day
+13.9 h Longest day (2026-09-28)
+Hours with agents by day
+Sep Oct
+Mon
+Wed
+Fri
+Sun
+Less
+0 h 2 h 5 h 9 h+
+More
+How hours are counted: Counted from the timestamps of messages I sent to my agents in Discord, Telegram, the command line and Claude Code, whether dictated or typed. Messages less than 15 minutes apart form one session, each session gets a 5 minute tail, and automated notifications are excluded.
+How agent replies are counted: Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
+## Tokens per day
+Combined daily token throughput across 9router proxy, direct Hermes Claude calls, and Claude Code CLI.
+Tokens processed by day
+Sep Oct
+Mon
+Wed
+Fri
+Sun
+Less
+0 50 M 200 M 500 M+
+More
+## How a Request Moves
+I dictate instructions using FreeFlow on Mac or Dictate on Android, read the transcript, and send it via messaging gateways. Built-in voice plugins are skipped so I can read what got written before an agent acts on it.
+Multi-agent execution workflow
+Stage
+Actor
+Responsibility
+Gating
+1. Ingestion
+Human
+Dictate, verify text, and send to gateway channel
+Human input
+2. Gateway
+Hermes gateway
+Hermes gateway passes my Discord or Telegram message to the router agent
+Automated
+3. Router Agent
+default
+Classifies request and spawns task card
+Automated
+4. Task Card
+Kanban Engine
+Dispatches card to assigned domain agent
+Automated
+5. Execution
+Domain Worker
+Executes read-only steps and drafts deliverables
+Automated
+6. Review Gate
+Human
+Inspects diff/artifact and approves execution
+Human sign-off
+7. Completion
+Domain Worker
+Applies approved change and closes task
+Automated after gate
+8. Output Sync
+Google Tasks / SQLite
+Actionables needing human attention sync to Google Tasks
+Automated
+## Human review gate
+Anything I would regret waits for my approval: sends, deletes and public pushes. Outbound emails, file deletions, and public git pushes pause at approval gates until I inspect and approve them.
+## Access from any device
+I can run the whole platform from my phone, so work continues when my laptop is closed or not with me. Three pieces make that work.
+Private mesh: Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). I reach the server over the mesh, from those three devices.
+Termius: I sometimes SSH in via Termius from my phone or laptop over Tailscale. It connects over the mesh, so I can check a service or restart one from the phone.
+Dictation: I dictate on my phone or Mac (Dictate on Android, FreeFlow on Mac), read the transcript, then send it on Discord or Telegram. The router agent picks it up from there.
+## Host and isolation
+Every agent runs on one rented cloud server and stays inside its own workspace. The host is an Azure VPS named hermes-cloud running Ubuntu 24.04, and the runtime moved there from a MacBook Linux VM on 20 Sep 2026, so the agents run around the clock.
+systemd services: Each long running piece, such as the model gateway and the chat gateway, runs as a system service that restarts on its own after a reboot.
+Workspace isolation: Each agent has its own working directory, persistent memory, scoped tools and skills. Each domain keeps its own data in its own workspace.
+Devices reach the server over the encrypted mesh.
+## Verified Outcome
+The platform runs 39 recurring scheduled jobs across 11 agents. I build this website through the same pipeline: a planning card, a builder agent, and a review step before each release.
+## Stack
+Hermes Agent · Python · systemd · 9Router · Discord · Telegram · SQLite
+
+
+# Model routing
+Source: https://krishnendu.me/work/routing/
+
+## Model routing and tiered compute: local gateway with fallback resilience
+One gateway on my server in front of several model accounts, with backup models when one fails, and three effort levels for different kinds of work. Plain scripts handle deterministic computation before any model is invoked.
+Gateway
+9Router gateway on my server
+Routing Strategy
+Backup models · 3 main effort levels (medium, high, max)
+Core Invariant
+Plain scripts run before any AI model
+## Problem
+Directly binding agent workflows to a single AI provider causes brittle failures when rate limits or upstream outages occur. Furthermore, sending basic data extraction or mechanical formatting tasks to expensive models wastes tokens and increases latency.
+## What I Built
+9Router gateway: A small service on my server that sits between most agents and the AI providers and moves a request to a backup model when one fails. Claude models are called directly.
+Tiered Compute Offload (Fable): When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.
+Deterministic First Rule: Exact computations (mathematical formulas, file system queries, regex extractions) must execute in native Python or Bash before passing structured context to an LLM.
+## How the Gateway Pools Models
+9Router pooling: 9Router runs on the server itself and gives most agents one address for many models. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next one, with Gemini Flash as the default backup.
+Cost tiering: Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.
+## Dynamic Routing and Complexity Tiering
+Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
+Tiered Compute Offload (Fable): When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.
+Gemini Flash: High-throughput sweeps, reading, scraping, telemetry, and lightweight tool handling.
+Claude Sonnet: Deterministic code generation, test suites, refactoring, and generator scripts.
+Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
+Fable: Architectural planning, design system direction, and exhaustive fact audits.
+Measured empirical split, share of Hermes-tracked tokens:
+Gemini Flash
+64.9%
+Claude Opus
+30.1%
+Claude Sonnet
+5.0%
+Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.
+## Outcome
+When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.
+## Limits
+Switching to a backup model can make a reply slower, so each call needs a sensible time limit.
+## Stack
+9Router · Python · Bash · REST APIs · Linux
+
+
+# Memory
+Source: https://krishnendu.me/work/memory/
+
+## Memory and self-documentation: curated persistent memory and LCM-X context engine
+Two-tier memory architecture: curated persistent memory with character budgets, plus LCM-X, a lossless context memory engine that compacts long sessions into searchable summary graphs.
+Active Engine
+LCM-X (lcm.db) · Curated Persistent Memory
+Journaling
+Append-Only Autobiography Ledger · Daily Progress Reports
+Past Prototyping Note
+Local vector embeddings and Hindsight were used in the laptop phase (11 to 20 Sep 2026) only
+## Problem
+As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Cutting old messages makes the model forget earlier decisions, and pasting whole transcripts back in makes its answers worse.
+## What I Built
+Curated Persistent Memory: Per-agent markdown stores holding durable operational notes and user context under strict character caps, backed by automatic atomic backups and version rollback.
+LCM-X context engine: Stored in a SQLite database, it folds older parts of a chat into layered summaries that agents can search by keyword or meaning, and the original messages are never deleted.
+Autobiography Ledger & Daily Reporting: An append-only ledger recording every major system milestone (G:0001 to G:0019) and an automated daily report engine generating plain-English progress summaries with per-agent time telemetry.
+## Outcome
+Earlier decisions stay searchable after a chat is summarised, so agents can look them up instead of guessing. Agents can pick up earlier context when a task is retried or handed to another agent.
+## Stack
+LCM-X · SQLite · Python · systemd · Linux
+
+
+# Reliability and security
+Source: https://krishnendu.me/work/reliability/
+
+## Reliability and security: encrypted backup capsules and locked-down secrets
+Encrypted nightly backups copied offsite to cloud storage and a private GitHub repository, locked-down secrets, and a scripted rebuild on a fresh server.
+Timers
+hermes-backup · hermes-offsite · hermes-offsite-verify · hermes-capsule-drift
+Offsite Target
+Encrypted offsite copies (cloud storage plus a private GitHub mirror)
+Secrets Isolation
+Locked-down secret files · a password vault that only fills the matching website
+## Problem
+Agents that can run commands on a server can leak keys, slowly change settings by accident, or lose work when the server restarts. Reliable operations require continuous drift audits, automated offsite disaster recovery, and strict secrets isolation.
+## What I Built
+Backup schedule: four systemd timers run a daily backup, a daily offsite copy, a weekly check that the offsite copy still opens, and an hourly check for changes; a separate hourly job snapshots agent memory.
+Encrypted backups: each backup is encrypted with AES-256 before it leaves the server, then copied to Backblaze B2 cloud storage and mirrored to a private GitHub repository.
+Disaster Recovery Runbook: Scripted restore procedure capable of bootstrapping the full multi-agent environment from bare Ubuntu 24.04.
+Secrets Handling: Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never typed into chat.
+## Egress and anonymity
+Web research that needs anonymity goes out through rotating egress over Tor and Cloudflare WARP, so no single route carries it and a failing route is dropped automatically.
+Load balancer: a small proxy (glider) spreads requests across five Tor routes, and a second pool prefers Cloudflare WARP and falls back to Tor when WARP is slow or down.
+Health checks: Glider checks every route every 30 seconds and drops a route after 2 failed checks, so traffic keeps flowing over the routes that still work.
+Scope: This covers only the research and scraping traffic that is routed through it. It changes which route a request takes, nothing else.
+Encrypted offsite backups: backups are encrypted, copied to cloud storage and a private GitHub repository, and a weekly job downloads one and checks it still opens.
+## Outcome
+A written restore script, and a weekly check that the latest offsite backup downloads and opens. Hourly checks for unexpected setting changes.
+## Stack
+systemd · OpenSSL · rclone · Backblaze B2 · GitHub · Bash · Python · Linux
+
+
+# Finance ledger agent
+Source: https://krishnendu.me/work/finance/
+
+## Finance ledger agent: deterministic receipt normalization into Firefly III
+Automated personal financial transaction normalization from read-only Gmail ingestion into self-hosted Firefly III using deterministic HTML and regex parsers.
+Private personal finance tooling. Architecture and verification logic shown; zero amounts or merchant names disclosed.
+Ingestion
+Read-Only Gmail API (OAuth 2.0 PKCE)
+Parsing Architecture
+Rule-based parsers for each receipt format
+Target Ledger
+Self-Hosted Firefly III (REST API)
+Idempotency
+Order ID duplicate check · Automatic refund netting
+## Problem
+Manual expense tracking across multiple payment apps and email receipts is tedious and prone to double-counting. Receipts arrive with varying HTML layouts, complex tax splits, adjustments, and delayed refund notifications.
+## What I Built
+Read-only import: A Python job runs every six hours, reads my Gmail with read-only access, and picks out receipt emails.
+Rule-based parsers: One parser per receipt format pulls out the amount, date and order number, so no AI model guesses at the numbers.
+No duplicates: Each entry is tagged with its order number, and if the same email is read again the existing entry is found and skipped. Refunds are matched to the original order number and netted off.
+Firefly III Integration: Staged transactions are posted to a self-hosted Firefly III instance via its authenticated REST API.
+## Outcome
+Receipts reach the ledger without me typing them in, and re-reading an email does not create a second entry.
+## Stack
+Python · Firefly III API · Gmail API · SQLite · scheduled jobs
+
+
+# LinkedIn studio
+Source: https://krishnendu.me/work/linkedin-studio/
+
+## Personal LinkedIn studio: local drafting engine with anti-AI quality filter
+A local drafting tool running on the socials agent that checks technical posts against voice notes and anti-AI writing patterns. Every post is reviewed and published manually.
+Agent
+socials agent
+Filter Rules
+34 known AI writing patterns · My written voice guide
+Publishing Invariant
+Mandatory Human Publishing (Zero Automated API Posting)
+## Problem
+AI-generated social media drafts often sound inflated, formulaic, and hollow, relying on buzzwords, long dashes and roundabout phrasing. Automated posting tools risk publishing unvetted claims without human editorial oversight.
+## What I Built
+Drafting app: A small Python web app on my server where I write, revise and file post ideas.
+Voice guide: A written profile of how I write, built from my own past posts, that every draft is checked against.
+Anti-AI Humanizer Gate: Scans drafts against 34 verified AI writing tells (eliminating dramatic fragmentation, promotional fluff, vague attributions, and forced metaphors).
+Human Publishing Gate: The studio contains zero LinkedIn API credentials and cannot publish to the web. Completed drafts are copied and published manually.
+## Outcome
+Consistent personal technical voice, no automated filler, and human editorial control before publication. I check the facts in each post against my own project files before I publish.
+## Limits
+The system does not manage followers, schedule posts, or automate engagement; it is strictly a local composition and quality control tool.
+## Stack
+Python · Markdown · systemd · Linux
+
+
+# Internships
+Source: https://krishnendu.me/internships/
+
+## Internships
+Three internships: estimation and QA data tooling at QualityKiosk, pay benchmarking at Tata Steel, and rural social impact work with IIM Ranchi.
+## QualityKiosk Technologies, Navi Mumbai
+FEATURED
+Data and AI Intern · Apr 2026 to Jun 2026 · Internal tooling for banking QA; code confidential
+I built estimation engines and tools that cleaned up QA test data for banking software.
+Built 2 deterministic TypeScript estimation engines (1,027 lines) with 136 unit tests, 68 of them checking parity with the original Excel model.
+Harmonized QA data across 82 banking apps and 7 departments into one unified analytical dataset.
+Automated Azure DevOps test-case prep in Python, standardizing 18,456 rows across 61 QA workbooks written by the QA team.
+Delivered 7 internal applications for estimation, tracking, and QA standardization on one platform, plus 3 standalone tools.
+Authored 144 commits in 7 weeks solo across 10 backend modules.
+Authored a 1,147-line ML estimation PRD with 20 requirements, 6 regression targets over 10 engineered features, and champion-challenger promotion rules.
+## QualityKiosk estimation engines: tests and rows
+QualityKiosk estimation tooling metrics, verified from code repositories and test suites.
+Show chart data table
+QualityKiosk engineering metrics
+Metric
+Value
+Verification Source
+Unit tests
+136 tests
+TypeScript unit test suites
+Excel parity tests
+68 tests
+Parity validation suite vs original workbook
+TypeScript code
+1,027 lines
+Two estimation engines source code
+Standardized QA rows
+18,456 rows
+Python Azure DevOps test-case transformation
+## Tata Steel, Jamshedpur
+DETAILS
+Research Analyst Intern · Apr 2025 to May 2025 · Compensation benchmarking
+I compared pay across manufacturing firms to find regional pay gaps.
+Analyzed compensation data across 20+ manufacturing firms and 50+ job profiles to identify regional pay gaps.
+Structured 1,000+ compensation records to benchmark pay across job clusters.
+Standardized 25+ allowance types so firms could be compared on the same analytical terms.
+## IIM Ranchi, Social Impact Internship
+DETAILS
+Social Impact Intern · Jan 2024 to Feb 2024 · Unnat Bharat Abhiyan
+I assessed rural students' learning levels and ran community drives in nearby villages.
+Assessed 390+ rural students with Pratham and Unnat Bharat Abhiyan, and digitized the results into analysis-ready formats.
+I ran sanitation and digital literacy drives for 140+ villagers.
+
+
+# Projects
+Source: https://krishnendu.me/projects/
+
+## Machine learning and analytics projects
+Every project is evaluated on the metric that genuinely reflects its objective: F1-Macro for severe class imbalance, MAP@3 for candidate ranking, and validation F1 for customer retention. High accuracy on lopsided data can flatter a model, so I lead with the score that shows how it does on the rare cases.
+## Featured projects
+## Smart MCQ solver (LoRA fine-tuning)
+Parameter-efficient fine-tuning of DeBERTa-v3 and RoBERTa using LoRA adapters for 5-option multiple-choice ranking. Blended in a 70:30 ensemble achieving 0.74242 MAP@3 on 500 unseen questions.
+0.74242 MAP@3
+## Comment classification
+Feature engineering over 198,000 comments across four imbalanced label classes. Engineered 10,000+ n-grams, screened tabular features with chi-square and Kruskal-Wallis, and tuned LightGBM with Optuna (0.8202), then blended 3 models to reach 0.8293 F1-Macro.
+0.8293 F1-MACRO
+## Customer exit prediction
+I compared 8 classifiers on 90,000 customer records from a financial institution, where few customers leave. I filled missing values, then tuned a Random Forest to a validation F1 of 0.6365 (accuracy 0.8414).
+0.6365 F1
+## VC deal analytics dashboard
+Power BI deal analytics dashboard built on a 50,000-row synthetic star schema. Engineered 7 DAX measures and configured 2 AI visuals (Key Influencers and Decomposition Tree) for valuation driver ranking.
+POWER BI · STAR SCHEMA
+## More projects, in brief
+## Virtual AI Teaching Assistant (RAG Pipeline)
+Built a Retrieval-Augmented Generation (RAG) assistant using OpenAI embeddings and SQLite vector store. I split course materials into chunks and retrieved top-k relevant context via cosine similarity with FastAPI endpoints.
+2025 · RAG · FASTAPI
+## HR Attrition Dashboard (Power BI)
+A two-page Power BI dashboard with 12 DAX measures on staff turnover, comparing hires with the same quarter before.
+2026 · POWER BI · DAX
+## Consumer Spend Segmentation (K-means++)
+I grouped 62 survey respondents into 5 segments by monthly spend on personal care and fast food, using K-means++ (silhouette 0.540). Adding more spend categories and age made the segments less distinct, so I kept two.
+2024 · K-MEANS++ · PYTHON
+## Migration Determinants Regression Study (R)
+Specified a 5-regressor OLS model in R across 28 Indian states analyzing out-migration. Found per-capita income (p=0.002), poverty (p=0.025), and unemployment (p=0.018) statistically significant at 5%.
+2025 · R · OLS REGRESSION
+## Influencer and Sponsor Matching Platform (Flask)
+Full-stack web application connecting content creators and commercial sponsors using Flask, SQLite, and Jinja2 with 10+ analytical tracking dashboards and role-based access controls.
+2024 · FLASK · FULL-STACK
+
+
+# Research
+Source: https://krishnendu.me/research/
+
+## Research
+Two research papers: one paper accepted for publication in Springer Nature conference proceedings (FICTA 2026) on spotting rare emotions in student chatbot conversations, and one systematic literature review on generative AI in marketing presented at the 10th Pan-IIM World Management Conference.
+## Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data
+Accepted for publication in Springer Nature proceedings, Smart Innovation, Systems and Technologies series (Scopus indexed) · FICTA 2026
+## Context and Problem
+Educational dialogues contain severe class imbalance. Critical emotional states like confusion and frustration indicate when a learner is struggling, but they appear far less frequently than neutral or positive acknowledgments. Conventional classification algorithms optimize for overall accuracy, which allows them to score well while failing to detect the minority emotional states where pedagogical intervention is most needed.
+## Methodology
+I paired RoBERTa, a pretrained language model, with SVMSMOTE, a method that creates extra examples of the rare emotion classes so the model sees enough of them. I judged the models by how many of the rare Confused cases they caught (recall), not by overall accuracy.
+## Key Findings
+The proposed RoBERTa plus SVMSMOTE architecture achieved a 74.19% recall on the rare Confused emotion class, compared to less than 52% recall for baseline architectures without synthetic oversampling.
+Venue
+Springer Nature (FICTA 2026)
+Primary Metric
+74.19% Rare-Class Recall
+Architecture
+RoBERTa + SVMSMOTE
+## Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research Agenda
+Presented at the 10th Pan-IIM World Management Conference 2025 · IIM Ranchi
+## Context and Objective
+Enterprise interest in generative AI for marketing automation has grown rapidly, but academic literature remained fragmented across practitioner whitepapers and narrow technical benchmarks. The review pulls together what published studies say about how companies use generative AI in marketing.
+## Review Protocol
+Following the PRISMA review method, I reviewed 29 Scopus articles published from 2020 to 2025 across technology readiness, consumer adoption, and regulatory considerations.
+## Synthesis and Proposed Agenda
+The review synthesised research priorities across algorithmic transparency in personalized marketing, consumer trust in synthetic media, workflow hand-offs between marketers and generative models, and data governance for automated campaigns.
+Venue
+10th Pan-IIM World Management Conference (WMC 2025)
+Method
+PRISMA Systematic Literature Review
+Corpus
+29 Scopus-Indexed Articles (2020 to 2025)
+Focus
+Generative AI in marketing
+## Degrees & Credentials
+## MBA Candidate (Class of 2027)
+Indian Institute of Management Ranchi (IIM Ranchi). Concentration in Operations, Data, and Strategy.
+2025 to 2027 · IIM RANCHI
+## BS in Data Science & Applications (Diploma in Programming Completed)
+IIT Madras CODE. Completed Foundational and Diploma in Programming levels with 7 course topper badges.
+IIT MADRAS · DIPLOMA
+## Microsoft Certified: Power BI Data Analyst Associate (PL-300)
+Proctored certification covering data modeling, DAX formulas, Power Query, and star schema architectures.
+MICROSOFT · PL-300
+## Lean Six Sigma Green Belt
+Grant Thornton certification in DMAIC methodology, process optimization, and operational efficiency.
+GRANT THORNTON · DMAIC
+View full credentials & syllabi
+
+
+# Credentials
+Source: https://krishnendu.me/credentials/
+
+## Credentials & Education
+Professional certifications, academic background across IIM Ranchi and IIT Madras, and verified technical skills backed by project artefacts.
+## Certifications
+## Microsoft Certified: Power BI Data Analyst Associate (PL-300), earned Jun 2025, expired Jun 2026
+Proctored exam, passed 21 Jun 2025. The exam covered building data models, writing DAX formulas, preparing data in Power Query, and star schema design.
+2025 · PROCTORED
+## Lean Six Sigma Green Belt, Grant Thornton
+Process improvement, the DMAIC method (define, measure, analyse, improve, control), operational efficiency, and Kaizen.
+2025 · DMAIC
+## Digital Supply Chain Twins using anyLogistix, IIM Mumbai
+Building simulation models of a supply chain and testing what-if scenarios in anyLogistix.
+2025 · SIMULATION
+## Foundational Level in Programming and Data Science, IIT Madras
+Command-line tools, computational thinking, and advanced Excel.
+2023 · IIT MADRAS
+## Academic achievements
+## Topper Badges in 7 of 14 courses, IIT Madras
+Awarded academic excellence topper badges in 7 of the first 14 courses of the BS Data Science and Applications Program at IIT Madras.
+2025 · TOPPER
+## Top 50 of 500 teams, Odoo × Paradox Hackathon
+Ranked in the top 50 teams at the 36-hour offline hackathon finals conducted at IIT Madras.
+2025 · TOP 10%
+## 3rd rank in Class X (ICSE)
+Secured 3rd rank across all school sections at St. Claret School Bishrail.
+2020 · ICSE
+## Education
+## Indian Institute of Management Ranchi
+Integrated Programme in Management (IPM) · BBA 2025, MBA Candidate (Class of 2027)
+Coursework in analytics, data modeling, operations, and business strategy.
+## Indian Institute of Technology Madras
+BS Degree in Data Science and Applications (pursuing) · Diploma in Programming completed (2026), Diploma in Data Science in progress
+Core coursework in algorithms, data structures, application development, and database systems.
+## Kendriya Vidyalaya Malda (CBSE)
+Class XII · Completed 2022
+## St. Claret School Bishrail (ICSE)
+Class X · Completed 2020
+## Skills by evidence
+Languages & Query
+Python, R, SQL, DAX, TypeScript, Bash.
+Machine Learning & NLP
+scikit-learn, LightGBM, XGBoost, PyTorch, Hugging Face Transformers, PEFT (LoRA), Optuna, SVMSMOTE.
+Analytics & Statistics
+Multiple regression (OLS), logistic regression, chi-square test, Kruskal-Wallis, class-imbalance techniques, stratified k-fold cross-validation.
+BI & Data Engineering
+Microsoft Power BI (PL-300 earned Jun 2025, expired Jun 2026), Advanced Excel, star schema design, Power Query, ETL.
+Software & Infrastructure
+FastAPI, NestJS, Flask, Docker, SQLite, PostgreSQL, systemd, Git, Linux server administration.
+Methodologies & Frameworks
+Lean Six Sigma Green Belt (DMAIC), PRISMA systematic literature review, multi-agent orchestration with human approval gates.

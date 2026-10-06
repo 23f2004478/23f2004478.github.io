@@ -270,13 +270,13 @@ def _topo(tp, uid, W, cols, fs):
         post.append(t(W / 2, y0 + 22 + bh / 2 + fs / 2 - 1, io_out, fs, anchor="middle", weight="600"))
     total = top + H + ((22 + bh + 1) if io_out else 0)
     desc = ("Inside one cloud server: a messaging gateway feeds the router agent, which hands work to %d domain "
-            "agents: %s. One agent is shown only as institute work, private. Model calls from every agent "
-            "go through the model gateway. %s agents in total, router included." % (len(tp["profiles"]), ", ".join(profiles), n))
+            "agents: %s. One agent is shown only as institute work, private. Most model calls "
+            "go through the model gateway; some Claude calls go straight to the provider. %s agents in total, router included." % (len(tp["profiles"]), ", ".join(profiles), n))
     if io_in:
         desc = "Above the server: %s. " % io_in + desc
     if io_out:
         desc += " Below the server: %s." % io_out
-    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, total, uid, "Agent estate: %s agents, router included" % n, desc)
+    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, total, uid, "My agents: %s, router included" % n, desc)
     body = "".join(o[2:])
     o = [o[0], o[1]] + pre + (['<g transform="translate(0 %s)">' % top, body, "</g>"] if top else [body]) + post
     o.append("</svg>")
@@ -466,8 +466,7 @@ def _mt(hist, uid, W, fs, nweeks):
     o.append(t(lw + (len(weeks) * cw) / 2, y + fs + 6, "Model calls per week (count)", fs - (0 if narrow else 1), "t-s", anchor="middle"))
     unmeasured = [w for w in weeks if w not in data]
     H = int(y + 2 * fs + 14)
-    desc = ("Small multiples: one row per model, one column per week ending on the date shown below its own column, bar "
-            "height on a shared zero-based scale. %d of %d weeks shown have no measurement and are left empty." % (len(unmeasured), len(weeks)))
+    desc = "Model calls in two overlapping 7-day windows, ending 3 Oct and 4 Oct. One row per model."
     o[0] = head(("narrow" if narrow else "wide") + " chart", W, H, uid, "Model calls per week, %d weeks" % len(weeks), desc)
     o.append("</svg>")
     return "".join(o)

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Memory and self-documentation | Krishnendu Biswas</title>
-  <meta name="description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <meta name="description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
   <link rel="canonical" href="https://krishnendu.me/work/memory/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/memory/">
   <meta property="og:title" content="Memory and self-documentation | Krishnendu Biswas">
-  <meta property="og:description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <meta property="og:description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Memory and self-documentation | Krishnendu Biswas">
-  <meta name="twitter:description" content="Curated persistent memory and the LCM-X context engine, preserving history without token explosion.">
+  <meta name="twitter:description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-memory.png">
   <meta name="twitter:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/memory/#article",
       "headline": "Memory and self-documentation | Krishnendu Biswas",
-      "description": "Curated persistent memory and the LCM-X context engine, preserving history without token explosion.",
+      "description": "Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -196,17 +194,17 @@
     </div>
 
     <h2>Problem</h2>
-    <p>As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Naive truncation causes the model to forget earlier architectural decisions, while stuffing entire raw transcripts causes attention degradation and hallucination.</p>
+    <p>As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Cutting old messages makes the model forget earlier decisions, and pasting whole transcripts back in makes its answers worse.</p>
 
     <h2>What I Built</h2>
     <ul>
       <li><strong>Curated Persistent Memory:</strong> Per-agent markdown stores holding durable operational notes and user context under strict character caps, backed by automatic atomic backups and version rollback.</li>
-      <li><strong>LCM-X Context Engine:</strong> A lossless context memory engine backed by SQLite (lcm.db) that compacts older session turns into structured hierarchical summary DAGs, enabling rapid semantic and keyword retrieval without deleting raw history.</li>
+      <li><strong>LCM-X context engine:</strong> Stored in a SQLite database, it folds older parts of a chat into layered summaries that agents can search by keyword or meaning, and the original messages are never deleted.</li>
       <li><strong>Autobiography Ledger &amp; Daily Reporting:</strong> An append-only ledger recording every major system milestone (G:0001 to G:0019) and an automated daily report engine generating plain-English progress summaries with per-agent time telemetry.</li>
     </ul>
 
     <h2>Outcome</h2>
-    <p>Zero loss of project decisions across session boundaries. Fast context recovery during retries and multi-agent hand-offs.</p>
+    <p>Earlier decisions stay searchable after a chat is summarised, so agents can look them up instead of guessing. Agents can pick up earlier context when a task is retried or handed to another agent.</p>
 
     <h2>Stack</h2>
     <p class="mono">LCM-X &middot; SQLite &middot; Python &middot; systemd &middot; Linux</p>
@@ -241,7 +239,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

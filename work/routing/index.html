@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Model routing and tiered compute | Krishnendu Biswas</title>
-  <meta name="description" content="Local 9Router proxy gateway with provider fallback and task-tier classification. Deterministic scripts before LLM calls.">
+  <meta name="description" content="A model gateway on my server with backup models and effort levels. Plain scripts run before any AI model.">
   <link rel="canonical" href="https://krishnendu.me/work/routing/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/routing/">
   <meta property="og:title" content="Model routing and tiered compute | Krishnendu Biswas">
-  <meta property="og:description" content="Local 9Router proxy gateway with provider fallback and task-tier classification. Deterministic scripts before LLM calls.">
+  <meta property="og:description" content="A model gateway on my server with backup models and effort levels. Plain scripts run before any AI model.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-routing.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-routing.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Model routing and tiered compute | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Model routing and tiered compute | Krishnendu Biswas">
-  <meta name="twitter:description" content="Local 9Router proxy gateway with provider fallback and task-tier classification. Deterministic scripts before LLM calls.">
+  <meta name="twitter:description" content="A model gateway on my server with backup models and effort levels. Plain scripts run before any AI model.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-routing.png">
   <meta name="twitter:image:alt" content="Model routing and tiered compute | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/routing/#article",
       "headline": "Model routing and tiered compute | Krishnendu Biswas",
-      "description": "Local 9Router proxy gateway with provider fallback and task-tier classification. Deterministic scripts before LLM calls.",
+      "description": "A model gateway on my server with backup models and effort levels. Plain scripts run before any AI model.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -185,13 +183,13 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1 style="view-transition-name: cs-routing;">Model routing and tiered compute: local gateway with fallback resilience</h1>
-    <p class="deck">One local loopback gateway in front of multiple model providers, with fallback chains and three effort tiers. Plain scripts handle deterministic computation before any model is invoked.</p>
+    <p class="deck">One gateway on my server in front of several model accounts, with backup models when one fails, and three effort levels for different kinds of work. Plain scripts handle deterministic computation before any model is invoked.</p>
 
     <div class="panel">
       <dl class="kv">
-        <dt>Gateway</dt><dd class="mono">9Router Local Loopback Proxy</dd>
-        <dt>Routing Strategy</dt><dd>Provider Fallback &middot; 3 Effort Tiers (Medium / High / Max)</dd>
-        <dt>Core Invariant</dt><dd>Deterministic Scripts (Python/Bash) Precede LLM Invocations</dd>
+        <dt>Gateway</dt><dd class="mono">9Router gateway on my server</dd>
+        <dt>Routing Strategy</dt><dd>Backup models &middot; 3 main effort levels (medium, high, max)</dd>
+        <dt>Core Invariant</dt><dd>Plain scripts run before any AI model</dd>
       </dl>
     </div>
 
@@ -200,25 +198,27 @@
 
     <h2>What I Built</h2>
     <ul>
-      <li><strong>9Router Gateway:</strong> A local proxy sitting between agents and external AI APIs, intercepting model requests and routing them through fallback provider chains.</li>
-      <li><strong>Tiered Compute Offload:</strong> Tasks are categorized into three difficulty tiers: medium (mechanical refactors, formatting), high (multi-file implementation, test generation), and max (architecture planning, deep fact audits).</li>
+      <li><strong>9Router gateway:</strong> A small service on my server that sits between most agents and the AI providers and moves a request to a backup model when one fails. Claude models are called directly.</li>
+      <li><strong>Tiered Compute Offload (Fable):</strong> When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.</li>
       <li><strong>Deterministic First Rule:</strong> Exact computations (mathematical formulas, file system queries, regex extractions) must execute in native Python or Bash before passing structured context to an LLM.</li>
     </ul>
 
     <h2>How the Gateway Pools Models</h2>
     <ul>
-      <li><strong>9Router pooling:</strong> 9Router listens on a loopback port on the server and presents one endpoint to every agent. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next in the fallback chain, with an Anthropic OAuth fallback path.</li>
+      <li><strong>9Router pooling:</strong> 9Router runs on the server itself and gives most agents one address for many models. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next one, with Gemini Flash as the default backup.</li>
       <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.</li>
     </ul>
 
-    <h2>Why each model</h2>
-    <p>Each model gets the kind of work it is best suited to, so a cheap fast model does the bulk and the expensive one is kept for hard steps. 9Router pools my model accounts behind one endpoint, and the agent doing the work picks the model for the job.</p>
+    <h2>Dynamic Routing and Complexity Tiering</h2>
+    <p>Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.</p>
+    <p>Tiered Compute Offload (Fable): When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.</p>
     <ul>
-      <li><strong>Gemini Flash:</strong> High volume reading, scraping, telemetry and sweeps.</li>
-      <li><strong>Claude Opus:</strong> Deep reasoning, multi file planning and audits.</li>
-      <li><strong>Claude Sonnet:</strong> Code, tests and generator scripts.</li>
+      <li><strong>Gemini Flash:</strong> High-throughput sweeps, reading, scraping, telemetry, and lightweight tool handling.</li>
+      <li><strong>Claude Sonnet:</strong> Deterministic code generation, test suites, refactoring, and generator scripts.</li>
+      <li><strong>Claude Opus:</strong> Deep multi-file reasoning, verification gates, and quality audits.</li>
+      <li><strong>Fable:</strong> Architectural planning, design system direction, and exhaustive fact audits.</li>
     </ul>
-    <p>Measured split, share of Hermes-tracked tokens:</p>
+    <p>Measured empirical split, share of Hermes-tracked tokens:</p>
     <dl class="kv">
       <dt>Gemini Flash</dt><dd class="mono">64.9%</dd>
       <dt>Claude Opus</dt><dd class="mono">30.1%</dd>
@@ -227,10 +227,10 @@
     <p class="small muted">Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.</p>
 
     <h2>Outcome</h2>
-    <p>Zero agent task aborts from transient provider rate limits or token exhaustion. Deterministic scripts handle bulk data filtering locally, reducing context overhead and ensuring predictable computational behavior across all 12 agents.</p>
+    <p>When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.</p>
 
     <h2>Limits</h2>
-    <p>Fallback chains introduce slight latency variations when switching between upstream providers, requiring graceful timeout management.</p>
+    <p>Switching to a backup model can make a reply slower, so each call needs a sensible time limit.</p>
 
     <h2>Stack</h2>
     <p class="mono">9Router &middot; Python &middot; Bash &middot; REST APIs &middot; Linux</p>
@@ -265,7 +265,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

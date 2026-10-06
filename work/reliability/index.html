@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reliability and security | Krishnendu Biswas</title>
-  <meta name="description" content="Encrypted backup capsules, offsite GitHub mirror, hourly health audits, and locked-down secrets handling.">
+  <meta name="description" content="Encrypted backups stored offsite, hourly health checks, and locked-down secrets.">
   <link rel="canonical" href="https://krishnendu.me/work/reliability/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/reliability/">
   <meta property="og:title" content="Reliability and security | Krishnendu Biswas">
-  <meta property="og:description" content="Encrypted backup capsules, offsite GitHub mirror, hourly health audits, and locked-down secrets handling.">
+  <meta property="og:description" content="Encrypted backups stored offsite, hourly health checks, and locked-down secrets.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-reliability.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-reliability.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Reliability and security | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Reliability and security | Krishnendu Biswas">
-  <meta name="twitter:description" content="Encrypted backup capsules, offsite GitHub mirror, hourly health audits, and locked-down secrets handling.">
+  <meta name="twitter:description" content="Encrypted backups stored offsite, hourly health checks, and locked-down secrets.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-reliability.png">
   <meta name="twitter:image:alt" content="Reliability and security | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/reliability/#article",
       "headline": "Reliability and security | Krishnendu Biswas",
-      "description": "Encrypted backup capsules, offsite GitHub mirror, hourly health audits, and locked-down secrets handling.",
+      "description": "Encrypted backups stored offsite, hourly health checks, and locked-down secrets.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -185,41 +183,41 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1 style="view-transition-name: cs-reliability;">Reliability and security: encrypted backup capsules and locked-down secrets</h1>
-    <p class="deck">Automated backup capsules mirrored offsite to GitHub Releases via systemd timers, locked-down file permissions, origin-bound credential vaults, and scripted fresh-server restore.</p>
+    <p class="deck">Encrypted nightly backups copied offsite to cloud storage and a private GitHub repository, locked-down secrets, and a scripted rebuild on a fresh server.</p>
 
     <div class="panel">
       <dl class="kv">
         <dt>Timers</dt><dd class="mono">hermes-backup &middot; hermes-offsite &middot; hermes-offsite-verify &middot; hermes-capsule-drift</dd>
-        <dt>Offsite Target</dt><dd>Encrypted GitHub Releases Mirror</dd>
-        <dt>Secrets Isolation</dt><dd>Locked-Down File Permissions &middot; Origin-Bound Credential Vault</dd>
+        <dt>Offsite Target</dt><dd>Encrypted offsite copies (cloud storage plus a private GitHub mirror)</dd>
+        <dt>Secrets Isolation</dt><dd>Locked-down secret files &middot; a password vault that only fills the matching website</dd>
       </dl>
     </div>
 
     <h2>Problem</h2>
-    <p>Automated agent systems with shell access risk leaking API keys, introducing configuration drift, or losing state during server restarts. Reliable operations require continuous drift audits, automated offsite disaster recovery, and strict secrets isolation.</p>
+    <p>Agents that can run commands on a server can leak keys, slowly change settings by accident, or lose work when the server restarts. Reliable operations require continuous drift audits, automated offsite disaster recovery, and strict secrets isolation.</p>
 
     <h2>What I Built</h2>
     <ul>
-      <li><strong>Automated Backup Timers:</strong> Five systemd timers manage estate backups: daily hermes-backup, daily hermes-offsite, weekly hermes-offsite-verify, hourly hermes-capsule-drift, and an hourly memory/state snapshot job.</li>
-      <li><strong>Encrypted Capsules:</strong> Backups are encrypted with GPG and mirrored offsite to a private GitHub Releases repository.</li>
+      <li><strong>Backup schedule:</strong> four systemd timers run a daily backup, a daily offsite copy, a weekly check that the offsite copy still opens, and an hourly check for changes; a separate hourly job snapshots agent memory.</li>
+      <li><strong>Encrypted backups:</strong> each backup is encrypted with AES-256 before it leaves the server, then copied to Backblaze B2 cloud storage and mirrored to a private GitHub repository.</li>
       <li><strong>Disaster Recovery Runbook:</strong> Scripted restore procedure capable of bootstrapping the full multi-agent environment from bare Ubuntu 24.04.</li>
-      <li><strong>Secrets Handling:</strong> Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents never print credentials in chat, transcripts, or logs.</li>
+      <li><strong>Secrets Handling:</strong> Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never typed into chat.</li>
     </ul>
 
     <h2>Egress and anonymity</h2>
     <p>Web research that needs anonymity goes out through rotating egress over Tor and Cloudflare WARP, so no single route carries it and a failing route is dropped automatically.</p>
     <ul>
-      <li><strong>Load balancer:</strong> A glider proxy sends outbound requests round robin across two kinds of exit: Tor on multiple ports, and Cloudflare WARP through wireproxy.</li>
+      <li><strong>Load balancer:</strong> a small proxy (glider) spreads requests across five Tor routes, and a second pool prefers Cloudflare WARP and falls back to Tor when WARP is slow or down.</li>
       <li><strong>Health checks:</strong> Glider checks every route every 30 seconds and drops a route after 2 failed checks, so traffic keeps flowing over the routes that still work.</li>
       <li><strong>Scope:</strong> This covers only the research and scraping traffic that is routed through it. It changes which route a request takes, nothing else.</li>
-      <li><strong>Encrypted offsite backups:</strong> Backup capsules are encrypted, mirrored to a private GitHub Releases repository, and verified weekly.</li>
+      <li><strong>Encrypted offsite backups:</strong> backups are encrypted, copied to cloud storage and a private GitHub repository, and a weekly job downloads one and checks it still opens.</li>
     </ul>
 
     <h2>Outcome</h2>
-    <p>Complete reproducible disaster recovery, verified weekly. Continuous configuration drift detection with zero secrets exposed.</p>
+    <p>A written restore script, and a weekly check that the latest offsite backup downloads and opens. Hourly checks for unexpected setting changes.</p>
 
     <h2>Stack</h2>
-    <p class="mono">systemd &middot; GPG &middot; Bash &middot; GitHub API &middot; Python &middot; Linux</p>
+    <p class="mono">systemd &middot; OpenSSL &middot; rclone &middot; Backblaze B2 &middot; GitHub &middot; Bash &middot; Python &middot; Linux</p>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
   <div class="pager-prev"><a href="/work/memory/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Memory and self-documentation</a></div>
@@ -251,7 +249,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

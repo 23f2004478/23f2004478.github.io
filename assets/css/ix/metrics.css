@@ -102,38 +102,18 @@
   color: var(--accent);
   text-decoration: underline;
 }
-.metric-affordance {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 2px 8px;
-  font-family: var(--sans);
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: var(--muted);
-  background: var(--paper);
-  vertical-align: middle;
-  text-decoration: none;
-  transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out), background var(--dur-1) var(--ease-out);
-}
-.metric-summary:hover .metric-affordance,
-.metric-affordance:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
 .metric-summary:active {
   transform: scale(0.98);
   transition: transform var(--dur-1) var(--ease-out);
 }
-.affordance-icon {
-  display: inline-block;
-  transition: transform var(--dur-2) var(--ease-out);
-  flex: none;
+.metric-summary:hover .metric-num {
+  color: var(--accent);
 }
-.metric-pop[open] .affordance-icon {
-  transform: rotate(180deg);
+@media (min-width: 768px) {
+  .metric-pop.is-js-active.open-right[open] > .metric-panel {
+    left: auto;
+    right: 0;
+  }
 }
 .metric-cap {
   font-size: 0.875rem;

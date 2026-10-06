@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "built_on": "2026-10-07",
-  "built_at": "2026-10-07T02:53:16+05:30",
+  "built_at": "2026-10-07T03:44:51+05:30",
   "timezone": "Asia/Kolkata",
   "tracking_start": "2026-09-13",
-  "hours_total": 142.8,
+  "hours_total": 143.5,
   "active_days": 21,
   "hours_avg_active_day": 6.8,
   "hours_top_day": "2026-09-28",
@@ -34,7 +34,7 @@
     "2026-10-04": 8.0,
     "2026-10-05": 12.2,
     "2026-10-06": 10.2,
-    "2026-10-07": 2.1
+    "2026-10-07": 2.8
   },
   "hours_levels": [
     0,
@@ -53,10 +53,10 @@
     ],
     "excludes": "automated notifications"
   },
-  "tokens_total": 7789686165,
+  "tokens_total": 7945937277,
   "tokens_by_source": {
-    "9router_proxy": 6719613145,
-    "hermes_direct_claude": 1053327603,
+    "9router_proxy": 6859015331,
+    "hermes_direct_claude": 1070176529,
     "claude_code_cli": 16745417
   },
   "tokens_by_day": {
@@ -84,7 +84,7 @@
     "2026-10-04": 435144605,
     "2026-10-05": 1111637264,
     "2026-10-06": 1125819747,
-    "2026-10-07": 274071604
+    "2026-10-07": 430322716
   },
   "tokens_levels": [
     0,
@@ -106,61 +106,69 @@
     "Claude Sonnet 5.5": 5.0
   },
   "model_split_label": "share of Hermes-tracked tokens",
-  "agents_total": 12,
+  "agents_total": 11,
   "agents_router": 1,
-  "agents_domain": 11,
+  "agents_domain": 10,
   "agents": [
     {
-      "name": "Finance",
-      "channels": 2
-    },
-    {
-      "name": "Infrastructure",
-      "channels": 2
-    },
-    {
-      "name": "Personal ops",
-      "channels": 3
-    },
-    {
-      "name": "Career prep",
-      "channels": 2
-    },
-    {
+      "id": "academics",
       "name": "Academics",
-      "channels": 2
+      "private": false
     },
     {
-      "name": "Socials",
-      "channels": 2
+      "id": "candidate",
+      "name": "Career prep",
+      "private": false
     },
     {
-      "name": "Consulting",
-      "channels": 2
+      "id": "finance",
+      "name": "Finance",
+      "private": false
     },
     {
-      "name": "Health checks",
-      "channels": 2
+      "id": "infra",
+      "name": "Infrastructure",
+      "private": false
     },
     {
+      "id": "janitor",
       "name": "Cleanup",
-      "channels": 2
+      "private": false
     },
     {
-      "name": "Research",
-      "channels": 2
+      "id": "medic",
+      "name": "Health checks",
+      "private": false
     },
     {
-      "name": "Operations",
-      "channels": 2
+      "id": "personal-ops",
+      "name": "Personal ops",
+      "private": false
+    },
+    {
+      "id": "placecommer",
+      "name": "Institute work, private",
+      "private": true
+    },
+    {
+      "id": "socials",
+      "name": "Socials",
+      "private": false
+    },
+    {
+      "id": "workhorse",
+      "name": "Consulting",
+      "private": false
     }
   ],
   "jobs_scheduled": 39,
+  "jobs_enabled": 42,
+  "jobs_recurring": 39,
   "messages": {
-    "total_dedup": 260246,
-    "agent_replies": 129015,
-    "tool_results": 128187,
-    "human": 3044
+    "total_dedup": 266850,
+    "agent_replies": 132343,
+    "tool_results": 131447,
+    "human": 3060
   },
-  "leverage_ratio": 42
+  "leverage_ratio": 43
 }

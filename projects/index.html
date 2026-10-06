@@ -144,11 +144,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/" aria-current="page">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -177,7 +175,7 @@
 
   <article class="wrap page-head" data-ix="toc">
     <h1>Machine learning and analytics projects</h1>
-    <p class="deck">Every project is evaluated on the metric that genuinely reflects its objective: F1-Macro for severe class imbalance, MAP@3 for candidate ranking, and validation F1 for customer retention. High accuracy on skewed data is misleading; we lead with the metrics that measure real performance.</p>
+    <p class="deck">Every project is evaluated on the metric that genuinely reflects its objective: F1-Macro for severe class imbalance, MAP@3 for candidate ranking, and validation F1 for customer retention. High accuracy on lopsided data can flatter a model, so I lead with the score that shows how it does on the rare cases.</p>
 
     <!-- Primary Projects List -->
     <section class="section" id="featured-projects" data-ix="reveal" aria-labelledby="h-feat">
@@ -193,14 +191,14 @@
         <li>
           <div>
             <h3><a href="/projects/comment-classification/">Comment classification</a></h3>
-            <p>Feature engineering over 198,000 comments across four imbalanced label classes. Engineered 10,000+ n-grams, screened tabular features with chi-square and Kruskal-Wallis, and tuned LightGBM with Optuna to reach 0.8293 F1-Macro.</p>
+            <p>Feature engineering over 198,000 comments across four imbalanced label classes. Engineered 10,000+ n-grams, screened tabular features with chi-square and Kruskal-Wallis, and tuned LightGBM with Optuna (0.8202), then blended 3 models to reach 0.8293 F1-Macro.</p>
           </div>
           <div class="fact mono">0.8293 F1-MACRO</div>
         </li>
         <li>
           <div>
             <h3><a href="/projects/customer-exit/">Customer exit prediction</a></h3>
-            <p>Benchmarked 8 classifiers on 90,000 banking customer records with severe class imbalance. Evaluated imputation strategies and tuned Random Forest to reach a validation F1 of 0.6365 and accuracy of 0.8414.</p>
+            <p>I compared 8 classifiers on 90,000 customer records from a financial institution, where few customers leave. I filled missing values, then tuned a Random Forest to a validation F1 of 0.6365 (accuracy 0.8414).</p>
           </div>
           <div class="fact mono">0.6365 F1</div>
         </li>
@@ -221,21 +219,21 @@
         <li>
           <div>
             <h3>Virtual AI Teaching Assistant (RAG Pipeline)</h3>
-            <p>Built a Retrieval-Augmented Generation (RAG) assistant using OpenAI embeddings and SQLite vector store. Chunky course materials and retrieved top-k relevant context via cosine similarity with FastAPI endpoints.</p>
+            <p>Built a Retrieval-Augmented Generation (RAG) assistant using OpenAI embeddings and SQLite vector store. I split course materials into chunks and retrieved top-k relevant context via cosine similarity with FastAPI endpoints.</p>
           </div>
           <div class="fact mono">2025 &middot; RAG &middot; FASTAPI</div>
         </li>
         <li>
           <div>
             <h3>HR Attrition Dashboard (Power BI)</h3>
-            <p>Two-page Power BI dashboard with 12 DAX measures analyzing workforce turnover, like-for-like prior-quarter hiring patterns, and retention drivers.</p>
+            <p>A two-page Power BI dashboard with 12 DAX measures on staff turnover, comparing hires with the same quarter before.</p>
           </div>
           <div class="fact mono">2026 &middot; POWER BI &middot; DAX</div>
         </li>
         <li>
           <div>
             <h3>Consumer Spend Segmentation (K-means++)</h3>
-            <p>Segmented 62 consumer survey respondents across personal care and dining spend dimensions using K-means++ (0.540 silhouette score). Feature selection experiments proved a 2-dimension model outranked 3-dimension sets.</p>
+            <p>I grouped 62 survey respondents into 5 segments by monthly spend on personal care and fast food, using K-means++ (silhouette 0.540). Adding more spend categories and age made the segments less distinct, so I kept two.</p>
           </div>
           <div class="fact mono">2024 &middot; K-MEANS++ &middot; PYTHON</div>
         </li>
@@ -258,7 +256,7 @@
   </article>
 
   <nav class="pager wrap" aria-label="Section navigation">
-    <div class="pager-prev"><a href="/internships/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Internships</a></div>
+    <div class="pager-prev"><a href="/work/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Work</a></div>
     <div class="pager-next"><a href="/research/">Research <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
   </nav>
 </main>
@@ -286,7 +284,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

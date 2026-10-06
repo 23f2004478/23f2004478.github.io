@@ -151,11 +151,9 @@
     <a class="brand" href="/">Krishnendu Biswas</a>
     <nav class="nav" aria-label="Main navigation">
       <ul class="nav-list" id="navlist">
-      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/work/" aria-current="page">Work</a></li>
       <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/" aria-current="page">Projects</a></li>
       <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
       <li><a href="/log/">Log</a></li>
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
@@ -185,7 +183,7 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1>Comment classification: feature engineering and predictive modelling</h1>
-    <p class="deck">Feature engineering over 198,000 user comments across four imbalanced classes, lifting validation F1-Macro from 0.6221 baseline to 0.8293 with Optuna-tuned LightGBM.</p>
+    <p class="deck">Feature engineering over 198,000 user comments across four imbalanced classes, lifting F1-Macro from a 0.6221 baseline to 0.8293 with a blend of 3 models, led by an Optuna-tuned LightGBM.</p>
 
     <div class="panel">
       <dl class="kv">
@@ -197,15 +195,15 @@
     </div>
 
     <h2>Context and Objective</h2>
-    <p>Detecting toxic and obfuscated user comments requires handling subtle spelling variations, character substitutions, and severe class skew across multi-class labels. The primary evaluation metric was F1-Macro to prevent majority neutral comments from dominating model scoring.</p>
+    <p>Detecting toxic and obfuscated user comments requires handling subtle spelling variations, character substitutions, and severe class skew across multi-class labels. I used F1-Macro, which weights every class equally, so the most common class could not dominate the score.</p>
 
     <h2>Feature Engineering and Statistical Screening</h2>
-    <p>I engineered over 10,000 word and character-level n-grams combined with behavioral text signals (capitalization ratios, punctuation density, symbol sequences). To prevent dimensionality explosion, 11 tabular predictors were screened across 198,000 rows using chi-square tests and Kruskal-Wallis non-parametric rankings.</p>
+    <p>I engineered over 10,000 word and character-level n-grams combined with behavioral text signals. I also ranked 11 non-text columns across 198,000 rows with chi-square and Kruskal-Wallis tests to see which ones related to the label.</p>
 
     <h2>Optimization and Results</h2>
     <ul>
       <li><strong>Optuna Hyperparameter Search:</strong> Executed a 100-trial study over 10 LightGBM parameters, using 3-fold cross-validation with median pruning to stop unpromising branches early.</li>
-      <li><strong>Performance Progression:</strong> Baseline Logistic Regression achieved 0.6221 F1-Macro. Tuned LightGBM reached 0.8202 F1-Macro. A 3-model ensemble blend achieved the final score of <strong>0.8293 F1-Macro</strong> on 39,600 held-out evaluation rows.</li>
+      <li><strong>Performance Progression:</strong> Baseline Logistic Regression achieved 0.6221 F1-Macro. Tuned LightGBM reached 0.8202 F1-Macro. A blend of 3 models reached the final <strong>0.8293 F1-Macro</strong> on about 39,600 held-out rows.</li>
     </ul>
 
     <h2>Stack</h2>
@@ -241,7 +239,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project artefacts; last checked 6 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>
