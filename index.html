@@ -317,9 +317,8 @@
             </button>
             <div class="proof-portal" id="portal-tokens">
               <ul class="portal-list" role="list">
-                <li><strong>Gemini 3.7 Flash (~65%)</strong>: High-throughput extraction, telemetry, and background sweeps.</li>
-                <li><strong>Claude Opus (~25%)</strong>: Deep multi-file reasoning, architectural audits, and high-stakes verification.</li>
-                <li><strong>Claude Sonnet 5.5 (~10%)</strong>: Deterministic code authoring, unit test suites, and generator scripts.</li>
+                <li><strong>Routed by task</strong>: bulk extraction and sweeps go to fast models; deep reasoning and audits go to the strongest model; plain scripts run first.</li>
+                <li><strong>Counted on the server</strong>: 9Router usage, Hermes session usage, and Claude CLI transcripts, recounted on 6 Oct 2026.</li>
               </ul>
               <a href="/work/routing/" class="portal-link">Model routing case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
             </div>
@@ -361,7 +360,7 @@
             </button>
             <div class="proof-portal" id="portal-agents">
               <ul class="portal-list" role="list">
-                <li><strong>12 agents</strong>: Finance, Infra, Personal Ops, Candidate, Socials, Workhorse, Medic, Janitor, Academic Researcher, Exam Helper, and a central Router.</li>
+                <li><strong>12 agents</strong>: A central router plus domain agents for Finance, Infrastructure, Personal ops, Career prep, Academics, Socials, Consulting, Health checks, Cleanup, and Exam help.</li>
                 <li><strong>Isolation</strong>: each agent has its own workspace, scoped permissions, and persistent memory.</li>
               </ul>
               <a href="/work/platform/" class="portal-link">Multi-agent topology case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
@@ -371,10 +370,10 @@
       </div>
 
       <div class="proof-card">
-        <dt><a href="/work/reliability/" data-val="100%" class="proof-num">100%</a></dt>
+        <dt><a href="/work/reliability/" data-val="Gate" class="proof-num">Gate</a></dt>
         <dd>
-          <a href="/work/reliability/" class="proof-title">Human gate enforcement</a>
-          <span class="cap">Zero unauthorized external actions. Destructive and external steps strictly wait for approval.</span>
+          <a href="/work/reliability/" class="proof-title">Approval gate</a>
+          <span class="cap">Anything irreversible waits for my approval: sends, deletes, merges, deploys, and payments.</span>
           <div class="proof-portal-wrap">
             <button type="button" class="proof-portal-btn" aria-expanded="false" aria-controls="portal-gate">
               <span>Breakdown</span>
@@ -397,7 +396,7 @@
   <!-- Hero Figure: 6-Stage Multi-Agent Architecture -->
   <section class="section wrap ribbon-sec" data-ix="reveal" aria-labelledby="h-flow">
     <h2 id="h-flow">6-Stage Multi-Agent Architecture</h2>
-    <p class="deck">From voice or chat prompt to deterministic execution, local privacy scrubbing, and automated delivery.</p>
+    <p class="deck">From voice or chat prompt to deterministic execution, approval gates, and tracked delivery.</p>
     
     <div class="arch-diagram-wrap">
       <svg class="arch-svg" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Specialist Agents, Stealth Egress, Human Gate, and Delivery">
@@ -427,7 +426,7 @@
         <!-- Node 2: Router -->
         <g class="arch-node" transform="translate(355, 20)">
           <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">02 &middot; ROUTER PROFILE</text>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">02 &middot; ROUTER AGENT</text>
           <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Central Triage &amp; Router</text>
           <text x="16" y="78" fill="var(--muted)" font-size="12">Intent parsing &amp; domain validation</text>
           <text x="16" y="98" fill="var(--muted)" font-size="12">Dependency gating &amp; Kanban dispatch</text>
@@ -437,7 +436,7 @@
         <g class="arch-node" transform="translate(690, 20)">
           <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
           <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">03 &middot; DEPTH 1</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">12 Specialist Agents</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Router + 11 domain agents</text>
           <text x="16" y="78" fill="var(--muted)" font-size="12">24/7 Azure VPS &amp; systemd daemons</text>
           <text x="16" y="98" fill="var(--muted)" font-size="12">Isolated workspaces &amp; LCM memory</text>
         </g>
@@ -446,8 +445,8 @@
         <g class="arch-node" transform="translate(690, 175)">
           <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
           <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">04 &middot; DEPTH 2</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Stealth Egress &amp; 9Router</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">IP rotation &amp; local privacy scrub</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Egress &amp; 9Router</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">Rotating egress via Tor and Cloudflare WARP</text>
           <text x="16" y="98" fill="var(--muted)" font-size="12">Dynamic routing: Opus / Sonnet / Gemini</text>
         </g>
 
@@ -495,7 +494,7 @@
           <span class="station-num">03</span>
           <span class="station-depth">Depth 1</span>
         </div>
-        <h3 class="station-title">12 Specialist Agents</h3>
+        <h3 class="station-title">Router + 11 domain agents</h3>
         <p class="station-desc">Dedicated domain agents on 24/7 Azure VPS with isolated working directories, LCM context memory DAGs, and scoped tools.</p>
       </div>
       <div class="station">
@@ -503,8 +502,8 @@
           <span class="station-num">04</span>
           <span class="station-depth">Depth 2</span>
         </div>
-        <h3 class="station-title">Stealth Egress &amp; 9Router</h3>
-        <p class="station-desc">IP rotation proxy pools, local privacy scrubbing gates, and dynamic compute tiering across Claude Opus, Sonnet 5.5, and Gemini 3.7 Flash.</p>
+        <h3 class="station-title">Egress &amp; 9Router</h3>
+        <p class="station-desc">Rotating egress through Tor and Cloudflare WARP, and dynamic compute tiering across Claude Opus, Sonnet 5.5, and Gemini 3.7 Flash.</p>
       </div>
       <div class="station gate-station">
         <div class="station-head">

@@ -212,7 +212,7 @@ def strip_html(strip):
     return ('<section class="wrap strip-sec" aria-labelledby="h-week"><h2 id="h-week" class="strip-h">This week'
             '<span class="muted"> &middot; %s days to %s</span></h2><dl class="strip">%s</dl>'
             '<p class="small muted strip-note">Counts from the build board and model call logs. Institute work is excluded. '
-            '<a href="/log/sources/#counting">How these are counted</a>. Profile, job and skill counts are on '
+            '<a href="/log/sources/#counting">How these are counted</a>. Agent, job and skill counts are on '
             '<a href="/work/platform/">the platform page</a>.</p></section>'
             % (strip["window_days"], esc(when), "".join(cells)))
 
@@ -236,11 +236,11 @@ def standing_figures(data):
     tp = dict(tp, input=IO_IN, output=IO_OUT)
     w, n = S.topology(tp, "lt")
     rows = [["Input (before the server)", IO_IN + ". Built-in voice plugins are skipped so I can read what got written."],
-            [tp["router"], "Routes messages and hands work to profiles"]] + [
-        [p, "Domain profile (the builder agent that does scoped, approved work)" if p == "workhorse" else "Domain profile"]
+            [tp["router"], "Routes messages and hands work to agents"]] + [
+        [p, "Domain agent (the builder that does scoped, approved work)" if p == "workhorse" else "Domain agent"]
         for p in tp["profiles"]] + [["Output (after the server)", IO_OUT + ". Important items only."]]
-    topo = figure("lt", w, n, "%s profiles, router included. Domain names only; one profile is shown as institute work, private."
-                  % tp["count_including_router"], rows, ["Profile", "Role"], "topo-fig")
+    topo = figure("lt", w, n, "%s agents, router included. Domain names only; one agent is shown as institute work, private."
+                  % tp["count_including_router"], rows, ["Agent", "Role"], "topo-fig")
     w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
     rows = [[human_date(d["date"]), d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
     tlf = figure("ltl", w, n, "Public ledger milestones in the last %d days, %d dots. Undated or private milestones are not drawn."
@@ -375,7 +375,7 @@ def render_sources(entries, data):
             '<li><span class="mono">T:</span> one day of model call logs, counted per&nbsp;model.</li>'
             '<li><span class="mono">D:</span> one daily progress report. Used as a drafting hint, never&nbsp;quoted.</li></ul>'
             '<h2 id="counting">How the weekly figures are counted</h2><ul class="src-list">%s</ul>'
-            '<p>A cell that has no source for the week shows &ldquo;not measured&rdquo; instead of zero. Institute work runs in a separate, private profile and is left out of every count.</p>'
+            '<p>A cell that has no source for the week shows &ldquo;not measured&rdquo; instead of zero. Institute work runs in a separate, private agent and is left out of every count.</p>'
             '<h2 id="models">Model names</h2><p>Charts use the model name. The id is what the call log records.</p><ul class="src-list">%s</ul>'
             '<h2 id="privacy">What never appears here</h2><p>Client names, institute work, money amounts, channel names, server addresses, ports and file paths. '
             'A script checks every page for these before I see the draft, and I check the rest by&nbsp;hand.</p>'

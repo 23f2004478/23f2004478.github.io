@@ -116,7 +116,7 @@ def build(raw_dir, ledger_path, flags_path, allow_path):
             cell("tasks_shipped", "Tasks shipped", "cards moved to done on the build board"),
             {"key": "model_calls", "label": "Model calls", "unit": "calls across %d models" % len(models),
              "value": total if models else NM},
-            cell("scheduled_jobs", "Scheduled jobs", "enabled jobs across profiles"),
+            cell("scheduled_jobs", "Scheduled jobs", "enabled jobs across agents"),
             cell("skills_unique", "Skills", "distinct skill folders, each a reusable step-by-step procedure"),
         ],
     }

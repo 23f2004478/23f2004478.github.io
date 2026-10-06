@@ -206,9 +206,8 @@
 
     <h2>Privacy and Egress Controls</h2>
     <ul>
-      <li><strong>IP rotation proxies:</strong> Agent web fetches leave through a pool of rotating proxy addresses rather than one fixed address.</li>
-      <li><strong>Stealth, anti-tracking egress:</strong> Egress is set up to resist tracking: outbound agent traffic is not tied to my own address or identity.</li>
-      <li><strong>Local PII scrubbing gates:</strong> Before text leaves the server for any external model, a local gate on the server scrubs personal identifiers first.</li>
+      <li><strong>Rotating egress:</strong> Agent web fetches leave through rotating egress via Tor and Cloudflare WARP behind a round-robin proxy with health checks, rather than one fixed address.</li>
+      <li><strong>Egress routing:</strong> Outbound agent traffic passes through a round-robin proxy that health-checks its Tor and Cloudflare WARP exits.</li>
       <li><strong>Encrypted offsite backups:</strong> Backup capsules are encrypted, mirrored to a private GitHub Releases repository, and verified weekly.</li>
     </ul>
 

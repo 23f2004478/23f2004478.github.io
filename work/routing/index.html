@@ -206,7 +206,7 @@
     <h2>How the Gateway Pools Models</h2>
     <ul>
       <li><strong>9Router pooling:</strong> 9Router listens on a loopback port on the server and presents one endpoint to every agent. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next in the fallback chain, with an Anthropic OAuth fallback path.</li>
-      <li><strong>Model selection rationale:</strong> High-volume background work (scraping, telemetry, sweeps) goes to Gemini 3.7 Flash, about 65 percent of tokens. Deep multi-file reasoning and audits go to Claude Opus, about 25 percent. Deterministic code, tests and generator scripts go to Claude Sonnet 5.5, about 10 percent. Shares are approximate token volume.</li>
+      <li><strong>Model selection rationale:</strong> High-volume background work (scraping, telemetry, sweeps) goes to Gemini 3.7 Flash. Deep multi-file reasoning and audits go to Claude Opus. Deterministic code, tests and generator scripts go to Claude Sonnet 5.5. I publish no per-model split.</li>
       <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.</li>
     </ul>
 

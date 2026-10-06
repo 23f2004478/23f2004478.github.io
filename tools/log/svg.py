@@ -217,7 +217,7 @@ def _topo(tp, uid, W, cols, fs):
     o.append('<path class="edge" d="M%s %sV%s" marker-end="url(#%s-ah)"/>' % (_n(W / 2), y, y + 22, uid))
     y += 24
     o.append('<rect class="k-a" x="%s" y="%s" width="%s" height="%s" rx="3"/>' % (inner_x, y, inner_w, bh))
-    o.append(t(W / 2, y + bh / 2 + fs / 2 - 1, "Router profile (default)", fs, "t-a", anchor="middle", weight="600"))
+    o.append(t(W / 2, y + bh / 2 + fs / 2 - 1, "Router agent (default)", fs, "t-a", anchor="middle", weight="600"))
     y += bh
     bus_y = y + 16
     o.append('<path class="edge" d="M%s %sV%s"/>' % (_n(W / 2), y, bus_y))
@@ -269,14 +269,14 @@ def _topo(tp, uid, W, cols, fs):
         post.append('<rect class="k-n" x="%s" y="%s" width="%s" height="%s" rx="3"/>' % (inner_x, y0 + 22, inner_w, bh))
         post.append(t(W / 2, y0 + 22 + bh / 2 + fs / 2 - 1, io_out, fs, anchor="middle", weight="600"))
     total = top + H + ((22 + bh + 1) if io_out else 0)
-    desc = ("Inside one cloud server: a messaging gateway feeds the router profile, which hands work to %d domain "
-            "profiles: %s. One profile is shown only as institute work, private. Model calls from every profile "
-            "go through the model gateway. %s profiles in total, router included." % (len(tp["profiles"]), ", ".join(profiles), n))
+    desc = ("Inside one cloud server: a messaging gateway feeds the router agent, which hands work to %d domain "
+            "agents: %s. One agent is shown only as institute work, private. Model calls from every agent "
+            "go through the model gateway. %s agents in total, router included." % (len(tp["profiles"]), ", ".join(profiles), n))
     if io_in:
         desc = "Above the server: %s. " % io_in + desc
     if io_out:
         desc += " Below the server: %s." % io_out
-    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, total, uid, "Agent estate: %s profiles, router included" % n, desc)
+    o[0] = head("wide topo-w" if cols > 2 else "narrow topo-n", W, total, uid, "Agent estate: %s agents, router included" % n, desc)
     body = "".join(o[2:])
     o = [o[0], o[1]] + pre + (['<g transform="translate(0 %s)">' % top, body, "</g>"] if top else [body]) + post
     o.append("</svg>")
