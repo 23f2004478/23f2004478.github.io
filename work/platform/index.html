@@ -277,7 +277,7 @@
     <h2>Access from any device</h2>
     <p>I can run the whole platform from my phone, so work continues when my laptop is closed or not with me. Three pieces make that work.</p>
     <ul>
-      <li><strong>Private mesh:</strong> Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). The server has no public SSH port, so it is reachable only from those devices.</li>
+      <li><strong>Private mesh:</strong> Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). I reach the server over the mesh, from those three devices.</li>
       <li><strong>Termius:</strong> Termius is the SSH client on my phone and laptop. It connects over the mesh, so I can check a service or restart one from the phone.</li>
       <li><strong>Dictation:</strong> I dictate on my phone or Mac (Dictate on Android, FreeFlow on Mac), read the transcript, then send it on Discord or Telegram. The router agent picks it up from there.</li>
     </ul>
@@ -307,7 +307,7 @@
           <path d="M435 75 C 480 55, 520 95, 562 75" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
         </g>
       </svg>
-      <figcaption class="small muted">Devices reach the server only through the encrypted mesh.</figcaption>
+      <figcaption class="small muted">Devices reach the server over the encrypted mesh.</figcaption>
     </figure>
 
     <h2>Verified Outcome</h2>

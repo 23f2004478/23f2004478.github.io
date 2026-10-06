@@ -205,11 +205,11 @@
     </ul>
 
     <h2>Egress and anonymity</h2>
-    <p>Agent web fetches leave the server through rotating egress through Tor and Cloudflare WARP, so no single route carries all outbound traffic, and a failing route is dropped automatically.</p>
+    <p>Web research that needs anonymity goes out through rotating egress over Tor and Cloudflare WARP, so no single route carries it and a failing route is dropped automatically.</p>
     <ul>
       <li><strong>Load balancer:</strong> A glider proxy sends outbound requests round robin across two kinds of exit: Tor on multiple ports, and Cloudflare WARP through wireproxy.</li>
       <li><strong>Health checks:</strong> Glider checks every route every 30 seconds and drops a route after 2 failed checks, so traffic keeps flowing over the routes that still work.</li>
-      <li><strong>Scope:</strong> This covers outbound agent web fetches only. It changes which route a request takes, nothing else.</li>
+      <li><strong>Scope:</strong> This covers only the research and scraping traffic that is routed through it. It changes which route a request takes, nothing else.</li>
       <li><strong>Encrypted offsite backups:</strong> Backup capsules are encrypted, mirrored to a private GitHub Releases repository, and verified weekly.</li>
     </ul>
 
