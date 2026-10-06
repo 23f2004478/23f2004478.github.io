@@ -27,9 +27,6 @@
       }
 
       nodes.forEach(function(node) {
-        node.setAttribute('tabindex', '0');
-        node.setAttribute('role', 'button');
-
         function focusNode() {
           nodes.forEach(function(n) {
             if (n !== node) {
@@ -57,8 +54,6 @@
 
         node.addEventListener('mouseenter', focusNode);
         node.addEventListener('mouseleave', blurNode);
-        node.addEventListener('focus', focusNode);
-        node.addEventListener('blur', blurNode);
       });
     });
   }

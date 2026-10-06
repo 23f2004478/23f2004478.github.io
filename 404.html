@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-motion="full">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,7 +34,24 @@
   <meta name="twitter:description" content="The requested page does not exist. Explore case studies, research, projects, or credentials.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-home.png">
   <meta name="twitter:image:alt" content="Page not found | Krishnendu Biswas, share card for krishnendu.me">
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/resume/*" } },
+            { "not": { "href_matches": "/archive/*" } },
+            { "not": { "href_matches": "/log/feed.*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -92,10 +109,10 @@
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
     </nav>
-    <button class="icon-btn search-trigger" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+    <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
       <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
     </button>
-    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
+    <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
@@ -116,6 +133,12 @@
     <h1>Page not found</h1>
     <p class="deck">The page you were looking for does not exist or has been moved to a new address.</p>
     
+    <section class="search-inline-wrap" data-ix="search_inline" aria-labelledby="h-search-inline">
+      <h2 id="h-search-inline" style="margin-top:0;font-size:1.125rem;">Search the site directly</h2>
+      <input type="search" class="search-inline-input" placeholder="Search case studies, projects, credentials, research..." aria-label="Search site directly">
+      <ul class="search-inline-results" role="listbox" aria-label="Search results" hidden></ul>
+    </section>
+
     <div class="panel">
       <h2>Explore the site</h2>
       <ul class="rows" role="list">
@@ -175,7 +198,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Reach me</h2>
       <ul class="foot-links">
-        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
         <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
@@ -193,6 +216,9 @@
     </div>
   </div>
 </footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
 <script src="/site.js" defer></script>
 </body>
 </html>

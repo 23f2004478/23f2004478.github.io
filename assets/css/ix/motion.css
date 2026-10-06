@@ -1,33 +1,27 @@
-/* animation tokens, keyframes and strict reduced-motion overrides */
-
+.reveal-init {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(var(--reveal-y));
+  transition: opacity var(--dur-3) var(--ease-out), transform var(--dur-3) var(--ease-out), visibility var(--dur-3) var(--ease-out);
+}
+.reveal-init.is-revealed {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: var(--dur-2); }
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-duration: .01ms !important;
     scroll-behavior: auto !important;
   }
-  .scroll-progress {
-    display: none !important;
-  }
-  .js .gate-anim .gate-dg .dot {
-    transform: none !important;
-    animation: none !important;
-  }
-  .js .gate-anim .gate-dg .gate-bar {
-    stroke-width: 4 !important;
-    animation: none !important;
-  }
-  .toast-notice {
-    transition: none !important;
-  }
-  .chart-tooltip {
-    transition: none !important;
-  }
-  .btn:active,
-  .icon-btn:active {
-    transform: none !important;
-  }
+  .scroll-progress { display: none !important; }
+  .js .gate-anim .gate-dg .dot { transform: none !important; animation: none !important; }
+  .js .gate-anim .gate-dg .gate-bar { stroke-width: 4 !important; animation: none !important; }
+  .toast-notice, .chart-tooltip { transition: none !important; }
+  .btn:active, .icon-btn:active { transform: none !important; }
+  .reveal-init { opacity: 1 !important; visibility: visible !important; transform: none !important; transition: none !important; }
 }

@@ -134,10 +134,10 @@
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
     </nav>
-    <button class="icon-btn search-trigger" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+    <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
       <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
     </button>
-    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
+    <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
@@ -164,7 +164,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Reach me</h2>
       <ul class="foot-links">
-        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
         <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
@@ -182,6 +182,9 @@
     </div>
   </div>
 </footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
 <script src="/site.js" defer></script>
 </body>
 </html>

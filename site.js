@@ -114,8 +114,8 @@
 // === Module: search (search.js) ===
 /**
  * Feature: search
- * Hook: [data-ix~="search"], .search-trigger, .search-btn, Cmd+K, '/'
- * Accessible Command Palette Site Search
+ * Hook: [data-ix~="search"], [data-ix~="search_inline"], .search-trigger, .search-btn, Cmd+K, '/'
+ * Accessible Command Palette Site Search & Inline Search Support
  */
 (function() {
   'use strict';
@@ -187,12 +187,12 @@
 
   function openSearch() {
     createModal();
+    backdrop.hidden = false;
+    input.value = '';
+    input.focus();
+    d.body.style.overflow = 'hidden';
     loadIndex(function() {
-      backdrop.hidden = false;
-      input.value = '';
       performSearch('');
-      input.focus();
-      d.body.style.overflow = 'hidden';
     });
   }
 
@@ -232,8 +232,8 @@
       var ariaSel = idx === 0 ? ' aria-selected="true"' : ' aria-selected="false"';
       var tags = item.tags ? '<span class="search-item-tags">' + escapeHtml(item.tags) + '</span>' : '';
       return [
-        '<li class="search-item' + isSel + '" role="option"' + ariaSel + ' data-idx="' + idx + '">',
-        '  <a href="' + item.url + '">',
+        '<li class="search-item' + isSel + '" role="option"' + ariaSel + '>',
+        '  <a href="' + escapeHtml(item.url) + '">',
         '    <span class="search-item-title">' + escapeHtml(item.title) + '</span>',
         tags,
         '  </a>',
@@ -300,14 +300,69 @@
   });
 
   // Attach search trigger buttons if present
-  d.querySelectorAll('.search-trigger, .search-btn, [data-ix~="search"]').forEach(function(btn) {
-    if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        openSearch();
+  function attachTriggers() {
+    d.querySelectorAll('.search-trigger, .search-btn, [data-ix~="search"]').forEach(function(btn) {
+      if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
+        if (!btn.dataset.searchBound) {
+          btn.dataset.searchBound = 'true';
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openSearch();
+          });
+        }
+      }
+    });
+  }
+
+  // Inline search support (e.g. 404 page)
+  function setupInlineSearch() {
+    var inlineWraps = d.querySelectorAll('[data-ix~="search_inline"], .search-inline-wrap');
+    inlineWraps.forEach(function(wrap) {
+      var inlineInput = wrap.querySelector('.search-inline-input');
+      var inlineResults = wrap.querySelector('.search-inline-results');
+      if (!inlineInput || !inlineResults) return;
+
+      inlineInput.addEventListener('focus', function() {
+        loadIndex(function() {});
       });
-    }
-  });
+
+      inlineInput.addEventListener('input', function() {
+        var query = inlineInput.value.trim();
+        if (!query) {
+          inlineResults.hidden = true;
+          inlineResults.innerHTML = '';
+          return;
+        }
+        loadIndex(function(index) {
+          var q = query.toLowerCase();
+          var terms = q.split(/\s+/).filter(Boolean);
+          var matches = index.filter(function(item) {
+            var str = (item.title + ' ' + (item.tags || '') + ' ' + (item.desc || '') + ' ' + item.url).toLowerCase();
+            return terms.every(function(t) { return str.indexOf(t) !== -1; });
+          }).slice(0, 6);
+
+          inlineResults.hidden = false;
+          if (!matches.length) {
+            inlineResults.innerHTML = '<li class="search-empty">No matching pages found for "' + escapeHtml(query) + '"</li>';
+            return;
+          }
+          inlineResults.innerHTML = matches.map(function(item) {
+            return '<li class="search-item"><a href="' + escapeHtml(item.url) + '"><span class="search-item-title">' + escapeHtml(item.title) + '</span>' + (item.tags ? '<span class="search-item-tags">' + escapeHtml(item.tags) + '</span>' : '') + '</a></li>';
+          }).join('');
+        });
+      });
+    });
+  }
+
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', function() {
+      attachTriggers();
+      setupInlineSearch();
+    });
+  } else {
+    attachTriggers();
+    setupInlineSearch();
+  }
 
   // Expose API
   window.openSiteSearch = openSearch;
@@ -443,7 +498,7 @@
   function setupHeadingAnchors() {
     var headings = d.querySelectorAll('main h2, main h3');
     headings.forEach(function(h) {
-      if (h.closest('.modal, .diag-modal, .search-modal, .proof')) return;
+      if (h.closest('.modal, .diag-modal, .search-modal, .proof, summary, .internship-summary, details')) return;
       if (!h.id) {
         var baseSlug = slugify(h.textContent);
         if (!baseSlug) return;
@@ -823,9 +878,6 @@
       }
 
       nodes.forEach(function(node) {
-        node.setAttribute('tabindex', '0');
-        node.setAttribute('role', 'button');
-
         function focusNode() {
           nodes.forEach(function(n) {
             if (n !== node) {
@@ -853,8 +905,6 @@
 
         node.addEventListener('mouseenter', focusNode);
         node.addEventListener('mouseleave', blurNode);
-        node.addEventListener('focus', focusNode);
-        node.addEventListener('blur', blurNode);
       });
     });
   }

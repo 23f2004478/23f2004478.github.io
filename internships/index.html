@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-motion="full">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Internships | Krishnendu Biswas</title>
-  <meta name="description" content="Three internships: test estimation at QualityKiosk, compensation analytics at Tata Steel, and rural social impact at IIM Ranchi.">
+  <meta name="description" content="Three corporate and institutional internships spanning automated test estimation, compensation analytics, and rural social impact assessment.">
   <link rel="canonical" href="https://krishnendu.me/internships/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/internships/">
   <meta property="og:title" content="Internships | Krishnendu Biswas">
-  <meta property="og:description" content="Three internships: test estimation at QualityKiosk, compensation analytics at Tata Steel, and rural social impact at IIM Ranchi.">
+  <meta property="og:description" content="Three corporate and institutional internships spanning automated test estimation, compensation analytics, and rural social impact assessment.">
   <meta property="og:image" content="https://krishnendu.me/og/og-internships.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-internships.png">
   <meta property="og:image:type" content="image/png">
@@ -31,9 +31,26 @@
   <meta property="og:image:alt" content="Internships | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Internships | Krishnendu Biswas">
-  <meta name="twitter:description" content="Three internships: test estimation at QualityKiosk, compensation analytics at Tata Steel, and rural social impact at IIM Ranchi.">
+  <meta name="twitter:description" content="Three corporate and institutional internships spanning automated test estimation, compensation analytics, and rural social impact assessment.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-internships.png">
   <meta name="twitter:image:alt" content="Internships | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/resume/*" } },
+            { "not": { "href_matches": "/archive/*" } },
+            { "not": { "href_matches": "/log/feed.*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,7 +84,7 @@
   ]
 }
   </script>
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -125,10 +142,10 @@
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
     </nav>
-    <button class="icon-btn search-trigger" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+    <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
       <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
     </button>
-    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
+    <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
@@ -145,26 +162,32 @@
   </ol>
 </nav>
 
-  <article class="wrap page-head">
+  <article class="wrap page-head" data-ix="toc">
     <h1>Internships</h1>
     <p class="deck">Three corporate and institutional internships spanning automated test estimation, compensation analytics, and rural social impact assessment.</p>
 
-    <!-- Role 1: QualityKiosk -->
-    <section class="entry" id="qualitykiosk" aria-labelledby="h-qk">
-      <h2 id="h-qk">QualityKiosk Technologies, Navi Mumbai</h2>
-      <p class="meta">Data and AI Intern &middot; Apr 2026 to Jun 2026 &middot; Internal tooling for banking QA; code confidential</p>
-      
-      <p>Built deterministic estimation engines and standardized QA data pipelines for digital banking systems.</p>
-      <ul>
-        <li>Built 2 deterministic TypeScript estimation engines (1,027 lines) with 136 unit tests, 68 of them checking parity with the original Excel model.</li>
-        <li>Harmonized QA data across 82 banking apps and 7 departments into one unified analytical dataset.</li>
-        <li>Automated Azure DevOps test-case prep in Python, standardizing 18,456 rows across 61 QA workbooks written by the QA team.</li>
-        <li>Delivered 7 internal applications for estimation, tracking, and QA standardization on one platform, plus 3 standalone tools.</li>
-        <li>Authored 144 commits in 7 weeks solo across 10 backend modules.</li>
-        <li>Authored a 1,147-line ML estimation PRD with 20 requirements, 6 regression targets over 10 engineered features, and champion-challenger promotion rules.</li>
-      </ul>
+    <!-- Role 1: QualityKiosk (Default Open Accordion) -->
+    <details class="internship-details" open id="qualitykiosk">
+      <summary class="internship-summary">
+        <div class="internship-summary-head">
+          <h2 id="h-qk">QualityKiosk Technologies, Navi Mumbai</h2>
+          <span class="internship-badge mono">FEATURED</span>
+        </div>
+        <p class="meta">Data and AI Intern &middot; Apr 2026 to Jun 2026 &middot; Internal tooling for banking QA; code confidential</p>
+      </summary>
+      <div class="internship-body">
+        <div class="internship-body-inner">
+          <p>Built deterministic estimation engines and standardized QA data pipelines for digital banking systems.</p>
+          <ul>
+            <li>Built 2 deterministic TypeScript estimation engines (1,027 lines) with 136 unit tests, 68 of them checking parity with the original Excel model.</li>
+            <li>Harmonized QA data across 82 banking apps and 7 departments into one unified analytical dataset.</li>
+            <li>Automated Azure DevOps test-case prep in Python, standardizing 18,456 rows across 61 QA workbooks written by the QA team.</li>
+            <li>Delivered 7 internal applications for estimation, tracking, and QA standardization on one platform, plus 3 standalone tools.</li>
+            <li>Authored 144 commits in 7 weeks solo across 10 backend modules.</li>
+            <li>Authored a 1,147-line ML estimation PRD with 20 requirements, 6 regression targets over 10 engineered features, and champion-challenger promotion rules.</li>
+          </ul>
 
-      <div class="chart-wrap">
+          <div class="chart-wrap" data-ix="chart_tooltips">
   <h3 class="chart-title">QualityKiosk estimation engines: tests and&nbsp;rows</h3>
   <svg class="dg chart-svg" viewBox="0 0 680 220" role="img" aria-labelledby="qk-chart-title qk-chart-desc" xmlns="http://www.w3.org/2000/svg">
     <title id="qk-chart-title">QualityKiosk estimation engines test coverage and standardized QA rows</title>
@@ -241,32 +264,50 @@
     </div>
   </details>
 </div>
-    </section>
+        </div>
+      </div>
+    </details>
 
-    <!-- Role 2: Tata Steel -->
-    <section class="entry" id="tata-steel" aria-labelledby="h-tata">
-      <h2 id="h-tata">Tata Steel, Jamshedpur</h2>
-      <p class="meta">Research Analyst &middot; Apr 2025 to Jun 2025 &middot; Compensation benchmarking</p>
-      
-      <p>Conducted competitive compensation analytics across heavy manufacturing enterprises to identify regional wage gaps.</p>
-      <ul>
-        <li>Analyzed compensation data across 20+ manufacturing firms and 50+ job profiles to identify regional pay gaps.</li>
-        <li>Structured 1,000+ compensation records to benchmark pay across job clusters.</li>
-        <li>Standardized 25+ allowance types so firms could be compared on the same analytical terms.</li>
-      </ul>
-    </section>
+    <!-- Role 2: Tata Steel (Default Closed Accordion) -->
+    <details class="internship-details" id="tata-steel">
+      <summary class="internship-summary">
+        <div class="internship-summary-head">
+          <h2 id="h-tata">Tata Steel, Jamshedpur</h2>
+          <span class="internship-badge mono">DETAILS</span>
+        </div>
+        <p class="meta">Research Analyst &middot; Apr 2025 to Jun 2025 &middot; Compensation benchmarking</p>
+      </summary>
+      <div class="internship-body">
+        <div class="internship-body-inner">
+          <p>Conducted competitive compensation analytics across heavy manufacturing enterprises to identify regional wage gaps.</p>
+          <ul>
+            <li>Analyzed compensation data across 20+ manufacturing firms and 50+ job profiles to identify regional pay gaps.</li>
+            <li>Structured 1,000+ compensation records to benchmark pay across job clusters.</li>
+            <li>Standardized 25+ allowance types so firms could be compared on the same analytical terms.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
 
-    <!-- Role 3: IIM Ranchi -->
-    <section class="entry" id="iim-ranchi" aria-labelledby="h-iim">
-      <h2 id="h-iim">IIM Ranchi, Social Impact Internship</h2>
-      <p class="meta">Social Impact Intern &middot; Jan 2024 to Feb 2024 &middot; Unnat Bharat Abhiyan</p>
-      
-      <p>Assessed learning levels and drove community welfare drives in rural Jharkhand.</p>
-      <ul>
-        <li>Assessed 390+ rural students with Pratham and Unnat Bharat Abhiyan, and digitized the results into analysis-ready formats.</li>
-        <li>Ran sanitation and digital literacy drives for 140+ villagers across adopted villages.</li>
-      </ul>
-    </section>
+    <!-- Role 3: IIM Ranchi (Default Closed Accordion) -->
+    <details class="internship-details" id="iim-ranchi">
+      <summary class="internship-summary">
+        <div class="internship-summary-head">
+          <h2 id="h-iim">IIM Ranchi, Social Impact Internship</h2>
+          <span class="internship-badge mono">DETAILS</span>
+        </div>
+        <p class="meta">Social Impact Intern &middot; Jan 2024 to Feb 2024 &middot; Unnat Bharat Abhiyan</p>
+      </summary>
+      <div class="internship-body">
+        <div class="internship-body-inner">
+          <p>Assessed learning levels and drove community welfare drives in rural Jharkhand.</p>
+          <ul>
+            <li>Assessed 390+ rural students with Pratham and Unnat Bharat Abhiyan, and digitized the results into analysis-ready formats.</li>
+            <li>Ran sanitation and digital literacy drives for 140+ villagers across adopted villages.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
   </article>
 
   <nav class="pager wrap" aria-label="Section navigation">
@@ -290,7 +331,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Reach me</h2>
       <ul class="foot-links">
-        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
         <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
@@ -308,6 +349,9 @@
     </div>
   </div>
 </footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
 <script src="/site.js" defer></script>
 </body>
 </html>

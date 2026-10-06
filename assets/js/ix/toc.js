@@ -17,7 +17,7 @@
   function setupHeadingAnchors() {
     var headings = d.querySelectorAll('main h2, main h3');
     headings.forEach(function(h) {
-      if (h.closest('.modal, .diag-modal, .search-modal, .proof')) return;
+      if (h.closest('.modal, .diag-modal, .search-modal, .proof, summary, .internship-summary, details')) return;
       if (!h.id) {
         var baseSlug = slugify(h.textContent);
         if (!baseSlug) return;

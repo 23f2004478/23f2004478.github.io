@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-motion="full">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +34,23 @@
   <meta name="twitter:description" content="Six case studies on personal multi-agent systems built on open-source Hermes Agent with human approval gates, kanban hand-offs, and verified telemetry.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work.png">
   <meta name="twitter:image:alt" content="Agent systems | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/resume/*" } },
+            { "not": { "href_matches": "/archive/*" } },
+            { "not": { "href_matches": "/log/feed.*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,7 +84,7 @@
   ]
 }
   </script>
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -125,10 +142,10 @@
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
     </nav>
-    <button class="icon-btn search-trigger" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+    <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
       <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
     </button>
-    <button class="icon-btn theme-btn" type="button" aria-label="Toggle dark mode">
+    <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
       <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
       <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
     </button>
@@ -155,47 +172,47 @@
     </div>
 
     <!-- Six Case Studies -->
-    <section class="section" id="case-studies" aria-labelledby="h-cases">
+    <section class="section" id="case-studies" data-ix="reveal" aria-labelledby="h-cases">
       <h2 id="h-cases">Six case studies</h2>
-      <ul class="rows" role="list">
+      <ul class="rows" role="list" data-ix="filters">
         <li>
           <div>
-            <h3><a href="/work/platform/">Multi-agent operations platform</a></h3>
+            <h3><a href="/work/platform/" style="view-transition-name: cs-platform;">Multi-agent operations platform</a></h3>
             <p>Twelve profiles that hand work to each other on kanban cards, with a review gate before anything risky. Includes hourly medic drift monitoring and janitor cleanups.</p>
           </div>
           <div class="fact mono">12 PROFILES &middot; 39 JOBS</div>
         </li>
         <li>
           <div>
-            <h3><a href="/work/routing/">Model routing and tiered compute</a></h3>
+            <h3><a href="/work/routing/" style="view-transition-name: cs-routing;">Model routing and tiered compute</a></h3>
             <p>One local gateway in front of several model providers, with automatic fallback chains. Plain Python and Bash scripts perform exact calculations before any model is invoked.</p>
           </div>
           <div class="fact mono">GATEWAY &amp; FALLBACK</div>
         </li>
         <li>
           <div>
-            <h3><a href="/work/memory/">Memory and self-documentation</a></h3>
+            <h3><a href="/work/memory/" style="view-transition-name: cs-memory;">Memory and self-documentation</a></h3>
             <p>Curated persistent memory paired with LCM-X context engine, which losslessly compacts session transcripts into searchable summary graphs without losing historical context.</p>
           </div>
           <div class="fact mono">LCM-X CONTEXT ENGINE</div>
         </li>
         <li>
           <div>
-            <h3><a href="/work/reliability/">Reliability and security</a></h3>
+            <h3><a href="/work/reliability/" style="view-transition-name: cs-reliability;">Reliability and security</a></h3>
             <p>Encrypted backup capsules mirrored offsite to GitHub Releases via systemd timers, locked-down secrets handling, and a scripted fresh-server restore runbook.</p>
           </div>
           <div class="fact mono">ENCRYPTED BACKUPS</div>
         </li>
         <li>
           <div>
-            <h3><a href="/work/finance/">Finance ledger agent</a></h3>
+            <h3><a href="/work/finance/" style="view-transition-name: cs-finance;">Finance ledger agent</a></h3>
             <p>Automated transaction staging from read-only Gmail receipt ingestion into self-hosted Firefly III using deterministic HTML/regex parsers and refund netting.</p>
           </div>
           <div class="fact mono">DETERMINISTIC PARSERS</div>
         </li>
         <li>
           <div>
-            <h3><a href="/work/linkedin-studio/">Personal LinkedIn studio</a></h3>
+            <h3><a href="/work/linkedin-studio/" style="view-transition-name: cs-linkedin-studio;">Personal LinkedIn studio</a></h3>
             <p>Local drafting environment that screens technical posts against voice notes and anti-AI writing patterns. Every post is manually reviewed and published by me.</p>
           </div>
           <div class="fact mono">HUMAN PUBLISHES</div>
@@ -226,7 +243,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Reach me</h2>
       <ul class="foot-links">
-        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
         <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
         <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
         <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
@@ -244,6 +261,9 @@
     </div>
   </div>
 </footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
 <script src="/site.js" defer></script>
 </body>
 </html>
