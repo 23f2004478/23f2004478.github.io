@@ -61,23 +61,23 @@ Fri
 Sun
 Less
 More
-Total hours 143.5 h
+Total hours 143.7 h
 Active days 21
 Daily average 6.8 h/day
 Longest day 13.9 h (28 Sep 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Full operating rhythm breakdown →
-132,343
+132,482
 Agent replies
-Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,060 messages, most of them dictated.
+Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,062 messages, most of them dictated.
 Turn volume & human leverage
-My messages (dictated or typed) 3,060
-Agent replies 132,343
-Tool executions 131,447
+My messages (dictated or typed) 3,062
+Agent replies 132,482
+Tool executions 131,582
 About 43 agent messages for every message I sent, counting scheduled jobs.
 Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
 See human approval gates →
-7.95 B
+8.01 B
 Tokens processed
 Most of these are tokens my agents read, not write.
 Token volume (all sources)
@@ -89,11 +89,11 @@ Fri
 Sun
 Less
 More
-Through my model gateway 6.86 B
+Through my model gateway 6.92 B
 Claude, called directly by my agents 1.07 B
 Claude Code CLI 16.7 M
 Peak day 1.13 B (6 Oct 2026)
-Among Gemini, Claude Opus and Claude Sonnet: Gemini 64.9%, Opus 30.1%, Sonnet 5.0% of tokens logged.
+Among Gemini, Claude Opus and Claude Sonnet: Gemini 65.2%, Opus 29.9%, Sonnet 4.9% of tokens logged.
 Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
 Explore model routing and compute tiering →
 11
@@ -340,7 +340,7 @@ Human Review Gate: Anything I would regret waits for my approval: sends, deletes
 Continuous Maintenance: A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.
 ## Hours with my agents, by day
 Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.
-143.5 h Total hours
+143.7 h Total hours
 21 Active days
 6.8 h Avg / active day
 13.9 h Longest day (2026-09-28)
@@ -452,11 +452,11 @@ Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
 Fable: Architectural planning, design system direction, and exhaustive fact audits.
 Measured empirical split, share of Hermes-tracked tokens:
 Gemini Flash
-64.9%
+65.2%
 Claude Opus
-30.1%
+29.9%
 Claude Sonnet
-5.0%
+4.9%
 Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.
 ## Outcome
 When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.
@@ -506,7 +506,7 @@ Agents that can run commands on a server can leak keys, slowly change settings b
 Backup schedule: four systemd timers run a daily backup, a daily offsite copy, a weekly check that the offsite copy still opens, and an hourly check for changes; a separate hourly job snapshots agent memory.
 Encrypted backups: each backup is encrypted with AES-256 before it leaves the server, then copied to Backblaze B2 cloud storage and mirrored to a private GitHub repository.
 Disaster Recovery Runbook: Scripted restore procedure capable of bootstrapping the full multi-agent environment from bare Ubuntu 24.04.
-Secrets Handling: Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never typed into chat.
+Secrets Handling: Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never passed in conversation.
 ## Egress and anonymity
 Web research that needs anonymity goes out through rotating egress over Tor and Cloudflare WARP, so no single route carries it and a failing route is dropped automatically.
 Load balancer: a small proxy (glider) spreads requests across five Tor routes, and a second pool prefers Cloudflare WARP and falls back to Tor when WARP is slow or down.
@@ -541,7 +541,7 @@ Rule-based parsers: One parser per receipt format pulls out the amount, date and
 No duplicates: Each entry is tagged with its order number, and if the same email is read again the existing entry is found and skipped. Refunds are matched to the original order number and netted off.
 Firefly III Integration: Staged transactions are posted to a self-hosted Firefly III instance via its authenticated REST API.
 ## Outcome
-Receipts reach the ledger without me typing them in, and re-reading an email does not create a second entry.
+Receipts reach the ledger without me entering them by hand, and re-reading an email does not create a second entry.
 ## Stack
 Python · Firefly III API · Gmail API · SQLite · scheduled jobs
 

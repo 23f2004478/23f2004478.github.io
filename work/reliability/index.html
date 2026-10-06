@@ -201,7 +201,7 @@
       <li><strong>Backup schedule:</strong> four systemd timers run a daily backup, a daily offsite copy, a weekly check that the offsite copy still opens, and an hourly check for changes; a separate hourly job snapshots agent memory.</li>
       <li><strong>Encrypted backups:</strong> each backup is encrypted with AES-256 before it leaves the server, then copied to Backblaze B2 cloud storage and mirrored to a private GitHub repository.</li>
       <li><strong>Disaster Recovery Runbook:</strong> Scripted restore procedure capable of bootstrapping the full multi-agent environment from bare Ubuntu 24.04.</li>
-      <li><strong>Secrets Handling:</strong> Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never typed into chat.</li>
+      <li><strong>Secrets Handling:</strong> Sensitive API tokens and credentials live in locked-down environment files and origin-bound vaults. Agents are set up so credentials are filled by the vault and never passed in conversation.</li>
     </ul>
 
     <h2>Egress and anonymity</h2>
