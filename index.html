@@ -59,44 +59,116 @@
       "@type": "Person",
       "@id": "https://krishnendu.me/#person",
       "name": "Krishnendu Biswas",
+      "givenName": "Krishnendu",
+      "familyName": "Biswas",
       "alternateName": [
         "Krishnendu",
         "Krshnndu",
         "Krishnendu Biswas IIM Ranchi"
       ],
-      "jobTitle": "AI Systems Developer & MBA Candidate",
-      "description": "I build AI agent platforms and run them daily with a human approval gate. MBA candidate at IIM Ranchi, programming diploma from IIT Madras.",
+      "jobTitle": "AI Systems Developer and MBA Candidate",
+      "description": "Krishnendu Biswas is an MBA candidate at IIM Ranchi (class of 2027) who builds AI agent platforms and runs them daily with a human approval gate. He holds a Diploma in Programming from IIT Madras and an author of a paper accepted for Springer Nature FICTA 2026 proceedings.",
       "url": "https://krishnendu.me/",
-      "image": "https://krishnendu.me/assets/avatar.webp",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://krishnendu.me/assets/avatar.webp"
+      },
+      "email": "mailto:krishnendu.biswasi22@iimranchi.ac.in",
+      "nationality": {
+        "@type": "Country",
+        "name": "India"
+      },
       "sameAs": [
-        "https://linkedin.com/in/krshnndu/",
+        "https://www.linkedin.com/in/krshnndu/",
         "https://github.com/krshnndu"
       ],
       "alumniOf": [
         {
           "@type": "CollegeOrUniversity",
-          "name": "Indian Institute of Management Ranchi"
+          "name": "Indian Institute of Management Ranchi",
+          "alternateName": "IIM Ranchi",
+          "url": "https://iimranchi.ac.in/",
+          "sameAs": [
+            "https://en.wikipedia.org/wiki/Indian_Institute_of_Management_Ranchi",
+            "https://www.wikidata.org/wiki/Q15228649"
+          ]
         },
         {
           "@type": "CollegeOrUniversity",
-          "name": "Indian Institute of Technology Madras"
+          "name": "Indian Institute of Technology Madras",
+          "alternateName": "IIT Madras",
+          "url": "https://www.iitm.ac.in/",
+          "sameAs": [
+            "https://en.wikipedia.org/wiki/IIT_Madras",
+            "https://www.wikidata.org/wiki/Q858662"
+          ]
+        }
+      ],
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Indian Institute of Management Ranchi",
+        "url": "https://iimranchi.ac.in/"
+      },
+      "memberOf": {
+        "@type": "OrganizationRole",
+        "roleName": "Senior Executive Member",
+        "startDate": "2026",
+        "memberOf": {
+          "@type": "Organization",
+          "name": "Corporate Relations and Placement Committee, IIM Ranchi"
+        }
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Microsoft Certified: Power BI Data Analyst Associate (PL-300)",
+          "credentialCategory": "certification",
+          "dateCreated": "2025-06-21",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Microsoft"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Lean Six Sigma Green Belt",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Grant Thornton"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Diploma in Programming",
+          "credentialCategory": "diploma",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "Indian Institute of Technology Madras"
+          }
         }
       ],
       "knowsAbout": [
-        "AI Agent Platforms",
-        "Machine Learning",
-        "Data Analytics",
+        "AI agent platforms",
+        "Multi-agent systems",
+        "Machine learning",
+        "Natural language processing",
+        "Data analytics",
         "Power BI",
-        "TypeScript",
-        "Python"
+        "Python",
+        "TypeScript"
       ],
       "subjectOf": [
         {
-          "@type": "ScholarlyArticle",
-          "name": "Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data",
-          "description": "Conference paper in Springer Nature proceedings (FICTA 2026). RoBERTa with SVMSMOTE reached 74.19% recall on the rare Confused class in imbalanced dialogue data."
+          "@id": "https://krishnendu.me/research/#ficta-2026"
+        },
+        {
+          "@id": "https://krishnendu.me/research/#wmc-2025"
         }
-      ]
+      ],
+      "mainEntityOfPage": {
+        "@id": "https://krishnendu.me/#webpage"
+      }
     },
     {
       "@type": "WebSite",
@@ -105,7 +177,9 @@
       "name": "Krishnendu Biswas",
       "publisher": {
         "@id": "https://krishnendu.me/#person"
-      }
+      },
+      "inLanguage": "en",
+      "description": "Personal site of Krishnendu Biswas: AI agent systems, internships, machine learning projects and research."
     },
     {
       "@type": "ProfilePage",
@@ -119,11 +193,18 @@
         "@id": "https://krishnendu.me/#person"
       },
       "dateCreated": "2026-09-11T00:00:00+05:30",
-      "dateModified": "2026-10-06T00:00:00+05:30"
+      "dateModified": "2026-10-06T00:00:00+05:30",
+      "mainEntity": {
+        "@id": "https://krishnendu.me/#person"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://krishnendu.me/og/og-home.png"
+      }
     }
   ]
 }
-  </script>
+</script>
   <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
@@ -513,6 +594,11 @@
     <p class="more"><a href="/credentials/">All credentials and education <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
   </section>
 
+  <!-- about-answer -->
+  <section class="section wrap" id="about" aria-labelledby="h-about">
+    <h2 id="h-about">Who is Krishnendu Biswas?</h2>
+    <p>Krishnendu Biswas is an MBA candidate at IIM Ranchi (class of 2027) who builds AI agent platforms and runs them every day with a human approval gate. He holds a Diploma in Programming from IIT Madras, is a Senior Executive Member of the IIM Ranchi Corporate Relations and Placement Committee, and is an author of a paper accepted for Springer Nature FICTA 2026 proceedings.</p>
+  </section>
   <!-- Leadership -->
   <section class="section wrap" id="leadership" data-ix="reveal" aria-labelledby="h-lead">
     <h2 id="h-lead">Leadership</h2>
