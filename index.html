@@ -304,47 +304,223 @@
     </div>
 
     <!-- Proof Strip -->
-    <dl class="proof" aria-label="Proof in numbers" data-ix="countup">
-      <div>
-        <dt><a href="/work/platform/" data-val="39">39</a></dt>
-        <dd><a href="/work/platform/">recurring jobs on 12 agent profiles</a><span class="cap">Scheduled tasks that run without me starting them, across 12 separate areas of my work. Counted on the server, 6 Oct 2026.</span></dd>
+    <dl class="proof" aria-label="Agent platform metrics" data-ix="countup">
+      <div class="proof-card">
+        <dt><a href="/work/routing/" data-val="6.24B+" class="proof-num">6.24B+</a></dt>
+        <dd>
+          <a href="/work/routing/" class="proof-title">Total AI tokens processed</a>
+          <span class="cap">Processed across 36,500+ requests with multi-model routing and prompt caching.</span>
+          <div class="proof-portal-wrap">
+            <button type="button" class="proof-portal-btn" aria-expanded="false" aria-controls="portal-tokens">
+              <span>Breakdown</span>
+              <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+            </button>
+            <div class="proof-portal" id="portal-tokens">
+              <ul class="portal-list" role="list">
+                <li><strong>Gemini 3.7 Flash (~65%)</strong>: High-throughput extraction, telemetry, and background sweeps.</li>
+                <li><strong>Claude Opus (~25%)</strong>: Deep multi-file reasoning, architectural audits, and high-stakes verification.</li>
+                <li><strong>Claude Sonnet 5.5 (~10%)</strong>: Deterministic code authoring, unit test suites, and generator scripts.</li>
+              </ul>
+              <a href="/work/routing/" class="portal-link">Model routing case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            </div>
+          </div>
+        </dd>
       </div>
-      <div>
-        <dt><a href="/internships/" data-val="136">136</a></dt>
-        <dd><a href="/internships/">unit tests on estimation engines, 68 with Excel parity</a><span class="cap">QualityKiosk internal tooling: 136 unit tests across pricing and estimation models, with 68 verified against legacy Excel sheets.</span></dd>
+
+      <div class="proof-card">
+        <dt><a href="/work/platform/" data-val="805.6M" class="proof-num">805.6M</a></dt>
+        <dd>
+          <a href="/work/platform/" class="proof-title">Peak 24-hour throughput</a>
+          <span class="cap">Single-day compute record on 5 Oct 2026 across 3,642 agent runs.</span>
+          <div class="proof-portal-wrap">
+            <button type="button" class="proof-portal-btn" aria-expanded="false" aria-controls="portal-peak">
+              <span>Breakdown</span>
+              <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+            </button>
+            <div class="proof-portal" id="portal-peak">
+              <ul class="portal-list" role="list">
+                <li><strong>Concurrency</strong>: 10 parallel subagents dispatched across isolated processes without stalls.</li>
+                <li><strong>Burst routing</strong>: Dynamic load balancing and key pool rotation to avoid rate limits.</li>
+                <li><strong>Deep context</strong>: Context compaction preserving DAG lineage during high-volume workflows.</li>
+              </ul>
+              <a href="/work/platform/" class="portal-link">Platform scaling case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            </div>
+          </div>
+        </dd>
       </div>
-      <div>
-        <dt><a href="/research/" data-val="74.19%">74.19%</a></dt>
-        <dd><a href="/research/">rare-class recall, Springer Nature FICTA 2026</a><span class="cap">How often the model caught the rarest emotion, Confused, in an imbalanced chatbot dataset. Published in Springer Nature proceedings.</span></dd>
+
+      <div class="proof-card">
+        <dt><a href="/work/platform/" data-val="12" class="proof-num">12</a></dt>
+        <dd>
+          <a href="/work/platform/" class="proof-title">Specialist AI agents</a>
+          <span class="cap">Active profiles running 39 automated scheduled daily jobs across distinct operational domains.</span>
+          <div class="proof-portal-wrap">
+            <button type="button" class="proof-portal-btn" aria-expanded="false" aria-controls="portal-agents">
+              <span>Breakdown</span>
+              <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+            </button>
+            <div class="proof-portal" id="portal-agents">
+              <ul class="portal-list" role="list">
+                <li><strong>12 Profiles</strong>: Finance, Infra, Candidate, Socials, Workhorse, Medic, Janitor, Academic, Exam, Ops, Placecom, and Router.</li>
+                <li><strong>Execution engine</strong>: 224 distinct skills with MECE permission boundaries and isolated SQLite databases.</li>
+              </ul>
+              <a href="/work/platform/" class="portal-link">Multi-agent topology case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            </div>
+          </div>
+        </dd>
+      </div>
+
+      <div class="proof-card">
+        <dt><a href="/work/reliability/" data-val="100%" class="proof-num">100%</a></dt>
+        <dd>
+          <a href="/work/reliability/" class="proof-title">Human gate enforcement</a>
+          <span class="cap">Zero unauthorized external actions. Destructive and external steps strictly wait for approval.</span>
+          <div class="proof-portal-wrap">
+            <button type="button" class="proof-portal-btn" aria-expanded="false" aria-controls="portal-gate">
+              <span>Breakdown</span>
+              <svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8l4 4 4-4"/></svg>
+            </button>
+            <div class="proof-portal" id="portal-gate">
+              <ul class="portal-list" role="list">
+                <li><strong>Safety invariant</strong>: Git pushes, outbound emails, file deletions, and financial writes pause at approval gates.</li>
+                <li><strong>Zero auto-publish</strong>: Drafts are written locally for inspection; publication waits indefinitely for owner sign-off.</li>
+              </ul>
+              <a href="/work/reliability/" class="portal-link">Reliability and safety case study <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+            </div>
+          </div>
+        </dd>
       </div>
     </dl>
-    <p class="proof-note">Job and profile counts recounted on the server, 6 Oct 2026.</p>
+    <p class="proof-note">Token metrics and profile estate recounted on the server, 6 Oct 2026.</p>
   </section>
 
-  <!-- Hero Figure: How a request moves -->
+  <!-- Hero Figure: 6-Stage Multi-Agent Architecture -->
   <section class="section wrap ribbon-sec" data-ix="reveal" aria-labelledby="h-flow">
-    <h2 id="h-flow">How a request moves</h2>
+    <h2 id="h-flow">6-Stage Multi-Agent Architecture</h2>
+    <p class="deck">From voice or chat prompt to deterministic execution, local privacy scrubbing, and automated delivery.</p>
+    
+    <div class="arch-diagram-wrap">
+      <svg class="arch-svg" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Specialist Agents, Stealth Egress, Human Gate, and Delivery">
+        <!-- Connecting paths -->
+        <path d="M 310 80 L 355 80" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
+        <path d="M 645 80 L 690 80" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
+        <path d="M 835 140 C 835 160, 835 160, 835 175" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
+        <path d="M 690 235 L 645 235" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
+        <path d="M 355 235 L 310 235" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
+        
+        <!-- Markers -->
+        <defs>
+          <marker id="arr-head" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--muted)"/>
+          </marker>
+        </defs>
+
+        <!-- Node 1: Ingest -->
+        <g class="arch-node" transform="translate(20, 20)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">01 &middot; DEPTH 0</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Any-Device Ingest</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">FreeFlow Voice, Discord, Telegram</text>
+          <text x="16" y="98" fill="var(--muted)" font-size="12">Tailscale Mesh, Termius Mobile SSH</text>
+        </g>
+
+        <!-- Node 2: Router -->
+        <g class="arch-node" transform="translate(355, 20)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">02 &middot; ROUTER PROFILE</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Central Triage &amp; Router</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">Intent parsing &amp; domain validation</text>
+          <text x="16" y="98" fill="var(--muted)" font-size="12">Dependency gating &amp; Kanban dispatch</text>
+        </g>
+
+        <!-- Node 3: Specialist Agents -->
+        <g class="arch-node" transform="translate(690, 20)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">03 &middot; DEPTH 1</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">12 Specialist Agents</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">24/7 Azure VPS &amp; systemd daemons</text>
+          <text x="16" y="98" fill="var(--muted)" font-size="12">Isolated workspaces &amp; LCM memory</text>
+        </g>
+
+        <!-- Node 4: Stealth Egress -->
+        <g class="arch-node" transform="translate(690, 175)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">04 &middot; DEPTH 2</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Stealth Egress &amp; 9Router</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">IP rotation &amp; local privacy scrub</text>
+          <text x="16" y="98" fill="var(--muted)" font-size="12">Dynamic routing: Opus / Sonnet / Gemini</text>
+        </g>
+
+        <!-- Node 5: The Human Gate -->
+        <g class="arch-node gate-node" transform="translate(355, 175)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <rect x="16" y="16" width="94" height="18" rx="2" fill="var(--accent)"/>
+          <text x="22" y="29" fill="var(--accent-ink)" class="mono" font-size="10" font-weight="700">WAITS FOR ME</text>
+          <text x="120" y="29" fill="var(--muted)" class="mono" font-size="11" font-weight="700">05 &middot; SAFETY GATE</text>
+          <text x="16" y="58" fill="var(--accent)" class="serif" font-size="16" font-weight="600">The Human Gate</text>
+          <text x="16" y="80" fill="var(--muted)" font-size="12">Zero auto-execution on destructive steps</text>
+          <text x="16" y="100" fill="var(--muted)" font-size="12">Pushes, emails, ledger wait for sign-off</text>
+        </g>
+
+        <!-- Node 6: Delivery & Sync -->
+        <g class="arch-node" transform="translate(20, 175)">
+          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">06 &middot; DEPTH 3</text>
+          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Delivery &amp; Ledger Sync</text>
+          <text x="16" y="78" fill="var(--muted)" font-size="12">Google Tasks, GitHub repos, Firefly III</text>
+          <text x="16" y="98" fill="var(--muted)" font-size="12">Omnichannel notification &amp; audit log</text>
+        </g>
+      </svg>
+    </div>
+
     <div class="ribbon-grid" data-ix="diagram_focus">
       <div class="station">
-        <span class="station-num">01</span>
-        <h3 class="station-title">I dictate and send</h3>
-        <p class="station-desc">I dictate, read the text, then send it on Discord or Telegram.</p>
+        <div class="station-head">
+          <span class="station-num">01</span>
+          <span class="station-depth">Depth 0</span>
+        </div>
+        <h3 class="station-title">Any-Device Ingest</h3>
+        <p class="station-desc">FreeFlow voice on Mac, Dictate on Android, Discord and Telegram omnichannel messaging, Tailscale WireGuard mesh, and Termius mobile SSH.</p>
       </div>
       <div class="station">
-        <span class="station-num">02</span>
-        <h3 class="station-title">The router picks the profile</h3>
-        <p class="station-desc">One of 11 domain profiles takes it. Safe steps run on their own.</p>
+        <div class="station-head">
+          <span class="station-num">02</span>
+          <span class="station-depth">Router</span>
+        </div>
+        <h3 class="station-title">Central Triage &amp; Router</h3>
+        <p class="station-desc">Intent parsing, domain validation, dependency gating, and asynchronous Kanban task dispatch across profile queues.</p>
+      </div>
+      <div class="station">
+        <div class="station-head">
+          <span class="station-num">03</span>
+          <span class="station-depth">Depth 1</span>
+        </div>
+        <h3 class="station-title">12 Specialist Agents</h3>
+        <p class="station-desc">Dedicated domain profiles on 24/7 Azure VPS with isolated working directories, LCM context memory DAGs, and scoped tools.</p>
+      </div>
+      <div class="station">
+        <div class="station-head">
+          <span class="station-num">04</span>
+          <span class="station-depth">Depth 2</span>
+        </div>
+        <h3 class="station-title">Stealth Egress &amp; 9Router</h3>
+        <p class="station-desc">IP rotation proxy pools, local privacy scrubbing gates, and dynamic compute tiering across Claude Opus, Sonnet 5.5, and Gemini 3.7 Flash.</p>
       </div>
       <div class="station gate-station">
-        <span class="station-num">03</span>
-        <span class="station-tag">waits for me</span>
-        <h3 class="station-title">The gate</h3>
-        <p class="station-desc">Deletes, sends, commits and deploys stop here until I reply.</p>
+        <div class="station-head">
+          <span class="station-num">05</span>
+          <span class="station-tag">waits for me</span>
+        </div>
+        <h3 class="station-title">The Human Gate</h3>
+        <p class="station-desc">Strict safety invariant: git pushes, outbound emails, file deletions, and financial ledger writes pause at mandatory human approval gates.</p>
       </div>
       <div class="station">
-        <span class="station-num">04</span>
-        <h3 class="station-title">Done</h3>
-        <p class="station-desc">The result lands where it belongs. What needs me lands in Google Tasks.</p>
+        <div class="station-head">
+          <span class="station-num">06</span>
+          <span class="station-depth">Depth 3</span>
+        </div>
+        <h3 class="station-title">Delivery &amp; Ledger Sync</h3>
+        <p class="station-desc">Automated delivery to Google Tasks, private GitHub repositories, Firefly III accounting ledger, and instant notification pings.</p>
       </div>
     </div>
 

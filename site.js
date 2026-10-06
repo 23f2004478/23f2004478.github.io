@@ -45,6 +45,17 @@
       }
     });
   }
+
+  // Proof portal breakdown toggle
+  d.addEventListener('click', function(e) {
+    var btn = e.target.closest('.proof-portal-btn');
+    if (!btn) return;
+    var portalId = btn.getAttribute('aria-controls');
+    var portal = portalId ? d.getElementById(portalId) : btn.nextElementSibling;
+    if (!portal) return;
+    var isOpen = portal.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
 })();
 
 
