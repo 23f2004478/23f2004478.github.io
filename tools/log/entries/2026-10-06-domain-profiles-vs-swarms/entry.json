@@ -1,0 +1,33 @@
+{
+ "slug": "domain-profiles-vs-swarms",
+ "date": "2026-10-06",
+ "title": "Chose domain profiles over functional swarms",
+ "status": "in progress",
+ "category": "capability",
+ "what_changed": "Published technical architecture review on agent topology: rejected functional swarms in favor of two-level domain profiles with ephemeral read-only subagents [K:t_8b4baf57].",
+ "why_it_matters": "Guarantees strict physical data airgaps across life domains and eliminates context fragmentation while avoiding the 15x token multiplier [K:t_8b4baf57].",
+ "result": "Architecture drafted and staged on preview branch for pilot validation [K:t_8b4baf57].",
+ "lesson": "Parallel agents writing to the same workspace introduce conflicting implicit decisions. Writes must remain single-threaded while subagents gather intelligence.",
+ "diagram": {
+  "template": "pipeline",
+  "title": "Two-level agent topology and execution flow",
+  "desc": "Three stages: Level 0 Hub routes via Kanban card, Level 1 Domain Owner writes alone, Level 2 Ephemeral Subagents provide read-only intelligence.",
+  "steps": ["Level 0: Hub", "Level 1: Domain Owner", "Level 2: Ephemeral Roles"],
+  "accent_step": 1,
+  "loop_from": 2,
+  "loop_to": 1,
+  "loop_label": "Sourced findings return",
+  "caption": "Domain owners own the workspace and disk writes. Ephemeral subagents return facts without writing."
+ },
+ "sources": [
+  {"tag": "K:t_8b4baf57", "label": "Task card: Draft and stage blog post on domain profiles vs swarms"}
+ ],
+ "numbers": [
+  {"value": "15", "tag": "K:t_8b4baf57", "what": "token multiplier for multi-agent systems vs chat", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "consumes roughly 15x the tokens"}},
+  {"value": "2", "tag": "K:t_8b4baf57", "what": "architectural hierarchy levels", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "two-level, data-isolated architecture"}},
+  {"value": "0", "tag": "K:t_8b4baf57", "what": "hub level", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "Level 0: Hub"}},
+  {"value": "1", "tag": "K:t_8b4baf57", "what": "domain owner level", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "Level 1: Domain Owner"}},
+  {"value": "2", "tag": "K:t_8b4baf57", "what": "ephemeral subagent level", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "Level 2: Ephemeral Subagent Roles"}},
+  {"value": "6 Oct 2026", "tag": "K:t_8b4baf57", "what": "date drafted and staged", "evidence": {"file": "WORK:inputs/blog/domain_profiles_vs_multi_agent.md", "pattern": "6 October 2026"}}
+ ]
+}
