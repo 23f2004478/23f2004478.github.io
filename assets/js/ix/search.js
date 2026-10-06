@@ -1,6 +1,7 @@
 /**
- * Client-Side Instant Search Modal
- * Keyboard shortcuts: Cmd+K / Ctrl+K / '/'
+ * Feature: search
+ * Hook: [data-ix~="search"], .search-trigger, .search-btn, Cmd+K, '/'
+ * Accessible Command Palette Site Search
  */
 (function() {
   'use strict';
@@ -10,7 +11,7 @@
   var input = null;
   var resultsList = null;
   var selectedIndex = -1;
-  var isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+  var isMac = typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
   function loadIndex(cb) {
     if (searchIndex) return cb(searchIndex);
@@ -37,7 +38,7 @@
     var kbdHint = isMac ? '⌘K' : 'Ctrl+K';
 
     backdrop.innerHTML = [
-      '<div class="search-modal">',
+      '<div class="search-modal" data-ix="search">',
       '  <div class="search-head">',
       '    <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"></circle><path d="M14 14l4 4"></path></svg>',
       '    <input type="text" class="search-input" placeholder="Search pages, projects, case studies, logs..." autocomplete="off" spellcheck="false" aria-label="Search site">',
@@ -185,11 +186,13 @@
   });
 
   // Attach search trigger buttons if present
-  d.querySelectorAll('.search-trigger, .search-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openSearch();
-    });
+  d.querySelectorAll('.search-trigger, .search-btn, [data-ix~="search"]').forEach(function(btn) {
+    if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openSearch();
+      });
+    }
   });
 
   // Expose API

@@ -1,172 +1,190 @@
 /**
- * Instant Client-Side Category Filtering
- * Attaches accessible filter toolbars to Hub pages (/credentials/, /projects/, /work/)
+ * Feature: filters
+ * Hook: [data-ix~="filters"], section#education, section#certifications, section#case-studies, section#projects-list
+ * Dynamic category filter chips for list hubs with URL hash sync & live counts
  */
 (function() {
   'use strict';
   var d = document;
 
-  function setupFilters() {
+  function initPageFilters() {
     var path = window.location.pathname;
 
     if (path.indexOf('/credentials') !== -1) {
       setupCredentialsFilters();
-    } else if (path.indexOf('/projects') !== -1 && path.replace(/\/$/, '') === '/projects') {
+    } else if (path.indexOf('/projects') !== -1) {
       setupProjectsFilters();
     } else if (path.indexOf('/work') !== -1 && path.replace(/\/$/, '') === '/work') {
       setupWorkFilters();
     }
   }
 
-  function createFilterBar(categories, onSelect, activeId) {
-    var bar = d.createElement('nav');
-    bar.className = 'filter-bar wrap';
-    bar.setAttribute('role', 'toolbar');
-    bar.setAttribute('aria-label', 'Filter categories');
+  // 1. Credentials filtering
+  function setupCredentialsFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
 
-    var list = d.createElement('div');
-    list.className = 'filter-chips';
+    var sections = main.querySelectorAll('section');
+    if (!sections.length) return;
+
+    var categories = [
+      { id: 'all', label: 'All credentials' },
+      { id: 'education', label: 'Degrees' },
+      { id: 'certifications', label: 'Certifications' },
+      { id: 'skills', label: 'Skills by evidence' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var visibleCount = 0;
+      sections.forEach(function(sec) {
+        var sid = sec.id || '';
+        var match = (catId === 'all') ||
+                    (catId === 'education' && (sid === 'education' || sec.querySelector('#education-heading'))) ||
+                    (catId === 'certifications' && (sid === 'certifications' || sec.querySelector('#certifications-heading'))) ||
+                    (catId === 'skills' && (sid === 'skills' || sec.querySelector('#skills-heading')));
+
+        sec.hidden = !match;
+        if (match) visibleCount++;
+      });
+      return visibleCount;
+    });
+  }
+
+  // 2. Projects filtering
+  function setupProjectsFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
+
+    var items = main.querySelectorAll('section, article, .project-card, .entry');
+    if (items.length < 2) return;
+
+    var categories = [
+      { id: 'all', label: 'All projects' },
+      { id: 'ml', label: 'Machine learning & research' },
+      { id: 'systems', label: 'Agent systems & data' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var count = 0;
+      items.forEach(function(item) {
+        var text = (item.textContent || '').toLowerCase();
+        var match = (catId === 'all') ||
+                    (catId === 'ml' && (text.indexOf('ficta') !== -1 || text.indexOf('churn') !== -1 || text.indexOf('recall') !== -1 || text.indexOf('model') !== -1)) ||
+                    (catId === 'systems' && (text.indexOf('agent') !== -1 || text.indexOf('ledger') !== -1 || text.indexOf('pipeline') !== -1 || text.indexOf('engine') !== -1));
+
+        item.hidden = !match;
+        if (match) count++;
+      });
+      return count;
+    });
+  }
+
+  // 3. Work filtering
+  function setupWorkFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
+
+    var items = main.querySelectorAll('#case-studies .rows li, .case-grid > *');
+    if (items.length < 2) return;
+
+    var categories = [
+      { id: 'all', label: 'All agent systems' },
+      { id: 'infra', label: 'Platform & routing' },
+      { id: 'tools', label: 'Ledger & memory' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var count = 0;
+      items.forEach(function(item) {
+        var text = (item.textContent || '').toLowerCase();
+        var match = (catId === 'all') ||
+                    (catId === 'infra' && (text.indexOf('platform') !== -1 || text.indexOf('routing') !== -1 || text.indexOf('multi-agent') !== -1)) ||
+                    (catId === 'tools' && (text.indexOf('ledger') !== -1 || text.indexOf('memory') !== -1 || text.indexOf('linkedin') !== -1 || text.indexOf('reliability') !== -1));
+
+        item.hidden = !match;
+        if (match) count++;
+      });
+      return count;
+    });
+  }
+
+  function createFilterUI(container, categories, filterFn) {
+    var bar = d.createElement('div');
+    bar.className = 'filter-bar wrap';
+    bar.setAttribute('data-ix', 'filters');
+    bar.setAttribute('role', 'toolbar');
+    bar.setAttribute('aria-label', 'Filter items by category');
+
+    var liveStatus = d.createElement('span');
+    liveStatus.className = 'filter-status sr-only';
+    liveStatus.setAttribute('aria-live', 'polite');
+
+    var currentCat = 'all';
+    var hashMatch = location.hash.match(/#cat=([a-z0-9_-]+)/);
+    if (hashMatch && categories.some(function(c) { return c.id === hashMatch[1]; })) {
+      currentCat = hashMatch[1];
+    }
+
+    var buttons = [];
 
     categories.forEach(function(cat) {
       var btn = d.createElement('button');
       btn.type = 'button';
-      btn.className = 'filter-chip';
-      btn.setAttribute('data-filter', cat.id);
-      var isPressed = cat.id === activeId;
-      btn.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+      btn.className = 'filter-chip' + (cat.id === currentCat ? ' is-active' : '');
+      btn.setAttribute('data-cat', cat.id);
+      btn.setAttribute('aria-pressed', cat.id === currentCat ? 'true' : 'false');
       btn.textContent = cat.label;
 
       btn.addEventListener('click', function() {
-        list.querySelectorAll('.filter-chip').forEach(function(b) {
-          b.setAttribute('aria-pressed', 'false');
+        if (currentCat === cat.id) return;
+        currentCat = cat.id;
+
+        buttons.forEach(function(b) {
+          var isCur = b.getAttribute('data-cat') === currentCat;
+          b.classList.toggle('is-active', isCur);
+          b.setAttribute('aria-pressed', isCur ? 'true' : 'false');
         });
-        btn.setAttribute('aria-pressed', 'true');
-        onSelect(cat.id);
+
+        if (currentCat === 'all') {
+          history.replaceState(null, null, window.location.pathname);
+        } else {
+          history.replaceState(null, null, '#cat=' + currentCat);
+        }
+
+        applyFilter();
       });
 
-      list.appendChild(btn);
+      buttons.push(btn);
+      bar.appendChild(btn);
     });
 
-    bar.appendChild(list);
-    return bar;
-  }
+    bar.appendChild(liveStatus);
 
-  function setupCredentialsFilters() {
-    var main = d.querySelector('main');
-    var article = d.querySelector('article.page-head, article.wrap');
-    if (!article || !main) return;
-
-    var sections = {
-      'all': d.querySelectorAll('#certifications, #achievements, #education, #skills'),
-      'certs': d.querySelectorAll('#certifications'),
-      'achieve': d.querySelectorAll('#achievements'),
-      'edu': d.querySelectorAll('#education'),
-      'skills': d.querySelectorAll('#skills')
-    };
-
-    var categories = [
-      { id: 'all', label: 'All credentials' },
-      { id: 'certs', label: 'Certifications' },
-      { id: 'achieve', label: 'Achievements' },
-      { id: 'edu', label: 'Education' },
-      { id: 'skills', label: 'Skills' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      var allSections = d.querySelectorAll('#certifications, #achievements, #education, #skills');
-      allSections.forEach(function(sec) {
-        if (filterId === 'all') {
-          sec.hidden = false;
-        } else {
-          var match = false;
-          sections[filterId].forEach(function(target) {
-            if (target === sec) match = true;
-          });
-          sec.hidden = !match;
-        }
-      });
-    }, 'all');
-
-    // Insert before the first section
-    var firstSec = d.querySelector('#certifications') || article.querySelector('section');
-    if (firstSec) {
-      firstSec.parentNode.insertBefore(bar, firstSec);
+    var targetInsert = container.querySelector('.page-head, h1');
+    if (targetInsert && targetInsert.parentNode) {
+      targetInsert.parentNode.insertBefore(bar, targetInsert.nextSibling);
+    } else {
+      container.insertBefore(bar, container.firstChild);
     }
-  }
 
-  function setupProjectsFilters() {
-    var rowsList = d.querySelector('section ul.rows');
-    if (!rowsList) return;
+    function applyFilter() {
+      if ('startViewTransition' in d && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.startViewTransition(function() {
+          var count = filterFn(currentCat);
+          liveStatus.textContent = 'Showing ' + count + ' items';
+        });
+      } else {
+        var count = filterFn(currentCat);
+        liveStatus.textContent = 'Showing ' + count + ' items';
+      }
+    }
 
-    var items = rowsList.querySelectorAll('li');
-    if (items.length < 3) return;
-
-    var categories = [
-      { id: 'all', label: 'All projects' },
-      { id: 'ml', label: 'AI & Machine Learning' },
-      { id: 'bi', label: 'Power BI & Analytics' },
-      { id: 'code', label: 'Python & Web' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      items.forEach(function(li) {
-        var text = li.textContent.toLowerCase();
-        if (filterId === 'all') {
-          li.hidden = false;
-        } else if (filterId === 'ml') {
-          var isML = text.indexOf('machine learning') !== -1 || text.indexOf('nlp') !== -1 || text.indexOf('rag') !== -1 || text.indexOf('lora') !== -1 || text.indexOf('k-means') !== -1;
-          li.hidden = !isML;
-        } else if (filterId === 'bi') {
-          var isBI = text.indexOf('power bi') !== -1 || text.indexOf('dax') !== -1 || text.indexOf('analytics') !== -1 || text.indexOf('dashboard') !== -1;
-          li.hidden = !isBI;
-        } else if (filterId === 'code') {
-          var isCode = text.indexOf('python') !== -1 || text.indexOf('fastapi') !== -1 || text.indexOf('typescript') !== -1;
-          li.hidden = !isCode;
-        }
-      });
-    }, 'all');
-
-    rowsList.parentNode.insertBefore(bar, rowsList);
-  }
-
-  function setupWorkFilters() {
-    var caseList = d.querySelector('section#case-studies ul.rows, section ul.rows');
-    if (!caseList) return;
-
-    var items = caseList.querySelectorAll('li');
-    if (items.length < 3) return;
-
-    var categories = [
-      { id: 'all', label: 'All case studies' },
-      { id: 'agents', label: 'Multi-agent systems' },
-      { id: 'reliability', label: 'Security & Reliability' },
-      { id: 'ops', label: 'Finance & Operations' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      items.forEach(function(li) {
-        var text = li.textContent.toLowerCase();
-        if (filterId === 'all') {
-          li.hidden = false;
-        } else if (filterId === 'agents') {
-          var isAgent = text.indexOf('platform') !== -1 || text.indexOf('routing') !== -1 || text.indexOf('memory') !== -1;
-          li.hidden = !isAgent;
-        } else if (filterId === 'reliability') {
-          var isRel = text.indexOf('reliability') !== -1 || text.indexOf('security') !== -1;
-          li.hidden = !isRel;
-        } else if (filterId === 'ops') {
-          var isOps = text.indexOf('finance') !== -1 || text.indexOf('linkedin') !== -1;
-          li.hidden = !isOps;
-        }
-      });
-    }, 'all');
-
-    caseList.parentNode.insertBefore(bar, caseList);
+    applyFilter();
   }
 
   if (d.readyState === 'loading') {
-    d.addEventListener('DOMContentLoaded', setupFilters);
+    d.addEventListener('DOMContentLoaded', initPageFilters);
   } else {
-    setupFilters();
+    initPageFilters();
   }
 })();

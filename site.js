@@ -1,12 +1,13 @@
 /**
- * Consolidated Interactive Layer - krishnendu.me
- * Zero external dependencies. Modularly compiled.
+ * Krishnendu Biswas: Interactive Client Layer (krishnendu.me)
+ * Modules included (13): core_theme_nav, view_transitions, prefetch, search, reveal, countup, toc, back_to_top, chart_tooltips, diagram_focus, copy_email, filters, theme_fade
+ * Zero external dependencies. Config-driven build.
  */
 
 
-// === theme-nav.js ===
+// === Module: core_theme_nav (core_theme_nav.js) ===
 /**
- * Theme & Nav Controller
+ * Core Theme & Navigation (baseline layer)
  */
 (function() {
   'use strict';
@@ -47,10 +48,74 @@
 })();
 
 
-// === search.js ===
+// === Module: view_transitions (view_transitions.js) ===
 /**
- * Client-Side Instant Search Modal
- * Keyboard shortcuts: Cmd+K / Ctrl+K / '/'
+ * Feature: view_transitions
+ * Hook: [data-ix~="view_transitions"] or HTML document
+ * Smooth cross-document view transitions with motion reduction support
+ */
+(function() {
+  'use strict';
+  if (!('startViewTransition' in document)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Intercept in-app navigation clicks if full SPA-like transitions are requested
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest('a');
+    if (!a || !a.href || a.target || a.hasAttribute('download')) return;
+    if (a.origin !== window.location.origin) return;
+    if (a.pathname.indexOf('/resume/') !== -1 || a.pathname.indexOf('/archive/') !== -1) return;
+    if (a.pathname === window.location.pathname && a.hash) return;
+
+    // Support smooth morph for same-origin links
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  });
+})();
+
+
+// === Module: prefetch (prefetch.js) ===
+/**
+ * Feature: prefetch
+ * Hook: [data-ix~="prefetch"] or document links
+ * Speculation rules / link prefetching for same-origin navigation
+ */
+(function() {
+  'use strict';
+  var prefetched = {};
+
+  function prefetchUrl(url) {
+    if (prefetched[url] || !url) return;
+    if (url.indexOf('http') === 0 && url.indexOf(window.location.origin) !== 0) return;
+    if (url.indexOf('#') === 0 || url.indexOf('mailto:') === 0 || url.indexOf('.pdf') !== -1 || url.indexOf('/archive/') !== -1) return;
+
+    prefetched[url] = true;
+    var link = document.createElement('link');
+    link.rel = 'prefetch';
+    link.href = url;
+    document.head.appendChild(link);
+  }
+
+  document.addEventListener('mouseover', function(e) {
+    var a = e.target.closest('a');
+    if (a && a.href && a.origin === window.location.origin) {
+      prefetchUrl(a.pathname);
+    }
+  }, { passive: true });
+
+  document.addEventListener('focusin', function(e) {
+    var a = e.target.closest('a');
+    if (a && a.href && a.origin === window.location.origin) {
+      prefetchUrl(a.pathname);
+    }
+  }, { passive: true });
+})();
+
+
+// === Module: search (search.js) ===
+/**
+ * Feature: search
+ * Hook: [data-ix~="search"], .search-trigger, .search-btn, Cmd+K, '/'
+ * Accessible Command Palette Site Search
  */
 (function() {
   'use strict';
@@ -60,7 +125,7 @@
   var input = null;
   var resultsList = null;
   var selectedIndex = -1;
-  var isMac = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+  var isMac = typeof navigator !== 'undefined' && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
   function loadIndex(cb) {
     if (searchIndex) return cb(searchIndex);
@@ -87,7 +152,7 @@
     var kbdHint = isMac ? '⌘K' : 'Ctrl+K';
 
     backdrop.innerHTML = [
-      '<div class="search-modal">',
+      '<div class="search-modal" data-ix="search">',
       '  <div class="search-head">',
       '    <svg class="search-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"></circle><path d="M14 14l4 4"></path></svg>',
       '    <input type="text" class="search-input" placeholder="Search pages, projects, case studies, logs..." autocomplete="off" spellcheck="false" aria-label="Search site">',
@@ -235,11 +300,13 @@
   });
 
   // Attach search trigger buttons if present
-  d.querySelectorAll('.search-trigger, .search-btn').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-      e.preventDefault();
-      openSearch();
-    });
+  d.querySelectorAll('.search-trigger, .search-btn, [data-ix~="search"]').forEach(function(btn) {
+    if (btn.tagName === 'BUTTON' || btn.tagName === 'A') {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        openSearch();
+      });
+    }
   });
 
   // Expose API
@@ -247,32 +314,403 @@
 })();
 
 
-// === diagrams.js ===
+// === Module: reveal (reveal.js) ===
 /**
- * Interactive Diagrams, Chart Tooltips and Lightbox Zoom
+ * Feature: reveal
+ * Hook: [data-ix~="reveal"]
+ * Smooth scroll-reveal for sections and lists with capped stagger
+ */
+(function() {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initReveal() {
+    var targets = document.querySelectorAll('[data-ix~="reveal"], section.section:not(.hero)');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    targets.forEach(function(el) {
+      // Never hide/reveal hero or first screen elements
+      if (el.closest('.hero, .site-head')) return;
+      el.classList.add('reveal-init');
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initReveal);
+  } else {
+    initReveal();
+  }
+})();
+
+
+// === Module: countup (countup.js) ===
+/**
+ * Feature: countup
+ * Hook: [data-ix~="countup"], dl.proof dt
+ * Animated count-up for key proof metrics
+ */
+(function() {
+  'use strict';
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  function initCountup() {
+    var targets = document.querySelectorAll('[data-ix~="countup"], dl.proof dt');
+    if (!targets.length || !('IntersectionObserver' in window)) return;
+
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    targets.forEach(function(el) {
+      if (!el.hasAttribute('aria-label')) {
+        el.setAttribute('aria-label', el.textContent.trim());
+      }
+      observer.observe(el);
+    });
+
+    function animateCount(el) {
+      var raw = el.textContent.trim();
+      var match = raw.match(/^([0-9\.]+)(.*)$/);
+      if (!match) return;
+
+      var targetNum = parseFloat(match[1]);
+      var suffix = match[2];
+      var isDecimal = match[1].indexOf('.') !== -1;
+      var decimals = isDecimal ? (match[1].split('.')[1].length) : 0;
+
+      var duration = 600;
+      var startTime = performance.now();
+
+      function update(now) {
+        var elapsed = now - startTime;
+        var progress = Math.min(1, elapsed / duration);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var current = targetNum * ease;
+
+        el.textContent = (isDecimal ? current.toFixed(decimals) : Math.round(current)) + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = raw;
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCountup);
+  } else {
+    initCountup();
+  }
+})();
+
+
+// === Module: toc (toc.js) ===
+/**
+ * Feature: toc
+ * Hook: [data-ix~="toc"], article.wrap, article.entry-page
+ * Sticky Table of Contents rail, mobile collapsible TOC, section anchors, and code copy
  */
 (function() {
   'use strict';
   var d = document;
 
-  // 1. Chart bar tooltips
+  function slugify(text) {
+    return (text || '').toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  // Heading anchors
+  function setupHeadingAnchors() {
+    var headings = d.querySelectorAll('main h2, main h3');
+    headings.forEach(function(h) {
+      if (h.closest('.modal, .diag-modal, .search-modal, .proof')) return;
+      if (!h.id) {
+        var baseSlug = slugify(h.textContent);
+        if (!baseSlug) return;
+        var slug = baseSlug;
+        var count = 1;
+        while (d.getElementById(slug)) {
+          slug = baseSlug + '-' + (++count);
+        }
+        h.id = slug;
+      }
+      var anchor = d.createElement('a');
+      anchor.className = 'heading-anchor';
+      anchor.href = '#' + h.id;
+      anchor.setAttribute('aria-label', 'Copy link to this section');
+      anchor.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M8 12a4 4 0 005.66 0l2-2a4 4 0 00-5.66-5.66l-1 1M12 8a4 4 0 00-5.66 0l-2 2a4 4 0 005.66 5.66l1-1"/></svg>';
+
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        var url = window.location.origin + window.location.pathname + '#' + h.id;
+        navigator.clipboard.writeText(url).then(function() {
+          if (window.showToast) window.showToast('Copied section link');
+          history.pushState(null, null, '#' + h.id);
+        }).catch(function() {
+          window.location.hash = h.id;
+        });
+      });
+
+      h.appendChild(anchor);
+    });
+  }
+
+  // Sticky TOC
+  function setupStickyTOC() {
+    var article = d.querySelector('article.wrap, article.entry-page, [data-ix~="toc"]');
+    if (!article) return;
+
+    var headings = article.querySelectorAll('h2');
+    if (headings.length < 3) return;
+
+    article.classList.add('has-toc');
+
+    // Desktop sticky sidebar
+    var sidebar = d.createElement('aside');
+    sidebar.className = 'toc-sidebar';
+    sidebar.setAttribute('aria-label', 'Table of contents');
+
+    var sticky = d.createElement('nav');
+    sticky.className = 'page-toc toc-sticky';
+    sticky.innerHTML = '<h3 class="toc-title">On this page</h3>';
+
+    var ul = d.createElement('ul');
+    ul.className = 'toc-list';
+
+    // Mobile collapsible TOC
+    var mobileDetails = d.createElement('details');
+    mobileDetails.className = 'mobile-toc full-flow';
+    mobileDetails.innerHTML = '<summary>On this page</summary>';
+    var mobileUl = d.createElement('ul');
+    mobileUl.className = 'mobile-toc-list';
+    mobileDetails.appendChild(mobileUl);
+
+    var links = [];
+    headings.forEach(function(h) {
+      if (!h.id) {
+        var baseSlug = slugify(h.textContent);
+        if (!baseSlug) return;
+        var slug = baseSlug;
+        var count = 1;
+        while (d.getElementById(slug)) {
+          slug = baseSlug + '-' + (++count);
+        }
+        h.id = slug;
+      }
+
+      var li = d.createElement('li');
+      li.className = 'toc-item';
+      var a = d.createElement('a');
+      a.className = 'toc-link';
+      a.href = '#' + h.id;
+      var clone = h.cloneNode(true);
+      clone.querySelectorAll('.heading-anchor, .tag, .sr-only').forEach(function(el) { el.remove(); });
+      var titleText = clone.textContent.trim();
+      a.textContent = titleText;
+      li.appendChild(a);
+      ul.appendChild(li);
+
+      var mLi = d.createElement('li');
+      var mA = d.createElement('a');
+      mA.href = '#' + h.id;
+      mA.textContent = titleText;
+      mLi.appendChild(mA);
+      mobileUl.appendChild(mLi);
+
+      links.push({ link: a, heading: h });
+    });
+
+    sticky.appendChild(ul);
+    sidebar.appendChild(sticky);
+    article.insertBefore(sidebar, article.firstChild);
+
+    var headIn = article.querySelector('.page-head, .entry-meta, h1');
+    if (headIn && headIn.nextElementSibling) {
+      headIn.parentNode.insertBefore(mobileDetails, headIn.nextElementSibling);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var id = entry.target.id;
+            links.forEach(function(item) {
+              item.link.classList.toggle('is-active', item.heading.id === id);
+            });
+          }
+        });
+      }, { rootMargin: '-80px 0px -70% 0px' });
+
+      headings.forEach(function(h) { obs.observe(h); });
+    }
+  }
+
+  // Code Copy
+  function setupCodeCopy() {
+    var pres = d.querySelectorAll('pre');
+    pres.forEach(function(pre) {
+      var wrap = pre.parentElement;
+      if (!wrap.classList.contains('code-wrap')) {
+        wrap = d.createElement('div');
+        wrap.className = 'code-wrap';
+        pre.parentNode.insertBefore(wrap, pre);
+        wrap.appendChild(pre);
+      }
+
+      var btn = d.createElement('button');
+      btn.type = 'button';
+      btn.className = 'copy-btn';
+      btn.setAttribute('aria-label', 'Copy code snippet');
+      btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg> Copy';
+
+      btn.addEventListener('click', function() {
+        var code = pre.querySelector('code') || pre;
+        var text = code.textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><path d="M4 10l4 4 8-8"/></svg> Copied';
+          btn.classList.add('is-copied');
+          if (window.showToast) window.showToast('Copied snippet to clipboard');
+          setTimeout(function() {
+            btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg> Copy';
+            btn.classList.remove('is-copied');
+          }, 2000);
+        });
+      });
+
+      wrap.appendChild(btn);
+    });
+  }
+
+  function openDetailsOnHash() {
+    var h = location.hash;
+    if (!h) return;
+    var e = d.getElementById(h.slice(1));
+    var x = e && e.closest('details');
+    if (x) x.open = true;
+  }
+
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', function() {
+      setupHeadingAnchors();
+      setupStickyTOC();
+      setupCodeCopy();
+      openDetailsOnHash();
+    });
+  } else {
+    setupHeadingAnchors();
+    setupStickyTOC();
+    setupCodeCopy();
+    openDetailsOnHash();
+  }
+  window.addEventListener('hashchange', openDetailsOnHash);
+})();
+
+
+// === Module: back_to_top (back_to_top.js) ===
+/**
+ * Feature: back_to_top
+ * Hook: [data-ix~="back_to_top"], document.body
+ * Floating Back-to-Top Navigation Button after 1.5 viewports
+ */
+(function() {
+  'use strict';
+  var d = document;
+
+  function initBackToTop() {
+    var btn = d.createElement('button');
+    btn.type = 'button';
+    btn.className = 'back-to-top';
+    btn.setAttribute('data-ix', 'back_to_top');
+    btn.setAttribute('aria-label', 'Back to top of page');
+    btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M10 16V4M4 10l6-6 6 6"/></svg>';
+
+    d.body.appendChild(btn);
+
+    var threshold = window.innerHeight * 1.5;
+    var ticking = false;
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var show = window.scrollY > threshold;
+          btn.classList.toggle('is-visible', show);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    btn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      var main = d.getElementById('main') || d.querySelector('h1');
+      if (main) {
+        main.setAttribute('tabindex', '-1');
+        main.focus({ preventScroll: true });
+      }
+    });
+  }
+
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', initBackToTop);
+  } else {
+    initBackToTop();
+  }
+})();
+
+
+// === Module: chart_tooltips (chart_tooltips.js) ===
+/**
+ * Feature: chart_tooltips
+ * Hook: [data-ix~="chart_tooltips"], .chart-svg, .dg.chart
+ * Focusable and interactive data points with tooltips & show-data toggle
+ */
+(function() {
+  'use strict';
+  var d = document;
+
   var tooltip = d.createElement('div');
   tooltip.className = 'chart-tooltip';
   tooltip.setAttribute('role', 'tooltip');
   tooltip.setAttribute('aria-hidden', 'true');
   d.body.appendChild(tooltip);
 
+  function positionTooltip(x, y) {
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = (y - 12) + 'px';
+  }
+
   function setupChartTooltips() {
-    var chartSvgs = d.querySelectorAll('.chart-svg, .dg.chart');
+    var chartSvgs = d.querySelectorAll('[data-ix~="chart_tooltips"], .chart-svg, .dg.chart');
     chartSvgs.forEach(function(svg) {
-      var bars = svg.querySelectorAll('rect.bar-a, rect.bar-n');
+      var bars = svg.querySelectorAll('rect.bar-a, rect.bar-n, circle.pt');
       bars.forEach(function(bar) {
-        // Find associated label text if possible
-        var y = parseFloat(bar.getAttribute('y') || 0);
+        bar.setAttribute('tabindex', '0');
+        bar.setAttribute('role', 'graphics-symbol');
+
+        var y = parseFloat(bar.getAttribute('y') || bar.getAttribute('cy') || 0);
         var height = parseFloat(bar.getAttribute('height') || 0);
         var centerY = y + height / 2;
 
-        // Look for sibling text with close y
         var texts = svg.querySelectorAll('text');
         var label = '';
         var val = '';
@@ -290,32 +728,138 @@
         var tipText = label ? (label + (val ? ': ' + val : '')) : val;
         if (!tipText) {
           var title = svg.querySelector('title');
-          tipText = title ? title.textContent.trim() : 'Metric';
+          tipText = title ? title.textContent.trim() : 'Metric data point';
         }
+        bar.setAttribute('aria-label', tipText);
 
-        bar.addEventListener('mouseenter', function(e) {
+        function show(e) {
           tooltip.textContent = tipText;
           tooltip.classList.add('is-visible');
-          positionTooltip(e.clientX, e.clientY);
-        });
+          tooltip.setAttribute('aria-hidden', 'false');
+          var rect = bar.getBoundingClientRect();
+          var clientX = e.clientX || (rect.left + rect.width / 2);
+          var clientY = e.clientY || rect.top;
+          positionTooltip(clientX, clientY);
+        }
 
-        bar.addEventListener('mousemove', function(e) {
-          positionTooltip(e.clientX, e.clientY);
-        });
-
-        bar.addEventListener('mouseleave', function() {
+        function hide() {
           tooltip.classList.remove('is-visible');
+          tooltip.setAttribute('aria-hidden', 'true');
+        }
+
+        bar.addEventListener('mouseenter', show);
+        bar.addEventListener('mousemove', function(e) { positionTooltip(e.clientX, e.clientY); });
+        bar.addEventListener('mouseleave', hide);
+        bar.addEventListener('focus', show);
+        bar.addEventListener('blur', hide);
+        bar.addEventListener('click', function(e) {
+          e.stopPropagation();
+          show(e);
         });
+      });
+    });
+
+    d.addEventListener('click', function(e) {
+      if (!e.target.closest('.chart-svg, .dg.chart')) {
+        tooltip.classList.remove('is-visible');
+        tooltip.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  // Show data toggle
+  function setupShowData() {
+    d.querySelectorAll('.show-data').forEach(function(b) {
+      var p = d.getElementById(b.getAttribute('aria-controls'));
+      if (!p) return;
+      b.hidden = false;
+      b.addEventListener('click', function() {
+        var o = p.classList.toggle('sr-only');
+        b.setAttribute('aria-expanded', !o);
+        b.textContent = o ? 'Show data' : 'Hide data';
       });
     });
   }
 
-  function positionTooltip(x, y) {
-    tooltip.style.left = x + 'px';
-    tooltip.style.top = (y - 12) + 'px';
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', function() {
+      setupChartTooltips();
+      setupShowData();
+    });
+  } else {
+    setupChartTooltips();
+    setupShowData();
+  }
+})();
+
+
+// === Module: diagram_focus (diagram_focus.js) ===
+/**
+ * Feature: diagram_focus
+ * Hook: [data-ix~="diagram_focus"], svg.dg, figure.fig, .gate-anim
+ * Interactive diagram node focus, edge highlighting, lightbox zoom, and hero animation replay
+ */
+(function() {
+  'use strict';
+  var d = document;
+
+  // 1. Diagram Node Focus & Dimming
+  function setupDiagramFocus() {
+    var diagrams = d.querySelectorAll('[data-ix~="diagram_focus"], svg.dg');
+    diagrams.forEach(function(svg) {
+      var nodes = svg.querySelectorAll('rect.k-n, rect.k-b, rect.k-a, rect.k-p, rect.k-d, g.node');
+      if (!nodes.length) return;
+
+      var fig = svg.closest('figure');
+      var liveAnnouncer = null;
+      if (fig) {
+        liveAnnouncer = fig.querySelector('.diagram-live-caption');
+        if (!liveAnnouncer) {
+          liveAnnouncer = d.createElement('div');
+          liveAnnouncer.className = 'diagram-live-caption sr-only';
+          liveAnnouncer.setAttribute('aria-live', 'polite');
+          fig.appendChild(liveAnnouncer);
+        }
+      }
+
+      nodes.forEach(function(node) {
+        node.setAttribute('tabindex', '0');
+        node.setAttribute('role', 'button');
+
+        function focusNode() {
+          nodes.forEach(function(n) {
+            if (n !== node) {
+              n.style.opacity = '0.35';
+            } else {
+              n.style.opacity = '1';
+              n.style.stroke = 'var(--accent)';
+              n.style.strokeWidth = '2px';
+            }
+          });
+          var label = node.getAttribute('aria-label') || node.textContent.trim();
+          if (liveAnnouncer && label) {
+            liveAnnouncer.textContent = 'Focused: ' + label;
+          }
+        }
+
+        function blurNode() {
+          nodes.forEach(function(n) {
+            n.style.opacity = '';
+            n.style.stroke = '';
+            n.style.strokeWidth = '';
+          });
+          if (liveAnnouncer) liveAnnouncer.textContent = '';
+        }
+
+        node.addEventListener('mouseenter', focusNode);
+        node.addEventListener('mouseleave', blurNode);
+        node.addEventListener('focus', focusNode);
+        node.addEventListener('blur', blurNode);
+      });
+    });
   }
 
-  // 2. Diagram Lightbox Expansion
+  // 2. Lightbox Modal Expansion
   var diagModal = null;
   function createDiagModal() {
     if (diagModal) return;
@@ -403,42 +947,9 @@
         fig.appendChild(btn);
       }
     });
-
-    // Also handle standalone SVGs not inside a figure
-    d.querySelectorAll('svg.dg, svg.chart-svg, svg.gate-dg').forEach(function(svg) {
-      if (svg.closest('figure, .diag-modal-body, [hidden]')) return;
-      if (svg.parentElement.querySelector('.diag-expand-btn')) return;
-
-      var btn = d.createElement('button');
-      btn.type = 'button';
-      btn.className = 'diag-expand-btn';
-      btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M13 3h4v4M7 17H3v-4M17 3l-6 6M3 17l6-6"/></svg> Expand diagram';
-      btn.setAttribute('aria-label', 'Expand diagram to full view');
-
-      btn.addEventListener('click', function() {
-        var title = svg.getAttribute('aria-label') || (svg.querySelector('title') ? svg.querySelector('title').textContent : 'Diagram View');
-        openDiagModal(svg, title);
-      });
-
-      svg.insertAdjacentElement('afterend', btn);
-    });
   }
 
-  // 3. Show data table toggle
-  function setupShowData() {
-    d.querySelectorAll('.show-data').forEach(function(b) {
-      var p = d.getElementById(b.getAttribute('aria-controls'));
-      if (!p) return;
-      b.hidden = false;
-      b.addEventListener('click', function() {
-        var o = p.classList.toggle('sr-only');
-        b.setAttribute('aria-expanded', !o);
-        b.textContent = o ? 'Show data' : 'Hide data';
-      });
-    });
-  }
-
-  // 4. Animation intersection observer & replay
+  // 3. Hero Animation Observer & Replay
   function setupAnimations() {
     d.querySelectorAll('.anim-replay').forEach(function(b) {
       b.addEventListener('click', function() {
@@ -467,580 +978,305 @@
     }
   }
 
-  setupChartTooltips();
-  setupDiagramExpansion();
-  setupShowData();
-  setupAnimations();
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', function() {
+      setupDiagramFocus();
+      setupDiagramExpansion();
+      setupAnimations();
+    });
+  } else {
+    setupDiagramFocus();
+    setupDiagramExpansion();
+    setupAnimations();
+  }
 })();
 
 
-// === reading.js ===
+// === Module: copy_email (copy_email.js) ===
 /**
- * Reading Tools: Sticky Table of Contents, Reading Time, Code Copy, Section Anchors, Scroll Progress
+ * Feature: copy_email
+ * Hook: [data-ix~="copy_email"], a[href^="mailto:"]
+ * Interactive email copy button with aria-live toast notification
  */
 (function() {
   'use strict';
   var d = document;
 
-  // 1. Toast notice
-  var toast = d.createElement('div');
-  toast.className = 'toast-notice';
-  toast.setAttribute('role', 'status');
-  toast.setAttribute('aria-live', 'polite');
-  d.body.appendChild(toast);
-  var toastTimeout = null;
+  // Global toast helper
+  var toastEl = null;
+  var toastTimer = null;
 
   function showToast(msg) {
-    toast.textContent = msg;
-    toast.classList.add('is-visible');
-    clearTimeout(toastTimeout);
-    toastTimeout = setTimeout(function() {
-      toast.classList.remove('is-visible');
-    }, 2400);
+    if (!toastEl) {
+      toastEl = d.createElement('div');
+      toastEl.className = 'toast-notice';
+      toastEl.setAttribute('role', 'status');
+      toastEl.setAttribute('aria-live', 'polite');
+      d.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    toastEl.classList.add('is-visible');
+
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() {
+      toastEl.classList.remove('is-visible');
+    }, 2000);
   }
+  window.showToast = showToast;
 
-  // 2. Scroll progress bar
-  var sp = d.querySelector('.scroll-progress');
-  if (sp) {
-    window.addEventListener('scroll', function() {
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      if (h > 0) {
-        var pct = Math.min(100, Math.max(0, (window.scrollY / h) * 100));
-        sp.style.width = pct + '%';
-      }
-    }, { passive: true });
-  }
+  function setupCopyEmail() {
+    var mailLinks = d.querySelectorAll('[data-ix~="copy_email"], a[href^="mailto:"]');
+    mailLinks.forEach(function(link) {
+      if (link.dataset.copySetup) return;
+      link.dataset.copySetup = 'true';
 
-  function slugify(text) {
-    return (text || '').toLowerCase()
-      .replace(/[^a-z0-9]+/g, '-')
-      .replace(/(^-|-$)/g, '');
-  }
+      var email = link.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
 
-  // 3. Section Anchors (copy link to section)
-  function setupHeadingAnchors() {
-    var headings = d.querySelectorAll('main h2, main h3');
-    headings.forEach(function(h) {
-      if (h.closest('.modal, .diag-modal, .search-modal, .proof')) return;
-      if (!h.id) {
-        var baseSlug = slugify(h.textContent);
-        if (!baseSlug) return;
-        var slug = baseSlug;
-        var count = 1;
-        while (d.getElementById(slug)) {
-          slug = baseSlug + '-' + (++count);
-        }
-        h.id = slug;
-      }
-      var anchor = d.createElement('a');
-      anchor.className = 'heading-anchor';
-      anchor.href = '#' + h.id;
-      anchor.setAttribute('aria-label', 'Copy link to this section');
-      anchor.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><path d="M8 12a4 4 0 005.66 0l2-2a4 4 0 00-5.66-5.66l-1 1M12 8a4 4 0 00-5.66 0l-2 2a4 4 0 005.66 5.66l1-1"/></svg>';
-
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        var url = window.location.origin + window.location.pathname + '#' + h.id;
-        navigator.clipboard.writeText(url).then(function() {
-          showToast('Copied section link');
-          history.pushState(null, null, '#' + h.id);
-        }).catch(function() {
-          window.location.hash = h.id;
-        });
-      });
-
-      h.appendChild(anchor);
-    });
-  }
-
-  // 4. Code block copy buttons
-  function setupCodeCopy() {
-    var pres = d.querySelectorAll('pre');
-    pres.forEach(function(pre) {
-      var wrap = pre.parentElement;
-      if (!wrap.classList.contains('code-wrap')) {
-        wrap = d.createElement('div');
-        wrap.className = 'code-wrap';
-        pre.parentNode.insertBefore(wrap, pre);
-        wrap.appendChild(pre);
-      }
-
+      // Add a quick copy button if it's a prominent contact row or text
       var btn = d.createElement('button');
       btn.type = 'button';
-      btn.className = 'copy-btn';
-      btn.setAttribute('aria-label', 'Copy code snippet');
-      btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg> Copy';
+      btn.className = 'icon-btn copy-email-btn';
+      btn.setAttribute('aria-label', 'Copy email address ' + email);
+      btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg>';
 
-      btn.addEventListener('click', function() {
-        var code = pre.querySelector('code') || pre;
-        var text = code.textContent;
-        navigator.clipboard.writeText(text).then(function() {
-          btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><path d="M4 10l4 4 8-8"/></svg> Copied';
-          btn.classList.add('is-copied');
-          showToast('Copied snippet to clipboard');
-          setTimeout(function() {
-            btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:12px;height:12px"><rect x="6" y="6" width="11" height="11" rx="1.5"/><path d="M4 14H3.5A1.5 1.5 0 012 12.5v-9A1.5 1.5 0 013.5 2h9A1.5 1.5 0 0114 3.5V4"/></svg> Copy';
-            btn.classList.remove('is-copied');
-          }, 2000);
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        navigator.clipboard.writeText(email).then(function() {
+          showToast('Email copied: ' + email);
+        }).catch(function() {
+          showToast('Email: ' + email);
         });
       });
 
-      wrap.appendChild(btn);
-    });
-  }
-
-  // 5. Sticky Floating Table of Contents for Long Case Studies & Logs
-  function setupStickyTOC() {
-    var article = d.querySelector('article.wrap, article.entry-page');
-    if (!article) return;
-
-    var headings = article.querySelectorAll('h2');
-    if (headings.length < 3) return;
-
-    article.classList.add('has-toc');
-
-    var sidebar = d.createElement('aside');
-    sidebar.className = 'toc-sidebar';
-    sidebar.setAttribute('aria-label', 'Table of contents');
-
-    var sticky = d.createElement('nav');
-    sticky.className = 'page-toc toc-sticky';
-    sticky.innerHTML = '<h3 class="toc-title">On this page</h3>';
-
-    var ul = d.createElement('ul');
-    ul.className = 'toc-list';
-
-    var links = [];
-    headings.forEach(function(h) {
-      if (!h.id) {
-        var baseSlug = slugify(h.textContent);
-        if (!baseSlug) return;
-        var slug = baseSlug;
-        var count = 1;
-        while (d.getElementById(slug)) {
-          slug = baseSlug + '-' + (++count);
-        }
-        h.id = slug;
+      if (link.parentNode && (link.classList.contains('reach-item') || link.closest('.foot-links') || link.closest('.hero-contact'))) {
+        link.parentNode.insertBefore(btn, link.nextSibling);
       }
-
-      var li = d.createElement('li');
-      li.className = 'toc-item';
-      var a = d.createElement('a');
-      a.className = 'toc-link';
-      a.href = '#' + h.id;
-      // Get heading text without anchor or badges
-      var clone = h.cloneNode(true);
-      clone.querySelectorAll('.heading-anchor, .tag, .sr-only').forEach(function(el) { el.remove(); });
-      a.textContent = clone.textContent.trim();
-      li.appendChild(a);
-      ul.appendChild(li);
-      links.push({ link: a, heading: h });
     });
-
-    sticky.appendChild(ul);
-    sidebar.appendChild(sticky);
-    article.insertBefore(sidebar, article.firstChild);
-
-    // Active heading tracking via IntersectionObserver or Scroll
-    if ('IntersectionObserver' in window) {
-      var obs = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            var id = entry.target.id;
-            links.forEach(function(item) {
-              item.link.classList.toggle('is-active', item.heading.id === id);
-            });
-          }
-        });
-      }, { rootMargin: '-80px 0px -70% 0px' });
-
-      headings.forEach(function(h) { obs.observe(h); });
-    }
   }
 
-  // 6. Open details on hash change
-  function openDetailsOnHash() {
-    var h = location.hash;
-    if (!h) return;
-    var e = d.getElementById(h.slice(1));
-    var x = e && e.closest('details');
-    if (x) x.open = true;
+  if (d.readyState === 'loading') {
+    d.addEventListener('DOMContentLoaded', setupCopyEmail);
+  } else {
+    setupCopyEmail();
   }
-
-  // 7. Reading Time Estimation Badge for articles
-  function setupReadingTime() {
-    var article = d.querySelector('article.wrap, article.entry-page');
-    if (!article) return;
-    var text = article.textContent || '';
-    var words = text.trim().split(/\s+/).length;
-    if (words < 100) return;
-    var mins = Math.max(1, Math.round(words / 200));
-    var badge = d.createElement('span');
-    badge.className = 'reading-time tag mono';
-    badge.textContent = mins + ' min read';
-    badge.setAttribute('title', words.toLocaleString() + ' words (~200 wpm)');
-    
-    var panel = article.querySelector('.panel, .entry-meta, .page-head');
-    var h1 = article.querySelector('h1');
-    if (h1 && h1.nextElementSibling && h1.nextElementSibling.classList.contains('deck')) {
-      var deck = h1.nextElementSibling;
-      var span = d.createElement('span');
-      span.className = 'deck-meta-item';
-      span.style.marginLeft = '0.5rem';
-      span.appendChild(badge);
-      deck.appendChild(span);
-    }
-  }
-
-  setupHeadingAnchors();
-  setupCodeCopy();
-  setupStickyTOC();
-  setupReadingTime();
-  window.addEventListener('hashchange', openDetailsOnHash);
-  openDetailsOnHash();
 })();
 
 
-// === filters.js ===
+// === Module: filters (filters.js) ===
 /**
- * Instant Client-Side Category Filtering
- * Attaches accessible filter toolbars to Hub pages (/credentials/, /projects/, /work/)
+ * Feature: filters
+ * Hook: [data-ix~="filters"], section#education, section#certifications, section#case-studies, section#projects-list
+ * Dynamic category filter chips for list hubs with URL hash sync & live counts
  */
 (function() {
   'use strict';
   var d = document;
 
-  function setupFilters() {
+  function initPageFilters() {
     var path = window.location.pathname;
 
     if (path.indexOf('/credentials') !== -1) {
       setupCredentialsFilters();
-    } else if (path.indexOf('/projects') !== -1 && path.replace(/\/$/, '') === '/projects') {
+    } else if (path.indexOf('/projects') !== -1) {
       setupProjectsFilters();
     } else if (path.indexOf('/work') !== -1 && path.replace(/\/$/, '') === '/work') {
       setupWorkFilters();
     }
   }
 
-  function createFilterBar(categories, onSelect, activeId) {
-    var bar = d.createElement('nav');
-    bar.className = 'filter-bar wrap';
-    bar.setAttribute('role', 'toolbar');
-    bar.setAttribute('aria-label', 'Filter categories');
+  // 1. Credentials filtering
+  function setupCredentialsFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
 
-    var list = d.createElement('div');
-    list.className = 'filter-chips';
+    var sections = main.querySelectorAll('section');
+    if (!sections.length) return;
+
+    var categories = [
+      { id: 'all', label: 'All credentials' },
+      { id: 'education', label: 'Degrees' },
+      { id: 'certifications', label: 'Certifications' },
+      { id: 'skills', label: 'Skills by evidence' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var visibleCount = 0;
+      sections.forEach(function(sec) {
+        var sid = sec.id || '';
+        var match = (catId === 'all') ||
+                    (catId === 'education' && (sid === 'education' || sec.querySelector('#education-heading'))) ||
+                    (catId === 'certifications' && (sid === 'certifications' || sec.querySelector('#certifications-heading'))) ||
+                    (catId === 'skills' && (sid === 'skills' || sec.querySelector('#skills-heading')));
+
+        sec.hidden = !match;
+        if (match) visibleCount++;
+      });
+      return visibleCount;
+    });
+  }
+
+  // 2. Projects filtering
+  function setupProjectsFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
+
+    var items = main.querySelectorAll('section, article, .project-card, .entry');
+    if (items.length < 2) return;
+
+    var categories = [
+      { id: 'all', label: 'All projects' },
+      { id: 'ml', label: 'Machine learning & research' },
+      { id: 'systems', label: 'Agent systems & data' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var count = 0;
+      items.forEach(function(item) {
+        var text = (item.textContent || '').toLowerCase();
+        var match = (catId === 'all') ||
+                    (catId === 'ml' && (text.indexOf('ficta') !== -1 || text.indexOf('churn') !== -1 || text.indexOf('recall') !== -1 || text.indexOf('model') !== -1)) ||
+                    (catId === 'systems' && (text.indexOf('agent') !== -1 || text.indexOf('ledger') !== -1 || text.indexOf('pipeline') !== -1 || text.indexOf('engine') !== -1));
+
+        item.hidden = !match;
+        if (match) count++;
+      });
+      return count;
+    });
+  }
+
+  // 3. Work filtering
+  function setupWorkFilters() {
+    var main = d.querySelector('main');
+    if (!main || d.querySelector('.filter-bar')) return;
+
+    var items = main.querySelectorAll('#case-studies .rows li, .case-grid > *');
+    if (items.length < 2) return;
+
+    var categories = [
+      { id: 'all', label: 'All agent systems' },
+      { id: 'infra', label: 'Platform & routing' },
+      { id: 'tools', label: 'Ledger & memory' }
+    ];
+
+    createFilterUI(main, categories, function(catId) {
+      var count = 0;
+      items.forEach(function(item) {
+        var text = (item.textContent || '').toLowerCase();
+        var match = (catId === 'all') ||
+                    (catId === 'infra' && (text.indexOf('platform') !== -1 || text.indexOf('routing') !== -1 || text.indexOf('multi-agent') !== -1)) ||
+                    (catId === 'tools' && (text.indexOf('ledger') !== -1 || text.indexOf('memory') !== -1 || text.indexOf('linkedin') !== -1 || text.indexOf('reliability') !== -1));
+
+        item.hidden = !match;
+        if (match) count++;
+      });
+      return count;
+    });
+  }
+
+  function createFilterUI(container, categories, filterFn) {
+    var bar = d.createElement('div');
+    bar.className = 'filter-bar wrap';
+    bar.setAttribute('data-ix', 'filters');
+    bar.setAttribute('role', 'toolbar');
+    bar.setAttribute('aria-label', 'Filter items by category');
+
+    var liveStatus = d.createElement('span');
+    liveStatus.className = 'filter-status sr-only';
+    liveStatus.setAttribute('aria-live', 'polite');
+
+    var currentCat = 'all';
+    var hashMatch = location.hash.match(/#cat=([a-z0-9_-]+)/);
+    if (hashMatch && categories.some(function(c) { return c.id === hashMatch[1]; })) {
+      currentCat = hashMatch[1];
+    }
+
+    var buttons = [];
 
     categories.forEach(function(cat) {
       var btn = d.createElement('button');
       btn.type = 'button';
-      btn.className = 'filter-chip';
-      btn.setAttribute('data-filter', cat.id);
-      var isPressed = cat.id === activeId;
-      btn.setAttribute('aria-pressed', isPressed ? 'true' : 'false');
+      btn.className = 'filter-chip' + (cat.id === currentCat ? ' is-active' : '');
+      btn.setAttribute('data-cat', cat.id);
+      btn.setAttribute('aria-pressed', cat.id === currentCat ? 'true' : 'false');
       btn.textContent = cat.label;
 
       btn.addEventListener('click', function() {
-        list.querySelectorAll('.filter-chip').forEach(function(b) {
-          b.setAttribute('aria-pressed', 'false');
+        if (currentCat === cat.id) return;
+        currentCat = cat.id;
+
+        buttons.forEach(function(b) {
+          var isCur = b.getAttribute('data-cat') === currentCat;
+          b.classList.toggle('is-active', isCur);
+          b.setAttribute('aria-pressed', isCur ? 'true' : 'false');
         });
-        btn.setAttribute('aria-pressed', 'true');
-        onSelect(cat.id);
+
+        if (currentCat === 'all') {
+          history.replaceState(null, null, window.location.pathname);
+        } else {
+          history.replaceState(null, null, '#cat=' + currentCat);
+        }
+
+        applyFilter();
       });
 
-      list.appendChild(btn);
+      buttons.push(btn);
+      bar.appendChild(btn);
     });
 
-    bar.appendChild(list);
-    return bar;
-  }
+    bar.appendChild(liveStatus);
 
-  function setupCredentialsFilters() {
-    var main = d.querySelector('main');
-    var article = d.querySelector('article.page-head, article.wrap');
-    if (!article || !main) return;
-
-    var sections = {
-      'all': d.querySelectorAll('#certifications, #achievements, #education, #skills'),
-      'certs': d.querySelectorAll('#certifications'),
-      'achieve': d.querySelectorAll('#achievements'),
-      'edu': d.querySelectorAll('#education'),
-      'skills': d.querySelectorAll('#skills')
-    };
-
-    var categories = [
-      { id: 'all', label: 'All credentials' },
-      { id: 'certs', label: 'Certifications' },
-      { id: 'achieve', label: 'Achievements' },
-      { id: 'edu', label: 'Education' },
-      { id: 'skills', label: 'Skills' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      var allSections = d.querySelectorAll('#certifications, #achievements, #education, #skills');
-      allSections.forEach(function(sec) {
-        if (filterId === 'all') {
-          sec.hidden = false;
-        } else {
-          var match = false;
-          sections[filterId].forEach(function(target) {
-            if (target === sec) match = true;
-          });
-          sec.hidden = !match;
-        }
-      });
-    }, 'all');
-
-    // Insert before the first section
-    var firstSec = d.querySelector('#certifications') || article.querySelector('section');
-    if (firstSec) {
-      firstSec.parentNode.insertBefore(bar, firstSec);
+    var targetInsert = container.querySelector('.page-head, h1');
+    if (targetInsert && targetInsert.parentNode) {
+      targetInsert.parentNode.insertBefore(bar, targetInsert.nextSibling);
+    } else {
+      container.insertBefore(bar, container.firstChild);
     }
-  }
 
-  function setupProjectsFilters() {
-    var rowsList = d.querySelector('section ul.rows');
-    if (!rowsList) return;
+    function applyFilter() {
+      if ('startViewTransition' in d && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        d.startViewTransition(function() {
+          var count = filterFn(currentCat);
+          liveStatus.textContent = 'Showing ' + count + ' items';
+        });
+      } else {
+        var count = filterFn(currentCat);
+        liveStatus.textContent = 'Showing ' + count + ' items';
+      }
+    }
 
-    var items = rowsList.querySelectorAll('li');
-    if (items.length < 3) return;
-
-    var categories = [
-      { id: 'all', label: 'All projects' },
-      { id: 'ml', label: 'AI & Machine Learning' },
-      { id: 'bi', label: 'Power BI & Analytics' },
-      { id: 'code', label: 'Python & Web' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      items.forEach(function(li) {
-        var text = li.textContent.toLowerCase();
-        if (filterId === 'all') {
-          li.hidden = false;
-        } else if (filterId === 'ml') {
-          var isML = text.indexOf('machine learning') !== -1 || text.indexOf('nlp') !== -1 || text.indexOf('rag') !== -1 || text.indexOf('lora') !== -1 || text.indexOf('k-means') !== -1;
-          li.hidden = !isML;
-        } else if (filterId === 'bi') {
-          var isBI = text.indexOf('power bi') !== -1 || text.indexOf('dax') !== -1 || text.indexOf('analytics') !== -1 || text.indexOf('dashboard') !== -1;
-          li.hidden = !isBI;
-        } else if (filterId === 'code') {
-          var isCode = text.indexOf('python') !== -1 || text.indexOf('fastapi') !== -1 || text.indexOf('typescript') !== -1;
-          li.hidden = !isCode;
-        }
-      });
-    }, 'all');
-
-    rowsList.parentNode.insertBefore(bar, rowsList);
-  }
-
-  function setupWorkFilters() {
-    var caseList = d.querySelector('section#case-studies ul.rows, section ul.rows');
-    if (!caseList) return;
-
-    var items = caseList.querySelectorAll('li');
-    if (items.length < 3) return;
-
-    var categories = [
-      { id: 'all', label: 'All case studies' },
-      { id: 'agents', label: 'Multi-agent systems' },
-      { id: 'reliability', label: 'Security & Reliability' },
-      { id: 'ops', label: 'Finance & Operations' }
-    ];
-
-    var bar = createFilterBar(categories, function(filterId) {
-      items.forEach(function(li) {
-        var text = li.textContent.toLowerCase();
-        if (filterId === 'all') {
-          li.hidden = false;
-        } else if (filterId === 'agents') {
-          var isAgent = text.indexOf('platform') !== -1 || text.indexOf('routing') !== -1 || text.indexOf('memory') !== -1;
-          li.hidden = !isAgent;
-        } else if (filterId === 'reliability') {
-          var isRel = text.indexOf('reliability') !== -1 || text.indexOf('security') !== -1;
-          li.hidden = !isRel;
-        } else if (filterId === 'ops') {
-          var isOps = text.indexOf('finance') !== -1 || text.indexOf('linkedin') !== -1;
-          li.hidden = !isOps;
-        }
-      });
-    }, 'all');
-
-    caseList.parentNode.insertBefore(bar, caseList);
+    applyFilter();
   }
 
   if (d.readyState === 'loading') {
-    d.addEventListener('DOMContentLoaded', setupFilters);
+    d.addEventListener('DOMContentLoaded', initPageFilters);
   } else {
-    setupFilters();
+    initPageFilters();
   }
 })();
 
 
-// === controls.js ===
+// === Module: theme_fade (theme_fade.js) ===
 /**
- * Interactive Controls & Enhancements:
- * 1. Email Copy Action with Live Feedback Toast
- * 2. Floating Back-to-Top Navigation Button
- * 3. Instant Page Prefetching on Hover/Focus
- * 4. Animated Number Countup for Metric Proofs
+ * Feature: theme_fade
+ * Hook: [data-ix~="theme_fade"], .theme-btn, .theme-toggle
+ * Smooth theme toggle cross-fade using View Transitions API
  */
 (function() {
   'use strict';
-  var d = document;
+  var d = document, r = d.documentElement;
 
-  // 1. Copy Email Helper & Event Delegation
-  function setupEmailCopy() {
-    var email = 'krishnendu.biswasi22@iimranchi.ac.in';
+  if (!('startViewTransition' in d)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    d.addEventListener('click', function(e) {
-      var mailLink = e.target.closest('a[href^="mailto:"]');
-      if (mailLink && (e.altKey || e.metaKey || e.ctrlKey || mailLink.hasAttribute('data-copy-email'))) {
-        e.preventDefault();
-        var targetEmail = mailLink.getAttribute('href').replace(/^mailto:/i, '').split('?')[0] || email;
-        navigator.clipboard.writeText(targetEmail).then(function() {
-          if (window.showToast) {
-            window.showToast('Copied ' + targetEmail + ' to clipboard');
-          } else {
-            var toast = d.querySelector('.toast-notice');
-            if (toast) {
-              toast.textContent = 'Copied ' + targetEmail + ' to clipboard';
-              toast.classList.add('is-visible');
-              setTimeout(function() { toast.classList.remove('is-visible'); }, 2400);
-            }
-          }
-        });
-      }
-    });
-  }
+  var t = d.querySelector('.theme-btn, .theme-toggle');
+  if (!t) return;
 
-  // 2. Floating Back-to-Top Button
-  function setupBackToTop() {
-    var btn = d.createElement('button');
-    btn.type = 'button';
-    btn.className = 'back-to-top';
-    btn.setAttribute('aria-label', 'Back to top of page');
-    btn.innerHTML = '<svg class="icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:16px;height:16px"><path d="M10 16V4M4 10l6-6 6 6"/></svg>';
-
-    d.body.appendChild(btn);
-
-    var scrollThreshold = 450;
-    var ticking = false;
-
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          var show = window.scrollY > scrollThreshold;
-          btn.classList.toggle('is-visible', show);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-
-    btn.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      var main = d.getElementById('main') || d.querySelector('h1');
-      if (main) {
-        main.setAttribute('tabindex', '-1');
-        main.focus({ preventScroll: true });
-      }
-    });
-  }
-
-  // 3. Fast Prefetching for Internal Links
-  function setupLinkPrefetch() {
-    var prefetched = {};
-
-    function prefetchUrl(url) {
-      if (prefetched[url] || !url || url.indexOf('http') === 0 && url.indexOf(window.location.origin) !== 0) return;
-      if (url.indexOf('#') === 0 || url.indexOf('mailto:') === 0 || url.indexOf('.pdf') !== -1) return;
-
-      prefetched[url] = true;
-      var link = d.createElement('link');
-      link.rel = 'prefetch';
-      link.href = url;
-      d.head.appendChild(link);
+  // Enhance the default click handler
+  t.addEventListener('click', function(e) {
+    if (d.startViewTransition) {
+      // Allow the view transition to handle the visual morph
     }
-
-    d.addEventListener('mouseover', function(e) {
-      var a = e.target.closest('a');
-      if (a && a.href && a.origin === window.location.origin) {
-        prefetchUrl(a.pathname);
-      }
-    }, { passive: true });
-
-    d.addEventListener('focusin', function(e) {
-      var a = e.target.closest('a');
-      if (a && a.href && a.origin === window.location.origin) {
-        prefetchUrl(a.pathname);
-      }
-    }, { passive: true });
-  }
-
-  // 4. Accessible Number Countup for Metric Proofs
-  function setupProofCountup() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var numbers = d.querySelectorAll('dl.proof dt');
-    if (!numbers.length || !('IntersectionObserver' in window)) return;
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    numbers.forEach(function(el) {
-      observer.observe(el);
-    });
-
-    function animateCount(el) {
-      var raw = el.textContent.trim();
-      var match = raw.match(/^([0-9\.]+)(.*)$/);
-      if (!match) return;
-
-      var targetNum = parseFloat(match[1]);
-      var suffix = match[2];
-      var isDecimal = match[1].indexOf('.') !== -1;
-      var decimals = isDecimal ? (match[1].split('.')[1].length) : 0;
-
-      var duration = 900;
-      var startTime = performance.now();
-
-      function update(now) {
-        var elapsed = now - startTime;
-        var progress = Math.min(1, elapsed / duration);
-        // ease-out cubic
-        var ease = 1 - Math.pow(1 - progress, 3);
-        var current = targetNum * ease;
-
-        el.textContent = (isDecimal ? current.toFixed(decimals) : Math.round(current)) + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        } else {
-          el.textContent = raw;
-        }
-      }
-
-      requestAnimationFrame(update);
-    }
-  }
-
-  if (d.readyState === 'loading') {
-    d.addEventListener('DOMContentLoaded', function() {
-      setupEmailCopy();
-      setupBackToTop();
-      setupLinkPrefetch();
-      setupProofCountup();
-    });
-  } else {
-    setupEmailCopy();
-    setupBackToTop();
-    setupLinkPrefetch();
-    setupProofCountup();
-  }
+  }, true);
 })();
+
