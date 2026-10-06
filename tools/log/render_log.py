@@ -346,30 +346,37 @@ def render_archive(entries):
     page("/log/archive/", "All entries | Build log", "Every build log entry, newest first, grouped by month.", ld, main)
 
 
+def nbsp_last(text):
+    if not text:
+        return text
+    parts = text.rsplit(" ", 1)
+    return "&nbsp;".join(parts) if len(parts) == 2 else text
+
+
 def render_sources(entries, data):
     tags = {}
     for e in entries:
         for s in e["sources"]:
             tags.setdefault(s["tag"], (s["label"], []))[1].append(e)
-    rows = "".join('<li id="%s" data-src="%s">%s. Cited in: %s.</li>' % (
-        anchor(t), esc(t), esc(lab), ", ".join('<a href="%s">%s</a>' % (entry_url(e), esc(e["title"])) for e in es))
+    rows = "".join('<li id="%s" data-src="%s">%s. Cited in: %s</li>' % (
+        anchor(t), esc(t), nbsp_last(esc(lab)), ", ".join('<a href="%s">%s</a>' % (entry_url(e), nbsp_last(esc(e["title"]))) for e in es))
         for t, (lab, es) in sorted(tags.items()))
-    cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), esc(c["unit"])) for c in data["strip"]["cells"])
+    cells = "".join("<li><strong>%s</strong>: %s.</li>" % (esc(c["label"]), nbsp_last(esc(c["unit"]))) for c in data["strip"]["cells"])
     names = "".join("<li>%s is logged as <span class=\"mono\">%s</span>.</li>" % (esc(m["name"]), esc(m["id"]))
                     for m in data["modelmix"]["models"] if m["name"] != m["id"])
     main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">How I source these numbers</li></ol></nav>'
             '<div class="wrap"><div class="page-head"><h1>How I source these numbers</h1>'
             '<p class="deck">Every number in an entry carries a tag that points to where it came from.</p></div>'
             '<h2 id="tags">Tag formats</h2><ul class="src-list">'
-            '<li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone gets an ID when it happens, and the ID never changes.</li>'
-            '<li><span class="mono">K:</span> a task card on the build board, where agents pick up work and I approve or return it.</li>'
-            '<li><span class="mono">T:</span> one day of model call logs, counted per model.</li>'
-            '<li><span class="mono">D:</span> one daily progress report. Used as a drafting hint, never quoted.</li></ul>'
+            '<li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone gets an ID when it happens, and the ID never&nbsp;changes.</li>'
+            '<li><span class="mono">K:</span> a task card on the build board, where agents pick up work and I approve or return&nbsp;it.</li>'
+            '<li><span class="mono">T:</span> one day of model call logs, counted per&nbsp;model.</li>'
+            '<li><span class="mono">D:</span> one daily progress report. Used as a drafting hint, never&nbsp;quoted.</li></ul>'
             '<h2 id="counting">How the weekly figures are counted</h2><ul class="src-list">%s</ul>'
             '<p>A cell that has no source for the week shows &ldquo;not measured&rdquo; instead of zero. Institute work runs in a separate, private profile and is left out of every count.</p>'
             '<h2 id="models">Model names</h2><p>Charts use the model name. The id is what the call log records.</p><ul class="src-list">%s</ul>'
             '<h2 id="privacy">What never appears here</h2><p>Client names, institute work, money amounts, channel names, server addresses, ports and file paths. '
-            'A script checks every page for these before I see the draft, and I check the rest by hand.</p>'
+            'A script checks every page for these before I see the draft, and I check the rest by&nbsp;hand.</p>'
             '<h2 id="cited">Tags cited so far</h2><ul class="src-list">%s</ul></div>' % (cells, names, rows))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebPage", "@id": SITE_URL + "/log/sources/#webpage", "url": SITE_URL + "/log/sources/",
