@@ -1,0 +1,56 @@
+/* interactive controls: search trigger, keyboard hints, details state transitions */
+
+/* keyboard navigation badge */
+.kbd-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  border: 1px solid var(--rule);
+  background: var(--box);
+  padding: 1px 4px;
+  border-radius: 2px;
+  line-height: 1.2;
+}
+
+/* smooth details accordion toggle animation */
+details.full-flow {
+  transition: background-color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard);
+}
+details.full-flow summary {
+  user-select: none;
+  -webkit-user-select: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+details.full-flow summary:hover {
+  color: var(--ink);
+}
+details.full-flow[open] summary {
+  color: var(--accent);
+}
+
+/* station card hover elevation */
+.station {
+  transition: border-color var(--dur-fast) var(--ease-standard), transform var(--dur-fast) var(--ease-standard), box-shadow var(--dur-fast) var(--ease-standard);
+}
+.station:hover {
+  border-color: var(--accent);
+}
+
+/* table row highlight */
+table tr {
+  transition: background-color var(--dur-fast) var(--ease-standard);
+}
+table tbody tr:hover {
+  background: var(--box);
+}
+
+/* link button tap states */
+.btn:active {
+  transform: scale(0.985);
+}
+.icon-btn:active {
+  transform: scale(0.92);
+}

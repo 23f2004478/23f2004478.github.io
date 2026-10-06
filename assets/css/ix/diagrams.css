@@ -1,0 +1,154 @@
+/* interactive diagrams and charts (zoom, tooltips, bar hover) */
+.chart-tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 3px;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translate(-50%, -120%);
+  transition: opacity var(--dur-fast) var(--ease-standard);
+  opacity: 0;
+}
+[data-theme="dark"] .chart-tooltip {
+  background: var(--box);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.chart-tooltip.is-visible {
+  opacity: 1;
+}
+.chart-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -4px;
+  border-width: 4px;
+  border-style: solid;
+  border-color: var(--ink) transparent transparent transparent;
+}
+[data-theme="dark"] .chart-tooltip::after {
+  border-color: var(--rule) transparent transparent transparent;
+}
+
+/* chart bar hover effect */
+.chart-svg rect.bar-a,
+.chart-svg rect.bar-n,
+.dg.chart rect.bar-a,
+.dg.chart rect.bar-n {
+  cursor: pointer;
+  transition: opacity var(--dur-fast) var(--ease-standard), fill var(--dur-fast) var(--ease-standard);
+}
+.chart-svg rect.bar-a:hover,
+.chart-svg rect.bar-n:hover,
+.dg.chart rect.bar-a:hover,
+.dg.chart rect.bar-n:hover,
+.chart-svg rect.bar-a.is-active,
+.chart-svg rect.bar-n.is-active,
+.dg.chart rect.bar-a.is-active,
+.dg.chart rect.bar-n.is-active {
+  opacity: 0.82;
+}
+
+/* diagram node hover highlight */
+.dg rect.k-n,
+.dg rect.k-b,
+.dg rect.k-a,
+.dg rect.k-p {
+  transition: stroke var(--dur-fast) var(--ease-standard), stroke-width var(--dur-fast) var(--ease-standard);
+}
+.dg rect.k-n:hover,
+.dg rect.k-b:hover,
+.dg rect.k-p:hover {
+  stroke: var(--accent);
+  stroke-width: 2px;
+}
+
+/* diagram modal expansion */
+.diag-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(25, 24, 26, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gut);
+}
+[data-theme="dark"] .diag-modal-backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
+.diag-modal {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  max-width: 95vw;
+  max-height: 92vh;
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+}
+.diag-modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s3) var(--s4);
+  border-bottom: 1px solid var(--rule);
+  background: var(--box);
+}
+.diag-modal-title {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--ink);
+}
+.diag-modal-body {
+  padding: var(--s6);
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  background: var(--paper);
+}
+.diag-modal-body svg {
+  max-width: 100%;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+}
+.diag-expand-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  margin-top: var(--s2);
+  padding: 0 var(--s2);
+  min-height: 44px;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color var(--dur-fast) var(--ease-standard), border-color var(--dur-fast) var(--ease-standard);
+}
+.diag-expand-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
