@@ -319,6 +319,7 @@ def render_entry(e, prev_e, next_e):
     desc = desc if len(desc) <= 155 else desc[:desc.rfind(" ", 0, 150)] + "..."
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "BlogPosting", "@id": SITE_URL + url + "#post", "url": SITE_URL + url, "headline": e["title"],
+         "image": SITE_URL + "/og/og-log-" + e["slug"] + ".png",
          "description": desc, "datePublished": iso_dt(e["date"]), "dateModified": iso_dt(e["date"]), "inLanguage": "en",
          "author": {"@id": PERSON}, "publisher": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
          "mainEntityOfPage": SITE_URL + url,
