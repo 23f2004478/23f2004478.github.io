@@ -1,42 +1,164 @@
 {
-  "generated": "2026-10-06T15:40:58+00:00",
-  "router_total": 6351274134,
-  "directsdk_total": 957540056,
-  "claude_cli_total": 16712374,
-  "combined_total": 7325526564,
-  "peak_day": "2026-10-05",
-  "peak_combined": 1111548324,
-  "peak_split": {
-    "router": 805639389,
-    "directsdk": 304454179,
-    "claude_cli": 1454756
+  "schema_version": 1,
+  "built_on": "2026-10-06",
+  "built_at": "2026-10-06T21:41:58+05:30",
+  "timezone": "Asia/Kolkata",
+  "tracking_start": "2026-09-13",
+  "hours_total": 139.3,
+  "active_days": 20,
+  "hours_avg_active_day": 7.0,
+  "hours_top_day": "2026-09-28",
+  "hours_top_day_value": 13.9,
+  "hours_by_day": {
+    "2026-09-13": 0.2,
+    "2026-09-14": 0.0,
+    "2026-09-15": 0.2,
+    "2026-09-16": 0.0,
+    "2026-09-17": 0.0,
+    "2026-09-18": 0.0,
+    "2026-09-19": 3.3,
+    "2026-09-20": 1.2,
+    "2026-09-21": 4.9,
+    "2026-09-22": 5.1,
+    "2026-09-23": 5.4,
+    "2026-09-24": 6.7,
+    "2026-09-25": 9.2,
+    "2026-09-26": 3.8,
+    "2026-09-27": 4.5,
+    "2026-09-28": 13.9,
+    "2026-09-29": 6.3,
+    "2026-09-30": 11.9,
+    "2026-10-01": 9.3,
+    "2026-10-02": 13.3,
+    "2026-10-03": 11.1,
+    "2026-10-04": 8.0,
+    "2026-10-05": 12.2,
+    "2026-10-06": 8.8
+  },
+  "hours_levels": [
+    0,
+    2,
+    5,
+    9
+  ],
+  "hours_method": {
+    "gap_minutes": 15,
+    "tail_minutes": 5,
+    "sources": [
+      "discord",
+      "telegram",
+      "cli",
+      "claude_code"
+    ],
+    "excludes": "automated notifications"
+  },
+  "tokens_total": 7374953261,
+  "tokens_by_source": {
+    "9router_proxy": 6393144243,
+    "hermes_direct_claude": 965096644,
+    "claude_code_cli": 16712374
+  },
+  "tokens_by_day": {
+    "2026-09-13": 0,
+    "2026-09-14": 0,
+    "2026-09-15": 15355,
+    "2026-09-16": 70000666,
+    "2026-09-17": 114053368,
+    "2026-09-18": 85326766,
+    "2026-09-19": 56009301,
+    "2026-09-20": 18764637,
+    "2026-09-21": 95953864,
+    "2026-09-22": 313407280,
+    "2026-09-23": 366172370,
+    "2026-09-24": 285423212,
+    "2026-09-25": 143594670,
+    "2026-09-26": 39499225,
+    "2026-09-27": 118419741,
+    "2026-09-28": 631148070,
+    "2026-09-29": 358888124,
+    "2026-09-30": 210326397,
+    "2026-10-01": 375736876,
+    "2026-10-02": 685183206,
+    "2026-10-03": 875089817,
+    "2026-10-04": 435144605,
+    "2026-10-05": 1111637264,
+    "2026-10-06": 985158447
+  },
+  "tokens_levels": [
+    0,
+    50000000,
+    200000000,
+    500000000
+  ],
+  "tokens_top_day": "2026-10-05",
+  "tokens_top_day_value": 1111637264,
+  "model_share": {
+    "gemini": 66.0,
+    "opus": 29.4,
+    "sonnet": 4.6,
+    "basis": "hermes_tracked"
   },
   "model_split_pct": {
-    "Gemini 3.7 Flash": 66.1,
-    "Claude Opus": 29.3,
+    "Gemini 3.7 Flash": 66.0,
+    "Claude Opus": 29.4,
     "Claude Sonnet 5.5": 4.6
   },
   "model_split_label": "share of Hermes-tracked tokens",
-  "messages_total": 317352,
-  "conversations_total": 341,
-  "messages_per_day": {
-    "2026-09-13": 22,
-    "2026-09-15": 4,
-    "2026-09-21": 437,
-    "2026-09-22": 522,
-    "2026-09-23": 3236,
-    "2026-09-24": 2028,
-    "2026-09-25": 1464,
-    "2026-09-26": 82,
-    "2026-09-27": 7885,
-    "2026-09-28": 9139,
-    "2026-09-29": 5535,
-    "2026-09-30": 28793,
-    "2026-10-01": 61646,
-    "2026-10-02": 56593,
-    "2026-10-03": 64141,
-    "2026-10-04": 32394,
-    "2026-10-05": 25825,
-    "2026-10-06": 17606
-  }
+  "agents_total": 12,
+  "agents_router": 1,
+  "agents_domain": 11,
+  "agents": [
+    {
+      "name": "Finance",
+      "channels": 2
+    },
+    {
+      "name": "Infrastructure",
+      "channels": 2
+    },
+    {
+      "name": "Personal ops",
+      "channels": 3
+    },
+    {
+      "name": "Career prep",
+      "channels": 2
+    },
+    {
+      "name": "Academics",
+      "channels": 2
+    },
+    {
+      "name": "Socials",
+      "channels": 2
+    },
+    {
+      "name": "Consulting",
+      "channels": 2
+    },
+    {
+      "name": "Health checks",
+      "channels": 2
+    },
+    {
+      "name": "Cleanup",
+      "channels": 2
+    },
+    {
+      "name": "Research",
+      "channels": 2
+    },
+    {
+      "name": "Operations",
+      "channels": 2
+    }
+  ],
+  "jobs_scheduled": 39,
+  "messages": {
+    "total_dedup": 248628,
+    "agent_replies": 123258,
+    "tool_results": 122387,
+    "human": 2983
+  },
+  "leverage_ratio": 41
 }

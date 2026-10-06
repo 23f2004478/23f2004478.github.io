@@ -1,6 +1,6 @@
 /**
  * Krishnendu Biswas: Interactive Client Layer (krishnendu.me)
- * Modules included (13): core_theme_nav, view_transitions, prefetch, search, reveal, countup, toc, back_to_top, chart_tooltips, diagram_focus, copy_email, filters, theme_fade
+ * Modules included (15): core_theme_nav, view_transitions, prefetch, search, reveal, countup, toc, back_to_top, chart_tooltips, diagram_focus, copy_email, filters, theme_fade, metric_popovers, heatmaps
  * Zero external dependencies. Config-driven build.
  */
 
@@ -1339,5 +1339,338 @@
       // Allow the view transition to handle the visual morph
     }
   }, true);
+})();
+
+
+// === Module: metric_popovers (metric_popovers.js) ===
+/**
+ * metric_popovers.js: Interactive popover behavior for homepage headline metrics.
+ * Supports hover on desktop (150ms delay), bottom sheet on mobile, roving focus, ESC, and click outside.
+ */
+(function() {
+  function initMetricPopovers() {
+    const pops = Array.from(document.querySelectorAll('.metric-pop, [data-ix~="metric_pop"]'));
+    if (!pops.length) return;
+
+    let wasMobile = window.innerWidth < 768;
+    const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    pops.forEach(pop => {
+      pop.classList.add('is-js-active');
+      const summary = pop.querySelector('summary');
+      const panel = pop.querySelector('.metric-panel');
+      const closeBtn = pop.querySelector('.panel-close');
+      const titleLink = pop.querySelector('.metric-title');
+
+      let openTimer = null;
+      let closeTimer = null;
+
+      function openPop() {
+        clearTimeout(closeTimer);
+        // Close siblings
+        pops.forEach(p => {
+          if (p !== pop && p.open) p.open = false;
+        });
+
+        if (!pop.open) {
+          pop.open = true;
+        }
+
+        // Check vertical space on desktop
+        if (window.innerWidth >= 768 && panel) {
+          const rect = pop.getBoundingClientRect();
+          const spaceBelow = window.innerHeight - rect.bottom;
+          if (spaceBelow < 360 && rect.top > 360) {
+            pop.classList.add('open-above');
+          } else {
+            pop.classList.remove('open-above');
+          }
+        }
+      }
+
+      function closePop() {
+        clearTimeout(openTimer);
+        if (pop.open) {
+          pop.open = false;
+          pop.classList.remove('open-above');
+        }
+      }
+
+      // Fine pointer hover handlers
+      if (isFinePointer) {
+        pop.addEventListener('mouseenter', () => {
+          clearTimeout(closeTimer);
+          openTimer = setTimeout(openPop, 150);
+        });
+
+        pop.addEventListener('mouseleave', () => {
+          clearTimeout(openTimer);
+          closeTimer = setTimeout(closePop, 200);
+        });
+      }
+
+      // Title link click should navigate directly
+      if (titleLink) {
+        titleLink.addEventListener('click', (e) => {
+          e.stopPropagation();
+        });
+      }
+
+      // Close button
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          closePop();
+          if (summary) summary.focus();
+        });
+      }
+
+      // Summary click toggle
+      if (summary) {
+        summary.addEventListener('click', (e) => {
+          // If clicked on child interactive elements, do not toggle
+          if (e.target.closest('a, button')) return;
+          e.preventDefault();
+          
+          if (!pop.open) {
+            openPop();
+          } else {
+            closePop();
+          }
+        });
+      }
+    });
+
+    // Global click outside to close
+    document.addEventListener('click', (e) => {
+      pops.forEach(pop => {
+        if (pop.open && !pop.contains(e.target)) {
+          pop.open = false;
+          pop.classList.remove('open-above');
+        }
+      });
+    });
+
+    // Global ESC key to close
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        pops.forEach(pop => {
+          if (pop.open) {
+            pop.open = false;
+            pop.classList.remove('open-above');
+            const s = pop.querySelector('summary');
+            if (s) s.focus();
+          }
+        });
+      }
+    });
+
+    // Viewport resize across 768px closes all
+    window.addEventListener('resize', () => {
+      const isMobile = window.innerWidth < 768;
+      if (isMobile !== wasMobile) {
+        wasMobile = isMobile;
+        pops.forEach(p => {
+          p.open = false;
+          p.classList.remove('open-above');
+        });
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMetricPopovers);
+  } else {
+    initMetricPopovers();
+  }
+})();
+
+
+// === Module: heatmaps (heatmaps.js) ===
+/**
+ * heatmaps.js: Interactive GitHub-style activity grid logic.
+ * Handles roving tabindex, tooltips on hover/focus, mobile tap display, and right-aligned initial scroll.
+ */
+(function() {
+  function initHeatmaps() {
+    const heatmaps = Array.from(document.querySelectorAll('.heatmap, [data-ix~="heatmap"]'));
+    if (!heatmaps.length) return;
+
+    // Create shared floating tooltip if not present
+    let tooltip = document.querySelector('.heatmap-tooltip');
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.className = 'heatmap-tooltip';
+      tooltip.setAttribute('role', 'tooltip');
+      tooltip.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(tooltip);
+    }
+
+    heatmaps.forEach(hm => {
+      const scrollContainer = hm.querySelector('.heatmap__scroll');
+      const table = hm.querySelector('table');
+      const activeDisplay = hm.closest('.metric-panel')?.querySelector('.panel-active-val');
+      const metricType = hm.getAttribute('data-metric') || 'hours';
+
+      if (scrollContainer && scrollContainer.scrollWidth > scrollContainer.clientWidth) {
+        // Initial scroll to right end for latest entries
+        scrollContainer.scrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+      }
+
+      if (!table) return;
+
+      const cells = Array.from(table.querySelectorAll('td[data-date]'));
+      if (!cells.length) return;
+
+      // Ensure first cell has tabindex 0, others -1
+      cells.forEach((td, idx) => {
+        td.setAttribute('tabindex', idx === 0 ? '0' : '-1');
+      });
+
+      function formatTip(td) {
+        const d = td.getAttribute('data-date');
+        const v = parseFloat(td.getAttribute('data-value') || '0');
+        if (!d) return '';
+        const dateObj = new Date(d + 'T00:00:00+05:30');
+        const dateStr = dateObj.toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });
+        
+        let valStr = '';
+        if (metricType === 'hours') {
+          valStr = v === 0 ? '0 hours' : (v.toFixed(1) + ' h');
+        } else {
+          if (v === 0) valStr = '0 tokens';
+          else if (v >= 1e9) valStr = (v / 1e9).toFixed(2) + ' B tokens';
+          else if (v >= 1e6) valStr = (v / 1e6).toFixed(1) + ' M tokens';
+          else if (v >= 1e3) valStr = (v / 1e3).toFixed(1) + ' k tokens';
+          else valStr = v.toLocaleString() + ' tokens';
+        }
+
+        const isToday = td.hasAttribute('data-today');
+        return `${dateStr}: ${valStr}${isToday ? ' (today)' : ''}`;
+      }
+
+      function showTip(td) {
+        const text = formatTip(td);
+        if (!text) return;
+        tooltip.textContent = text;
+        tooltip.classList.add('is-visible');
+        tooltip.setAttribute('aria-hidden', 'false');
+
+        const rect = td.getBoundingClientRect();
+        const tipRect = tooltip.getBoundingClientRect();
+        
+        let top = rect.top - tipRect.height - 6;
+        let left = rect.left + (rect.width / 2) - (tipRect.width / 2);
+
+        // Flip below if too close to top
+        if (top < 8) {
+          top = rect.bottom + 6;
+        }
+        // Clamp horizontal
+        if (left < 8) left = 8;
+        if (left + tipRect.width > window.innerWidth - 8) {
+          left = window.innerWidth - tipRect.width - 8;
+        }
+
+        tooltip.style.top = `${top + window.scrollY}px`;
+        tooltip.style.left = `${left + window.scrollX}px`;
+
+        if (activeDisplay) {
+          activeDisplay.textContent = text;
+        }
+      }
+
+      function hideTip() {
+        tooltip.classList.remove('is-visible');
+        tooltip.setAttribute('aria-hidden', 'true');
+      }
+
+      // Cell events
+      cells.forEach(td => {
+        td.addEventListener('mouseenter', () => showTip(td));
+        td.addEventListener('mouseleave', hideTip);
+        td.addEventListener('focus', () => showTip(td));
+        td.addEventListener('blur', hideTip);
+
+        td.addEventListener('click', () => {
+          showTip(td);
+        });
+
+        // Keyboard roving navigation
+        td.addEventListener('keydown', (e) => {
+          const row = td.parentElement;
+          const tbody = row.parentElement;
+          const allRows = Array.from(tbody.querySelectorAll('tr'));
+          const rowIdx = allRows.indexOf(row);
+          const rowCells = Array.from(row.querySelectorAll('td'));
+          const colIdx = rowCells.indexOf(td);
+
+          let targetTd = null;
+
+          if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            // Move right in current row
+            for (let c = colIdx + 1; c < rowCells.length; c++) {
+              if (!rowCells[c].classList.contains('is-void') && rowCells[c].hasAttribute('data-date')) {
+                targetTd = rowCells[c];
+                break;
+              }
+            }
+          } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            // Move left in current row
+            for (let c = colIdx - 1; c >= 0; c--) {
+              if (!rowCells[c].classList.contains('is-void') && rowCells[c].hasAttribute('data-date')) {
+                targetTd = rowCells[c];
+                break;
+              }
+            }
+          } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            // Move down in same column
+            for (let r = rowIdx + 1; r < allRows.length; r++) {
+              const rCells = Array.from(allRows[r].querySelectorAll('td'));
+              if (rCells[colIdx] && !rCells[colIdx].classList.contains('is-void') && rCells[colIdx].hasAttribute('data-date')) {
+                targetTd = rCells[colIdx];
+                break;
+              }
+            }
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            // Move up in same column
+            for (let r = rowIdx - 1; r >= 0; r--) {
+              const rCells = Array.from(allRows[r].querySelectorAll('td'));
+              if (rCells[colIdx] && !rCells[colIdx].classList.contains('is-void') && rCells[colIdx].hasAttribute('data-date')) {
+                targetTd = rCells[colIdx];
+                break;
+              }
+            }
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            // First valid cell in row
+            targetTd = rowCells.find(c => !c.classList.contains('is-void') && c.hasAttribute('data-date'));
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            // Last valid cell in row
+            targetTd = [...rowCells].reverse().find(c => !c.classList.contains('is-void') && c.hasAttribute('data-date'));
+          }
+
+          if (targetTd) {
+            cells.forEach(c => c.setAttribute('tabindex', '-1'));
+            targetTd.setAttribute('tabindex', '0');
+            targetTd.focus();
+            showTip(targetTd);
+          }
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHeatmaps);
+  } else {
+    initHeatmaps();
+  }
 })();
 
