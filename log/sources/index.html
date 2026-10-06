@@ -76,7 +76,7 @@
   ]
 }
 </script>
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -123,6 +123,17 @@
 <header class="site-head wrap">
   <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/" aria-current="page">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
     <div class="head-actions">
       <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -131,23 +142,12 @@
         <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
       </button>
-      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
         <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
-  <nav class="nav" id="navlist" aria-label="Main navigation" hidden>
-    <ul class="nav-list">
-      <li><a href="/work/">Agent systems</a></li>
-      <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
-      <li><a href="/log/" aria-current="page">Log</a></li>
-      <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
-    </ul>
-  </nav>
 </header>
 <main id="main"><nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">How I source these numbers</li></ol></nav><div class="wrap"><div class="page-head"><h1>How I source these numbers</h1><p class="deck">Every number in an entry carries a tag that points to where it came from.</p></div><h2 id="tags">Tag formats</h2><ul class="src-list"><li><span class="mono">G:</span> a milestone in my append-only ledger. Each milestone gets an ID when it happens, and the ID never&nbsp;changes.</li><li><span class="mono">K:</span> a task card on the build board, where agents pick up work and I approve or return&nbsp;it.</li><li><span class="mono">T:</span> one day of model call logs, counted per&nbsp;model.</li><li><span class="mono">D:</span> one daily progress report. Used as a drafting hint, never&nbsp;quoted.</li></ul><h2 id="counting">How the weekly figures are counted</h2><ul class="src-list"><li><strong>Agent runs</strong>: worker runs on the build&nbsp;board.</li><li><strong>Build hours</strong>: hours of worker runs on the build&nbsp;board.</li><li><strong>Tasks shipped</strong>: cards moved to done on the build&nbsp;board.</li><li><strong>Model calls</strong>: calls across 7&nbsp;models.</li><li><strong>Scheduled jobs</strong>: enabled jobs across&nbsp;agents.</li><li><strong>Skills</strong>: distinct skill folders, each a reusable step-by-step&nbsp;procedure.</li></ul><p>A cell that has no source for the week shows &ldquo;not measured&rdquo; instead of zero. Institute work runs in a separate, private agent and is left out of every count.</p><h2 id="models">Model names</h2><p>Charts use the model name. The id is what the call log records.</p><ul class="src-list"><li>Gemini 3.7 Flash (high) is logged as <span class="mono">ag/gemini-3.7-flash-high</span>.</li><li>Opus 5.5 is logged as <span class="mono">claude-opus-5-5[1m]</span>.</li><li>Sonnet 4.6 is logged as <span class="mono">ag/claude-sonnet-4-6</span>.</li><li>Sonnet 5.5 is logged as <span class="mono">claude-sonnet-5-5</span>.</li><li>Gemini 3.7 Flash (medium) is logged as <span class="mono">ag/gemini-3.7-flash-medium</span>.</li><li>Sonnet 5 is logged as <span class="mono">claude-sonnet-5[1m]</span>.</li><li>Gemini 3.6 Flash (high) is logged as <span class="mono">ag/gemini-3.6-flash-high</span>.</li></ul><h2 id="privacy">What never appears here</h2><p>Client names, institute work, money amounts, channel names, server addresses, ports and file paths. A script checks every page for these before I see the draft, and I check the rest by&nbsp;hand.</p><h2 id="cited">Tags cited so far</h2><ul class="src-list"><li id="src-G-0009" data-src="G:0009">Ledger: first billed day of the cloud server (billing record, amount&nbsp;withheld). Cited in: <a href="/log/2026/09/cloud-migration/">Moved the agents from laptop to cloud&nbsp;server</a></li><li id="src-G-0010" data-src="G:0010">Ledger: cloud server first boot, from the system boot&nbsp;log. Cited in: <a href="/log/2026/09/cloud-migration/">Moved the agents from laptop to cloud&nbsp;server</a></li><li id="src-G-0011" data-src="G:0011">Ledger: agent runtime moved from laptop to cloud&nbsp;server. Cited in: <a href="/log/2026/09/cloud-migration/">Moved the agents from laptop to cloud&nbsp;server</a></li><li id="src-G-0012" data-src="G:0012">Ledger: model gateway and provider sync deployed as system&nbsp;services. Cited in: <a href="/log/2026/09/cloud-migration/">Moved the agents from laptop to cloud&nbsp;server</a></li><li id="src-K-t-2e5cde57" data-src="K:t_2e5cde57">Task card: v1.2 agent case studies, where the unmatched claims were&nbsp;found. Cited in: <a href="/log/2026/10/site-rebuild-fact-audit/">Rebuilt this site; fact audit checked every&nbsp;number</a></li><li id="src-K-t-d2253e4b" data-src="K:t_d2253e4b">Task card: v2 visual redesign with diagrams and charts, including the reviewer run and the model&nbsp;fallback. Cited in: <a href="/log/2026/10/site-rebuild-fact-audit/">Rebuilt this site; fact audit checked every&nbsp;number</a></li><li id="src-K-t-fe967bff" data-src="K:t_fe967bff">Task card: v2.1 diagram polish, facts map and diagram text size&nbsp;check. Cited in: <a href="/log/2026/10/site-rebuild-fact-audit/">Rebuilt this site; fact audit checked every&nbsp;number</a></li></ul></div></main>
 <footer class="site-foot wrap">

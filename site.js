@@ -26,23 +26,21 @@
     t.setAttribute('aria-pressed', r.getAttribute('data-theme') === 'dark');
   }
 
-  // Mobile menu toggle
-  var m = d.querySelector('.menu-btn'), l = d.getElementById('navlist');
-  if (m && l) {
-    m.classList.add('js');
-    var q = matchMedia('(max-width:899px)');
-    function s(o) {
-      l.hidden = !o;
-      m.setAttribute('aria-expanded', o);
-    }
-    s(!q.matches);
-    q.addEventListener('change', function() { s(!q.matches); });
-    m.addEventListener('click', function() { s(l.hidden); });
+  // Mobile menu toggle. Breakpoint must match base.css (@media min-width:961px).
+  var m = d.querySelector('.menu-btn'), n = d.querySelector('.site-head .nav');
+  if (m && n) {
+    var q = matchMedia('(max-width:960px)');
+    var s = function(o) {
+      n.classList.toggle('is-open', o);
+      m.setAttribute('aria-expanded', o ? 'true' : 'false');
+      m.setAttribute('aria-label', o ? 'Close navigation menu' : 'Open navigation menu');
+    };
+    s(false);
+    q.addEventListener('change', function() { s(false); });
+    m.addEventListener('click', function() { s(!n.classList.contains('is-open')); });
+    n.addEventListener('click', function(e) { if (q.matches && e.target.closest('a')) s(false); });
     d.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && q.matches && !l.hidden) {
-        s(false);
-        m.focus();
-      }
+      if (e.key === 'Escape' && n.classList.contains('is-open')) { s(false); m.focus(); }
     });
   }
 

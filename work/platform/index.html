@@ -102,7 +102,7 @@
   ]
 }
 </script>
-  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -149,6 +149,17 @@
 <header class="site-head wrap">
   <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/" aria-current="page">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
     <div class="head-actions">
       <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -157,23 +168,12 @@
         <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
       </button>
-      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
         <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
-  <nav class="nav" id="navlist" aria-label="Main navigation" hidden>
-    <ul class="nav-list">
-      <li><a href="/work/" aria-current="page">Agent systems</a></li>
-      <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
-      <li><a href="/log/">Log</a></li>
-      <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
-    </ul>
-  </nav>
 </header>
 <main id="main">
 <nav class="breadcrumb wrap" aria-label="Breadcrumbs">
@@ -213,9 +213,9 @@
     <p class="deck">Time I spent working with my agents across Discord, Telegram, and Hermes CLI, sessionized by a 15-minute idle gap.</p>
     
     <div class="stats-row">
-      <div class="stat-item"><span class="stat-val">140.0 h</span><span class="stat-lbl">Total hours</span></div>
-      <div class="stat-item"><span class="stat-val">20</span><span class="stat-lbl">Active days</span></div>
-      <div class="stat-item"><span class="stat-val">7.0 h</span><span class="stat-lbl">Avg / active day</span></div>
+      <div class="stat-item"><span class="stat-val">142.4 h</span><span class="stat-lbl">Total hours</span></div>
+      <div class="stat-item"><span class="stat-val">21</span><span class="stat-lbl">Active days</span></div>
+      <div class="stat-item"><span class="stat-val">6.8 h</span><span class="stat-lbl">Avg / active day</span></div>
       <div class="stat-item"><span class="stat-val">13.9 h</span><span class="stat-lbl">Longest day (2026-09-28)</span></div>
     </div>
 
@@ -230,7 +230,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="9.5" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 9.5 h (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="10.2" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 10.2 h"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td data-date="2026-10-07" data-value="1.7" data-level="1" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 1.7 h (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -260,7 +260,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1163541019" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 1.16 B tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1133844646" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 1.13 B tokens"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td data-date="2026-10-07" data-value="214871427" data-level="3" data-today="true" role="gridcell" aria-label="Wed 7 Oct: 214.9 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -357,7 +357,7 @@
     </ul>
 
     <figure class="fig" role="group" aria-label="Access and isolation diagram">
-      <svg viewBox="0 0 720 150" role="img" aria-labelledby="acc-t acc-d" style="width:100%;height:auto;max-width:720px">
+      <svg class="wide" viewBox="0 0 720 150" role="img" aria-labelledby="acc-t acc-d" style="width:100%;height:auto;max-width:720px">
         <title id="acc-t">Access path to the Azure server</title>
         <desc id="acc-d">Phone and laptop connect over the Tailscale mesh to the Azure VPS, which hosts isolated agent workspaces.</desc>
         <g font-family="'Source Sans 3',sans-serif" font-size="14" fill="var(--ink)">
@@ -372,6 +372,19 @@
           <text x="637" y="92" text-anchor="middle">isolated workspaces</text>
           <path d="M158 75 C 205 55, 240 95, 285 75" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
           <path d="M435 75 C 480 55, 520 95, 562 75" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <svg class="narrow" viewBox="0 0 320 330" role="img" aria-labelledby="acc-t-n" style="width:100%;height:auto">
+        <title id="acc-t-n">Phone and laptop reach the Azure server over the Tailscale mesh</title>
+        <g font-family="'Source Sans 3',sans-serif" font-size="16" fill="var(--ink)" text-anchor="middle">
+          <rect x="40" y="6" width="240" height="70" rx="22" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="36">Phone (Termius)</text><text x="160" y="58">Laptop (SSH)</text>
+          <rect x="40" y="130" width="240" height="70" rx="22" fill="var(--paper)" stroke="var(--forest)" stroke-width="1.5"/>
+          <text x="160" y="160">Tailscale mesh</text><text x="160" y="182">WireGuard</text>
+          <rect x="40" y="254" width="240" height="70" rx="22" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="284">Azure VPS</text><text x="160" y="306">isolated workspaces</text>
+          <path d="M160 76 C 150 96, 170 108, 160 130" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
+          <path d="M160 200 C 150 220, 170 232, 160 254" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round"/>
         </g>
       </svg>
       <figcaption class="small muted">Devices reach the server over the encrypted mesh.</figcaption>

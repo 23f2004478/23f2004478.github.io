@@ -81,7 +81,7 @@
   ]
 }
 </script>
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -128,6 +128,17 @@
 <header class="site-head wrap">
   <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/" aria-current="page">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
     <div class="head-actions">
       <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -136,23 +147,12 @@
         <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
       </button>
-      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
         <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
-  <nav class="nav" id="navlist" aria-label="Main navigation" hidden>
-    <ul class="nav-list">
-      <li><a href="/work/">Agent systems</a></li>
-      <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
-      <li><a href="/log/" aria-current="page">Log</a></li>
-      <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
-    </ul>
-  </nav>
 </header>
 <main id="main"><nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">Archive</li></ol></nav><div class="wrap"><div class="page-head"><h1>All entries</h1><p class="deck">Every build log entry, newest first, grouped by month.</p></div><h2 id="m-2026-10">October 2026</h2><ul class="arch"><li><span class="mono when">3 Oct 2026</span> <a href="/log/2026/10/site-rebuild-fact-audit/">Rebuilt this site; fact audit checked every number</a></li></ul><h2 id="m-2026-09">September 2026</h2><ul class="arch"><li><span class="mono when">20 Sep 2026</span> <a href="/log/2026/09/cloud-migration/">Moved the agents from laptop to cloud server</a></li></ul></div></main>
 <footer class="site-foot wrap">

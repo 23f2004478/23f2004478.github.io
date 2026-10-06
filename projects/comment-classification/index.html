@@ -102,7 +102,7 @@
   ]
 }
 </script>
-  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -149,6 +149,17 @@
 <header class="site-head wrap">
   <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/projects/" aria-current="page">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
     <div class="head-actions">
       <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -157,23 +168,12 @@
         <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
       </button>
-      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
         <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
-  <nav class="nav" id="navlist" aria-label="Main navigation" hidden>
-    <ul class="nav-list">
-      <li><a href="/work/">Agent systems</a></li>
-      <li><a href="/internships/">Internships</a></li>
-      <li><a href="/projects/" aria-current="page">Projects</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
-      <li><a href="/log/">Log</a></li>
-      <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
-    </ul>
-  </nav>
 </header>
 <main id="main">
 <nav class="breadcrumb wrap" aria-label="Breadcrumbs">

@@ -48,18 +48,22 @@ span.mono,.fact.mono,dt.mono{white-space:nowrap;overflow-wrap:normal;word-break:
 .icon.brand{fill:currentColor!important;stroke:none!important;padding:0!important;margin:0!important}
 .icon.brand path,.icon.brand g{fill:currentColor!important}
 .scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0%;z-index:100;transition:width var(--dur-1) var(--ease-out)}
+/* Header. Row 1: brand | nav (desktop) | actions. Under 961px the nav drops to its own full-width row,
+   collapsed behind .menu-btn. html.js is set by the inline head script, so no-JS visitors get an open list. */
 .site-head{border-bottom:1px solid var(--rule)}
-.head-in{display:flex;align-items:center;justify-content:space-between;min-height:56px;flex-wrap:nowrap!important;gap:4px;width:100%}
-a.brand{font-family:var(--serif);font-size:clamp(0.95rem,3.8vw,1.1875rem);font-weight:500;color:var(--ink);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;padding:4px 0;white-space:nowrap;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
-.nav{display:contents}
-.nav-list{list-style:none;margin:0;padding:0;display:flex;gap:2px}
-.nav-list a{color:var(--ink);text-decoration:none;text-underline-offset:.4em;font-weight:500}
-.nav-list a:hover,
-.nav-list a:focus-visible{text-decoration:underline}
+.head-in{display:flex;flex-wrap:wrap;align-items:center;column-gap:var(--s2);min-height:64px}
+a.brand{order:1;flex:1 1 0;min-width:0;display:inline-flex;align-items:center;min-height:44px;font-family:var(--serif);font-size:clamp(1rem,4.6vw,1.1875rem);font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.head-actions{order:2;display:flex;align-items:center;gap:2px;flex:none}
+.nav{order:3;flex:1 0 100%}
+.nav-list{list-style:none;margin:0;padding:var(--s1) 0 var(--s2);border-top:1px solid var(--rule);display:flex;flex-direction:column}
+.nav-list a{display:flex;align-items:center;min-height:48px;color:var(--ink);text-decoration:none;text-underline-offset:.4em;font-weight:500;font-size:1rem}
+.nav-list a:hover,.nav-list a:focus-visible{text-decoration:underline}
 .nav-list a[aria-current="page"]{color:var(--accent);text-decoration:underline;font-weight:600}
+.icon-btn.menu-btn{display:none}
+html.js .icon-btn.menu-btn{display:inline-grid}
+html.js .nav:not(.is-open){display:none}
 .icon-btn{display:inline-grid;place-items:center;width:44px;height:44px;background:none;border:0;color:var(--ink);cursor:pointer;border-radius:2px;padding:0;flex:none}
 .icon-btn:hover{color:var(--accent)}
-.menu-btn{display:none;order:3}
 .t-moon{display:none}
 [data-theme="dark"] .t-sun{display:none}
 [data-theme="dark"] .t-moon{display:block}
@@ -67,13 +71,15 @@ a.brand{font-family:var(--serif);font-size:clamp(0.95rem,3.8vw,1.1875rem);font-w
 .menu-btn[aria-expanded="true"] .t-close{display:block}
 .menu-btn[aria-expanded="true"] .t-menu{display:none}
 .nav-resume .tag{font-size:.75rem;padding:2px 4px;background:var(--box);border:1px solid var(--rule);border-radius:2px;margin-left:4px}
-@media (max-width:960px){
-  .menu-btn.js{display:inline-grid}
-  .nav-list{order:5;flex-basis:100%;flex-direction:column;padding-bottom:var(--s2);gap:0}
-  .nav-list[hidden]{display:none}
-  .nav-list a{padding:0 var(--s3);min-height:48px;font-size:1rem}
+@media (min-width:961px){
+  a.brand{flex:0 0 auto;margin-right:auto}
+  .nav{order:2;flex:0 1 auto}
+  html.js .nav:not(.is-open){display:block}
+  .nav-list{flex-direction:row;gap:2px;padding:0;border-top:0}
+  .nav-list a{min-height:44px;padding:0 var(--s2);font-size:inherit}
+  .head-actions{order:3}
+  html.js .icon-btn.menu-btn{display:none}
 }
-@media (min-width:961px){.nav-list[hidden]{display:flex}}
 .breadcrumb{padding-top:var(--s6);font-size:.9375rem;color:var(--muted)}
 .breadcrumb ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:center;gap:var(--s1)}
 .breadcrumb li{display:inline-flex;align-items:center}
@@ -127,16 +133,16 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .ribbon-sec .deck{max-width:64ch;margin:0 0 var(--s6);color:var(--muted);font-size:1rem}
 .arch-diagram-wrap{margin:var(--s4) 0;border:1px solid var(--rule);border-radius:4px;background:var(--paper);padding:var(--s3);overflow:hidden}
 .arch-svg{width:100%;height:auto;display:block;max-width:1060px;margin:0 auto}
+/* SVG text uses its own classes so global .mono/.serif font-size rules cannot override the font-size attribute */
 .arch-svg text{font-family:var(--sans)}
-.arch-svg text.serif{font-family:var(--serif)}
-.arch-svg text.mono{font-family:var(--mono)}
-.arch-svg text.sans{font-family:var(--sans)}
+.arch-svg text.af{font-family:var(--serif)}
+.arch-svg text.am{font-family:var(--mono)}
+.arch-svg text.as{font-family:var(--sans)}
 .arch-svg.wide{display:block}
-.arch-svg.narrow{display:none}
-@media (max-width:767px){
-  .arch-svg.wide{display:none!important}
-  .arch-svg.narrow{display:block!important}
-}
+/* Phones and small tablets: the six HTML cards carry the flow (legible text); the SVG is for wide screens. */
+/* SVG only where it renders near 1:1 (text >= 13px). Below that the HTML cards carry the flow. */
+@media (max-width:1199px){.arch-diagram-wrap{display:none}}
+@media (min-width:1200px){.ribbon-sec .ribbon-grid{display:none}}
 .arch-node{cursor:pointer;outline:none}
 .arch-node .node-bg{transition:stroke var(--dur-1) var(--ease-out),stroke-width var(--dur-1) var(--ease-out),fill var(--dur-1) var(--ease-out)}
 .arch-node:hover .node-bg,.arch-node:focus-visible .node-bg{stroke:var(--accent);stroke-width:2px}
@@ -150,11 +156,11 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .station.gate-station{border:2px solid var(--accent);background:var(--box)}
 .station-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s2)}
 .station-num{font-family:var(--mono);font-size:.875rem;font-weight:700;color:var(--muted)}
-.station-depth{font-family:var(--mono);font-size:.6875rem;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--rule);padding:1px 5px;border-radius:2px}
+.station-depth{font-family:var(--mono);font-size:.8125rem;text-transform:uppercase;color:var(--muted);background:var(--paper);border:1px solid var(--rule);padding:1px 5px;border-radius:2px}
 .station-title{font-family:var(--serif);font-size:1.125rem;font-weight:600;margin:0;color:var(--ink)}
 .station.gate-station .station-title{color:var(--accent)}
 .station-desc{font-size:.875rem;color:var(--muted);margin:0;line-height:1.45}
-.station-tag{display:inline-block;font-family:var(--mono);font-size:.6875rem;font-weight:700;text-transform:uppercase;padding:2px 6px;background:var(--accent);color:var(--accent-ink);border-radius:2px;align-self:flex-start}
+.station-tag{display:inline-block;font-family:var(--mono);font-size:.75rem;font-weight:700;text-transform:uppercase;padding:2px 6px;background:var(--accent);color:var(--accent-ink);border-radius:2px;align-self:flex-start}
 .full-flow{margin-top:var(--s4);border:1px solid var(--rule);border-radius:2px;padding:var(--s3) var(--s4);background:var(--paper)}
 .full-flow summary{cursor:pointer;font-weight:600;min-height:44px;display:inline-flex;align-items:center;color:var(--accent)}
 .full-flow[open] summary{margin-bottom:var(--s3)}
@@ -336,4 +342,3 @@ sup.src a:hover{text-decoration:underline}
   h2{margin-top:var(--s8)}
 }
 
-.head-actions{display:flex;align-items:center;gap:2px;flex:0 0 auto;flex-shrink:0}

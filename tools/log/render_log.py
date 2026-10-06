@@ -107,7 +107,7 @@ def head(title, desc, path, ld, extra=""):
   <script type="application/ld+json">
 %(ld)s
 </script>
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <script>document.documentElement.classList.add("js");try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>""" % {"t": esc(title), "d": esc(desc), "u": url, "ld": json.dumps(ld, indent=2, ensure_ascii=False),
              "ogt": ogt, "img": img_url, "img_alt": esc(img_alt), "art_meta": art_meta}

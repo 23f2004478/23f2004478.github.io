@@ -95,7 +95,7 @@
   ]
 }
 </script>
-  <script>(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+  <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -142,6 +142,17 @@
 <header class="site-head wrap">
   <div class="head-in">
     <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/">Agent systems</a></li>
+      <li><a href="/internships/" aria-current="page">Internships</a></li>
+      <li><a href="/projects/">Projects</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/credentials/">Credentials</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
     <div class="head-actions">
       <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
         <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
@@ -150,23 +161,12 @@
         <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
         <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
       </button>
-      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
         <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
       </button>
     </div>
   </div>
-  <nav class="nav" id="navlist" aria-label="Main navigation" hidden>
-    <ul class="nav-list">
-      <li><a href="/work/">Agent systems</a></li>
-      <li><a href="/internships/" aria-current="page">Internships</a></li>
-      <li><a href="/projects/">Projects</a></li>
-      <li><a href="/research/">Research</a></li>
-      <li><a href="/credentials/">Credentials</a></li>
-      <li><a href="/log/">Log</a></li>
-      <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
-    </ul>
-  </nav>
 </header>
 <main id="main">
 <nav class="breadcrumb wrap" aria-label="Breadcrumbs">
@@ -200,9 +200,9 @@
             <li>Authored a 1,147-line ML estimation PRD with 20 requirements, 6 regression targets over 10 engineered features, and champion-challenger promotion rules.</li>
           </ul>
 
-          <div class="chart-wrap" data-ix="chart_tooltips">
+          <div class="chart-wrap fig" data-ix="chart_tooltips">
   <h3 class="chart-title">QualityKiosk estimation engines: tests and&nbsp;rows</h3>
-  <svg class="dg chart-svg" viewBox="0 0 680 220" role="img" aria-labelledby="qk-chart-title qk-chart-desc" xmlns="http://www.w3.org/2000/svg">
+  <svg class="dg chart-svg wide" viewBox="0 0 680 220" role="img" aria-labelledby="qk-chart-title qk-chart-desc" xmlns="http://www.w3.org/2000/svg">
     <title id="qk-chart-title">QualityKiosk estimation engines test coverage and standardized QA rows</title>
     <desc id="qk-chart-desc">Bar chart showing 136 unit tests, 68 Excel parity tests, 1,027 lines of TypeScript engine code, and 18,456 standardized QA rows.</desc>
     <!-- Grid rules -->
@@ -237,6 +237,21 @@
     <text class="t-s" x="180" y="198" font-size="13">0</text>
     <text class="t-s" x="420" y="198" font-size="13" text-anchor="middle">Engine verified metrics</text>
     <text class="t-s" x="660" y="198" font-size="13" text-anchor="end">Scale relative</text>
+  </svg>
+  <svg class="dg chart-svg narrow" viewBox="0 0 360 300" role="img" aria-labelledby="qk-chart-title-n" xmlns="http://www.w3.org/2000/svg">
+    <title id="qk-chart-title-n">QualityKiosk estimation engines: tests and rows</title>
+    <text class="t-s" x="0" y="22" font-size="16">Unit tests</text>
+    <rect class="bar-a" x="0" y="30" width="156" height="22" rx="2"/>
+    <text class="mono-n" x="164" y="47" font-size="16">136 tests</text>
+    <text class="t-s" x="0" y="92" font-size="16">Excel parity tests</text>
+    <rect class="bar-a" x="0" y="100" width="78" height="22" rx="2"/>
+    <text class="mono-n" x="86" y="117" font-size="16">68 parity tests</text>
+    <text class="t-s" x="0" y="162" font-size="16">TypeScript code</text>
+    <rect class="bar-b" x="0" y="170" width="211" height="22" rx="2"/>
+    <text class="mono-n" x="219" y="187" font-size="16">1,027 lines</text>
+    <text class="t-s" x="0" y="232" font-size="16">Standardized QA rows</text>
+    <rect class="bar-n" x="0" y="240" width="250" height="22" rx="2"/>
+    <text class="mono-n" x="258" y="257" font-size="16">18,456 rows</text>
   </svg>
   <p class="chart-caption">QualityKiosk estimation tooling metrics, verified from code repositories and test suites.</p>
   <details class="full-flow">

@@ -1,5 +1,6 @@
 .reveal-init{opacity:0;transform:translateY(var(--reveal-y));transition:opacity var(--dur-3) var(--ease-out),transform var(--dur-3) var(--ease-out)}
-.reveal-init.is-revealed{opacity:1;transform:translateY(0)}
+/* transform:none, not translateY(0): any transform makes the section a containing block and traps fixed-position popovers inside it */
+.reveal-init.is-revealed{opacity:1;transform:none}
 @view-transition{navigation:auto}
 ::view-transition-old(root),::view-transition-new(root){animation-duration:var(--dur-2)}
 @media(prefers-reduced-motion:reduce){
