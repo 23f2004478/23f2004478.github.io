@@ -274,12 +274,18 @@
       </table>
     </div>
 
-    <h2>Hosting and Access</h2>
-    <p>The runtime moved from a MacBook Linux VM to an Azure cloud VPS (Ubuntu 24.04, systemd services) on 20 Sep 2026, so the agents run 24/7 without my laptop being on.</p>
+    <h2>Access from any device</h2>
+    <p>I can run the whole platform from my phone, so work continues when my laptop is closed or not with me. Three pieces make that work.</p>
     <ul>
-      <li><strong>Azure Cloud VPS:</strong> Every agent runs here as a systemd-managed service. The model gateway and provider sync restart on their own after a reboot.</li>
-      <li><strong>Tailscale mesh:</strong> Tailscale, a WireGuard-based private network, links my devices to the server over encrypted tunnels.</li>
-      <li><strong>Termius mobile access:</strong> From my phone I open an SSH session in Termius over that mesh to check or restart a service without a laptop.</li>
+      <li><strong>Private mesh:</strong> Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). The server has no public SSH port, so it is reachable only from those devices.</li>
+      <li><strong>Termius:</strong> Termius is the SSH client on my phone and laptop. It connects over the mesh, so I can check a service or restart one from the phone.</li>
+      <li><strong>Dictation:</strong> I dictate on my phone or Mac (Dictate on Android, FreeFlow on Mac), read the transcript, then send it on Discord or Telegram. The router agent picks it up from there.</li>
+    </ul>
+
+    <h2>Host and isolation</h2>
+    <p>Every agent runs on one rented cloud server and stays inside its own workspace. The host is an Azure VPS named hermes-cloud running Ubuntu 24.04, and the runtime moved there from a MacBook Linux VM on 20 Sep 2026, so the agents run around the clock.</p>
+    <ul>
+      <li><strong>systemd user services:</strong> Each long running piece, including the model gateway and provider sync, is a systemd user service that restarts on its own after a reboot.</li>
       <li><strong>Workspace isolation:</strong> Each agent has its own working directory, persistent memory, scoped tools and skills. Each domain keeps its own data in its own workspace.</li>
     </ul>
 

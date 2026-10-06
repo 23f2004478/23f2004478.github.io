@@ -206,9 +206,23 @@
     <h2>How the Gateway Pools Models</h2>
     <ul>
       <li><strong>9Router pooling:</strong> 9Router listens on a loopback port on the server and presents one endpoint to every agent. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next in the fallback chain, with an Anthropic OAuth fallback path.</li>
-      <li><strong>Model selection rationale:</strong> High-volume background work (scraping, telemetry, sweeps) goes to Gemini 3.7 Flash. Deep multi-file reasoning and audits go to Claude Opus. Deterministic code, tests and generator scripts go to Claude Sonnet 5.5. I publish no per-model split.</li>
       <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.</li>
     </ul>
+
+    <h2>Why each model</h2>
+    <p>Each model gets the kind of work it is best suited to, so a cheap fast model does the bulk and the expensive one is kept for hard steps. 9Router pools my model accounts behind one endpoint, and the agent doing the work picks the model for the job.</p>
+    <ul>
+      <li><strong>Gemini 3.7 Flash:</strong> High volume reading, scraping, telemetry and sweeps.</li>
+      <li><strong>Claude Opus:</strong> Deep reasoning, multi file planning and audits.</li>
+      <li><strong>Claude Sonnet 5.5:</strong> Code, tests and generator scripts.</li>
+    </ul>
+    <p>Measured split, share of Hermes-tracked tokens:</p>
+    <dl class="kv">
+      <dt>Gemini 3.7 Flash</dt><dd class="mono">66.1%</dd>
+      <dt>Claude Opus</dt><dd class="mono">29.3%</dd>
+      <dt>Claude Sonnet 5.5</dt><dd class="mono">4.6%</dd>
+    </dl>
+    <p class="small muted">Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.</p>
 
     <h2>Outcome</h2>
     <p>Zero agent task aborts from transient provider rate limits or token exhaustion. Deterministic scripts handle bulk data filtering locally, reducing context overhead and ensuring predictable computational behavior across all 12 agents.</p>
