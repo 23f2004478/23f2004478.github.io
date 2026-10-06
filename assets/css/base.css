@@ -125,11 +125,23 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .ribbon-sec{margin-block:var(--s10)}
 .ribbon-sec h2{margin:0 0 var(--s2)}
 .ribbon-sec .deck{max-width:64ch;margin:0 0 var(--s6);color:var(--muted);font-size:1rem}
-.arch-diagram-wrap{margin:var(--s4) 0;border:1px solid var(--rule);border-radius:2px;background:var(--paper);padding:var(--s3)}
-.arch-svg{width:100%;height:auto;display:block;max-width:1080px;margin:0 auto}
+.arch-diagram-wrap{margin:var(--s4) 0;border:1px solid var(--rule);border-radius:4px;background:var(--paper);padding:var(--s3);overflow:hidden}
+.arch-svg{width:100%;height:auto;display:block;max-width:1060px;margin:0 auto}
 .arch-svg text{font-family:var(--sans)}
 .arch-svg text.serif{font-family:var(--serif)}
 .arch-svg text.mono{font-family:var(--mono)}
+.arch-svg text.sans{font-family:var(--sans)}
+.arch-svg.wide{display:block}
+.arch-svg.narrow{display:none}
+@media (max-width:767px){
+  .arch-svg.wide{display:none!important}
+  .arch-svg.narrow{display:block!important}
+}
+.arch-node{cursor:pointer;outline:none}
+.arch-node .node-bg{transition:stroke var(--dur-1) var(--ease-out),stroke-width var(--dur-1) var(--ease-out),fill var(--dur-1) var(--ease-out)}
+.arch-node:hover .node-bg,.arch-node:focus-visible .node-bg{stroke:var(--accent);stroke-width:2px}
+.arch-node.gate-node .gate-bg{stroke:var(--accent);stroke-width:2px}
+.arch-node.gate-node:hover .gate-bg,.arch-node.gate-node:focus-visible .gate-bg{stroke-width:2.5px}
 .ribbon-grid{display:grid;grid-template-columns:1fr;gap:var(--s4);margin:var(--s6) 0}
 @media (min-width:640px){.ribbon-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1024px){.ribbon-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}

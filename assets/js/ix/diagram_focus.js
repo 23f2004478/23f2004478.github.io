@@ -9,12 +9,12 @@
 
   // 1. Diagram Node Focus & Dimming
   function setupDiagramFocus() {
-    var diagrams = d.querySelectorAll('[data-ix~="diagram_focus"], svg.dg');
+    var diagrams = d.querySelectorAll('[data-ix~="diagram_focus"], svg.dg, svg.arch-svg');
     diagrams.forEach(function(svg) {
-      var nodes = svg.querySelectorAll('rect.k-n, rect.k-b, rect.k-a, rect.k-p, rect.k-d, g.node');
+      var nodes = svg.querySelectorAll('rect.k-n, rect.k-b, rect.k-a, rect.k-p, rect.k-d, g.node, g.arch-node');
       if (!nodes.length) return;
 
-      var fig = svg.closest('figure');
+      var fig = svg.closest('figure, .arch-diagram-wrap, .ribbon-sec');
       var liveAnnouncer = null;
       if (fig) {
         liveAnnouncer = fig.querySelector('.diagram-live-caption');
@@ -30,11 +30,14 @@
         function focusNode() {
           nodes.forEach(function(n) {
             if (n !== node) {
-              n.style.opacity = '0.35';
+              n.style.opacity = '0.38';
             } else {
               n.style.opacity = '1';
-              n.style.stroke = 'var(--accent)';
-              n.style.strokeWidth = '2px';
+              var bg = n.querySelector('.node-bg') || n;
+              if (bg.tagName && bg.tagName.toLowerCase() === 'rect') {
+                bg.style.stroke = 'var(--accent)';
+                bg.style.strokeWidth = '2px';
+              }
             }
           });
           var label = node.getAttribute('aria-label') || node.textContent.trim();
@@ -46,14 +49,19 @@
         function blurNode() {
           nodes.forEach(function(n) {
             n.style.opacity = '';
-            n.style.stroke = '';
-            n.style.strokeWidth = '';
+            var bg = n.querySelector('.node-bg') || n;
+            if (bg.tagName && bg.tagName.toLowerCase() === 'rect') {
+              bg.style.stroke = '';
+              bg.style.strokeWidth = '';
+            }
           });
           if (liveAnnouncer) liveAnnouncer.textContent = '';
         }
 
         node.addEventListener('mouseenter', focusNode);
         node.addEventListener('mouseleave', blurNode);
+        node.addEventListener('focus', focusNode);
+        node.addEventListener('blur', blurNode);
       });
     });
   }
@@ -115,10 +123,10 @@
   }
 
   function setupDiagramExpansion() {
-    var figures = d.querySelectorAll('figure.fig, figure.hero-fig, figure, .case-diagram');
+    var figures = d.querySelectorAll('figure.fig, figure.hero-fig, figure, .case-diagram, .arch-diagram-wrap');
     figures.forEach(function(fig) {
       if (fig.querySelector('.diag-expand-btn')) return;
-      var svgs = fig.querySelectorAll('svg.dg, svg.gate-dg, svg.chart-svg');
+      var svgs = fig.querySelectorAll('svg.dg, svg.gate-dg, svg.chart-svg, svg.arch-svg');
       if (!svgs.length) return;
 
       var btn = d.createElement('button');

@@ -264,17 +264,19 @@
         <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=2" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
       </ul>
     </nav>
-    <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
-      <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
-    </button>
-    <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
-      <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
-      <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
-    </button>
-    <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
-      <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
-      <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
-    </button>
+    <div class="head-actions">
+      <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      </button>
+      <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
+        <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn menu-btn js" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 <main id="main">
@@ -307,13 +309,14 @@
 
   <!-- Headline Metrics Section -->
   <section class="section metrics-sec wrap" id="metrics" aria-label="Agent platform metrics">
+  <p class="metrics-hint">Hover or tap any card for daily heatmaps and system breakdowns</p>
   <div class="metrics-grid">
     <article class="metric-card" id="metric-card-hours">
   <details class="metric-pop" data-ix="metric_pop">
     <summary class="metric-summary" aria-haspopup="dialog" aria-expanded="false">
-      <div class="metric-num">13.9 <span class="unit">h</span></div>
-      <span class="metric-title">Peak day with agents</span>
-      <div class="metric-cap">Single-day engagement record on 28 Sep 2026, across 20 active days (140 h total since 13 Sep 2026).</div>
+      <div class="metric-num">140 <span class="unit">h</span></div>
+      <span class="metric-title">Hours working with agents <span class="metric-affordance"><span>Daily heatmap</span><svg class="affordance-icon" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></span></span>
+      <div class="metric-cap">Time I spent working with my agents, mostly by voice from my phone, across 20 active days since 13 Sep 2026. Longest day 13.9 h on 28 Sep 2026.</div>
     </summary>
     <div class="metric-panel" role="region" aria-label="Hours with agents details">
       <div class="panel-header">
@@ -335,7 +338,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="9.1" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 9.1 h (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0.0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 hours"></td><td data-date="2026-09-21" data-value="4.9" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 4.9 h"></td><td data-date="2026-09-28" data-value="13.9" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 13.9 h"></td><td data-date="2026-10-05" data-value="12.2" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 12.2 h"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="0.2" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 0.2 h"></td><td data-date="2026-09-22" data-value="5.1" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 5.1 h"></td><td data-date="2026-09-29" data-value="6.3" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 6.3 h"></td><td data-date="2026-10-06" data-value="9.3" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 9.3 h (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="0.0" data-level="0" role="gridcell" aria-label="Wed 16 Sep: 0 hours"></td><td data-date="2026-09-23" data-value="5.4" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 5.4 h"></td><td data-date="2026-09-30" data-value="11.9" data-level="4" role="gridcell" aria-label="Wed 30 Sep: 11.9 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="0.0" data-level="0" role="gridcell" aria-label="Thu 17 Sep: 0 hours"></td><td data-date="2026-09-24" data-value="6.7" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 6.7 h"></td><td data-date="2026-10-01" data-value="9.3" data-level="4" role="gridcell" aria-label="Thu 1 Oct: 9.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="0.0" data-level="0" role="gridcell" aria-label="Fri 18 Sep: 0 hours"></td><td data-date="2026-09-25" data-value="9.2" data-level="4" role="gridcell" aria-label="Fri 25 Sep: 9.2 h"></td><td data-date="2026-10-02" data-value="13.3" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 13.3 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="3.3" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 3.3 h"></td><td data-date="2026-09-26" data-value="3.8" data-level="2" role="gridcell" aria-label="Sat 26 Sep: 3.8 h"></td><td data-date="2026-10-03" data-value="11.1" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 11.1 h"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0.2" data-level="1" role="gridcell" aria-label="Sun 13 Sep: 0.2 h"></td><td data-date="2026-09-20" data-value="1.2" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 1.2 h"></td><td data-date="2026-09-27" data-value="4.5" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 4.5 h"></td><td data-date="2026-10-04" data-value="8.0" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 8.0 h"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -346,7 +349,7 @@
 </div>
 </figure>
         <div class="panel-stats">
-          <div class="stat-line"><span class="lbl">Total hours</span><span class="val">139.6 h</span></div>
+          <div class="stat-line"><span class="lbl">Total hours</span><span class="val">139.8 h</span></div>
           <div class="stat-line"><span class="lbl">Active days</span><span class="val">20</span></div>
           <div class="stat-line"><span class="lbl">Daily average</span><span class="val">7.0 h/day</span></div>
           <div class="stat-line"><span class="lbl">Longest day</span><span class="val">13.9 h (28 Sep 2026)</span></div>
@@ -360,9 +363,9 @@
     <article class="metric-card" id="metric-card-replies">
   <details class="metric-pop" data-ix="metric_pop">
     <summary class="metric-summary" aria-haspopup="dialog" aria-expanded="false">
-      <div class="metric-num">123,948</div>
-      <span class="metric-title">Agent replies</span>
-      <div class="metric-cap">Replies my agents sent to the 2,986 messages I sent them, most of them dictated.</div>
+      <div class="metric-num">124,219</div>
+      <span class="metric-title">Agent replies <span class="metric-affordance"><span>Message split</span><svg class="affordance-icon" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></span></span>
+      <div class="metric-cap">Replies my agents sent to the 2,991 messages I sent them, most of them dictated.</div>
     </summary>
     <div class="metric-panel" role="region" aria-label="Agent replies breakdown">
       <div class="panel-header">
@@ -374,15 +377,15 @@
       <div class="panel-content">
         <div class="bars-chart" aria-label="Turn volume comparison">
           <div class="bar-row">
-            <div class="bar-head"><span class="lbl">My messages (dictated or typed)</span><span class="val">2,986</span></div>
+            <div class="bar-head"><span class="lbl">My messages (dictated or typed)</span><span class="val">2,991</span></div>
             <div class="bar-track"><div class="bar-fill bar-human" style="width: 4%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-head"><span class="lbl">Agent replies</span><span class="val">123,948</span></div>
+            <div class="bar-head"><span class="lbl">Agent replies</span><span class="val">124,219</span></div>
             <div class="bar-track"><div class="bar-fill bar-agent" style="width: 100%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-head"><span class="lbl">Tool executions</span><span class="val">123,080</span></div>
+            <div class="bar-head"><span class="lbl">Tool executions</span><span class="val">123,351</span></div>
             <div class="bar-track"><div class="bar-fill bar-tool" style="width: 99%"></div></div>
           </div>
         </div>
@@ -396,8 +399,8 @@
     <article class="metric-card" id="metric-card-tokens">
   <details class="metric-pop" data-ix="metric_pop">
     <summary class="metric-summary" aria-haspopup="dialog" aria-expanded="false">
-      <div class="metric-num">7.43 <span class="unit">B</span></div>
-      <span class="metric-title">Tokens processed</span>
+      <div class="metric-num">7.49 <span class="unit">B</span></div>
+      <span class="metric-title">Tokens processed <span class="metric-affordance"><span>Model breakdown</span><svg class="affordance-icon" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></span></span>
       <div class="metric-cap">Mostly context my agents re-read on every turn.</div>
     </summary>
     <div class="metric-panel" role="region" aria-label="Tokens processed details">
@@ -420,7 +423,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1041266332" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 1.04 B tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="95953864" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 96.0 M tokens"></td><td data-date="2026-09-28" data-value="631148070" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 631.1 M tokens"></td><td data-date="2026-10-05" data-value="1111637264" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 1.11 B tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="15355" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 15,355 tokens"></td><td data-date="2026-09-22" data-value="313407280" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 313.4 M tokens"></td><td data-date="2026-09-29" data-value="358888124" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 358.9 M tokens"></td><td data-date="2026-10-06" data-value="1102171439" data-level="4" data-today="true" role="gridcell" aria-label="Tue 6 Oct: 1.10 B tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="70000666" data-level="2" role="gridcell" aria-label="Wed 16 Sep: 70.0 M tokens"></td><td data-date="2026-09-23" data-value="366172370" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 366.2 M tokens"></td><td data-date="2026-09-30" data-value="210326397" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 210.3 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="114053368" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 114.1 M tokens"></td><td data-date="2026-09-24" data-value="285423212" data-level="3" role="gridcell" aria-label="Thu 24 Sep: 285.4 M tokens"></td><td data-date="2026-10-01" data-value="375736876" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 375.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="85326766" data-level="2" role="gridcell" aria-label="Fri 18 Sep: 85.3 M tokens"></td><td data-date="2026-09-25" data-value="143594670" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 143.6 M tokens"></td><td data-date="2026-10-02" data-value="685183206" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 685.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="56009301" data-level="2" role="gridcell" aria-label="Sat 19 Sep: 56.0 M tokens"></td><td data-date="2026-09-26" data-value="39499225" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 39.5 M tokens"></td><td data-date="2026-10-03" data-value="875089817" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 875.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="18764637" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 18.8 M tokens"></td><td data-date="2026-09-27" data-value="118419741" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 118.4 M tokens"></td><td data-date="2026-10-04" data-value="435144605" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 435.1 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
@@ -431,12 +434,12 @@
 </div>
 </figure>
         <div class="panel-stats">
-          <div class="stat-line"><span class="lbl">9router proxy</span><span class="val">6.45 B</span></div>
+          <div class="stat-line"><span class="lbl">9router proxy</span><span class="val">6.51 B</span></div>
           <div class="stat-line"><span class="lbl">Direct Claude (Hermes)</span><span class="val">965.1 M</span></div>
           <div class="stat-line"><span class="lbl">Claude Code CLI</span><span class="val">16.7 M</span></div>
           <div class="stat-line"><span class="lbl">Peak day</span><span class="val">1.11 B (5 Oct 2026)</span></div>
         </div>
-        <p class="panel-sub-note">Model mix: Gemini 66.2%, Claude Opus 29.3%, Claude Sonnet 4.5% (share of Hermes-tracked tokens).</p>
+        <p class="panel-sub-note">Model mix: Gemini 66.3%, Claude Opus 29.2%, Claude Sonnet 4.5% (share of Hermes-tracked tokens).</p>
         <a href="/work/platform/#cost" class="panel-link">Explore model routing economics &rarr;</a>
       </div>
     </div>
@@ -446,7 +449,7 @@
   <details class="metric-pop" data-ix="metric_pop">
     <summary class="metric-summary" aria-haspopup="dialog" aria-expanded="false">
       <div class="metric-num">12</div>
-      <span class="metric-title">Specialist agents</span>
+      <span class="metric-title">Specialist agents <span class="metric-affordance"><span>Agent roster</span><svg class="affordance-icon" width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg></span></span>
       <div class="metric-cap">1 router plus 11 domain agents running 39 scheduled jobs on one Hermes install.</div>
     </summary>
     <div class="metric-panel" role="region" aria-label="Specialist agents roster">
@@ -478,127 +481,231 @@
     <p class="deck">From voice or chat prompt to deterministic execution, approval gates, and tracked delivery.</p>
     
     <div class="arch-diagram-wrap">
-      <svg class="arch-svg" viewBox="0 0 1000 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Specialist Agents, Stealth Egress, Human Gate, and Delivery">
-        <!-- Connecting paths -->
-        <path d="M 310 80 L 355 80" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
-        <path d="M 645 80 L 690 80" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
-        <path d="M 835 140 C 835 160, 835 160, 835 175" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
-        <path d="M 690 235 L 645 235" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
-        <path d="M 355 235 L 310 235" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arr-head)"/>
-        
-        <!-- Markers -->
+      <!-- Desktop Architecture Pipeline (Horizontal Organic Flow) -->
+      <svg class="arch-svg wide" viewBox="0 0 1040 350" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Specialist Agents, Compute Tiering, Human Gate, and Delivery">
         <defs>
-          <marker id="arr-head" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-            <path d="M 0 1 L 8 5 L 0 9 z" fill="var(--muted)"/>
+          <marker id="arr-flow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--muted)"/>
+          </marker>
+          <marker id="arr-gate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="arr-delivery" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)"/>
           </marker>
         </defs>
 
-        <!-- Node 1: Ingest -->
-        <g class="arch-node" transform="translate(20, 20)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">01 &middot; DEPTH 0</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Any-Device Ingest</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">FreeFlow Voice, Discord, Telegram</text>
-          <text x="16" y="98" fill="var(--muted)" font-size="12">Tailscale Mesh, Termius Mobile SSH</text>
+        <!-- Connecting Curved Organic Paths -->
+        <path d="M 325 87 C 339 84, 351 90, 365 87" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" marker-end="url(#arr-flow)"/>
+        <path d="M 672 87 C 686 84, 698 90, 712 87" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" marker-end="url(#arr-flow)"/>
+        <path d="M 867 155 C 870 168, 864 182, 867 193" stroke="var(--rule)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" marker-end="url(#arr-flow)"/>
+        <path d="M 715 262 C 701 265, 689 259, 675 262" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" marker-end="url(#arr-gate)"/>
+        <path d="M 367 262 C 353 265, 341 259, 327 262" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" marker-end="url(#arr-delivery)"/>
+
+        <!-- Stage 01: Ingest -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 01: Any-Device Ingest" transform="translate(20, 20)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="16" y="16" width="94" height="20" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="24" y="30" fill="var(--muted)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">01 &middot; INGEST</text>
+          <text x="122" y="30" fill="var(--muted)" class="mono" font-size="10">DEPTH 0</text>
+          <text x="16" y="60" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Any-Device Ingest</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">Voice (FreeFlow / Dictate) &middot; Discord / Telegram</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Tailscale Mesh &middot; Termius Mobile SSH</text>
         </g>
 
-        <!-- Node 2: Router -->
-        <g class="arch-node" transform="translate(355, 20)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">02 &middot; ROUTER AGENT</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Central Triage &amp; Router</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">Intent parsing &amp; domain validation</text>
-          <text x="16" y="98" fill="var(--muted)" font-size="12">Dependency gating &amp; Kanban dispatch</text>
+        <!-- Stage 02: Triage -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 02: Central Triage and Router" transform="translate(367, 20)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="16" y="16" width="92" height="20" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="24" y="30" fill="var(--muted)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">02 &middot; TRIAGE</text>
+          <text x="120" y="30" fill="var(--muted)" class="mono" font-size="10">ROUTER AGENT</text>
+          <text x="16" y="60" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Central Triage &amp; Router</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">Intent parsing &middot; Domain boundary validation</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Dependency gating &middot; Kanban task dispatch</text>
         </g>
 
-        <!-- Node 3: Specialist Agents -->
-        <g class="arch-node" transform="translate(690, 20)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">03 &middot; DEPTH 1</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Router + 11 domain agents</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">24/7 Azure VPS &amp; systemd daemons</text>
-          <text x="16" y="98" fill="var(--muted)" font-size="12">Isolated workspaces &amp; LCM memory</text>
+        <!-- Stage 03: Domain Agents -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 03: 12 Specialized Agents" transform="translate(715, 20)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="16" y="16" width="138" height="20" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="24" y="30" fill="var(--muted)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">03 &middot; DOMAIN AGENTS</text>
+          <text x="166" y="30" fill="var(--muted)" class="mono" font-size="10">DEPTH 1</text>
+          <text x="16" y="60" fill="var(--ink)" class="serif" font-size="16" font-weight="600">12 Specialized Agents</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">24/7 Azure VPS &middot; Isolated workspaces</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Persistent memory &middot; LCM context DAGs</text>
         </g>
 
-        <!-- Node 4: Stealth Egress -->
-        <g class="arch-node" transform="translate(690, 175)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">04 &middot; DEPTH 2</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Egress &amp; 9Router</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">Rotating egress via Tor and Cloudflare WARP</text>
-          <text x="16" y="98" fill="var(--muted)" font-size="12">Dynamic routing: Opus / Sonnet / Gemini</text>
+        <!-- Stage 04: Compute & Egress -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 04: Compute Tiering and Egress" transform="translate(715, 195)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="16" y="16" width="104" height="20" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="24" y="30" fill="var(--muted)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">04 &middot; COMPUTE</text>
+          <text x="132" y="30" fill="var(--muted)" class="mono" font-size="10">DEPTH 2</text>
+          <text x="16" y="60" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Compute &amp; Egress</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">Claude Opus, Sonnet 5.5, Gemini Flash</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Rotating egress via Tor &amp; Cloudflare WARP</text>
         </g>
 
-        <!-- Node 5: The Human Gate -->
-        <g class="arch-node gate-node" transform="translate(355, 175)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
-          <rect x="16" y="16" width="94" height="18" rx="2" fill="var(--accent)"/>
-          <text x="22" y="29" fill="var(--accent-ink)" class="mono" font-size="10" font-weight="700">WAITS FOR ME</text>
-          <text x="120" y="29" fill="var(--muted)" class="mono" font-size="11" font-weight="700">05 &middot; SAFETY GATE</text>
-          <text x="16" y="58" fill="var(--accent)" class="serif" font-size="16" font-weight="600">The Human Gate</text>
-          <text x="16" y="80" fill="var(--muted)" font-size="12">Zero auto-execution on destructive steps</text>
-          <text x="16" y="100" fill="var(--muted)" font-size="12">Pushes, emails, ledger wait for sign-off</text>
+        <!-- Stage 05: The Human Gate -->
+        <g class="arch-node gate-node" tabindex="0" role="group" aria-label="Stage 05: The Human Gate (Waits for me)" transform="translate(367, 195)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--accent)" stroke-width="2" class="node-bg gate-bg"/>
+          <rect x="16" y="16" width="102" height="20" rx="3" fill="var(--accent)"/>
+          <text x="23" y="30" fill="var(--accent-ink)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">WAITS FOR ME</text>
+          <text x="130" y="30" fill="var(--accent)" class="mono" font-size="10" font-weight="700">05 &middot; SAFETY GATE</text>
+          <text x="16" y="60" fill="var(--accent)" class="serif" font-size="16" font-weight="600">The Human Gate</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">Zero auto-execution on destructive actions</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Pushes, emails, ledger wait for sign-off</text>
         </g>
 
-        <!-- Node 6: Delivery & Sync -->
-        <g class="arch-node" transform="translate(20, 175)">
-          <rect width="290" height="120" rx="4" fill="var(--box)" stroke="var(--rule)" stroke-width="1"/>
-          <text x="16" y="28" fill="var(--muted)" class="mono" font-size="11" font-weight="700">06 &middot; DEPTH 3</text>
-          <text x="16" y="54" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Delivery &amp; Ledger Sync</text>
-          <text x="16" y="78" fill="var(--muted)" font-size="12">Google Tasks, GitHub repos, Firefly III</text>
-          <text x="16" y="98" fill="var(--muted)" font-size="12">Omnichannel notification &amp; audit log</text>
+        <!-- Stage 06: Delivery & Sync -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 06: Delivery and Ledger Sync" transform="translate(20, 195)">
+          <rect width="305" height="135" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="16" y="16" width="108" height="20" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="24" y="30" fill="var(--muted)" class="mono" font-size="10" font-weight="700" letter-spacing="0.04em">06 &middot; DELIVERY</text>
+          <text x="136" y="30" fill="var(--muted)" class="mono" font-size="10">DEPTH 3</text>
+          <text x="16" y="60" fill="var(--ink)" class="serif" font-size="16" font-weight="600">Delivery &amp; Ledger Sync</text>
+          <text x="16" y="86" fill="var(--muted)" class="sans" font-size="12">Google Tasks, GitHub repos, Firefly III</text>
+          <text x="16" y="106" fill="var(--muted)" class="sans" font-size="12">Omnichannel notification &amp; audit records</text>
+        </g>
+      </svg>
+
+      <!-- Mobile Architecture Pipeline (Vertical Stacked Flow) -->
+      <svg class="arch-svg narrow" viewBox="0 0 360 834" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Specialist Agents, Compute Tiering, Human Gate, and Delivery">
+        <defs>
+          <marker id="m-arr-flow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--muted)"/>
+          </marker>
+          <marker id="m-arr-gate" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)"/>
+          </marker>
+          <marker id="m-arr-delivery" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--accent)"/>
+          </marker>
+        </defs>
+
+        <!-- Vertical Connecting Curved Organic Paths -->
+        <path d="M 180 122 C 183 131, 177 141, 180 148" stroke="var(--rule)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" marker-end="url(#m-arr-flow)"/>
+        <path d="M 180 262 C 183 271, 177 281, 180 288" stroke="var(--rule)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" marker-end="url(#m-arr-flow)"/>
+        <path d="M 180 402 C 183 411, 177 421, 180 428" stroke="var(--rule)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" marker-end="url(#m-arr-flow)"/>
+        <path d="M 180 542 C 183 551, 177 561, 180 568" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" marker-end="url(#m-arr-gate)"/>
+        <path d="M 180 682 C 183 691, 177 701, 180 708" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round" marker-end="url(#m-arr-delivery)"/>
+
+        <!-- Stage 01: Ingest -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 01: Any-Device Ingest" transform="translate(15, 10)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="14" y="14" width="88" height="18" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="20" y="27" fill="var(--muted)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">01 &middot; INGEST</text>
+          <text x="114" y="27" fill="var(--muted)" class="mono" font-size="9.5">DEPTH 0</text>
+          <text x="14" y="52" fill="var(--ink)" class="serif" font-size="15" font-weight="600">Any-Device Ingest</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">Voice (FreeFlow / Dictate) &middot; Discord / Telegram</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Tailscale Mesh &middot; Termius Mobile SSH</text>
+        </g>
+
+        <!-- Stage 02: Triage -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 02: Central Triage and Router" transform="translate(15, 150)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="14" y="14" width="86" height="18" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="20" y="27" fill="var(--muted)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">02 &middot; TRIAGE</text>
+          <text x="112" y="27" fill="var(--muted)" class="mono" font-size="9.5">ROUTER AGENT</text>
+          <text x="14" y="52" fill="var(--ink)" class="serif" font-size="15" font-weight="600">Central Triage &amp; Router</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">Intent parsing &middot; Domain boundary validation</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Dependency gating &middot; Kanban task dispatch</text>
+        </g>
+
+        <!-- Stage 03: Domain Agents -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 03: 12 Specialized Agents" transform="translate(15, 290)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="14" y="14" width="130" height="18" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="20" y="27" fill="var(--muted)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">03 &middot; DOMAIN AGENTS</text>
+          <text x="156" y="27" fill="var(--muted)" class="mono" font-size="9.5">DEPTH 1</text>
+          <text x="14" y="52" fill="var(--ink)" class="serif" font-size="15" font-weight="600">12 Specialized Agents</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">24/7 Azure VPS &middot; Isolated workspaces</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Persistent memory &middot; LCM context DAGs</text>
+        </g>
+
+        <!-- Stage 04: Compute & Egress -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 04: Compute Tiering and Egress" transform="translate(15, 430)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="14" y="14" width="98" height="18" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="20" y="27" fill="var(--muted)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">04 &middot; COMPUTE</text>
+          <text x="124" y="27" fill="var(--muted)" class="mono" font-size="9.5">DEPTH 2</text>
+          <text x="14" y="52" fill="var(--ink)" class="serif" font-size="15" font-weight="600">Compute &amp; Egress</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">Claude Opus, Sonnet 5.5, Gemini Flash</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Rotating egress via Tor &amp; Cloudflare WARP</text>
+        </g>
+
+        <!-- Stage 05: The Human Gate -->
+        <g class="arch-node gate-node" tabindex="0" role="group" aria-label="Stage 05: The Human Gate (Waits for me)" transform="translate(15, 570)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--accent)" stroke-width="2" class="node-bg gate-bg"/>
+          <rect x="14" y="14" width="96" height="18" rx="3" fill="var(--accent)"/>
+          <text x="20" y="27" fill="var(--accent-ink)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">WAITS FOR ME</text>
+          <text x="122" y="27" fill="var(--accent)" class="mono" font-size="9.5" font-weight="700">05 &middot; SAFETY GATE</text>
+          <text x="14" y="52" fill="var(--accent)" class="serif" font-size="15" font-weight="600">The Human Gate</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">Zero auto-execution on destructive actions</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Pushes, emails, ledger wait for sign-off</text>
+        </g>
+
+        <!-- Stage 06: Delivery & Sync -->
+        <g class="arch-node" tabindex="0" role="group" aria-label="Stage 06: Delivery and Ledger Sync" transform="translate(15, 710)">
+          <rect width="330" height="112" rx="6" fill="var(--box)" stroke="var(--rule)" stroke-width="1.5" class="node-bg"/>
+          <rect x="14" y="14" width="102" height="18" rx="3" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+          <text x="20" y="27" fill="var(--muted)" class="mono" font-size="9.5" font-weight="700" letter-spacing="0.04em">06 &middot; DELIVERY</text>
+          <text x="128" y="27" fill="var(--muted)" class="mono" font-size="9.5">DEPTH 3</text>
+          <text x="14" y="52" fill="var(--ink)" class="serif" font-size="15" font-weight="600">Delivery &amp; Ledger Sync</text>
+          <text x="14" y="74" fill="var(--muted)" class="sans" font-size="11.5">Google Tasks, GitHub repos, Firefly III</text>
+          <text x="14" y="92" fill="var(--muted)" class="sans" font-size="11.5">Omnichannel notification &amp; audit records</text>
         </g>
       </svg>
     </div>
 
     <div class="ribbon-grid" data-ix="diagram_focus">
-      <div class="station">
+      <div class="station" tabindex="0">
         <div class="station-head">
           <span class="station-num">01</span>
           <span class="station-depth">Depth 0</span>
         </div>
         <h3 class="station-title">Any-Device Ingest</h3>
-        <p class="station-desc">FreeFlow voice on Mac, Dictate on Android, Discord and Telegram omnichannel messaging, Tailscale WireGuard mesh, and Termius mobile SSH.</p>
+        <p class="station-desc">Voice prompts via FreeFlow (Mac) and Dictate (Android), Discord and Telegram command channels, Tailscale WireGuard mesh, and Termius mobile SSH.</p>
       </div>
-      <div class="station">
+      <div class="station" tabindex="0">
         <div class="station-head">
           <span class="station-num">02</span>
           <span class="station-depth">Router</span>
         </div>
         <h3 class="station-title">Central Triage &amp; Router</h3>
-        <p class="station-desc">Intent parsing, domain validation, dependency gating, and asynchronous Kanban task dispatch across agent queues.</p>
+        <p class="station-desc">Intent parsing, domain boundary validation, dependency gating, and asynchronous Kanban task dispatch across specialist agent queues.</p>
       </div>
-      <div class="station">
+      <div class="station" tabindex="0">
         <div class="station-head">
           <span class="station-num">03</span>
           <span class="station-depth">Depth 1</span>
         </div>
-        <h3 class="station-title">Router + 11 domain agents</h3>
-        <p class="station-desc">Dedicated domain agents on 24/7 Azure VPS with isolated working directories, LCM context memory DAGs, and scoped tools.</p>
+        <h3 class="station-title">12 Specialized Agents</h3>
+        <p class="station-desc">Dedicated specialist agents hosted 24/7 on Azure Cloud VPS with isolated workspaces, persistent memory, and scoped toolsets.</p>
       </div>
-      <div class="station">
+      <div class="station" tabindex="0">
         <div class="station-head">
           <span class="station-num">04</span>
           <span class="station-depth">Depth 2</span>
         </div>
-        <h3 class="station-title">Egress &amp; 9Router</h3>
-        <p class="station-desc">Rotating egress through Tor and Cloudflare WARP, and dynamic compute tiering across Claude Opus, Sonnet 5.5, and Gemini 3.7 Flash.</p>
+        <h3 class="station-title">Compute &amp; Egress</h3>
+        <p class="station-desc">Dynamic model tiering across Claude Opus, Sonnet 5.5, and Gemini 3.7 Flash, with rotating egress through Tor and Cloudflare WARP.</p>
       </div>
-      <div class="station gate-station">
+      <div class="station gate-station" tabindex="0">
         <div class="station-head">
           <span class="station-num">05</span>
           <span class="station-tag">waits for me</span>
         </div>
         <h3 class="station-title">The Human Gate</h3>
-        <p class="station-desc">Strict safety invariant: git pushes, outbound emails, file deletions, and financial ledger writes pause at mandatory human approval gates.</p>
+        <p class="station-desc">Strict safety invariant: destructive actions like git pushes, outbound emails, deletions, and ledger writes pause for my explicit approval.</p>
       </div>
-      <div class="station">
+      <div class="station" tabindex="0">
         <div class="station-head">
           <span class="station-num">06</span>
           <span class="station-depth">Depth 3</span>
         </div>
         <h3 class="station-title">Delivery &amp; Ledger Sync</h3>
-        <p class="station-desc">Automated delivery to Google Tasks, private GitHub repositories, Firefly III accounting ledger, and instant notification pings.</p>
+        <p class="station-desc">Async completion to Google Tasks, private GitHub repositories, Firefly III accounting ledger, and instant chat notifications.</p>
       </div>
     </div>
 
