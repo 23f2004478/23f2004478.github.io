@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Memory and self-documentation | Krishnendu Biswas</title>
-  <meta name="description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
+  <meta name="description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <link rel="canonical" href="https://krishnendu.me/work/memory/">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/memory/">
   <meta property="og:title" content="Memory and self-documentation | Krishnendu Biswas">
-  <meta property="og:description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
+  <meta property="og:description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
   <meta property="og:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Memory and self-documentation | Krishnendu Biswas">
-  <meta name="twitter:description" content="Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.">
+  <meta name="twitter:description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-memory.png">
   <meta name="twitter:image:alt" content="Memory and self-documentation | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
@@ -82,7 +82,7 @@
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/memory/#article",
       "headline": "Memory and self-documentation | Krishnendu Biswas",
-      "description": "Curated notes plus the LCM-X context engine, which keeps old history searchable without overloading the model.",
+      "description": "Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.",
       "author": {
         "@id": "https://krishnendu.me/#person"
       },
@@ -182,32 +182,452 @@
 
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
-    <h1 style="view-transition-name: cs-memory;">Memory and self-documentation: curated persistent memory and LCM-X context engine</h1>
-    <p class="deck">Two-tier memory architecture: curated persistent memory with character budgets, plus LCM-X, a lossless context memory engine that compacts long sessions into searchable summary graphs.</p>
+    <h1 style="view-transition-name: cs-memory;">Memory and self-documentation: five layers, capped notes and a lossless context engine</h1>
+    <p class="deck">How 11 agents on one Azure server remember what matters. Small curated files hold what must survive, and LCM-X, a SQLite context engine, keeps every original message so a summary can always be checked against its source.</p>
 
     <div class="panel">
+      <p class="small muted">Built on Hermes Agent (open source, Nous Research) with the LCM-X context plugin. Private system; architecture and figures probed from the live host on 7 Oct 2026.</p>
       <dl class="kv">
-        <dt>Active Engine</dt><dd class="mono">LCM-X (lcm.db) &middot; Curated Persistent Memory</dd>
-        <dt>Journaling</dt><dd>Append-Only Autobiography Ledger &middot; Daily Progress Reports</dd>
-        <dt>Past Prototyping Note</dt><dd>Local vector embeddings and Hindsight were used in the laptop phase (11 to 20 Sep 2026) only</dd>
+        <dt>Production host</dt><dd class="mono">Azure VPS &middot; SQLite WAL &middot; FTS5 &middot; Markdown</dd>
+        <dt>Layers</dt><dd>Session window &middot; Scratch &middot; Curated memory &middot; Knowledge base &middot; Skills</dd>
+        <dt>Prototype note</dt><dd>Local vector embeddings and Hindsight ran only on a laptop, 11 to 20 Sep 2026, and were never deployed</dd>
       </dl>
     </div>
 
-    <h2>Problem</h2>
-    <p>As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Cutting old messages makes the model forget earlier decisions, and pasting whole transcripts back in makes its answers worse.</p>
+    <div class="stats-row">
+      <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Memory layers</span></div>
+      <div class="stat-item"><span class="stat-val">2,200 / 2,600</span><span class="stat-lbl">Character caps, notes / profile</span></div>
+      <div class="stat-item"><span class="stat-val">196,309</span><span class="stat-lbl">Raw messages kept</span></div>
+      <div class="stat-item"><span class="stat-val">0</span><span class="stat-lbl">Dangling summary references</span></div>
+    </div>
 
-    <h2>What I Built</h2>
+    <h2 id="problem">Problem: remembering everything makes agents worse</h2>
+    <p>Agents that try to remember everything fail in two quiet ways. The context window fills with stale detail, so the model spends attention on noise. And a store full of unchecked fragments lets the model recall things that were never true. Neither failure raises an error.</p>
+    <p>Cutting old messages is not the answer either: the agent forgets earlier decisions, and a retried task starts from nothing. I wanted durable memory small enough to read in full, every durable write reversible, and the bulk of history compressed for the model without being thrown away.</p>
+
+    <h2 id="architecture">Architecture: five layers, one job each</h2>
+    <p>Each layer has one job, one rule for how long it lives, one size limit and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.</p>
+    <figure class="fig" role="group" aria-label="Five layer memory hierarchy diagram">
+      <svg class="wide" viewBox="0 0 720 640" role="img" aria-labelledby="mem-a-t mem-a-d" style="width:100%;height:auto;max-width:720px">
+        <title id="mem-a-t">Five layer memory hierarchy</title>
+        <desc id="mem-a-d">Three inbound sources, chat messages, kanban cards and scheduled jobs, reach a context assembler. The assembler reads five layers: L1 session window, L2 ephemeral scratch, L3 curated persistent memory capped at 2,200 and 2,600 characters, L4 the knowledge base of markdown files, and L5 the skills library. Overflow from L1 is compacted into lcm.db by LCM-X and recalled through search tools.</desc>
+        <g font-family="'Source Sans 3',sans-serif" font-size="15" fill="var(--ink)">
+          <rect x="8" y="8" width="224" height="50" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="120" y="39" text-anchor="middle">Discord or Telegram</text>
+          <rect x="248" y="8" width="224" height="50" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="360" y="39" text-anchor="middle">Kanban card</text>
+          <rect x="488" y="8" width="224" height="50" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="600" y="39" text-anchor="middle">Scheduled job</text>
+          <path d="M120 58 V92 M360 58 V92 M600 58 V92" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+          <rect x="8" y="92" width="704" height="64" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="360" y="119" text-anchor="middle" font-weight="600">Context assembler</text>
+          <text x="360" y="143" text-anchor="middle" font-size="14" fill="var(--muted)">loads L3 and L4 in full, L5 skills on demand, history through LCM-X</text>
+          <path d="M270 156 V184" fill="none" stroke="var(--accent)" stroke-width="2"/>
+
+          <rect x="8" y="184" width="524" height="72" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="24" y="212" font-weight="600">L1 Session window and system prompt</text>
+          <text x="24" y="236" font-size="14" fill="var(--muted)">live context, never stored as is, cap: model window</text>
+
+          <rect x="8" y="270" width="524" height="72" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="24" y="298" font-weight="600">L2 Ephemeral scratch</text>
+          <text x="24" y="322" font-size="14" fill="var(--muted)">TMPDIR per agent, idle entries pruned after 24 hours</text>
+
+          <rect x="8" y="356" width="524" height="72" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="24" y="384" font-weight="600">L3 Curated persistent memory</text>
+          <text x="24" y="408" font-size="14" fill="var(--muted)">MEMORY.md and USER.md, cap 2,200 and 2,600 characters</text>
+
+          <rect x="8" y="442" width="524" height="72" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="24" y="470" font-weight="600">L4 Curated knowledge base</text>
+          <text x="24" y="494" font-size="14" fill="var(--muted)">markdown files, one topic each, read on demand</text>
+
+          <rect x="8" y="528" width="524" height="72" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="24" y="556" font-weight="600">L5 Procedural skills library</text>
+          <text x="24" y="580" font-size="14" fill="var(--muted)">SKILL.md with references and scripts, per agent</text>
+
+          <path d="M532 220 H584" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M576 214 L586 220 L576 226" fill="none" stroke="var(--accent)" stroke-width="2"/>
+          <text x="558" y="208" text-anchor="middle" font-size="14" fill="var(--muted)">overflow</text>
+          <path d="M600 186 C 600 150, 560 150, 470 150" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <text x="604" y="170" font-size="14" fill="var(--muted)">recall</text>
+          <path d="M588 196 a62 12 0 0 1 124 0 v86 a62 12 0 0 1 -124 0 z" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+          <ellipse cx="650" cy="196" rx="62" ry="12" fill="none" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="650" y="236" text-anchor="middle" font-weight="600">lcm.db</text>
+          <text x="650" y="258" text-anchor="middle" font-size="14" fill="var(--muted)">SQLite WAL</text>
+          <text x="650" y="278" text-anchor="middle" font-size="14" fill="var(--muted)">FTS5</text>
+          <text x="650" y="330" text-anchor="middle" font-size="14" fill="var(--muted)">LCM-X keeps</text>
+          <text x="650" y="350" text-anchor="middle" font-size="14" fill="var(--muted)">every raw row</text>
+          <text x="8" y="628" font-size="14" fill="var(--muted)">Solid: session assembly. Dashed: LCM-X compaction and recall.</text>
+        </g>
+      </svg>
+      <svg class="narrow" viewBox="0 0 320 900" role="img" aria-labelledby="mem-a-t-n" style="width:100%;height:auto">
+        <title id="mem-a-t-n">Five layer memory hierarchy: inbound messages reach a context assembler that reads five layers, and LCM-X compacts session overflow into lcm.db</title>
+        <g font-family="'Source Sans 3',sans-serif" font-size="16" fill="var(--ink)" text-anchor="middle">
+          <rect x="8" y="6" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="36">Discord or Telegram</text>
+          <text x="160" y="62">Kanban card, scheduled job</text>
+          <path d="M160 82 V108" stroke="var(--muted)" stroke-width="1.5"/>
+          <rect x="8" y="108" width="304" height="76" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="160" y="138" font-weight="600">Context assembler</text>
+          <text x="160" y="164" font-size="15" fill="var(--muted)">L3 and L4 in full, L5 on demand</text>
+          <path d="M160 184 V206" stroke="var(--accent)" stroke-width="2"/>
+          <rect x="8" y="206" width="304" height="76" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="160" y="236" font-weight="600">L1 Session window</text>
+          <text x="160" y="262" font-size="15" fill="var(--muted)">live context, cap: model window</text>
+          <rect x="8" y="296" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="326" font-weight="600">L2 Ephemeral scratch</text>
+          <text x="160" y="352" font-size="15" fill="var(--muted)">pruned after 24 idle hours</text>
+          <rect x="8" y="386" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="416" font-weight="600">L3 Curated memory</text>
+          <text x="160" y="442" font-size="15" fill="var(--muted)">cap 2,200 and 2,600 characters</text>
+          <rect x="8" y="476" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="506" font-weight="600">L4 Knowledge base</text>
+          <text x="160" y="532" font-size="15" fill="var(--muted)">one topic per markdown file</text>
+          <rect x="8" y="566" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="596" font-weight="600">L5 Skills library</text>
+          <text x="160" y="622" font-size="15" fill="var(--muted)">SKILL.md, references, scripts</text>
+          <path d="M160 642 V700" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="172" y="676" text-anchor="start" font-size="15" fill="var(--muted)">L1 overflow</text>
+          <rect x="8" y="700" width="304" height="100" rx="12" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="160" y="734" font-weight="600">lcm.db (LCM-X)</text>
+          <text x="160" y="760" font-size="15" fill="var(--muted)">SQLite WAL with FTS5</text>
+          <text x="160" y="784" font-size="15" fill="var(--muted)">every raw row kept</text>
+          <text x="160" y="836" font-size="15" fill="var(--muted)">Dashed: compaction</text>
+        </g>
+      </svg>
+      <figcaption class="small muted">Diagram A. Only L1 is read without a tool call. L3 and L4 are small enough to load in full, skills load when a task matches, and older history comes back through LCM-X.</figcaption>
+    </figure>
     <ul>
-      <li><strong>Curated Persistent Memory:</strong> Per-agent markdown stores holding durable operational notes and user context under strict character caps, backed by automatic atomic backups and version rollback.</li>
-      <li><strong>LCM-X context engine:</strong> Stored in a SQLite database, it folds older parts of a chat into layered summaries that agents can search by keyword or meaning, and the original messages are never deleted.</li>
-      <li><strong>Autobiography Ledger &amp; Daily Reporting:</strong> An append-only ledger recording every major system milestone (G:0001 to G:0019) and an automated daily report engine generating plain-English progress summaries with per-agent time telemetry.</li>
+      <li><strong>L1 Session window and system prompt:</strong> The system prompt, the agent's own rules file, the conversation and tool results. When it grows past the compaction threshold, LCM-X folds the oldest turns into summary nodes and keeps pointers to the originals.</li>
+      <li><strong>L2 Ephemeral scratch:</strong> Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives and probe scripts land there. Nothing in it is read by a later session, and entries idle for 24 hours are pruned.</li>
+      <li><strong>L3 Curated persistent memory:</strong> Two markdown files per agent, MEMORY.md for notes and USER.md for the user profile, with hard character caps (2,200 and 2,600 on the router agent). Both are loaded in full in every session, so there is no ranking step and nothing to miss. The cap is the point: it forces curation.</li>
+      <li><strong>L4 Curated knowledge base:</strong> 15 markdown files in ~/.hermes/knowledge, one topic each, plus an index. Facts about me and the system, written by hand and read on demand, so an agent loads only what its domain needs. A guardrails file records what is true in production and what was only prototyped.</li>
+      <li><strong>L5 Procedural skills library:</strong> 310 SKILL.md files (203 distinct skills) across the router and 10 domain agents. Each skill says when to use it, the steps and the exit check, with references and runnable scripts beside it. Skills are procedures, not facts, so they live apart from L4.</li>
     </ul>
 
-    <h2>Outcome</h2>
-    <p>Earlier decisions stay searchable after a chat is summarised, so agents can look them up instead of guessing. Agents can pick up earlier context when a task is retried or handed to another agent.</p>
+    <h2 id="spec">Layer specifications</h2>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Memory layer specifications (scrolls horizontally)">
+      <table>
+        <caption>Memory layer specifications</caption>
+        <thead>
+          <tr>
+            <th scope="col">Layer</th>
+            <th scope="col">Scope</th>
+            <th scope="col">Persistence</th>
+            <th scope="col">Capacity cap</th>
+            <th scope="col">Storage engine</th>
+            <th scope="col">Tool access gate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">L1 Session window and system prompt</th>
+            <td>One session of one agent</td>
+            <td>Not stored as is; overflow is compacted into lcm.db</td>
+            <td>Model context window; compaction starts at 0.4 of the window</td>
+            <td>Prompt assembled in memory</td>
+            <td>No tool; always present</td>
+          </tr>
+          <tr>
+            <th scope="row">L2 Ephemeral scratch</th>
+            <td>One task of one agent</td>
+            <td>Entries idle for 24 hours are pruned</td>
+            <td>Disk, pruned</td>
+            <td>Filesystem; TMPDIR points to the agent&#x27;s cache/scratch</td>
+            <td>Shell and file tools; never read back unless promoted</td>
+          </tr>
+          <tr>
+            <th scope="row">L3 Curated persistent memory</th>
+            <td>Every session of one agent</td>
+            <td>Permanent; timestamped snapshot before each curator run</td>
+            <td>2,200 characters of notes, 2,600 of user profile (router agent; each agent sets its own)</td>
+            <td>Markdown, written by temp file, fsync and rename</td>
+            <td>memory tool only; refuses writes over the cap; queued writes reviewed by the curator</td>
+          </tr>
+          <tr>
+            <th scope="row">L4 Curated knowledge base</th>
+            <td>Facts shared by all agents, loaded by domain</td>
+            <td>Permanent, edited by hand</td>
+            <td>One topic per file; 15 files</td>
+            <td>Markdown in ~/.hermes/knowledge</td>
+            <td>Read on demand; md_guard.py checks every edit and runs daily</td>
+          </tr>
+          <tr>
+            <th scope="row">L5 Procedural skills library</th>
+            <td>Per agent</td>
+            <td>Permanent, versioned</td>
+            <td>310 SKILL.md files, 203 distinct skills</td>
+            <td>SKILL.md plus references and scripts</td>
+            <td>Loaded when a task matches; configuration drift audited hourly by the medic agent</td>
+          </tr>
+          <tr>
+            <th scope="row">LCM-X (beneath L1)</th>
+            <td>Full history of one agent; each agent has its own lcm.db</td>
+            <td>Permanent raw rows; removal only by an explicit owner purge</td>
+            <td>Disk; 196,309 raw messages in the router agent&#x27;s store</td>
+            <td>SQLite in WAL mode with FTS5 indexes</td>
+            <td>lcm_grep, lcm_recall, lcm_expand</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="curation">Curation and rollback</h2>
+    <p>Writes to L3 never go straight to disk. They pass a queue, a review and a snapshot first, so a bad fact can be undone.</p>
+    <ol>
+      <li><strong>Queue:</strong> A memory write that needs approval is saved as a JSON record in ~/.hermes/pending/memory instead of being applied.</li>
+      <li><strong>Pre-filter:</strong> fable_memory_curator.py runs a cheap gate first that drops transient items before any expensive review.</li>
+      <li><strong>Review:</strong> Fable, the top reasoning tier, sorts each candidate. Durable rules and preferences are applied. Routine status is logged only, since LCM-X already holds the transcript. Anything about deletes, security or do-not-contact rules waits for me. Low-signal items are declined.</li>
+      <li><strong>Snapshot:</strong> Before applying anything, the curator copies MEMORY.md and USER.md to timestamped files in memories/backups (3 snapshots on disk today).</li>
+      <li><strong>Apply:</strong> Approved items go through the same path as a manual approval: file lock, drift guard and the character cap. The memory tool refuses a write that would pass the cap and asks for a merge. The file is written to a temp file, synced and renamed, so a reader never sees half a file.</li>
+      <li><strong>Ledger and rollback:</strong> An hourly job syncs memory_ledger.py, a SQLite ledger that records where each remembered claim came from and what replaced it. Rollback restores a snapshot. A forget leaves a tombstone, and an explicit purge redacts the source rows after a backup.</li>
+    </ol>
+    <p>A separate hourly job backs up agent state and memory, and md_guard.py runs daily to catch knowledge edits that drift into the wrong file.</p>
+
+    <h2 id="lcm">LCM-X: lossless context memory</h2>
+    <p>LCM-X sits beneath L1. Every message is written once to lcm.db and gets a permanent store_id. When the window needs room, LCM-X compacts a run of messages into a depth 0 summary node that lists the store_ids it covers. When depth 0 nodes pile up, they compact into a depth 1 node that lists their node_ids. The result is a directed graph in which summaries point down to summaries or raw rows, and compaction never rewrites a raw row.</p>
+    <figure class="fig" role="group" aria-label="LCM-X compaction and retrieval diagram">
+      <svg class="wide" viewBox="0 0 720 560" role="img" aria-labelledby="mem-b-t mem-b-d" style="width:100%;height:auto;max-width:720px">
+        <title id="mem-b-t">LCM-X lossless compaction and retrieval DAG</title>
+        <desc id="mem-b-d">Raw messages each keep an immutable store id. Depth 0 summary nodes each cover a range of raw messages by store id. A depth 1 node covers depth 0 nodes. A keyword search over FTS5 indexes of messages and summaries can land on any level, and lcm_expand returns the original messages behind any summary.</desc>
+        <g font-family="'Source Sans 3',sans-serif" font-size="15" fill="var(--ink)">
+          <rect x="8" y="8" width="340" height="84" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="178" y="38" text-anchor="middle" font-weight="600">Search: lcm_grep, lcm_recall</text>
+          <text x="178" y="62" text-anchor="middle" font-size="14" fill="var(--muted)">FTS5 over messages and summaries</text>
+          <text x="178" y="82" text-anchor="middle" font-size="14" fill="var(--muted)">ranked by match strength and recency</text>
+          <rect x="372" y="8" width="340" height="84" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="542" y="38" text-anchor="middle" font-weight="600">lcm_expand</text>
+          <text x="542" y="62" text-anchor="middle" font-size="14" fill="var(--muted)">returns the originals behind a summary</text>
+          <text x="542" y="82" text-anchor="middle" font-size="14" fill="var(--muted)">by node_id or store_id</text>
+
+          <rect x="250" y="140" width="220" height="64" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="360" y="166" text-anchor="middle" font-weight="600">Depth 1 summary</text>
+          <text x="360" y="190" text-anchor="middle" font-size="14" fill="var(--muted)">covers nodes S1 and S2</text>
+
+          <rect x="40" y="260" width="250" height="64" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="165" y="286" text-anchor="middle" font-weight="600">S1 depth 0 summary</text>
+          <text x="165" y="310" text-anchor="middle" font-size="14" fill="var(--muted)">covers store_id 101 to 104</text>
+          <rect x="430" y="260" width="250" height="64" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="555" y="286" text-anchor="middle" font-weight="600">S2 depth 0 summary</text>
+          <text x="555" y="310" text-anchor="middle" font-size="14" fill="var(--muted)">covers store_id 105 to 108</text>
+          <path d="M165 260 V232 H330 V204 M555 260 V232 H390 V204" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+
+          <g font-size="14" text-anchor="middle">
+            <rect x="8" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="47" y="424">id 101</text>
+            <rect x="94" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="133" y="424">id 102</text>
+            <rect x="180" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="219" y="424">id 103</text>
+            <rect x="266" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="305" y="424">id 104</text>
+            <rect x="376" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="415" y="424">id 105</text>
+            <rect x="462" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="501" y="424">id 106</text>
+            <rect x="548" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="587" y="424">id 107</text>
+            <rect x="634" y="390" width="78" height="56" rx="8" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/><text x="673" y="424">id 108</text>
+          </g>
+          <path d="M8 380 V366 H344 V380 M376 380 V366 H712 V380 M176 366 V324 M544 366 V324" fill="none" stroke="var(--muted)" stroke-width="1.5"/>
+          <text x="186" y="352" font-size="14" fill="var(--muted)">compact</text>
+          <text x="554" y="352" font-size="14" fill="var(--muted)">compact</text>
+          <text x="8" y="470" font-size="14" fill="var(--muted)">Raw messages: written once, never rewritten by compaction</text>
+
+          <path d="M120 92 V120 H250 M60 92 V260" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <path d="M650 92 V260 M690 92 V390" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+
+          <rect x="8" y="490" width="704" height="56" rx="10" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 196,309 raw messages, 41 summary nodes, 0 dangling references</text>
+        </g>
+      </svg>
+      <svg class="narrow" viewBox="0 0 320 800" role="img" aria-labelledby="mem-b-t-n" style="width:100%;height:auto">
+        <title id="mem-b-t-n">LCM-X compaction: raw messages compact into depth 0 summaries, which compact into a depth 1 summary; search can land on any level and lcm_expand returns the originals</title>
+        <g font-family="'Source Sans 3',sans-serif" font-size="16" fill="var(--ink)" text-anchor="middle">
+          <rect x="8" y="6" width="304" height="76" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="2"/>
+          <text x="160" y="36" font-weight="600">Search: lcm_grep</text>
+          <text x="160" y="62" font-size="15" fill="var(--muted)">FTS5, messages and summaries</text>
+          <rect x="8" y="96" width="304" height="76" rx="12" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="160" y="126" font-weight="600">lcm_expand</text>
+          <text x="160" y="152" font-size="15" fill="var(--muted)">summary back to originals</text>
+          <path d="M160 172 V212" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
+          <rect x="48" y="212" width="224" height="76" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="160" y="242" font-weight="600">Depth 1 summary</text>
+          <text x="160" y="268" font-size="15" fill="var(--muted)">covers S1 and S2</text>
+          <path d="M84 334 V310 H236 V334 M160 310 V288" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+          <rect x="8" y="334" width="148" height="96" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="82" y="364" font-weight="600">S1 depth 0</text>
+          <text x="82" y="390" font-size="15" fill="var(--muted)">store_id</text>
+          <text x="82" y="412" font-size="15" fill="var(--muted)">101 to 104</text>
+          <rect x="164" y="334" width="148" height="96" rx="12" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+          <text x="238" y="364" font-weight="600">S2 depth 0</text>
+          <text x="238" y="390" font-size="15" fill="var(--muted)">store_id</text>
+          <text x="238" y="412" font-size="15" fill="var(--muted)">105 to 108</text>
+          <path d="M82 476 V430 M238 476 V430" stroke="var(--muted)" stroke-width="1.5"/>
+          <text x="160" y="458" font-size="15" fill="var(--muted)">compact</text>
+          <rect x="8" y="476" width="148" height="76" rx="10" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="82" y="508">raw messages</text>
+          <text x="82" y="532" font-size="15" fill="var(--muted)">101 to 104</text>
+          <rect x="164" y="476" width="148" height="76" rx="10" fill="var(--paper)" stroke="var(--rule)" stroke-width="1.5"/>
+          <text x="238" y="508">raw messages</text>
+          <text x="238" y="532" font-size="15" fill="var(--muted)">105 to 108</text>
+          <rect x="8" y="580" width="304" height="132" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
+          <text x="160" y="612" font-weight="600">lcm.db, journal_mode=WAL</text>
+          <text x="160" y="640" font-size="15">196,309 raw messages</text>
+          <text x="160" y="666" font-size="15">41 summary nodes</text>
+          <text x="160" y="692" font-size="15">0 dangling references</text>
+        </g>
+      </svg>
+      <figcaption class="small muted">Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>Compaction:</strong> The router agent's store holds 196,309 messages from 149 sessions and 41 summary nodes, 39 at depth 0, 2 at depth 1. Deepest level in use: 1.</li>
+      <li><strong>Retrieval:</strong> SQLite FTS5 indexes both messages and summary nodes. Search ranks by match strength weighted by recency, so exact names, file paths and ids are found directly. The plugin also has an embedding path and rank fusion, but both are switched off in production, so retrieval today is keyword based.</li>
+      <li><strong>Expansion:</strong> If a summary is not enough, lcm_expand returns the original messages by node_id or store_id. Compaction loses detail in the window, never in the store.</li>
+      <li><strong>Concurrency:</strong> WAL mode lets readers proceed while a compaction writes, so one agent can read history while another session compacts.</li>
+    </ul>
+
+    <h2 id="telemetry">Telemetry and how to verify it</h2>
+    <p>Every figure on this page is either a design constant or the output of a read-only check run against the live host when the page was built on 7 Oct 2026.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Telemetry figures and how to reproduce them (scrolls horizontally)">
+      <table>
+        <caption>Telemetry figures and how to reproduce them</caption>
+        <thead>
+          <tr>
+            <th scope="col">Figure</th>
+            <th scope="col">Value</th>
+            <th scope="col">Reproduce with</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Memory layers</th>
+            <td class="mono">5</td>
+            <td><code>Design, see the table above</code></td>
+            <td>declared</td>
+          </tr>
+          <tr>
+            <th scope="row">Router agent notes</th>
+            <td class="mono">2,109 of 2,200 characters</td>
+            <td><code>wc -m ~/.hermes/memories/MEMORY.md</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Router agent user profile</th>
+            <td class="mono">2,589 of 2,600 characters</td>
+            <td><code>wc -m ~/.hermes/memories/USER.md</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Character caps</th>
+            <td class="mono">2,200 and 2,600</td>
+            <td><code>grep char_limit ~/.hermes/config.yaml</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Memory snapshots on disk</th>
+            <td class="mono">3</td>
+            <td><code>ls ~/.hermes/memories/backups/MEMORY_*.md | wc -l</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Knowledge files</th>
+            <td class="mono">15</td>
+            <td><code>ls ~/.hermes/knowledge/*.md | wc -l</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Skill files</th>
+            <td class="mono">310 (203 distinct names)</td>
+            <td><code>find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Agents</th>
+            <td class="mono">11</td>
+            <td><code>router plus ls -d ~/.hermes/profiles/*/</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">lcm.db journal mode</th>
+            <td class="mono">wal</td>
+            <td><code>sqlite3 lcm.db &#x27;PRAGMA journal_mode;&#x27;</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Raw messages</th>
+            <td class="mono">196,309 across 149 sessions</td>
+            <td><code>SELECT COUNT(*) FROM messages;</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Summary nodes</th>
+            <td class="mono">41 (39 at depth 0, 2 at depth 1)</td>
+            <td><code>SELECT depth, COUNT(*) FROM summary_nodes GROUP BY depth;</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Dangling references</th>
+            <td class="mono">0 of 3,164</td>
+            <td><code>integrity query below</code></td>
+            <td>probed at build</td>
+          </tr>
+          <tr>
+            <th scope="row">Host</th>
+            <td class="mono">Azure VPS</td>
+            <td><code>uname -r contains azure</code></td>
+            <td>probed at build</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Integrity check behind the lossless claim: every id listed by any summary node must exist. Result on 7 Oct 2026: 0 dangling references out of 3,164.</p>
+    <pre><code>SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
+WHERE (s.source_type = 'messages'
+       AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
+   OR (s.source_type &lt;&gt; 'messages'
+       AND NOT EXISTS (SELECT 1 FROM summary_nodes n WHERE n.node_id = j.value));</code></pre>
+
+    <h2 id="lineage">Prototype and production</h2>
+    <div class="panel">
+      <h3>What ran where</h3>
+      <p>From 11 to 20 Sep 2026 the agents ran in a Linux VM on my MacBook, and memory was prototyped there with local vector embeddings and the Hindsight memory API. On 20 Sep 2026 the runtime moved to the Azure server. Hindsight was replaced by native memory and skills, and neither the local embeddings nor Hindsight was deployed to the server. Production memory is the five layers above plus LCM-X on SQLite.</p>
+    </div>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Prototype compared with production (scrolls horizontally)">
+      <table>
+        <caption>Prototype compared with production</caption>
+        <thead>
+          <tr><th scope="col">Attribute</th><th scope="col">Laptop prototype, 11 to 20 Sep 2026</th><th scope="col">Azure VPS production</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Long-term recall</th><td>Local vector embeddings</td><td>LCM-X on SQLite WAL, FTS5 keyword search</td></tr>
+          <tr><th scope="row">Memory layer</th><td>Hindsight API</td><td>Curated markdown with hard character caps</td></tr>
+          <tr><th scope="row">Status</th><td>Retired, never deployed</td><td>Live</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="decisions">Design decisions</h2>
+    <ul>
+      <li><strong>Hard caps on L3, not soft warnings:</strong> Soft limits get ignored under pressure. A hard cap forces the merge now.</li>
+      <li><strong>Markdown for L3 and L4, not a key-value store:</strong> Readable, diffable and editable in any editor, because I am the final curator.</li>
+      <li><strong>SQLite WAL for history, not a JSONL log:</strong> Concurrent readers, transactional compaction and FTS5 in one file.</li>
+      <li><strong>Keyword search first:</strong> The most common lookups are names, paths and ids, which exact matching finds outright. The embedding path stays off until it earns its cost.</li>
+      <li><strong>Keep the originals:</strong> A summary is a guess about what mattered. The original is the evidence.</li>
+    </ul>
+
+    <h2 id="failures">Failure modes and what catches them</h2>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Failure modes (scrolls horizontally)">
+      <table>
+        <caption>Failure modes and recovery</caption>
+        <thead>
+          <tr><th scope="col">Failure</th><th scope="col">Detection</th><th scope="col">Recovery</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Write would pass the L3 cap</th><td>memory tool refuses the write</td><td>Merge entries, then retry</td></tr>
+          <tr><th scope="row">Bad fact promoted to L3</th><td>Curator review, ledger provenance</td><td>Restore a snapshot or forget with a tombstone</td></tr>
+          <tr><th scope="row">Summary misstates a turn</th><td>Node lists the ids it covers</td><td>lcm_expand on those ids</td></tr>
+          <tr><th scope="row">Summary points at a missing row</th><td>Integrity query at every page build</td><td>Page shows the count; no zero claim</td></tr>
+          <tr><th scope="row">Knowledge edit in the wrong file</th><td>md_guard.py daily and after edits</td><td>Fix at source</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <h2>Stack</h2>
-    <p class="mono">LCM-X &middot; SQLite &middot; Python &middot; systemd &middot; Linux</p>
+    <p class="mono">Hermes Agent &middot; LCM-X &middot; SQLite WAL &middot; FTS5 &middot; Python &middot; Markdown</p>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
   <div class="pager-prev"><a href="/work/routing/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Model routing and tiered compute</a></div>

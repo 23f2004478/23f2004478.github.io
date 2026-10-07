@@ -469,24 +469,179 @@ Switching to a backup model can make a reply slower, so each call needs a sensib
 # Memory
 Source: https://krishnendu.me/work/memory/
 
-## Memory and self-documentation: curated persistent memory and LCM-X context engine
-Two-tier memory architecture: curated persistent memory with character budgets, plus LCM-X, a lossless context memory engine that compacts long sessions into searchable summary graphs.
-Active Engine
-LCM-X (lcm.db) · Curated Persistent Memory
-Journaling
-Append-Only Autobiography Ledger · Daily Progress Reports
-Past Prototyping Note
-Local vector embeddings and Hindsight were used in the laptop phase (11 to 20 Sep 2026) only
-## Problem
-As agents work across multi-hour tasks, raw conversation histories quickly exhaust LLM context limits. Cutting old messages makes the model forget earlier decisions, and pasting whole transcripts back in makes its answers worse.
-## What I Built
-Curated Persistent Memory: Per-agent markdown stores holding durable operational notes and user context under strict character caps, backed by automatic atomic backups and version rollback.
-LCM-X context engine: Stored in a SQLite database, it folds older parts of a chat into layered summaries that agents can search by keyword or meaning, and the original messages are never deleted.
-Autobiography Ledger & Daily Reporting: An append-only ledger recording every major system milestone (G:0001 to G:0019) and an automated daily report engine generating plain-English progress summaries with per-agent time telemetry.
-## Outcome
-Earlier decisions stay searchable after a chat is summarised, so agents can look them up instead of guessing. Agents can pick up earlier context when a task is retried or handed to another agent.
+## Memory and self-documentation: five layers, capped notes and a lossless context engine
+How 11 agents on one Azure server remember what matters. Small curated files hold what must survive, and LCM-X, a SQLite context engine, keeps every original message so a summary can always be checked against its source.
+Built on Hermes Agent (open source, Nous Research) with the LCM-X context plugin. Private system; architecture and figures probed from the live host on 7 Oct 2026.
+Production host
+Azure VPS · SQLite WAL · FTS5 · Markdown
+Layers
+Session window · Scratch · Curated memory · Knowledge base · Skills
+Prototype note
+Local vector embeddings and Hindsight ran only on a laptop, 11 to 20 Sep 2026, and were never deployed
+5 Memory layers
+2,200 / 2,600 Character caps, notes / profile
+196,309 Raw messages kept
+0 Dangling summary references
+## Problem: remembering everything makes agents worse
+Agents that try to remember everything fail in two quiet ways. The context window fills with stale detail, so the model spends attention on noise. And a store full of unchecked fragments lets the model recall things that were never true. Neither failure raises an error.
+Cutting old messages is not the answer either: the agent forgets earlier decisions, and a retried task starts from nothing. I wanted durable memory small enough to read in full, every durable write reversible, and the bulk of history compressed for the model without being thrown away.
+## Architecture: five layers, one job each
+Each layer has one job, one rule for how long it lives, one size limit and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.
+Diagram A. Only L1 is read without a tool call. L3 and L4 are small enough to load in full, skills load when a task matches, and older history comes back through LCM-X.
+L1 Session window and system prompt: The system prompt, the agent's own rules file, the conversation and tool results. When it grows past the compaction threshold, LCM-X folds the oldest turns into summary nodes and keeps pointers to the originals.
+L2 Ephemeral scratch: Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives and probe scripts land there. Nothing in it is read by a later session, and entries idle for 24 hours are pruned.
+L3 Curated persistent memory: Two markdown files per agent, MEMORY.md for notes and USER.md for the user profile, with hard character caps (2,200 and 2,600 on the router agent). Both are loaded in full in every session, so there is no ranking step and nothing to miss. The cap is the point: it forces curation.
+L4 Curated knowledge base: 15 markdown files in ~/.hermes/knowledge, one topic each, plus an index. Facts about me and the system, written by hand and read on demand, so an agent loads only what its domain needs. A guardrails file records what is true in production and what was only prototyped.
+L5 Procedural skills library: 310 SKILL.md files (203 distinct skills) across the router and 10 domain agents. Each skill says when to use it, the steps and the exit check, with references and runnable scripts beside it. Skills are procedures, not facts, so they live apart from L4.
+## Layer specifications
+Memory layer specifications
+Layer
+Scope
+Persistence
+Capacity cap
+Storage engine
+Tool access gate
+L1 Session window and system prompt
+One session of one agent
+Not stored as is; overflow is compacted into lcm.db
+Model context window; compaction starts at 0.4 of the window
+Prompt assembled in memory
+No tool; always present
+L2 Ephemeral scratch
+One task of one agent
+Entries idle for 24 hours are pruned
+Disk, pruned
+Filesystem; TMPDIR points to the agent's cache/scratch
+Shell and file tools; never read back unless promoted
+L3 Curated persistent memory
+Every session of one agent
+Permanent; timestamped snapshot before each curator run
+2,200 characters of notes, 2,600 of user profile (router agent; each agent sets its own)
+Markdown, written by temp file, fsync and rename
+memory tool only; refuses writes over the cap; queued writes reviewed by the curator
+L4 Curated knowledge base
+Facts shared by all agents, loaded by domain
+Permanent, edited by hand
+One topic per file; 15 files
+Markdown in ~/.hermes/knowledge
+Read on demand; md_guard.py checks every edit and runs daily
+L5 Procedural skills library
+Per agent
+Permanent, versioned
+310 SKILL.md files, 203 distinct skills
+SKILL.md plus references and scripts
+Loaded when a task matches; configuration drift audited hourly by the medic agent
+LCM-X (beneath L1)
+Full history of one agent; each agent has its own lcm.db
+Permanent raw rows; removal only by an explicit owner purge
+Disk; 196,309 raw messages in the router agent's store
+SQLite in WAL mode with FTS5 indexes
+lcm_grep, lcm_recall, lcm_expand
+## Curation and rollback
+Writes to L3 never go straight to disk. They pass a queue, a review and a snapshot first, so a bad fact can be undone.
+Queue: A memory write that needs approval is saved as a JSON record in ~/.hermes/pending/memory instead of being applied.
+Pre-filter: fable_memory_curator.py runs a cheap gate first that drops transient items before any expensive review.
+Review: Fable, the top reasoning tier, sorts each candidate. Durable rules and preferences are applied. Routine status is logged only, since LCM-X already holds the transcript. Anything about deletes, security or do-not-contact rules waits for me. Low-signal items are declined.
+Snapshot: Before applying anything, the curator copies MEMORY.md and USER.md to timestamped files in memories/backups (3 snapshots on disk today).
+Apply: Approved items go through the same path as a manual approval: file lock, drift guard and the character cap. The memory tool refuses a write that would pass the cap and asks for a merge. The file is written to a temp file, synced and renamed, so a reader never sees half a file.
+Ledger and rollback: An hourly job syncs memory_ledger.py, a SQLite ledger that records where each remembered claim came from and what replaced it. Rollback restores a snapshot. A forget leaves a tombstone, and an explicit purge redacts the source rows after a backup.
+A separate hourly job backs up agent state and memory, and md_guard.py runs daily to catch knowledge edits that drift into the wrong file.
+## LCM-X: lossless context memory
+LCM-X sits beneath L1. Every message is written once to lcm.db and gets a permanent store_id. When the window needs room, LCM-X compacts a run of messages into a depth 0 summary node that lists the store_ids it covers. When depth 0 nodes pile up, they compact into a depth 1 node that lists their node_ids. The result is a directed graph in which summaries point down to summaries or raw rows, and compaction never rewrites a raw row.
+Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.
+Compaction: The router agent's store holds 196,309 messages from 149 sessions and 41 summary nodes, 39 at depth 0, 2 at depth 1. Deepest level in use: 1.
+Retrieval: SQLite FTS5 indexes both messages and summary nodes. Search ranks by match strength weighted by recency, so exact names, file paths and ids are found directly. The plugin also has an embedding path and rank fusion, but both are switched off in production, so retrieval today is keyword based.
+Expansion: If a summary is not enough, lcm_expand returns the original messages by node_id or store_id. Compaction loses detail in the window, never in the store.
+Concurrency: WAL mode lets readers proceed while a compaction writes, so one agent can read history while another session compacts.
+## Telemetry and how to verify it
+Every figure on this page is either a design constant or the output of a read-only check run against the live host when the page was built on 7 Oct 2026.
+Telemetry figures and how to reproduce them
+Figure
+Value
+Reproduce with
+Source
+Memory layers
+5
+Design, see the table above
+declared
+Router agent notes
+2,109 of 2,200 characters
+wc -m ~/.hermes/memories/MEMORY.md
+probed at build
+Router agent user profile
+2,589 of 2,600 characters
+wc -m ~/.hermes/memories/USER.md
+probed at build
+Character caps
+2,200 and 2,600
+grep char_limit ~/.hermes/config.yaml
+probed at build
+Memory snapshots on disk
+3
+ls ~/.hermes/memories/backups/MEMORY_*.md | wc -l
+probed at build
+Knowledge files
+15
+ls ~/.hermes/knowledge/*.md | wc -l
+probed at build
+Skill files
+310 (203 distinct names)
+find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l
+probed at build
+Agents
+11
+router plus ls -d ~/.hermes/profiles/*/
+probed at build
+lcm.db journal mode
+wal
+sqlite3 lcm.db 'PRAGMA journal_mode;'
+probed at build
+Raw messages
+196,309 across 149 sessions
+SELECT COUNT(*) FROM messages;
+probed at build
+Summary nodes
+41 (39 at depth 0, 2 at depth 1)
+SELECT depth, COUNT(*) FROM summary_nodes GROUP BY depth;
+probed at build
+Dangling references
+0 of 3,164
+integrity query below
+probed at build
+Host
+Azure VPS
+uname -r contains azure
+probed at build
+Integrity check behind the lossless claim: every id listed by any summary node must exist. Result on 7 Oct 2026: 0 dangling references out of 3,164.
+SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
+WHERE (s.source_type = 'messages'
+AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
+OR (s.source_type <> 'messages'
+AND NOT EXISTS (SELECT 1 FROM summary_nodes n WHERE n.node_id = j.value));
+## Prototype and production
+## What ran where
+From 11 to 20 Sep 2026 the agents ran in a Linux VM on my MacBook, and memory was prototyped there with local vector embeddings and the Hindsight memory API. On 20 Sep 2026 the runtime moved to the Azure server. Hindsight was replaced by native memory and skills, and neither the local embeddings nor Hindsight was deployed to the server. Production memory is the five layers above plus LCM-X on SQLite.
+Prototype compared with production
+Attribute Laptop prototype, 11 to 20 Sep 2026 Azure VPS production
+Long-term recall Local vector embeddings LCM-X on SQLite WAL, FTS5 keyword search
+Memory layer Hindsight API Curated markdown with hard character caps
+Status Retired, never deployed Live
+## Design decisions
+Hard caps on L3, not soft warnings: Soft limits get ignored under pressure. A hard cap forces the merge now.
+Markdown for L3 and L4, not a key-value store: Readable, diffable and editable in any editor, because I am the final curator.
+SQLite WAL for history, not a JSONL log: Concurrent readers, transactional compaction and FTS5 in one file.
+Keyword search first: The most common lookups are names, paths and ids, which exact matching finds outright. The embedding path stays off until it earns its cost.
+Keep the originals: A summary is a guess about what mattered. The original is the evidence.
+## Failure modes and what catches them
+Failure modes and recovery
+Failure Detection Recovery
+Write would pass the L3 cap memory tool refuses the write Merge entries, then retry
+Bad fact promoted to L3 Curator review, ledger provenance Restore a snapshot or forget with a tombstone
+Summary misstates a turn Node lists the ids it covers lcm_expand on those ids
+Summary points at a missing row Integrity query at every page build Page shows the count; no zero claim
+Knowledge edit in the wrong file md_guard.py daily and after edits Fix at source
 ## Stack
-LCM-X · SQLite · Python · systemd · Linux
+Hermes Agent · LCM-X · SQLite WAL · FTS5 · Python · Markdown
 
 
 # Reliability and security
