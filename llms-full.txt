@@ -61,23 +61,23 @@ Fri
 Sun
 Less
 More
-Total hours 148.4 h
+Total hours 148.8 h
 Active days 21
 Daily average 7.1 h/day
 Longest day 13.9 h (28 Sep 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Full operating rhythm breakdown →
-141,802
+142,304
 Agent replies
-Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,174 messages, most of them dictated.
+Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,177 messages, most of them dictated.
 Turn volume & human leverage
-My messages (dictated or typed) 3,174
-Agent replies 141,802
-Tool executions 140,745
+My messages (dictated or typed) 3,177
+Agent replies 142,304
+Tool executions 141,283
 About 45 agent messages for every message I sent, counting scheduled jobs.
 Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
 See human approval gates →
-8.51 B
+8.57 B
 Tokens processed
 Most of these are tokens my agents read, not write.
 Token volume (all sources)
@@ -89,9 +89,9 @@ Fri
 Sun
 Less
 More
-Through my model gateway 7.34 B
-Claude, called directly by my agents 1.15 B
-Claude Code CLI 19.5 M
+Through my model gateway 7.39 B
+Claude, called directly by my agents 1.16 B
+Claude Code CLI 20.6 M
 Peak day 1.13 B (6 Oct 2026)
 Among Gemini, Claude Opus and Claude Sonnet: Gemini 65.0%, Opus 30.2%, Sonnet 4.8% of tokens logged.
 Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
@@ -340,7 +340,7 @@ Human Review Gate: Anything I would regret waits for my approval: sends, deletes
 Continuous Maintenance: A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.
 ## Hours with my agents, by day
 Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.
-148.4 h Total hours
+148.8 h Total hours
 21 Active days
 7.1 h Avg / active day
 13.9 h Longest day (2026-09-28)
@@ -481,7 +481,7 @@ Agent operations run with human approval gates for irreversible actions
 5 Memory layers
 11 Specialist agents
 2,200 Char cap on notes
-198,107 Messages in history
+198,215 Messages in history
 ## Architecture: the five layer hierarchy
 Each layer has one specific job, one retention rule, one size budget, and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.
 Diagram A. Five layer memory architecture. Only L1 is read directly by the model. L3 and L4 load in full, L5 skills load on demand when a task matches, and older history is compacted into lcm.db for search and recall.
@@ -535,7 +535,7 @@ Loaded when a task matches; configuration drift audited hourly by the medic agen
 LCM-X (beneath L1)
 Full history of one agent; each agent has its own lcm.db
 Permanent raw rows; removal only by an explicit owner purge
-Disk; 198,107 raw messages in the router agent's store
+Disk; 198,215 raw messages in the router agent's store
 SQLite in WAL mode with FTS5 indexes
 lcm_grep, lcm_recall, lcm_expand
 ## Curation, human approval gates, and rollback
@@ -550,7 +550,7 @@ In addition, an automated hourly job backs up agent state and memory files, and 
 ## LCM-X: lossless context memory
 LCM-X operates beneath L1. Every message sent or received is recorded once in lcm.db with an immutable store_id. When the active context window fills up, LCM-X compacts older messages into a depth 0 summary node that references the exact store_ids it summarizes. When multiple depth 0 nodes accumulate, they compact into a depth 1 node. This creates a clean directed acyclic graph where summaries always link back to the exact source messages, and compaction never deletes or alters raw history.
 Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.
-Compaction: The router agent's database currently holds 198,107 messages from 151 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
+Compaction: The router agent's database currently holds 198,215 messages from 152 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
 FTS5 search: SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.
 Lossless expansion: If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.
 Concurrent WAL mode: SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.
@@ -598,7 +598,7 @@ wal
 sqlite3 lcm.db 'PRAGMA journal_mode;'
 probed at build
 Raw messages
-198,107 across 151 sessions
+198,215 across 152 sessions
 SELECT COUNT(*) FROM messages;
 probed at build
 Summary nodes
