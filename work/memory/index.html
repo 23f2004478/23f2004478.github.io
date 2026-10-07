@@ -183,30 +183,28 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1 style="view-transition-name: cs-memory;">Memory and self-documentation: five layers, capped notes and a lossless context engine</h1>
-    <p class="deck">How 11 agents on one Azure server remember what matters. Small curated files hold what must survive, and LCM-X, a SQLite context engine, keeps every original message so a summary can always be checked against its source.</p>
+    <p class="deck">How 11 agents on one Azure server remember what matters without context rot. Small curated Markdown files hold what must survive permanently, while LCM-X, a local SQLite context engine, stores every original conversation turn for lossless retrieval.</p>
 
+    <!-- Top Executive Summary for Visitors from LinkedIn -->
     <div class="panel">
-      <p class="small muted">Built on Hermes Agent (open source, Nous Research) with the LCM-X context plugin. Private system; architecture and figures probed from the live host on 7 Oct 2026.</p>
+      <p><strong>The Core Difference:</strong> Most AI chatbots store memory in an opaque cloud database. You cannot inspect what they know, and when they drift or hallucinate, you cannot edit their state. In an owned workshop, memory is divided into five clean layers. What must survive permanently sits in plain Markdown files with strict character caps, so I can open and edit them in seconds with any text editor. Older conversation history is stored losslessly in a local SQLite database, allowing agents to search past turns without cluttering their active working window.</p>
       <dl class="kv">
-        <dt>Production host</dt><dd class="mono">Azure VPS &middot; SQLite WAL &middot; FTS5 &middot; Markdown</dd>
-        <dt>Layers</dt><dd>Session window &middot; Scratch &middot; Curated memory &middot; Knowledge base &middot; Skills</dd>
-        <dt>Prototype note</dt><dd>Local vector embeddings and Hindsight ran only on a laptop, 11 to 20 Sep 2026, and were never deployed</dd>
+        <dt>Production platform</dt><dd class="mono">Hermes Agent on Azure VPS &middot; SQLite WAL &middot; Markdown</dd>
+        <dt>Design principle</dt><dd>Short curated files for permanent rules &middot; Searchable database for history</dd>
+        <dt>Human oversight</dt><dd>Agent operations run with human approval gates for irreversible actions</dd>
       </dl>
     </div>
 
     <div class="stats-row">
       <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Memory layers</span></div>
-      <div class="stat-item"><span class="stat-val">2,200 / 2,600</span><span class="stat-lbl">Character caps, notes / profile</span></div>
-      <div class="stat-item"><span class="stat-val">196,309</span><span class="stat-lbl">Raw messages kept</span></div>
+      <div class="stat-item"><span class="stat-val">196,881</span><span class="stat-lbl">Raw messages in SQLite</span></div>
+      <div class="stat-item"><span class="stat-val">100%</span><span class="stat-lbl">Editable Markdown notes</span></div>
       <div class="stat-item"><span class="stat-val">0</span><span class="stat-lbl">Dangling summary references</span></div>
     </div>
 
-    <h2 id="problem">Problem: remembering everything makes agents worse</h2>
-    <p>Agents that try to remember everything fail in two quiet ways. The context window fills with stale detail, so the model spends attention on noise. And a store full of unchecked fragments lets the model recall things that were never true. Neither failure raises an error.</p>
-    <p>Cutting old messages is not the answer either: the agent forgets earlier decisions, and a retried task starts from nothing. I wanted durable memory small enough to read in full, every durable write reversible, and the bulk of history compressed for the model without being thrown away.</p>
-
-    <h2 id="architecture">Architecture: five layers, one job each</h2>
-    <p>Each layer has one job, one rule for how long it lives, one size limit and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.</p>
+    <!-- Visual Architecture Diagram at the Top -->
+    <h2 id="hierarchy">Architecture: the five layer hierarchy</h2>
+    <p>Each layer has one specific job, one retention rule, one size budget, and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.</p>
     <figure class="fig" role="group" aria-label="Five layer memory hierarchy diagram">
       <svg class="wide" viewBox="0 0 720 640" role="img" aria-labelledby="mem-a-t mem-a-d" style="width:100%;height:auto;max-width:720px">
         <title id="mem-a-t">Five layer memory hierarchy</title>
@@ -294,14 +292,20 @@
           <text x="160" y="836" font-size="15" fill="var(--muted)">Dashed: compaction</text>
         </g>
       </svg>
-      <figcaption class="small muted">Diagram A. Only L1 is read without a tool call. L3 and L4 are small enough to load in full, skills load when a task matches, and older history comes back through LCM-X.</figcaption>
+      <figcaption class="small muted">Diagram A. Five layer memory architecture. Only L1 is read directly by the model. L3 and L4 load in full, L5 skills load on demand when a task matches, and older history is compacted into lcm.db for search and recall.</figcaption>
     </figure>
+
+    <h2 id="problem">The problem: remembering everything makes agents worse</h2>
+    <p>Agents that try to remember everything fail in two quiet ways. The context window fills with stale detail, so the model spends attention on noise. And a store full of unchecked fragments lets the model recall things that were never true. Neither failure raises a clean error.</p>
+    <p>Cutting old messages blindly is not the answer either: the agent forgets earlier decisions, and a retried task starts from zero. I wanted durable memory small enough to read and audit in full, every durable write reversible, and the bulk of history compressed for the model without ever being thrown away.</p>
+
+    <h2 id="layers">How the five layers work</h2>
     <ul>
-      <li><strong>L1 Session window and system prompt:</strong> The system prompt, the agent's own rules file, the conversation and tool results. When it grows past the compaction threshold, LCM-X folds the oldest turns into summary nodes and keeps pointers to the originals.</li>
-      <li><strong>L2 Ephemeral scratch:</strong> Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives and probe scripts land there. Nothing in it is read by a later session, and entries idle for 24 hours are pruned.</li>
-      <li><strong>L3 Curated persistent memory:</strong> Two markdown files per agent, MEMORY.md for notes and USER.md for the user profile, with hard character caps (2,200 and 2,600 on the router agent). Both are loaded in full in every session, so there is no ranking step and nothing to miss. The cap is the point: it forces curation.</li>
-      <li><strong>L4 Curated knowledge base:</strong> 15 markdown files in ~/.hermes/knowledge, one topic each, plus an index. Facts about me and the system, written by hand and read on demand, so an agent loads only what its domain needs. A guardrails file records what is true in production and what was only prototyped.</li>
-      <li><strong>L5 Procedural skills library:</strong> 310 SKILL.md files (203 distinct skills) across the router and 10 domain agents. Each skill says when to use it, the steps and the exit check, with references and runnable scripts beside it. Skills are procedures, not facts, so they live apart from L4.</li>
+      <li><strong>L1 Session window and system prompt:</strong> The live working desk. Holds the system prompt, the agent's role rules, active conversation turns, and tool results. When it grows past the compaction threshold, LCM-X folds the oldest turns into summary nodes and preserves pointers to the original messages.</li>
+      <li><strong>L2 Ephemeral scratch:</strong> The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.</li>
+      <li><strong>L3 Curated persistent memory:</strong> The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.</li>
+      <li><strong>L4 Curated knowledge base:</strong> The reference library. 15 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
+      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 310 SKILL.md files (203 distinct skills) across the router and 10 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
     </ul>
 
     <h2 id="spec">Layer specifications</h2>
@@ -363,7 +367,7 @@
             <th scope="row">LCM-X (beneath L1)</th>
             <td>Full history of one agent; each agent has its own lcm.db</td>
             <td>Permanent raw rows; removal only by an explicit owner purge</td>
-            <td>Disk; 196,309 raw messages in the router agent&#x27;s store</td>
+            <td>Disk; 196,881 raw messages in the router agent&#x27;s store</td>
             <td>SQLite in WAL mode with FTS5 indexes</td>
             <td>lcm_grep, lcm_recall, lcm_expand</td>
           </tr>
@@ -371,20 +375,20 @@
       </table>
     </div>
 
-    <h2 id="curation">Curation and rollback</h2>
-    <p>Writes to L3 never go straight to disk. They pass a queue, a review and a snapshot first, so a bad fact can be undone.</p>
+    <h2 id="curation">Curation, human approval gates, and rollback</h2>
+    <p>Writes to persistent memory (L3) never go straight to disk. They pass through a structured validation pipeline with snapshots, so any incorrect fact can be rolled back instantly.</p>
     <ol>
-      <li><strong>Queue:</strong> A memory write that needs approval is saved as a JSON record in ~/.hermes/pending/memory instead of being applied.</li>
-      <li><strong>Pre-filter:</strong> fable_memory_curator.py runs a cheap gate first that drops transient items before any expensive review.</li>
-      <li><strong>Review:</strong> Fable, the top reasoning tier, sorts each candidate. Durable rules and preferences are applied. Routine status is logged only, since LCM-X already holds the transcript. Anything about deletes, security or do-not-contact rules waits for me. Low-signal items are declined.</li>
-      <li><strong>Snapshot:</strong> Before applying anything, the curator copies MEMORY.md and USER.md to timestamped files in memories/backups (3 snapshots on disk today).</li>
-      <li><strong>Apply:</strong> Approved items go through the same path as a manual approval: file lock, drift guard and the character cap. The memory tool refuses a write that would pass the cap and asks for a merge. The file is written to a temp file, synced and renamed, so a reader never sees half a file.</li>
-      <li><strong>Ledger and rollback:</strong> An hourly job syncs memory_ledger.py, a SQLite ledger that records where each remembered claim came from and what replaced it. Rollback restores a snapshot. A forget leaves a tombstone, and an explicit purge redacts the source rows after a backup.</li>
+      <li><strong>Pending queue:</strong> Proposed memory writes requiring review are saved as JSON records in ~/.hermes/pending/memory rather than applied directly.</li>
+      <li><strong>Pre-filter:</strong> A fast gate checks candidate writes to discard transient session noise before deeper evaluation.</li>
+      <li><strong>Review tier:</strong> Fable, the top reasoning tier, evaluates each candidate. Durable operational facts and user preferences are accepted. Routine task progress is logged only, since LCM-X already records full transcripts. Irreversible changes (such as deletions, security boundaries, or suppression lists) wait for my manual confirmation.</li>
+      <li><strong>Snapshot backup:</strong> Before modifying memory, the curator copies MEMORY.md and USER.md to timestamped files in memories/backups (3 snapshots on disk today).</li>
+      <li><strong>Atomic apply:</strong> Approved updates use atomic file operations (write to temporary file, fsync, and rename) behind file locks, ensuring no agent ever reads a partially written file. The memory tool strictly rejects updates exceeding the character limit until old entries are consolidated.</li>
+      <li><strong>Audit ledger and recovery:</strong> A local SQLite ledger tracks the source session and reasoning behind every remembered fact. If an incorrect claim is detected, restoring the previous snapshot takes one command. Explicit forgetting leaves a clean audit tombstone.</li>
     </ol>
-    <p>A separate hourly job backs up agent state and memory, and md_guard.py runs daily to catch knowledge edits that drift into the wrong file.</p>
+    <p>In addition, an automated hourly job backs up agent state and memory files, and a daily guard script checks that knowledge edits stay within their assigned topic files.</p>
 
     <h2 id="lcm">LCM-X: lossless context memory</h2>
-    <p>LCM-X sits beneath L1. Every message is written once to lcm.db and gets a permanent store_id. When the window needs room, LCM-X compacts a run of messages into a depth 0 summary node that lists the store_ids it covers. When depth 0 nodes pile up, they compact into a depth 1 node that lists their node_ids. The result is a directed graph in which summaries point down to summaries or raw rows, and compaction never rewrites a raw row.</p>
+    <p>LCM-X operates beneath L1. Every message sent or received is recorded once in lcm.db with an immutable store_id. When the active context window fills up, LCM-X compacts older messages into a depth 0 summary node that references the exact store_ids it summarizes. When multiple depth 0 nodes accumulate, they compact into a depth 1 node. This creates a clean directed acyclic graph where summaries always link back to the exact source messages, and compaction never deletes or alters raw history.</p>
     <figure class="fig" role="group" aria-label="LCM-X compaction and retrieval diagram">
       <svg class="wide" viewBox="0 0 720 560" role="img" aria-labelledby="mem-b-t mem-b-d" style="width:100%;height:auto;max-width:720px">
         <title id="mem-b-t">LCM-X lossless compaction and retrieval DAG</title>
@@ -430,7 +434,7 @@
           <path d="M650 92 V260 M690 92 V390" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
 
           <rect x="8" y="490" width="704" height="56" rx="10" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
-          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 196,309 raw messages, 41 summary nodes, 0 dangling references</text>
+          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 196,881 raw messages, 41 summary nodes, 0 dangling references</text>
         </g>
       </svg>
       <svg class="narrow" viewBox="0 0 320 800" role="img" aria-labelledby="mem-b-t-n" style="width:100%;height:auto">
@@ -465,7 +469,7 @@
           <text x="238" y="532" font-size="15" fill="var(--muted)">105 to 108</text>
           <rect x="8" y="580" width="304" height="132" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
           <text x="160" y="612" font-weight="600">lcm.db, journal_mode=WAL</text>
-          <text x="160" y="640" font-size="15">196,309 raw messages</text>
+          <text x="160" y="640" font-size="15">196,881 raw messages</text>
           <text x="160" y="666" font-size="15">41 summary nodes</text>
           <text x="160" y="692" font-size="15">0 dangling references</text>
         </g>
@@ -473,14 +477,14 @@
       <figcaption class="small muted">Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.</figcaption>
     </figure>
     <ul>
-      <li><strong>Compaction:</strong> The router agent's store holds 196,309 messages from 149 sessions and 41 summary nodes, 39 at depth 0, 2 at depth 1. Deepest level in use: 1.</li>
-      <li><strong>Retrieval:</strong> SQLite FTS5 indexes both messages and summary nodes. Search ranks by match strength weighted by recency, so exact names, file paths and ids are found directly. The plugin also has an embedding path and rank fusion, but both are switched off in production, so retrieval today is keyword based.</li>
-      <li><strong>Expansion:</strong> If a summary is not enough, lcm_expand returns the original messages by node_id or store_id. Compaction loses detail in the window, never in the store.</li>
-      <li><strong>Concurrency:</strong> WAL mode lets readers proceed while a compaction writes, so one agent can read history while another session compacts.</li>
+      <li><strong>Compaction:</strong> The router agent's database currently holds 196,881 messages from 150 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.</li>
+      <li><strong>FTS5 search:</strong> SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.</li>
+      <li><strong>Lossless expansion:</strong> If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.</li>
+      <li><strong>Concurrent WAL mode:</strong> SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.</li>
     </ul>
 
-    <h2 id="telemetry">Telemetry and how to verify it</h2>
-    <p>Every figure on this page is either a design constant or the output of a read-only check run against the live host when the page was built on 7 Oct 2026.</p>
+    <h2 id="telemetry">Live telemetry and verification</h2>
+    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 7 Oct 2026.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Telemetry figures and how to reproduce them (scrolls horizontally)">
       <table>
         <caption>Telemetry figures and how to reproduce them</caption>
@@ -549,7 +553,7 @@
           </tr>
           <tr>
             <th scope="row">Raw messages</th>
-            <td class="mono">196,309 across 149 sessions</td>
+            <td class="mono">196,881 across 150 sessions</td>
             <td><code>SELECT COUNT(*) FROM messages;</code></td>
             <td>probed at build</td>
           </tr>
@@ -574,57 +578,86 @@
         </tbody>
       </table>
     </div>
-    <p>Integrity check behind the lossless claim: every id listed by any summary node must exist. Result on 7 Oct 2026: 0 dangling references out of 3,164.</p>
+    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 7 Oct 2026: 0 dangling references out of 3,164.</p>
     <pre><code>SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
 WHERE (s.source_type = 'messages'
        AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
    OR (s.source_type &lt;&gt; 'messages'
        AND NOT EXISTS (SELECT 1 FROM summary_nodes n WHERE n.node_id = j.value));</code></pre>
 
-    <h2 id="lineage">Prototype and production</h2>
+    <h2 id="lineage">Prototype vs production lineage</h2>
     <div class="panel">
-      <h3>What ran where</h3>
-      <p>From 11 to 20 Sep 2026 the agents ran in a Linux VM on my MacBook, and memory was prototyped there with local vector embeddings and the Hindsight memory API. On 20 Sep 2026 the runtime moved to the Azure server. Hindsight was replaced by native memory and skills, and neither the local embeddings nor Hindsight was deployed to the server. Production memory is the five layers above plus LCM-X on SQLite.</p>
+      <h3>Prototyping history</h3>
+      <p>From 11 to 20 Sep 2026, the initial platform prototype ran in a local Linux virtual machine on my MacBook, testing local vector embeddings and the Hindsight memory API. On 20 Sep 2026, the platform migrated to an Azure Linux server. Hindsight and local embeddings were retired and never deployed to production. Production memory uses the five structured layers described above, powered by native Markdown curation and LCM-X on SQLite.</p>
     </div>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Prototype compared with production (scrolls horizontally)">
       <table>
         <caption>Prototype compared with production</caption>
         <thead>
-          <tr><th scope="col">Attribute</th><th scope="col">Laptop prototype, 11 to 20 Sep 2026</th><th scope="col">Azure VPS production</th></tr>
+          <tr><th scope="col">Attribute</th><th scope="col">Laptop prototype (11 to 20 Sep 2026)</th><th scope="col">Azure VPS production (Current)</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Long-term recall</th><td>Local vector embeddings</td><td>LCM-X on SQLite WAL, FTS5 keyword search</td></tr>
-          <tr><th scope="row">Memory layer</th><td>Hindsight API</td><td>Curated markdown with hard character caps</td></tr>
-          <tr><th scope="row">Status</th><td>Retired, never deployed</td><td>Live</td></tr>
+          <tr><th scope="row">Historical recall</th><td>Local vector embeddings</td><td>LCM-X on SQLite WAL with FTS5 keyword indexing</td></tr>
+          <tr><th scope="row">Persistent memory</th><td>Hindsight API</td><td>Curated Markdown files with strict character caps</td></tr>
+          <tr><th scope="row">Deployment status</th><td>Retired prototype, never deployed to VPS</td><td>Active production system</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h2 id="decisions">Design decisions</h2>
+    <h2 id="decisions">Key design decisions</h2>
     <ul>
-      <li><strong>Hard caps on L3, not soft warnings:</strong> Soft limits get ignored under pressure. A hard cap forces the merge now.</li>
-      <li><strong>Markdown for L3 and L4, not a key-value store:</strong> Readable, diffable and editable in any editor, because I am the final curator.</li>
-      <li><strong>SQLite WAL for history, not a JSONL log:</strong> Concurrent readers, transactional compaction and FTS5 in one file.</li>
-      <li><strong>Keyword search first:</strong> The most common lookups are names, paths and ids, which exact matching finds outright. The embedding path stays off until it earns its cost.</li>
-      <li><strong>Keep the originals:</strong> A summary is a guess about what mattered. The original is the evidence.</li>
+      <li><strong>Hard character caps over soft limits:</strong> Soft warnings get ignored during complex tasks. Hard limits force active consolidation before new facts are saved.</li>
+      <li><strong>Plain Markdown over key-value databases:</strong> Human-readable, diffable, and directly editable with any standard text editor.</li>
+      <li><strong>SQLite WAL over append-only JSONL files:</strong> Transactional safety, non-blocking concurrent reads, and built-in FTS5 search in a single file.</li>
+      <li><strong>Exact keyword search over vector embeddings:</strong> Most developer and agent lookups require exact file paths, error codes, and entity names, where keyword search provides zero-hallucination precision.</li>
+      <li><strong>Preserving raw evidence:</strong> Summaries represent compact interpretations. The underlying source messages remain the ground truth evidence.</li>
     </ul>
 
-    <h2 id="failures">Failure modes and what catches them</h2>
-    <div class="table-scroll" tabindex="0" role="region" aria-label="Failure modes (scrolls horizontally)">
+    <h2 id="failures">Failure modes and automated recovery</h2>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Failure modes and recovery (scrolls horizontally)">
       <table>
         <caption>Failure modes and recovery</caption>
         <thead>
-          <tr><th scope="col">Failure</th><th scope="col">Detection</th><th scope="col">Recovery</th></tr>
+          <tr><th scope="col">Failure condition</th><th scope="col">Detection mechanism</th><th scope="col">Automated recovery path</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">Write would pass the L3 cap</th><td>memory tool refuses the write</td><td>Merge entries, then retry</td></tr>
-          <tr><th scope="row">Bad fact promoted to L3</th><td>Curator review, ledger provenance</td><td>Restore a snapshot or forget with a tombstone</td></tr>
-          <tr><th scope="row">Summary misstates a turn</th><td>Node lists the ids it covers</td><td>lcm_expand on those ids</td></tr>
-          <tr><th scope="row">Summary points at a missing row</th><td>Integrity query at every page build</td><td>Page shows the count; no zero claim</td></tr>
-          <tr><th scope="row">Knowledge edit in the wrong file</th><td>md_guard.py daily and after edits</td><td>Fix at source</td></tr>
+          <tr><th scope="row">Write exceeds L3 character cap</th><td>Memory tool enforces hard boundary</td><td>Rejects write and prompts consolidation</td></tr>
+          <tr><th scope="row">Incorrect fact added to memory</th><td>Curator audit and ledger tracking</td><td>Restore previous snapshot or mark with tombstone</td></tr>
+          <tr><th scope="row">Summary lacks needed detail</th><td>Summary lists covered store_ids</td><td>lcm_expand retrieves full original turns</td></tr>
+          <tr><th scope="row">Dangling reference in summary DAG</th><td>Automated integrity build query</td><td>Page reports count; builds flag inconsistencies</td></tr>
+          <tr><th scope="row">Knowledge file drift</th><td>Daily md_guard.py scan</td><td>Alerts on misplaced content across topic files</td></tr>
         </tbody>
       </table>
     </div>
+
+    <!-- Audience Fast Paths and Next Steps -->
+    <section class="section" id="next-steps" aria-labelledby="h-next">
+      <h2 id="h-next">Explore the platform</h2>
+      <p class="muted">See how memory connects with the rest of the multi-agent architecture:</p>
+      <ul class="rows" role="list">
+        <li>
+          <div>
+            <h3><a href="/work/platform/">Multi-agent operations platform</a></h3>
+            <p>11 specialized agents collaborating through structured task cards and human review gates.</p>
+          </div>
+          <div class="fact mono">11 AGENTS &middot; 39 JOBS</div>
+        </li>
+        <li>
+          <div>
+            <h3><a href="/work/routing/">Model routing and tiered compute</a></h3>
+            <p>Dynamic model switching and local fallback gateways across frontier providers.</p>
+          </div>
+          <div class="fact mono">ROUTING &middot; TIERS</div>
+        </li>
+        <li>
+          <div>
+            <h3><a href="/work/reliability/">Reliability and security</a></h3>
+            <p>Automated encrypted backups, offsite mirrors, and complete server rebuild runbooks.</p>
+          </div>
+          <div class="fact mono">BACKUPS &middot; SECURITY</div>
+        </li>
+      </ul>
+    </section>
 
     <h2>Stack</h2>
     <p class="mono">Hermes Agent &middot; LCM-X &middot; SQLite WAL &middot; FTS5 &middot; Python &middot; Markdown</p>
