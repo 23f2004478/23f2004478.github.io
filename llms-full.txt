@@ -61,23 +61,23 @@ Fri
 Sun
 Less
 More
-Total hours 146.1 h
+Total hours 146.4 h
 Active days 21
 Daily average 7.0 h/day
 Longest day 13.9 h (28 Sep 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Full operating rhythm breakdown →
-136,293
+137,796
 Agent replies
-Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,109 messages, most of them dictated.
+Messages my agents wrote, including scheduled jobs and helper agents. I sent them 3,117 messages, most of them dictated.
 Turn volume & human leverage
-My messages (dictated or typed) 3,109
-Agent replies 136,293
-Tool executions 135,192
+My messages (dictated or typed) 3,117
+Agent replies 137,796
+Tool executions 136,658
 About 44 agent messages for every message I sent, counting scheduled jobs.
 Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
 See human approval gates →
-8.25 B
+8.27 B
 Tokens processed
 Most of these are tokens my agents read, not write.
 Token volume (all sources)
@@ -89,11 +89,11 @@ Fri
 Sun
 Less
 More
-Through my model gateway 7.15 B
-Claude, called directly by my agents 1.08 B
+Through my model gateway 7.16 B
+Claude, called directly by my agents 1.10 B
 Claude Code CLI 16.8 M
 Peak day 1.13 B (6 Oct 2026)
-Among Gemini, Claude Opus and Claude Sonnet: Gemini 66.1%, Opus 29.1%, Sonnet 4.8% of tokens logged.
+Among Gemini, Claude Opus and Claude Sonnet: Gemini 65.9%, Opus 29.4%, Sonnet 4.7% of tokens logged.
 Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
 Explore model routing and compute tiering →
 11
@@ -340,7 +340,7 @@ Human Review Gate: Anything I would regret waits for my approval: sends, deletes
 Continuous Maintenance: A medic agent audits configuration drift hourly; a janitor agent flags cleanup opportunities and acts only upon approval.
 ## Hours with my agents, by day
 Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.
-146.1 h Total hours
+146.4 h Total hours
 21 Active days
 7.0 h Avg / active day
 13.9 h Longest day (2026-09-28)
@@ -452,11 +452,11 @@ Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
 Fable: Architectural planning, design system direction, and exhaustive fact audits.
 Measured empirical split, share of Hermes-tracked tokens:
 Gemini Flash
-66.1%
+65.9%
 Claude Opus
-29.1%
+29.4%
 Claude Sonnet
-4.8%
+4.7%
 Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.
 ## Outcome
 When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.
