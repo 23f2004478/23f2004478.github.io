@@ -273,7 +273,8 @@ def render_index(entries, data):
     main += strip_html(data["strip"])
     main += ('<section class="wrap" aria-labelledby="h-entries"><h2 id="h-entries">Entries</h2>%s'
              '<ul class="textlinks log-links"><li><a href="/log/archive/">All entries by month</a></li>'
-             '<li><a href="/log/sources/">How I source these numbers</a></li><li><a href="/log/feed.xml">RSS feed</a></li>'
+             '<li><a href="/log/sources/">How I source these numbers</a></li>'
+             '<li><a href="/work/usage/">Token ledger</a></li><li><a href="/log/feed.xml">RSS feed</a></li>'
              '<li><a href="/log/feed.json">JSON Feed</a></li></ul></section>'
              % entry_rows(entries))
     main += ('<section class="wrap" aria-labelledby="h-estate"><h2 id="h-estate">The estate right now</h2>%s</section>'

@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "built_on": "2026-10-08",
-  "built_at": "2026-10-08T04:24:43+05:30",
+  "built_at": "2026-10-08T05:00:39+05:30",
   "timezone": "Asia/Kolkata",
   "hours_total": 155.0,
   "hours_by_day": {
@@ -49,926 +49,626 @@
     "timezone": "Asia/Kolkata (IST)"
   },
   "tokens": {
-    "total": 5357640310,
-    "cache_hit_rate": 0.9048,
-    "by_source": {
-      "router": {
-        "fresh_input": 491992235,
-        "cached_read": 3601833436,
-        "cache_write": 0,
-        "output": 23882391,
-        "reasoning": 0,
-        "total": 4117708062,
-        "cached_in_prompt": 3601833436
-      },
-      "direct": {
-        "fresh_input": 415222,
-        "cached_read": 1067575146,
-        "cache_write": 140656713,
-        "output": 8895885,
-        "reasoning": 3840277,
-        "total": 1217542966
-      },
-      "cli": {
-        "fresh_input": 41357,
-        "cached_read": 13258528,
-        "cache_write": 4485260,
-        "output": 4604137,
-        "reasoning": 0,
-        "total": 22389282
-      }
+    "as_of": "2026-10-07T23:30:39Z",
+    "window": {
+      "start": "2026-09-13",
+      "end": "2026-10-08",
+      "days": 26
     },
-    "by_day": {
-      "2026-09-13": {
-        "fresh_input": 0,
-        "cached_read": 0,
-        "cache_write": 0,
-        "output": 0,
-        "reasoning": 0,
-        "total": 0,
-        "by_source": {
-          "router": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
+    "categories": [
+      "fresh_input",
+      "cached_read",
+      "cache_write",
+      "output"
+    ],
+    "components": {
+      "fresh_input": 493661797,
+      "cached_read": 4703383517,
+      "cache_write": 145141973,
+      "output": 37465244,
+      "reasoning": 3840277
+    },
+    "total": 5379652531,
+    "input_total": 5342187287,
+    "cache_hit_rate": 0.8804,
+    "output_share": 0.007,
+    "calls": 57259,
+    "by_source": [
+      {
+        "id": "ninerouter",
+        "label": "9router proxy",
+        "api_style": "openai",
+        "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
+        "calls": 49203,
+        "components": {
+          "fresh_input": 493205218,
+          "cached_read": 3622549843,
+          "cache_write": 0,
+          "output": 23965222,
+          "reasoning": 0
+        },
+        "total": 4139720283,
+        "cache_hit_rate": 0.8802,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": true
+        },
+        "list_cost_usd": 1553.31
       },
-      "2026-09-14": {
-        "fresh_input": 0,
-        "cached_read": 0,
-        "cache_write": 0,
-        "output": 0,
-        "reasoning": 0,
-        "total": 0,
-        "by_source": {
-          "router": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
+      {
+        "id": "hermes",
+        "label": "Hermes direct",
+        "api_style": "anthropic",
+        "carries": "my runtime calling Claude directly on a subscription",
+        "calls": 7114,
+        "components": {
+          "fresh_input": 415222,
+          "cached_read": 1067575146,
+          "cache_write": 140656713,
+          "output": 8895885,
+          "reasoning": 3840277
+        },
+        "total": 1217542966,
+        "cache_hit_rate": 0.8833,
+        "reports": {
+          "cache_write": true,
+          "reasoning": true,
+          "list_cost": true
+        },
+        "list_cost_usd": 1467.53
       },
-      "2026-09-15": {
-        "fresh_input": 4672,
-        "cached_read": 4081,
-        "cache_write": 0,
-        "output": 2521,
-        "reasoning": 0,
-        "total": 11274,
-        "by_source": {
-          "router": {
-            "fresh_input": 4672,
-            "cached_read": 4081,
-            "cache_write": 0,
-            "output": 2521,
-            "reasoning": 0,
-            "total": 11274
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-16": {
-        "fresh_input": 11475962,
-        "cached_read": 29177669,
-        "cache_write": 0,
-        "output": 169366,
-        "reasoning": 0,
-        "total": 40822997,
-        "by_source": {
-          "router": {
-            "fresh_input": 11475962,
-            "cached_read": 29177669,
-            "cache_write": 0,
-            "output": 169366,
-            "reasoning": 0,
-            "total": 40822997
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-17": {
-        "fresh_input": 15847014,
-        "cached_read": 49007060,
-        "cache_write": 0,
-        "output": 192234,
-        "reasoning": 0,
-        "total": 65046308,
-        "by_source": {
-          "router": {
-            "fresh_input": 15847014,
-            "cached_read": 49007060,
-            "cache_write": 0,
-            "output": 192234,
-            "reasoning": 0,
-            "total": 65046308
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-18": {
-        "fresh_input": 11572262,
-        "cached_read": 36641649,
-        "cache_write": 0,
-        "output": 471206,
-        "reasoning": 0,
-        "total": 48685117,
-        "by_source": {
-          "router": {
-            "fresh_input": 11572262,
-            "cached_read": 36641649,
-            "cache_write": 0,
-            "output": 471206,
-            "reasoning": 0,
-            "total": 48685117
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-19": {
-        "fresh_input": 7620683,
-        "cached_read": 23994447,
-        "cache_write": 0,
-        "output": 399724,
-        "reasoning": 0,
-        "total": 32014854,
-        "by_source": {
-          "router": {
-            "fresh_input": 7620683,
-            "cached_read": 23994447,
-            "cache_write": 0,
-            "output": 399724,
-            "reasoning": 0,
-            "total": 32014854
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-20": {
-        "fresh_input": 1440910,
-        "cached_read": 8638872,
-        "cache_write": 0,
-        "output": 45983,
-        "reasoning": 0,
-        "total": 10125765,
-        "by_source": {
-          "router": {
-            "fresh_input": 1440910,
-            "cached_read": 8638872,
-            "cache_write": 0,
-            "output": 45983,
-            "reasoning": 0,
-            "total": 10125765
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          }
-        }
-      },
-      "2026-09-21": {
-        "fresh_input": 9762354,
-        "cached_read": 43052873,
-        "cache_write": 223108,
-        "output": 591585,
-        "reasoning": 0,
-        "total": 53629920,
-        "by_source": {
-          "router": {
-            "fresh_input": 9756510,
-            "cached_read": 42323944,
-            "cache_write": 0,
-            "output": 446575,
-            "reasoning": 0,
-            "total": 52527029
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 5844,
-            "cached_read": 728929,
-            "cache_write": 223108,
-            "output": 145010,
-            "reasoning": 0,
-            "total": 1102891
-          }
-        }
-      },
-      "2026-09-22": {
-        "fresh_input": 26764062,
-        "cached_read": 142241382,
-        "cache_write": 174066,
-        "output": 2120931,
-        "reasoning": 0,
-        "total": 171300441,
-        "by_source": {
-          "router": {
-            "fresh_input": 26760722,
-            "cached_read": 142106839,
-            "cache_write": 0,
-            "output": 1767187,
-            "reasoning": 0,
-            "total": 170634748
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 3340,
-            "cached_read": 134543,
-            "cache_write": 174066,
-            "output": 353744,
-            "reasoning": 0,
-            "total": 665693
-          }
-        }
-      },
-      "2026-09-23": {
-        "fresh_input": 23236823,
-        "cached_read": 168813515,
-        "cache_write": 6505116,
-        "output": 1372908,
-        "reasoning": 16333,
-        "total": 199928362,
-        "by_source": {
-          "router": {
-            "fresh_input": 23230073,
-            "cached_read": 166244008,
-            "cache_write": 0,
-            "output": 1006872,
-            "reasoning": 0,
-            "total": 190480953
-          },
-          "direct": {
-            "fresh_input": 178,
-            "cached_read": 1867995,
-            "cache_write": 6254506,
-            "output": 61817,
-            "reasoning": 16333,
-            "total": 8184496
-          },
-          "cli": {
-            "fresh_input": 6572,
-            "cached_read": 701512,
-            "cache_write": 250610,
-            "output": 304219,
-            "reasoning": 0,
-            "total": 1262913
-          }
-        }
-      },
-      "2026-09-24": {
-        "fresh_input": 16416295,
-        "cached_read": 135799590,
-        "cache_write": 1559120,
-        "output": 1109925,
-        "reasoning": 12483,
-        "total": 154884930,
-        "by_source": {
-          "router": {
-            "fresh_input": 16405583,
-            "cached_read": 130538282,
-            "cache_write": 0,
-            "output": 897129,
-            "reasoning": 0,
-            "total": 147840994
-          },
-          "direct": {
-            "fresh_input": 3752,
-            "cached_read": 952740,
-            "cache_write": 1072865,
-            "output": 35663,
-            "reasoning": 12483,
-            "total": 2065020
-          },
-          "cli": {
-            "fresh_input": 6960,
-            "cached_read": 4308568,
-            "cache_write": 486255,
-            "output": 177133,
-            "reasoning": 0,
-            "total": 4978916
-          }
-        }
-      },
-      "2026-09-25": {
-        "fresh_input": 12507008,
-        "cached_read": 65184329,
-        "cache_write": 60029,
-        "output": 658975,
-        "reasoning": 0,
-        "total": 78410341,
-        "by_source": {
-          "router": {
-            "fresh_input": 12506984,
-            "cached_read": 65184329,
-            "cache_write": 0,
-            "output": 568915,
-            "reasoning": 0,
-            "total": 78260228
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 24,
-            "cached_read": 0,
-            "cache_write": 60029,
-            "output": 90060,
-            "reasoning": 0,
-            "total": 150113
-          }
-        }
-      },
-      "2026-09-26": {
-        "fresh_input": 6793531,
-        "cached_read": 16278653,
-        "cache_write": 9106,
-        "output": 139282,
-        "reasoning": 0,
-        "total": 23220572,
-        "by_source": {
-          "router": {
-            "fresh_input": 6793527,
-            "cached_read": 16278653,
-            "cache_write": 0,
-            "output": 133718,
-            "reasoning": 0,
-            "total": 23205898
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 4,
-            "cached_read": 0,
-            "cache_write": 9106,
-            "output": 5564,
-            "reasoning": 0,
-            "total": 14674
-          }
-        }
-      },
-      "2026-09-27": {
-        "fresh_input": 11198791,
-        "cached_read": 53271612,
-        "cache_write": 90906,
-        "output": 598467,
-        "reasoning": 0,
-        "total": 65159776,
-        "by_source": {
-          "router": {
-            "fresh_input": 11198741,
-            "cached_read": 53259965,
-            "cache_write": 0,
-            "output": 411033,
-            "reasoning": 0,
-            "total": 64869739
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 50,
-            "cached_read": 11647,
-            "cache_write": 90906,
-            "output": 187434,
-            "reasoning": 0,
-            "total": 290037
-          }
-        }
-      },
-      "2026-09-28": {
-        "fresh_input": 45899401,
-        "cached_read": 291305041,
-        "cache_write": 335189,
-        "output": 2532551,
-        "reasoning": 0,
-        "total": 340072182,
-        "by_source": {
-          "router": {
-            "fresh_input": 45897726,
-            "cached_read": 291075888,
-            "cache_write": 0,
-            "output": 1950034,
-            "reasoning": 0,
-            "total": 338923648
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 1675,
-            "cached_read": 229153,
-            "cache_write": 335189,
-            "output": 582517,
-            "reasoning": 0,
-            "total": 1148534
-          }
-        }
-      },
-      "2026-09-29": {
-        "fresh_input": 21510763,
-        "cached_read": 167899163,
-        "cache_write": 246993,
-        "output": 1398517,
-        "reasoning": 0,
-        "total": 191055436,
-        "by_source": {
-          "router": {
-            "fresh_input": 21508924,
-            "cached_read": 167832688,
-            "cache_write": 0,
-            "output": 1026703,
-            "reasoning": 0,
-            "total": 190368315
-          },
-          "direct": {
-            "fresh_input": 0,
-            "cached_read": 0,
-            "cache_write": 0,
-            "output": 0,
-            "reasoning": 0,
-            "total": 0
-          },
-          "cli": {
-            "fresh_input": 1839,
-            "cached_read": 66475,
-            "cache_write": 246993,
-            "output": 371814,
-            "reasoning": 0,
-            "total": 687121
-          }
-        }
-      },
-      "2026-09-30": {
-        "fresh_input": 7439012,
-        "cached_read": 148688563,
-        "cache_write": 14302772,
-        "output": 1542221,
-        "reasoning": 580036,
-        "total": 171972568,
-        "by_source": {
-          "router": {
-            "fresh_input": 7379641,
-            "cached_read": 38353829,
-            "cache_write": 0,
-            "output": 246109,
-            "reasoning": 0,
-            "total": 45979579
-          },
-          "direct": {
-            "fresh_input": 57792,
-            "cached_read": 110334734,
-            "cache_write": 14185699,
-            "output": 1217672,
-            "reasoning": 580036,
-            "total": 125795897
-          },
-          "cli": {
-            "fresh_input": 1579,
-            "cached_read": 0,
-            "cache_write": 117073,
-            "output": 78440,
-            "reasoning": 0,
-            "total": 197092
-          }
-        }
-      },
-      "2026-10-01": {
-        "fresh_input": 14595015,
-        "cached_read": 215437269,
-        "cache_write": 10962481,
-        "output": 2813523,
-        "reasoning": 650581,
-        "total": 243808288,
-        "by_source": {
-          "router": {
-            "fresh_input": 14555439,
-            "cached_read": 131928588,
-            "cache_write": 0,
-            "output": 986257,
-            "reasoning": 0,
-            "total": 147470284
-          },
-          "direct": {
-            "fresh_input": 38966,
-            "cached_read": 82334158,
-            "cache_write": 10436426,
-            "output": 1352049,
-            "reasoning": 650581,
-            "total": 94161599
-          },
-          "cli": {
-            "fresh_input": 610,
-            "cached_read": 1174523,
-            "cache_write": 526055,
-            "output": 475217,
-            "reasoning": 0,
-            "total": 2176405
-          }
-        }
-      },
-      "2026-10-02": {
-        "fresh_input": 40243530,
-        "cached_read": 354421448,
-        "cache_write": 10970951,
-        "output": 4035570,
-        "reasoning": 497052,
-        "total": 409671499,
-        "by_source": {
-          "router": {
-            "fresh_input": 40134875,
-            "cached_read": 273291566,
-            "cache_write": 0,
-            "output": 2334701,
-            "reasoning": 0,
-            "total": 315761142
-          },
-          "direct": {
-            "fresh_input": 107059,
-            "cached_read": 80855609,
-            "cache_write": 10630713,
-            "output": 1310318,
-            "reasoning": 497052,
-            "total": 92903699
-          },
-          "cli": {
-            "fresh_input": 1596,
-            "cached_read": 274273,
-            "cache_write": 340238,
-            "output": 390551,
-            "reasoning": 0,
-            "total": 1006658
-          }
-        }
-      },
-      "2026-10-03": {
-        "fresh_input": 41109820,
-        "cached_read": 461976420,
-        "cache_write": 26888429,
-        "output": 4550943,
-        "reasoning": 575954,
-        "total": 534525612,
-        "by_source": {
-          "router": {
-            "fresh_input": 41017382,
-            "cached_read": 330111160,
-            "cache_write": 0,
-            "output": 2434944,
-            "reasoning": 0,
-            "total": 373563486
-          },
-          "direct": {
-            "fresh_input": 85330,
-            "cached_read": 131838274,
-            "cache_write": 26631373,
-            "output": 1669008,
-            "reasoning": 575954,
-            "total": 160223985
-          },
-          "cli": {
-            "fresh_input": 7108,
-            "cached_read": 26986,
-            "cache_write": 257056,
-            "output": 446991,
-            "reasoning": 0,
-            "total": 738141
-          }
-        }
-      },
-      "2026-10-04": {
-        "fresh_input": 19422365,
-        "cached_read": 225500608,
-        "cache_write": 4806863,
-        "output": 1666732,
-        "reasoning": 154239,
-        "total": 251396568,
-        "by_source": {
-          "router": {
-            "fresh_input": 19417982,
-            "cached_read": 183748037,
-            "cache_write": 0,
-            "output": 1140082,
-            "reasoning": 0,
-            "total": 204306101
-          },
-          "direct": {
-            "fresh_input": 4321,
-            "cached_read": 41752571,
-            "cache_write": 4588769,
-            "output": 354381,
-            "reasoning": 154239,
-            "total": 46700042
-          },
-          "cli": {
-            "fresh_input": 62,
-            "cached_read": 0,
-            "cache_write": 218094,
-            "output": 172269,
-            "reasoning": 0,
-            "total": 390425
-          }
-        }
-      },
-      "2026-10-05": {
-        "fresh_input": 41351472,
-        "cached_read": 654771183,
-        "cache_write": 30841197,
-        "output": 3498355,
-        "reasoning": 564349,
-        "total": 730462207,
-        "by_source": {
-          "router": {
-            "fresh_input": 41330728,
-            "cached_read": 381175057,
-            "cache_write": 0,
-            "output": 1958547,
-            "reasoning": 0,
-            "total": 424464332
-          },
-          "direct": {
-            "fresh_input": 18788,
-            "cached_read": 273048138,
-            "cache_write": 30292027,
-            "output": 1095226,
-            "reasoning": 564349,
-            "total": 304454179
-          },
-          "cli": {
-            "fresh_input": 1956,
-            "cached_read": 547988,
-            "cache_write": 549170,
-            "output": 444582,
-            "reasoning": 0,
-            "total": 1543696
-          }
-        }
-      },
-      "2026-10-06": {
-        "fresh_input": 49435796,
-        "cached_read": 539525073,
-        "cache_write": 1702007,
-        "output": 2659207,
-        "reasoning": 43315,
-        "total": 593322083,
-        "by_source": {
-          "router": {
-            "fresh_input": 49435598,
-            "cached_read": 526031364,
-            "cache_write": 0,
-            "output": 2368011,
-            "reasoning": 0,
-            "total": 577834973
-          },
-          "direct": {
-            "fresh_input": 168,
-            "cached_read": 13478821,
-            "cache_write": 1542796,
-            "output": 106260,
-            "reasoning": 43315,
-            "total": 15128045
-          },
-          "cli": {
-            "fresh_input": 30,
-            "cached_read": 14888,
-            "cache_write": 159211,
-            "output": 184936,
-            "reasoning": 0,
-            "total": 359065
-          }
-        }
-      },
-      "2026-10-07": {
-        "fresh_input": 50191577,
-        "cached_read": 743955707,
-        "cache_write": 32298295,
-        "output": 4023180,
-        "reasoning": 691882,
-        "total": 830468759,
-        "by_source": {
-          "router": {
-            "fresh_input": 50114226,
-            "cached_read": 441584378,
-            "cache_write": 0,
-            "output": 2332347,
-            "reasoning": 0,
-            "total": 494030951
-          },
-          "direct": {
-            "fresh_input": 75403,
-            "cached_read": 298773450,
-            "cache_write": 32077962,
-            "output": 1548801,
-            "reasoning": 691882,
-            "total": 332475616
-          },
-          "cli": {
-            "fresh_input": 1948,
-            "cached_read": 3597879,
-            "cache_write": 220333,
-            "output": 142032,
-            "reasoning": 0,
-            "total": 3962192
-          }
-        }
-      },
-      "2026-10-08": {
-        "fresh_input": 6609696,
-        "cached_read": 107080903,
-        "cache_write": 3165345,
-        "output": 788507,
-        "reasoning": 54053,
-        "total": 117644451,
-        "by_source": {
-          "router": {
-            "fresh_input": 6586071,
-            "cached_read": 73301083,
-            "cache_write": 0,
-            "output": 592193,
-            "reasoning": 0,
-            "total": 80479347
-          },
-          "direct": {
-            "fresh_input": 23465,
-            "cached_read": 32338656,
-            "cache_write": 2943577,
-            "output": 144690,
-            "reasoning": 54053,
-            "total": 35450388
-          },
-          "cli": {
-            "fresh_input": 160,
-            "cached_read": 1441164,
-            "cache_write": 221768,
-            "output": 51624,
-            "reasoning": 0,
-            "total": 1714716
-          }
-        }
+      {
+        "id": "claude_code",
+        "label": "Claude Code",
+        "api_style": "anthropic",
+        "carries": "the CLI, read from its own transcripts",
+        "calls": 942,
+        "components": {
+          "fresh_input": 41357,
+          "cached_read": 13258528,
+          "cache_write": 4485260,
+          "output": 4604137,
+          "reasoning": 0
+        },
+        "total": 22389282,
+        "cache_hit_rate": 0.7455,
+        "reports": {
+          "cache_write": true,
+          "reasoning": false,
+          "list_cost": false
+        },
+        "list_cost_usd": null
       }
-    }
+    ],
+    "by_model": [
+      {
+        "family": "Gemini Flash",
+        "sources": [
+          "ninerouter"
+        ],
+        "calls": 45278,
+        "components": {
+          "fresh_input": 455726158,
+          "cached_read": 3418165778,
+          "cache_write": 0,
+          "output": 22770386,
+          "reasoning": 0
+        },
+        "total": 3896662322,
+        "share": 0.7243,
+        "cache_hit_rate": 0.8824,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": true
+        },
+        "list_cost_usd": 1382.82
+      },
+      {
+        "family": "Claude Opus",
+        "sources": [
+          "claude_code",
+          "hermes",
+          "ninerouter"
+        ],
+        "calls": 6674,
+        "components": {
+          "fresh_input": 392115,
+          "cached_read": 987137879,
+          "cache_write": 126931198,
+          "output": 9919150,
+          "reasoning": 3652979
+        },
+        "total": 1124380342,
+        "share": 0.209,
+        "cache_hit_rate": 0.8858,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": false
+        },
+        "list_cost_usd": 1385.15
+      },
+      {
+        "family": "Claude Sonnet",
+        "sources": [
+          "claude_code",
+          "hermes",
+          "ninerouter"
+        ],
+        "calls": 3877,
+        "components": {
+          "fresh_input": 30049574,
+          "cached_read": 292157682,
+          "cache_write": 15845857,
+          "output": 1854871,
+          "reasoning": 187298
+        },
+        "total": 339907984,
+        "share": 0.0632,
+        "cache_hit_rate": 0.8642,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": false
+        },
+        "list_cost_usd": 248.37
+      },
+      {
+        "family": "Other",
+        "sources": [
+          "claude_code",
+          "ninerouter"
+        ],
+        "calls": 704,
+        "components": {
+          "fresh_input": 2799684,
+          "cached_read": 5034018,
+          "cache_write": 2339376,
+          "output": 2863283,
+          "reasoning": 0
+        },
+        "total": 13036361,
+        "share": 0.0024,
+        "cache_hit_rate": 0.4948,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": false
+        },
+        "list_cost_usd": 0.92
+      },
+      {
+        "family": "Claude Haiku",
+        "sources": [
+          "claude_code",
+          "ninerouter"
+        ],
+        "calls": 541,
+        "components": {
+          "fresh_input": 2496482,
+          "cached_read": 25949,
+          "cache_write": 25542,
+          "output": 26099,
+          "reasoning": 0
+        },
+        "total": 2574072,
+        "share": 0.0005,
+        "cache_hit_rate": 0.0102,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": false
+        },
+        "list_cost_usd": 1.28
+      },
+      {
+        "family": "GPT",
+        "sources": [
+          "ninerouter"
+        ],
+        "calls": 165,
+        "components": {
+          "fresh_input": 2012344,
+          "cached_read": 527872,
+          "cache_write": 0,
+          "output": 14361,
+          "reasoning": 0
+        },
+        "total": 2554577,
+        "share": 0.0005,
+        "cache_hit_rate": 0.2078,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": true
+        },
+        "list_cost_usd": 1.64
+      },
+      {
+        "family": "Gemini Pro",
+        "sources": [
+          "ninerouter"
+        ],
+        "calls": 20,
+        "components": {
+          "fresh_input": 185440,
+          "cached_read": 334339,
+          "cache_write": 0,
+          "output": 17094,
+          "reasoning": 0
+        },
+        "total": 536873,
+        "share": 0.0001,
+        "cache_hit_rate": 0.6432,
+        "reports": {
+          "cache_write": false,
+          "reasoning": false,
+          "list_cost": true
+        },
+        "list_cost_usd": 0.66
+      }
+    ],
+    "by_day": [
+      {
+        "date": "2026-09-13",
+        "calls": 0,
+        "components": {
+          "fresh_input": 0,
+          "cached_read": 0,
+          "cache_write": 0,
+          "output": 0,
+          "reasoning": 0
+        },
+        "total": 0,
+        "partial": false
+      },
+      {
+        "date": "2026-09-14",
+        "calls": 0,
+        "components": {
+          "fresh_input": 0,
+          "cached_read": 0,
+          "cache_write": 0,
+          "output": 0,
+          "reasoning": 0
+        },
+        "total": 0,
+        "partial": false
+      },
+      {
+        "date": "2026-09-15",
+        "calls": 12,
+        "components": {
+          "fresh_input": 4672,
+          "cached_read": 4081,
+          "cache_write": 0,
+          "output": 2521,
+          "reasoning": 0
+        },
+        "total": 11274,
+        "partial": false
+      },
+      {
+        "date": "2026-09-16",
+        "calls": 735,
+        "components": {
+          "fresh_input": 11475962,
+          "cached_read": 29177669,
+          "cache_write": 0,
+          "output": 169366,
+          "reasoning": 0
+        },
+        "total": 40822997,
+        "partial": false
+      },
+      {
+        "date": "2026-09-17",
+        "calls": 721,
+        "components": {
+          "fresh_input": 15847014,
+          "cached_read": 49007060,
+          "cache_write": 0,
+          "output": 192234,
+          "reasoning": 0
+        },
+        "total": 65046308,
+        "partial": false
+      },
+      {
+        "date": "2026-09-18",
+        "calls": 1205,
+        "components": {
+          "fresh_input": 11572262,
+          "cached_read": 36641649,
+          "cache_write": 0,
+          "output": 471206,
+          "reasoning": 0
+        },
+        "total": 48685117,
+        "partial": false
+      },
+      {
+        "date": "2026-09-19",
+        "calls": 980,
+        "components": {
+          "fresh_input": 7620683,
+          "cached_read": 23994447,
+          "cache_write": 0,
+          "output": 399724,
+          "reasoning": 0
+        },
+        "total": 32014854,
+        "partial": false
+      },
+      {
+        "date": "2026-09-20",
+        "calls": 222,
+        "components": {
+          "fresh_input": 1440910,
+          "cached_read": 8638872,
+          "cache_write": 0,
+          "output": 45983,
+          "reasoning": 0
+        },
+        "total": 10125765,
+        "partial": false
+      },
+      {
+        "date": "2026-09-21",
+        "calls": 1272,
+        "components": {
+          "fresh_input": 9762354,
+          "cached_read": 43052873,
+          "cache_write": 223108,
+          "output": 591585,
+          "reasoning": 0
+        },
+        "total": 53629920,
+        "partial": false
+      },
+      {
+        "date": "2026-09-22",
+        "calls": 2337,
+        "components": {
+          "fresh_input": 26764062,
+          "cached_read": 142241382,
+          "cache_write": 174066,
+          "output": 2120931,
+          "reasoning": 0
+        },
+        "total": 171300441,
+        "partial": false
+      },
+      {
+        "date": "2026-09-23",
+        "calls": 1765,
+        "components": {
+          "fresh_input": 23236823,
+          "cached_read": 168813515,
+          "cache_write": 6505116,
+          "output": 1372908,
+          "reasoning": 16333
+        },
+        "total": 199928362,
+        "partial": false
+      },
+      {
+        "date": "2026-09-24",
+        "calls": 2165,
+        "components": {
+          "fresh_input": 16416295,
+          "cached_read": 135799590,
+          "cache_write": 1559120,
+          "output": 1109925,
+          "reasoning": 12483
+        },
+        "total": 154884930,
+        "partial": false
+      },
+      {
+        "date": "2026-09-25",
+        "calls": 1122,
+        "components": {
+          "fresh_input": 12507008,
+          "cached_read": 65184329,
+          "cache_write": 60029,
+          "output": 658975,
+          "reasoning": 0
+        },
+        "total": 78410341,
+        "partial": false
+      },
+      {
+        "date": "2026-09-26",
+        "calls": 234,
+        "components": {
+          "fresh_input": 6793531,
+          "cached_read": 16278653,
+          "cache_write": 9106,
+          "output": 139282,
+          "reasoning": 0
+        },
+        "total": 23220572,
+        "partial": false
+      },
+      {
+        "date": "2026-09-27",
+        "calls": 919,
+        "components": {
+          "fresh_input": 11198791,
+          "cached_read": 53271612,
+          "cache_write": 90906,
+          "output": 598467,
+          "reasoning": 0
+        },
+        "total": 65159776,
+        "partial": false
+      },
+      {
+        "date": "2026-09-28",
+        "calls": 3229,
+        "components": {
+          "fresh_input": 45899401,
+          "cached_read": 291305041,
+          "cache_write": 335189,
+          "output": 2532551,
+          "reasoning": 0
+        },
+        "total": 340072182,
+        "partial": false
+      },
+      {
+        "date": "2026-09-29",
+        "calls": 2153,
+        "components": {
+          "fresh_input": 21510763,
+          "cached_read": 167899163,
+          "cache_write": 246993,
+          "output": 1398517,
+          "reasoning": 0
+        },
+        "total": 191055436,
+        "partial": false
+      },
+      {
+        "date": "2026-09-30",
+        "calls": 2014,
+        "components": {
+          "fresh_input": 7439012,
+          "cached_read": 148688563,
+          "cache_write": 14302772,
+          "output": 1542221,
+          "reasoning": 580036
+        },
+        "total": 171972568,
+        "partial": false
+      },
+      {
+        "date": "2026-10-01",
+        "calls": 2839,
+        "components": {
+          "fresh_input": 14595015,
+          "cached_read": 215437269,
+          "cache_write": 10962481,
+          "output": 2813523,
+          "reasoning": 650581
+        },
+        "total": 243808288,
+        "partial": false
+      },
+      {
+        "date": "2026-10-02",
+        "calls": 3932,
+        "components": {
+          "fresh_input": 40243530,
+          "cached_read": 354421448,
+          "cache_write": 10970951,
+          "output": 4035570,
+          "reasoning": 497052
+        },
+        "total": 409671499,
+        "partial": false
+      },
+      {
+        "date": "2026-10-03",
+        "calls": 4618,
+        "components": {
+          "fresh_input": 41109820,
+          "cached_read": 461976420,
+          "cache_write": 26888429,
+          "output": 4550943,
+          "reasoning": 575954
+        },
+        "total": 534525612,
+        "partial": false
+      },
+      {
+        "date": "2026-10-04",
+        "calls": 2877,
+        "components": {
+          "fresh_input": 19422365,
+          "cached_read": 225500608,
+          "cache_write": 4806863,
+          "output": 1666732,
+          "reasoning": 154239
+        },
+        "total": 251396568,
+        "partial": false
+      },
+      {
+        "date": "2026-10-05",
+        "calls": 4672,
+        "components": {
+          "fresh_input": 41351472,
+          "cached_read": 654771183,
+          "cache_write": 30841197,
+          "output": 3498355,
+          "reasoning": 564349
+        },
+        "total": 730462207,
+        "partial": false
+      },
+      {
+        "date": "2026-10-06",
+        "calls": 6964,
+        "components": {
+          "fresh_input": 49435796,
+          "cached_read": 539525073,
+          "cache_write": 1702007,
+          "output": 2659207,
+          "reasoning": 43315
+        },
+        "total": 593322083,
+        "partial": false
+      },
+      {
+        "date": "2026-10-07",
+        "calls": 8872,
+        "components": {
+          "fresh_input": 50191577,
+          "cached_read": 743955707,
+          "cache_write": 32298295,
+          "output": 4023180,
+          "reasoning": 691882
+        },
+        "total": 830468759,
+        "partial": false
+      },
+      {
+        "date": "2026-10-08",
+        "calls": 1400,
+        "components": {
+          "fresh_input": 7822679,
+          "cached_read": 127797310,
+          "cache_write": 3165345,
+          "output": 871338,
+          "reasoning": 54053
+        },
+        "total": 139656672,
+        "partial": true
+      }
+    ],
+    "cost": {
+      "list_total_usd": 3020.84,
+      "proxy_list_usd": 1553.31,
+      "direct_list_usd": 1467.53,
+      "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
+      "free_tier_statement": false
+    },
+    "day_buckets": [
+      0,
+      53629920,
+      171300441,
+      340072182,
+      830468759
+    ]
   },
-  "tokens_total": 5357640310,
-  "tokens_cache_hit_rate": 0.9048,
+  "tokens_total": 5379652531,
+  "tokens_cache_hit_rate": 0.8804,
   "tokens_by_source": {
-    "9router_proxy": 4117708062,
+    "9router_proxy": 4139720283,
     "hermes_direct_claude": 1217542966,
     "claude_code_cli": 22389282
   },
@@ -998,28 +698,28 @@
     "2026-10-05": 730462207,
     "2026-10-06": 593322083,
     "2026-10-07": 830468759,
-    "2026-10-08": 117644451
+    "2026-10-08": 139656672
   },
   "tokens_levels": [
     0,
-    50000000,
-    150000000,
-    400000000
+    53629920,
+    171300441,
+    340072182
   ],
   "tokens_top_day": "2026-10-07",
   "tokens_top_day_value": 830468759,
   "model_share": {
-    "gemini": 0.0,
-    "opus": 91.6,
-    "sonnet": 8.4,
+    "gemini": 72.4,
+    "opus": 20.9,
+    "sonnet": 6.3,
     "basis": "hermes_tracked"
   },
   "model_split_pct": {
-    "Gemini 3.7 Flash": 0.0,
-    "Claude Opus": 91.6,
-    "Claude Sonnet 5.5": 8.4
+    "Gemini Flash": 72.4,
+    "Claude Opus": 20.9,
+    "Claude Sonnet": 6.3
   },
-  "model_split_label": "share of Hermes-tracked tokens",
+  "model_split_label": "share of total logged tokens",
   "agents_total": 11,
   "agents_router": 1,
   "agents_domain": 10,
@@ -1079,9 +779,9 @@
   "jobs_enabled": 51,
   "jobs_recurring": 49,
   "messages": {
-    "total_dedup": 315411,
-    "agent_replies": 146899,
-    "tool_results": 146177,
+    "total_dedup": 315701,
+    "agent_replies": 147032,
+    "tool_results": 146334,
     "human": 22335
   },
   "leverage_ratio": 7

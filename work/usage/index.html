@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Token ledger | Krishnendu Biswas</title>
+  <meta name="description" content="Full token accounting across 9router proxy, Hermes direct Claude and Claude Code: fresh input, cache read, cache creation, output and list price USD.">
+  <link rel="canonical" href="https://krishnendu.me/work/usage/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/work/usage/">
+  <meta property="og:title" content="Token ledger | Krishnendu Biswas">
+  <meta property="og:description" content="Full token accounting across 9router proxy, Hermes direct Claude and Claude Code: fresh input, cache read, cache creation, output and list price USD.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-work-usage.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-usage.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Token ledger | Krishnendu Biswas, share card for krishnendu.me">
+  <meta property="article:published_time" content="2026-10-08T00:00:00+05:30">
+  <meta property="article:author" content="https://krishnendu.me/#person">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Token ledger | Krishnendu Biswas">
+  <meta name="twitter:description" content="Full token accounting across 9router proxy, Hermes direct Claude and Claude Code: fresh input, cache read, cache creation, output and list price USD.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-work-usage.png">
+  <meta name="twitter:image:alt" content="Token ledger | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/resume/*" } },
+            { "not": { "href_matches": "/archive/*" } },
+            { "not": { "href_matches": "/log/feed.*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krishnendu.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://krishnendu.me/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Token ledger",
+          "item": "https://krishnendu.me/work/usage/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/work/usage/#article",
+      "name": "Token ledger and multi-model usage accounting",
+      "headline": "Token ledger: multi-model usage accounting across three sources",
+      "url": "https://krishnendu.me/work/usage/",
+      "mainEntityOfPage": "https://krishnendu.me/work/usage/",
+      "isPartOf": {
+        "@id": "https://krishnendu.me/#website"
+      },
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      },
+      "publisher": {
+        "@id": "https://krishnendu.me/#person"
+      },
+      "datePublished": "2026-10-08T00:00:00+05:30",
+      "dateModified": "2026-10-08T00:00:00+05:30",
+      "image": "https://krishnendu.me/og/og-work-usage.png",
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+  <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 20 20">
+    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M14 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+<header class="site-head wrap">
+  <div class="head-in">
+    <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=3" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      </button>
+      <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
+        <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li aria-current="page">Token ledger</li>
+  </ol>
+</nav>
+
+  <article class="wrap page-head">
+    <h1>Token ledger</h1>
+    <p class="deck">Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.</p>
+
+    <div class="panel telemetry-bar">
+      <p class="small muted">Last probed: <span class="mono">2026-10-07T23:30:39Z</span> &middot; Tracking window: <span class="mono">2026-09-13</span> to <span class="mono">2026-10-08</span> (<span class="mono">26</span> days). The window starts on 2026-09-13, the first day any source logged tokens.</p>
+    </div>
+
+    <!-- Hero Stats Row -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-val">5.38 B</span>
+        <span class="stat-lbl">Total tokens across 3 sources</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">88.0%</span>
+        <span class="stat-lbl">Prompt cache hit rate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">37.5 M</span>
+        <span class="stat-lbl">Generated output (0.70%)</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-val">$3,020.84</span>
+        <span class="stat-lbl">List price equivalent (USD)</span>
+      </div>
+    </div>
+
+    <!-- Section 1: The Four Components -->
+    <section class="section" id="components" aria-labelledby="h-components">
+      <h2 id="h-components">The four components</h2>
+      <p>Tokens logged by language models belong to four distinct operational categories. Over 99% of token volume represents context read by the models rather than new text written. Prompt caching serves most of this context from memory at a fraction of standard input pricing.</p>
+      
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Token component breakdown (scrolls horizontally)">
+        <table>
+          <caption>Token volume by component</caption>
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">Tokens</th>
+              <th scope="col">Share of total</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Fresh input</th>
+            <td class="mono">493,661,797</td>
+            <td class="mono">9.18%</td>
+            <td>Tokens sent to models without a provider cache hit</td>
+          </tr>
+          <tr>
+            <th scope="row">Cache read</th>
+            <td class="mono">4,703,383,517</td>
+            <td class="mono">87.43%</td>
+            <td>Tokens read from provider prompt cache at discounted rates</td>
+          </tr>
+          <tr>
+            <th scope="row">Cache creation</th>
+            <td class="mono">145,141,973</td>
+            <td class="mono">2.70%</td>
+            <td>Tokens written to Anthropic prompt cache for 5-minute reuse</td>
+          </tr>
+          <tr>
+            <th scope="row">Output</th>
+            <td class="mono">37,465,244</td>
+            <td class="mono">0.70%</td>
+            <td>Generated completion tokens (includes 3,840,277 reasoning tokens on supported models)</td>
+          </tr>
+          <tr class="table-total">
+            <th scope="row">Total</th>
+            <td class="mono">5,379,652,531</td>
+            <td class="mono">100.00%</td>
+            <td>Exact integer sum across all four components</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Section 2: By Source -->
+    <section class="section" id="sources" aria-labelledby="h-sources">
+      <h2 id="h-sources">By source (how each logger counts)</h2>
+      <p>My agents access models through three primary paths. 9router functions as a local proxy for OpenAI-compatible models, Hermes calls Claude directly using subscription credentials, and Claude Code runs interactive coding tasks via CLI transcripts.</p>
+
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Token breakdown by source (scrolls horizontally)">
+        <table>
+          <caption>Token volume by telemetry source</caption>
+          <thead>
+            <tr>
+              <th scope="col">Source</th>
+              <th scope="col">Carries</th>
+              <th scope="col">Calls</th>
+              <th scope="col">Fresh input</th>
+              <th scope="col">Cache read</th>
+              <th scope="col">Cache creation</th>
+              <th scope="col">Output</th>
+              <th scope="col">Total</th>
+              <th scope="col">Cache hit rate</th>
+              <th scope="col">List price (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">9router proxy</th>
+            <td>Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API</td>
+            <td class="mono">49,203</td>
+            <td class="mono">493,205,218</td>
+            <td class="mono">3,622,549,843</td>
+            <td class="mono">0</td>
+            <td class="mono">23,965,222</td>
+            <td class="mono">4,139,720,283</td>
+            <td class="mono">88.0%</td>
+            <td class="mono">$1,553.31</td>
+          </tr>
+          <tr>
+            <th scope="row">Hermes direct</th>
+            <td>my runtime calling Claude directly on a subscription</td>
+            <td class="mono">7,114</td>
+            <td class="mono">415,222</td>
+            <td class="mono">1,067,575,146</td>
+            <td class="mono">140,656,713</td>
+            <td class="mono">8,895,885</td>
+            <td class="mono">1,217,542,966</td>
+            <td class="mono">88.3%</td>
+            <td class="mono">$1,467.53</td>
+          </tr>
+          <tr>
+            <th scope="row">Claude Code</th>
+            <td>the CLI, read from its own transcripts</td>
+            <td class="mono">942</td>
+            <td class="mono">41,357</td>
+            <td class="mono">13,258,528</td>
+            <td class="mono">4,485,260</td>
+            <td class="mono">4,604,137</td>
+            <td class="mono">22,389,282</td>
+            <td class="mono">74.6%</td>
+            <td class="mono">n/r</td>
+          </tr>
+          <tr class="table-total">
+            <th scope="row">Total</th>
+            <td>All three telemetry streams combined</td>
+            <td class="mono">57,259</td>
+            <td class="mono">493,661,797</td>
+            <td class="mono">4,703,383,517</td>
+            <td class="mono">145,141,973</td>
+            <td class="mono">37,465,244</td>
+            <td class="mono">5,379,652,531</td>
+            <td class="mono">88.0%</td>
+            <td class="mono">$3,020.84</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="small muted">Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.</p>
+    </section>
+
+    <!-- Section 3: By Model Family -->
+    <section class="section" id="models" aria-labelledby="h-models">
+      <h2 id="h-models">By model family</h2>
+      <p>Task complexity routing assigns each job to the most efficient capable model. High volume search sweeps and lightweight tool calls run on Gemini Flash, code generation and test execution run on Claude Sonnet, and deep multi-file architectural planning runs on Claude Opus.</p>
+
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Token breakdown by model family (scrolls horizontally)">
+        <table>
+          <caption>Token volume by model family</caption>
+          <thead>
+            <tr>
+              <th scope="col">Model family</th>
+              <th scope="col">Sources</th>
+              <th scope="col">Calls</th>
+              <th scope="col">Fresh input</th>
+              <th scope="col">Cache read</th>
+              <th scope="col">Cache creation</th>
+              <th scope="col">Output</th>
+              <th scope="col">Total</th>
+              <th scope="col">Share</th>
+              <th scope="col">Cache hit rate</th>
+              <th scope="col">List price (USD)</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">Gemini Flash</th>
+            <td>ninerouter</td>
+            <td class="mono">45,278</td>
+            <td class="mono">455,726,158</td>
+            <td class="mono">3,418,165,778</td>
+            <td class="mono">n/r</td>
+            <td class="mono">22,770,386</td>
+            <td class="mono">3,896,662,322</td>
+            <td class="mono">72.43%</td>
+            <td class="mono">88.2%</td>
+            <td class="mono">$1,382.82</td>
+          </tr>
+          <tr>
+            <th scope="row">Claude Opus</th>
+            <td>claude_code, hermes, ninerouter</td>
+            <td class="mono">6,674</td>
+            <td class="mono">392,115</td>
+            <td class="mono">987,137,879</td>
+            <td class="mono">n/r</td>
+            <td class="mono">9,919,150</td>
+            <td class="mono">1,124,380,342</td>
+            <td class="mono">20.90%</td>
+            <td class="mono">88.6%</td>
+            <td class="mono">n/r</td>
+          </tr>
+          <tr>
+            <th scope="row">Claude Sonnet</th>
+            <td>claude_code, hermes, ninerouter</td>
+            <td class="mono">3,877</td>
+            <td class="mono">30,049,574</td>
+            <td class="mono">292,157,682</td>
+            <td class="mono">n/r</td>
+            <td class="mono">1,854,871</td>
+            <td class="mono">339,907,984</td>
+            <td class="mono">6.32%</td>
+            <td class="mono">86.4%</td>
+            <td class="mono">n/r</td>
+          </tr>
+          <tr>
+            <th scope="row">Other</th>
+            <td>claude_code, ninerouter</td>
+            <td class="mono">704</td>
+            <td class="mono">2,799,684</td>
+            <td class="mono">5,034,018</td>
+            <td class="mono">n/r</td>
+            <td class="mono">2,863,283</td>
+            <td class="mono">13,036,361</td>
+            <td class="mono">0.24%</td>
+            <td class="mono">49.5%</td>
+            <td class="mono">n/r</td>
+          </tr>
+          <tr>
+            <th scope="row">Claude Haiku</th>
+            <td>claude_code, ninerouter</td>
+            <td class="mono">541</td>
+            <td class="mono">2,496,482</td>
+            <td class="mono">25,949</td>
+            <td class="mono">n/r</td>
+            <td class="mono">26,099</td>
+            <td class="mono">2,574,072</td>
+            <td class="mono">0.05%</td>
+            <td class="mono">1.0%</td>
+            <td class="mono">n/r</td>
+          </tr>
+          <tr>
+            <th scope="row">GPT</th>
+            <td>ninerouter</td>
+            <td class="mono">165</td>
+            <td class="mono">2,012,344</td>
+            <td class="mono">527,872</td>
+            <td class="mono">n/r</td>
+            <td class="mono">14,361</td>
+            <td class="mono">2,554,577</td>
+            <td class="mono">0.05%</td>
+            <td class="mono">20.8%</td>
+            <td class="mono">$1.64</td>
+          </tr>
+          <tr>
+            <th scope="row">Gemini Pro</th>
+            <td>ninerouter</td>
+            <td class="mono">20</td>
+            <td class="mono">185,440</td>
+            <td class="mono">334,339</td>
+            <td class="mono">n/r</td>
+            <td class="mono">17,094</td>
+            <td class="mono">536,873</td>
+            <td class="mono">0.01%</td>
+            <td class="mono">64.3%</td>
+            <td class="mono">$0.66</td>
+          </tr>
+          <tr class="table-total">
+            <th scope="row">Total</th>
+            <td>All model families combined</td>
+            <td class="mono">57,259</td>
+            <td class="mono">493,661,797</td>
+            <td class="mono">4,703,383,517</td>
+            <td class="mono">145,141,973</td>
+            <td class="mono">37,465,244</td>
+            <td class="mono">5,379,652,531</td>
+            <td class="mono">100.00%</td>
+            <td class="mono">88.0%</td>
+            <td class="mono">$3,020.84</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p class="small muted">Values marked n/r indicate metrics not reported by that model provider's telemetry API.</p>
+    </section>
+
+    <!-- Section 4: Daily Volume Heatmap -->
+    <section class="section" id="daily" aria-labelledby="h-daily">
+      <h2 id="h-daily">Daily volume (contribution grid)</h2>
+      <p>Daily token volume across all models and sources. Peak day recorded 830.5 M tokens on 7 Oct 2026.</p>
+      
+      <figure class="heatmap heatmap--full" data-ix="heatmap" data-metric="tokens">
+  <figcaption class="sr-only">Tokens processed by day</figcaption>
+  <div class="heatmap__scroll">
+    <table role="grid" aria-label="Tokens processed by day">
+      <thead aria-hidden="true">
+        <tr>
+          <th></th>
+          <th colspan="4" scope="col" aria-hidden="true">Sep</th><th colspan="1" scope="col" aria-hidden="true">Oct</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="53629920" data-level="2" role="gridcell" aria-label="Mon 21 Sep: 53.6 M tokens"></td><td data-date="2026-09-28" data-value="340072182" data-level="4" role="gridcell" aria-label="Mon 28 Sep: 340.1 M tokens"></td><td data-date="2026-10-05" data-value="730462207" data-level="4" role="gridcell" aria-label="Mon 5 Oct: 730.5 M tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="11274" data-level="1" role="gridcell" aria-label="Tue 15 Sep: 11,274 tokens"></td><td data-date="2026-09-22" data-value="171300441" data-level="3" role="gridcell" aria-label="Tue 22 Sep: 171.3 M tokens"></td><td data-date="2026-09-29" data-value="191055436" data-level="3" role="gridcell" aria-label="Tue 29 Sep: 191.1 M tokens"></td><td data-date="2026-10-06" data-value="593322083" data-level="4" role="gridcell" aria-label="Tue 6 Oct: 593.3 M tokens"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="40822997" data-level="1" role="gridcell" aria-label="Wed 16 Sep: 40.8 M tokens"></td><td data-date="2026-09-23" data-value="199928362" data-level="3" role="gridcell" aria-label="Wed 23 Sep: 199.9 M tokens"></td><td data-date="2026-09-30" data-value="171972568" data-level="3" role="gridcell" aria-label="Wed 30 Sep: 172.0 M tokens"></td><td data-date="2026-10-07" data-value="830468759" data-level="4" role="gridcell" aria-label="Wed 7 Oct: 830.5 M tokens"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="65046308" data-level="2" role="gridcell" aria-label="Thu 17 Sep: 65.0 M tokens"></td><td data-date="2026-09-24" data-value="154884930" data-level="2" role="gridcell" aria-label="Thu 24 Sep: 154.9 M tokens"></td><td data-date="2026-10-01" data-value="243808288" data-level="3" role="gridcell" aria-label="Thu 1 Oct: 243.8 M tokens"></td><td data-date="2026-10-08" data-value="139656672" data-level="2" data-today="true" role="gridcell" aria-label="Thu 8 Oct: 139.7 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="48685117" data-level="1" role="gridcell" aria-label="Fri 18 Sep: 48.7 M tokens"></td><td data-date="2026-09-25" data-value="78410341" data-level="2" role="gridcell" aria-label="Fri 25 Sep: 78.4 M tokens"></td><td data-date="2026-10-02" data-value="409671499" data-level="4" role="gridcell" aria-label="Fri 2 Oct: 409.7 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="32014854" data-level="1" role="gridcell" aria-label="Sat 19 Sep: 32.0 M tokens"></td><td data-date="2026-09-26" data-value="23220572" data-level="1" role="gridcell" aria-label="Sat 26 Sep: 23.2 M tokens"></td><td data-date="2026-10-03" data-value="534525612" data-level="4" role="gridcell" aria-label="Sat 3 Oct: 534.5 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="10125765" data-level="1" role="gridcell" aria-label="Sun 20 Sep: 10.1 M tokens"></td><td data-date="2026-09-27" data-value="65159776" data-level="2" role="gridcell" aria-label="Sun 27 Sep: 65.2 M tokens"></td><td data-date="2026-10-04" data-value="251396568" data-level="3" role="gridcell" aria-label="Sun 4 Oct: 251.4 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="heatmap__legend" aria-hidden="true">
+  <span>Less</span>
+  <span class="swatch" data-level="0" aria-label="None (0)"></span><span class="swatch" data-level="1" aria-label="Low"></span><span class="swatch" data-level="2" aria-label="Medium"></span><span class="swatch" data-level="3" aria-label="High"></span><span class="swatch" data-level="4" aria-label="Peak"></span>
+  <span>More</span>
+</div>
+</figure>
+      
+      <p class="small muted">Grid legend ranges: 0 &middot; &lt;53.6 M &middot; &lt;171.3 M &middot; &lt;340.1 M &middot; 340.1 M+ tokens per day.</p>
+    </section>
+
+    <!-- Section 5: Accounting Invariants and Verification -->
+    <section class="section" id="accounting" aria-labelledby="h-accounting">
+      <h2 id="h-accounting">Accounting invariants and verification</h2>
+      <p>The numbers on this page are computed deterministically during every site build. The build script queries the live databases and asserts twelve mathematical invariants before outputting static HTML:</p>
+      
+      <ol>
+        <li><strong>Exact integer sum parity:</strong> The four components (fresh input, cache read, cache creation, output) sum exactly to the grand total across every source, model family, and daily record.</li>
+        <li><strong>Zero double counting:</strong> Hermes direct Claude accounting includes only direct subscription rows, excluding proxy routes to prevent double counting.</li>
+        <li><strong>Contiguous date continuity:</strong> The daily calendar grid contains zero missing dates between the tracking start date and today.</li>
+        <li><strong>List price estimation:</strong> Dollar equivalents are computed using published per-token list prices to measure workload value independently of subscription billing.</li>
+      </ol>
+
+      <div class="panel">
+        <p class="small mono"><strong>Local probe:</strong> Run <span class="mono">python3 scripts/gen_metrics.py</span> to recompute metrics.json directly from 9router, Hermes state.db, and Claude Code transcripts.</p>
+      </div>
+    </section>
+  </article>
+
+<nav class="pager wrap" aria-label="Case study navigation">
+  <div class="pager-prev"><a href="/work/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Agent systems</a></div>
+  <div class="pager-next"><a href="/work/routing/">Model routing <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=3" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
+<script src="/site.js" defer></script>
+</body>
+</html>

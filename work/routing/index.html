@@ -218,13 +218,13 @@
       <li><strong>Claude Opus:</strong> Deep multi-file reasoning, verification gates, and quality audits.</li>
       <li><strong>Fable:</strong> Architectural planning, design system direction, and exhaustive fact audits.</li>
     </ul>
-    <p>Measured empirical split, share of Hermes-tracked tokens:</p>
+    <p>Measured empirical split, share of total logged tokens:</p>
     <dl class="kv">
-      <dt>Gemini Flash</dt><dd class="mono">0.0%</dd>
-      <dt>Claude Opus</dt><dd class="mono">91.6%</dd>
-      <dt>Claude Sonnet</dt><dd class="mono">8.4%</dd>
+      <dt>Gemini Flash</dt><dd class="mono">72.4%</dd>
+      <dt>Claude Opus</dt><dd class="mono">20.9%</dd>
+      <dt>Claude Sonnet</dt><dd class="mono">6.3%</dd>
     </dl>
-    <p class="small muted">Computed at build time from the Hermes session database (share of Hermes-tracked tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.</p>
+    <p class="small muted">Computed at build time from the Hermes session database (share of total logged tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.</p>
 
     <h2>Outcome</h2>
     <p>When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.</p>
