@@ -199,7 +199,7 @@
       <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Memory layers</span></div>
       <div class="stat-item"><span class="stat-val">11</span><span class="stat-lbl">Specialist agents</span></div>
       <div class="stat-item"><span class="stat-val">2,200</span><span class="stat-lbl">Char cap on notes</span></div>
-      <div class="stat-item"><span class="stat-val">198,837</span><span class="stat-lbl">Messages in history</span></div>
+      <div class="stat-item"><span class="stat-val">207,393</span><span class="stat-lbl">Messages in history</span></div>
     </div>
 
     <!-- Visual Architecture Diagram at the Top -->
@@ -367,7 +367,7 @@
             <th scope="row">LCM-X (beneath L1)</th>
             <td>Full history of one agent; each agent has its own lcm.db</td>
             <td>Permanent raw rows; removal only by an explicit owner purge</td>
-            <td>Disk; 198,837 raw messages in the router agent&#x27;s store</td>
+            <td>Disk; 207,393 raw messages in the router agent&#x27;s store</td>
             <td>SQLite in WAL mode with FTS5 indexes</td>
             <td>lcm_grep, lcm_recall, lcm_expand</td>
           </tr>
@@ -434,7 +434,7 @@
           <path d="M650 92 V260 M690 92 V390" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
 
           <rect x="8" y="490" width="704" height="56" rx="10" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
-          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 198,837 raw messages, 41 summary nodes, 0 dangling references</text>
+          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 207,393 raw messages, 41 summary nodes, 0 dangling references</text>
         </g>
       </svg>
       <svg class="narrow" viewBox="0 0 320 800" role="img" aria-labelledby="mem-b-t-n" style="width:100%;height:auto">
@@ -469,7 +469,7 @@
           <text x="238" y="532" font-size="15" fill="var(--muted)">105 to 108</text>
           <rect x="8" y="580" width="304" height="132" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
           <text x="160" y="612" font-weight="600">lcm.db, journal_mode=WAL</text>
-          <text x="160" y="640" font-size="15">198,837 raw messages</text>
+          <text x="160" y="640" font-size="15">207,393 raw messages</text>
           <text x="160" y="666" font-size="15">41 summary nodes</text>
           <text x="160" y="692" font-size="15">0 dangling references</text>
         </g>
@@ -477,14 +477,14 @@
       <figcaption class="small muted">Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.</figcaption>
     </figure>
     <ul>
-      <li><strong>Compaction:</strong> The router agent's database currently holds 198,837 messages from 152 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.</li>
+      <li><strong>Compaction:</strong> The router agent's database currently holds 207,393 messages from 164 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.</li>
       <li><strong>FTS5 search:</strong> SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.</li>
       <li><strong>Lossless expansion:</strong> If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.</li>
       <li><strong>Concurrent WAL mode:</strong> SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.</li>
     </ul>
 
     <h2 id="telemetry">Live telemetry and verification</h2>
-    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 7 Oct 2026.</p>
+    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 8 Oct 2026.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Telemetry figures and how to reproduce them (scrolls horizontally)">
       <table>
         <caption>Telemetry figures and how to reproduce them</caption>
@@ -553,7 +553,7 @@
           </tr>
           <tr>
             <th scope="row">Raw messages</th>
-            <td class="mono">198,837 across 152 sessions</td>
+            <td class="mono">207,393 across 164 sessions</td>
             <td><code>SELECT COUNT(*) FROM messages;</code></td>
             <td>probed at build</td>
           </tr>
@@ -578,7 +578,7 @@
         </tbody>
       </table>
     </div>
-    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 7 Oct 2026: 0 dangling references out of 3,164.</p>
+    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 8 Oct 2026: 0 dangling references out of 3,164.</p>
     <pre><code>SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
 WHERE (s.source_type = 'messages'
        AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))

@@ -9,6 +9,7 @@
   --hm-ring: #19181A;
   --hm-cell: 20px;
 }
+
 [data-theme="dark"] {
   --hm-0-border: rgba(236, 233, 226, 0.16);
   --hm-1: #1E3A32;
@@ -208,9 +209,10 @@
 }
 .panel-active-val {
   font-family: var(--mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--accent);
-  min-height: 1.2em;
+  min-height: 1.4em;
 }
 .panel-stats {
   display: flex;
@@ -344,16 +346,21 @@
 }
 .heatmap th {
   font-size: 0.6875rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--muted);
   text-align: left;
   padding: 0 2px;
   line-height: 1;
+  opacity: 1;
+}
+.heatmap thead th {
+  color: var(--muted);
 }
 .heatmap tbody th {
   font-family: var(--mono);
   vertical-align: middle;
   padding-right: 4px;
+  color: var(--muted);
 }
 .heatmap td {
   width: var(--hm-cell, 20px);
@@ -392,27 +399,27 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 4px;
-  margin-top: var(--s1);
+  gap: 6px;
+  margin-top: var(--s2);
   font-size: 0.75rem;
   color: var(--muted);
+  line-height: 1;
 }
 .heatmap__legend .swatch {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
+  display: inline-block;
   width: 10px;
   height: 10px;
   border-radius: 2px;
+  flex: none;
 }
 .heatmap__legend .swatch[data-level="0"] {
   background: var(--hm-0);
   border: 1px solid var(--hm-0-border);
 }
-.heatmap__legend .swatch[data-level="1"] { background: var(--hm-1); }
-.heatmap__legend .swatch[data-level="2"] { background: var(--hm-2); }
-.heatmap__legend .swatch[data-level="3"] { background: var(--hm-3); }
-.heatmap__legend .swatch[data-level="4"] { background: var(--hm-4); }
+.heatmap__legend .swatch[data-level="1"] { background: var(--hm-1); border: none; }
+.heatmap__legend .swatch[data-level="2"] { background: var(--hm-2); border: none; }
+.heatmap__legend .swatch[data-level="3"] { background: var(--hm-3); border: none; }
+.heatmap__legend .swatch[data-level="4"] { background: var(--hm-4); border: none; }
 
 .heatmap--full {
   margin-block: var(--s3) var(--s4);
@@ -421,20 +428,12 @@
   --hm-cell: 24px;
 }
 .heatmap--full .heatmap__legend {
-  gap: 12px;
+  gap: 8px;
   margin-top: var(--s2);
 }
 .heatmap--full .heatmap__legend .swatch {
-  width: 14px;
-  height: 14px;
-  position: relative;
-}
-.heatmap--full .swatch-val {
-  position: absolute;
-  top: calc(100% + 2px);
-  font-family: var(--mono);
-  font-size: 0.6875rem;
-  white-space: nowrap;
+  width: 12px;
+  height: 12px;
 }
 
 /* Tooltip */
@@ -457,22 +456,53 @@
 }
 
 /* Shared metrics footer & notes */
-.metrics-note,
-.metrics-footer {
+.metrics-note {
   font-size: 0.875rem;
   color: var(--muted);
   margin-top: var(--s3);
   padding-top: var(--s2);
   border-top: 1px solid var(--rule);
 }
-.metrics-note a,
-.metrics-footer a {
+.metrics-note a {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 0.18em;
+}
+
+.metrics-footer {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: var(--s4);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+@media (min-width: 768px) {
+  .metrics-footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+}
+.metrics-footer-text {
+  margin: 0;
+  line-height: 1.45;
+  color: var(--muted);
+}
+.metrics-footer-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  white-space: nowrap;
 }
 
 /* Work case stats row */

@@ -63,6 +63,15 @@
       function showTip(td) {
         const text = formatTip(td);
         if (!text) return;
+
+        if (activeDisplay) {
+          // Inside a metric popover panel: update the dedicated active status display above the grid.
+          // Do not show floating tooltip to avoid duplicate text and cell occlusion.
+          activeDisplay.textContent = text;
+          hideTip();
+          return;
+        }
+
         tooltip.textContent = text;
         tooltip.classList.add('is-visible');
         tooltip.setAttribute('aria-hidden', 'false');
@@ -70,14 +79,13 @@
         const rect = td.getBoundingClientRect();
         const tipRect = tooltip.getBoundingClientRect();
         
-        let top = rect.top - tipRect.height - 6;
+        let top = rect.top - tipRect.height - 8;
         let left = rect.left + (rect.width / 2) - (tipRect.width / 2);
 
-        // Flip below if too close to top
+        // Clamp to viewport
         if (top < 8) {
-          top = rect.bottom + 6;
+          top = rect.bottom + 8;
         }
-        // Clamp horizontal
         if (left < 8) left = 8;
         if (left + tipRect.width > window.innerWidth - 8) {
           left = window.innerWidth - tipRect.width - 8;
@@ -85,10 +93,6 @@
 
         tooltip.style.top = `${top + window.scrollY}px`;
         tooltip.style.left = `${left + window.scrollX}px`;
-
-        if (activeDisplay) {
-          activeDisplay.textContent = text;
-        }
       }
 
       function hideTip() {
