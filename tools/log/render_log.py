@@ -267,8 +267,7 @@ def render_index(entries, data):
     main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li aria-current="page">Build log</li></ol></nav>'
             '<div class="wrap page-head log-head"><h1>Build log</h1>'
             '<p class="deck">What I build and run with agents, reviewed before publishing.</p>'
-            '<p class="frame">Built on open-source <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a>. '
-            'I review every entry before it goes live. I plan to add new entries on Wednesday and Sunday evenings.</p>%s</div>'
+            '<p class="frame">I review every entry before it goes live. I plan to add new entries on Wednesday and Sunday evenings.</p>%s</div>'
             % lead)
     main += strip_html(data["strip"])
     main += ('<section class="wrap" aria-labelledby="h-entries"><h2 id="h-entries">Entries</h2>%s'
@@ -277,8 +276,7 @@ def render_index(entries, data):
              '<li><a href="/work/usage/">Token ledger</a></li><li><a href="/log/feed.xml">RSS feed</a></li>'
              '<li><a href="/log/feed.json">JSON Feed</a></li></ul></section>'
              % entry_rows(entries))
-    main += ('<section class="wrap" aria-labelledby="h-estate"><h2 id="h-estate">The estate right now</h2>%s</section>'
-             % "".join(figs))
+    main += '<section class="wrap"><p class="small muted"><a href="/work/platform/#topology">Agent roster and topology are on the platform page &rarr;</a></p></section>'
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Blog", "@id": SITE_URL + "/log/#blog", "url": SITE_URL + "/log/", "name": "Build log | Krishnendu Biswas",
          "description": "What I build and run with agents, reviewed before publishing.", "inLanguage": "en",
@@ -286,7 +284,7 @@ def render_index(entries, data):
          "blogPost": [{"@id": SITE_URL + entry_url(e) + "#post"} for e in entries],
          "breadcrumb": crumbs([("Home", "/"), ("Build log", "/log/")])}]}
     page("/log/", "Build log | Krishnendu Biswas",
-         "What I build and run with agents, reviewed before publishing. Built on open-source Hermes Agent.", ld, main)
+         "What I build and run with agents, reviewed before publishing.", ld, main)
 
 
 def render_entry(e, prev_e, next_e):

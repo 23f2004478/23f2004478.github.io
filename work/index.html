@@ -175,10 +175,10 @@
 
   <article class="wrap page-head">
     <h1>Work</h1>
-    <p class="deck">AI agent systems and machine learning projects. The agent platform runs on open-source Hermes Agent with human approval gates. Machine learning projects focus on NLP fine-tuning, class imbalance, and analytics dashboards.</p>
+    <p class="deck">AI agent systems and machine learning projects. Running since Sep 2026 on open-source <a href="https://github.com/NousResearch/hermes-agent" rel="noopener noreferrer">Hermes Agent</a> with human approval gates. Machine learning projects focus on NLP fine-tuning, class imbalance, and analytics dashboards.</p>
 
     <div class="panel">
-      <p>The platform runs 39 recurring scheduled jobs across 11 agents: 10 that each own one area, plus 1 that routes my requests. Operations like sending emails, deleting data, or public git pushes pause at approval gates until I verify them.</p>
+      <p>The platform runs 49 recurring scheduled jobs across 11 agents: 10 that each own one area, plus 1 that routes my requests. Operations like sending emails, deleting data, or public git pushes pause at approval gates until I verify them.</p>
     </div>
 
     <!-- Six Case Studies -->
@@ -190,7 +190,7 @@
             <h3><a href="/work/platform/" style="view-transition-name: cs-platform;">Multi-agent operations platform</a></h3>
             <p>Eleven agents that hand work to each other on task cards, with a review step before anything risky. Includes hourly medic drift monitoring and janitor cleanups.</p>
           </div>
-          <div class="fact mono">11 AGENTS &middot; 39 JOBS</div>
+          <div class="fact mono">11 AGENTS &middot; 49 JOBS</div>
         </li>
         <li>
           <div>
@@ -227,52 +227,12 @@
           </div>
           <div class="fact mono">HUMAN PUBLISHES</div>
         </li>
-        <li>
-          <div>
-            <h3><a href="/work/usage/" style="view-transition-name: cs-usage;">Token ledger</a></h3>
-            <p>Full multi-model usage accounting across 9router proxy, Hermes direct Claude, and Claude Code transcripts with prompt cache hit rates and list price USD.</p>
-          </div>
-          <div class="fact mono">5.48 B TOKENS &middot; 3 SOURCES</div>
-        </li>
       </ul>
       <p class="small muted">Private operational platform. Architecture, system boundaries, and verified telemetry are presented across each case study.</p>
+      <p class="more" style="margin-top:var(--s4);"><a href="/work/usage/">Data: Token ledger, 5.59 B TOKENS across 3 sources <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
     </section>
 
-    <!-- Machine Learning Projects Section -->
-    <section class="section" id="ml-projects" data-ix="reveal" aria-labelledby="h-ml">
-      <h2 id="h-ml">Machine learning &amp; analytics projects (4 projects)</h2>
-      <ul class="rows" role="list" data-ix="filters">
-        <li>
-          <div>
-            <h3><a href="/projects/mcq/">Smart MCQ solver (LoRA fine-tuning)</a></h3>
-            <p>Parameter-efficient fine-tuning of DeBERTa-v3 and RoBERTa using LoRA adapters for 5-option multiple-choice ranking. Blended in a 70:30 ensemble achieving 0.74242 MAP@3 on 500 unseen questions.</p>
-          </div>
-          <div class="fact mono">0.74242 MAP@3</div>
-        </li>
-        <li>
-          <div>
-            <h3><a href="/projects/comment-classification/">Comment classification</a></h3>
-            <p>Feature engineering over 198,000 comments across four imbalanced label classes. Engineered 10,000+ n-grams, screened tabular features, and tuned LightGBM with Optuna to reach 0.8293 F1-Macro.</p>
-          </div>
-          <div class="fact mono">0.8293 F1-MACRO</div>
-        </li>
-        <li>
-          <div>
-            <h3><a href="/projects/customer-exit/">Customer exit prediction</a></h3>
-            <p>Compared 8 classifiers on 90,000 customer records from a financial institution. Tuned a Random Forest to a validation F1 of 0.6365 (accuracy 0.8414).</p>
-          </div>
-          <div class="fact mono">0.6365 F1</div>
-        </li>
-        <li>
-          <div>
-            <h3><a href="/projects/vc-dashboard/">VC deal analytics dashboard</a></h3>
-            <p>Power BI deal analytics dashboard built on a 50,000-row synthetic star schema. Engineered 7 DAX measures and configured 2 AI visuals for valuation driver ranking.</p>
-          </div>
-          <div class="fact mono">POWER BI &middot; STAR SCHEMA</div>
-        </li>
-      </ul>
-      <p class="small" style="margin-top:var(--s4);"><a class="btn" href="/projects/">View all projects &amp; full specs <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-    </section>
+    <p class="more" style="margin-top:var(--s5);"><a href="/projects/">My machine learning projects, four with full write ups, are on the projects page <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
   </article>
 
   <nav class="pager wrap" aria-label="Section navigation">
@@ -285,7 +245,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Pages</h2>
       <ul class="foot-links">
-        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/work/">Work</a></li>
         <li><a href="/internships/">Internships</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/research/">Research</a></li>
@@ -304,7 +264,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files at build time; last build 2026-10-08.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>

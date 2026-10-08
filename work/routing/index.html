@@ -67,7 +67,7 @@
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Agent systems",
+          "name": "Work",
           "item": "https://krishnendu.me/work/"
         },
         {
@@ -176,7 +176,7 @@
 <main id="main">
 <nav class="breadcrumb wrap" aria-label="Breadcrumbs">
   <ol>
-    <li><a href="/">Home</a></li><li><a href="/work/">Agent systems</a></li><li aria-current="page">Model routing and tiered compute</li>
+    <li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li aria-current="page">Model routing and tiered compute</li>
   </ol>
 </nav>
 
@@ -199,32 +199,25 @@
     <h2>What I Built</h2>
     <ul>
       <li><strong>9Router gateway:</strong> A small service on my server that sits between most agents and the AI providers and moves a request to a backup model when one fails. Claude models are called directly.</li>
-      <li><strong>Tiered Compute Offload (Fable):</strong> When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.</li>
+      <li><strong>Fable, my maximum effort tier:</strong> When a task needs multi-file planning, design direction or a deep fact audit, it is sent there to produce a specification before any code is written.</li>
       <li><strong>Deterministic First Rule:</strong> Exact computations (mathematical formulas, file system queries, regex extractions) must execute in native Python or Bash before passing structured context to an LLM.</li>
     </ul>
 
     <h2>How the Gateway Pools Models</h2>
     <ul>
       <li><strong>9Router pooling:</strong> 9Router runs on the server itself and gives most agents one address for many models. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next one, with Gemini Flash as the default backup.</li>
-      <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. I state no cost figures here.</li>
+      <li><strong>Cost tiering:</strong> Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. Cost figures are on the <a href="/work/usage/">token ledger</a>.</li>
     </ul>
 
     <h2>Dynamic Routing and Complexity Tiering</h2>
     <p>Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.</p>
-    <p>Tiered Compute Offload (Fable): When a task requires exhaustive multi-file architectural planning, design system direction, or deep fact audits, work offloads to our maximum-tier reasoning harness (Fable) to produce a rigorous, executable specification before any code is written.</p>
     <ul>
       <li><strong>Gemini Flash:</strong> High-throughput sweeps, reading, scraping, telemetry, and lightweight tool handling.</li>
       <li><strong>Claude Sonnet:</strong> Deterministic code generation, test suites, refactoring, and generator scripts.</li>
       <li><strong>Claude Opus:</strong> Deep multi-file reasoning, verification gates, and quality audits.</li>
       <li><strong>Fable:</strong> Architectural planning, design system direction, and exhaustive fact audits.</li>
     </ul>
-    <p>Measured empirical split, share of total logged tokens:</p>
-    <dl class="kv">
-      <dt>Gemini Flash</dt><dd class="mono">72.2%</dd>
-      <dt>Claude Opus</dt><dd class="mono">20.5%</dd>
-      <dt>Claude Sonnet</dt><dd class="mono">7.0%</dd>
-    </dl>
-    <p class="small muted">Computed at build time from the Hermes session database (share of total logged tokens). It covers the tokens Hermes tracks directly, not every call made through the gateway.</p>
+    <p>Measured share of logged tokens: Gemini Flash 72.5%, Claude Opus 19.8%, Claude Sonnet 7.4%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
 
     <h2>Outcome</h2>
     <p>When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.</p>
@@ -236,8 +229,8 @@
     <p class="mono">9Router &middot; Python &middot; Bash &middot; REST APIs &middot; Linux</p>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
-  <div class="pager-prev"><a href="/work/platform/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Multi-agent operations platform</a></div>
-  <div class="pager-next"><a href="/work/memory/">How my agents remember: five layers of memory I can read and edit <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+  <div class="pager-prev"><a href="/work/platform/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Multi-agent platform</a></div>
+  <div class="pager-next"><a href="/work/memory/">Memory <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
 </nav>
 
 </main>
@@ -246,7 +239,7 @@
     <div class="foot-col">
       <h2 class="foot-h">Pages</h2>
       <ul class="foot-links">
-        <li><a href="/work/">Agent systems</a></li>
+        <li><a href="/work/">Work</a></li>
         <li><a href="/internships/">Internships</a></li>
         <li><a href="/projects/">Projects</a></li>
         <li><a href="/research/">Research</a></li>
@@ -265,7 +258,7 @@
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project files; last checked 7 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files at build time; last build 2026-10-08.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/log/feed.xml">RSS feed</a></li>
