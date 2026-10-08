@@ -342,13 +342,15 @@ def render_archive(entries):
     main = ('<nav class="breadcrumb wrap" aria-label="Breadcrumbs"><ol><li><a href="/">Home</a></li><li><a href="/log/">Build log</a></li><li aria-current="page">Archive</li></ol></nav>'
             '<div class="wrap"><div class="page-head"><h1>All entries</h1>'
             '<p class="deck">Every build log entry, newest first, grouped by month.</p></div>%s</div>' % "".join(parts))
+    title = "All entries | Krishnendu Biswas"
+    desc = "Every entry in my build log, newest first, grouped by month. Numbers, decisions and what broke."
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "CollectionPage", "@id": SITE_URL + "/log/archive/#webpage", "url": SITE_URL + "/log/archive/",
-         "name": "All entries | Build log", "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
+         "name": title, "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
          "mainEntityOfPage": SITE_URL + "/log/archive/", "datePublished": "2026-10-06T00:00:00+05:30",
          "dateModified": "2026-10-06T00:00:00+05:30", "image": SITE_URL + "/og/og-log-archive.png", "inLanguage": "en",
          "breadcrumb": crumbs([("Home", "/"), ("Build log", "/log/"), ("All entries", "/log/archive/")])}]}
-    page("/log/archive/", "All entries | Build log", "Every build log entry, newest first, grouped by month.", ld, main)
+    page("/log/archive/", title, desc, ld, main)
 
 
 def nbsp_last(text):
@@ -380,11 +382,12 @@ def render_sources(entries, data):
             '<h2 id="privacy">What never appears here</h2><p>Client names, institute work, money amounts, channel names, server addresses, ports and file paths. '
             'A script checks every page for these before I see the draft, and I check the rest by&nbsp;hand.</p>'
             '<h2 id="cited">Tags cited so far</h2><ul class="src-list">%s</ul></div>' % (cells, rows))
+    title = "How I source these numbers | Krishnendu Biswas"
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "WebPage", "@id": SITE_URL + "/log/sources/#webpage", "url": SITE_URL + "/log/sources/",
-         "name": "How I source these numbers | Build log", "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
+         "name": title, "author": {"@id": PERSON}, "isPartOf": {"@id": SITE_URL + "/log/#blog"},
          "breadcrumb": crumbs([("Home", "/"), ("Build log", "/log/"), ("Sources", "/log/sources/")])}]}
-    page("/log/sources/", "How I source these numbers | Build log",
+    page("/log/sources/", title,
          "Tag formats, counting rules and privacy rules for the build log.", ld, main)
 
 

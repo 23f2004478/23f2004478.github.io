@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas</title>
+  <title>How my agents remember | Krishnendu Biswas</title>
   <meta name="description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <link rel="canonical" href="https://krishnendu.me/work/memory/">
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -21,19 +21,19 @@
   <meta property="og:site_name" content="Krishnendu Biswas">
   <meta property="og:locale" content="en_IN">
   <meta property="og:url" content="https://krishnendu.me/work/memory/">
-  <meta property="og:title" content="How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas">
+  <meta property="og:title" content="How my agents remember | Krishnendu Biswas">
   <meta property="og:description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <meta property="og:image" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-memory.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas, share card for krishnendu.me">
+  <meta property="og:image:alt" content="How my agents remember | Krishnendu Biswas, share card for krishnendu.me">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas">
+  <meta name="twitter:title" content="How my agents remember | Krishnendu Biswas">
   <meta name="twitter:description" content="Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.">
   <meta name="twitter:image" content="https://krishnendu.me/og/og-work-memory.png">
-  <meta name="twitter:image:alt" content="How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:image:alt" content="How my agents remember | Krishnendu Biswas, share card for krishnendu.me">
   <script type="speculationrules">
   {
     "prerender": [
@@ -81,7 +81,7 @@
     {
       "@type": "TechArticle",
       "@id": "https://krishnendu.me/work/memory/#article",
-      "headline": "How my agents remember: five layers of memory I can read and edit | Krishnendu Biswas",
+      "headline": "How my agents remember | Krishnendu Biswas",
       "description": "Five memory layers for an 11-agent system: capped curated notes, a knowledge base, a skills library and LCM-X, a lossless SQLite context engine.",
       "author": {
         "@id": "https://krishnendu.me/#person"
@@ -199,7 +199,7 @@
       <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Memory layers</span></div>
       <div class="stat-item"><span class="stat-val">11</span><span class="stat-lbl">Agents</span></div>
       <div class="stat-item"><span class="stat-val">2,200</span><span class="stat-lbl">Char cap on notes</span></div>
-      <div class="stat-item"><span class="stat-val">240,519</span><span class="stat-lbl">Messages in history</span></div>
+      <div class="stat-item"><span class="stat-val">243,610</span><span class="stat-lbl">Messages in history</span></div>
     </div>
 
     <!-- Visual Architecture Diagram at the Top -->
@@ -305,7 +305,7 @@
       <li><strong>L2 Ephemeral scratch:</strong> The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.</li>
       <li><strong>L3 Curated persistent memory:</strong> The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.</li>
       <li><strong>L4 Curated knowledge base:</strong> The reference library. 16 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
-      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 315 SKILL.md files (208 distinct skills) across the router and 10 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
+      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 316 SKILL.md files (209 distinct skills) across the router and 10 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
     </ul>
 
     <h2 id="spec">Layer specifications</h2>
@@ -359,7 +359,7 @@
             <th scope="row">L5 Procedural skills library</th>
             <td>Per agent</td>
             <td>Permanent, versioned</td>
-            <td>315 SKILL.md files, 208 distinct skills</td>
+            <td>316 SKILL.md files, 209 distinct skills</td>
             <td>SKILL.md plus references and scripts</td>
             <td>Loaded when a task matches; configuration drift audited hourly by the medic agent</td>
           </tr>
@@ -367,7 +367,7 @@
             <th scope="row">LCM-X (beneath L1)</th>
             <td>Full history of one agent; each agent has its own lcm.db</td>
             <td>Permanent raw rows; removal only by an explicit owner purge</td>
-            <td>Disk; 240,519 raw messages in the router agent&#x27;s store</td>
+            <td>Disk; 243,610 raw messages in the router agent&#x27;s store</td>
             <td>SQLite in WAL mode with FTS5 indexes</td>
             <td>lcm_grep, lcm_recall, lcm_expand</td>
           </tr>
@@ -434,7 +434,7 @@
           <path d="M650 92 V260 M690 92 V390" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="5 4"/>
 
           <rect x="8" y="490" width="704" height="56" rx="10" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
-          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 240,519 raw messages, 41 summary nodes, 0 dangling references</text>
+          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 243,610 raw messages, 41 summary nodes, 0 dangling references</text>
         </g>
       </svg>
       <svg class="narrow" viewBox="0 0 320 800" role="img" aria-labelledby="mem-b-t-n" style="width:100%;height:auto">
@@ -469,7 +469,7 @@
           <text x="238" y="532" font-size="15" fill="var(--muted)">105 to 108</text>
           <rect x="8" y="580" width="304" height="132" rx="12" fill="var(--box)" stroke="var(--accent)" stroke-width="1.5"/>
           <text x="160" y="612" font-weight="600">lcm.db, journal_mode=WAL</text>
-          <text x="160" y="640" font-size="15">240,519 raw messages</text>
+          <text x="160" y="640" font-size="15">243,610 raw messages</text>
           <text x="160" y="666" font-size="15">41 summary nodes</text>
           <text x="160" y="692" font-size="15">0 dangling references</text>
         </g>
@@ -477,7 +477,7 @@
       <figcaption class="small muted">Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.</figcaption>
     </figure>
     <ul>
-      <li><strong>Compaction:</strong> The router agent's database currently holds 240,519 messages from 173 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.</li>
+      <li><strong>Compaction:</strong> The router agent's database currently holds 243,610 messages from 174 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.</li>
       <li><strong>FTS5 search:</strong> SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.</li>
       <li><strong>Lossless expansion:</strong> If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.</li>
       <li><strong>Concurrent WAL mode:</strong> SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.</li>
@@ -535,7 +535,7 @@
           </tr>
           <tr>
             <th scope="row">Skill files</th>
-            <td class="mono">315 (208 distinct names)</td>
+            <td class="mono">316 (209 distinct names)</td>
             <td><code>find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l</code></td>
             <td>probed at build</td>
           </tr>
@@ -553,7 +553,7 @@
           </tr>
           <tr>
             <th scope="row">Raw messages</th>
-            <td class="mono">240,519 across 173 sessions</td>
+            <td class="mono">243,610 across 174 sessions</td>
             <td><code>SELECT COUNT(*) FROM messages;</code></td>
             <td>probed at build</td>
           </tr>
