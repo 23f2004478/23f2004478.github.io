@@ -1,10 +1,26 @@
-.chart-tooltip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.75rem;padding:4px 8px;border-radius:3px;white-space:nowrap;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.2);transform:translate(-50%,-120%);transition:opacity var(--dur-1) var(--ease-out);opacity:0}
+.chart-tooltip{position:absolute;pointer-events:none;background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:.75rem;line-height:1.4;padding:6px 10px;border-radius:4px;max-width:min(calc(100vw - 24px), 360px);white-space:normal;word-break:break-word;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.2);transform:translate(-50%,-100%);transition:opacity var(--dur-1) var(--ease-out);opacity:0}
 [data-theme="dark"] .chart-tooltip{background:var(--box);color:var(--ink);border:1px solid var(--rule);box-shadow:0 4px 12px rgba(0,0,0,.4)}
 .chart-tooltip.is-visible{opacity:1}
 .chart-tooltip::after{content:"";position:absolute;top:100%;left:50%;margin-left:-4px;border-width:4px;border-style:solid;border-color:var(--ink) transparent transparent transparent}
 [data-theme="dark"] .chart-tooltip::after{border-color:var(--rule) transparent transparent transparent}
+.chart-tooltip.pos-below{transform:translate(-50%,0)}
+.chart-tooltip.pos-below::after{top:auto;bottom:100%;border-color:transparent transparent var(--ink) transparent}
+[data-theme="dark"] .chart-tooltip.pos-below::after{border-color:transparent transparent var(--rule) transparent}
+.chart-tooltip .tip-head{font-weight:600;color:var(--accent);margin-bottom:2px;font-size:.75rem}
+[data-theme="dark"] .chart-tooltip .tip-head{color:var(--accent-ink,var(--accent))}
+.chart-tooltip .tip-row{margin-top:2px;font-size:.6875rem}
+.chart-tooltip .tip-row.is-current{font-weight:600}
+.chart-tooltip .tip-cat{opacity:.85}
 .chart-svg rect.bar-a,.chart-svg rect.bar-n,.dg.chart rect.bar-a,.dg.chart rect.bar-n{cursor:pointer;transition:opacity var(--dur-1) var(--ease-out),fill var(--dur-1) var(--ease-out)}
 .chart-svg rect.bar-a:hover,.chart-svg rect.bar-n:hover,.dg.chart rect.bar-a:hover,.dg.chart rect.bar-n:hover,.chart-svg rect.bar-a.is-active,.chart-svg rect.bar-n.is-active,.dg.chart rect.bar-a.is-active,.dg.chart rect.bar-n.is-active{opacity:.82}
+.dg .ms-dot{cursor:pointer;transition:stroke var(--dur-1) var(--ease-out),stroke-width var(--dur-1) var(--ease-out),opacity var(--dur-1) var(--ease-out)}
+.dg .ms-dot:hover,.dg .ms-dot:focus,.dg .ms-dot.is-active{outline:none;stroke:var(--ink);stroke-width:2px;opacity:.9}
+[data-theme="dark"] .dg .ms-dot:hover,[data-theme="dark"] .dg .ms-dot:focus,[data-theme="dark"] .dg .ms-dot.is-active{stroke:var(--paper)}
+.dg .axis{stroke:var(--muted);stroke-width:1}
+.dg .c-infra{fill:var(--accent)}
+.dg .c-cap{fill:var(--data-b)}
+.dg .c-site{fill:var(--ink)}
+.dg .c-proc{fill:var(--paper);stroke:var(--ink);stroke-width:1.5}
 .dg rect.k-n,.dg rect.k-b,.dg rect.k-a,.dg rect.k-p{transition:stroke var(--dur-1) var(--ease-out),stroke-width var(--dur-1) var(--ease-out)}
 .dg rect.k-n:hover,.dg rect.k-b:hover,.dg rect.k-p:hover{stroke:var(--accent);stroke-width:2px}
 .diag-modal-backdrop{position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(25,24,26,.75);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:var(--gut)}

@@ -326,7 +326,11 @@ def _tl(tl, uid, W, fs, end_iso, days):
     axis_y = ly + 20 + (maxl + 1) * (2 * r + 3) + 6
     for x, lvl, dt in dots:
         cy = axis_y - 8 - lvl * (2 * r + 3)
-        o.append('<circle class="%s" cx="%s" cy="%s" r="%s"><title>%s, %s</title></circle>' % (CAT_CLASS[dt["category"]], _n(x), _n(cy), r, esc(_hd(dt["date"])), esc(dt["title"])))
+        cat_label = CAT_LABEL.get(dt["category"], dt["category"])
+        human_dt = _hd(dt["date"])
+        aria = "%s: %s, %s" % (cat_label, dt["title"], human_dt)
+        o.append('<circle class="%s ms-dot" cx="%s" cy="%s" r="%s" tabindex="0" role="graphics-symbol" data-date="%s" data-label="%s" data-cat="%s" aria-label="%s"><title>%s</title></circle>' % (
+            CAT_CLASS[dt["category"]], _n(x), _n(cy), r, esc(human_dt), esc(dt["title"]), esc(cat_label), esc(aria), esc(aria)))
     o.append('<line class="axis" x1="%s" y1="%s" x2="%s" y2="%s"/>' % (x0, _n(axis_y), x1, _n(axis_y)))
     # month ticks on the 1st of each month inside the window
     m = date(start.year, start.month, 1)

@@ -55,25 +55,25 @@ Fri
 Sun
 Less
 More
-Total hours 157.9 h
+Total hours 159.5 h
 Active days 22
 Daily average 7.2 h/day
 Longest day 13.9 h (28 Sep 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Full operating rhythm breakdown →
-153,622
+156,174
 Agent replies
 Turn volume & human leverage
-My messages (dictated or typed) 23,100
-Agent replies 153,622
-Tool executions 153,103
+My messages (dictated or typed) 23,619
+Agent replies 156,174
+Tool executions 155,925
 About 7 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 See human approval gates →
-5.67 B
+5.75 B
 Tokens processed
-5.67 B tokens · to 8 Oct 2026
-Total tokens 5.67 B
+5.75 B tokens · to 8 Oct 2026
+Total tokens 5.75 B
 Cache hit rate 88.3%
 Output share 0.7%
 Full token ledger →
@@ -230,120 +230,202 @@ RULE-BASED PARSING
 Local drafting environment that screens technical posts against voice notes and anti-AI writing patterns. Every post is manually reviewed and published by me.
 HUMAN PUBLISHES
 Private operational platform. Architecture, system boundaries, and verified telemetry are presented across each case study.
-Data: Token ledger, 5.67 B TOKENS across 3 sources
+Data: Token ledger, 5.75 B TOKENS across 3 sources
 My machine learning projects, four with full write ups, are on the projects page
 
 
 # Multi-agent platform
 Source: https://krishnendu.me/work/platform/
 
-## Multi-agent operations platform: 11 agents, each with its own job, and my approval on risky steps
-The platform runs on open-source Hermes Agent. The design is mine: which agent owns what, and where work stops for me.
-Built on Hermes Agent (open source, Nous Research). Private system; architecture and verified telemetry shown here.
+## Multi agent operations platform: 11 agents, one job each, and my approval on risky steps
+The platform runs on Hermes Agent, an open source agent runtime from Nous Research. The design is mine: which agent owns what, how work is handed between them, and where it stops for me. Private system; architecture and verified telemetry shown here.
 Agents
-11 Agents (10 Domain Agents + 1 Router)
+11 agents
+1 router + 10 domain agents
 Recurring Jobs
-49 Enabled Scheduled Jobs
+49 recurring jobs
+50 enabled including one offs, counted 8 Oct 2026
+Logged Hours
+159.5 h
+logged with the agents over 22 active days
 Human Gate
-Mandatory Approval for Deletes, Sends, Commits, Deploys
-## Problem and Motivation
-One agent doing everything mixes up instructions from different jobs and gets more access than any single job needs. An agent drafting an email should not have access to production deployment keys, and a financial parser should not manage social media drafts.
-## Multi-agent topology
-I split the work across 11 agents, each owning one area with no overlap. Each agent operates with scoped permissions, its own persistent memory, and dedicated skill sets:
-11 agents, router included. Domain names only; one agent is shown as institute work, private.
-11 agents, router included. Domain names only; one agent is shown as institute work, private.
-Agent Role
-Input (before the server) I dictate, check the text, then send it. Built-in voice plugins are skipped so I can read what got written.
-Router agent (default) Routes messages and hands work to domain agents
-academics Domain agent for coursework and study materials
-career prep Domain agent for placement prep and interview materials
-finance Domain agent for receipt parsing and ledger management
-infrastructure Domain agent for server maintenance and deployments
-cleanup Domain agent for repository and cache cleanup
-health checks Domain agent for hourly configuration and drift audits
-personal ops Domain agent for personal scheduling and reminders
-socials Domain agent for technical post drafting and screening
-consulting Domain agent for client deliverables and website builds
-institute work, private Domain agent for private institute responsibilities
-Output (after the server) What needs me lands in Google Tasks. Important items only.
-Central Router: Receives inbound messages from Discord or Telegram, classifies intent, and delegates tasks to domain agents.
-Domain agents: 10 domain agents (academics, career prep, finance, infrastructure, cleanup, health checks, personal ops, socials, consulting, plus one private agent for institute work not described here).
-Planning and audits: Planning and audit tasks go to a maximum effort tier; see model routing.
-Kanban Coordination: Complex tasks are decomposed into structured kanban cards containing objective, context, and acceptance criteria.
-Human Review Gate: Risky steps stop for me, detailed below.
-Continuous Maintenance: A health checks agent audits configuration drift hourly; a cleanup agent flags cleanup opportunities and acts only upon approval.
-## Hours with my agents, by day
-Time I spent working with my agents on Discord, Telegram, the command line and Claude Code. Messages less than 15 minutes apart count as one sitting.
-157.9 h Total hours
-22 Active days
-7.2 h Avg / active day
-13.9 h Longest day (2026-09-28)
-Hours with agents by day
-Sep Oct
-Mon
-Wed
-Fri
-Sun
-Less
-More
-How hours are counted: Counted from the timestamps of messages I sent to my agents in Discord, Telegram, the command line and Claude Code, whether dictated or typed. Messages less than 15 minutes apart form one session, each session gets a 5 minute tail, and automated notifications are excluded.
-How agent replies are counted: Assistant messages across every agent's conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
-## Tokens per day
-Daily token volume is on the token ledger .
-## How a Request Moves
-I dictate instructions using FreeFlow on Mac or Dictate on Android, read the transcript, and send it via messaging gateways. Built-in voice plugins are skipped so I can read what got written before an agent acts on it.
-Multi-agent execution workflow
-Stage
-Actor
-Responsibility
-Gating
-1. Ingestion
-Human
-Dictate, verify text, and send to gateway channel
-Human input
-2. Gateway
-Hermes gateway
-Hermes gateway passes my Discord or Telegram message to the router agent
-Automated
-3. Router Agent
-default
-Classifies request and spawns task card
-Automated
-4. Task Card
-Kanban Engine
-Dispatches card to assigned domain agent
-Automated
-5. Execution
-Domain Worker
-Executes read-only steps and drafts deliverables
-Automated
-6. Review Gate
-Human
-Inspects diff/artifact and approves execution
-Human sign-off
-7. Completion
-Domain Worker
-Applies approved change and closes task
-Automated after gate
-8. Output Sync
-Google Tasks / SQLite
-Actionables needing human attention sync to Google Tasks
-Automated
-## Human review gate
-Anything I would regret waits for my approval: sends, deletes and public pushes. Outbound emails, file deletions, and public git pushes pause at approval gates until I inspect and approve them.
+Human gate
+sends, deletes and public pushes wait for me
+## Why eleven agents and not one
+One agent that does everything carries every instruction at once and holds every key at once. The agent drafting an email does not need deployment credentials; the agent parsing receipts does not need my LinkedIn drafts. Mixed instructions produce mixed behaviour, and shared access turns one mistake into a wide one.
+So the work is partitioned the way a company partitions departments: mutually exclusive, collectively exhaustive. Each agent has one domain, its own workspace, its own memory, and only the tools that domain needs. A router decides who owns a request. A medic checks hourly that nobody has drifted out of lane.
+## Topology
+Eleven agents, one owner per domain, no overlap.
+Who owns what: one router, ten domain agents, one gate. Dashed lines are audit and planning paths, not request paths.
+Component Role Permissions and Policy
+Me Dictate, check, send Reviews risky steps
+Hermes Gateway Ingestion Discord and Telegram gateways
+Router (default) Central dispatcher Classifies intent, assigns task cards
+Kanban Board Coordination Task card hand offs, parent child tasks
+Academics Coursework and research IIM Ranchi and IIT Madras
+Career prep Applications and prep Resume and interview preparation
+Finance Receipts and accounting Rule based parsing to Firefly III
+Infrastructure System maintenance Services, backups, secrets
+Personal ops Daily operations Briefings, reminders, habits
+Socials Content drafting Drafts reviewed by human
+Consulting Commercial projects Client work in isolated workspaces
+Medic Health audit Hourly audit of estate structure and health
+Janitor Disk cleanup Cleanup proposals on approval
+Private Institute work One agent for institute work, private
+Human Gate Approval checkpoint Mandatory approval for sends, deletes, pushes
+Google Tasks Action ledger Syncs what needs me
+Fable Planning pass Maximum tier reasoning before build
+9Router Model gateway Model routing and fallback
+## Router
+The default agent receives every message from Discord or Telegram, classifies it, and hands it to the owning domain agent as a kanban card. It does small lookups itself only when routing would cost more than the task.
+## Domain agents
+Academics: Coursework at IIM Ranchi and IIT Madras, research reading and deadlines.
+Career prep: My own applications, resume and interview prep.
+Finance: Receipts to ledger, self hosted Firefly III.
+Infrastructure: Declared system state, services, backups, secrets.
+Personal ops: Tasks, briefings, reminders, habits.
+Socials: LinkedIn and personal posts, drafted by the agent, published by me.
+Consulting: Commercial go to market consulting.
+Medic: Hourly audit of estate structure and health, reports to a status channel.
+Janitor: Finds disk clutter, proposes deletions, acts only on my approval.
+Private: One agent for institute work, not described here.
+## Kanban hand offs
+Work moves as cards: objective, context, acceptance criteria, owner. The router writes the card, the owner session writes the artifact, and a card can spawn read only children for research or critique. Cross domain jobs are separate cards linked by a parent, never one mixed artifact.
+## Planning at maximum effort
+Some tasks need a specification before anyone writes code: multi file architecture, design direction, fact audits. Those go to a planning pass I call Fable: the strongest available model at its highest reasoning tier, asked for an executable plan. Builders then follow the plan.
+## Upkeep
+A medic agent audits configuration drift every hour and files findings rather than silently fixing them. A janitor agent batches cleanup proposals and waits for my approval before deleting anything.
+## How a request moves
+I dictate, check the text, then send it. What needs me lands in Google Tasks.
+How a request moves: read only steps happen before the gate. Risky steps wait for approval.
+Step Stage Actor Action Gating
+1 Input Me Dictate and check transcript Self review
+2 Ingestion Gateway Deliver message via Discord or Telegram Automated
+3 Triage Router Classify intent and write kanban card Automated
+4 Dispatch Kanban Route card to domain agent Automated
+5 Execution Domain agent Read only work: research, drafts, diffs Automated
+6 Review Me Inspect diff or artifact at the human gate Approval required
+7 Apply Domain agent Apply change and close task card Gated
+8 Sync Google Tasks Sync open actionables that need me Automated
+## Input
+I dictate with FreeFlow on Mac or Dictate on Android, both free and open source, read the transcript, and send it as text on Discord or Telegram. I skip the runtime's own voice plugins on purpose: I want to see what got written before an agent acts on it.
+## The gate
+Anything I would regret waits for my approval: sends, deletes and public pushes. Outbound email, file deletion and public git pushes stop at the gate until I have inspected the diff or the artifact. A question to me has no timeout. An unanswered card parks; it does not proceed.
+## Output
+Important actionables that need me are synced to Google Tasks by an idempotent ledger, and a watcher logs what I complete or edit so the agents learn what I actually did.
+## Hours with my agents
+Time I spent working with the agents on Discord, Telegram, the command line and Claude Code.
+Total hours
+159.5 h
+Active days
+22
+Avg / active day
+7.2 h
+Longest day
+13.9 h
+28 Sep 2026
+Hours with my agents, by day: 22 active days of 26 since the first message. Sessions are messages less than 15 minutes apart plus a 5 minute tail.
+Date Hours
+13 Sep 2026 0.2 h
+14 Sep 2026 0.0 h
+15 Sep 2026 0.2 h
+16 Sep 2026 0.0 h
+17 Sep 2026 0.0 h
+18 Sep 2026 0.0 h
+19 Sep 2026 3.3 h
+20 Sep 2026 1.2 h
+21 Sep 2026 4.9 h
+22 Sep 2026 5.1 h
+23 Sep 2026 5.4 h
+24 Sep 2026 6.7 h
+25 Sep 2026 9.2 h
+26 Sep 2026 3.8 h
+27 Sep 2026 4.5 h
+28 Sep 2026 13.9 h
+29 Sep 2026 5.8 h
+30 Sep 2026 11.6 h
+1 Oct 2026 9.3 h
+2 Oct 2026 13.3 h
+3 Oct 2026 11.1 h
+4 Oct 2026 8.0 h
+5 Oct 2026 12.6 h
+6 Oct 2026 10.5 h
+7 Oct 2026 12.4 h
+8 Oct 2026 6.5 h
+## How hours are counted
+Counted from the timestamps of messages I sent to my agents in Discord, Telegram, the command line and Claude Code, whether dictated or typed. Messages less than 15 minutes apart form one session, each session gets a 5 minute tail, and automated notifications are excluded.
+## Tokens and models
+Combined daily token throughput across three paths: 9Router, a local model gateway that routes each call to a provider and falls back when one fails; direct Hermes calls to Claude; and the Claude Code CLI.
+Total tokens
+5.75 B tokens
+Cache hit rate
+88.3%
+Top token day
+790 M
+7 Oct 2026
+Tokens processed by day: 5.75 B tokens in total; 88.3% of input tokens were served from cache.
+Date Tokens
+13 Sep 2026 0 k
+14 Sep 2026 0 k
+15 Sep 2026 11 k
+16 Sep 2026 40.8 M
+17 Sep 2026 65.0 M
+18 Sep 2026 48.7 M
+19 Sep 2026 32.0 M
+20 Sep 2026 10.1 M
+21 Sep 2026 53.6 M
+22 Sep 2026 171.3 M
+23 Sep 2026 199.9 M
+24 Sep 2026 154.9 M
+25 Sep 2026 78.4 M
+26 Sep 2026 23.2 M
+27 Sep 2026 65.2 M
+28 Sep 2026 340.1 M
+29 Sep 2026 191.1 M
+30 Sep 2026 169.9 M
+1 Oct 2026 226.8 M
+2 Oct 2026 409.7 M
+3 Oct 2026 534.5 M
+4 Oct 2026 251.4 M
+5 Oct 2026 730.5 M
+6 Oct 2026 593.3 M
+7 Oct 2026 790.2 M
+8 Oct 2026 574.1 M
+Where the tokens went, by model.
+Model Family Share
+Gemini Flash 72.5%
+Claude Opus 19.5%
+Claude Sonnet 7.7%
+Most volume goes to a fast, cheap model for routine steps; the expensive models are reserved for planning and review.
+## Messages and leverage
+Messages from me
+23,619
+Agent replies
+156,174
+Tool results
+155,925
+Total messages
+335,718
+About 7 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
+## How replies are counted
+Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
 ## Access from any device
 I can run the whole platform from my phone, so work continues when my laptop is closed or not with me. Three pieces make that work.
-Private mesh: Tailscale, a WireGuard based private network, joins three devices: the server (hermes-cloud, Linux), my MacBook Pro (macOS) and my OnePlus phone (Android). I reach the server over the mesh, from those three devices.
+Private mesh: Tailscale, a WireGuard based private network, joins three devices: the server (an Azure VPS, Linux), my MacBook Pro (macOS) and my phone (Android). I reach the server over the mesh, from those three devices.
 Termius: I sometimes SSH in via Termius from my phone or laptop over Tailscale. It connects over the mesh, so I can check a service or restart one from the phone.
 Dictation: I dictate on my phone or Mac (Dictate on Android, FreeFlow on Mac), read the transcript, then send it on Discord or Telegram. The router agent picks it up from there.
-## Host and isolation
-Every agent runs on one rented cloud server and stays inside its own workspace. The host is an Azure VPS named hermes-cloud running Ubuntu 24.04, and the runtime moved there from a MacBook Linux VM on 20 Sep 2026, so the agents run around the clock.
+Access path to the Azure server: devices reach the server over the private mesh.
+Device Tools Destination
+Phone Termius, Dictate Azure VPS via Tailscale mesh
+Laptop SSH, FreeFlow Azure VPS via Tailscale mesh
+## Host, isolation and secrets
+Every agent runs on one rented cloud server and stays inside its own workspace. The host is an Azure VPS running Ubuntu 24.04, and the runtime moved there from a MacBook Linux VM on 20 Sep 2026, so the agents run around the clock.
 systemd services: Each long running piece, such as the model gateway and the chat gateway, runs as a system service that restarts on its own after a reboot.
 Workspace isolation: Each agent has its own working directory, persistent memory, scoped tools and skills. Each domain keeps its own data in its own workspace.
-Devices reach the server over the private mesh.
-## Verified Outcome
-The platform runs 49 recurring scheduled jobs across 11 agents. I build this website through the same pipeline: a planning card, a builder agent, and a review step before each release.
-## Stack
+## Secrets and backups
+Secrets live in locked down files and a credential vault that fills only at its own origin; nothing secret is ever pasted into chat. Guard scripts check the context files each agent reads. State is backed up hourly, encrypted capsules go offsite daily to GitHub Releases, the offsite copy is verified weekly, and a scripted restore to a fresh server exists.
+## What the review step has taught me
+This page is built through the same pipeline: a planning card at maximum effort, a builder agent in the consulting profile, and a review gate before release. The review step is how stale figures on this very page were found: counts had been typed into prose and the system had moved on. The rebuild binds every number to the data file the agents maintain, so the gate now checks a script, not a memory.
 Hermes Agent · Python · systemd · 9Router · Discord · Telegram · SQLite
 
 
@@ -373,7 +455,7 @@ Gemini Flash: High-throughput sweeps, reading, scraping, telemetry, and lightwei
 Claude Sonnet: Deterministic code generation, test suites, refactoring, and generator scripts.
 Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
 Fable: Architectural planning, design system direction, and exhaustive fact audits.
-Measured share of logged tokens: Gemini Flash 72.5%, Claude Opus 19.6%, Claude Sonnet 7.5%. Full table on the token ledger .
+Measured share of logged tokens: Gemini Flash 72.4%, Claude Opus 19.3%, Claude Sonnet 8.0%. Full table on the token ledger .
 ## Outcome
 When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.
 ## Limits
@@ -397,7 +479,7 @@ Agent operations run with human approval gates for irreversible actions
 5 Memory layers
 11 Agents
 2,200 Char cap on notes
-230,659 Messages in history
+233,460 Messages in history
 ## Architecture: the five layer hierarchy
 Each layer has one specific job, one retention rule, one size budget, and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.
 Diagram A. Five layer memory architecture. Only L1 is read directly by the model. L3 and L4 load in full, L5 skills load on demand when a task matches, and older history is compacted into lcm.db for search and recall.
@@ -409,7 +491,7 @@ L1 Session window and system prompt: The live working desk. Holds the system pro
 L2 Ephemeral scratch: The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.
 L3 Curated persistent memory: The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.
 L4 Curated knowledge base: The reference library. 15 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.
-L5 Procedural skills library: The workshop tool rack. 313 SKILL.md files (206 distinct skills) across the router and 10 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.
+L5 Procedural skills library: The workshop tool rack. 315 SKILL.md files (208 distinct skills) across the router and 10 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.
 ## Layer specifications
 Memory layer specifications
 Layer
@@ -445,13 +527,13 @@ Read on demand; md_guard.py checks every edit and runs daily
 L5 Procedural skills library
 Per agent
 Permanent, versioned
-313 SKILL.md files, 206 distinct skills
+315 SKILL.md files, 208 distinct skills
 SKILL.md plus references and scripts
 Loaded when a task matches; configuration drift audited hourly by the medic agent
 LCM-X (beneath L1)
 Full history of one agent; each agent has its own lcm.db
 Permanent raw rows; removal only by an explicit owner purge
-Disk; 230,659 raw messages in the router agent's store
+Disk; 233,460 raw messages in the router agent's store
 SQLite in WAL mode with FTS5 indexes
 lcm_grep, lcm_recall, lcm_expand
 ## Curation, human approval gates, and rollback
@@ -466,7 +548,7 @@ In addition, an automated hourly job backs up agent state and memory files, and 
 ## LCM-X: lossless context memory
 LCM-X operates beneath L1. Every message sent or received is recorded once in lcm.db with an immutable store_id. When the active context window fills up, LCM-X compacts older messages into a depth 0 summary node that references the exact store_ids it summarizes. When multiple depth 0 nodes accumulate, they compact into a depth 1 node. This creates a clean directed acyclic graph where summaries always link back to the exact source messages, and compaction never deletes or alters raw history.
 Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.
-Compaction: The router agent's database currently holds 230,659 messages from 171 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
+Compaction: The router agent's database currently holds 233,460 messages from 171 sessions and 41 summary nodes (39 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
 FTS5 search: SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.
 Lossless expansion: If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.
 Concurrent WAL mode: SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.
@@ -502,7 +584,7 @@ Knowledge files
 ls ~/.hermes/knowledge/*.md | wc -l
 probed at build
 Skill files
-313 (206 distinct names)
+315 (208 distinct names)
 find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l
 probed at build
 Agents
@@ -514,7 +596,7 @@ wal
 sqlite3 lcm.db 'PRAGMA journal_mode;'
 probed at build
 Raw messages
-230,659 across 171 sessions
+233,460 across 171 sessions
 SELECT COUNT(*) FROM messages;
 probed at build
 Summary nodes
@@ -651,20 +733,20 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-08T10:55:47Z · Tracking window: 2026-09-13 to 2026-10-08 ( 26 days). The window starts on 2026-09-13, the first day any source logged tokens.
-5.67 B
+Last probed: 2026-10-08T12:22:44Z · Tracking window: 2026-09-13 to 2026-10-08 ( 26 days). The window starts on 2026-09-13, the first day any source logged tokens.
+5.75 B
 Total tokens across 3 sources
 88.3%
 Prompt cache hit rate
-38.4 M
+39.0 M
 Generated output (0.68%)
-$3,111.16
+$3,149.99
 List price equivalent (USD)
 ## Where the tokens went
-Fresh input 505.9 M 8.9%
-Cached read 4.97 B 87.7%
-Cache write 153.1 M 2.7%
-Output 38.4 M 0.68%
+Fresh input 511.6 M 8.9%
+Cached read 5.05 B 87.7%
+Cache write 156.1 M 2.7%
+Output 39.0 M 0.68%
 Each token is counted once. Cached reads are tokens the model read again from a stored prefix instead of from scratch. Cache writes are tokens the model read and also stored for reuse. Output is everything a model generated; reasoning sits inside output and is not a fifth slice. The output segment is drawn at a minimum width so it stays visible.
 Token volume by component
 Component
@@ -672,23 +754,23 @@ Tokens
 Share of total
 Description
 Fresh input
-505,907,024
-8.93%
+511,611,220
+8.89%
 Tokens sent to models without a provider cache hit
 Cache read
-4,970,191,170
-87.69%
+5,048,031,621
+87.72%
 Tokens read from provider prompt cache at discounted rates
 Cache creation
-153,105,231
-2.70%
+156,065,872
+2.71%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-38,409,148
+38,960,605
 0.68%
-Generated completion tokens (includes 3,558,642 reasoning tokens on supported models)
+Generated completion tokens (includes 3,587,661 reasoning tokens on supported models)
 Total
-5,667,612,573
+5,754,669,318
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -706,44 +788,44 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-50,900
-505,414,745
-3,823,650,402
+51,590
+511,071,765
+3,876,051,991
 0
-25,158,852
-4,354,223,999
+25,565,455
+4,412,689,211
 88.3%
-$1,610.78
+$1,631.30
 Hermes direct
 my runtime calling Claude directly on a subscription
-7,158
-450,906
-1,133,282,240
-148,511,979
-8,589,668
-1,290,834,793
+7,328
+498,076
+1,158,721,102
+151,447,153
+8,728,518
+1,319,394,849
 88.4%
-$1,500.38
+$1,518.69
 Claude Code
 the CLI, read from its own transcripts
-950
-41,373
+953
+41,379
 13,258,528
-4,593,252
-4,660,628
-22,553,781
-74.1%
+4,618,719
+4,666,632
+22,585,258
+74.0%
 n/r
 Total
 All three telemetry streams combined
-59,008
-505,907,024
-4,970,191,170
-153,105,231
-38,409,148
-5,667,612,573
+59,871
+511,611,220
+5,048,031,621
+156,065,872
+38,960,605
+5,754,669,318
 88.3%
-$3,111.16
+$3,149.99
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -761,15 +843,15 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-46,975
-467,935,685
-3,619,266,337
+47,581
+473,351,430
+3,668,251,116
 n/r
-23,964,016
-4,111,166,038
-72.54%
-88.5%
-$1,440.29
+24,337,537
+4,165,940,083
+72.39%
+88.6%
+$1,458.57
 Claude Opus
 claude_code, hermes, ninerouter
 6,435
@@ -778,30 +860,30 @@ claude_code, hermes, ninerouter
 n/r
 9,375,362
 1,110,330,020
-19.59%
+19.29%
 88.5%
 n/r
 Claude Sonnet
 claude_code, hermes, ninerouter
-4,161
-30,094,521
-370,545,296
+4,415
+30,382,966
+399,400,968
 n/r
-2,094,381
-427,266,635
-7.54%
-87.2%
+2,266,313
+459,517,858
+7.99%
+87.4%
 n/r
 Other
 claude_code, ninerouter
-711
-2,799,698
+714
+2,799,704
 5,034,018
 n/r
-2,917,835
-13,184,358
+2,923,839
+13,215,835
 0.23%
-49.0%
+48.9%
 n/r
 Claude Haiku
 claude_code, ninerouter
@@ -811,7 +893,7 @@ claude_code, ninerouter
 n/r
 26,099
 2,574,072
-0.05%
+0.04%
 1.0%
 n/r
 GPT
@@ -822,7 +904,7 @@ ninerouter
 n/r
 14,361
 2,554,577
-0.05%
+0.04%
 20.8%
 $1.64
 Gemini Pro
@@ -838,15 +920,15 @@ n/r
 $0.66
 Total
 All model families combined
-59,008
-505,907,024
-4,970,191,170
-153,105,231
-38,409,148
-5,667,612,573
+59,871
+511,611,220
+5,048,031,621
+156,065,872
+38,960,605
+5,754,669,318
 100.00%
 88.3%
-$3,111.16
+$3,149.99
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 790.2 M tokens on 7 Oct 2026.
@@ -964,14 +1046,14 @@ Wed 7 Oct
 3,775,062
 8,584
 Thu 8 Oct (partial)
-487,044,380
-20,089,841
-448,255,381
-16,069,883
-2,629,275
-3,701
+574,101,125
+25,794,037
+526,095,832
+19,030,524
+3,180,732
+4,564
 ## List price vs subscription
-At published list prices this volume comes to about $3,111.16 USD: $1,610.78 for proxied calls as computed by the proxy, and $1,500.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $3,149.99 USD: $1,631.30 for proxied calls as computed by the proxy, and $1,518.69 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 88.3% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
