@@ -229,6 +229,14 @@ IO_IN = "I dictate, check the text, then send it"
 IO_OUT = "What needs me lands in Google Tasks"
 
 
+def timeline_figure(data):
+    tl = data["timeline"]
+    w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
+    rows = [[human_date(d["date"]), d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
+    return figure("ltl", w, n, "Public ledger milestones in the last %d days, %d dots. Undated or private milestones are not drawn."
+                 % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category"], "tl-fig")
+
+
 def standing_figures(data):
     tp, tl, mm, hist = data["topology"], data["timeline"], data["modelmix"], data["modelmix_weeks"]
     out = []
@@ -240,10 +248,7 @@ def standing_figures(data):
         for p in tp["profiles"]] + [["Output (after the server)", IO_OUT + ". Important items only."]]
     topo = figure("lt", w, n, "%s agents, router included. Domain names only; one agent is shown as institute work, private."
                   % tp["count_including_router"], rows, ["Agent", "Role"], "topo-fig")
-    w, n = S.timeline(tl, "ltl", tl["generated"], tl["days"])
-    rows = [[human_date(d["date"]), d["title"], S.CAT_LABEL[d["category"]]] for d in tl["ledger"]]
-    tlf = figure("ltl", w, n, "Public ledger milestones in the last %d days, %d dots. Undated or private milestones are not drawn."
-                 % (tl["days"], tl["dots"]), rows, ["Date", "Milestone", "Category"], "tl-fig")
+    tlf = timeline_figure(data)
     out.append('<div class="pair">%s%s</div>' % (topo, tlf))
     w, n = S.model_bars(mm, "lm")
     rows = [[m["name"], S.thousands(m["calls"]), m["share_pct"] + "%"] for m in mm["models"]]
@@ -259,7 +264,6 @@ def standing_figures(data):
 
 def render_index(entries, data):
     newest = entries[0] if entries else None
-    figs = standing_figures(data)
     lead = ""
     if newest:
         lead = ('<p class="newest">Newest: <a href="%s">%s</a> <span class="mono muted">%s</span></p>'
@@ -270,6 +274,7 @@ def render_index(entries, data):
             '<p class="frame">I review every entry before it goes live. I plan to add new entries on Wednesday and Sunday evenings.</p>%s</div>'
             % lead)
     main += strip_html(data["strip"])
+    main += '<section class="wrap">%s</section>' % timeline_figure(data)
     main += ('<section class="wrap" aria-labelledby="h-entries"><h2 id="h-entries">Entries</h2>%s'
              '<ul class="textlinks log-links"><li><a href="/log/archive/">All entries by month</a></li>'
              '<li><a href="/log/sources/">How I source these numbers</a></li>'
