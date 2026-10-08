@@ -1470,6 +1470,7 @@
       const scrollContainer = hm.querySelector('.heatmap__scroll');
       const table = hm.querySelector('table');
       const activeDisplay = hm.closest('.metric-panel')?.querySelector('.panel-active-val');
+      const dayDetail = hm.closest('.section')?.querySelector('.day-detail') || document.getElementById('day-detail');
       const metricType = hm.getAttribute('data-metric') || 'hours';
 
       if (scrollContainer && scrollContainer.scrollWidth > scrollContainer.clientWidth) {
@@ -1482,10 +1483,27 @@
       const cells = Array.from(table.querySelectorAll('td[data-date]'));
       if (!cells.length) return;
 
-      // Ensure first cell has tabindex 0, others -1
-      cells.forEach((td, idx) => {
-        td.setAttribute('tabindex', idx === 0 ? '0' : '-1');
+      // Ensure initial roving tabindex matching selection
+      const initialSelected = cells.find(td => td.getAttribute('data-selected') === 'true') || cells[0];
+      cells.forEach(td => {
+        td.setAttribute('tabindex', td === initialSelected ? '0' : '-1');
       });
+
+      function selectCell(td) {
+        if (!td || td.classList.contains('is-void')) return;
+        cells.forEach(c => {
+          c.removeAttribute('data-selected');
+          c.removeAttribute('aria-selected');
+          c.setAttribute('tabindex', '-1');
+        });
+        td.setAttribute('data-selected', 'true');
+        td.setAttribute('aria-selected', 'true');
+        td.setAttribute('tabindex', '0');
+        const detailText = td.getAttribute('data-detail');
+        if (dayDetail && detailText) {
+          dayDetail.textContent = detailText;
+        }
+      }
 
       function formatTip(td) {
         const d = td.getAttribute('data-date');
@@ -1510,6 +1528,12 @@
       }
 
       function showTip(td) {
+        if (dayDetail && td.getAttribute('data-detail')) {
+          selectCell(td);
+          hideTip();
+          return;
+        }
+
         const text = formatTip(td);
         if (!text) return;
 
@@ -1553,15 +1577,30 @@
       cells.forEach(td => {
         td.addEventListener('mouseenter', () => showTip(td));
         td.addEventListener('mouseleave', hideTip);
-        td.addEventListener('focus', () => showTip(td));
+        td.addEventListener('focus', () => {
+          showTip(td);
+          if (dayDetail && td.getAttribute('data-detail')) {
+            selectCell(td);
+          }
+        });
         td.addEventListener('blur', hideTip);
 
         td.addEventListener('click', () => {
           showTip(td);
+          if (dayDetail && td.getAttribute('data-detail')) {
+            selectCell(td);
+          }
         });
 
         // Keyboard roving navigation
         td.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (dayDetail && td.getAttribute('data-detail')) {
+              selectCell(td);
+            }
+            return;
+          }
           const row = td.parentElement;
           const tbody = row.parentElement;
           const allRows = Array.from(tbody.querySelectorAll('tr'));
