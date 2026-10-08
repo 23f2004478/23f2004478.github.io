@@ -183,7 +183,7 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1 style="view-transition-name: cs-routing;">Model routing and tiered compute: local gateway with fallback resilience</h1>
-    <p class="deck">One gateway on my server in front of several model accounts, with backup models when one fails, and three effort levels for different kinds of work. Plain scripts handle deterministic computation before any model is invoked.</p>
+    <p class="deck">One gateway on my server in front of several model accounts, with backup models when one fails, and three effort levels for different kinds of work. Plain scripts handle deterministic computation before any model is invoked. Narrow yes or no and pick-one questions skip this table entirely; they go to my <a href="/work/fast-decisions/">fast decision model</a>.</p>
 
     <div class="panel">
       <dl class="kv">
@@ -217,7 +217,19 @@
       <li><strong>Claude Opus:</strong> Deep multi-file reasoning, verification gates, and quality audits.</li>
       <li><strong>Fable:</strong> Architectural planning, design system direction, and exhaustive fact audits.</li>
     </ul>
-    <p>Measured share of logged tokens: Gemini Flash 71.9%, Claude Opus 19.2%, Claude Sonnet 8.5%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
+    <p>Measured share of logged tokens: Gemini Flash 71.9%, Claude Opus 19.0%, Claude Sonnet 8.8%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
+
+    <h2 id="savings-ladder">How I keep model calls rare and cheap</h2>
+    <p>Large model calls are the most expensive operation in an agent platform. I use an ordered ladder of six techniques so that only tasks requiring deep reasoning reach larger models:</p>
+    <ol class="ladder-list" style="padding-left:var(--s4);display:flex;flex-direction:column;gap:var(--s3);margin-block:var(--s3);">
+      <li><strong>Scripts first:</strong> 46 of 51 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.</li>
+      <li><strong>Typed decisions:</strong> Narrow categorical choices, relevance checks, and 0-to-1 scoring route to a fast decision model that answers in ~300 ms for fractions of a cent. Details are on <a href="/work/fast-decisions/">Fast decisions</a>.</li>
+      <li><strong>Smallest capable chat model:</strong> When a task requires natural language or tool use, it goes to the lowest tier capable of handling it (Gemini Flash for high-volume sweeps and lightweight tools, Claude Sonnet for deterministic code and tests, Claude Opus for deep multi-file reasoning). See the tier table above.</li>
+      <li><strong>Prompt caching:</strong> Repeated tool definitions, system prompts, and repository context are served from cache (88.4% cache hit rate across prompt tokens). Full accounting is on the <a href="/work/usage/">Token ledger</a>.</li>
+      <li><strong>Context compression:</strong> Long conversations are compacted into structured summary nodes by a cheaper model (86 sessions compressed so far), keeping history searchable without sending full raw transcripts. Details are on <a href="/work/memory/">Memory</a>.</li>
+      <li><strong>Planner last:</strong> The top tier (Fable) is invoked only for high-leverage architectural planning, design direction, and exhaustive fact audits before writing code.</li>
+    </ol>
+    <p class="small muted">No dollar reductions or token counts avoided are claimed here; these rungs show the technical architecture that keeps large model calls rare.</p>
 
     <h2>Outcome</h2>
     <p>When a provider hits a rate limit, work moves to a backup model instead of stopping. Plain scripts do the bulk filtering on the server, so the models get less to read and the numbers come out the same every time.</p>
@@ -230,7 +242,7 @@
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
   <div class="pager-prev"><a href="/work/platform/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Multi-agent platform</a></div>
-  <div class="pager-next"><a href="/work/memory/">Memory <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+  <div class="pager-next"><a href="/work/fast-decisions/">Fast decisions <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
 </nav>
 
 </main>

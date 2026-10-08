@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en" data-motion="full">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fast decisions: a small model so the large ones stay quiet | Krishnendu Biswas</title>
+  <meta name="description" content="How I keep most decisions away from a chat model, and what it costs when I do not.">
+  <link rel="canonical" href="https://krishnendu.me/work/fast-decisions/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#F6F3EC" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151514" media="(prefers-color-scheme: dark)">
+  <link rel="alternate" type="application/rss+xml" title="Build log (RSS)" href="https://krishnendu.me/log/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Build log (JSON Feed)" href="https://krishnendu.me/log/feed.json">
+  <link rel="preload" href="/fonts/Fraunces-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/SourceSans3-Variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Krishnendu Biswas">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:url" content="https://krishnendu.me/work/fast-decisions/">
+  <meta property="og:title" content="Fast decisions: a small model so the large ones stay quiet | Krishnendu Biswas">
+  <meta property="og:description" content="How I keep most decisions away from a chat model, and what it costs when I do not.">
+  <meta property="og:image" content="https://krishnendu.me/og/og-work-fast-decisions.png">
+  <meta property="og:image:secure_url" content="https://krishnendu.me/og/og-work-fast-decisions.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Fast decisions: a small model so the large ones stay quiet | Krishnendu Biswas, share card for krishnendu.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fast decisions: a small model so the large ones stay quiet | Krishnendu Biswas">
+  <meta name="twitter:description" content="How I keep most decisions away from a chat model, and what it costs when I do not.">
+  <meta name="twitter:image" content="https://krishnendu.me/og/og-work-fast-decisions.png">
+  <meta name="twitter:image:alt" content="Fast decisions: a small model so the large ones stay quiet | Krishnendu Biswas, share card for krishnendu.me">
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": {
+          "and": [
+            { "href_matches": "/*" },
+            { "not": { "href_matches": "/resume/*" } },
+            { "not": { "href_matches": "/archive/*" } },
+            { "not": { "href_matches": "/log/feed.*" } }
+          ]
+        },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://krishnendu.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://krishnendu.me/work/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fast decisions",
+          "item": "https://krishnendu.me/work/fast-decisions/"
+        }
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://krishnendu.me/work/fast-decisions/#article",
+      "headline": "Fast decisions: a small model so the large ones stay quiet",
+      "description": "How I keep most decisions away from a chat model, and what it costs when I do not.",
+      "author": {
+        "@id": "https://krishnendu.me/#person"
+      },
+      "url": "https://krishnendu.me/work/fast-decisions/",
+      "mainEntityOfPage": "https://krishnendu.me/work/fast-decisions/",
+      "isPartOf": {
+        "@id": "https://krishnendu.me/#website"
+      },
+      "datePublished": "2026-10-06T00:00:00+05:30",
+      "dateModified": "2026-10-06T00:00:00+05:30",
+      "image": "https://krishnendu.me/og/og-work-fast-decisions.png",
+      "publisher": {
+        "@id": "https://krishnendu.me/#person"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+  <script>document.documentElement.classList.add("js");(function(){try{var t=localStorage.getItem("theme");if(t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme:dark)").matches)){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}})()</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <symbol id="i-arr" viewBox="0 0 20 20">
+    <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-arr-left" viewBox="0 0 20 20">
+    <path d="M16 10H4M9 15l-5-5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-pdf" viewBox="0 0 20 20">
+    <path d="M12 2H5.5A1.5 1.5 0 004 3.5v13A1.5 1.5 0 005.5 18h9a1.5 1.5 0 001.5-1.5V6.5L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M12 2v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M7 10.5h6M7 13.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-sun" viewBox="0 0 20 20">
+    <circle cx="10" cy="10" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.3 4.3l1.4 1.4M14.3 14.3l1.4 1.4M4.3 15.7l1.4-1.4M14.3 5.7l1.4-1.4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-moon" viewBox="0 0 20 20">
+    <path d="M17.3 12.7A8 8 0 117.3 2.7 6.5 6.5 0 0017.3 12.7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-menu" viewBox="0 0 20 20">
+    <path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-close" viewBox="0 0 20 20">
+    <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="i-mail" viewBox="0 0 20 20">
+    <rect x="2.5" y="4.5" width="15" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M2.5 6.5l7.5 5 7.5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </symbol>
+  <symbol id="i-github" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 2C5.58 2 2 5.58 2 10c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0018 10c0-4.42-3.58-8-8-8z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-linkedin" viewBox="0 0 20 20">
+    <path d="M4.5 3C3.67 3 3 3.67 3 4.5S3.67 6 4.5 6 6 5.33 6 4.5 5.33 3 4.5 3zM3 7.5h3v9.5H3V7.5zm5.5 0h2.88v1.3h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V17h-3v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.38V17h-3V7.5z" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 20 20">
+    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/>
+    <path d="M14 14l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+</svg>
+<header class="site-head wrap">
+  <div class="head-in">
+    <a class="brand" href="/">Krishnendu Biswas</a>
+    <nav class="nav" aria-label="Main navigation">
+      <ul class="nav-list" id="navlist">
+      <li><a href="/work/" aria-current="page">Work</a></li>
+      <li><a href="/internships/">Internships</a></li>
+      <li><a href="/research/">Research</a></li>
+      <li><a href="/log/">Log</a></li>
+        <li class="nav-resume"><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=3" target="_blank" rel="noopener noreferrer" aria-label="Resume, PDF, opens in a new tab">Resume <span class="mono tag">PDF</span></a></li>
+      </ul>
+    </nav>
+    <div class="head-actions">
+      <button class="icon-btn search-trigger" data-ix="search" type="button" aria-label="Search site (Cmd+K / Ctrl+K)">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+      </button>
+      <button class="icon-btn theme-btn" data-ix="theme_fade" type="button" aria-label="Toggle dark mode">
+        <svg class="icon t-sun" aria-hidden="true"><use href="#i-sun"/></svg>
+        <svg class="icon t-moon" aria-hidden="true"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" type="button" aria-expanded="false" aria-controls="navlist" aria-label="Open navigation menu">
+        <svg class="icon t-menu" aria-hidden="true"><use href="#i-menu"/></svg>
+        <svg class="icon t-close" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<main id="main">
+<nav class="breadcrumb wrap" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="/">Home</a></li><li><a href="/work/">Work</a></li><li aria-current="page">Fast decisions</li>
+  </ol>
+</nav>
+
+  <div class="scroll-progress"></div>
+  <article class="wrap page-head" data-ix="toc">
+    <h1 style="view-transition-name: cs-fast-decisions;">Fast decisions: a small model so the large ones stay quiet</h1>
+    <p class="deck">Most choices my agents make are narrow: is this headline relevant, which category is this email, is this note a lasting preference. I send those to a typed decision model called Jev instead of a large chat model. It answers with a choice or a score in about a third of a second.</p>
+
+    <div class="panel">
+      <p><strong>System 1 vs System 2:</strong> System 1 is fast, cheap judgment that answers one narrow question in under a second; System 2 is slow, expensive reasoning that I save for work that needs it.</p>
+    </div>
+
+    <!-- Section 1: What this layer does -->
+    <section class="section" id="what-it-does" data-ix="reveal">
+      <h2>What this layer does</h2>
+      <p>The typed decision model returns one of two typed answers: a choice among options I list, or a calibrated score between 0 and 1. It does not write text and it does not chat. If it cannot answer, the call falls back to its previous route, so no decision is lost.</p>
+
+      <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s2);margin-block:var(--s3);">
+        <div class="panel" style="padding:var(--s3);text-align:center;">
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">107,804</div>
+          <div class="small muted">Total decisions</div>
+        </div>
+        <div class="panel" style="padding:var(--s3);text-align:center;">
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">35</div>
+          <div class="small muted">Decision types</div>
+        </div>
+        <div class="panel" style="padding:var(--s3);text-align:center;">
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">317 ms</div>
+          <div class="small muted">Median answer time</div>
+        </div>
+        <div class="panel" style="padding:var(--s3);text-align:center;">
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">0.08%</div>
+          <div class="small muted">Handed to fallback</div>
+        </div>
+      </div>
+      <p class="small muted">Source: my verdict log, test rows excluded, 22 Sep 2026 to 9 Oct 2026, refreshed every 6 hours.</p>
+    </section>
+
+    <!-- Section 2: Decisions per day -->
+    <section class="section" id="decisions-per-day" data-ix="reveal">
+      <h2>Decisions per day</h2>
+      <figure class="fig" id="fig-decisions">
+        <svg id="decisions_by_day" class="dg wide chart" viewBox="0 0 720 260" width="100%" role="img" aria-labelledby="dec-t dec-d" style="width:100%;height:auto;max-width:720px">
+  <title id="dec-t">Decisions per day</title>
+  <desc id="dec-d">Daily volume of typed decisions from 22 Sep 2026 to 9 Oct 2026.</desc>
+  <g id="grid">
+    <text x="57" y="28" font-family="'Source Sans 3',sans-serif" font-size="11" font-weight="600" fill="var(--muted)" text-anchor="end">Decisions</text>
+    <line x1="65" y1="210.0" x2="695" y2="210.0" stroke="var(--rule)" stroke-width="0.8" stroke-dasharray="2 3" />
+    <text x="57" y="214.0" font-family="'JetBrains Mono',monospace" font-size="11" fill="var(--muted)" text-anchor="end">0</text>
+    <line x1="65" y1="161.4" x2="695" y2="161.4" stroke="var(--rule)" stroke-width="0.8" stroke-dasharray="2 3" />
+    <text x="57" y="165.4" font-family="'JetBrains Mono',monospace" font-size="11" fill="var(--muted)" text-anchor="end">10k</text>
+    <line x1="65" y1="112.9" x2="695" y2="112.9" stroke="var(--rule)" stroke-width="0.8" stroke-dasharray="2 3" />
+    <text x="57" y="116.9" font-family="'JetBrains Mono',monospace" font-size="11" fill="var(--muted)" text-anchor="end">20k</text>
+    <line x1="65" y1="64.3" x2="695" y2="64.3" stroke="var(--rule)" stroke-width="0.8" stroke-dasharray="2 3" />
+    <text x="57" y="68.3" font-family="'JetBrains Mono',monospace" font-size="11" fill="var(--muted)" text-anchor="end">30k</text>
+  </g>
+  <g id="bars">
+    <rect x="67.0" y="181.0" width="41.0" height="29.0" rx="2" fill="var(--forest)"><title>22 Sep 2026: 5,977 decisions</title></rect>
+    <rect x="112.0" y="208.5" width="41.0" height="1.5" rx="2" fill="var(--forest)"><title>24 Sep 2026: 284 decisions</title></rect>
+    <rect x="157.0" y="167.0" width="41.0" height="43.0" rx="2" fill="var(--forest)"><title>28 Sep 2026: 8,858 decisions</title></rect>
+    <rect x="202.0" y="181.7" width="41.0" height="28.3" rx="2" fill="var(--forest)"><title>29 Sep 2026: 5,826 decisions</title></rect>
+    <rect x="247.0" y="194.2" width="41.0" height="15.8" rx="2" fill="var(--forest)"><title>30 Sep 2026: 3,245 decisions</title></rect>
+    <rect x="292.0" y="176.5" width="41.0" height="33.5" rx="2" fill="var(--forest)"><title>1 Oct 2026: 6,899 decisions</title></rect>
+    <rect x="337.0" y="171.0" width="41.0" height="39.0" rx="2" fill="var(--forest)"><title>2 Oct 2026: 8,032 decisions</title></rect>
+    <rect x="382.0" y="170.0" width="41.0" height="40.0" rx="2" fill="var(--forest)"><title>3 Oct 2026: 8,238 decisions</title></rect>
+    <rect x="427.0" y="170.8" width="41.0" height="39.2" rx="2" fill="var(--forest)"><title>4 Oct 2026: 8,070 decisions</title></rect>
+    <rect x="472.0" y="168.5" width="41.0" height="41.5" rx="2" fill="var(--forest)"><title>5 Oct 2026: 8,544 decisions</title></rect>
+    <rect x="517.0" y="178.3" width="41.0" height="31.7" rx="2" fill="var(--forest)"><title>6 Oct 2026: 6,527 decisions</title></rect>
+    <rect x="562.0" y="50.0" width="41.0" height="160.0" rx="2" fill="var(--ink)"><title>7 Oct 2026: 32,951 decisions</title></rect>
+    <text x="582.5" y="42.0" font-family="'Source Sans 3',sans-serif" font-size="11" font-weight="700" fill="var(--ink)" text-anchor="middle">Peak: 32,951 on 7 Oct 2026</text>
+    <rect x="607.0" y="188.9" width="41.0" height="21.1" rx="2" fill="var(--forest)"><title>8 Oct 2026: 4,351 decisions</title></rect>
+    <rect x="652.0" y="208.5" width="41.0" height="1.5" rx="2" fill="var(--forest)"><title>9 Oct 2026: 2 decisions</title></rect>
+  </g>
+  <g id="x-axis-labels">
+    <text x="87.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">22 Sep</text>
+    <text x="222.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">29 Sep</text>
+    <text x="357.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">2 Oct</text>
+    <text x="492.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">5 Oct</text>
+    <text x="627.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">8 Oct</text>
+    <text x="672.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="11" fill="var(--muted)" text-anchor="middle">9 Oct</text>
+  </g>
+</svg>
+        <figcaption>Daily volume of typed decisions across 14 active days. The tall bar on 7 Oct 2026 is a one-off backlog sweep of 32,951 decisions; a typical active day is about 6,713 decisions. <button class="show-data" type="button" aria-expanded="false" aria-controls="dec-data" hidden>Show data</button></figcaption>
+        <div class="dtable sr-only sr_only" id="dec-data">
+          <table>
+            <thead><tr><th>Date</th><th>Decisions</th></tr></thead>
+            <tbody>
+              <tr><td>22 Sep 2026</td><td>5,977</td></tr><tr><td>24 Sep 2026</td><td>284</td></tr><tr><td>28 Sep 2026</td><td>8,858</td></tr><tr><td>29 Sep 2026</td><td>5,826</td></tr><tr><td>30 Sep 2026</td><td>3,245</td></tr><tr><td>1 Oct 2026</td><td>6,899</td></tr><tr><td>2 Oct 2026</td><td>8,032</td></tr><tr><td>3 Oct 2026</td><td>8,238</td></tr><tr><td>4 Oct 2026</td><td>8,070</td></tr><tr><td>5 Oct 2026</td><td>8,544</td></tr><tr><td>6 Oct 2026</td><td>6,527</td></tr><tr><td>7 Oct 2026</td><td>32,951</td></tr><tr><td>8 Oct 2026</td><td>4,351</td></tr><tr><td>9 Oct 2026</td><td>2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </figure>
+      <p class="small muted">Source: verdict log on my server, read at build time.</p>
+    </section>
+
+    <!-- Section 3: Speed and reliability -->
+    <section class="section" id="speed-and-fallback" data-ix="reveal">
+      <h2>How fast, how often it falls back</h2>
+      <div class="table-wrap">
+        <table class="data-table" style="width:100%;">
+          <thead>
+            <tr><th scope="col">Measure</th><th scope="col">Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Median answer time (p50)</td><td class="mono">317 ms</td></tr>
+            <tr><td>95th percentile (p95)</td><td class="mono">737 ms</td></tr>
+            <tr><td>99th percentile (p99)</td><td class="mono">1003 ms</td></tr>
+            <tr><td>Handed to fallback route</td><td class="mono">84 (0.08%)</td></tr>
+            <tr><td>Score calls / choice calls</td><td class="mono">62,962 / 44,842</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">Fallback means the typed model did not return a usable verdict and the call site used its backup route. It measures availability, not correctness. I do not have a labelled truth set for these decisions, so I do not report an accuracy figure for my own data.</p>
+    </section>
+
+    <!-- Section 4: What it replaced -->
+    <section class="section" id="what-it-replaced" data-ix="reveal">
+      <h2>What it replaced</h2>
+      <div class="table-wrap">
+        <table class="data-table" style="width:100%;">
+          <thead>
+            <tr><th scope="col">Status</th><th scope="col">Call sites</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Previously an AI model call</td><td class="mono">18</td></tr>
+            <tr><td>Previously a fixed rule</td><td class="mono">4</td></tr>
+            <tr><td><strong>Total live call sites</strong></td><td class="mono"><strong>22</strong></td></tr>
+            <tr><td>Candidates under review</td><td class="mono">4</td></tr>
+            <tr><td>Rejected after review</td><td class="mono">1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">A call site is one place in my code that asks for a decision. One site can ask more than one type of question. These are counts of call sites, not measured before-and-after savings.</p>
+    </section>
+
+    <!-- Section 5: Where the decisions come from -->
+    <section class="section" id="where-decisions-come-from" data-ix="reveal">
+      <h2>Where the decisions come from</h2>
+      <div class="table-wrap">
+        <table class="data-table" style="width:100%;">
+          <thead>
+            <tr><th scope="col">Decision family</th><th scope="col">Decisions</th><th scope="col">Share</th><th scope="col">Previous route</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>A private work workflow</td><td class="mono">81,667</td><td class="mono">76%</td><td>Chat model call</td></tr>
+            <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">24%</td><td>Chat model call</td></tr>
+            <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">246</td><td class="mono">0.2%</td><td>Chat model call or fixed rule</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small muted">About three quarters of all decisions come from one private workflow in my work. I report its volume and nothing else about it.</p>
+    </section>
+
+    <!-- Section 6: What it costs -->
+    <section class="section" id="what-it-costs" data-ix="reveal">
+      <h2>What it costs</h2>
+      <p>On a measured sample of 4,720 calls since 7 Oct 2026, the typed decision layer processed 2,793,421 input tokens and 518,622 output tokens (3,312,043 total tokens, about 702 tokens per call) and cost $0.1173, an average of about $0.0654 per day.</p>
+      <p>Output tokens are free on this service; list price was $0.042 per million input tokens.</p>
+      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 107,804 decisions were handled by this layer instead of calling a chat model.</p>
+    </section>
+
+    <!-- Section 7: Where I never use it -->
+    <section class="section" id="where-i-never-use-it" data-ix="reveal">
+      <h2>Where I never use it</h2>
+      <p>A typed model is probabilistic, so I exclude it by file from anything irreversible or trust critical. It never decides:</p>
+      <ul>
+        <li>Sending email or messages</li>
+        <li>Deleting files or approving cleanup</li>
+        <li>Anything touching money, finance or payments</li>
+        <li>Secrets, credentials and vaults</li>
+        <li>Lists of people who asked not to be contacted</li>
+      </ul>
+      <p>These paths stay deterministic plain code or wait for my explicit approval. The exclusion list is checked by the same registry that manages live sites.</p>
+    </section>
+
+    <!-- Section 8: Limits -->
+    <section class="section" id="limits" data-ix="reveal">
+      <h2>Limits</h2>
+      <p>The typed decision model is not free of mistakes. On public classification datasets, a third party measured this model at 76 to 95 depending on the dataset, against 77 to 96 for a large chat model and 88 to 91 for a fine-tuned small classifier. Those benchmarks come from public datasets and are not my data; I treat them as an external reference, not a result on my workflows.</p>
+      <p>In my own use, 0.08% of calls returned no usable answer and went to the backup route. It answers only the narrow, typed questions I configure; it cannot reason through anything open-ended or explain why it reached a decision.</p>
+      <p>The current service runs on limited credit, so I am testing a free and local typed decision model to take over the same role. This page describes an architectural role rather than a permanent vendor.</p>
+      <p>Decisions that matter stay deterministic or come to me because a cheap wrong answer that cannot be undone is not cheap.</p>
+
+      <p class="more" style="margin-top:var(--s4);">How typed decisions fit into my broader cost strategy is documented in the savings ladder on <a href="/work/routing/#savings-ladder">Model routing and tiered compute <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+    </section>
+
+    <!-- Method Note -->
+    <div class="panel" style="margin-top:var(--s5);">
+      <h3 style="margin-top:0;font-size:1rem;">Method note</h3>
+      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (4,720 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
+    </div>
+  </article>
+<nav class="pager wrap" aria-label="Case study navigation">
+  <div class="pager-prev"><a href="/work/routing/"><svg class="icon" aria-hidden="true"><use href="#i-arr-left"/></svg> Model routing and tiered compute</a></div>
+  <div class="pager-next"><a href="/work/memory/">Memory <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></div>
+</nav>
+
+</main>
+<footer class="site-foot wrap">
+  <div class="foot-grid">
+    <div class="foot-col">
+      <h2 class="foot-h">Pages</h2>
+      <ul class="foot-links">
+        <li><a href="/work/">Work</a></li>
+        <li><a href="/internships/">Internships</a></li>
+        <li><a href="/projects/">Projects</a></li>
+        <li><a href="/research/">Research</a></li>
+        <li><a href="/credentials/">Credentials</a></li>
+        <li><a href="/log/">Build log</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">Reach me</h2>
+      <ul class="foot-links">
+        <li><a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" data-ix="copy_email">krishnendu.biswasi22@iimranchi.ac.in</a></li>
+        <li><a href="https://linkedin.com/in/krshnndu/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="/resume/Krishnendu-Biswas-Resume.pdf?v=3" target="_blank" rel="noopener noreferrer">Resume (PDF)</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h2 class="foot-h">About this site</h2>
+      <p class="foot-note">Figures recounted from project files at build time; last build 9 Oct 2026.</p>
+      <ul class="foot-links">
+        <li><a href="/log/sources/">How I source these numbers</a></li>
+        <li><a href="/log/feed.xml">RSS feed</a></li>
+        <li><a href="/log/feed.json">JSON feed</a></li>
+        <li><a href="/archive/" rel="nofollow">Off the clock: reading archive</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+<button class="back-to-top" data-ix="back_to_top" type="button" aria-label="Back to top">
+  <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg>
+</button>
+<script src="/site.js" defer></script>
+</body>
+</html>
