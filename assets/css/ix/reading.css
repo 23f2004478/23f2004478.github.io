@@ -24,3 +24,9 @@ h2:hover .heading-anchor,h3:hover .heading-anchor,.heading-anchor:focus{opacity:
 .mobile-toc-list{list-style:none;margin:0;padding:0}
 .mobile-toc-list a{display:flex;align-items:center;min-height:44px}
 @media (pointer:fine) and (min-width:1024px){.toc-link{padding-block:4px}}
+
+/* Code blocks scroll inside their box instead of widening the page (found: /work/memory/ was 696px wide at 360px). */
+pre{max-width:100%;overflow-x:auto;white-space:pre;-webkit-overflow-scrolling:touch;padding:var(--s3);border:1px solid var(--rule);border-radius:2px;background:var(--box)}
+pre:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+pre code{white-space:inherit}
+@media (pointer:coarse){.copy-btn{min-height:44px;min-width:44px;font-size:.75rem}}
