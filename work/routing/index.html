@@ -217,15 +217,15 @@
       <li><strong>Claude Opus:</strong> Deep multi-file reasoning, verification gates, and quality audits.</li>
       <li><strong>Fable:</strong> Architectural planning, design system direction, and exhaustive fact audits.</li>
     </ul>
-    <p>Measured share of logged tokens: Gemini Flash 71.6%, Claude Opus 18.9%, Claude Sonnet 9.2%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
+    <p>Measured share of logged tokens: Gemini Flash 69.7%, Claude Opus 21.1%, Claude Sonnet 8.9%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
 
     <h2 id="savings-ladder">How I keep model calls rare and cheap</h2>
     <p>Large model calls are the most expensive operation in an agent platform. I use an ordered ladder of six techniques so that only tasks requiring deep reasoning reach larger models:</p>
     <ol class="ladder-list" style="padding-left:var(--s4);display:flex;flex-direction:column;gap:var(--s3);margin-block:var(--s3);">
-      <li><strong>Scripts first:</strong> 47 of 52 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.</li>
+      <li><strong>Scripts first:</strong> 48 of 53 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.</li>
       <li><strong>Typed decisions:</strong> Narrow categorical choices, relevance checks, and 0-to-1 scoring route to a fast decision model that answers in ~300 ms for fractions of a cent. Details are on <a href="/work/fast-decisions/">Fast decisions</a>.</li>
       <li><strong>Smallest capable chat model:</strong> When a task requires natural language or tool use, it goes to the lowest tier capable of handling it (Gemini Flash for high-volume sweeps and lightweight tools, Claude Sonnet for deterministic code and tests, Claude Opus for deep multi-file reasoning). See the tier table above.</li>
-      <li><strong>Prompt caching:</strong> Repeated tool definitions, system prompts, and repository context are served from cache (88.6% cache hit rate across prompt tokens). Full accounting is on the <a href="/work/usage/">Token ledger</a>.</li>
+      <li><strong>Prompt caching:</strong> Repeated tool definitions, system prompts, and repository context are served from cache (88.8% cache hit rate across prompt tokens). Full accounting is on the <a href="/work/usage/">Token ledger</a>.</li>
       <li><strong>Context compression:</strong> Long conversations are compacted into structured summary nodes by a cheaper model (55 sessions compressed so far), keeping history searchable without sending full raw transcripts. Details are on <a href="/work/memory/">Memory</a>.</li>
       <li><strong>Planner last:</strong> The top tier (Fable) is invoked only for high-leverage architectural planning, design direction, and exhaustive fact audits before writing code.</li>
     </ol>
