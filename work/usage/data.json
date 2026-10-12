@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-10-12T13:04:15Z",
+  "as_of": "2026-10-12T18:30:45Z",
   "window": {
     "start": "2026-09-13",
-    "end": "2026-10-12",
-    "days": 30
+    "end": "2026-10-13",
+    "days": 31
   },
   "categories": [
     "fresh_input",
@@ -12,39 +12,39 @@
     "output"
   ],
   "components": {
-    "fresh_input": 616101998,
-    "cached_read": 6798501090,
+    "fresh_input": 618560141,
+    "cached_read": 6837319569,
     "cache_write": 208425344,
-    "output": 48752168,
+    "output": 48811660,
     "reasoning": 4498788
   },
-  "total": 7671780600,
-  "input_total": 7623028432,
-  "cache_hit_rate": 0.8918,
-  "output_share": 0.0064,
-  "calls": 75123,
+  "total": 7713116714,
+  "input_total": 7664305054,
+  "cache_hit_rate": 0.8921,
+  "output_share": 0.0063,
+  "calls": 75663,
   "by_source": [
     {
       "id": "ninerouter",
       "label": "9router proxy",
       "api_style": "openai",
       "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-      "calls": 63793,
+      "calls": 64330,
       "components": {
-        "fresh_input": 615353303,
-        "cached_read": 4903241828,
+        "fresh_input": 617811446,
+        "cached_read": 4942060307,
         "cache_write": 0,
-        "output": 30907067,
+        "output": 30966559,
         "reasoning": 0
       },
-      "total": 5549502198,
-      "cache_hit_rate": 0.8885,
+      "total": 5590838312,
+      "cache_hit_rate": 0.8889,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 2003.09
+      "list_cost_usd": 2012.89
     },
     {
       "id": "hermes",
@@ -73,7 +73,7 @@
       "label": "Claude Code",
       "api_style": "anthropic",
       "carries": "the CLI, read from its own transcripts",
-      "calls": 1821,
+      "calls": 1824,
       "components": {
         "fresh_input": 43093,
         "cached_read": 269341602,
@@ -97,23 +97,23 @@
       "sources": [
         "ninerouter"
       ],
-      "calls": 58889,
+      "calls": 59426,
       "components": {
-        "fresh_input": 570526092,
-        "cached_read": 4637720119,
+        "fresh_input": 572984235,
+        "cached_read": 4676538598,
         "cache_write": 0,
-        "output": 29286048,
+        "output": 29345540,
         "reasoning": 0
       },
-      "total": 5237532259,
-      "share": 0.6827,
-      "cache_hit_rate": 0.8905,
+      "total": 5278868373,
+      "share": 0.6844,
+      "cache_hit_rate": 0.8909,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 1788.37
+      "list_cost_usd": 1798.17
     },
     {
       "family": "Claude Opus",
@@ -131,7 +131,7 @@
         "reasoning": 3848340
       },
       "total": 1652731019,
-      "share": 0.2154,
+      "share": 0.2143,
       "cache_hit_rate": 0.9068,
       "reports": {
         "cache_write": false,
@@ -156,7 +156,7 @@
         "reasoning": 650448
       },
       "total": 759789607,
-      "share": 0.099,
+      "share": 0.0985,
       "cache_hit_rate": 0.8825,
       "reports": {
         "cache_write": false,
@@ -171,7 +171,7 @@
         "claude_code",
         "ninerouter"
       ],
-      "calls": 773,
+      "calls": 776,
       "components": {
         "fresh_input": 2799798,
         "cached_read": 5034018,
@@ -640,21 +640,34 @@
     },
     {
       "date": "2026-10-12",
-      "calls": 4043,
+      "calls": 4583,
       "components": {
-        "fresh_input": 30831440,
-        "cached_read": 315400708,
+        "fresh_input": 33289583,
+        "cached_read": 354219187,
         "cache_write": 0,
-        "output": 963368,
+        "output": 1022860,
         "reasoning": 0
       },
-      "total": 347195516,
+      "total": 388531630,
+      "partial": false
+    },
+    {
+      "date": "2026-10-13",
+      "calls": 0,
+      "components": {
+        "fresh_input": 0,
+        "cached_read": 0,
+        "cache_write": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "total": 0,
       "partial": true
     }
   ],
   "cost": {
-    "list_total_usd": 3918.1,
-    "proxy_list_usd": 2003.09,
+    "list_total_usd": 3927.9,
+    "proxy_list_usd": 2012.89,
     "direct_list_usd": 1915.01,
     "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
     "free_tier_statement": false
