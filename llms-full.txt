@@ -52,7 +52,7 @@ I build AI agent platforms and run them every day.
 Anything I would regret waits for my approval: sends, deletes and public pushes.
 14.2 h
 Longest day with my agents
-Daily rhythm (26 active days)
+Daily rhythm (27 active days)
 Hours with agents by day
 Sep Oct
 Mon
@@ -61,45 +61,44 @@ Fri
 Sun
 Less
 More
-Total hours 206.0 h
-Active days 26
-Daily average 7.9 h/day
+Total hours 208.3 h
+Active days 27
+Daily average 7.7 h/day
 Longest day 14.2 h (10 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-13.
 Full operating rhythm breakdown →
-205,454
+206,663
 Agent replies
 Turn volume & human leverage
-My messages (dictated or typed) 32,529
-Agent replies 205,454
-Tool executions 206,793
+My messages (dictated or typed) 32,662
+Agent replies 206,663
+Tool executions 207,951
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-13.
 See human approval gates →
-7.71 B
+7.78 B
 Tokens processed
-7.71 B tokens · to 13 Oct 2026
-Total tokens 7.71 B
+7.78 B tokens · to 13 Oct 2026
+Total tokens 7.78 B
 Cache hit rate 89.2%
 Output share 0.6%
 Source: 9router proxy, my direct Claude calls and Claude Code, each token counted once ; decisions handled by the fast layer are counted on Fast decisions . As of 2026-10-13.
 Full token ledger →
-10
+9
 Agents
-Estate topology (9 domain agents)
+Estate topology (8 domain agents)
 Academics
 Career prep
 Finance
 Infrastructure
-Medic
 Personal ops
 Institute work, private
 Socials
 Consulting
 52 recurring jobs run on the Hermes built-in scheduler.
-Source: the 10 agent folders on the server. As of 2026-10-13.
+Source: the 9 agent folders on the server. As of 2026-10-13.
 Inspect platform topology →
 Hover or tap any card for daily heatmaps and system breakdowns
 New here? Start with the Token ledger , the platform or my internships .
@@ -244,24 +243,24 @@ RULE-BASED PARSING
 Local drafting environment that screens technical posts against voice notes and anti-AI writing patterns. Every post is manually reviewed and published by me.
 HUMAN PUBLISHES
 Private operational platform. Architecture, system boundaries, and verified telemetry are presented across each case study.
-Data: Token ledger, 7.71 B TOKENS across 3 sources
+Data: Token ledger, 7.78 B TOKENS across 3 sources
 My machine learning projects, four with full write ups, are on the projects page
 
 
 # Multi-agent platform
 Source: https://krishnendu.me/work/platform/
 
-## Multi agent operations platform: 10 agents, one job each, and my approval on risky steps
+## Multi agent operations platform: 9 agents, one job each, and my approval on risky steps
 The platform runs on Hermes Agent, an open source agent runtime from Nous Research. The design is mine: which agent owns what, how work is handed between them, and where it stops for me. Private system; architecture and verified telemetry shown here.
 Agents
-10 agents
-1 router + 9 domain agents
+9 agents
+1 router + 8 domain agents
 Recurring Jobs
 52 recurring jobs
 53 enabled including one offs, counted 13 Oct 2026
 Logged Hours
-206.0 h
-logged with the agents over 26 active days
+208.3 h
+logged with the agents over 27 active days
 Human Gate
 Human gate
 sends, deletes and public pushes wait for me
@@ -326,15 +325,15 @@ Important actionables that need me are synced to Google Tasks by an idempotent l
 ## Hours with my agents
 Time I spent working with the agents on Discord, Telegram, the command line and Claude Code.
 Total hours
-206.0 h
+208.3 h
 Active days
-26
+27
 Avg / active day
-7.9 h
+7.7 h
 Longest day
 14.2 h
 10 Oct 2026
-Hours with my agents, by day: 26 active days of 31 since the first message. Sessions are messages less than 15 minutes apart plus a 5 minute tail.
+Hours with my agents, by day: 27 active days of 31 since the first message. Sessions are messages less than 15 minutes apart plus a 5 minute tail.
 Date Hours
 13 Sep 2026 0.2 h
 14 Sep 2026 0.0 h
@@ -365,20 +364,20 @@ Date Hours
 9 Oct 2026 7.1 h
 10 Oct 2026 14.2 h
 11 Oct 2026 12.1 h
-12 Oct 2026 9.5 h
-13 Oct 2026 0.0 h
+12 Oct 2026 10.0 h
+13 Oct 2026 1.8 h
 ## How hours are counted
 Counted from the timestamps of messages I sent to my agents in Discord, Telegram, the command line and Claude Code, whether dictated or typed. Messages less than 15 minutes apart form one session, each session gets a 5 minute tail, and automated notifications are excluded.
 ## Tokens and models
 Combined daily token throughput across three paths: 9Router, a local model gateway that routes each call to a provider and falls back when one fails; direct Hermes calls to Claude; and the Claude Code CLI.
 Total tokens
-7.71 B tokens
+7.78 B tokens
 Cache hit rate
 89.2%
 Top token day
 769 M
 7 Oct 2026
-Tokens processed by day: 7.71 B tokens in total; 89.2% of input tokens were served from cache.
+Tokens processed by day: 7.78 B tokens in total; 89.2% of input tokens were served from cache.
 Date Tokens
 13 Sep 2026 0 k
 14 Sep 2026 0 k
@@ -410,7 +409,7 @@ Date Tokens
 10 Oct 2026 708.2 M
 11 Oct 2026 622.4 M
 12 Oct 2026 388.5 M
-13 Oct 2026 0 k
+13 Oct 2026 64.7 M
 Where the tokens went, by model.
 Model Family Share
 Gemini Flash 72.5%
@@ -419,13 +418,13 @@ Claude Sonnet 7.7%
 Most volume goes to a fast, cheap model for routine steps; the expensive models are reserved for planning and review.
 ## Messages and leverage
 Messages from me
-32,529
+32,662
 Agent replies
-205,454
+206,663
 Tool results
-206,793
+207,951
 Total messages
-444,776
+447,276
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -475,7 +474,7 @@ Gemini Flash: High-throughput sweeps, reading, scraping, telemetry, and lightwei
 Claude Sonnet: Deterministic code generation, test suites, refactoring, and generator scripts.
 Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
 Fable: Architectural planning, design system direction, and exhaustive fact audits.
-Measured share of logged tokens: Gemini Flash 68.4%, Claude Opus 21.4%, Claude Sonnet 9.8%. Full table on the token ledger .
+Measured share of logged tokens: Gemini Flash 68.7%, Claude Opus 21.2%, Claude Sonnet 9.8%. Full table on the token ledger .
 ## How I keep model calls rare and cheap
 Large model calls are the most expensive operation in an agent platform. I use an ordered ladder of six techniques so that only tasks requiring deep reasoning reach larger models:
 Scripts first: 52 of 53 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.
@@ -501,7 +500,7 @@ Most choices my agents make are narrow: is this headline relevant, which categor
 System 1 vs System 2: System 1 is fast, cheap judgment that answers one narrow question in under a second; System 2 is slow, expensive reasoning that I save for work that needs it.
 ## What this layer does
 The typed decision model returns one of two typed answers: a choice among options I list, or a calibrated score between 0 and 1. It does not write text and it does not chat. If it cannot answer, the call falls back to its previous route, so no decision is lost.
-128,079
+128,587
 Total decisions
 37
 Decision types
@@ -509,9 +508,9 @@ Decision types
 Median answer time
 0.07%
 Handed to fallback
-Source: my verdict log, test rows excluded, 21 Sep 2026 to 12 Oct 2026, refreshed every 6 hours.
+Source: my verdict log, test rows excluded, 21 Sep 2026 to 13 Oct 2026, refreshed every 6 hours.
 ## Decisions per day
-Daily volume of typed decisions across 19 active days. The tall bar on 7 Oct 2026 is a one-off backlog sweep of 32,951 decisions; a typical active day is about 6,161 decisions.
+Daily volume of typed decisions across 20 active days. The tall bar on 7 Oct 2026 is a one-off backlog sweep of 32,951 decisions; a typical active day is about 6,064 decisions.
 Date Decisions
 21 Sep 2026 5,967
 22 Sep 2026 10
@@ -532,14 +531,15 @@ Date Decisions
 10 Oct 2026 6,161
 11 Oct 2026 3,985
 12 Oct 2026 7,756
+13 Oct 2026 508
 Source: verdict log on my server, read at build time.
 ## How fast, how often it falls back
 Measure Value
 Median answer time (p50) 315 ms
-95th percentile (p95) 724 ms
-99th percentile (p99) 902 ms
+95th percentile (p95) 723 ms
+99th percentile (p99) 901 ms
 Handed to fallback route 84 (0.07%)
-Score calls / choice calls 73,136 / 54,943
+Score calls / choice calls 73,390 / 55,197
 Fallback means the typed model did not return a usable verdict and the call site used its backup route. It measures availability, not correctness. I do not have a labelled truth set for these decisions, so I do not report an accuracy figure for my own data.
 ## What it replaced
 Status Call sites
@@ -551,14 +551,14 @@ Rejected after review 1
 A call site is one place in my code that asks for a decision. One site can ask more than one type of question. These are counts of call sites, not measured before-and-after savings.
 ## Where the decisions come from
 Decision family Decisions Share Previous route
-A private work workflow 101,800 79% Chat model call
+A private work workflow 102,308 80% Chat model call
 Research headline relevance 25,891 20% Chat model call
 Everything else (memory curation, email category, next action, model tier choice) 388 0.3% Chat model call or fixed rule
 About three quarters of all decisions come from one private workflow in my work. I report its volume and nothing else about it.
 ## What it costs
-On a measured sample of 14,821 calls since 7 Oct 2026, the typed decision layer processed 8,746,959 input tokens and 1,649,570 output tokens (10,396,529 total tokens, about 701 tokens per call) and cost $0.3674, an average of about $0.0638 per day.
+On a measured sample of 15,075 calls since 7 Oct 2026, the typed decision layer processed 8,896,331 input tokens and 1,678,045 output tokens (10,574,376 total tokens, about 701 tokens per call) and cost $0.3736, an average of about $0.0637 per day.
 Output tokens are free on this service; list price was $0.042 per million input tokens.
-Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 128,079 decisions were handled by this layer instead of calling a chat model.
+Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 128,587 decisions were handled by this layer instead of calling a chat model.
 ## Where I never use it
 A typed model is probabilistic, so I exclude it by file from anything irreversible or trust critical. It never decides:
 Sending email or messages
@@ -574,14 +574,14 @@ The current service runs on limited credit, so I am testing a free and local typ
 Decisions that matter stay deterministic or come to me because a cheap wrong answer that cannot be undone is not cheap.
 How typed decisions fit into my broader cost strategy is documented in the savings ladder on Model routing and tiered compute
 ## Method note
-Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (14,821 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
+Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (15,075 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
 
 
 # How my agents remember: five layers of memory I can read and edit
 Source: https://krishnendu.me/work/memory/
 
 ## How my agents remember: five layers of memory I can read and edit
-How 10 agents on one Azure server remember what matters across months of daily work. Small notes I can read and edit keep the active rules fresh, while full searchable history on my own server preserves every past conversation.
+How 9 agents on one Azure server remember what matters across months of daily work. Small notes I can read and edit keep the active rules fresh, while full searchable history on my own server preserves every past conversation.
 The Core Difference: Hosted AI memory lives on a provider's servers in its format; I can view or delete entries but not version, script or move the files. Mine is split into five layers I own. What must survive permanently sits in plain Markdown files with strict character caps, so I can open, audit and edit them in seconds with any text editor. Past conversation history is kept in a local SQLite database on my own server (LCM-X), allowing agents to search earlier turns without crowding their active working window.
 Production platform
 Hermes Agent on Azure VPS · SQLite WAL · Markdown
@@ -590,9 +590,9 @@ Short curated files for permanent rules · Searchable database for history
 Human oversight
 Agent operations run with human approval gates for irreversible actions
 5 Memory layers
-10 Agents
+9 Agents
 2,200 Char cap on notes
-340,793 Messages in history
+342,591 Messages in history
 ## Architecture: the five layer hierarchy
 Each layer has one specific job, one retention rule, one size budget, and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.
 Diagram A. Five layer memory architecture. Only L1 is read directly by the model. L3 and L4 load in full, L5 skills load on demand when a task matches, and older history is compacted into lcm.db for search and recall.
@@ -604,7 +604,7 @@ L1 Session window and system prompt: The live working desk. Holds the system pro
 L2 Ephemeral scratch: The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.
 L3 Curated persistent memory: The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.
 L4 Curated knowledge base: The reference library. 16 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.
-L5 Procedural skills library: The workshop tool rack. 516 SKILL.md files (250 distinct skills) across the router and 9 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.
+L5 Procedural skills library: The workshop tool rack. 516 SKILL.md files (250 distinct skills) across the router and 8 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.
 ## Layer specifications
 Memory layer specifications
 Layer
@@ -646,7 +646,7 @@ Loaded when a task matches; configuration drift audited hourly by the infrastruc
 LCM-X (beneath L1)
 Full history of one agent; each agent has its own lcm.db
 Permanent raw rows; removal only by an explicit owner purge
-Disk; 340,793 raw messages in the router agent's store
+Disk; 342,591 raw messages in the router agent's store
 SQLite in WAL mode with FTS5 indexes
 lcm_grep, lcm_recall, lcm_expand
 ## Curation, human approval gates, and rollback
@@ -661,7 +661,7 @@ In addition, an automated hourly job backs up agent state and memory files, and 
 ## LCM-X: lossless context memory
 LCM-X operates beneath L1. Every message sent or received is recorded once in lcm.db with an immutable store_id. When the active context window fills up, LCM-X compacts older messages into a depth 0 summary node that references the exact store_ids it summarizes. When multiple depth 0 nodes accumulate, they compact into a depth 1 node. This creates a clean directed acyclic graph where summaries always link back to the exact source messages, and compaction never deletes or alters raw history.
 Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.
-Compaction: The router agent's database currently holds 340,793 messages from 216 sessions and 172 summary nodes (170 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
+Compaction: The router agent's database currently holds 342,591 messages from 221 sessions and 184 summary nodes (182 at depth 0, 2 at depth 1). Maximum depth currently in use: 1.
 FTS5 search: SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.
 Lossless expansion: If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.
 Concurrent WAL mode: SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.
@@ -701,7 +701,7 @@ Skill files
 find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l
 declared, verified 7 Oct 2026
 Agents
-10
+9
 router plus ls -d ~/.hermes/profiles/*/
 probed at build
 lcm.db journal mode
@@ -709,22 +709,22 @@ wal
 sqlite3 lcm.db 'PRAGMA journal_mode;'
 probed at build
 Raw messages
-340,793 across 216 sessions
+342,591 across 221 sessions
 SELECT COUNT(*) FROM messages;
 probed at build
 Summary nodes
-172 (170 at depth 0, 2 at depth 1)
+184 (182 at depth 0, 2 at depth 1)
 SELECT depth, COUNT(*) FROM summary_nodes GROUP BY depth;
 probed at build
 Dangling references
-0 of 12,854
+0 of 13,471
 integrity query below
 probed at build
 Host
 Azure VPS
 uname -r contains azure
 probed at build
-Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 13 Oct 2026: 0 dangling references out of 12,854.
+Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 13 Oct 2026: 0 dangling references out of 13,471.
 SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
 WHERE (s.source_type = 'messages'
 AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
@@ -846,20 +846,20 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-12T18:30:45Z · Tracking window: 2026-09-13 to 2026-10-13 ( 31 days). The window starts on 2026-09-13, the first day any source logged tokens.
-7.71 B
+Last probed: 2026-10-12T20:56:51Z · Tracking window: 2026-09-13 to 2026-10-13 ( 31 days). The window starts on 2026-09-13, the first day any source logged tokens.
+7.78 B
 Total tokens across 3 sources
 89.2%
 Prompt cache hit rate
-48.8 M
+49.2 M
 Generated output (0.63%)
-$3,927.90
+$3,948.74
 List price equivalent (USD)
 ## Where the tokens went
-Fresh input 618.6 M 8.0%
-Cached read 6.84 B 88.6%
-Cache write 208.4 M 2.7%
-Output 48.8 M 0.63%
+Fresh input 625.7 M 8.0%
+Cached read 6.89 B 88.6%
+Cache write 208.6 M 2.7%
+Output 49.2 M 0.63%
 Each token is counted once. Cached reads are tokens the model read again from a stored prefix instead of from scratch. Cache writes are tokens the model read and also stored for reuse. Output is everything a model generated; reasoning sits inside output and is not a fifth slice. The output segment is drawn at a minimum width so it stays visible.
 Token volume by component
 Component
@@ -867,23 +867,23 @@ Tokens
 Share of total
 Description
 Fresh input
-618,560,141
-8.02%
+625,720,286
+8.04%
 Tokens sent to models without a provider cache hit
 Cache read
-6,837,319,569
-88.65%
+6,894,335,397
+88.64%
 Tokens read from provider prompt cache at discounted rates
 Cache creation
-208,425,344
-2.70%
+208,551,885
+2.68%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-48,811,660
+49,179,642
 0.63%
 Generated completion tokens (includes 4,498,788 reasoning tokens on supported models)
 Total
-7,713,116,714
+7,777,787,210
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -901,14 +901,14 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-64,330
-617,811,446
-4,942,060,307
+65,335
+624,971,551
+4,998,892,001
 0
-30,966,559
-5,590,838,312
+31,224,740
+5,655,088,292
 88.9%
-$2,012.89
+$2,033.73
 Hermes direct
 my runtime calling Claude directly on a subscription
 9,509
@@ -921,24 +921,24 @@ my runtime calling Claude directly on a subscription
 $1,915.01
 Claude Code
 the CLI, read from its own transcripts
-1,824
-43,093
-269,341,602
-9,658,633
-6,950,212
-285,993,540
+1,860
+43,133
+269,525,736
+9,785,174
+7,060,013
+286,414,056
 96.5%
 n/r
 Total
 All three telemetry streams combined
-75,663
-618,560,141
-6,837,319,569
-208,425,344
-48,811,660
-7,713,116,714
+76,704
+625,720,286
+6,894,335,397
+208,551,885
+49,179,642
+7,777,787,210
 89.2%
-$3,927.90
+$3,948.74
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -956,58 +956,58 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-59,426
-572,984,235
-4,676,538,598
+60,429
+580,143,994
+4,733,370,292
 n/r
-29,345,540
-5,278,868,373
-68.44%
+29,602,217
+5,343,116,503
+68.70%
 89.1%
-$1,798.17
+$1,818.97
 Claude Opus
 claude_code, hermes, ninerouter
-8,251
-463,041
-1,487,596,824
+8,269
+463,419
+1,487,763,742
 n/r
-12,207,152
-1,652,731,019
-21.43%
+12,318,403
+1,653,095,066
+21.25%
 90.7%
 n/r
 Claude Sonnet
 claude_code, hermes, ninerouter
-6,322
-36,713,451
-667,261,905
+6,324
+36,713,455
+667,270,513
 n/r
-3,704,655
-759,789,607
-9.85%
+3,704,663
+759,818,360
+9.77%
 88.2%
 n/r
 Other
 claude_code, ninerouter
-776
+792
 2,799,798
 5,034,018
 n/r
 3,473,960
 15,129,396
-0.20%
+0.19%
 43.2%
 n/r
 Claude Haiku
 claude_code, ninerouter
-699
-3,401,822
-25,949
+701
+3,401,826
+34,557
 n/r
-48,886
-3,506,783
+48,932
+3,536,349
 0.05%
-0.8%
+1.0%
 n/r
 GPT
 ninerouter
@@ -1033,15 +1033,15 @@ n/r
 $0.66
 Total
 All model families combined
-75,663
-618,560,141
-6,837,319,569
-208,425,344
-48,811,660
-7,713,116,714
+76,704
+625,720,286
+6,894,335,397
+208,551,885
+49,179,642
+7,777,787,210
 100.00%
 89.2%
-$3,927.90
+$3,948.74
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 769.5 M tokens on 7 Oct 2026.
@@ -1052,10 +1052,10 @@ Wed
 Fri
 Sun
 0
-<65.0 M
-<199.9 M
-<448.0 M
-448.0 M+
+<64.7 M
+<191.1 M
+<409.7 M
+409.7 M+
 Mon 12 Oct · 388.5M total · fresh 33.3M · cached 354.2M · write 0 · output 1.0M · 4,583 calls
 Darker cells carry more tokens. Select a day to see its split. The split barely moves from day to day; the volume does, and that is what the grid is for. Today is partial.
 Last 14 days as a table
@@ -1159,9 +1159,14 @@ Mon 12 Oct
 1,022,860
 4,583
 Tue 13 Oct (partial)
-0
+64,670,496
+7,160,145
+57,015,828
+126,541
+367,982
+1,041
 ## List price vs subscription
-At published list prices this volume comes to about $3,927.90 USD: $2,012.89 for proxied calls as computed by the proxy, and $1,915.01 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $3,948.74 USD: $2,033.73 for proxied calls as computed by the proxy, and $1,915.01 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 89.2% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
