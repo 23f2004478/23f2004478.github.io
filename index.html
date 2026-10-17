@@ -666,6 +666,38 @@
       </div>
     </div>
 
+    <figure class="routing-compact" style="max-width:380px;margin:var(--s6, 1.5rem) 0">
+      <a href="/work/routing/" class="routing-compact-link" aria-label="Model routing architecture, full diagram">
+        <svg id="rt-compact" class="dg compact" viewBox="0 0 360 362" width="100%" role="img" aria-labelledby="rt-compact-t rt-compact-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-compact-t">Model ladder: first rung that can do the task</title><desc id="rt-compact-d">Six rungs, tried in order: a script, Gemini 3.8 Flash low, Gemini Flash medium, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only.</desc><defs><marker id="rt-compact-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--ink)"/></marker></defs><rect x="1" y="1" width="358" height="360" rx="12" fill="var(--box)" stroke="var(--rule)"/>
+<text x="18" y="25" font-size="13" font-weight="700" fill="var(--muted)" letter-spacing="1">FIRST RUNG THAT CAN DO THE TASK</text>
+<rect x="16" y="38" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
+<text x="30" y="67" font-size="18" font-weight="700" fill="var(--accent)">1</text>
+<text x="58" y="57" font-size="14.5" fill="var(--muted)">A script can do it</text>
+<text x="58" y="75" font-size="15" font-weight="600" fill="var(--ink)">Script, zero LLM calls</text>
+<rect x="16" y="90" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+<text x="30" y="119" font-size="18" font-weight="700" fill="var(--accent)">2</text>
+<text x="58" y="109" font-size="14.5" fill="var(--muted)">Bulk read-only work</text>
+<text x="58" y="127" font-size="15" font-weight="600" fill="var(--ink)">Gemini 3.8 Flash, low</text>
+<rect x="16" y="142" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+<text x="30" y="171" font-size="18" font-weight="700" fill="var(--accent)">3</text>
+<text x="58" y="161" font-size="14.5" fill="var(--muted)">Edit a script can check</text>
+<text x="58" y="179" font-size="15" font-weight="600" fill="var(--ink)">Gemini Flash, medium</text>
+<rect x="16" y="194" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+<text x="30" y="223" font-size="18" font-weight="700" fill="var(--accent)">4</text>
+<text x="58" y="213" font-size="14.5" fill="var(--muted)">Ungated edit, synthesis, software</text>
+<text x="58" y="231" font-size="15" font-weight="600" fill="var(--ink)">Claude Sonnet 5.5</text>
+<rect x="16" y="246" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+<text x="30" y="275" font-size="18" font-weight="700" fill="var(--accent)">5</text>
+<text x="58" y="265" font-size="14.5" fill="var(--muted)">Critical judgment</text>
+<text x="58" y="283" font-size="15" font-weight="600" fill="var(--ink)">Claude Opus 5.5</text>
+<rect x="16" y="298" width="328" height="46" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
+<text x="30" y="327" font-size="18" font-weight="700" fill="var(--accent)">6</text>
+<text x="58" y="317" font-size="14.5" fill="var(--muted)">Novel or irreversible plan</text>
+<text x="58" y="335" font-size="15" font-weight="600" fill="var(--ink)">Fable, max, consult only</text></svg>
+      </a>
+      <figcaption class="small muted">Each task takes the first rung that can do it. <a href="/work/routing/">See the full routing diagram</a>.</figcaption>
+    </figure>
+
     <h3 class="sub-h">Six case studies</h3>
     <ul class="rows" role="list">
       <li>
@@ -678,7 +710,7 @@
       <li>
         <div>
           <h3><a href="/work/routing/">Model routing and tiered compute</a></h3>
-          <p>One local gateway in front of several model providers, with fallback. Plain scripts do exact calculations before any model is called.</p>
+          <p>The cheapest model that holds quality wins. I run scripts first, then Gemini Flash tiers, Claude Sonnet 5.5, and Opus 5.5 for critical judgment. Fable is consult only.</p>
         </div>
         <div class="fact mono">TIERED COMPUTE</div>
       </li>
