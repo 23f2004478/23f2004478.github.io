@@ -206,186 +206,186 @@
 
     <h2>How the Gateway Pools Models</h2>
     <figure class="fig" id="fig-routing-arch">
-      <svg id="rt-wide" class="dg wide" viewBox="0 0 900 1027" width="100%" role="img" aria-labelledby="rt-wide-t rt-wide-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-wide-t">How a request is routed across models</title><desc id="rt-wide-d">A request reaches a hub that only triages and routes. Eight standing domain agents own the work. They spawn short-lived leaf workers. Each task takes the first rung of a six-step ladder that can do it: script, Gemini 3.8 Flash low, Gemini Flash medium behind a script gate, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only. Models come from a 9router pool, Claude direct, and Fable. An hourly health audit and a monthly Gemini quality audit review the setup.</desc><defs><marker id="rt-wide-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--ink)"/></marker></defs><rect x="1" y="1" width="898" height="118" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="25" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">ENTRY AND HUB</text>
-<rect x="20" y="35" width="220" height="66" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="130.0" y="64.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Request</text>
-<text x="130.0" y="83.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">message or scheduled job</text>
-<line x1="240" y1="68" x2="296" y2="68" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-wide-a)"/>
-<rect x="300" y="35" width="580" height="66" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
-<text x="590.0" y="55.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Hub (depth 0)</text>
-<text x="590.0" y="74.0" text-anchor="middle" font-size="14.5" fill="var(--muted)">Triages and routes by task card</text>
-<text x="590.0" y="93.0" text-anchor="middle" font-size="14.5" fill="var(--muted)">Never writes a domain artifact</text>
-<line x1="450" y1="119" x2="450" y2="147" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-wide-a)"/>
-<rect x="1" y="147" width="898" height="148" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="171" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">8 STANDING DOMAIN AGENTS, ONE WRITER PER ARTIFACT</text>
-<rect x="20" y="185" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="120.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Academics</text>
-<rect x="240" y="185" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="340.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Career</text>
-<rect x="460" y="185" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="560.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Finance</text>
-<rect x="680" y="185" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="780.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Personal ops</text>
-<rect x="20" y="239" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="120.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Socials</text>
-<rect x="240" y="239" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="340.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Consulting</text>
-<rect x="460" y="239" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="560.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Infrastructure</text>
-<rect x="680" y="239" width="200" height="44" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="780.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Private</text>
-<line x1="450" y1="295" x2="450" y2="323" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-wide-a)"/>
-<rect x="1" y="323" width="898" height="112" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="347" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">EPHEMERAL LEAF WORKERS (DEPTH 2), SPAWNED BY AN AGENT</text>
-<rect x="20" y="361" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="153.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Research and extraction</text>
-<text x="153.0" y="404.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">read only</text>
-<rect x="310" y="361" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="443.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Review</text>
-<text x="443.0" y="404.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">reads and reviews only</text>
-<rect x="600" y="361" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="733.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Writer</text>
-<text x="733.0" y="404.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">sole writer, if used</text>
-<line x1="450" y1="435" x2="450" y2="463" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-wide-a)"/>
-<rect x="1" y="463" width="898" height="292" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="487" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">MODEL LADDER: STOP AT THE FIRST YES</text>
-<rect x="20" y="501" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
-<text x="38" y="525" font-size="16" font-weight="700" fill="var(--accent)">1</text>
-<text x="66" y="525" font-size="15.5" fill="var(--ink)">A script can do it</text>
-<text x="862" y="525" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Script, zero LLM calls</text>
-<rect x="20" y="543" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="38" y="567" font-size="16" font-weight="700" fill="var(--accent)">2</text>
-<text x="66" y="567" font-size="15.5" fill="var(--ink)">Bulk read-only or known-shape work</text>
-<text x="862" y="567" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Gemini 3.8 Flash, low</text>
-<rect x="20" y="585" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="38" y="609" font-size="16" font-weight="700" fill="var(--accent)">3</text>
-<text x="66" y="609" font-size="15.5" fill="var(--ink)">Edit a script can check</text>
-<text x="862" y="609" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Gemini Flash, medium</text>
-<rect x="20" y="627" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="38" y="651" font-size="16" font-weight="700" fill="var(--accent)">4</text>
-<text x="66" y="651" font-size="15.5" fill="var(--ink)">Ungated edit, synthesis, software</text>
-<text x="862" y="651" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Claude Sonnet 5.5</text>
-<rect x="20" y="669" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="38" y="693" font-size="16" font-weight="700" fill="var(--accent)">5</text>
-<text x="66" y="693" font-size="15.5" fill="var(--ink)">Critical judgment</text>
-<text x="862" y="693" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Claude Opus 5.5</text>
-<rect x="20" y="711" width="860" height="36" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="38" y="735" font-size="16" font-weight="700" fill="var(--accent)">6</text>
-<text x="66" y="735" font-size="15.5" fill="var(--ink)">Novel or irreversible plan</text>
-<text x="862" y="735" text-anchor="end" font-size="15.5" font-weight="600" fill="var(--ink)">Fable, max, consult only</text>
-<line x1="450" y1="755" x2="450" y2="783" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-wide-a)"/>
-<rect x="1" y="783" width="898" height="112" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="807" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">WHERE THE MODELS RUN</text>
-<rect x="20" y="821" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="153.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">9router pool</text>
-<text x="153.0" y="864.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">Gemini Flash, with backups</text>
-<rect x="310" y="821" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="443.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Claude direct</text>
-<text x="443.0" y="864.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">Sonnet 5.5 and Opus 5.5</text>
-<rect x="600" y="821" width="266" height="56" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="4 3"/>
-<text x="733.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Fable</text>
-<text x="733.0" y="864.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">max effort, consult only</text>
-<rect x="1" y="913" width="898" height="112" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="937" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">REVIEW OF THE SETUP ITSELF</text>
-<rect x="20" y="951" width="410" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="225.0" y="975.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Health audit, hourly</text>
-<text x="225.0" y="994.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">checks routing and drift</text>
-<rect x="470" y="951" width="410" height="56" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="675.0" y="975.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Gemini quality audit, monthly</text>
-<text x="675.0" y="994.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">flags defects in Gemini output</text></svg>
-<svg id="rt-narrow" class="dg narrow" viewBox="0 0 360 1735" width="100%" role="img" aria-labelledby="rt-narrow-t rt-narrow-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-narrow-t">How a request is routed across models</title><desc id="rt-narrow-d">A request reaches a hub that only triages and routes. Eight standing domain agents own the work. They spawn short-lived leaf workers. Each task takes the first rung of a six-step ladder that can do it: script, Gemini 3.8 Flash low, Gemini Flash medium behind a script gate, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only. Models come from a 9router pool, Claude direct, and Fable. An hourly health audit and a monthly Gemini quality audit review the setup.</desc><defs><marker id="rt-narrow-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="var(--ink)"/></marker></defs><rect x="1" y="1" width="358" height="196" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="25" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">ENTRY AND HUB</text>
-<rect x="20" y="35" width="320" height="52" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="57.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Request</text>
-<text x="180.0" y="76.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">message or scheduled job</text>
-<line x1="180" y1="87" x2="180" y2="101" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
-<rect x="20" y="101" width="320" height="80" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="2"/>
-<text x="180.0" y="128.0" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Hub (depth 0)</text>
-<text x="180.0" y="147.0" text-anchor="middle" font-size="14.5" fill="var(--muted)">Triages and routes by task card</text>
-<text x="180.0" y="166.0" text-anchor="middle" font-size="14.5" fill="var(--muted)">Never writes a domain artifact</text>
-<line x1="180" y1="197" x2="180" y2="219" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
-<rect x="1" y="219" width="358" height="282" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="243" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">8 STANDING DOMAIN AGENTS</text>
-<text x="18" y="261" font-size="14.5" fill="var(--muted)">One writer per artifact</text>
-<rect x="20" y="273" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="95.0" y="301.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Academics</text>
-<rect x="190" y="273" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="265.0" y="301.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Career</text>
-<rect x="20" y="329" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="95.0" y="357.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Finance</text>
-<rect x="190" y="329" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="265.0" y="357.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Personal ops</text>
-<rect x="20" y="385" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="95.0" y="413.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Socials</text>
-<rect x="190" y="385" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="265.0" y="413.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Consulting</text>
-<rect x="20" y="441" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="95.0" y="469.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Infrastructure</text>
-<rect x="190" y="441" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="265.0" y="469.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Private</text>
-<line x1="180" y1="501" x2="180" y2="523" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
-<rect x="1" y="523" width="358" height="252" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="547" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">EPHEMERAL LEAF WORKERS</text>
-<text x="18" y="565" font-size="14.5" fill="var(--muted)">Depth 2, spawned by an agent</text>
-<rect x="20" y="577" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="600.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Research and extraction</text>
-<text x="180.0" y="619.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">read only</text>
-<rect x="20" y="639" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="662.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Review</text>
-<text x="180.0" y="681.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">reads and reviews only</text>
-<rect x="20" y="701" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="724.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Writer</text>
-<text x="180.0" y="743.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">sole writer, if used</text>
-<line x1="180" y1="775" x2="180" y2="797" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
-<rect x="1" y="797" width="358" height="502" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="821" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">MODEL LADDER</text>
-<rect x="20" y="835" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.5"/>
-<text x="34" y="862" font-size="18" font-weight="700" fill="var(--accent)">1</text>
-<text x="60" y="861" font-size="15" fill="var(--ink)">A script can do it</text>
+      <svg id="rt-wide" class="dg wide" viewBox="0 0 900 1027" width="100%" role="img" aria-labelledby="rt-wide-t rt-wide-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-wide-t">How a request is routed across models</title><desc id="rt-wide-d">A request reaches a hub that only triages and routes. Eight standing domain agents own the work. They spawn short-lived leaf workers. Each task takes the first rung of a six-step ladder that can do it: script, Gemini 3.8 Flash low, Gemini Flash medium behind a script gate, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only. Models come from a 9router pool, Claude direct, and Fable. An hourly health audit and a monthly Gemini quality audit review the setup.</desc><defs><marker id="rt-wide-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" style="fill:var(--ink)"/></marker></defs><rect x="1" y="1" width="898" height="118" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="25" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">ENTRY AND HUB</text>
+<rect x="20" y="35" width="220" height="66" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="130.0" y="64.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Request</text>
+<text x="130.0" y="83.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">message or scheduled job</text>
+<line x1="240" y1="68" x2="296" y2="68"  stroke-width="1.5" marker-end="url(#rt-wide-a)" style="stroke:var(--ink)"/>
+<rect x="300" y="35" width="580" height="66" rx="8"  stroke="var(--accent)" stroke-width="2" style="fill:var(--paper)"/>
+<text x="590.0" y="55.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Hub (depth 0)</text>
+<text x="590.0" y="74.0" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Triages and routes by task card</text>
+<text x="590.0" y="93.0" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Never writes a domain artifact</text>
+<line x1="450" y1="119" x2="450" y2="147"  stroke-width="1.5" marker-end="url(#rt-wide-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="147" width="898" height="148" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="171" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">8 STANDING DOMAIN AGENTS, ONE WRITER PER ARTIFACT</text>
+<rect x="20" y="185" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="120.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Academics</text>
+<rect x="240" y="185" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="340.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Career</text>
+<rect x="460" y="185" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="560.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Finance</text>
+<rect x="680" y="185" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="780.0" y="213.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Personal ops</text>
+<rect x="20" y="239" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="120.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Socials</text>
+<rect x="240" y="239" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="340.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Consulting</text>
+<rect x="460" y="239" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="560.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Infrastructure</text>
+<rect x="680" y="239" width="200" height="44" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="780.0" y="267.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Private</text>
+<line x1="450" y1="295" x2="450" y2="323"  stroke-width="1.5" marker-end="url(#rt-wide-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="323" width="898" height="112" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="347" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">EPHEMERAL LEAF WORKERS (DEPTH 2), SPAWNED BY AN AGENT</text>
+<rect x="20" y="361" width="266" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="153.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Research and extraction</text>
+<text x="153.0" y="404.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">read only</text>
+<rect x="310" y="361" width="266" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="443.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Review</text>
+<text x="443.0" y="404.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">reads and reviews only</text>
+<rect x="600" y="361" width="266" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="733.0" y="385.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Writer</text>
+<text x="733.0" y="404.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">sole writer, if used</text>
+<line x1="450" y1="435" x2="450" y2="463"  stroke-width="1.5" marker-end="url(#rt-wide-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="463" width="898" height="292" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="487" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">MODEL LADDER: STOP AT THE FIRST YES</text>
+<rect x="20" y="501" width="860" height="36" rx="6"  stroke="var(--accent)" stroke-width="1.5" style="fill:var(--paper)"/>
+<text x="38" y="525" font-size="16" font-weight="700" style="fill:var(--accent)">1</text>
+<text x="66" y="525" font-size="15.5" style="fill:var(--ink)">A script can do it</text>
+<text x="862" y="525" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Script, zero LLM calls</text>
+<rect x="20" y="543" width="860" height="36" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="38" y="567" font-size="16" font-weight="700" style="fill:var(--accent)">2</text>
+<text x="66" y="567" font-size="15.5" style="fill:var(--ink)">Bulk read-only or known-shape work</text>
+<text x="862" y="567" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Gemini 3.8 Flash, low</text>
+<rect x="20" y="585" width="860" height="36" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="38" y="609" font-size="16" font-weight="700" style="fill:var(--accent)">3</text>
+<text x="66" y="609" font-size="15.5" style="fill:var(--ink)">Edit a script can check</text>
+<text x="862" y="609" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Gemini Flash, medium</text>
+<rect x="20" y="627" width="860" height="36" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="38" y="651" font-size="16" font-weight="700" style="fill:var(--accent)">4</text>
+<text x="66" y="651" font-size="15.5" style="fill:var(--ink)">Ungated edit, synthesis, software</text>
+<text x="862" y="651" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Claude Sonnet 5.5</text>
+<rect x="20" y="669" width="860" height="36" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="38" y="693" font-size="16" font-weight="700" style="fill:var(--accent)">5</text>
+<text x="66" y="693" font-size="15.5" style="fill:var(--ink)">Critical judgment</text>
+<text x="862" y="693" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Claude Opus 5.5</text>
+<rect x="20" y="711" width="860" height="36" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="38" y="735" font-size="16" font-weight="700" style="fill:var(--accent)">6</text>
+<text x="66" y="735" font-size="15.5" style="fill:var(--ink)">Novel or irreversible plan</text>
+<text x="862" y="735" text-anchor="end" font-size="15.5" font-weight="600" style="fill:var(--ink)">Fable, max, consult only</text>
+<line x1="450" y1="755" x2="450" y2="783"  stroke-width="1.5" marker-end="url(#rt-wide-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="783" width="898" height="112" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="807" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">WHERE THE MODELS RUN</text>
+<rect x="20" y="821" width="266" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="153.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">9router pool</text>
+<text x="153.0" y="864.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Gemini Flash, with backups</text>
+<rect x="310" y="821" width="266" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="443.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Claude direct</text>
+<text x="443.0" y="864.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Sonnet 5.5 and Opus 5.5</text>
+<rect x="600" y="821" width="266" height="56" rx="8"  stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="4 3" style="fill:var(--paper)"/>
+<text x="733.0" y="845.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Fable</text>
+<text x="733.0" y="864.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">max effort, consult only</text>
+<rect x="1" y="913" width="898" height="112" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="937" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">REVIEW OF THE SETUP ITSELF</text>
+<rect x="20" y="951" width="410" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="225.0" y="975.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Health audit, hourly</text>
+<text x="225.0" y="994.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">checks routing and drift</text>
+<rect x="470" y="951" width="410" height="56" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="675.0" y="975.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Gemini quality audit, monthly</text>
+<text x="675.0" y="994.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">flags defects in Gemini output</text></svg>
+<svg id="rt-narrow" class="dg narrow" viewBox="0 0 360 1735" width="100%" role="img" aria-labelledby="rt-narrow-t rt-narrow-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-narrow-t">How a request is routed across models</title><desc id="rt-narrow-d">A request reaches a hub that only triages and routes. Eight standing domain agents own the work. They spawn short-lived leaf workers. Each task takes the first rung of a six-step ladder that can do it: script, Gemini 3.8 Flash low, Gemini Flash medium behind a script gate, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only. Models come from a 9router pool, Claude direct, and Fable. An hourly health audit and a monthly Gemini quality audit review the setup.</desc><defs><marker id="rt-narrow-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" style="fill:var(--ink)"/></marker></defs><rect x="1" y="1" width="358" height="196" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="25" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">ENTRY AND HUB</text>
+<rect x="20" y="35" width="320" height="52" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="57.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Request</text>
+<text x="180.0" y="76.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">message or scheduled job</text>
+<line x1="180" y1="87" x2="180" y2="101"  stroke-width="1.5" marker-end="url(#rt-narrow-a)" style="stroke:var(--ink)"/>
+<rect x="20" y="101" width="320" height="80" rx="8"  stroke="var(--accent)" stroke-width="2" style="fill:var(--paper)"/>
+<text x="180.0" y="128.0" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Hub (depth 0)</text>
+<text x="180.0" y="147.0" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Triages and routes by task card</text>
+<text x="180.0" y="166.0" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Never writes a domain artifact</text>
+<line x1="180" y1="197" x2="180" y2="219"  stroke-width="1.5" marker-end="url(#rt-narrow-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="219" width="358" height="282" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="243" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">8 STANDING DOMAIN AGENTS</text>
+<text x="18" y="261" font-size="14.5" style="fill:var(--muted)">One writer per artifact</text>
+<rect x="20" y="273" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="95.0" y="301.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Academics</text>
+<rect x="190" y="273" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="265.0" y="301.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Career</text>
+<rect x="20" y="329" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="95.0" y="357.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Finance</text>
+<rect x="190" y="329" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="265.0" y="357.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Personal ops</text>
+<rect x="20" y="385" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="95.0" y="413.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Socials</text>
+<rect x="190" y="385" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="265.0" y="413.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Consulting</text>
+<rect x="20" y="441" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="95.0" y="469.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Infrastructure</text>
+<rect x="190" y="441" width="150" height="46" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="265.0" y="469.5" text-anchor="middle" font-size="15" font-weight="600" style="fill:var(--ink)">Private</text>
+<line x1="180" y1="501" x2="180" y2="523"  stroke-width="1.5" marker-end="url(#rt-narrow-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="523" width="358" height="252" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="547" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">EPHEMERAL LEAF WORKERS</text>
+<text x="18" y="565" font-size="14.5" style="fill:var(--muted)">Depth 2, spawned by an agent</text>
+<rect x="20" y="577" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="600.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Research and extraction</text>
+<text x="180.0" y="619.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">read only</text>
+<rect x="20" y="639" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="662.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Review</text>
+<text x="180.0" y="681.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">reads and reviews only</text>
+<rect x="20" y="701" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="724.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Writer</text>
+<text x="180.0" y="743.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">sole writer, if used</text>
+<line x1="180" y1="775" x2="180" y2="797"  stroke-width="1.5" marker-end="url(#rt-narrow-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="797" width="358" height="502" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="821" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">MODEL LADDER</text>
+<rect x="20" y="835" width="320" height="68" rx="6"  stroke="var(--accent)" stroke-width="1.5" style="fill:var(--paper)"/>
+<text x="34" y="862" font-size="18" font-weight="700" style="fill:var(--accent)">1</text>
+<text x="60" y="861" font-size="15" style="fill:var(--ink)">A script can do it</text>
 <text x="60" y="885" font-size="15" font-weight="600" fill="var(--ink)">Script, zero LLM calls</text>
-<rect x="20" y="911" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="34" y="938" font-size="18" font-weight="700" fill="var(--accent)">2</text>
-<text x="60" y="933" font-size="15" fill="var(--ink)">Bulk read-only or</text>
-<text x="60" y="951" font-size="15" fill="var(--ink)">known-shape work</text>
+<rect x="20" y="911" width="320" height="68" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="34" y="938" font-size="18" font-weight="700" style="fill:var(--accent)">2</text>
+<text x="60" y="933" font-size="15" style="fill:var(--ink)">Bulk read-only or</text>
+<text x="60" y="951" font-size="15" style="fill:var(--ink)">known-shape work</text>
 <text x="60" y="971" font-size="15" font-weight="600" fill="var(--ink)">Gemini 3.8 Flash, low</text>
-<rect x="20" y="987" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="34" y="1014" font-size="18" font-weight="700" fill="var(--accent)">3</text>
-<text x="60" y="1013" font-size="15" fill="var(--ink)">Edit a script can check</text>
+<rect x="20" y="987" width="320" height="68" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="34" y="1014" font-size="18" font-weight="700" style="fill:var(--accent)">3</text>
+<text x="60" y="1013" font-size="15" style="fill:var(--ink)">Edit a script can check</text>
 <text x="60" y="1037" font-size="15" font-weight="600" fill="var(--ink)">Gemini Flash, medium</text>
-<rect x="20" y="1063" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="34" y="1090" font-size="18" font-weight="700" fill="var(--accent)">4</text>
-<text x="60" y="1085" font-size="15" fill="var(--ink)">Ungated edit, synthesis,</text>
-<text x="60" y="1103" font-size="15" fill="var(--ink)">software (via Claude Code)</text>
+<rect x="20" y="1063" width="320" height="68" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="34" y="1090" font-size="18" font-weight="700" style="fill:var(--accent)">4</text>
+<text x="60" y="1085" font-size="15" style="fill:var(--ink)">Ungated edit, synthesis,</text>
+<text x="60" y="1103" font-size="15" style="fill:var(--ink)">software (via Claude Code)</text>
 <text x="60" y="1123" font-size="15" font-weight="600" fill="var(--ink)">Claude Sonnet 5.5</text>
-<rect x="20" y="1139" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="34" y="1166" font-size="18" font-weight="700" fill="var(--accent)">5</text>
-<text x="60" y="1165" font-size="15" fill="var(--ink)">Critical judgment</text>
+<rect x="20" y="1139" width="320" height="68" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="34" y="1166" font-size="18" font-weight="700" style="fill:var(--accent)">5</text>
+<text x="60" y="1165" font-size="15" style="fill:var(--ink)">Critical judgment</text>
 <text x="60" y="1189" font-size="15" font-weight="600" fill="var(--ink)">Claude Opus 5.5</text>
-<rect x="20" y="1215" width="320" height="68" rx="6" fill="var(--paper)" stroke="var(--rule)" stroke-width="1"/>
-<text x="34" y="1242" font-size="18" font-weight="700" fill="var(--accent)">6</text>
-<text x="60" y="1241" font-size="15" fill="var(--ink)">Novel or irreversible plan</text>
+<rect x="20" y="1215" width="320" height="68" rx="6"  stroke="var(--rule)" stroke-width="1" style="fill:var(--paper)"/>
+<text x="34" y="1242" font-size="18" font-weight="700" style="fill:var(--accent)">6</text>
+<text x="60" y="1241" font-size="15" style="fill:var(--ink)">Novel or irreversible plan</text>
 <text x="60" y="1265" font-size="15" font-weight="600" fill="var(--ink)">Fable, max, consult only</text>
-<line x1="180" y1="1299" x2="180" y2="1321" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
-<rect x="1" y="1321" width="358" height="228" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="1345" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">WHERE THE MODELS RUN</text>
-<rect x="20" y="1359" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="1382.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">9router pool</text>
-<text x="180.0" y="1401.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">Gemini Flash, with backups</text>
-<rect x="20" y="1421" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="1444.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Claude direct</text>
-<text x="180.0" y="1463.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">Sonnet 5.5 and Opus 5.5</text>
-<rect x="20" y="1483" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="4 3"/>
-<text x="180.0" y="1506.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Fable</text>
-<text x="180.0" y="1525.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">max effort, consult only</text>
-<rect x="1" y="1567" width="358" height="166" rx="12" fill="var(--box)" stroke="var(--rule)"/>
-<text x="18" y="1591" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">REVIEW OF THE SETUP ITSELF</text>
-<rect x="20" y="1605" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="1628.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Health audit, hourly</text>
-<text x="180.0" y="1647.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">checks routing and drift</text>
-<rect x="20" y="1667" width="320" height="54" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
-<text x="180.0" y="1690.5" text-anchor="middle" font-size="16" font-weight="600" fill="var(--ink)">Gemini quality audit, monthly</text>
-<text x="180.0" y="1709.5" text-anchor="middle" font-size="14.5" fill="var(--muted)">flags defects in Gemini output</text></svg>
+<line x1="180" y1="1299" x2="180" y2="1321"  stroke-width="1.5" marker-end="url(#rt-narrow-a)" style="stroke:var(--ink)"/>
+<rect x="1" y="1321" width="358" height="228" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="1345" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">WHERE THE MODELS RUN</text>
+<rect x="20" y="1359" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="1382.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">9router pool</text>
+<text x="180.0" y="1401.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Gemini Flash, with backups</text>
+<rect x="20" y="1421" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="1444.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Claude direct</text>
+<text x="180.0" y="1463.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">Sonnet 5.5 and Opus 5.5</text>
+<rect x="20" y="1483" width="320" height="54" rx="8"  stroke="var(--accent)" stroke-width="1.25" stroke-dasharray="4 3" style="fill:var(--paper)"/>
+<text x="180.0" y="1506.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Fable</text>
+<text x="180.0" y="1525.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">max effort, consult only</text>
+<rect x="1" y="1567" width="358" height="166" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
+<text x="18" y="1591" font-size="14.5" font-weight="700"  letter-spacing="1" style="fill:var(--muted)">REVIEW OF THE SETUP ITSELF</text>
+<rect x="20" y="1605" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="1628.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Health audit, hourly</text>
+<text x="180.0" y="1647.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">checks routing and drift</text>
+<rect x="20" y="1667" width="320" height="54" rx="8"  stroke="var(--ink)" stroke-width="1.25" style="fill:var(--paper)"/>
+<text x="180.0" y="1690.5" text-anchor="middle" font-size="16" font-weight="600" style="fill:var(--ink)">Gemini quality audit, monthly</text>
+<text x="180.0" y="1709.5" text-anchor="middle" font-size="14.5" style="fill:var(--muted)">flags defects in Gemini output</text></svg>
       <figcaption>A request reaches a hub that only routes. Eight standing agents own the work and spawn short-lived workers. Each task takes the first rung of the ladder that can do it. The ladder is also written out as a numbered list below.</figcaption>
     </figure>
     <ul>
