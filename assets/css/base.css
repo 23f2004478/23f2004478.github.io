@@ -222,7 +222,10 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .evidence-dl{margin:var(--s4) 0;padding:0}
 .evidence-dl dt{font-weight:600;color:var(--ink);margin-top:var(--s4);font-size:1rem}
 .evidence-dl dd{margin:var(--s1) 0 var(--s3);color:var(--muted);font-size:.9375rem}
-.fig{margin:var(--s8) 0;max-width:100%;overflow-x:auto}
+.fig{margin:var(--s8) 0;max-width:100%;overflow-x:auto;border:1px solid var(--rule);border-radius:4px;padding:var(--s5)}
+@media (min-width:768px){.fig{padding:var(--s6)}}
+.fig .dg{margin-inline:auto}
+@media (max-width:767px){.fig:not(:has(.narrow,.topo-n)) svg.dg.wide{display:block!important;width:720px!important;min-width:720px;max-width:none!important}.fig:not(:has(.narrow,.topo-n)) svg.dg.wide[viewBox^="0 0 960"]{width:880px!important;min-width:880px}}
 .fig .dg{display:block;width:100%;height:auto;color:var(--ink);aspect-ratio:auto}
 .fig .dg.wide,.fig .dg.topo-w,.fig .dg.chart,.fig .dg.narrow,.fig .dg.topo-n{max-width:100%}
 .fig svg[width]{width:100%!important;height:auto!important;max-width:100%!important}
