@@ -140,12 +140,13 @@ Full eight step path on the platform page
 I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
 A router and 8 domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.
 Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. Build log
+Each task takes the first rung that can do it. See the full routing diagram .
 ## Six case studies
 ## Multi-agent operations platform
 Nine agents that hand work to each other on task cards, with a review step before anything risky.
 9 AGENTS
 ## Model routing and tiered compute
-One local gateway in front of several model providers, with fallback. Plain scripts do exact calculations before any model is called.
+The cheapest model that holds quality wins. I run scripts first, then Gemini Flash tiers, Claude Sonnet 5.5, and Opus 5.5 for critical judgment. Fable is consult only.
 TIERED COMPUTE
 ## How my agents remember: five layers of memory I can read and edit
 Curated long-term notes, plus LCM-X, which compacts long sessions into searchable summaries without deleting history.
