@@ -748,6 +748,14 @@
         window.requestAnimationFrame(function() {
           var show = window.scrollY > threshold;
           btn.classList.toggle('is-visible', show);
+          if (window.innerWidth < 768) {
+            var br = btn.getBoundingClientRect(), over = false, figs = d.querySelectorAll('.fig');
+            for (var i = 0; i < figs.length && !over; i++) {
+              var fr = figs[i].getBoundingClientRect();
+              over = fr.bottom > br.top - 8 && fr.top < br.bottom + 8 && fr.right > br.left - 8 && fr.left < br.right + 8;
+            }
+            btn.classList.toggle('is-over-fig', over);
+          }
           ticking = false;
         });
         ticking = true;
