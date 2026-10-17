@@ -28,7 +28,7 @@
 - Build log: https://krishnendu.me/log/
 
 ## Key Verified Facts
-- Multi-Agent Operations: 52 recurring scheduled jobs running across 9 agents (8 domain agents plus 1 router).
+- Multi-Agent Operations: 53 recurring scheduled jobs running across 9 agents (8 domain agents plus 1 router).
 - Human Approval Gate: Anything I would regret waits for my approval: sends, deletes and public pushes.
 - QualityKiosk Internship: 2 deterministic TypeScript estimation engines (1,027 lines), 136 unit tests (68 Excel parity), 18,456 standardized QA rows.
 - Research Publication: 74.19% recall on rare Confused emotion class using RoBERTa with SVMSMOTE, accepted for publication in Springer Nature proceedings, Smart Innovation, Systems and Technologies series, Scopus indexed (FICTA 2026).
@@ -460,35 +460,39 @@ Hermes Agent · Python · systemd · 9Router · Discord · Telegram · SQLite
 Source: https://krishnendu.me/work/routing/
 
 ## Model routing and tiered compute: local gateway with fallback resilience
-One gateway on my server in front of several model accounts, with backup models when one fails, and three effort levels for different kinds of work. Plain scripts handle deterministic computation before any model is invoked. Narrow yes or no and pick-one questions skip this table entirely; they go to my fast decision model .
+One gateway on my server in front of several model accounts, with backup models when one fails, and a six-step ladder that sends each task to the cheapest model that holds quality. Plain scripts handle exact computation before any model is invoked. Narrow yes or no and pick-one questions skip this table entirely; they go to my fast decision model .
 Gateway
 9Router gateway on my server
 Routing Strategy
-Backup models · 3 main effort levels (medium, high, max)
+Backup models · six-step ladder, cheapest model that holds quality
 Core Invariant
 Plain scripts run before any AI model
 ## Problem
 Directly binding agent workflows to a single AI provider causes brittle failures when rate limits or upstream outages occur. Furthermore, sending basic data extraction or mechanical formatting tasks to expensive models wastes tokens and increases latency.
 ## What I Built
 9Router gateway: A small service on my server that sits between most agents and the AI providers and moves a request to a backup model when one fails. Claude models are called directly.
-Fable, my maximum effort tier: When a task needs multi-file planning, design direction or a deep fact audit, it is sent there to produce a specification before any code is written.
+Fable, my maximum effort tier: Consulted only, never a default. When a task needs multi-file planning, design direction or a deep fact audit, it goes there to produce a specification before any code is written.
 Deterministic First Rule: Exact computations (mathematical formulas, file system queries, regex extractions) must execute in native Python or Bash before passing structured context to an LLM.
 ## How the Gateway Pools Models
+A request reaches a hub that only routes. Eight standing agents own the work and spawn short-lived workers. Each task takes the first rung of the ladder that can do it. The ladder is also written out as a numbered list below.
 9Router pooling: 9Router runs on the server itself and gives most agents one address for many models. Behind it sits a pool of providers; if one provider rate-limits or fails, the request moves to the next one, with Gemini Flash as the default backup.
 Cost tiering: Cheap, fast models take bulk work; the expensive model is reserved for steps where an error is costly. Plain scripts run first, so many tasks never reach a model. Cost figures are on the token ledger .
 ## Dynamic Routing and Complexity Tiering
-Tasks are routed dynamically across models based on task complexity, speed, and cost efficiency: Gemini Flash handles high-volume sweeps and lightweight tools, Claude Sonnet handles deterministic code generation and test suites, and Claude Opus handles deep multi-file reasoning and architectural verification.
-Gemini Flash: High-throughput sweeps, reading, scraping, telemetry, and lightweight tool handling.
-Claude Sonnet: Deterministic code generation, test suites, refactoring, and generator scripts.
-Claude Opus: Deep multi-file reasoning, verification gates, and quality audits.
-Fable: Architectural planning, design system direction, and exhaustive fact audits.
-Measured share of logged tokens: Gemini Flash 68.5%, Claude Opus 21.1%, Claude Sonnet 9.9%. Full table on the token ledger .
+The policy is simple: the cheapest model that holds quality wins. A task takes the first rung below that can do it and goes no higher.
+Script first, zero LLM calls. If a script can answer it, a script does.
+Gemini 3.8 Flash, low effort, for bulk read-only work and tasks with a known output shape.
+Gemini Flash, medium effort, only when a script gate checks the result.
+Claude Sonnet 5.5 for edits with no gate, for synthesis, and for software work, which goes through Claude Code.
+Claude Opus 5.5 for critical judgment.
+Fable at maximum effort, consulted only, for novel or irreversible plans.
+Around the ladder sit a few structural rules. One hub triages and routes and never writes a domain artifact. Eight standing domain agents each own their work, one writer per artifact. They spawn short-lived worker agents for research, review and drafting, and those workers disappear when the job ends. An hourly health audit (I call it medic) checks routing and drift. A monthly Gemini quality audit flags defects in Gemini output.
+Measured share of logged tokens: Gemini Flash 68.2%, Claude Opus 21.3%, Claude Sonnet 10.0%. Full table on the token ledger .
 ## How I keep model calls rare and cheap
 Large model calls are the most expensive operation in an agent platform. I use an ordered ladder of six techniques so that only tasks requiring deep reasoning reach larger models:
-Scripts first: 52 of 53 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.
-Typed decisions: Narrow categorical choices, relevance checks, and 0-to-1 scoring route to a fast decision model that answers in ~300 ms for fractions of a cent. Details are on Fast decisions .
-Smallest capable chat model: When a task requires natural language or tool use, it goes to the lowest tier capable of handling it (Gemini Flash for high-volume sweeps and lightweight tools, Claude Sonnet for deterministic code and tests, Claude Opus for deep multi-file reasoning). See the tier table above.
-Prompt caching: Repeated tool definitions, system prompts, and repository context are served from cache (89.6% cache hit rate across prompt tokens). Full accounting is on the Token ledger .
+Scripts first: 52 of 54 enabled scheduled jobs run as plain Python or Bash code with zero AI model calls. Exact mathematical sums, ledger arithmetic, and system health checks execute in native code.
+Narrow decisions: Narrow categorical choices, relevance checks, and 0-to-1 scoring route to a fast decision model that answers in ~300 ms for fractions of a cent. Details are on Fast decisions .
+Smallest capable chat model: When a task needs natural language or tool use, it takes the lowest rung of the ladder above that can handle it, from Gemini Flash up to Claude Opus.
+Prompt caching: Repeated tool definitions, system prompts, and repository context are served from cache (89.7% cache hit rate across prompt tokens). Full accounting is on the Token ledger .
 Context compression: Long conversations are compacted into structured summary nodes by a cheaper model (5 sessions compressed so far), keeping history searchable without sending full raw transcripts. Details are on Memory .
 Planner last: The top tier (Fable) is invoked only for high-leverage architectural planning, design direction, and exhaustive fact audits before writing code.
 No dollar reductions or token counts avoided are claimed here; these rungs show the technical architecture that keeps large model calls rare.
