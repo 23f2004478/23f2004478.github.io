@@ -1809,7 +1809,7 @@
   var d = document;
   function init() {
     var bar = d.getElementById('sticky-bar');
-    var hero = d.querySelector('.hero');
+    var hero = d.querySelector('.hero-actions') || d.querySelector('.hero');
     if (!bar || !hero || !('IntersectionObserver' in window)) return;
     var past = false, atEnd = false, typing = false;
     var root = d.documentElement;

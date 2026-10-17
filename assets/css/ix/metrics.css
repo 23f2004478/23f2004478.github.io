@@ -120,37 +120,17 @@
   color: var(--ink);
 }
 
-.hero-proof .metrics-hint {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  color: var(--muted);
-  margin: var(--s3) 0 0;
-  letter-spacing: 0.01em;
-  line-height: 1.35;
+.metric-info{position:absolute;top:10px;right:10px;width:16px;height:16px;border:1px solid var(--rule);border-radius:50%;font:italic 600 11px/14px var(--serif);text-align:center;color:var(--muted);pointer-events:none}
+.metric-card--compact .metric-summary:hover .metric-info{color:var(--accent);border-color:var(--accent)}
+@media (min-width:1024px){
+  .metrics-grid--compact{gap:var(--s4)}
+  .metric-card--compact{border:1px solid var(--rule);border-radius:6px;background:var(--box)}
+  .metric-card--compact .metric-summary{padding:var(--s6);min-height:0;gap:6px;height:100%;box-sizing:border-box;justify-content:center}
+  .metric-card--compact .metric-num{font-size:2rem}
+  .metric-card--compact .metric-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.04em}
+  .metric-info{top:12px;right:12px}
 }
-
-.hero-proof .metrics-footer {
-  margin-top: var(--s2);
-  padding-top: var(--s2);
-  border-top: 1px dashed var(--rule);
-}
-
-.hero-proof .metrics-footer-text {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin: 0;
-  line-height: 1.4;
-}
-
-.hero-proof .metrics-footer-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 0.75rem;
-}
-
-.hero-proof .metrics-footer-link:hover {
-  text-decoration: underline;
-}
+@media (max-width:1023px){.metric-info{top:2px;right:2px}}
 
 /* Metric Card & Details element */
 .metric-card {
