@@ -482,7 +482,7 @@ def render_home_card(entries):
     s = re.sub(re.escape(HOME_START) + ".*?" + re.escape(HOME_END), "", s, flags=re.S)
     if entries:
         e = entries[0]
-        card = ('%s<section class="wrap log-line" id="build-log" aria-labelledby="h-latest">'
+        card = ('%s<section class="wrap log-line" id="build-log" data-ix="reveal" aria-labelledby="h-latest">'
                 '<h2 id="h-latest" class="sr-only">Latest from the build log</h2>'
                 '<p><span class="muted">Build log, <time datetime="%s">%s</time>:</span> '
                 '<a href="%s">%s</a> <a class="log-all" href="/log/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>'
