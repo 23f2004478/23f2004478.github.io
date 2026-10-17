@@ -99,31 +99,30 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .hero-photo-wrap{display:flex;align-items:center;justify-content:center;flex:none;margin:0}
 .hero-avatar{width:48px;height:48px;object-fit:cover;border:1px solid var(--rule);padding:2px;background:var(--paper);border-radius:50%;flex:none;display:block}
 .hero-id-text{display:flex;flex-direction:column;gap:4px;min-width:0}
-.hero-name{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.25}
+.byline-name{margin:0;font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.25}
 .hero-chips{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .chip{font-family:var(--sans);font-size:.8125rem;font-weight:500;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:2px 8px;line-height:1.35;background:var(--paper);display:inline-flex;align-items:center;cursor:default;white-space:nowrap}
 .hero-h1{font-family:var(--serif);font-size:1.625rem;line-height:1.12;letter-spacing:-.01em;margin:0;text-wrap:balance;font-variation-settings:"opsz" 72}
-.hero-h1 .hero-line{display:block;font-weight:600;color:var(--ink)}
-.hero-h1 .hero-line.turn{display:block;font-weight:400;color:var(--accent);margin-top:3px}
+.hero-head{display:flex;flex-direction:column;gap:6px}
+.hero-h1{font-weight:600;color:var(--ink)}
+.hero-sub{margin:0;font-family:var(--serif);font-size:1.625rem;line-height:1.12;letter-spacing:-.01em;font-weight:400;color:var(--accent);text-wrap:balance;font-variation-settings:"opsz" 72}
 .hero-proof{border-top:1px solid var(--rule);padding-top:var(--s4);margin-top:var(--s2)}
 .hero-right{display:contents}
-.hero-grid>.hero-identity{order:0}.hero-grid>.hero-h1{order:1}.hero-right>.hero-proof{order:2}.hero-grid>.hero-actions{order:3}.hero-grid>.role-line{order:4}.hero-grid>.hero-reach{order:5;display:none}.hero-right>.hero-meta{order:6}
+.hero-grid>.hero-identity{order:0}.hero-grid>.hero-head{order:1}.hero-right>.hero-proof{order:2}.hero-grid>.hero-actions{order:3}.hero-grid>.hero-reach{order:5;display:flex;margin:0;font-size:.8125rem;gap:var(--s2)}.hero-grid>.hero-reach a{min-height:44px;display:inline-flex;align-items:center}.hero-right>.hero-meta{order:6}
 .hero-actions{margin-bottom:0}.hero-actions .btn{min-height:48px}
-.role-line{margin:0;color:var(--muted);font-size:.8125rem;line-height:1.5}
-.role-line a{white-space:nowrap;color:var(--accent)}
-@media (pointer:coarse){.role-line a{display:inline-block;padding:12px 0;margin:-12px 0}}
 .hero-meta{margin:0;padding:0;border:0}
 .hero-meta .metrics-footer-text{font-size:.75rem;color:var(--muted);margin:0;line-height:1.4}
 .hero-meta .metrics-footer-link{color:var(--accent);text-decoration:none;font-size:.75rem}
 .hero-meta .metrics-footer-link:hover{text-decoration:underline}
 @media (min-width:1024px){
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:"identity right" "h1 right" "actions right" "role right" "reach right";column-gap:var(--s12);row-gap:var(--s3);align-items:center}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);grid-template-areas:"identity right" "h1 right" "actions right" "reach right";column-gap:var(--s12);row-gap:var(--s3);align-items:center}
   .hero-identity{grid-area:identity}
   .hero-avatar{width:56px;height:56px}
-  .hero-h1{grid-area:h1;font-size:2.25rem;line-height:1.14;max-width:none}
+  .hero-head{grid-area:h1}
+  .hero-h1{font-size:2.25rem;line-height:1.14;max-width:none}
+  .hero-sub{font-size:2.25rem;line-height:1.14}
   .hero-actions{grid-area:actions;margin-top:var(--s2)}
   .hero-actions .btn{min-width:220px}
-  .role-line{grid-area:role;max-width:none}
   .hero-grid>.hero-reach{grid-area:reach;display:flex;margin:0;font-size:.8125rem}
   .hero-grid>.hero-reach a{min-height:32px}
   .hero-right{display:flex;flex-direction:column;gap:var(--s3);grid-area:right;align-self:stretch;justify-content:center}
@@ -151,7 +150,7 @@ main>.section+.section>h2{margin-top:calc(var(--sec)*.64)}
 .ribbon-sec{margin-block:var(--s10)}
 .ribbon-sec h2{margin:0 0 var(--s2)}
 .ribbon-sec .deck{max-width:64ch;margin:0 0 var(--s6);color:var(--muted);font-size:1rem}
-.arch-diagram-wrap{margin:var(--s4) 0;border:1px solid var(--rule);border-radius:4px;background:var(--paper);padding:var(--s3);overflow:hidden}
+.arch-diagram-wrap{margin:var(--s4) 0;border:1px solid var(--rule);border-radius:4px;background:var(--paper);padding:var(--s6);overflow:hidden}
 .arch-svg{width:100%;height:auto;display:block;max-width:1060px;margin:0 auto}
 /* SVG text uses its own classes so global .mono/.serif font-size rules cannot override the font-size attribute */
 .arch-svg text{font-family:var(--sans)}
