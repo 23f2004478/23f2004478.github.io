@@ -307,7 +307,7 @@
 <line x1="180" y1="197" x2="180" y2="219" stroke="var(--ink)" stroke-width="1.5" marker-end="url(#rt-narrow-a)"/>
 <rect x="1" y="219" width="358" height="282" rx="12" fill="var(--box)" stroke="var(--rule)"/>
 <text x="18" y="243" font-size="14.5" font-weight="700" fill="var(--muted)" letter-spacing="1">8 STANDING DOMAIN AGENTS</text>
-<text x="18" y="261" font-size="14" fill="var(--muted)">One writer per artifact</text>
+<text x="18" y="261" font-size="14.5" fill="var(--muted)">One writer per artifact</text>
 <rect x="20" y="273" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
 <text x="95.0" y="301.5" text-anchor="middle" font-size="15" font-weight="600" fill="var(--ink)">Academics</text>
 <rect x="190" y="273" width="150" height="46" rx="8" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.25"/>
@@ -404,7 +404,7 @@
       <li><strong>Fable at maximum effort,</strong> consulted only, for novel or irreversible plans.</li>
     </ol>
     <p>Around the ladder sit a few structural rules. One hub triages and routes and never writes a domain artifact. Eight standing domain agents each own their work, one writer per artifact. They spawn short-lived worker agents for research, review and drafting, and those workers disappear when the job ends. An hourly health audit (I call it medic) checks routing and drift. A monthly Gemini quality audit flags defects in Gemini output.</p>
-    <p>Measured share of logged tokens: Gemini Flash 67.7%, Claude Opus 21.5%, Claude Sonnet 10.4%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
+    <p>Measured share of logged tokens: Gemini Flash 67.6%, Claude Opus 21.5%, Claude Sonnet 10.4%. Full table on the <a href="/work/usage/">token ledger</a>.</p>
 
     <h2 id="savings-ladder">How I keep model calls rare and cheap</h2>
     <p>Large model calls are the most expensive operation in an agent platform. I use an ordered ladder of six techniques so that only tasks requiring deep reasoning reach larger models:</p>
@@ -413,7 +413,7 @@
       <li><strong>Narrow decisions:</strong> Narrow categorical choices, relevance checks, and 0-to-1 scoring route to a fast decision model that answers in ~300 ms for fractions of a cent. Details are on <a href="/work/fast-decisions/">Fast decisions</a>.</li>
       <li><strong>Smallest capable chat model:</strong> When a task needs natural language or tool use, it takes the lowest rung of the ladder above that can handle it, from Gemini Flash up to Claude Opus.</li>
       <li><strong>Prompt caching:</strong> Repeated tool definitions, system prompts, and repository context are served from cache (89.7% cache hit rate across prompt tokens). Full accounting is on the <a href="/work/usage/">Token ledger</a>.</li>
-      <li><strong>Context compression:</strong> Long conversations are compacted into structured summary nodes by a cheaper model (5 sessions compressed so far), keeping history searchable without sending full raw transcripts. Details are on <a href="/work/memory/">Memory</a>.</li>
+      <li><strong>Context compression:</strong> Long conversations are compacted into structured summary nodes by a cheaper model (6 sessions compressed so far), keeping history searchable without sending full raw transcripts. Details are on <a href="/work/memory/">Memory</a>.</li>
       <li><strong>Planner last:</strong> The top tier (Fable) is invoked only for high-leverage architectural planning, design direction, and exhaustive fact audits before writing code.</li>
     </ol>
     <p class="small muted">No dollar reductions or token counts avoided are claimed here; these rungs show the technical architecture that keeps large model calls rare.</p>
