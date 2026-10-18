@@ -372,6 +372,7 @@
     /* ==========================================================================
        SECTION A & B: COVER STAGE & SCROLL TRANSITION RECIPE (MOBILE)
        ========================================================================== */
+    [hidden] { display: none !important; }
     .mobile-webtoon-layout {
       display: block;
     }
@@ -2414,7 +2415,7 @@
             <span class="badge badge-gold">[&nbsp;S-RANK&nbsp;]</span>
           </div>
           <div class="card-subtitle-text">Live Transmission Coordinates</div>
-          <p class="card-plain-text">This page refreshes its numbers when the site rebuilds. For roles or freelance builds, reach me here.</p>
+          <p class="card-plain-text">This page refreshes its numbers when the site rebuilds. For roles or collaborations, reach me here.</p>
           <div class="cover-chips-grid" style="margin-top: 10px;">
             <a href="mailto:krishnendu.biswasi22@iimranchi.ac.in" class="cover-chip-btn">EMAIL</a>
             <a href="https://www.linkedin.com/in/krshnndu" target="_blank" rel="noopener noreferrer" class="cover-chip-btn">LINKEDIN</a>
@@ -2448,7 +2449,7 @@
           <img src="assets/avatar_512.webp" alt="Krishnendu Biswas portrait" class="desktop-avatar-img" width="96" height="96">
         </div>
 
-        <h1 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; text-align: center; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.02em;">KRISHNENDU BISWAS</h1>
+        <div role="heading" aria-level="1" style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; text-align: center; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.02em;">KRISHNENDU BISWAS</div>
         <div style="font-family: var(--font-system); font-size: 0.75rem; font-weight: 700; color: var(--accent-primary); text-align: center; margin-bottom: 10px;">CLASS &nbsp;|&nbsp; AI Agent Systems &amp; ML</div>
         
         <p style="font-size: 0.8125rem; line-height: 1.4; color: var(--text-muted); margin-bottom: 14px;">I build AI agent systems. Second-year MBA at IIM Ranchi. Paper accepted at Springer.</p>
@@ -3139,6 +3140,22 @@
 
   </main>
 
+  <script>
+    /* Expose exactly one layout (one main, one level-1 heading) to assistive tech. */
+    (function () {
+      var m = document.querySelector('.mobile-webtoon-layout');
+      var d = document.querySelector('.desktop-console-layout');
+      var q = window.matchMedia('(min-width: 1024px) and (orientation: landscape)');
+      function set(el, off) {
+        el.hidden = off;
+        if (off) { el.setAttribute('aria-hidden', 'true'); el.setAttribute('inert', ''); }
+        else { el.removeAttribute('aria-hidden'); el.removeAttribute('inert'); }
+      }
+      function sync() { set(d, !q.matches); set(m, q.matches); }
+      sync();
+      if (q.addEventListener) q.addEventListener('change', sync); else q.addListener(sync);
+    })();
+  </script>
   <script>
     (function() {
       'use strict';
