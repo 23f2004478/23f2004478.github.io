@@ -103,13 +103,7 @@
     positionTooltip(dot, e);
   }
 
-  function showBar(bar, svg, e) {
-    if (activeEl && activeEl !== bar) {
-      activeEl.classList.remove('is-active');
-    }
-    activeEl = bar;
-    bar.classList.add('is-active');
-
+  function barLabel(bar, svg) {
     var tipText = bar.getAttribute('aria-label');
     if (!tipText) {
       var y = parseFloat(bar.getAttribute('y') || bar.getAttribute('cy') || 0);
@@ -137,6 +131,17 @@
       }
       bar.setAttribute('aria-label', tipText);
     }
+    return tipText;
+  }
+
+  function showBar(bar, svg, e) {
+    if (activeEl && activeEl !== bar) {
+      activeEl.classList.remove('is-active');
+    }
+    activeEl = bar;
+    bar.classList.add('is-active');
+
+    var tipText = barLabel(bar, svg);
 
     tooltip.innerHTML = '<div class="tip-row">' + esc(tipText) + '</div>';
     tooltip.classList.add('is-visible');
@@ -178,6 +183,7 @@
         if (!bar.hasAttribute('role')) {
           bar.setAttribute('role', 'graphics-symbol');
         }
+        barLabel(bar, svg);
 
         bar.addEventListener('mouseenter', function(e) { showBar(bar, svg, e); });
         bar.addEventListener('mouseleave', function() {
