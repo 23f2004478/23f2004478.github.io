@@ -1435,6 +1435,8 @@
     .reg-tr { right: -4px; } .reg-br { right: -4px; }
     @media (max-width: 480px) { .reg-mark { display: none; } }
     html, body { overflow-x: clip; }
+    .agent-hud .manhwa-stats-hud-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .console-left-rail:focus-visible, .console-centre-stage:focus-visible, .console-right-rail:focus-visible { outline: 2px solid var(--accent-primary); outline-offset: -2px; }
     html[data-theme="dark"] .tab-btn:hover, html[data-theme="dark"] .tab-btn.active { color: #0B1220; }
   </style>
 </head>
@@ -2430,7 +2432,7 @@
   <main class="desktop-console-layout">
     
     <!-- LEFT RAIL: Character Card & All 5 Equipped Titles (E2: Fills ~265px space) -->
-    <aside class="console-left-rail" aria-label="Character Sheet">
+    <aside class="console-left-rail" aria-label="Character Sheet" tabindex="0">
       <div class="console-card">
         <div class="corner-bracket c-tl"></div>
         <div class="corner-bracket c-tr"></div>
@@ -2536,7 +2538,7 @@
     </aside>
 
     <!-- CENTRE STAGE: Tabbed Realms (E4: No stray scrollbar, 1-6 keys switch) -->
-    <section class="console-centre-stage" aria-label="Chronicle Realms">
+    <section class="console-centre-stage" aria-label="Chronicle Realms" tabindex="0">
       <div class="console-card" style="min-height: 100%;">
         <div class="corner-bracket c-tl"></div>
         <div class="corner-bracket c-tr"></div>
@@ -3074,7 +3076,7 @@
     </section>
 
     <!-- RIGHT RAIL: Parameter Matrix & Telemetry -->
-    <aside class="console-right-rail" aria-label="System Telemetry">
+    <aside class="console-right-rail" aria-label="System Telemetry" tabindex="0">
       <div class="console-card">
         <div class="corner-bracket c-tl"></div>
         <div class="corner-bracket c-tr"></div>
