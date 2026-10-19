@@ -81,12 +81,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-20.
 Full operating rhythm breakdown →
-192,416
+192,426
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 34,072
-Agent replies 192,416
-Tool executions 191,392
+Agent replies 192,426
+Tool executions 191,402
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-20.
@@ -628,11 +628,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 34,072
 Agent replies
-192,416
+192,426
 Tool results
-191,392
+191,402
 Total messages
-417,880
+417,900
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -712,11 +712,11 @@ Most choices my agents make are narrow: is this headline relevant, which categor
 System 1 vs System 2: System 1 is fast, cheap judgment that answers one narrow question in under a second; System 2 is slow, expensive reasoning that I save for work that needs it.
 ## What this layer does
 The typed decision model returns one of two typed answers: a choice among options I list, or a calibrated score between 0 and 1. It does not write text and it does not chat. If it cannot answer, the call falls back to its previous route, so no decision is lost.
-153,483
+153,577
 Total decisions
 37
 Decision types
-312.1604919433594 ms
+312.09683418273926 ms
 Median answer time
 0.06%
 Handed to fallback
@@ -750,15 +750,15 @@ Date Decisions
 17 Oct 2026 79
 18 Oct 2026 331
 19 Oct 2026 3,752
-20 Oct 2026 302
+20 Oct 2026 396
 Source: verdict log on my server, read at build time.
 ## How fast, how often it falls back
 Measure Value
-Median answer time (p50) 312.1604919433594 ms
+Median answer time (p50) 312.09683418273926 ms
 95th percentile (p95) 710 ms
 99th percentile (p99) 917 ms
 Handed to fallback route 86 (0.06%)
-Score calls / choice calls 85,540 / 67,943
+Score calls / choice calls 85,587 / 67,990
 Fallback means the typed model did not return a usable verdict and the call site used its backup route. It measures availability, not correctness. I do not have a labelled truth set for these decisions, so I do not report an accuracy figure for my own data.
 ## What it replaced
 Status Call sites
@@ -770,14 +770,14 @@ Rejected after review 1
 A call site is one place in my code that asks for a decision. One site can ask more than one type of question. These are counts of call sites, not measured before-and-after savings.
 ## Where the decisions come from
 Decision family Decisions Share Previous route
-A private work workflow 126,926 83% Chat model call
+A private work workflow 127,020 83% Chat model call
 Research headline relevance 25,891 17% Chat model call
 Everything else (memory curation, email category, next action, model tier choice) 666 0.4% Chat model call or fixed rule
 About three quarters of all decisions come from one private workflow in my work. I report its volume and nothing else about it.
 ## What it costs
-On a measured sample of 27,826 calls since 7 Oct 2026, the typed decision layer processed 16,574,758 input tokens and 3,093,967 output tokens (19,668,725 total tokens, about 707 tokens per call) and cost $0.6961, an average of about $0.0543 per day.
+On a measured sample of 27,873 calls since 7 Oct 2026, the typed decision layer processed 16,602,379 input tokens and 3,099,231 output tokens (19,701,610 total tokens, about 707 tokens per call) and cost $0.6973, an average of about $0.0544 per day.
 Output tokens are free on this service; list price was $0.042 per million input tokens.
-Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 153,483 decisions were handled by this layer instead of calling a chat model.
+Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 153,577 decisions were handled by this layer instead of calling a chat model.
 ## Where I never use it
 A typed model is probabilistic, so I exclude it by file from anything irreversible or trust critical. It never decides:
 Sending email or messages
@@ -793,7 +793,7 @@ The current service runs on limited credit, so I am testing a free and local typ
 Decisions that matter stay deterministic or come to me because a cheap wrong answer that cannot be undone is not cheap.
 How typed decisions fit into my broader cost strategy is documented in the savings ladder on Model routing and tiered compute
 ## Method note
-Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (27,826 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
+Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (27,873 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
 
 
 # How my agents remember: five layers of memory I can read and edit
@@ -1065,7 +1065,7 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T19:46:18Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T19:58:19Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.43 B
 Total tokens across 3 sources
 89.9%
