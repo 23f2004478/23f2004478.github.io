@@ -362,7 +362,7 @@
     <article class="metric-card metric-card--compact" id="metric-card-replies">
   <details class="metric-pop" data-ix="metric_pop">
     <summary class="metric-summary" aria-haspopup="dialog" aria-expanded="false" title="Messages my agents wrote, including scheduled jobs and helper agents. I sent them 33,635 messages, most of them dictated.">
-      <div class="metric-num">191,784</div>
+      <div class="metric-num">191,756</div>
       <span class="metric-title">Agent replies</span><span class="metric-info" aria-hidden="true">i</span>
     </summary>
     <div class="metric-panel" role="region" aria-label="Agent replies breakdown">
@@ -379,11 +379,11 @@
             <div class="bar-track"><div class="bar-fill bar-human" style="width: 18%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-head"><span class="lbl">Agent replies</span><span class="val">191,784</span></div>
+            <div class="bar-head"><span class="lbl">Agent replies</span><span class="val">191,756</span></div>
             <div class="bar-track"><div class="bar-fill bar-agent" style="width: 100%"></div></div>
           </div>
           <div class="bar-row">
-            <div class="bar-head"><span class="lbl">Tool executions</span><span class="val">190,727</span></div>
+            <div class="bar-head"><span class="lbl">Tool executions</span><span class="val">190,694</span></div>
             <div class="bar-track"><div class="bar-fill bar-tool" style="width: 99%"></div></div>
           </div>
         </div>
@@ -462,81 +462,64 @@
     </div>
   </section>
 
-  <!-- Chapter 1: I build with agents (hero above; h2 is screen reader only so the fold stays unchanged) -->
-  <section class="section wrap ch ch-1" data-ix="reveal" aria-labelledby="ch1">
-    <h2 id="ch1" class="sr-only">I build with agents</h2>
-    <p class="ch-lede ch-lede-solo">I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.</p>
-  </section>
-
-  <!-- Chapter 2: Where I started -->
-  <section class="section wrap ch ch-2" data-ix="reveal" aria-labelledby="ch2">
-    <div class="ch-head"><p class="ch-kicker">Chapter 2 of 8</p><h2 id="ch2">Where I started</h2><p class="ch-lede">I study management and learned to code alongside it. The path runs through a programming diploma at IIT Madras, a management degree at IIM Ranchi, and three internships.</p></div>
-    <div id="internships">
-      <ol class="timeline" aria-label="Where I started, in order">
-      <li class="tl-node" id="tl-iitm"><p class="tl-when mono">Diploma in Programming completed <time datetime="2026">2026</time></p><h3 class="tl-title">BS in Data Science and Applications, IIT Madras</h3><p class="tl-fact">Pursuing the BS degree.</p><p class="tl-learned">Learned to program properly.</p></li>
-      <li class="tl-node" id="tl-iimr"><p class="tl-when mono">BBA <time datetime="2025">2025</time>, MBA 2025 to 2027</p><h3 class="tl-title">IPM at IIM Ranchi</h3><p class="tl-fact">Integrated Programme in Management (IPM).</p><p class="tl-learned">Learned how organisations and people actually decide.</p></li>
-      <li class="tl-node" id="tl-social"><p class="tl-when mono"><time datetime="2024-01">Jan 2024</time> to <time datetime="2024-02">Feb 2024</time></p><h3 class="tl-title">IIM Ranchi, Social Impact Intern</h3><p class="tl-fact">Assessed 390+ rural students, drives for 140+ villagers.</p><p class="tl-learned">Learned to work on problems outside a spreadsheet.</p></li>
-      <li class="tl-node" id="tl-tata"><p class="tl-when mono"><time datetime="2025-04">Apr 2025</time> to <time datetime="2025-06">Jun 2025</time></p><h3 class="tl-title">Tata Steel, Research Analyst Intern</h3><p class="tl-fact">Pay benchmarking across 20+ firms and 50+ job profiles.</p><p class="tl-learned">Learned to turn messy numbers into a recommendation.</p></li>
-      <li class="tl-node" id="tl-qk"><p class="tl-when mono"><time datetime="2026-04">Apr 2026</time> to <time datetime="2026-06">Jun 2026</time></p><h3 class="tl-title">QualityKiosk Technologies, Data and AI Intern</h3><p class="tl-fact">2 TypeScript estimation engines, 136 unit tests, 7 internal apps.</p><p class="tl-fact">Internal tooling for banking QA; code confidential.</p><p class="tl-learned">Learned what shipping reliable tools for a bank takes.</p></li>
-      </ol>
-    </div>
-    <p class="more"><a href="/internships/">All internship details <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-  </section>
-
-  <!-- Chapter 3: Learning the models first -->
-  <section class="section wrap ch ch-3" data-ix="reveal" aria-labelledby="ch3">
-    <div class="ch-head"><p class="ch-kicker">Chapter 3 of 8</p><h2 id="ch3">Learning the models first</h2><p class="ch-lede">Before I let any agent act, I wanted to know how models get things wrong. These projects and one research paper are where I learned that.</p></div>
-    <div id="projects">
-    <ul class="rows" role="list">
-      <li>
-        <div>
-          <h3><a href="/projects/mcq/">Smart MCQ solver</a></h3>
-          <p>LoRA ensemble, 0.74242 MAP@3.</p>
+  <!-- What I have built -->
+  <section class="section wrap built-sec" id="built" data-ix="reveal" aria-labelledby="h-built">
+    <h2 id="h-built">What I have built</h2>
+    <p class="deck">The agent platform is the main story below. Termly and CogPrep Arcade are what it looks like when I build for other people.</p>
+    <div class="built-grid">
+      <article class="built-card built-termly">
+        <div class="built-media">
+          <div class="phone-frame"><img src="/assets/img/termly-today.webp" width="360" height="560" loading="lazy" decoding="async" alt="Termly Today screen on a phone: a running class with a countdown, its room and what is next (demo account)"></div>
         </div>
-        <div class="fact mono">0.74242 MAP@3</div>
-      </li>
-      <li>
-        <div>
-          <h3><a href="/projects/comment-classification/">Comment classification</a></h3>
-          <p>3-model blend, 0.8293 F1-Macro.</p>
+        <div class="built-body">
+          <p class="built-badge">Public beta</p>
+          <h3 class="built-title">Termly</h3>
+          <p class="built-desc">A term planner for IIM Ranchi MBA students: timetable, absences left per course, deadlines and friends' free slots, with schedule changes read from college mail and confirmed by classmates.</p>
+          <p class="built-proof">Free, no ads, works offline.</p>
+          <p class="built-note">An independent student project, not built or run by IIM Ranchi. Built with my AI agents. Sign-in is for IIM Ranchi accounts.</p>
+          <a class="btn primary built-link" href="https://termly-iimr.vercel.app/welcome?utm_source=krishnendu.me&utm_medium=portfolio&utm_campaign=built&utm_content=home-strip" target="_blank" rel="noopener noreferrer">Open the welcome page <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
         </div>
-        <div class="fact mono">0.8293 F1-MACRO</div>
-      </li>
-      <li>
-        <div>
-          <h3><a href="/projects/customer-exit/">Customer exit prediction</a></h3>
-          <p>Tuned Random Forest, 0.6365 F1.</p>
+      </article>
+      <article class="built-card built-cogprep">
+        <div class="built-media">
+          <div class="phone-frame"><img src="/assets/img/cogprep-board.webp" width="360" height="532" loading="lazy" decoding="async" alt="CogPrep Arcade Block Slide puzzle on a phone: a four by four board with a ball, three coloured blocks and the exit at the top right"></div>
         </div>
-        <div class="fact mono">0.6365 F1</div>
-      </li>
-    </ul>
-    <p class="more"><a href="/projects/">All projects <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-    </div>
-    <div id="research">
-    <div class="entry">
-      <h3>Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue&nbsp;Data</h3>
-      <p class="meta">Accepted for publication in Springer Nature proceedings, FICTA 2026</p>
-    </div>
-    <p class="more"><a href="/research/">Both papers in detail <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+        <div class="built-body">
+          <p class="built-badge">Free to try</p>
+          <h3 class="built-title">CogPrep Arcade</h3>
+          <p class="built-desc">Six short puzzle games that mirror the cognitive aptitude tests some employers use, with a timed exam mode, a coach that replays each of my moves against the best solution, and plain-English advice on what to fix.</p>
+          <p class="built-proof">Free, runs in your browser, no sign-up.</p>
+          <p class="built-note">An independent practice tool, not affiliated with any employer or assessment provider. Built with my AI agents. Practice progress stays in your browser; finished timed runs can post an anonymous score to a leaderboard.</p>
+          <a class="btn primary built-link" href="https://krshnndu.github.io/aptitude-game-practice/?utm_source=krishnendu.me&utm_medium=portfolio&utm_campaign=built&utm_content=home-strip" target="_blank" rel="noopener noreferrer">Play CogPrep Arcade <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+          <a class="built-textlink built-src" href="https://github.com/krshndu/aptitude-game-practice" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
+        </div>
+      </article>
+      <article class="built-card">
+        <div class="built-body">
+          <p class="built-badge">My own tool</p>
+          <h3 class="built-title">My agent platform</h3>
+          <p class="built-desc">Specialist agents that draft, research and file for me, each action routed through a small typed decision model, and nothing leaves until I say go.</p>
+          <p class="built-proof">Case studies: platform, routing, token ledger, memory, reliability.</p>
+          <a class="built-link built-textlink" href="/work/">Read the six case studies <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+        </div>
+      </article>
+      <article class="built-card">
+        <div class="built-body">
+          <p class="built-badge">My own tool</p>
+          <h3 class="built-title">LinkedIn studio</h3>
+          <p class="built-desc">My tool for drafting, scoring and archiving LinkedIn posts before I publish them.</p>
+          <p class="built-proof">Built for one user: me.</p>
+          <a class="built-link built-textlink" href="/work/linkedin-studio/">See how it works <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- Chapter 4: One assistant became N -->
-  <section class="section wrap ch ch-4" id="agent-systems" data-ix="reveal" aria-labelledby="ch4">
-    <div class="ch-head"><p class="ch-kicker">Chapter 4 of 8</p><h2 id="ch4">One assistant became nine</h2><p class="ch-lede">Today the team is nine agents. Sends, deletes and public pushes wait for my approval.</p></div>
-    <div class="growth-shell" data-pending="growth-strip" hidden></div>
-    <div class="story">
-      <div class="story-txt">
-        <p>I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.</p>
-        <p>A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.</p>
-        <p class="story-note">Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. <a href="/log/">Build log <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapter 5: What the agents actually do -->
-  <section class="section wrap ribbon-sec ch ch-5" data-ix="reveal" aria-labelledby="ch5">
-    <div class="ch-head"><p class="ch-kicker">Chapter 5 of 8</p><h2 id="ch5">What the agents actually do</h2><p class="ch-lede">This is what happens between a voice note and a finished task. The risky steps stop and wait for me.</p></div>
+  <!-- Hero Figure: 6-Stage Multi-Agent Architecture -->
+  <section class="section wrap ribbon-sec" data-ix="reveal" aria-labelledby="h-flow">
+    <h2 id="h-flow">How a request moves</h2>
+    <p class="deck">From a voice note on my phone to a finished, tracked result, with sends, deletes and public pushes waiting for me.</p>
+    
     <div class="arch-diagram-wrap">
       <!-- Desktop Architecture Pipeline (Horizontal Organic Flow) -->
       <svg class="arch-svg wide" viewBox="0 0 1040 350" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="6-Stage Multi-Agent Architecture Diagram: Ingest, Router, Domain Agents, Compute Tiering, Human Gate, and Delivery">
@@ -673,71 +656,21 @@
         <p class="station-desc">Results land in Google Tasks, GitHub, the Firefly III ledger, or a chat message to me.</p>
       </div>
     </div>
+
   </section>
 
-  <!-- Chapter 6: What the team shipped -->
-  <section class="section wrap built-sec ch ch-6" id="built" data-ix="reveal" aria-labelledby="ch6">
-    <div class="ch-head"><p class="ch-kicker">Chapter 6 of 8</p><h2 id="ch6">What the team shipped</h2><p class="ch-lede">I used the agents to build tools for other students. Two of them are free to use today.</p></div>
-    <div class="built-grid">
-      <article class="built-card built-termly">
-        <div class="built-media">
-          <div class="phone-frame"><img src="/assets/img/termly-today.webp" width="360" height="560" loading="lazy" decoding="async" alt="Termly Today screen on a phone: a running class with a countdown, its room and what is next (demo account)"></div>
-        </div>
-        <div class="built-body">
-          <p class="built-badge">Public beta</p>
-          <h3 class="built-title">Termly</h3>
-          <p class="built-desc">A term planner for IIM Ranchi MBA students: timetable, absences left per course, deadlines and friends' free slots, with schedule changes read from college mail and confirmed by classmates.</p>
-          <p class="built-proof">Free, no ads, works offline.</p>
-          <p class="built-note">An independent student project, not built or run by IIM Ranchi. Built with my AI agents. Sign-in is for IIM Ranchi accounts.</p>
-          <a class="btn primary built-link" href="https://termly-iimr.vercel.app/welcome?utm_source=krishnendu.me&utm_medium=portfolio&utm_campaign=built&utm_content=home-strip" target="_blank" rel="noopener noreferrer">Open the welcome page <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
-        </div>
-      </article>
-      <article class="built-card built-cogprep">
-        <div class="built-media">
-          <div class="phone-frame"><img src="/assets/img/cogprep-board.webp" width="360" height="532" loading="lazy" decoding="async" alt="CogPrep Arcade Block Slide puzzle on a phone: a four by four board with a ball, three coloured blocks and the exit at the top right"></div>
-        </div>
-        <div class="built-body">
-          <p class="built-badge">Free to try</p>
-          <h3 class="built-title">CogPrep Arcade</h3>
-          <p class="built-desc">Six short puzzle games that mirror the cognitive aptitude tests some employers use, with a timed exam mode, a coach that replays each of my moves against the best solution, and plain-English advice on what to fix.</p>
-          <p class="built-proof">Free, runs in your browser, no sign-up.</p>
-          <p class="built-note">An independent practice tool, not affiliated with any employer or assessment provider. Built with my AI agents. Practice progress stays in your browser; finished timed runs can post an anonymous score to a leaderboard.</p>
-          <a class="btn primary built-link" href="https://krshnndu.github.io/aptitude-game-practice/?utm_source=krishnendu.me&utm_medium=portfolio&utm_campaign=built&utm_content=home-strip" target="_blank" rel="noopener noreferrer">Play CogPrep Arcade <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
-          <a class="built-textlink built-src" href="https://github.com/krshndu/aptitude-game-practice" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
-        </div>
-      </article>
-      <article class="built-card">
-        <div class="built-body">
-          <p class="built-badge">My own tool</p>
-          <h3 class="built-title">My agent platform</h3>
-          <p class="built-desc">Specialist agents that draft, research and file for me, each action routed through a small typed decision model, and nothing leaves until I say go.</p>
-          <p class="built-proof">Case studies: platform, routing, token ledger, memory, reliability.</p>
-          <a class="built-link built-textlink" href="/work/">Read the six case studies <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
-        </div>
-      </article>
-      <article class="built-card">
-        <div class="built-body">
-          <p class="built-badge">My own tool</p>
-          <h3 class="built-title">LinkedIn studio</h3>
-          <p class="built-desc">My tool for drafting, scoring and archiving LinkedIn posts before I publish them.</p>
-          <p class="built-proof">Built for one user: me.</p>
-          <a class="built-link built-textlink" href="/work/linkedin-studio/">See how it works <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
-        </div>
-      </article>
+  <!-- Agent systems -->
+  <section class="section wrap" id="agent-systems" data-ix="reveal" aria-labelledby="h-agent">
+    <h2 id="h-agent">Six case studies, one person signing off</h2>
+    <p class="agent-count-note">Each one is a system I built and still run. The agent count lives on the platform page.</p>
+    <div class="story">
+      <div class="story-txt">
+        <p>I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.</p>
+        <p>A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.</p>
+        <p class="story-note">Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. <a href="/log/">Build log <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+      </div>
     </div>
-  </section>
 
-  <!-- Chapter 7: Going deeper -->
-  <section class="section wrap ch ch-7" data-ix="reveal" aria-labelledby="ch7">
-    <div class="ch-head"><p class="ch-kicker">Chapter 7 of 8</p><h2 id="ch7">Going deeper</h2><p class="ch-lede">The engineering detail lives in six case studies. Each one shows the architecture, and the code stays private.</p></div>
-    <ul class="deeper-row" role="list">
-      <li><a href="/work/platform/">Multi-agent operations platform</a><span class="fact mono">HANDOFFS</span></li>
-      <li><a href="/work/routing/">Model routing and tiered compute</a><span class="fact mono">TIERED COMPUTE</span></li>
-      <li><a href="/work/memory/">How my agents remember</a><span class="fact mono">LCM-X ENGINE</span></li>
-      <li><a href="/work/reliability/">Reliability and security</a><span class="fact mono">ENCRYPTED BACKUPS</span></li>
-      <li><a href="/work/finance/">Finance ledger agent</a><span class="fact mono">DETERMINISTIC</span></li>
-      <li><a href="/work/linkedin-studio/">Personal LinkedIn studio</a><span class="fact mono">HUMAN GATE</span></li>
-    </ul>
     <figure class="routing-compact" style="max-width:380px;margin:var(--s6, 1.5rem) 0">
       <div class="routing-compact-link">
         <svg id="rt-compact" class="dg compact" viewBox="0 0 360 362" width="100%" role="img" aria-labelledby="rt-compact-t rt-compact-d" style="width:100%;height:auto;font-family:var(--sans)"><title id="rt-compact-t">Model ladder: first rung that can do the task</title><desc id="rt-compact-d">Six rungs, tried in order: a script, Gemini 3.8 Flash low, Gemini Flash medium, Claude Sonnet 5.5, Claude Opus 5.5, then Fable at maximum effort for consultation only.</desc><defs><marker id="rt-compact-a" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 1.5 L 8 5 L 0 8.5 z" style="fill:var(--ink)"/></marker></defs><rect x="1" y="1" width="358" height="360" rx="12" style="fill:var(--box);stroke:var(--rule)"/>
@@ -769,18 +702,59 @@
       </div>
       <figcaption class="small muted">Each task takes the first rung that can do it. <a href="/work/routing/">See the full routing diagram</a>.</figcaption>
     </figure>
+
+    <ul class="rows" role="list">
+      <li>
+        <div>
+          <h3><a href="/work/platform/">Multi-agent operations platform</a></h3>
+          <p>Agents that hand work to each other on task cards, with a review step before anything risky.</p>
+        </div>
+        <div class="fact mono">HANDOFFS</div>
+      </li>
+      <li>
+        <div>
+          <h3>Model routing and tiered compute</h3>
+          <p>The cheapest model that holds quality wins. I run scripts first, then Gemini Flash tiers, Claude Sonnet 5.5, and Opus 5.5 for critical judgment. Fable is consult only.</p>
+        </div>
+        <div class="fact mono">TIERED COMPUTE</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/work/memory/">How my agents remember: five layers of memory I can read and edit</a></h3>
+          <p>Curated long-term notes, plus LCM-X, which compacts long sessions into searchable summaries without deleting history.</p>
+        </div>
+        <div class="fact mono">LCM-X ENGINE</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/work/reliability/">Reliability and security</a></h3>
+          <p>Encrypted backups copied offsite (Backblaze B2 primary, private GitHub repository secondary mirror), and a scripted restore to a fresh server.</p>
+        </div>
+        <div class="fact mono">ENCRYPTED BACKUPS</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/work/finance/">Finance ledger agent</a></h3>
+          <p>Reads receipts from Gmail with read-only access and parses them with fixed rules. The model only sees text the rules cannot read.</p>
+        </div>
+        <div class="fact mono">DETERMINISTIC</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/work/linkedin-studio/">Personal LinkedIn studio</a></h3>
+          <p>A local drafting tool that checks posts against a written profile of how I write. I publish every post myself.</p>
+        </div>
+        <div class="fact mono">HUMAN GATE</div>
+      </li>
+    </ul>
     <p class="small muted">The code is private. Each case study shows the architecture.</p>
     <p class="more"><a href="/work/">All six case studies <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-    <div class="entry deeper-research">
-      <p class="meta">Research on how people use this</p>
-      <h3>Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research&nbsp;Agenda</h3>
-      <p class="meta">10th Pan-IIM World Management Conference 2025, IIM Ranchi</p>
-    </div>
   </section>
+  <!-- build-log:start --><section class="wrap log-line" id="build-log" data-ix="reveal" aria-labelledby="h-latest"><h2 id="h-latest" class="sr-only">Latest from the build log</h2><p><span class="muted">Build log, <time datetime="2026-10-03">3 Oct 2026</time>:</span> <a href="/log/2026/10/site-rebuild-fact-audit/">Rebuilt this site and ran a fact audit on its numbers</a> <a class="log-all" href="/log/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p></section><!-- build-log:end -->
 
-  <!-- Chapter 8: What I believe and where I am going -->
-  <section class="section wrap ch ch-8" id="what-i-bring" data-ix="reveal" aria-labelledby="ch8">
-    <div class="ch-head"><p class="ch-kicker">Chapter 8 of 8</p><h2 id="ch8">What I believe and where I am going</h2><p class="ch-lede">These are the rules I work by. If they fit what you need, email me.</p></div>
+  <!-- What I bring -->
+  <section class="section wrap" id="what-i-bring" data-ix="reveal" aria-labelledby="h-bring">
+    <h2 id="h-bring">What I bring</h2>
     <div class="bring-grid">
       <div class="bring-item">
         <div class="bring-num">01</div>
@@ -803,25 +777,91 @@
         <p class="bring-desc">Business training at IIM Ranchi and programming at IIT Madras. Lean Six Sigma Green Belt, and Power BI PL-300 (earned Jun 2025, now expired). Pay benchmarking at Tata Steel on one side, agent platform design on the other.</p>
       </div>
     </div>
-    <p class="more"><a href="/log/">Read the build log <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
-    <div class="faq">
-      <div class="faq-item">
-        <h3>What does the human gate stop?</h3>
-        <p>Pushes, emails, deletions and ledger writes stop here for my approval.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is the code public?</h3>
-        <p>The code is private. Each case study shows the architecture.</p>
-      </div>
-      <div class="faq-item" id="about">
-        <h3 id="h-about">Who is Krishnendu Biswas?</h3>
-    <p>Krishnendu Biswas is a 2nd-year MBA student at IIM Ranchi (class of 2027) and an AI agent builder who builds multi-agent platforms and runs them daily behind a human approval gate. He is pursuing the BS Degree in Data Science and Applications at IIT Madras, where he completed the Diploma in Programming. He serves on the Corporate Relations and Placement Committee at IIM Ranchi and is an author of a research paper on dialogue affect detection accepted for publication in Springer Nature FICTA 2026 proceedings, a Scopus indexed series.</p>
-      </div>
-    </div>
+  </section>
 
-    <!-- build log card: home_log_preview flag, owned by repo/tools/log/render_log.py (default off) -->
-    <div class="ch-contact" id="contact">
-    <h3 id="h-contact">Reach me</h3>
+  <!-- Internships -->
+  <section class="section wrap" id="internships" data-ix="reveal" aria-labelledby="h-int">
+    <h2 id="h-int">Internships</h2>
+    <ul class="rows" role="list">
+      <li>
+        <div>
+          <h3>QualityKiosk Technologies: Data and AI Intern</h3>
+          <p>2 TypeScript estimation engines, 136 unit tests, 7 internal apps.</p>
+        </div>
+        <span class="fact mono">Apr 2026 to Jun 2026</span>
+      </li>
+      <li>
+        <div>
+          <h3>Tata Steel: Research Analyst Intern</h3>
+          <p>Pay benchmarking across 20+ firms and 50+ job profiles.</p>
+        </div>
+        <span class="fact mono">Apr 2025 to Jun 2025</span>
+      </li>
+      <li>
+        <div>
+          <h3>IIM Ranchi: Social Impact Intern</h3>
+          <p>Assessed 390+ rural students, drives for 140+ villagers.</p>
+        </div>
+        <span class="fact mono">Jan 2024 to Feb 2024</span>
+      </li>
+    </ul>
+    <p class="more"><a href="/internships/">All internship details <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+  </section>
+
+  <!-- Projects -->
+  <section class="section wrap" id="projects" data-ix="reveal" aria-labelledby="h-ml">
+    <h2 id="h-ml">Machine learning projects</h2>
+    <ul class="rows" role="list">
+      <li>
+        <div>
+          <h3><a href="/projects/mcq/">Smart MCQ solver</a></h3>
+          <p>LoRA ensemble, 0.74242 MAP@3.</p>
+        </div>
+        <div class="fact mono">0.74242 MAP@3</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/projects/comment-classification/">Comment classification</a></h3>
+          <p>3-model blend, 0.8293 F1-Macro.</p>
+        </div>
+        <div class="fact mono">0.8293 F1-MACRO</div>
+      </li>
+      <li>
+        <div>
+          <h3><a href="/projects/customer-exit/">Customer exit prediction</a></h3>
+          <p>Tuned Random Forest, 0.6365 F1.</p>
+        </div>
+        <div class="fact mono">0.6365 F1</div>
+      </li>
+    </ul>
+    <p class="more"><a href="/projects/">All projects <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+  </section>
+
+  <!-- Research and Achievements -->
+  <section class="section wrap" id="research" data-ix="reveal" aria-labelledby="h-res">
+    <h2 id="h-res">Research and achievements</h2>
+    <div class="entry">
+      <h3>Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue&nbsp;Data</h3>
+      <p class="meta">Accepted for publication in Springer Nature proceedings, FICTA 2026</p>
+    </div>
+    <div class="entry">
+      <h3>Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research&nbsp;Agenda</h3>
+      <p class="meta">10th Pan-IIM World Management Conference 2025, IIM Ranchi</p>
+    </div>
+    <p class="more"><a href="/research/">Both papers in detail <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>
+  </section>
+
+  <!-- about-answer -->
+  <section class="section wrap" id="about" aria-labelledby="h-about">
+    <h2 id="h-about">Who is Krishnendu Biswas?</h2>
+    <p>Krishnendu Biswas is a 2nd-year MBA student at IIM Ranchi (class of 2027) and an AI agent builder who builds multi-agent platforms and runs them daily behind a human approval gate. He is pursuing the BS Degree in Data Science and Applications at IIT Madras, where he completed the Diploma in Programming. He serves on the Corporate Relations and Placement Committee at IIM Ranchi and is an author of a research paper on dialogue affect detection accepted for publication in Springer Nature FICTA 2026 proceedings, a Scopus indexed series.</p>
+  </section>
+
+  <!-- build log card: owned by repo/tools/log/render_log.py (build_all runs it after this generator) -->
+
+  <!-- Reach me (merged closing block) -->
+  <section class="section wrap" id="contact" data-ix="reveal" aria-labelledby="h-contact">
+    <h2 id="h-contact">Reach me</h2>
     <div class="cta">
       <p>Email is fastest.</p>
       <div class="actions cta-actions">
@@ -833,7 +873,6 @@
         <li><a href="https://github.com/krshnndu" target="_blank" rel="noopener noreferrer"><svg class="icon brand" aria-hidden="true"><use href="#i-github"/></svg> GitHub</a></li>
         <li><a href="https://topmate.io/krishnendu" target="_blank" rel="noopener noreferrer">Topmate</a></li>
       </ul>
-    </div>
     </div>
   </section>
 </main>

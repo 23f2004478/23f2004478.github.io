@@ -2,18 +2,6 @@
 
 > AI systems developer and second-year MBA student at IIM Ranchi and BS in Data Science and Applications student at IIT Madras (Diploma in Programming completed). Builds and operates a personal multi-agent platform on open-source Hermes Agent with human approval gates.
 
-## The story in eight chapters (home page, https://krishnendu.me/)
-A management student who learned to code built himself a small team of AI agents that cannot act without his approval, then used that team to ship apps for other students.
-
-1. I build with agents: I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.
-2. Where I started: I study management and learned to code alongside it. The path runs through a programming diploma at IIT Madras, a management degree at IIM Ranchi, and three internships.
-3. Learning the models first: Before I let any agent act, I wanted to know how models get things wrong. These projects and one research paper are where I learned that.
-4. One assistant became nine: Today the team is nine agents. Sends, deletes and public pushes wait for my approval.
-5. What the agents actually do: This is what happens between a voice note and a finished task. The risky steps stop and wait for me.
-6. What the team shipped: I used the agents to build tools for other students. Two of them are free to use today.
-7. Going deeper: The engineering detail lives in six case studies. Each one shows the architecture, and the code stays private.
-8. What I believe and where I am going: These are the rules I work by. If they fit what you need, email me.
-
 ## Canonical URLs & Verified Profiles
 - Root: https://krishnendu.me/
 - LinkedIn: https://linkedin.com/in/krshnndu/
@@ -81,12 +69,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-19.
 Full operating rhythm breakdown →
-191,784
+191,756
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 33,635
-Agent replies 191,784
-Tool executions 190,727
+Agent replies 191,756
+Tool executions 190,694
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-19.
@@ -119,58 +107,33 @@ Resume (PDF)
 See the platform
 Email ·
 LinkedIn
-## I build with agents
-I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.
-Chapter 2 of 8
-## Where I started
-I study management and learned to code alongside it. The path runs through a programming diploma at IIT Madras, a management degree at IIM Ranchi, and three internships.
-Diploma in Programming completed 2026
-## BS in Data Science and Applications, IIT Madras
-Pursuing the BS degree.
-Learned to program properly.
-BBA 2025 , MBA 2025 to 2027
-## IPM at IIM Ranchi
-Integrated Programme in Management (IPM).
-Learned how organisations and people actually decide.
-Jan 2024 to Feb 2024
-## IIM Ranchi, Social Impact Intern
-Assessed 390+ rural students, drives for 140+ villagers.
-Learned to work on problems outside a spreadsheet.
-Apr 2025 to Jun 2025
-## Tata Steel, Research Analyst Intern
-Pay benchmarking across 20+ firms and 50+ job profiles.
-Learned to turn messy numbers into a recommendation.
-Apr 2026 to Jun 2026
-## QualityKiosk Technologies, Data and AI Intern
-2 TypeScript estimation engines, 136 unit tests, 7 internal apps.
-Internal tooling for banking QA; code confidential.
-Learned what shipping reliable tools for a bank takes.
-All internship details
-Chapter 3 of 8
-## Learning the models first
-Before I let any agent act, I wanted to know how models get things wrong. These projects and one research paper are where I learned that.
-## Smart MCQ solver
-LoRA ensemble, 0.74242 MAP@3.
-0.74242 MAP@3
-## Comment classification
-3-model blend, 0.8293 F1-Macro.
-0.8293 F1-MACRO
-## Customer exit prediction
-Tuned Random Forest, 0.6365 F1.
-0.6365 F1
-All projects
-## Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data
-Accepted for publication in Springer Nature proceedings, FICTA 2026
-Both papers in detail
-Chapter 4 of 8
-## One assistant became nine
-Today the team is nine agents. Sends, deletes and public pushes wait for my approval.
-I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
-A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.
-Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. Build log
-Chapter 5 of 8
-## What the agents actually do
-This is what happens between a voice note and a finished task. The risky steps stop and wait for me.
+## What I have built
+The agent platform is the main story below. Termly and CogPrep Arcade are what it looks like when I build for other people.
+Public beta
+## Termly
+A term planner for IIM Ranchi MBA students: timetable, absences left per course, deadlines and friends' free slots, with schedule changes read from college mail and confirmed by classmates.
+Free, no ads, works offline.
+An independent student project, not built or run by IIM Ranchi. Built with my AI agents. Sign-in is for IIM Ranchi accounts.
+Open the welcome page
+Free to try
+## CogPrep Arcade
+Six short puzzle games that mirror the cognitive aptitude tests some employers use, with a timed exam mode, a coach that replays each of my moves against the best solution, and plain-English advice on what to fix.
+Free, runs in your browser, no sign-up.
+An independent practice tool, not affiliated with any employer or assessment provider. Built with my AI agents. Practice progress stays in your browser; finished timed runs can post an anonymous score to a leaderboard.
+Play CogPrep Arcade
+Source on GitHub
+My own tool
+## My agent platform
+Specialist agents that draft, research and file for me, each action routed through a small typed decision model, and nothing leaves until I say go.
+Case studies: platform, routing, token ledger, memory, reliability.
+Read the six case studies
+My own tool
+## LinkedIn studio
+My tool for drafting, scoring and archiving LinkedIn posts before I publish them.
+Built for one user: me.
+See how it works
+## How a request moves
+From a voice note on my phone to a finished, tracked result, with sends, deletes and public pushes waiting for me.
 01
 Input
 ## Any-Device Ingest
@@ -195,50 +158,35 @@ Pushes, emails, deletions and ledger writes stop here for my approval.
 Output
 ## Delivery & Ledger Sync
 Results land in Google Tasks, GitHub, the Firefly III ledger, or a chat message to me.
-Chapter 6 of 8
-## What the team shipped
-I used the agents to build tools for other students. Two of them are free to use today.
-Public beta
-## Termly
-A term planner for IIM Ranchi MBA students: timetable, absences left per course, deadlines and friends' free slots, with schedule changes read from college mail and confirmed by classmates.
-Free, no ads, works offline.
-An independent student project, not built or run by IIM Ranchi. Built with my AI agents. Sign-in is for IIM Ranchi accounts.
-Open the welcome page
-Free to try
-## CogPrep Arcade
-Six short puzzle games that mirror the cognitive aptitude tests some employers use, with a timed exam mode, a coach that replays each of my moves against the best solution, and plain-English advice on what to fix.
-Free, runs in your browser, no sign-up.
-An independent practice tool, not affiliated with any employer or assessment provider. Built with my AI agents. Practice progress stays in your browser; finished timed runs can post an anonymous score to a leaderboard.
-Play CogPrep Arcade
-Source on GitHub
-My own tool
-## My agent platform
-Specialist agents that draft, research and file for me, each action routed through a small typed decision model, and nothing leaves until I say go.
-Case studies: platform, routing, token ledger, memory, reliability.
-Read the six case studies
-My own tool
-## LinkedIn studio
-My tool for drafting, scoring and archiving LinkedIn posts before I publish them.
-Built for one user: me.
-See how it works
-Chapter 7 of 8
-## Going deeper
-The engineering detail lives in six case studies. Each one shows the architecture, and the code stays private.
-Multi-agent operations platform HANDOFFS
-Model routing and tiered compute TIERED COMPUTE
-How my agents remember LCM-X ENGINE
-Reliability and security ENCRYPTED BACKUPS
-Finance ledger agent DETERMINISTIC
-Personal LinkedIn studio HUMAN GATE
+## Six case studies, one person signing off
+Each one is a system I built and still run. The agent count lives on the platform page.
+I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
+A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.
+Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. Build log
 Each task takes the first rung that can do it. See the full routing diagram .
+## Multi-agent operations platform
+Agents that hand work to each other on task cards, with a review step before anything risky.
+HANDOFFS
+## Model routing and tiered compute
+The cheapest model that holds quality wins. I run scripts first, then Gemini Flash tiers, Claude Sonnet 5.5, and Opus 5.5 for critical judgment. Fable is consult only.
+TIERED COMPUTE
+## How my agents remember: five layers of memory I can read and edit
+Curated long-term notes, plus LCM-X, which compacts long sessions into searchable summaries without deleting history.
+LCM-X ENGINE
+## Reliability and security
+Encrypted backups copied offsite (Backblaze B2 primary, private GitHub repository secondary mirror), and a scripted restore to a fresh server.
+ENCRYPTED BACKUPS
+## Finance ledger agent
+Reads receipts from Gmail with read-only access and parses them with fixed rules. The model only sees text the rules cannot read.
+DETERMINISTIC
+## Personal LinkedIn studio
+A local drafting tool that checks posts against a written profile of how I write. I publish every post myself.
+HUMAN GATE
 The code is private. Each case study shows the architecture.
 All six case studies
-Research on how people use this
-## Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research Agenda
-10th Pan-IIM World Management Conference 2025, IIM Ranchi
-Chapter 8 of 8
-## What I believe and where I am going
-These are the rules I work by. If they fit what you need, email me.
+## Latest from the build log
+Build log, 3 Oct 2026 : Rebuilt this site and ran a fact audit on its numbers All entries
+## What I bring
 01
 ## Systems that stop before they do damage
 On my platform, deletes, sends, commits and deploys wait for my sign-off. The infrastructure agent audits configuration drift hourly. Its janitor engine proposes cleanups and acts only after I say yes.
@@ -251,11 +199,34 @@ My churn model reports accuracy 0.8414 and F1 0.6365; I lead with F1. Comment cl
 04
 ## Both sides of the table
 Business training at IIM Ranchi and programming at IIT Madras. Lean Six Sigma Green Belt, and Power BI PL-300 (earned Jun 2025, now expired). Pay benchmarking at Tata Steel on one side, agent platform design on the other.
-Read the build log
-## What does the human gate stop?
-Pushes, emails, deletions and ledger writes stop here for my approval.
-## Is the code public?
-The code is private. Each case study shows the architecture.
+## Internships
+## QualityKiosk Technologies: Data and AI Intern
+2 TypeScript estimation engines, 136 unit tests, 7 internal apps.
+Apr 2026 to Jun 2026
+## Tata Steel: Research Analyst Intern
+Pay benchmarking across 20+ firms and 50+ job profiles.
+Apr 2025 to Jun 2025
+## IIM Ranchi: Social Impact Intern
+Assessed 390+ rural students, drives for 140+ villagers.
+Jan 2024 to Feb 2024
+All internship details
+## Machine learning projects
+## Smart MCQ solver
+LoRA ensemble, 0.74242 MAP@3.
+0.74242 MAP@3
+## Comment classification
+3-model blend, 0.8293 F1-Macro.
+0.8293 F1-MACRO
+## Customer exit prediction
+Tuned Random Forest, 0.6365 F1.
+0.6365 F1
+All projects
+## Research and achievements
+## Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data
+Accepted for publication in Springer Nature proceedings, FICTA 2026
+## Adoption and Implications of Generative AI in Marketing: A Systematic Review and Research Agenda
+10th Pan-IIM World Management Conference 2025, IIM Ranchi
+Both papers in detail
 ## Who is Krishnendu Biswas?
 Krishnendu Biswas is a 2nd-year MBA student at IIM Ranchi (class of 2027) and an AI agent builder who builds multi-agent platforms and runs them daily behind a human approval gate. He is pursuing the BS Degree in Data Science and Applications at IIT Madras, where he completed the Diploma in Programming. He serves on the Corporate Relations and Placement Committee at IIM Ranchi and is an author of a research paper on dialogue affect detection accepted for publication in Springer Nature FICTA 2026 proceedings, a Scopus indexed series.
 ## Reach me
@@ -474,7 +445,7 @@ Date Tokens
 16 Oct 2026 415.4 M
 17 Oct 2026 207.3 M
 18 Oct 2026 316.7 M
-19 Oct 2026 487.5 M
+19 Oct 2026 486.3 M
 Where the tokens went, by model.
 Model Family Share
 Gemini Flash 72.5%
@@ -485,11 +456,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 33,635
 Agent replies
-191,784
+191,756
 Tool results
-190,727
+190,694
 Total messages
-416,146
+416,085
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -569,11 +540,11 @@ Most choices my agents make are narrow: is this headline relevant, which categor
 System 1 vs System 2: System 1 is fast, cheap judgment that answers one narrow question in under a second; System 2 is slow, expensive reasoning that I save for work that needs it.
 ## What this layer does
 The typed decision model returns one of two typed answers: a choice among options I list, or a calibrated score between 0 and 1. It does not write text and it does not chat. If it cannot answer, the call falls back to its previous route, so no decision is lost.
-152,445
+152,353
 Total decisions
 37
 Decision types
-312.7269744873047 ms
+312.7596378326416 ms
 Median answer time
 0.06%
 Handed to fallback
@@ -606,15 +577,15 @@ Date Decisions
 16 Oct 2026 4,382
 17 Oct 2026 79
 18 Oct 2026 331
-19 Oct 2026 3,016
+19 Oct 2026 2,924
 Source: verdict log on my server, read at build time.
 ## How fast, how often it falls back
 Measure Value
-Median answer time (p50) 312.7269744873047 ms
+Median answer time (p50) 312.7596378326416 ms
 95th percentile (p95) 711 ms
 99th percentile (p99) 921 ms
 Handed to fallback route 86 (0.06%)
-Score calls / choice calls 85,021 / 67,424
+Score calls / choice calls 84,975 / 67,378
 Fallback means the typed model did not return a usable verdict and the call site used its backup route. It measures availability, not correctness. I do not have a labelled truth set for these decisions, so I do not report an accuracy figure for my own data.
 ## What it replaced
 Status Call sites
@@ -626,14 +597,14 @@ Rejected after review 1
 A call site is one place in my code that asks for a decision. One site can ask more than one type of question. These are counts of call sites, not measured before-and-after savings.
 ## Where the decisions come from
 Decision family Decisions Share Previous route
-A private work workflow 125,888 83% Chat model call
+A private work workflow 125,796 83% Chat model call
 Research headline relevance 25,891 17% Chat model call
 Everything else (memory curation, email category, next action, model tier choice) 666 0.4% Chat model call or fixed rule
 About three quarters of all decisions come from one private workflow in my work. I report its volume and nothing else about it.
 ## What it costs
-On a measured sample of 27,307 calls since 7 Oct 2026, the typed decision layer processed 16,269,767 input tokens and 3,035,838 output tokens (19,305,605 total tokens, about 707 tokens per call) and cost $0.6833, an average of about $0.0546 per day.
+On a measured sample of 27,261 calls since 7 Oct 2026, the typed decision layer processed 16,242,737 input tokens and 3,030,683 output tokens (19,273,420 total tokens, about 707 tokens per call) and cost $0.6822, an average of about $0.0545 per day.
 Output tokens are free on this service; list price was $0.042 per million input tokens.
-Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 152,445 decisions were handled by this layer instead of calling a chat model.
+Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 152,353 decisions were handled by this layer instead of calling a chat model.
 ## Where I never use it
 A typed model is probabilistic, so I exclude it by file from anything irreversible or trust critical. It never decides:
 Sending email or messages
@@ -649,7 +620,7 @@ The current service runs on limited credit, so I am testing a free and local typ
 Decisions that matter stay deterministic or come to me because a cheap wrong answer that cannot be undone is not cheap.
 How typed decisions fit into my broader cost strategy is documented in the savings ladder on Model routing and tiered compute
 ## Method note
-Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (27,307 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
+Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (27,261 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
 
 
 # How my agents remember: five layers of memory I can read and edit
@@ -667,7 +638,7 @@ Agent operations run with human approval gates for irreversible actions
 5 Memory layers
 9 Agents
 2,200 Char cap on notes
-380,342 Messages in history
+380,323 Messages in history
 ## Architecture: the five layer hierarchy
 Each layer has one specific job, one retention rule, one size budget, and one gate on who may write to it. The model reads only L1 directly. Everything else arrives through the context assembler or a tool call.
 Diagram A. Five layer memory architecture. Only L1 is read directly by the model. L3 and L4 load in full, L5 skills load on demand when a task matches, and older history is compacted into lcm.db for search and recall.
@@ -721,7 +692,7 @@ Loaded when a task matches; configuration drift audited hourly by the infrastruc
 LCM-X (beneath L1)
 Full history of one agent; each agent has its own lcm.db
 Permanent raw rows; removal only by an explicit owner purge
-Disk; 380,342 raw messages in the router agent's store
+Disk; 380,323 raw messages in the router agent's store
 SQLite in WAL mode with FTS5 indexes
 lcm_grep, lcm_recall, lcm_expand
 ## Curation, human approval gates, and rollback
@@ -736,7 +707,7 @@ In addition, an automated hourly job backs up agent state and memory files, and 
 ## LCM-X: lossless context memory
 LCM-X operates beneath L1. Every message sent or received is recorded once in lcm.db with an immutable store_id. When the active context window fills up, LCM-X compacts older messages into a depth 0 summary node that references the exact store_ids it summarizes. When multiple depth 0 nodes accumulate, they compact into a depth 1 node. This creates a clean directed acyclic graph where summaries always link back to the exact source messages, and compaction never deletes or alters raw history.
 Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.
-Compaction: The router agent's database currently holds 380,342 messages from 289 sessions and 460 summary nodes (439 at depth 0, 21 at depth 1). Maximum depth currently in use: 1.
+Compaction: The router agent's database currently holds 380,323 messages from 289 sessions and 460 summary nodes (439 at depth 0, 21 at depth 1). Maximum depth currently in use: 1.
 FTS5 search: SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.
 Lossless expansion: If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.
 Concurrent WAL mode: SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.
@@ -784,7 +755,7 @@ wal
 sqlite3 lcm.db 'PRAGMA journal_mode;'
 probed at build
 Raw messages
-380,342 across 289 sessions
+380,323 across 289 sessions
 SELECT COUNT(*) FROM messages;
 probed at build
 Summary nodes
@@ -921,17 +892,17 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T12:52:08Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T12:31:34Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.35 B
 Total tokens across 3 sources
 90.0%
 Prompt cache hit rate
 56.8 M
 Generated output (0.61%)
-$3,955.82
+$3,955.49
 List price equivalent (USD)
 ## Where the tokens went
-Fresh input 727.4 M 7.8%
+Fresh input 727.3 M 7.8%
 Cached read 8.36 B 89.4%
 Cache write 206.7 M 2.2%
 Output 56.8 M 0.61%
@@ -942,23 +913,23 @@ Tokens
 Share of total
 Description
 Fresh input
-727,359,537
+727,340,706
 7.78%
 Tokens sent to models without a provider cache hit
 Cache read
-8,361,078,617
+8,359,916,543
 89.40%
 Tokens read from provider prompt cache at discounted rates
 Cache creation
-206,732,810
+206,723,361
 2.21%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-56,776,827
+56,761,138
 0.61%
-Generated completion tokens (includes 3,863,268 reasoning tokens on supported models)
+Generated completion tokens (includes 3,862,468 reasoning tokens on supported models)
 Total
-9,351,947,791
+9,350,741,748
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -976,24 +947,24 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-78,418
-726,332,976
+78,394
+726,314,264
 5,757,439,212
 0
-34,060,901
-6,517,833,089
+34,048,875
+6,517,802,351
 88.8%
-$2,312.68
+$2,312.54
 Hermes direct
 my runtime calling Claude directly on a subscription
-11,183
-973,332
-1,710,986,532
-183,889,781
-10,666,478
-1,906,516,123
+11,176
+973,213
+1,709,824,458
+183,880,332
+10,662,815
+1,905,340,818
 90.2%
-$1,643.14
+$1,642.95
 Claude Code
 the CLI, read from its own transcripts
 5,790
@@ -1006,14 +977,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-95,391
-727,359,537
-8,361,078,617
-206,732,810
-56,776,827
-9,351,947,791
+95,360
+727,340,706
+8,359,916,543
+206,723,361
+56,761,138
+9,350,741,748
 90.0%
-$3,955.82
+$3,955.49
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1031,15 +1002,15 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-73,307
-680,094,629
+73,283
+680,075,917
 5,491,172,701
 n/r
-32,392,842
-6,203,660,172
+32,380,816
+6,203,629,434
 66.34%
 89.0%
-$2,093.92
+$2,093.79
 Claude Opus
 claude_code, hermes, ninerouter
 10,290
@@ -1053,13 +1024,13 @@ n/r
 n/r
 Claude Sonnet
 claude_code, hermes, ninerouter
-9,608
-37,618,174
-1,088,972,438
+9,601
+37,618,055
+1,087,810,364
 n/r
-6,155,452
-1,211,774,804
-12.96%
+6,151,789
+1,210,599,499
+12.95%
 90.3%
 n/r
 Claude Haiku
@@ -1108,15 +1079,15 @@ n/r
 $1.85
 Total
 All model families combined
-95,391
-727,359,537
-8,361,078,617
-206,732,810
-56,776,827
-9,351,947,791
+95,360
+727,340,706
+8,359,916,543
+206,723,361
+56,761,138
+9,350,741,748
 100.00%
 90.0%
-$3,955.82
+$3,955.49
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 761.5 M tokens on 7 Oct 2026.
@@ -1234,14 +1205,14 @@ Sun 18 Oct
 2,675,822
 3,187
 Mon 19 Oct (partial)
-487,504,651
-2,315,152
-446,152,013
-37,581,942
-1,455,544
-1,794
+486,298,608
+2,296,321
+444,989,939
+37,572,493
+1,439,855
+1,763
 ## List price vs subscription
-At published list prices this volume comes to about $3,955.82 USD: $2,312.68 for proxied calls as computed by the proxy, and $1,643.14 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $3,955.49 USD: $2,312.54 for proxied calls as computed by the proxy, and $1,642.95 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 90.0% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
