@@ -69,12 +69,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-19.
 Full operating rhythm breakdown →
-192,196
+192,214
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 33,788
-Agent replies 192,196
-Tool executions 191,153
+Agent replies 192,214
+Tool executions 191,172
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-19.
@@ -456,11 +456,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 33,788
 Agent replies
-192,196
+192,214
 Tool results
-191,153
+191,172
 Total messages
-417,137
+417,174
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -892,7 +892,7 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T17:13:24Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T17:21:10Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.41 B
 Total tokens across 3 sources
 89.9%
@@ -913,7 +913,7 @@ Tokens
 Share of total
 Description
 Fresh input
-728,127,238
+728,129,026
 7.74%
 Tokens sent to models without a provider cache hit
 Cache read
@@ -925,11 +925,11 @@ Cache creation
 2.25%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-56,970,226
+56,970,232
 0.61%
 Generated completion tokens (includes 3,873,897 reasoning tokens on supported models)
 Total
-9,406,321,640
+9,406,323,434
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -947,12 +947,12 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-78,651
-727,092,503
+78,654
+727,094,291
 5,770,949,743
 0
-34,099,413
-6,532,141,659
+34,099,419
+6,532,143,453
 88.8%
 $2,316.36
 Hermes direct
@@ -977,12 +977,12 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-95,782
-728,127,238
+95,785
+728,129,026
 8,409,143,184
 212,080,992
-56,970,226
-9,406,321,640
+56,970,232
+9,406,323,434
 89.9%
 $3,982.74
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
@@ -1002,12 +1002,12 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-73,540
-680,854,156
+73,543
+680,855,944
 5,504,683,232
 n/r
-32,431,354
-6,217,968,742
+32,431,360
+6,217,970,536
 66.10%
 89.0%
 $2,097.61
@@ -1079,12 +1079,12 @@ n/r
 $1.85
 Total
 All model families combined
-95,782
-728,127,238
+95,785
+728,129,026
 8,409,143,184
 212,080,992
-56,970,226
-9,406,321,640
+56,970,232
+9,406,323,434
 100.00%
 89.9%
 $3,982.74
@@ -1205,12 +1205,12 @@ Sun 18 Oct
 2,675,822
 3,187
 Mon 19 Oct (partial)
-541,878,500
-3,082,853
+541,880,294
+3,084,641
 494,216,580
 42,930,124
-1,648,943
-2,185
+1,648,949
+2,188
 ## List price vs subscription
 At published list prices this volume comes to about $3,982.74 USD: $2,316.36 for proxied calls as computed by the proxy, and $1,666.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
