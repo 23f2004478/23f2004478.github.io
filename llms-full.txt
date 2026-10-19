@@ -81,12 +81,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-20.
 Full operating rhythm breakdown →
-192,426
+192,431
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 34,072
-Agent replies 192,426
-Tool executions 191,402
+Agent replies 192,431
+Tool executions 191,408
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-20.
@@ -122,7 +122,7 @@ LinkedIn ·
 GitHub
 ## I build with agents
 I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.
-An 11 minute read, or jump to any chapter.
+A 10 minute read, or jump to any chapter.
 Next: Where I started
 Chapter 2 of 8
 ## Where I started
@@ -293,47 +293,47 @@ This is what happens between a voice note and a finished task. The risky steps s
 01
 Input
 ## Any-Device Ingest
-I dictate on my phone or Mac (FreeFlow, Dictate) and send it on Discord or Telegram.
+I dictate on phone or Mac and send it on Discord or Telegram.
 02
 Router
 ## Central Triage & Router
-A router agent reads the request, checks which domain owns it, and files a kanban task for the right specialist.
+The router finds the owner and files a kanban task.
 03
 Agents
 ## Domain agents
-Domain agents run around the clock on an Azure server, each with its own workspace, memory and tools.
+Specialists run all day on a server, each with its own memory.
 04
 Models
 ## Model choice
-Harder tasks go to stronger models; routine ones go to faster, cheaper ones. Plain scripts run first.
+Harder tasks go to stronger models. Plain scripts run first.
 05
 waits for me
 ## The Human Gate
-Pushes, emails, deletions and ledger writes stop here for my approval.
+Pushes, emails, deletions and ledger writes wait for me.
 06
 Output
 ## Delivery & Ledger Sync
-Results land in Google Tasks, GitHub, the Firefly III ledger, or a chat message to me.
+Results land in Google Tasks, GitHub, the ledger or a chat note.
 Next: What the team shipped
 Chapter 6 of 8
 ## What the team shipped
 I used the agents to build tools for other students. Two of them are free to use today.
 Public beta
 ## Termly
-A term planner for IIM Ranchi MBA students: timetable, absences left per course, deadlines and friends' free slots, with schedule changes read from college mail and confirmed by classmates.
+A term planner for IIM Ranchi MBA students: timetable, absences left and deadlines.
 Free, no ads, works offline.
 An independent student project, not built or run by IIM Ranchi. Built with my AI agents. Sign-in is for IIM Ranchi accounts.
 Open the welcome page
 Free to try
 ## CogPrep Arcade
-Six short puzzle games that mirror the cognitive aptitude tests some employers use, with a timed exam mode, a coach that replays each of my moves against the best solution, and plain-English advice on what to fix.
+Six short puzzle games that mirror employer aptitude tests, with a timed exam mode and a move-by-move coach.
 Free, runs in your browser, no sign-up.
 An independent practice tool, not affiliated with any employer or assessment provider. Built with my AI agents. Practice progress stays in your browser; finished timed runs can post an anonymous score to a leaderboard.
 Play CogPrep Arcade
 Source on GitHub
 My own tool
 ## My agent platform
-Specialist agents that draft, research and file for me, each action routed through a small typed decision model, and nothing leaves until I say go.
+Agents that draft, research and file for me. Nothing leaves until I say go.
 Case studies: platform, routing, token ledger, memory, reliability.
 Read the six case studies
 My own tool
@@ -381,16 +381,16 @@ Chapter 8 of 8
 These are the rules I work by. If they fit what you need, email me.
 01
 ## Systems that stop before they do damage
-On my platform, deletes, sends, commits and deploys wait for my sign-off. The infrastructure agent audits configuration drift hourly. Its janitor engine proposes cleanups and acts only after I say yes.
+Deletes, sends, commits and deploys wait for my sign-off. Cleanups are proposed, never run unasked.
 02
 ## Code that is checked before it ships
-At QualityKiosk I built two TypeScript estimation engines with 136 unit tests, 68 of them confirming the code matches the original Excel model. 144 commits in 7 weeks, solo, across 10 backend modules.
+At QualityKiosk, 136 unit tests, 68 of them checking parity with the original Excel model.
 03
 ## The honest metric, not the flattering one
-My churn model reports accuracy 0.8414 and F1 0.6365; I lead with F1. Comment classification used F1-Macro because the classes were imbalanced. The paper reports recall on the rarest class.
+On imbalanced data I report F1 or rare-class recall, not accuracy.
 04
 ## Both sides of the table
-Business training at IIM Ranchi and programming at IIT Madras. Lean Six Sigma Green Belt, and Power BI PL-300 (earned Jun 2025, now expired). Pay benchmarking at Tata Steel on one side, agent platform design on the other.
+Management at IIM Ranchi, programming at IIT Madras, and agent design in between.
 Read the build log
 ## What does the human gate stop?
 Pushes, emails, deletions and ledger writes stop here for my approval.
@@ -617,7 +617,7 @@ Date Tokens
 17 Oct 2026 207.3 M
 18 Oct 2026 316.7 M
 19 Oct 2026 512.8 M
-20 Oct 2026 53.3 M
+20 Oct 2026 53.4 M
 Where the tokens went, by model.
 Model Family Share
 Gemini Flash 72.5%
@@ -628,11 +628,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 34,072
 Agent replies
-192,426
+192,431
 Tool results
-191,402
+191,408
 Total messages
-417,900
+417,911
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -1065,14 +1065,14 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T19:58:19Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T20:03:32Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.43 B
 Total tokens across 3 sources
 89.9%
 Prompt cache hit rate
 57.0 M
 Generated output (0.60%)
-$4,008.07
+$4,008.08
 List price equivalent (USD)
 ## Where the tokens went
 Fresh input 728.2 M 7.7%
@@ -1086,7 +1086,7 @@ Tokens
 Share of total
 Description
 Fresh input
-728,186,001
+728,189,893
 7.72%
 Tokens sent to models without a provider cache hit
 Cache read
@@ -1098,11 +1098,11 @@ Cache creation
 2.31%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-57,036,689
+57,036,697
 0.60%
 Generated completion tokens (includes 3,882,149 reasoning tokens on supported models)
 Total
-9,430,585,882
+9,430,589,782
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -1120,14 +1120,14 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-78,709
-727,145,378
+78,713
+727,149,270
 5,770,949,743
 0
-34,119,207
-6,532,214,328
+34,119,215
+6,532,218,228
 88.8%
-$2,316.69
+$2,316.70
 Hermes direct
 my runtime calling Claude directly on a subscription
 11,311
@@ -1150,14 +1150,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-95,901
-728,186,001
+95,905
+728,189,893
 8,427,600,113
 217,763,079
-57,036,689
-9,430,585,882
+57,036,697
+9,430,589,782
 89.9%
-$4,008.07
+$4,008.08
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1175,12 +1175,12 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-73,597
-680,902,206
+73,601
+680,906,098
 5,504,683,232
 n/r
-32,450,920
-6,218,036,358
+32,450,928
+6,218,040,258
 65.93%
 89.0%
 $2,097.94
@@ -1252,15 +1252,15 @@ n/r
 $1.85
 Total
 All model families combined
-95,901
-728,186,001
+95,905
+728,189,893
 8,427,600,113
 217,763,079
-57,036,689
-9,430,585,882
+57,036,697
+9,430,589,782
 100.00%
 89.9%
-$4,008.07
+$4,008.08
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 761.5 M tokens on 7 Oct 2026.
@@ -1378,14 +1378,14 @@ Mon 19 Oct
 1,507,726
 1,933
 Tue 20 Oct (partial)
-53,347,231
-65,627
+53,351,131
+69,519
 44,547,693
 8,526,231
-207,680
-371
+207,688
+375
 ## List price vs subscription
-At published list prices this volume comes to about $4,008.07 USD: $2,316.69 for proxied calls as computed by the proxy, and $1,691.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $4,008.08 USD: $2,316.70 for proxied calls as computed by the proxy, and $1,691.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 89.9% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
