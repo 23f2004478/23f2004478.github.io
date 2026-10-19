@@ -180,3 +180,29 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
 html .back-to-top.is-visible{opacity:1}
 html .back-to-top:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 @media (min-width:1440px) and (max-width:1559px){main{padding-left:calc(1560px - 100vw)}}
+
+/* github proof strip (ch6) */
+.gh-strip{margin-top:var(--s10);border-top:1px solid var(--rule);padding-top:var(--s6)}
+.gh-h{font-size:1.125rem;font-weight:600;margin:0 0 var(--s1)}
+.gh-count{font-size:.8125rem;color:var(--muted);margin:0 0 var(--s4)}
+.gh-count a{color:var(--accent);display:inline-flex;align-items:center;min-height:44px}
+.gh-cards{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr;gap:var(--s4)}
+.gh-card{display:flex;flex-direction:column;gap:var(--s2);border:1px solid var(--rule);border-radius:6px;background:var(--box);padding:var(--s4);min-width:0}
+.gh-card:hover{border-color:var(--accent)}
+.gh-card>*{margin:0}
+.gh-name{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px;font-weight:600;color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+.gh-name:hover{text-decoration:underline}
+.gh-tags{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.gh-tag{font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:2px 8px;background:var(--paper)}
+.gh-desc{font-size:.9375rem;line-height:1.5}
+.gh-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--rule);margin-top:auto}
+.gh-seg{display:block;height:100%}
+.gh-s0{background:var(--accent)}.gh-s1{background:var(--data-b)}.gh-s2{background:var(--data-n)}.gh-s3{background:var(--muted)}.gh-s4{background:var(--rule);box-shadow:inset 0 0 0 1px var(--data-n)}
+.gh-leg{font-size:.875rem;color:var(--muted)}
+.gh-meta{font-size:.8125rem;color:var(--muted)}
+.gh-spark{margin:var(--s6) 0 0;max-width:420px}
+.gs-svg{display:block;width:100%;height:auto}
+.gs-bar{fill:var(--rule)}.gs-on{fill:var(--accent)}
+.gs-axis{stroke:var(--data-n);stroke-width:1}
+.gs-t{font-family:var(--mono);font-size:14px;fill:var(--muted)}
+@media (min-width:900px){.gh-cards{grid-template-columns:repeat(3,1fr)}}
