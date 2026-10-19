@@ -81,12 +81,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-20.
 Full operating rhythm breakdown →
-192,401
+192,416
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 34,072
-Agent replies 192,401
-Tool executions 191,374
+Agent replies 192,416
+Tool executions 191,392
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-20.
@@ -122,11 +122,38 @@ LinkedIn ·
 GitHub
 ## I build with agents
 I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.
-An 8 minute read, or jump to any chapter.
+An 11 minute read, or jump to any chapter.
 Next: Where I started
 Chapter 2 of 8
 ## Where I started
 I study management and learned to code alongside it. The path runs through a management degree at IIM Ranchi, a programming diploma at IIT Madras, and three internships.
+Study, internships and positions on one time axis, January 2024 to March 2027. Dashed bar: in progress, start earlier.
+2024 2025 2026 2027
+Study
+IIM Ranchi MBA Jun 2025 to Mar 2027
+IIT Madras BS, Data Science Diploma in Programming done 2026, degree in progress
+Internships
+IIM Ranchi, Social Impact Jan to Feb 2024
+Tata Steel, Research Analyst Apr to Jun 2025
+QualityKiosk, Data and AI Apr to Jun 2026
+Positions
+Placement committee, Executive Member 2025
+Placement committee, Senior Executive Member 2026
+QualityKiosk internship, Apr to Jun 2026. Internal tooling for banking QA; code confidential.
+136 unit tests, 68 of them check parity with the Excel model
+1,027 lines in 2 TypeScript estimation engines
+18,456 QA rows standardised across 61 workbooks
+7 + 3 apps on one platform, plus standalone tools
+144 commits in 7 weeks, solo
+1,147 line ML estimation PRD (a spec, no model built)
+Credentials and results
+Power BI PL-300 passed Jun 2025, expired
+Lean Six Sigma Green Belt 2025
+Supply chain twins, IIM Mumbai 2025
+IIT Madras foundational 2023
+Topper badges 7 of the first 14 IIT Madras courses
+Odoo hackathon, IIT Madras top 50 of 500 teams, 2025
+Read each stop in a sentence
 ## Education
 2025 to 2027
 ## IPM at IIM Ranchi
@@ -155,26 +182,110 @@ Next: Learning the models first
 Chapter 3 of 8
 ## Learning the models first
 Before I let any agent act, I wanted to know how models get things wrong. These projects and one research paper are where I learned that.
-## Smart MCQ solver
-LoRA ensemble, 0.74242 MAP@3.
-0.74242 MAP@3
-## Comment classification
-3-model blend, 0.8293 F1-Macro.
-0.8293 F1-MACRO
-## Customer exit prediction
-Tuned Random Forest, 0.6365 F1.
-0.6365 F1
+## Smart MCQ solver 0.74242 MAP@3
+## Comment classification 0.8293 F1-MACRO
+## Customer exit prediction 0.6365 F1
+Comment classification: F1-Macro on 39.6K held-out rows
+Zero based. 198K comments, 4 imbalanced classes, so F1-Macro rather than accuracy.
+Customer exit prediction: validation F1, 8 classifiers then the tuned winner
+Zero based. Accuracy was 0.8414 while F1 was 0.6365, because few customers leave, so F1 is the number I report.
+Smart MCQ solver: 70:30 ensemble, 0.74242 MAP@3
+Both models fine-tuned with LoRA (rank 8, alpha 16). Score is Kaggle public leaderboard, 500 unseen questions.
+Consumer segmentation: silhouette by feature set (62 respondents)
+Adding more spend and age made clusters less distinct, so I kept two dimensions: 5 segments, silhouette 0.540.
+More builds, each with its headline number
+7 DAX measures
+## Venture capital deal dashboard
+Power BI over a 50,000-row synthetic star schema, 3 pages. A modelling exercise on made-up data.
+12 DAX measures
+## HR attrition dashboard
+2-page Power BI dashboard comparing hires with the same quarter before.
+RAG
+## Virtual teaching assistant
+Course content chunked, embedded and retrieved by cosine similarity, behind FastAPI endpoints.
+10+ dashboards
+## IESCP platform
+Flask platform linking influencers and sponsors, deployed on PythonAnywhere for 50+ users.
+Three IIT Madras machine learning assignments, run as Kaggle competitions
+Task Training data Compared Result
+Customer exit 90,000 rows 8 classifiers F1 0.6365
+Flight ticket price 40,000 rows 8 regressors score not published
+Mushroom edibility 7,000 rows 7+ classifiers score not published
+Projects on a time axis, May 2024 to August 2026.
+2024 2025 2026
+Projects
+IESCP platform May to Aug 2024
+Consumer segmentation Oct 2024
+Teaching assistant (RAG) Mar to Apr 2025
+Comment classification Jan to Mar 2026
+Smart MCQ solver May to Jul 2026
+VC and HR dashboards Aug 2026
+Toolkit, by where I used it. No skill levels, because I have no honest way to score them.
+Used in a project or internship on this page Course, certification or exposure
+## Languages and query
+Python
+R
+DAX
+TypeScript
+SQL
+## Analytics and ML
+scikit-learn
+LightGBM
+XGBoost
+Optuna
+Transformers and LoRA
+Class imbalance
+OLS regression
+Chi-square, Kruskal-Wallis
+K-means
+## BI
+Power BI
+Star schema
+Advanced Excel
+Power Query
+Tableau (exposure only)
+## Engineering
+React
+NestJS
+FastAPI
+Flask
+PostgreSQL
+SQLite
+Docker
+AWS EC2
+Nginx
+Vercel
+GitHub
+n8n
+## Business
+Lean Six Sigma, DMAIC
 All projects
 ## Multi-Class Affect Detection in Educational Chatbots: Evidence from Imbalanced Dialogue Data
 Accepted for publication in Springer Nature proceedings, FICTA 2026
+74.19% recall on the rare Confused class, RoBERTa + SVMSMOTE
 Both papers in detail
 Next: One assistant became nine
 Chapter 4 of 8
 ## One assistant became nine
 Today the team is nine agents. Sends, deletes and public pushes wait for my approval.
-I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
-A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.
+I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, and where work stops for me.
 Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. Build log
+The team: one router and eight agents that own one area each, running on a server
+Router
+Academics
+Career prep
+Finance
+Infrastructure
+Personal ops
+Socials
+Consulting
+1 more, private
+Hours with my agents, by day
+256.9 hours over 34 active days. Counted from messages I sent, 15 minute idle gap. How these are counted
+Which model does the work: share of total logged tokens
+Gemini Flash 65.9%
+Claude Opus 20.1%
+Claude Sonnet 13.4%
 Next: What the agents actually do
 Chapter 5 of 8
 ## What the agents actually do
@@ -517,11 +628,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 34,072
 Agent replies
-192,401
+192,416
 Tool results
-191,374
+191,392
 Total messages
-417,847
+417,880
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -954,14 +1065,14 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T19:32:03Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T19:46:18Z · Tracking window: 2026-09-13 to 2026-10-20 ( 38 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.43 B
 Total tokens across 3 sources
 89.9%
 Prompt cache hit rate
 57.0 M
 Generated output (0.60%)
-$4,008.01
+$4,008.07
 List price equivalent (USD)
 ## Where the tokens went
 Fresh input 728.2 M 7.7%
@@ -975,7 +1086,7 @@ Tokens
 Share of total
 Description
 Fresh input
-728,178,015
+728,186,001
 7.72%
 Tokens sent to models without a provider cache hit
 Cache read
@@ -987,11 +1098,11 @@ Cache creation
 2.31%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-57,031,601
+57,036,689
 0.60%
 Generated completion tokens (includes 3,882,149 reasoning tokens on supported models)
 Total
-9,430,572,808
+9,430,585,882
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -1009,14 +1120,14 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-78,698
-727,137,392
+78,709
+727,145,378
 5,770,949,743
 0
-34,114,119
-6,532,201,254
+34,119,207
+6,532,214,328
 88.8%
-$2,316.63
+$2,316.69
 Hermes direct
 my runtime calling Claude directly on a subscription
 11,311
@@ -1039,14 +1150,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-95,890
-728,178,015
+95,901
+728,186,001
 8,427,600,113
 217,763,079
-57,031,601
-9,430,572,808
+57,036,689
+9,430,585,882
 89.9%
-$4,008.01
+$4,008.07
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1064,15 +1175,15 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-73,586
-680,894,220
+73,597
+680,902,206
 5,504,683,232
 n/r
-32,445,832
-6,218,023,284
+32,450,920
+6,218,036,358
 65.93%
 89.0%
-$2,097.88
+$2,097.94
 Claude Opus
 claude_code, hermes, ninerouter
 10,379
@@ -1141,15 +1252,15 @@ n/r
 $1.85
 Total
 All model families combined
-95,890
-728,178,015
+95,901
+728,186,001
 8,427,600,113
 217,763,079
-57,031,601
-9,430,572,808
+57,036,689
+9,430,585,882
 100.00%
 89.9%
-$4,008.01
+$4,008.07
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 761.5 M tokens on 7 Oct 2026.
@@ -1267,14 +1378,14 @@ Mon 19 Oct
 1,507,726
 1,933
 Tue 20 Oct (partial)
-53,334,157
-57,641
+53,347,231
+65,627
 44,547,693
 8,526,231
-202,592
-360
+207,680
+371
 ## List price vs subscription
-At published list prices this volume comes to about $4,008.01 USD: $2,316.63 for proxied calls as computed by the proxy, and $1,691.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $4,008.07 USD: $2,316.69 for proxied calls as computed by the proxy, and $1,691.38 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 89.9% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
