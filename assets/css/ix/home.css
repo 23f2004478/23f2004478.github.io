@@ -441,3 +441,12 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 .entry h4{margin:0 0 var(--s1);font-size:1.125rem}
 .gx-rows{max-width:none}
 .gx-row,.gx-t{max-width:none}
+
+/* story 3d: today line strictly behind labels, halo knockout, end-label and tag spacing (no bar geometry change) */
+.gx-grid{z-index:0}
+.gx-rows{z-index:1}
+.gx-n,.gx-w{box-shadow:0 0 0 3px var(--paper)}
+.gx-side .gx-n,.gx-side .gx-w{box-shadow:none}
+.gx-tag{top:4px}
+.gx-body:has(.gx-today){padding-top:34px}
+.gx-tick-l{top:6px;transform:translateY(-50%);line-height:1;margin-left:12px}
