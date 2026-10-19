@@ -135,11 +135,12 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
 .section+.section.ch-5 .ch-head{margin-top:var(--s10)}
 @media (min-width:768px){.section+.section.ch-5 .ch-head{margin-top:calc(var(--s16) - var(--s2))}}
 @media (min-width:1200px){
-  .chrail{left:16px}
+  .chrail{left:8px}
   .chrail::before{content:none}
   .chrail a{height:44px;color:var(--muted);font-size:.8125rem;padding-block:0}
   .chrail .n{min-width:40px}
 }
+@media (min-width:1320px){.chrail{left:16px}}
 @media (min-width:1440px){
   .chrail::before{content:"Chapters";display:block;font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 var(--s2) var(--s2)}
   .chrail .n{min-width:28px}
