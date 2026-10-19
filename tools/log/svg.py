@@ -64,7 +64,7 @@ def thousands(n):
 # ---------------------------------------------------------------- entry templates
 
 def before_after(d, uid):
-    return _ba_wide(d, uid + "w"), _ba_narrow(d, uid + "n", 340, 14)
+    return _ba_wide(d, uid + "w"), _ba_narrow(d, uid + "n", 300, 14)
 
 
 def before_after_thumb(d, uid):
@@ -125,7 +125,7 @@ def _ba_narrow(d, uid, W, fs, compact=False):
 
 
 def pipeline(d, uid):
-    return _pl_wide(d, uid + "w"), _pl_narrow(d, uid + "n", 340, 14)
+    return _pl_wide(d, uid + "w"), _pl_narrow(d, uid + "n", 300, 14)
 
 
 def pipeline_thumb(d, uid):
@@ -198,7 +198,7 @@ TEMPLATES = {"before_after": (before_after, before_after_thumb), "pipeline": (pi
 # ---------------------------------------------------------------- standing visuals
 
 def topology(tp, uid):
-    return _topo(tp, uid + "w", 520, 3, 15), _topo(tp, uid + "n", 340, 2, 14)
+    return _topo(tp, uid + "w", 520, 3, 15), _topo(tp, uid + "n", 300, 2, 14)
 
 
 def _topo(tp, uid, W, cols, fs):
@@ -288,7 +288,7 @@ CAT_LABEL = {"infra": "Infrastructure", "capability": "Capability", "site": "Sit
 
 
 def timeline(tl, uid, end_iso, days=90):
-    return _tl(tl, uid + "w", 520, 15, end_iso, days), _tl(tl, uid + "n", 340, 14, end_iso, days)
+    return _tl(tl, uid + "w", 520, 15, end_iso, days), _tl(tl, uid + "n", 300, 14, end_iso, days)
 
 
 def _tl(tl, uid, W, fs, end_iso, days):
@@ -430,7 +430,7 @@ def _mb_desc(mm):
 
 
 def model_trend(hist, uid):
-    return _mt(hist, uid + "w", 680, 16, 8), _mt(hist, uid + "n", 340, 14, 4)
+    return _mt(hist, uid + "w", 680, 16, 8), _mt(hist, uid + "n", 300, 14, 4)
 
 
 def _mt(hist, uid, W, fs, nweeks):
