@@ -8,7 +8,7 @@ A management student who learned to code built himself a small team of AI agents
 1. I build with agents: I am 23 and I study management at IIM Ranchi, in Ranchi. This page shows how a management student ended up running a team of AI agents.
 2. Where I started: I study management and learned to code alongside it. The path runs through a programming diploma at IIT Madras, a management degree at IIM Ranchi, and three internships.
 3. Learning the models first: Before I let any agent act, I wanted to know how models get things wrong. These projects and one research paper are where I learned that.
-4. One assistant became nine: The platform has run since 11 Sep 2026, and on a cloud server since 20 Sep 2026. It now has nine agents, and sends, deletes and public pushes wait for my approval.
+4. One assistant became nine: Today the team is nine agents. Sends, deletes and public pushes wait for my approval.
 5. What the agents actually do: This is what happens between a voice note and a finished task. The risky steps stop and wait for me.
 6. What the team shipped: I used the agents to build tools for other students. Two of them are free to use today.
 7. Going deeper: The engineering detail lives in six case studies. Each one shows the architecture, and the code stays private.
@@ -81,12 +81,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-19.
 Full operating rhythm breakdown →
-191,765
+191,784
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 33,635
-Agent replies 191,765
-Tool executions 190,703
+Agent replies 191,784
+Tool executions 190,727
 About 6 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-19.
@@ -164,7 +164,7 @@ Accepted for publication in Springer Nature proceedings, FICTA 2026
 Both papers in detail
 Chapter 4 of 8
 ## One assistant became nine
-The platform has run since 11 Sep 2026, and on a cloud server since 20 Sep 2026. It now has nine agents, and sends, deletes and public pushes wait for my approval.
+Today the team is nine agents. Sends, deletes and public pushes wait for my approval.
 I run a personal multi-agent platform on open-source Hermes Agent. I did not write Hermes. My part is the design: which agent owns what, how work moves between them, and where it has to stop for me.
 A router and a set of domain agents each own one area. Work moves on kanban cards, from an orchestrator to a worker and then to a review gate.
 Running since 11 Sep 2026, on a cloud server since 20 Sep 2026. Build log
@@ -474,7 +474,7 @@ Date Tokens
 16 Oct 2026 415.4 M
 17 Oct 2026 207.3 M
 18 Oct 2026 316.7 M
-19 Oct 2026 487.3 M
+19 Oct 2026 487.5 M
 Where the tokens went, by model.
 Model Family Share
 Gemini Flash 72.5%
@@ -485,11 +485,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 33,635
 Agent replies
-191,765
+191,784
 Tool results
-190,703
+190,727
 Total messages
-416,103
+416,146
 About 6 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -921,17 +921,17 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-19T12:34:32Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-19T12:52:08Z · Tracking window: 2026-09-13 to 2026-10-19 ( 37 days). The window starts on 2026-09-13, the first day any source logged tokens.
 9.35 B
 Total tokens across 3 sources
 90.0%
 Prompt cache hit rate
 56.8 M
 Generated output (0.61%)
-$3,955.67
+$3,955.82
 List price equivalent (USD)
 ## Where the tokens went
-Fresh input 727.3 M 7.8%
+Fresh input 727.4 M 7.8%
 Cached read 8.36 B 89.4%
 Cache write 206.7 M 2.2%
 Output 56.8 M 0.61%
@@ -942,23 +942,23 @@ Tokens
 Share of total
 Description
 Fresh input
-727,342,490
+727,359,537
 7.78%
 Tokens sent to models without a provider cache hit
 Cache read
-8,360,908,268
+8,361,078,617
 89.40%
 Tokens read from provider prompt cache at discounted rates
 Cache creation
-206,732,310
+206,732,810
 2.21%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-56,764,052
+56,776,827
 0.61%
 Generated completion tokens (includes 3,863,268 reasoning tokens on supported models)
 Total
-9,351,747,120
+9,351,947,791
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -976,24 +976,24 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-78,397
-726,315,946
+78,418
+726,332,976
 5,757,439,212
 0
-34,048,881
-6,517,804,039
+34,060,901
+6,517,833,089
 88.8%
-$2,312.55
+$2,312.68
 Hermes direct
 my runtime calling Claude directly on a subscription
-11,182
-973,315
-1,710,816,183
-183,889,281
-10,665,723
-1,906,344,502
+11,183
+973,332
+1,710,986,532
+183,889,781
+10,666,478
+1,906,516,123
 90.2%
-$1,643.12
+$1,643.14
 Claude Code
 the CLI, read from its own transcripts
 5,790
@@ -1006,14 +1006,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-95,369
-727,342,490
-8,360,908,268
-206,732,310
-56,764,052
-9,351,747,120
+95,391
+727,359,537
+8,361,078,617
+206,732,810
+56,776,827
+9,351,947,791
 90.0%
-$3,955.67
+$3,955.82
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1031,15 +1031,15 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-73,286
-680,077,599
+73,307
+680,094,629
 5,491,172,701
 n/r
-32,380,822
-6,203,631,122
+32,392,842
+6,203,660,172
 66.34%
 89.0%
-$2,093.80
+$2,093.92
 Claude Opus
 claude_code, hermes, ninerouter
 10,290
@@ -1053,12 +1053,12 @@ n/r
 n/r
 Claude Sonnet
 claude_code, hermes, ninerouter
-9,607
-37,618,157
-1,088,802,089
+9,608
+37,618,174
+1,088,972,438
 n/r
-6,154,697
-1,211,603,183
+6,155,452
+1,211,774,804
 12.96%
 90.3%
 n/r
@@ -1108,15 +1108,15 @@ n/r
 $1.85
 Total
 All model families combined
-95,369
-727,342,490
-8,360,908,268
-206,732,310
-56,764,052
-9,351,747,120
+95,391
+727,359,537
+8,361,078,617
+206,732,810
+56,776,827
+9,351,947,791
 100.00%
 90.0%
-$3,955.67
+$3,955.82
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 761.5 M tokens on 7 Oct 2026.
@@ -1234,14 +1234,14 @@ Sun 18 Oct
 2,675,822
 3,187
 Mon 19 Oct (partial)
-487,303,980
-2,298,105
-445,981,664
-37,581,442
-1,442,769
-1,772
+487,504,651
+2,315,152
+446,152,013
+37,581,942
+1,455,544
+1,794
 ## List price vs subscription
-At published list prices this volume comes to about $3,955.67 USD: $2,312.55 for proxied calls as computed by the proxy, and $1,643.12 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $3,955.82 USD: $2,312.68 for proxied calls as computed by the proxy, and $1,643.14 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 90.0% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
