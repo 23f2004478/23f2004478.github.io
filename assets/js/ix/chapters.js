@@ -27,7 +27,7 @@
     root.classList.add('ch-live');
     var idx = 0;
     function pick() {
-      var line = window.innerHeight * 0.35, best = 0;
+      var line = Math.min(window.innerHeight * 0.35, 140), best = 0;
       items.forEach(function(it, i) { if (it.sec.getBoundingClientRect().top <= line) best = i; });
       if (best !== idx || !cur.dataset.set) { idx = best; cur.dataset.set = '1'; setCurrent(best); }
     }
