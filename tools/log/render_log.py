@@ -480,6 +480,10 @@ def render_home_card(entries):
     p = SITE / "index.html"
     s = p.read_text(encoding="utf-8")
     s = re.sub(re.escape(HOME_START) + ".*?" + re.escape(HOME_END), "", s, flags=re.S)
+    cfg = json.loads((SITE / "site.config.json").read_text(encoding="utf-8")) if (SITE / "site.config.json").exists() else {}
+    if not cfg.get("features", {}).get("home_log_preview", False):
+        p.write_text(s, encoding="utf-8")
+        return
     if entries:
         e = entries[0]
         card = ('%s<section class="wrap log-line" id="build-log" data-ix="reveal" aria-labelledby="h-latest">'
@@ -488,7 +492,10 @@ def render_home_card(entries):
                 '<a href="%s">%s</a> <a class="log-all" href="/log/">All entries <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a></p>'
                 '</section>%s'
                 % (HOME_START, e["date"], esc(human_date(e["date"])), entry_url(e), esc(e["title"]), HOME_END))
-        if 'id="leadership"' in s:
+        if 'ch-8"' in s:
+            i = s.index('<section class="section wrap ch ch-8"')
+            s = s[:i] + card + "\n  " + s[i:]
+        elif 'id="leadership"' in s:
             i = s.index('id="leadership"')
             i = s.index("</section>", i) + len("</section>")
             s = s[:i] + "\n  " + card + s[i:]
