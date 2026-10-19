@@ -312,7 +312,7 @@
       <li><strong>L2 Ephemeral scratch:</strong> The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.</li>
       <li><strong>L3 Curated persistent memory:</strong> The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.</li>
       <li><strong>L4 Curated knowledge base:</strong> The reference library. 17 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
-      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 894 SKILL.md files (252 distinct skills) across the router and 8 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
+      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 892 SKILL.md files (252 distinct skills) across the router and 8 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
     </ul>
 
     <h2 id="spec">Layer specifications</h2>
@@ -366,7 +366,7 @@
             <th scope="row">L5 Procedural skills library</th>
             <td>Per agent</td>
             <td>Permanent, versioned</td>
-            <td>894 SKILL.md files, 252 distinct skills</td>
+            <td>892 SKILL.md files, 252 distinct skills</td>
             <td>SKILL.md plus references and scripts</td>
             <td>Loaded when a task matches; configuration drift audited hourly by the infrastructure agent</td>
           </tr>
@@ -542,7 +542,7 @@
           </tr>
           <tr>
             <th scope="row">Skill files</th>
-            <td class="mono">894 (252 distinct names)</td>
+            <td class="mono">892 (252 distinct names)</td>
             <td><code>find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l</code></td>
             <td>declared, verified 7 Oct 2026</td>
           </tr>
