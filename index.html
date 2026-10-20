@@ -965,17 +965,17 @@
       </svg>
       <p class="viz-note">A miss at one layer is meant to be caught by the next.</p>
     </figure>
-    <figure class="viz stops-fig"><figcaption class="viz-cap">What it stops</figcaption>
-    <div class="stops-cards" role="list" aria-label="What it stops">
+    <figure class="viz stops-fig"><figcaption class="viz-cap">What it is built to stop</figcaption>
+    <div class="stops-cards" role="list" aria-label="What it is built to stop">
       <div class="stops-card" role="listitem">
         <p class="stops-risk">A leaked key</p>
-        <p class="stops-line"><span class="stops-label">Control</span> Secrets sit in a vault that only fills the matching site</p>
-        <p class="stops-line"><span class="stops-label">Proof</span> Public repo secret scan found none</p>
+        <p class="stops-line"><span class="stops-label">Control</span> A vault that fills a password only on the matching site</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> A scan of the public repo found none</p>
       </div>
       <div class="stops-card" role="listitem">
         <p class="stops-risk">An agent doing something unreviewed</p>
-        <p class="stops-line"><span class="stops-label">Control</span> Approval gate, plus an automatic check for the coordinating agent doing hands-on work</p>
-        <p class="stops-line"><span class="stops-label">Proof</span> Seeded faults are caught in tests</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Approval gate, plus a check for the coordinating agent doing hands-on work</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Test faults built in on purpose are caught</p>
       </div>
       <div class="stops-card" role="listitem">
         <p class="stops-risk">A wrong change going live</p>
@@ -985,12 +985,12 @@
       <div class="stops-card" role="listitem">
         <p class="stops-risk">Lost work</p>
         <p class="stops-line"><span class="stops-label">Control</span> Encrypted offsite backups, weekly restore check</p>
-        <p class="stops-line"><span class="stops-label">Proof</span> Weekly restore check</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Backups restored in a weekly test</p>
       </div>
       <div class="stops-card" role="listitem">
         <p class="stops-risk">Settings changing by accident</p>
         <p class="stops-line"><span class="stops-label">Control</span> Hourly checks plus daily review</p>
-        <p class="stops-line"><span class="stops-label">Proof</span> Runs hourly and daily, each run logged</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Each hourly and daily run is logged</p>
       </div>
     </div>
     <div class="table-scroll stops-table-wrap" tabindex="0">
@@ -998,11 +998,11 @@
       <caption class="sr-only">Five risks, the control that addresses each, and the proof it works.</caption>
       <thead><tr><th scope="col">Risk</th><th scope="col">Control</th><th scope="col">Proof</th></tr></thead>
       <tbody>
-        <tr><th scope="row">A leaked key</th><td>Secrets sit in a vault that only fills the matching site</td><td>Public repo secret scan found none</td></tr>
-        <tr><th scope="row">An agent doing something unreviewed</th><td>Approval gate, plus an automatic check for the coordinating agent doing hands-on work</td><td>Seeded faults are caught in tests</td></tr>
+        <tr><th scope="row">A leaked key</th><td>A vault that fills a password only on the matching site</td><td>A scan of the public repo found none</td></tr>
+        <tr><th scope="row">An agent doing something unreviewed</th><td>Approval gate, plus a check for the coordinating agent doing hands-on work</td><td>Test faults built in on purpose are caught</td></tr>
         <tr><th scope="row">A wrong change going live</th><td>A release check that allows only number updates</td><td>45 of 45 test cases built to fail on purpose behaved as intended</td></tr>
-        <tr><th scope="row">Lost work</th><td>Encrypted offsite backups, weekly restore check</td><td>Weekly restore check</td></tr>
-        <tr><th scope="row">Settings changing by accident</th><td>Hourly checks plus daily review</td><td>Runs hourly and daily, each run logged</td></tr>
+        <tr><th scope="row">Lost work</th><td>Encrypted offsite backups, weekly restore check</td><td>Backups restored in a weekly test</td></tr>
+        <tr><th scope="row">Settings changing by accident</th><td>Hourly checks plus daily review</td><td>Each hourly and daily run is logged</td></tr>
       </tbody>
     </table>
     </div></figure>
