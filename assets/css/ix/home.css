@@ -472,10 +472,12 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 .gx-t-tick-end{margin-bottom:18px}
 .gx-tick-l.gx-tick-l-end{margin-left:0;top:100%;margin-top:3px;transform:translateX(calc(-100% - 2px))}
 
-/* story 4b2 polish: left-edge year label (axis starts mid-year), open-ended bar arrowhead,
-   divider/end-tick label size+colour parity. Both the arrowhead and the edge label are sized
-   and positioned to stay fully inside their own row's existing box (right:0 / left:0%, no
-   extra width), so neither can reopen the phone horizontal-overflow defect this card fixed. */
-.gx-y-left{position:absolute;top:0;left:0%;font-size:.8125rem;color:var(--muted)}
+/* story 4b2 polish: open-ended bar arrowhead, divider/end-tick label size+colour parity. The
+   arrowhead is sized and positioned to stay fully inside its own row's existing box (right:0,
+   no extra width), so it cannot reopen the phone horizontal-overflow defect this card fixed.
+   A separate "2022" tick beside the axis's first real year tick ("2023", itself only ~4% of
+   the plot from the left edge at 405px) was tried and measured to collide with it (both land
+   at the same x range, see probe_4b2_polish.mjs); the "from Oct 2022" start date is carried in
+   the visible caption and aria label instead (ch2_gantt), not as a second axis tick. */
 .gx-open-end{position:absolute;top:2px;right:0;width:0;height:0;border-style:solid;border-width:4px 0 4px 7px;border-color:transparent transparent transparent var(--accent)}
 .gx-div-l,.gx-tick-l{font-size:.8125rem;color:var(--ink)}

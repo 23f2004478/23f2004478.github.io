@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "built_on": "2026-10-20",
-  "built_at": "2026-10-20T17:58:43+05:30",
+  "built_at": "2026-10-20T18:31:14+05:30",
   "timezone": "Asia/Kolkata",
-  "hours_total": 260.0,
+  "hours_total": 260.2,
   "hours_by_day": {
     "2026-09-13": 0.2,
     "2026-09-14": 0.0,
@@ -42,7 +42,7 @@
     "2026-10-17": 11.0,
     "2026-10-18": 10.9,
     "2026-10-19": 5.1,
-    "2026-10-20": 4.2
+    "2026-10-20": 4.4
   },
   "hours_levels": [
     0,
@@ -53,7 +53,7 @@
   "hours_top_day": "2026-10-15",
   "hours_top_day_value": 13.5,
   "active_days": 34,
-  "hours_avg_active_day": 7.6,
+  "hours_avg_active_day": 7.7,
   "tracking_start": "2026-09-13",
   "method": {
     "session_gap_minutes": 15,
@@ -61,7 +61,7 @@
     "timezone": "Asia/Kolkata (IST)"
   },
   "tokens": {
-    "as_of": "2026-10-20T12:28:44Z",
+    "as_of": "2026-10-20T13:01:16Z",
     "window": {
       "start": "2026-09-13",
       "end": "2026-10-20",
@@ -74,61 +74,61 @@
       "output"
     ],
     "components": {
-      "fresh_input": 730273279,
-      "cached_read": 8467528952,
-      "cache_write": 226231573,
-      "output": 57255014,
-      "reasoning": 3866417
+      "fresh_input": 730279582,
+      "cached_read": 8469452518,
+      "cache_write": 226949883,
+      "output": 57262390,
+      "reasoning": 3867177
     },
-    "total": 9481288818,
-    "input_total": 9424033804,
+    "total": 9483944373,
+    "input_total": 9426681983,
     "cache_hit_rate": 0.8985,
     "output_share": 0.006,
-    "calls": 96418,
+    "calls": 96433,
     "by_source": [
       {
         "id": "ninerouter",
         "label": "9router proxy",
         "api_style": "openai",
         "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-        "calls": 79294,
+        "calls": 79301,
         "components": {
-          "fresh_input": 729231508,
+          "fresh_input": 729236681,
           "cached_read": 5797589972,
           "cache_write": 0,
-          "output": 34290901,
+          "output": 34293449,
           "reasoning": 0
         },
-        "total": 6561112381,
+        "total": 6561120102,
         "cache_hit_rate": 0.8883,
         "reports": {
           "cache_write": false,
           "reasoning": false,
           "list_cost": true
         },
-        "list_cost_usd": 2325.42
+        "list_cost_usd": 2325.46
       },
       {
         "id": "hermes",
         "label": "Hermes direct",
         "api_style": "anthropic",
         "carries": "my runtime calling Claude directly on a subscription",
-        "calls": 11230,
+        "calls": 11238,
         "components": {
-          "fresh_input": 988334,
-          "cached_read": 1765771995,
-          "cache_write": 202983480,
-          "output": 10772037,
-          "reasoning": 3866417
+          "fresh_input": 989464,
+          "cached_read": 1767695561,
+          "cache_write": 203701790,
+          "output": 10776865,
+          "reasoning": 3867177
         },
-        "total": 1980515846,
-        "cache_hit_rate": 0.8964,
+        "total": 1983163680,
+        "cache_hit_rate": 0.8962,
         "reports": {
           "cache_write": true,
           "reasoning": true,
           "list_cost": true
         },
-        "list_cost_usd": 1726.08
+        "list_cost_usd": 1729.2
       },
       {
         "id": "claude_code",
@@ -159,23 +159,23 @@
         "sources": [
           "ninerouter"
         ],
-        "calls": 74181,
+        "calls": 74188,
         "components": {
-          "fresh_input": 682982800,
+          "fresh_input": 682987973,
           "cached_read": 5531323461,
           "cache_write": 0,
-          "output": 32622608,
+          "output": 32625156,
           "reasoning": 0
         },
-        "total": 6246928869,
-        "share": 0.6589,
+        "total": 6246936590,
+        "share": 0.6587,
         "cache_hit_rate": 0.8901,
         "reports": {
           "cache_write": false,
           "reasoning": false,
           "list_cost": true
         },
-        "list_cost_usd": 2106.66
+        "list_cost_usd": 2106.7
       },
       {
         "family": "Claude Opus",
@@ -193,7 +193,7 @@
           "reasoning": 2588123
         },
         "total": 1899649511,
-        "share": 0.2004,
+        "share": 0.2003,
         "cache_hit_rate": 0.9348,
         "reports": {
           "cache_write": false,
@@ -209,23 +209,23 @@
           "hermes",
           "ninerouter"
         ],
-        "calls": 9658,
+        "calls": 9666,
         "components": {
-          "fresh_input": 37633182,
-          "cached_read": 1143757901,
-          "cache_write": 98150857,
-          "output": 6264658,
-          "reasoning": 1278294
+          "fresh_input": 37634312,
+          "cached_read": 1145681467,
+          "cache_write": 98869167,
+          "output": 6269486,
+          "reasoning": 1279054
         },
-        "total": 1285806598,
-        "share": 0.1356,
-        "cache_hit_rate": 0.8939,
+        "total": 1288454432,
+        "share": 0.1359,
+        "cache_hit_rate": 0.8935,
         "reports": {
           "cache_write": false,
           "reasoning": false,
           "list_cost": false
         },
-        "list_cost_usd": 753.88
+        "list_cost_usd": 757.0
       },
       {
         "family": "Claude Haiku",
@@ -806,22 +806,22 @@
       },
       {
         "date": "2026-10-20",
-        "calls": 1217,
+        "calls": 1232,
         "components": {
-          "fresh_input": 2179142,
-          "cached_read": 119381380,
-          "cache_write": 19877944,
-          "output": 666277,
-          "reasoning": 98208
+          "fresh_input": 2185445,
+          "cached_read": 121304946,
+          "cache_write": 20596254,
+          "output": 673653,
+          "reasoning": 98968
         },
-        "total": 142104743,
+        "total": 144760298,
         "partial": true
       }
     ],
     "cost": {
-      "list_total_usd": 4051.5,
-      "proxy_list_usd": 2325.42,
-      "direct_list_usd": 1726.08,
+      "list_total_usd": 4054.66,
+      "proxy_list_usd": 2325.46,
+      "direct_list_usd": 1729.2,
       "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
       "free_tier_statement": false
     },
@@ -833,11 +833,11 @@
       761531053
     ]
   },
-  "tokens_total": 9481288818,
+  "tokens_total": 9483944373,
   "tokens_cache_hit_rate": 0.8985,
   "tokens_by_source": {
-    "9router_proxy": 6561112381,
-    "hermes_direct_claude": 1980515846,
+    "9router_proxy": 6561120102,
+    "hermes_direct_claude": 1983163680,
     "claude_code_cli": 939660591
   },
   "tokens_by_day": {
@@ -878,7 +878,7 @@
     "2026-10-17": 207329398,
     "2026-10-18": 316747395,
     "2026-10-19": 507813413,
-    "2026-10-20": 142104743
+    "2026-10-20": 144760298
   },
   "tokens_levels": [
     0,
@@ -949,16 +949,16 @@
   "jobs_enabled": 55,
   "jobs_recurring": 55,
   "messages": {
-    "total_dedup": 418397,
-    "agent_replies": 192193,
-    "tool_results": 191579,
-    "human": 34625
+    "total_dedup": 418506,
+    "agent_replies": 192247,
+    "tool_results": 191632,
+    "human": 34627
   },
   "leverage_ratio": 6,
   "jev": {
-    "verdicts_total": 156261,
-    "score_calls": 86929,
-    "choice_calls": 69332,
+    "verdicts_total": 156357,
+    "score_calls": 86977,
+    "choice_calls": 69380,
     "types": 37,
     "active_days": 27,
     "typical_day": 5006,
@@ -998,10 +998,10 @@
       "2026-10-17": 79,
       "2026-10-18": 331,
       "2026-10-19": 3752,
-      "2026-10-20": 3080
+      "2026-10-20": 3176
     },
     "by_source": {
-      "private": 129704,
+      "private": 129800,
       "research": 25891,
       "other": 666
     },
@@ -1019,14 +1019,14 @@
     "bench_ft_high": 91
   },
   "jev_spend": {
-    "calls": 29215,
-    "input_tokens": 17391116,
-    "output_tokens": 3249564,
-    "total_tokens": 20640680,
-    "est_usd": 0.730427,
+    "calls": 29263,
+    "input_tokens": 17419337,
+    "output_tokens": 3254944,
+    "total_tokens": 20674281,
+    "est_usd": 0.731612,
     "since": "2026-10-07",
     "per_day_usd": 0.0541,
-    "tokens_per_call": 707,
+    "tokens_per_call": 706,
     "daily": {
       "2026-10-07": {
         "calls": 3381,
@@ -1107,10 +1107,10 @@
         "total_tokens": 1383243
       },
       "2026-10-20": {
-        "calls": 962,
-        "input_tokens": 565434,
-        "output_tokens": 107774,
-        "total_tokens": 673208
+        "calls": 1010,
+        "input_tokens": 593655,
+        "output_tokens": 113154,
+        "total_tokens": 706809
       }
     }
   },
