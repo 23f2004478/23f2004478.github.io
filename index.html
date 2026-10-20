@@ -869,29 +869,29 @@
   <!-- Chapter 7: Why you can trust the agents -->
   <section class="section wrap ch ch-7" id="trust" data-ix="reveal" aria-labelledby="ch7">
     <div class="ch-head"><p class="ch-kicker">Chapter 7 of 10</p><h2 id="ch7">Why you can trust the agents</h2></div>
-    <p class="trust-headline">Agents do the work. Layers of checks keep it safe. When a layer misses something, the next one is built to catch it.</p>
+    <p class="trust-headline">Agents do the work. Layers of checks keep it in check. When a layer misses something, the next one is built to catch it.</p>
     <p class="trust-gloss">Defence in depth means no single control has to be perfect, because another layer is watching. A fail-safe is a backup that acts on its own if one layer misses something.</p>
     <figure class="viz layers-fig"><figcaption class="viz-cap">Five layers between an agent and anything leaving</figcaption>
-      <svg class="arch-svg layers-svg" viewBox="0 0 344 380" role="img" aria-label="Four layers sit between an agent and anything it produces, outer to inner, each with a plain description. 1 Gate, asks me first: every send, delete and public push waits for my approval. 2 Watch, watches for drift: 11 detectors watch routing, scheduled jobs, memory, the vault, hub activity and model behaviour. 3 Sweep, checks health hourly: health checks every hour; cleanup is proposed first, I decide. 4 Release, publishes only safe changes: instructions change only by proposal, and the site publishes automatically only when the change is numbers only. At the centre: the work and output an agent produces. Below the rings, separate from the nesting: 5 Backup, if all else fails, restore: encrypted, copied offsite, restore tested every week.">
-        <rect x="6" y="8" width="332" height="282" rx="14" style="fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:1.5"/>
+      <svg class="arch-svg layers-svg" viewBox="0 0 344 424" role="img" aria-label="Four layers sit between an agent and anything it produces, outer to inner, each with a plain description. 1 Gate, needs my approval: every send, delete and public push waits for my approval. 2 Watch, watches for drift: 11 detectors watch routing, scheduled jobs, memory, the vault, hub activity and model behaviour. 3 Sweep, checks health hourly: health checks every hour; cleanup is proposed first, I decide. 4 Release, publishes only number updates: instructions change only by proposal, and the site publishes automatically only when the change is numbers only. At the centre: the work and output an agent produces. Below the rings, separate from the nesting: 5 Backup, if all else fails, restore: encrypted, copied offsite, restore tested every week.">
+        <rect x="6" y="8" width="332" height="322" rx="14" style="fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:1.5"/>
         <text x="20" y="30" class="am" font-size="15" font-weight="700" style="fill:var(--accent)">1 &middot; Gate</text>
-        <text x="20" y="47" class="as" font-size="14" style="fill:var(--accent)">Asks me first</text>
-        <rect x="26" y="52" width="292" height="238" rx="13" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="20" y="47" class="as" font-size="14" style="fill:var(--accent)">Needs my approval</text>
+        <rect x="26" y="52" width="292" height="258" rx="13" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="40" y="76" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">2 &middot; Watch</text>
         <text x="40" y="93" class="as" font-size="14" style="fill:var(--muted)">Watches for drift</text>
-        <rect x="46" y="96" width="252" height="194" rx="12" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <rect x="46" y="96" width="252" height="194" rx="12" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="60" y="120" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">3 &middot; Sweep</text>
         <text x="60" y="137" class="as" font-size="14" style="fill:var(--muted)">Checks health hourly</text>
-        <rect x="66" y="140" width="212" height="150" rx="11" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <rect x="66" y="140" width="212" height="130" rx="11" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="80" y="164" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">4 &middot; Release</text>
-        <text x="80" y="181" class="as" font-size="14" style="fill:var(--muted)">Publishes only safe changes</text>
-        <rect x="86" y="184" width="172" height="62" rx="10" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="80" y="181" class="as" font-size="13" style="fill:var(--muted)">Publishes only number updates</text>
+        <rect x="86" y="184" width="172" height="66" rx="10" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="172" y="208" text-anchor="middle" class="as" font-size="15" style="fill:var(--ink)">Your work and</text>
         <text x="172" y="226" text-anchor="middle" class="as" font-size="15" style="fill:var(--ink)">output itself</text>
-        <line x1="172" y1="290" x2="172" y2="304" style="stroke:var(--muted);stroke-width:2;stroke-dasharray:3,3"/>
-        <rect x="6" y="304" width="332" height="62" rx="10" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
-        <text x="20" y="330" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">5 &middot; Backup</text>
-        <text x="20" y="348" class="as" font-size="14" style="fill:var(--muted)">If all else fails: restore</text>
+        <line x1="172" y1="330" x2="172" y2="348" style="stroke:var(--muted);stroke-width:2;stroke-dasharray:3,3"/>
+        <rect x="6" y="348" width="332" height="62" rx="10" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
+        <text x="20" y="374" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">5 &middot; Backup</text>
+        <text x="20" y="392" class="as" font-size="14" style="fill:var(--muted)">If all else fails: restore</text>
       </svg>
       <p class="viz-note">Outer layers check before anything moves. Backup is the way back.</p>
     </figure>
@@ -931,33 +931,35 @@
       </div>
     </details>
     <figure class="viz layers-fail-fig"><figcaption class="viz-cap">When a layer fails</figcaption>
-      <svg class="arch-svg layers-fail-svg" viewBox="0 0 344 150" role="img" aria-label="A row of five layers: Gate, Watch, Sweep, Release, Backup. In this example Gate and Watch already passed. Sweep misses something. Release catches it before anything ships, shown as caught here. Backup is not needed this time.">
+      <svg class="arch-svg layers-fail-svg" viewBox="0 0 344 150" role="img" aria-label="A row of five layers: Gate, Watch, Sweep, Release, Backup. In this example Gate and Watch already passed. Sweep misses something. Release catches it before anything ships, shown as caught here. Backup is not reached this time.">
         <defs>
           <marker id="tf-arrow-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--muted)"/></marker>
           <marker id="tf-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--accent)"/></marker>
         </defs>
-        <rect x="4" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <rect x="4" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="35" y="74" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--muted)">1</text>
         <text x="35" y="92" text-anchor="middle" class="am" font-size="14" style="fill:var(--muted)">Gate</text>
-        <text x="35" y="140" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">passed</text>
-        <rect x="72" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="35" y="140" text-anchor="middle" class="as" font-size="13" style="fill:var(--muted)">&#10003; passed</text>
+        <rect x="72" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5"/>
         <text x="103" y="74" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--muted)">2</text>
         <text x="103" y="92" text-anchor="middle" class="am" font-size="14" style="fill:var(--muted)">Watch</text>
-        <text x="103" y="140" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">passed</text>
+        <text x="103" y="140" text-anchor="middle" class="as" font-size="13" style="fill:var(--muted)">&#10003; passed</text>
         <rect x="140" y="54" width="62" height="64" rx="8" style="fill:var(--data-b);fill-opacity:.16;stroke:var(--data-b);stroke-width:2"/>
         <text x="171" y="74" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">3</text>
         <text x="171" y="92" text-anchor="middle" class="am" font-size="14" font-weight="700" style="fill:var(--ink)">Sweep</text>
-        <text x="171" y="140" text-anchor="middle" class="as" font-size="14" style="fill:var(--data-b)">a miss here</text>
-        <rect x="208" y="54" width="62" height="64" rx="8" style="fill:var(--accent);fill-opacity:.18;stroke:var(--accent);stroke-width:2"/>
+        <text x="171" y="140" text-anchor="middle" class="as" font-size="13" style="fill:var(--data-b)">a miss here</text>
+        <rect x="208" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--accent);stroke-width:2.5"/>
         <text x="239" y="74" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--accent)">4</text>
         <text x="239" y="92" text-anchor="middle" class="am" font-size="14" font-weight="700" style="fill:var(--accent)">Release</text>
         <text x="239" y="12" text-anchor="middle" class="am" font-size="14" font-weight="700" style="fill:var(--accent)">caught here</text>
-        <rect x="276" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="239" y="140" text-anchor="middle" class="as" font-size="13" font-weight="700" style="fill:var(--accent)">caught</text>
+        <rect x="276" y="54" width="62" height="64" rx="8" style="fill:var(--box);stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4,3"/>
         <text x="307" y="74" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--muted)">5</text>
         <text x="307" y="92" text-anchor="middle" class="am" font-size="14" style="fill:var(--muted)">Backup</text>
-        <text x="307" y="140" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">not needed</text>
+        <text x="307" y="140" text-anchor="middle" class="as" font-size="13" style="fill:var(--muted)">not reached</text>
         <line x1="66" y1="86" x2="70" y2="86" style="stroke:var(--muted);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
         <line x1="134" y1="86" x2="138" y2="86" style="stroke:var(--muted);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
+        <line x1="202" y1="86" x2="206" y2="86" style="stroke:var(--muted);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
         <line x1="270" y1="86" x2="274" y2="86" style="stroke:var(--muted);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
         <path d="M171,54 Q205,16 239,54" style="fill:none;stroke:var(--accent);stroke-width:2.5" marker-end="url(#tf-arrow-a)"/>
       </svg>
