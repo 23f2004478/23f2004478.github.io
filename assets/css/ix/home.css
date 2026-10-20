@@ -84,7 +84,8 @@ html.sticky-on .toast-notice{bottom:calc(72px + env(safe-area-inset-bottom,0px))
 
 /* story chapters: next links, reading time, nav rail (>=1200) and sticky bar (<1200) */
 .ch h2[id]{scroll-margin-top:96px}
-.ch-1{scroll-margin-top:56px}
+.ch-1{scroll-margin-top:56px;padding-top:0}
+.ch-1 .ch-lede-solo{margin-top:var(--s3)}
 .read-time{margin:var(--s3) 0 0;font-size:.9375rem;color:var(--muted)}
 .ch-next{margin-top:var(--s8)}
 .ch-next .icon.up{transform:rotate(-90deg)}
@@ -489,23 +490,33 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
    each card is a normal in-flow link target so Tab order and focus still work without JS); a
    single-column grid from 1024px up turns it into three equal columns, matching the spec's
    ">=1024 one row" requirement. */
-.cold-open .ch-head{margin-bottom:var(--s4)}
+.cold-open .ch-head{margin-bottom:var(--s6)}
 .cold-strip{display:flex;gap:var(--s4);overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);padding:2px 2px var(--s2) 2px;margin:0 calc(var(--gut) * -1);padding-left:var(--gut);padding-right:var(--gut)}
-.cs-card{position:relative;flex:0 0 280px;width:280px;scroll-snap-align:start;display:flex;flex-direction:column;gap:var(--s2);border:1px solid var(--rule);border-radius:6px;background:var(--box);padding:var(--s4);min-width:0}
-.cs-card:hover,.cs-card:focus-within{border-color:var(--accent)}
-.cs-media{align-self:flex-start}
-.cs-phone{width:auto;height:160px}
+.cs-card{position:relative;flex:0 0 280px;width:280px;scroll-snap-align:start;display:flex;flex-direction:column;gap:var(--s2);border:1px solid color-mix(in srgb,var(--ink) 60%,var(--rule));box-shadow:0 1px 0 color-mix(in srgb,var(--ink) 15%,transparent);border-radius:6px;background:var(--box);padding:var(--s4);min-width:0}
+.cs-card:hover,.cs-card:focus-within{border-color:var(--accent);box-shadow:none}
+/* fixed visual zone: every card's image/diagram renders at the same height so the badge,
+   title, description and button rows start at identical y-offsets across all 3 cards */
+.cs-media{align-self:flex-start;height:220px;width:100%;display:flex;align-items:center;justify-content:center}
+.cs-phone{width:auto;height:220px}
 .cs-phone img{width:auto;height:100%}
-.cs-gate-thumb{width:180px;height:180px}
-.cs-gate-thumb svg{width:100%;height:100%}
-.cs-badge{font-family:var(--sans);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:2px 8px;background:var(--paper);margin:0;align-self:flex-start}
+.cs-gate-panel{width:auto;height:220px}
+.cs-gate-panel svg{width:auto;height:100%;display:block}
+.cs-badge{font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--muted);border-radius:4px;padding:2px 8px;background:var(--paper);margin:0;align-self:flex-start}
 .cs-title{font-size:1.125rem;font-weight:600;line-height:1.25;margin:0}
 .cs-line{color:var(--ink);font-size:.9375rem;line-height:1.45;margin:0;max-width:40ch}
 .cs-cta{min-height:44px;margin-top:auto;width:auto;align-self:flex-start}
+/* owner fix (20 Oct, round 2): explicit "N products, swipe" cue + position dots, since only
+   the 2nd card peeking past the viewport edge gave no cue that a 3rd card existed. No-JS:
+   text shows, all dots idle (plain list, no default active state). JS (cold_strip.js) marks
+   the dot matching whichever card is most in view via IntersectionObserver. Desktop shows
+   all 3 cards at once in one row, so the cue is redundant there and hidden. */
+.cs-hint{display:flex;align-items:center;justify-content:center;gap:var(--s3);margin:var(--s3) 0 0}
+.cs-hint-text{font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0}
+.cs-dots{display:flex;gap:6px}
+.cs-dot{width:6px;height:6px;border-radius:50%;background:var(--rule);display:block;transition:width var(--dur-1) var(--ease-out),border-radius var(--dur-1) var(--ease-out),background-color var(--dur-1) var(--ease-out)}
+.cs-dot.is-active{background:var(--accent);width:16px;border-radius:3px}
 @media (min-width:1024px){
   .cold-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);overflow:visible;scroll-snap-type:none;margin:0;padding:0}
   .cs-card{flex:none;width:auto}
-  .cs-phone{width:180px;height:auto}
-  .cs-phone img{width:100%;height:auto}
-  .cs-gate-thumb{width:180px;height:180px}
+  .cs-hint{display:none}
 }
