@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-10-20T22:51:07Z",
+  "as_of": "2026-10-20T23:46:08Z",
   "window": {
     "start": "2026-09-13",
     "end": "2026-10-21",
@@ -12,77 +12,77 @@
     "output"
   ],
   "components": {
-    "fresh_input": 731565042,
-    "cached_read": 8534938146,
-    "cache_write": 235979295,
-    "output": 57615359,
-    "reasoning": 3904098
+    "fresh_input": 732881487,
+    "cached_read": 8553886692,
+    "cache_write": 237619475,
+    "output": 57740200,
+    "reasoning": 3914400
   },
-  "total": 9560097842,
-  "input_total": 9502482483,
-  "cache_hit_rate": 0.8982,
+  "total": 9582127854,
+  "input_total": 9524387654,
+  "cache_hit_rate": 0.8981,
   "output_share": 0.006,
-  "calls": 97216,
+  "calls": 97486,
   "by_source": [
     {
       "id": "ninerouter",
       "label": "9router proxy",
       "api_style": "openai",
       "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-      "calls": 79801,
+      "calls": 79999,
       "components": {
-        "fresh_input": 730498661,
-        "cached_read": 5814870550,
+        "fresh_input": 731810270,
+        "cached_read": 5826256731,
         "cache_write": 0,
-        "output": 34403446,
+        "output": 34473999,
         "reasoning": 0
       },
-      "total": 6579772657,
+      "total": 6592541000,
       "cache_hit_rate": 0.8884,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 2331.17
+      "list_cost_usd": 2335.42
     },
     {
       "id": "hermes",
       "label": "Hermes direct",
       "api_style": "anthropic",
       "carries": "my runtime calling Claude directly on a subscription",
-      "calls": 11482,
+      "calls": 11520,
       "components": {
-        "fresh_input": 1012866,
-        "cached_read": 1815327419,
-        "cache_write": 212312267,
-        "output": 10950171,
-        "reasoning": 3904098
+        "fresh_input": 1017634,
+        "cached_read": 1821011193,
+        "cache_write": 213844363,
+        "output": 10979441,
+        "reasoning": 3914400
       },
-      "total": 2039602723,
-      "cache_hit_rate": 0.8948,
+      "total": 2046852631,
+      "cache_hit_rate": 0.8945,
       "reports": {
         "cache_write": true,
         "reasoning": true,
         "list_cost": true
       },
-      "list_cost_usd": 1770.18
+      "list_cost_usd": 1777.18
     },
     {
       "id": "claude_code",
       "label": "Claude Code",
       "api_style": "anthropic",
       "carries": "the CLI, read from its own transcripts",
-      "calls": 5933,
+      "calls": 5967,
       "components": {
-        "fresh_input": 53515,
-        "cached_read": 904740177,
-        "cache_write": 23667028,
-        "output": 12261742,
+        "fresh_input": 53583,
+        "cached_read": 906618768,
+        "cache_write": 23775112,
+        "output": 12286760,
         "reasoning": 0
       },
-      "total": 940722462,
-      "cache_hit_rate": 0.9745,
+      "total": 942734223,
+      "cache_hit_rate": 0.9744,
       "reports": {
         "cache_write": true,
         "reasoning": false,
@@ -97,23 +97,23 @@
       "sources": [
         "ninerouter"
       ],
-      "calls": 74688,
+      "calls": 74886,
       "components": {
-        "fresh_input": 684249953,
-        "cached_read": 5548604039,
+        "fresh_input": 685561562,
+        "cached_read": 5559990220,
         "cache_write": 0,
-        "output": 32735153,
+        "output": 32805706,
         "reasoning": 0
       },
-      "total": 6265589145,
-      "share": 0.6554,
+      "total": 6278357488,
+      "share": 0.6552,
       "cache_hit_rate": 0.8902,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 2112.41
+      "list_cost_usd": 2116.66
     },
     {
       "family": "Claude Opus",
@@ -131,7 +131,7 @@
         "reasoning": 2588123
       },
       "total": 1900644877,
-      "share": 0.1988,
+      "share": 0.1984,
       "cache_hit_rate": 0.9346,
       "reports": {
         "cache_write": false,
@@ -147,23 +147,23 @@
         "hermes",
         "ninerouter"
       ],
-      "calls": 9912,
+      "calls": 9984,
       "components": {
-        "fresh_input": 37657718,
-        "cached_read": 1193313325,
-        "cache_write": 107491739,
-        "output": 6444026,
-        "reasoning": 1315975
+        "fresh_input": 37662554,
+        "cached_read": 1200875690,
+        "cache_write": 109131919,
+        "output": 6498314,
+        "reasoning": 1326277
       },
-      "total": 1344906808,
-      "share": 0.1407,
-      "cache_hit_rate": 0.8916,
+      "total": 1354168477,
+      "share": 0.1413,
+      "cache_hit_rate": 0.8911,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": false
       },
-      "list_cost_usd": 797.98
+      "list_cost_usd": 804.98
     },
     {
       "family": "Claude Haiku",
@@ -180,7 +180,7 @@
         "reasoning": 0
       },
       "total": 29187394,
-      "share": 0.0031,
+      "share": 0.003,
       "cache_hit_rate": 0.8298,
       "reports": {
         "cache_write": false,
@@ -757,22 +757,22 @@
     },
     {
       "date": "2026-10-21",
-      "calls": 658,
+      "calls": 928,
       "components": {
-        "fresh_input": 904934,
-        "cached_read": 69468029,
-        "cache_write": 10336384,
-        "output": 291673,
-        "reasoning": 41526
+        "fresh_input": 2221379,
+        "cached_read": 88416575,
+        "cache_write": 11976564,
+        "output": 416514,
+        "reasoning": 51828
       },
-      "total": 81001020,
+      "total": 103031032,
       "partial": true
     }
   ],
   "cost": {
-    "list_total_usd": 4101.35,
-    "proxy_list_usd": 2331.17,
-    "direct_list_usd": 1770.18,
+    "list_total_usd": 4112.6,
+    "proxy_list_usd": 2335.42,
+    "direct_list_usd": 1777.18,
     "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
     "free_tier_statement": false
   },
