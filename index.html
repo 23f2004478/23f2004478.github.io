@@ -868,33 +868,52 @@
 
   <!-- Chapter 7: Why you can trust the agents -->
   <section class="section wrap ch ch-7" id="trust" data-ix="reveal" aria-labelledby="ch7">
-    <div class="ch-head"><p class="ch-kicker">Chapter 7 of 10</p><h2 id="ch7">Why you can trust the agents</h2><p class="ch-lede">Agents handle sensitive work. Layers of checks keep it from leaking or running unsupervised.</p></div>
+    <div class="ch-head"><p class="ch-kicker">Chapter 7 of 10</p><h2 id="ch7">Why you can trust the agents</h2></div>
     <p class="trust-headline">Agents do the work. Layers of checks keep it safe. When a layer fails, the next one catches it.</p>
     <p class="trust-gloss">Defence in depth means no single control has to be perfect, because another layer is watching. A fail-safe is a backup that acts on its own if one layer misses something.</p>
     <figure class="viz layers-fig"><figcaption class="viz-cap">Five layers between an agent and anything leaving</figcaption>
-    <div class="ribbon-grid layers-grid">
+      <svg class="arch-svg layers-svg" viewBox="0 0 344 280" role="img" aria-label="Five layers sit between an agent and anything it produces, outer to inner. 1 Gate: every send, delete and public push waits for my approval. 2 Watch: 11 detectors watch routing, scheduled jobs, memory, the vault, hub activity and model behaviour. 3 Sweep: health checks every hour; cleanup is proposed first, I decide. 4 Release: instructions change only by proposal, and the site publishes automatically only when the change is numbers only. 5 Backup: encrypted, copied offsite, restore tested every week. At the centre: the work and output an agent produces.">
+        <rect x="6" y="8" width="332" height="256" rx="14" style="fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:1.5"/>
+        <text x="20" y="30" class="am" font-size="15" font-weight="700" style="fill:var(--accent)">1 &middot; Gate</text>
+        <rect x="26" y="38" width="292" height="226" rx="13" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="40" y="60" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">2 &middot; Watch</text>
+        <rect x="46" y="68" width="252" height="196" rx="12" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="60" y="90" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">3 &middot; Sweep</text>
+        <rect x="66" y="98" width="212" height="166" rx="11" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="80" y="120" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">4 &middot; Release</text>
+        <rect x="86" y="128" width="172" height="136" rx="10" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="100" y="150" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">5 &middot; Backup</text>
+        <rect x="106" y="158" width="132" height="106" rx="9" style="fill:var(--paper);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="172" y="208" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">Your work and</text>
+        <text x="172" y="226" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">output itself</text>
+      </svg>
+      <p class="viz-note">Outer layers check before anything moves. The centre is the work itself.</p>
+    </figure>
+    <details class="layers-details">
+      <summary>Read the five layers in words</summary>
+      <div class="ribbon-grid layers-grid">
       <div class="station" tabindex="0">
         <div class="station-head"><span class="station-num">01</span><span class="station-depth">Gate</span></div>
         <h3 class="station-title">Approval gate</h3>
-        <p class="station-desc">Nothing leaves without me: sends, deletes, public pushes all wait.</p>
+        <p class="station-desc">Every send, delete and public push waits for my approval.</p>
         <a class="layer-link" href="/work/platform/">See the human gate <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
       <div class="station" tabindex="0">
         <div class="station-head"><span class="station-num">02</span><span class="station-depth">Watch</span></div>
         <h3 class="station-title">Guardrail detectors</h3>
-        <p class="station-desc">11 detectors watch routing, cron, memory, the vault, hub activity and model behaviour.</p>
+        <p class="station-desc">11 detectors watch routing, scheduled jobs, memory, the vault, hub activity and model behaviour.</p>
         <a class="layer-link" href="/work/platform/">See the platform <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
       <div class="station" tabindex="0">
         <div class="station-head"><span class="station-num">03</span><span class="station-depth">Sweep</span></div>
         <h3 class="station-title">Hourly doctor and cleanup</h3>
-        <p class="station-desc">Health checks every hour. Cleanup is only ever proposed, never run on its own.</p>
+        <p class="station-desc">Health checks every hour. Cleanup is proposed first; I decide.</p>
         <a class="layer-link" href="/work/platform/">See the platform <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
       <div class="station" tabindex="0">
         <div class="station-head"><span class="station-num">04</span><span class="station-depth">Release</span></div>
         <h3 class="station-title">Protected files and release guard</h3>
-        <p class="station-desc">Instructions change only by proposal. The site publishes only when a change is numbers only.</p>
+        <p class="station-desc">Instructions change only by proposal. The site publishes automatically only when the change is numbers only.</p>
         <a class="layer-link" href="/work/platform/">See the platform <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
       <div class="station" tabindex="0">
@@ -903,21 +922,81 @@
         <p class="station-desc">Encrypted, copied offsite, restore tested every week.</p>
         <a class="layer-link" href="/work/reliability/">See reliability <svg class="icon" aria-hidden="true"><use href="#i-arr"/></svg></a>
       </div>
-    </div></figure>
+      </div>
+    </details>
+    <figure class="viz layers-fail-fig"><figcaption class="viz-cap">When a layer fails</figcaption>
+      <svg class="arch-svg layers-fail-svg" viewBox="0 0 344 170" role="img" aria-label="Five layers run in order: Gate, Watch, Sweep, Release, Backup. In this example the Sweep layer misses something, and the Release layer catches it before anything ships.">
+        <defs>
+          <marker id="tf-arrow-m" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--rule)"/></marker>
+          <marker id="tf-arrow-a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--accent)"/></marker>
+        </defs>
+        <rect x="4" y="60" width="62" height="50" rx="7" style="fill:var(--accent);fill-opacity:.14;stroke:var(--accent);stroke-width:1.5"/>
+        <text x="35" y="80" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--accent)">1</text>
+        <text x="35" y="98" text-anchor="middle" class="am" font-size="14" style="fill:var(--accent)">Gate</text>
+        <rect x="72" y="60" width="62" height="50" rx="7" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="103" y="80" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">2</text>
+        <text x="103" y="98" text-anchor="middle" class="am" font-size="14" style="fill:var(--ink)">Watch</text>
+        <rect x="140" y="60" width="62" height="50" rx="7" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="171" y="80" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">3</text>
+        <text x="171" y="98" text-anchor="middle" class="am" font-size="14" style="fill:var(--ink)">Sweep</text>
+        <rect x="208" y="60" width="62" height="50" rx="7" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="239" y="80" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">4</text>
+        <text x="239" y="98" text-anchor="middle" class="am" font-size="14" style="fill:var(--ink)">Release</text>
+        <rect x="276" y="60" width="62" height="50" rx="7" style="fill:var(--box);stroke:var(--rule);stroke-width:1.5"/>
+        <text x="307" y="80" text-anchor="middle" class="am" font-size="15" font-weight="700" style="fill:var(--ink)">5</text>
+        <text x="307" y="98" text-anchor="middle" class="am" font-size="14" style="fill:var(--ink)">Backup</text>
+        <line x1="66" y1="85" x2="70" y2="85" style="stroke:var(--rule);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
+        <line x1="134" y1="85" x2="138" y2="85" style="stroke:var(--rule);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
+        <line x1="202" y1="85" x2="206" y2="85" style="stroke:var(--rule);stroke-width:2;stroke-dasharray:3,3"/>
+        <line x1="270" y1="85" x2="274" y2="85" style="stroke:var(--rule);stroke-width:2" marker-end="url(#tf-arrow-m)"/>
+        <path d="M171,60 Q205,20 239,60" style="fill:none;stroke:var(--accent);stroke-width:2" marker-end="url(#tf-arrow-a)"/>
+        <text x="205" y="15" text-anchor="middle" class="am" font-size="14" font-weight="700" style="fill:var(--accent)">caught here</text>
+        <text x="171" y="132" text-anchor="middle" class="as" font-size="14" style="fill:var(--muted)">a miss here</text>
+      </svg>
+      <p class="viz-note">A miss at one layer does not reach the next.</p>
+    </figure>
     <figure class="viz stops-fig"><figcaption class="viz-cap">What it stops</figcaption>
-    <div class="table-scroll" tabindex="0">
+    <div class="stops-cards" role="list" aria-label="What it stops">
+      <div class="stops-card" role="listitem">
+        <p class="stops-risk">A leaked key</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Secrets sit in a vault that only fills the matching site</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Public repo secret scan found none</p>
+      </div>
+      <div class="stops-card" role="listitem">
+        <p class="stops-risk">An agent doing something unreviewed</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Approval gate, plus a guardrail for hub agents doing hands-on work</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Caught in seeded tests</p>
+      </div>
+      <div class="stops-card" role="listitem">
+        <p class="stops-risk">A wrong change going live</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Numbers-only release guard</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> 45 of 45 test cases built to fail on purpose behaved as intended</p>
+      </div>
+      <div class="stops-card" role="listitem">
+        <p class="stops-risk">Lost work</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Encrypted offsite backups, weekly restore check</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Weekly restore check</p>
+      </div>
+      <div class="stops-card" role="listitem">
+        <p class="stops-risk">Drift over time</p>
+        <p class="stops-line"><span class="stops-label">Control</span> Hourly checks plus daily review</p>
+        <p class="stops-line"><span class="stops-label">Proof</span> Scheduled, logged every run</p>
+      </div>
+    </div>
+    <div class="table-scroll stops-table-wrap" tabindex="0">
     <table>
       <caption class="sr-only">Five risks, the control that addresses each, and the proof it works.</caption>
       <thead><tr><th scope="col">Risk</th><th scope="col">Control</th><th scope="col">Proof</th></tr></thead>
       <tbody>
         <tr><th scope="row">A leaked key</th><td>Secrets sit in a vault that only fills the matching site</td><td>Public repo secret scan found none</td></tr>
         <tr><th scope="row">An agent doing something unreviewed</th><td>Approval gate, plus a guardrail for hub agents doing hands-on work</td><td>Caught in seeded tests</td></tr>
-        <tr><th scope="row">A wrong change going live</th><td>Numbers-only release guard</td><td>45 of 45 seeded cases</td></tr>
-        <tr><th scope="row">Lost work</th><td>Encrypted offsite backups, weekly restore check</td><td>Weekly timer</td></tr>
+        <tr><th scope="row">A wrong change going live</th><td>Numbers-only release guard</td><td>45 of 45 test cases built to fail on purpose behaved as intended</td></tr>
+        <tr><th scope="row">Lost work</th><td>Encrypted offsite backups, weekly restore check</td><td>Weekly restore check</td></tr>
         <tr><th scope="row">Drift over time</th><td>Hourly checks plus daily review</td><td>Scheduled, logged every run</td></tr>
       </tbody>
     </table>
     </div></figure>
+    <p class="trust-frame">Different layers catch different things, and I publish the misses too.</p>
     <figure class="viz caught-fig"><figcaption class="viz-cap">Where the system caught itself</figcaption>
     <div class="ribbon-grid caught-grid">
       <div class="station caught-card" tabindex="0">
