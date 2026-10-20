@@ -723,7 +723,7 @@
       <div class="stats-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--s4);margin:var(--s6) 0;">
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Total tokens</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="tokens_total" value="9483944373">9.48 B</data> tokens</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="tokens_total" value="9487713100">9.49 B</data> tokens</div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Cache hit rate</div>
@@ -792,7 +792,7 @@
     <rect x="630.7" y="165.9" width="12.6" height="44.1" rx="2" fill="var(--accent)"><title>17 Oct 2026: 207.3 million</title></rect>
     <rect x="647.3" y="142.7" width="12.6" height="67.3" rx="2" fill="var(--accent)"><title>18 Oct 2026: 316.7 million</title></rect>
     <rect x="663.8" y="102.1" width="12.6" height="107.9" rx="2" fill="var(--accent)"><title>19 Oct 2026: 507.8 million</title></rect>
-    <rect x="680.4" y="179.2" width="12.6" height="30.8" rx="2" fill="var(--accent)"><title>20 Oct 2026: 144.8 million</title></rect>
+    <rect x="680.4" y="178.4" width="12.6" height="31.6" rx="2" fill="var(--accent)"><title>20 Oct 2026: 148.5 million</title></rect>
   </g>
   <g id="x-labels-tok">
     <text x="73.3" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">13 Sep</text>
@@ -803,7 +803,7 @@
     <text x="686.7" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">20 Oct</text>
   </g>
 </svg>
-        <figcaption>Tokens processed by day: <data class="m" data-m="tokens_total" value="9483944373">9.48 B</data> tokens in total; <data class="m" data-m="cache_hit_rate" value="89.8">89.8%</data> of input tokens were served from cache. <button class="show-data" type="button" aria-expanded="false" aria-controls="tok-data" hidden>Show data</button></figcaption>
+        <figcaption>Tokens processed by day: <data class="m" data-m="tokens_total" value="9487713100">9.49 B</data> tokens in total; <data class="m" data-m="cache_hit_rate" value="89.8">89.8%</data> of input tokens were served from cache. <button class="show-data" type="button" aria-expanded="false" aria-controls="tok-data" hidden>Show data</button></figcaption>
         <div class="dtable sr-only sr_only" id="tok-data">
           <table>
             <thead><tr><th>Date</th><th>Tokens</th></tr></thead>
@@ -845,7 +845,7 @@
               <tr><td>17 Oct 2026</td><td><data class="m" data-m="tokens_by_day" value="207329398">207.3 M</data></td></tr>
               <tr><td>18 Oct 2026</td><td><data class="m" data-m="tokens_by_day" value="316747395">316.7 M</data></td></tr>
               <tr><td>19 Oct 2026</td><td><data class="m" data-m="tokens_by_day" value="507813413">507.8 M</data></td></tr>
-              <tr><td>20 Oct 2026</td><td><data class="m" data-m="tokens_by_day" value="144760298">144.8 M</data></td></tr>
+              <tr><td>20 Oct 2026</td><td><data class="m" data-m="tokens_by_day" value="148529025">148.5 M</data></td></tr>
             </tbody>
           </table>
         </div>
@@ -854,23 +854,23 @@
       <figure class="fig" id="fig-model-split">
         <svg id="model_split" class="dg wide chart" viewBox="0 0 720 120" width="100%" role="img" aria-labelledby="model-t model-d" style="width:100%;height:auto;max-width:720px">
   <title id="model-t">Where the tokens went, by model</title>
-  <desc id="model-d">Model token distribution: Gemini Flash 65.9 percent, Claude Opus 20.0 percent, Claude Sonnet 13.6 percent.</desc>
+  <desc id="model-d">Model token distribution: Gemini Flash 65.8 percent, Claude Opus 20.0 percent, Claude Sonnet 13.6 percent.</desc>
   
   <rect x="40" y="35" width="640" height="34" rx="6" style="fill:var(--rule)"/>
 
-  <rect x="40" y="35" width="421.8" height="34" rx="6" style="fill:var(--accent)">
-    <title>Gemini Flash: 65.9 percent</title>
+  <rect x="40" y="35" width="421.1" height="34" rx="6" style="fill:var(--accent)">
+    <title>Gemini Flash: 65.8 percent</title>
   </rect>
-  <rect x="461.8" y="35" width="128.0" height="34"  opacity="0.65" style="fill:var(--accent)">
+  <rect x="461.1" y="35" width="128.0" height="34"  opacity="0.65" style="fill:var(--accent)">
     <title>Claude Opus: 20.0 percent</title>
   </rect>
-  <rect x="589.8" y="35" width="90.2" height="34" rx="6"  opacity="0.35" style="fill:var(--accent)">
+  <rect x="589.1" y="35" width="90.9" height="34" rx="6"  opacity="0.35" style="fill:var(--accent)">
     <title>Claude Sonnet: 13.6 percent</title>
   </rect>
 
   <g font-family="'Source Sans 3',sans-serif" font-size="13" font-weight="600" style="fill:var(--ink)">
     <circle cx="46" cy="95" r="4.5" style="fill:var(--accent)"/>
-    <text x="56" y="99">Gemini Flash 65.9 percent</text>
+    <text x="56" y="99">Gemini Flash 65.8 percent</text>
 
     <circle cx="280" cy="95" r="4.5"  opacity="0.65" style="fill:var(--accent)"/>
     <text x="290" y="99">Claude Opus 20.0 percent</text>
@@ -901,19 +901,19 @@
       <div class="stats-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--s4);margin:var(--s6) 0;">
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Messages from me</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_human" value="34627">34,627</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_human" value="34628">34,628</data></div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Agent replies</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_agent_replies" value="192265">192,265</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_agent_replies" value="192357">192,357</data></div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Tool results</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_tool_results" value="191650">191,650</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_tool_results" value="191745">191,745</data></div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Total messages</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_total" value="418542">418,542</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_total" value="418730">418,730</data></div>
         </div>
       </div>
 
