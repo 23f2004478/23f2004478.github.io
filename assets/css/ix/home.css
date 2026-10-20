@@ -14,6 +14,8 @@
 .built-desc{color:var(--ink);font-size:.9375rem;line-height:1.5;max-width:56ch}
 .built-proof{color:var(--muted);font-size:.875rem;max-width:56ch}
 .built-note{color:var(--muted);font-size:.8125rem;line-height:1.4;max-width:56ch;margin-top:calc(var(--s2) - var(--s3))!important}
+.built-features{list-style:disc;margin:0;padding-left:1.1em;max-width:52ch;color:var(--ink);font-size:.875rem;line-height:1.5}
+.built-features li+li{margin-top:2px}
 .built-link::after{content:"";position:absolute;inset:0;border-radius:6px}
 .built-card .btn{min-width:0;width:auto;min-height:48px;margin-top:var(--s2)}
 .built-note+.btn{margin-top:var(--s5)}
@@ -110,7 +112,7 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
   .chrail a:hover,.chrail a:focus-visible{color:var(--ink)}
   .chrail a:hover .t,.chrail a:focus-visible .t{display:block;position:absolute;left:48px;white-space:nowrap;background:var(--paper);border:1px solid var(--rule);padding:4px 8px;color:var(--ink)}
   .chrail a.is-current,.chrail a[aria-current="true"]{color:var(--ink);border-left-color:var(--accent);font-weight:600}
-  html:not(.ch-live):has(#ch1:target) .chrail a[href="#ch1"],html:not(.ch-live):has(#ch2:target) .chrail a[href="#ch2"],html:not(.ch-live):has(#ch3:target) .chrail a[href="#ch3"],html:not(.ch-live):has(#ch4:target) .chrail a[href="#ch4"],html:not(.ch-live):has(#ch5:target) .chrail a[href="#ch5"],html:not(.ch-live):has(#ch6:target) .chrail a[href="#ch6"],html:not(.ch-live):has(#ch7:target) .chrail a[href="#ch7"],html:not(.ch-live):has(#ch8:target) .chrail a[href="#ch8"]{color:var(--ink);border-left-color:var(--accent);font-weight:600}
+  html:not(.ch-live):has(#ch1:target) .chrail a[href="#ch1"],html:not(.ch-live):has(#ch2:target) .chrail a[href="#ch2"],html:not(.ch-live):has(#ch3:target) .chrail a[href="#ch3"],html:not(.ch-live):has(#ch4:target) .chrail a[href="#ch4"],html:not(.ch-live):has(#ch5:target) .chrail a[href="#ch5"],html:not(.ch-live):has(#ch6:target) .chrail a[href="#ch6"],html:not(.ch-live):has(#ch7:target) .chrail a[href="#ch7"],html:not(.ch-live):has(#ch8:target) .chrail a[href="#ch8"],html:not(.ch-live):has(#ch9:target) .chrail a[href="#ch9"]{color:var(--ink);border-left-color:var(--accent);font-weight:600}
   .ch h2[id]{scroll-margin-top:96px}
   .ch-1{scroll-margin-top:32px}
 }
@@ -130,10 +132,10 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
 .ch-next a{font-weight:600;text-decoration:underline;padding-block:var(--s2);min-height:44px}
 .story-note{margin-top:var(--s4)}
 .story-note a{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;padding-block:var(--s2);font-weight:600}
-.ch-4 .ch-next{margin-top:var(--s4);margin-bottom:0}
-.section.ch-5{margin-top:0}
-.section+.section.ch-5 .ch-head{margin-top:var(--s10)}
-@media (min-width:768px){.section+.section.ch-5 .ch-head{margin-top:calc(var(--s16) - var(--s2))}}
+.ch-5 .ch-next{margin-top:var(--s4);margin-bottom:0}
+.section.ch-6{margin-top:0}
+.section+.section.ch-6 .ch-head{margin-top:var(--s10)}
+@media (min-width:768px){.section+.section.ch-6 .ch-head{margin-top:calc(var(--s16) - var(--s2))}}
 @media (min-width:1200px){
   .chrail{left:8px}
   .chrail::before{content:none}
@@ -153,7 +155,7 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
   .chrail a{border-left-width:3px;font-size:.84375rem;color:var(--muted)}
   .chrail .n{color:var(--muted);font-size:.84375rem}
   .chrail a:hover,.chrail a:focus-visible,.chrail a:hover .n,.chrail a:focus-visible .n{color:var(--ink)}
-  .chrail a.is-current .n,.chrail a[aria-current="true"] .n,.chrail a[href="#ch1"] .n,html:not(.ch-live):has(#ch1:target) .chrail a[href="#ch1"] .n,html:not(.ch-live):has(#ch2:target) .chrail a[href="#ch2"] .n,html:not(.ch-live):has(#ch3:target) .chrail a[href="#ch3"] .n,html:not(.ch-live):has(#ch4:target) .chrail a[href="#ch4"] .n,html:not(.ch-live):has(#ch5:target) .chrail a[href="#ch5"] .n,html:not(.ch-live):has(#ch6:target) .chrail a[href="#ch6"] .n,html:not(.ch-live):has(#ch7:target) .chrail a[href="#ch7"] .n,html:not(.ch-live):has(#ch8:target) .chrail a[href="#ch8"] .n{color:var(--accent);font-weight:700}
+  .chrail a.is-current .n,.chrail a[aria-current="true"] .n,.chrail a[href="#ch1"] .n,html:not(.ch-live):has(#ch1:target) .chrail a[href="#ch1"] .n,html:not(.ch-live):has(#ch2:target) .chrail a[href="#ch2"] .n,html:not(.ch-live):has(#ch3:target) .chrail a[href="#ch3"] .n,html:not(.ch-live):has(#ch4:target) .chrail a[href="#ch4"] .n,html:not(.ch-live):has(#ch5:target) .chrail a[href="#ch5"] .n,html:not(.ch-live):has(#ch6:target) .chrail a[href="#ch6"] .n,html:not(.ch-live):has(#ch7:target) .chrail a[href="#ch7"] .n,html:not(.ch-live):has(#ch8:target) .chrail a[href="#ch8"] .n,html:not(.ch-live):has(#ch9:target) .chrail a[href="#ch9"] .n{color:var(--accent);font-weight:700}
 }
 @media (min-width:1440px){
   .chrail{width:188px;left:16px}
@@ -165,7 +167,7 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
 .ch-next{margin-top:var(--s6);margin-bottom:0}
 .ch-next a{display:inline-flex;align-items:center;gap:var(--s2);min-height:48px;padding:10px var(--s6);box-sizing:border-box;max-width:100%;border:2px solid var(--accent);border-radius:999px;color:var(--accent);font-weight:600;text-decoration:none;line-height:1.25}
 .ch-next a:hover,.ch-next a:focus-visible{background:var(--accent);color:var(--accent-ink)}
-.ch-4 .ch-next{margin-top:var(--s6)}
+.ch-5 .ch-next{margin-top:var(--s6)}
 /* 3 measure */
 .ch .story-txt p,.ch .ch-head+p{max-width:62ch;text-wrap:pretty}
 .ch .ch-lede{max-width:62ch;text-wrap:balance}
@@ -174,14 +176,14 @@ body:has(.search-backdrop:not([hidden])) .chbar,body:has(.diag-modal-backdrop:no
 /* 4 chapter boundaries */
 .section.ch+.section.ch{position:relative;margin-top:0;margin-bottom:0;padding-top:var(--s16);padding-bottom:var(--s12)}
 .section.ch+.section.ch::before{content:"";position:absolute;top:0;left:var(--gut);right:var(--gut);border-top:1px solid var(--rule);pointer-events:none}
-.section.ch+.section.ch .ch-head,.section+.section.ch-5 .ch-head{margin-top:0}
+.section.ch+.section.ch .ch-head,.section+.section.ch-6 .ch-head{margin-top:0}
 /* 5 back to top */
 .back-to-top,html .back-to-top.is-visible,html[data-theme="dark"] .back-to-top{background:var(--ink);border:2px solid var(--ink);color:var(--paper)}
 html .back-to-top.is-visible{opacity:1}
 html .back-to-top:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 @media (min-width:1440px) and (max-width:1559px){main{padding-left:calc(1560px - 100vw)}}
 
-/* github proof strip (ch6) */
+/* github proof strip (ch7) */
 .gh-strip{margin-top:var(--s10);border-top:1px solid var(--rule);padding-top:var(--s6)}
 .gh-h{font-size:1.125rem;font-weight:600;margin:0 0 var(--s2)}
 .gh-count{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3);margin:0 0 var(--s4)}
@@ -481,3 +483,29 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
    the visible caption and aria label instead (ch2_gantt), not as a second axis tick. */
 .gx-open-end{position:absolute;top:2px;right:0;width:0;height:0;border-style:solid;border-width:4px 0 4px 7px;border-color:transparent transparent transparent var(--accent)}
 .gx-div-l,.gx-tick-l{font-size:.8125rem;color:var(--ink);line-height:1.2}
+
+/* story 4c: cold-open strip (ch2), owner order 20 Oct to bring the products to the top.
+   Mobile-first horizontal snap-scroll row of 3 equal 280px cards (JS-off: pure CSS scroll-snap,
+   each card is a normal in-flow link target so Tab order and focus still work without JS); a
+   single-column grid from 1024px up turns it into three equal columns, matching the spec's
+   ">=1024 one row" requirement. */
+.cold-open .ch-head{margin-bottom:var(--s4)}
+.cold-strip{display:flex;gap:var(--s4);overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-padding-left:var(--gut);padding:2px 2px var(--s2) 2px;margin:0 calc(var(--gut) * -1);padding-left:var(--gut);padding-right:var(--gut)}
+.cs-card{position:relative;flex:0 0 280px;width:280px;scroll-snap-align:start;display:flex;flex-direction:column;gap:var(--s2);border:1px solid var(--rule);border-radius:6px;background:var(--box);padding:var(--s4);min-width:0}
+.cs-card:hover,.cs-card:focus-within{border-color:var(--accent)}
+.cs-media{align-self:flex-start}
+.cs-phone{width:auto;height:160px}
+.cs-phone img{width:auto;height:100%}
+.cs-gate-thumb{width:180px;height:180px}
+.cs-gate-thumb svg{width:100%;height:100%}
+.cs-badge{font-family:var(--sans);font-size:.75rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);border:1px solid var(--rule);border-radius:4px;padding:2px 8px;background:var(--paper);margin:0;align-self:flex-start}
+.cs-title{font-size:1.125rem;font-weight:600;line-height:1.25;margin:0}
+.cs-line{color:var(--ink);font-size:.9375rem;line-height:1.45;margin:0;max-width:40ch}
+.cs-cta{min-height:44px;margin-top:auto;width:auto;align-self:flex-start}
+@media (min-width:1024px){
+  .cold-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s6);overflow:visible;scroll-snap-type:none;margin:0;padding:0}
+  .cs-card{flex:none;width:auto}
+  .cs-phone{width:180px;height:auto}
+  .cs-phone img{width:100%;height:auto}
+  .cs-gate-thumb{width:180px;height:180px}
+}
