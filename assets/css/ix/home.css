@@ -394,7 +394,7 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 .gx-hatch{opacity:1}
 .gx-bar.gx-hatch{background:repeating-linear-gradient(135deg,var(--accent) 0 2px,transparent 2px 5px)}
 .gx-tick{position:absolute;top:0;height:14px;width:0;border-left:2px solid var(--ink);margin-left:-1px}
-.gx-tick-l{position:absolute;top:1px;margin-left:6px;font-size:.8125rem;line-height:1.2;color:var(--ink);white-space:nowrap}
+.gx-tick-l{position:absolute;top:1px;margin-left:6px;font-size:.8125rem;line-height:1.2;color:var(--ink);white-space:nowrap;background:var(--paper);box-shadow:0 0 0 3px var(--paper)}
 .gx-t{margin-top:3px}
 .gx-leg{color:var(--ink)}
 /* gantt with labels left of the bars (projects) */
@@ -450,3 +450,23 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 .gx-tag{top:4px}
 .gx-body:has(.gx-today){padding-top:34px}
 .gx-tick-l{top:6px;transform:translateY(-50%);line-height:1;margin-left:12px}
+
+/* story 4b: data-driven multi-segment rows (timeline.json), quarter grid on desktop, a mid-bar
+   divider tick+label (phase change inside one bar) and a dotted diamond marker (one recorded
+   point, month not recorded). The 'started earlier' arrow is retired: every row now has a real
+   start date inside the axis, so .gx-arrow/.gx-early/.gx-sw-arrow are unused but left in place. */
+.gx-g-q{display:none}
+@media (min-width:768px){.gx-g-q{display:block;border-left:1px dotted var(--rule);opacity:.55}}
+.gx-t-div{margin-top:20px}
+.gx-div-tick{position:absolute;top:-18px;bottom:0;width:0;border-left:1px dashed var(--muted)}
+.gx-div-l{position:absolute;top:-18px;transform:translateX(-50%);font-family:var(--mono);font-size:.75rem;
+  line-height:1.2;color:var(--muted);white-space:nowrap;background:var(--paper);box-shadow:0 0 0 3px var(--paper)}
+.gx-mark{position:absolute;top:2px;width:7px;height:7px;margin-left:-3.5px;transform:rotate(45deg);
+  background:var(--paper);border:1.5px dotted var(--accent);box-sizing:border-box}
+/* a long end-tick label (e.g. 'to end of MBA') near the axis's right edge both runs off a
+   narrow phone viewport reading rightward AND, if just flipped to end at the tick, is wide
+   enough to land on top of the bar it is labelling (little room between 'today' and the axis
+   end on phone). Drop it below the track instead, ending at the tick, with the row given extra
+   bottom margin to reserve that space. */
+.gx-t-tick-end{margin-bottom:18px}
+.gx-tick-l.gx-tick-l-end{margin-left:0;top:100%;margin-top:3px;transform:translateX(calc(-100% - 2px))}

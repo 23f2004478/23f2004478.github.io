@@ -1,15 +1,42 @@
 {
-  "note": "Facts only from published pages (/internships/, /credentials/, home). Detail sentences are copied from /internships/. The 'learned' field holds an outcome line, owner-approved 20 Oct, not a coursework summary. Two groups, each chronological by start. Tata end month comes from site.config.json internships.tata_steel_end_home.",
+  "note": "Facts only from published pages (/internships/, /credentials/, home). Detail sentences are copied from /internships/. The 'learned' field holds an outcome line, owner-approved 20 Oct, not a coursework summary. Each group is chronological by the first 'when' entry of its nodes. Tata end month comes from site.config.json internships.tata_steel_end_home.",
+  "mba_end": "2027-03",
+  "mba_end_comment": "pending owner: site currently prints Mar 2027; owner wrote 'dec 2027' unclearly on 20 Oct 2026 and the real end date is unresolved. This one key drives both the IPM/MBA hatch end and the committee 'to end of MBA' hatch end in the ch2 gantt, so a single edit here moves both once he confirms.",
   "groups": [
     {"id": "education", "label": "Education", "nodes": [
       {"id": "iimr", "title": "IPM at IIM Ranchi",
        "facts": ["BBA completed 2025, MBA in progress."],
-       "when": [{"label": "2025", "iso": "2025"}, {"label": "2027", "iso": "2027"}],
+       "when": [{"label": "Oct 2022", "iso": "2022-10"}, {"label": "{mba_end_label}", "iso": "{mba_end}"}],
+       "segments": [
+         {"a": "2022-10", "b": "today", "kind": "solid"},
+         {"a": "today", "b": "{mba_end}", "kind": "hatch"}
+       ],
+       "dividers": [{"at": "2025-06", "label": "MBA phase"}],
+       "end_label": "{mba_end_label}",
        "learned": "Committee seat since 2025: Executive Member, then Senior Executive Member."},
       {"id": "iitm", "title": "IIT Madras: BS in Data Science and Applications",
        "facts": ["Diploma in Programming completed 2026. BS degree in progress."],
-       "when": [{"label": "2026", "iso": "2026"}],
+       "when": [{"label": "May 2023", "iso": "2023-05"}],
+       "when_suffix": "in progress",
+       "segments": [
+         {"a": "2023-05", "b": "today", "kind": "solid"},
+         {"a": "today", "b": "axis_end", "kind": "hatch"}
+       ],
+       "markers": [{"at": "2026", "label": "Diploma in Programming completed, 2026, month not recorded"}],
        "learned": "Programming and data science, studied alongside the MBA."}
+    ]},
+    {"id": "positions", "label": "Corporate Relations and Placement Committee, IIM Ranchi", "nodes": [
+      {"id": "committee", "title": "Senior Executive Member",
+       "facts": [],
+       "when": [{"label": "2025", "iso": "2025"}, {"label": "{mba_end_label}", "iso": "{mba_end}"}],
+       "when_prefix": "Executive Member 2025, Senior Executive Member from 2026",
+       "segments": [
+         {"a": "2025", "b": "2026", "kind": "dot"},
+         {"a": "2026", "b": "today", "kind": "solid"},
+         {"a": "today", "b": "{mba_end}", "kind": "hatch"}
+       ],
+       "end_label": "to end of MBA",
+       "learned": "Executive Member in 2025, Senior Executive Member from 2026."}
     ]},
     {"id": "internships", "label": "Internships", "nodes": [
       {"id": "social", "title": "IIM Ranchi, Social Impact Intern",
