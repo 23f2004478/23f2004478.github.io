@@ -1,30 +1,30 @@
 {
-  "note": "Facts only from published pages (/internships/, /credentials/, home). Detail sentences are copied from /internships/. The 'learned' sentences are coordinator placeholders pending owner review. Two groups, each chronological by start. Tata end month comes from site.config.json internships.tata_steel_end_home.",
+  "note": "Facts only from published pages (/internships/, /credentials/, home). Detail sentences are copied from /internships/. The 'learned' field holds an outcome line, owner-approved 20 Oct, not a coursework summary. Two groups, each chronological by start. Tata end month comes from site.config.json internships.tata_steel_end_home.",
   "groups": [
     {"id": "education", "label": "Education", "nodes": [
       {"id": "iimr", "title": "IPM at IIM Ranchi",
        "facts": ["BBA completed 2025, MBA in progress."],
        "when": [{"label": "2025", "iso": "2025"}, {"label": "2027", "iso": "2027"}],
-       "learned": "Learned how organisations and people actually decide."},
+       "learned": "Committee seat since 2025: Executive Member, then Senior Executive Member."},
       {"id": "iitm", "title": "IIT Madras: BS in Data Science and Applications",
        "facts": ["Diploma in Programming completed 2026. BS degree in progress."],
        "when": [{"label": "2026", "iso": "2026"}],
-       "learned": "Learned to program properly."}
+       "learned": "Programming and data science, studied alongside the MBA."}
     ]},
     {"id": "internships", "label": "Internships", "nodes": [
       {"id": "social", "title": "IIM Ranchi, Social Impact Intern",
        "facts": ["Assessed 390+ rural students with Pratham and Unnat Bharat Abhiyan, and digitized the results into analysis-ready formats."],
        "when": [{"label": "Jan 2024", "iso": "2024-01"}, {"label": "Feb 2024", "iso": "2024-02"}],
-       "learned": "Learned to work on problems outside a spreadsheet."},
+       "learned": "Field research: village level learning data turned into analysis-ready results."},
       {"id": "tata", "title": "Tata Steel, Research Analyst Intern",
        "facts": ["Analyzed compensation data across 20+ manufacturing firms and 50+ job profiles to identify regional pay gaps."],
        "when": [{"label": "Apr 2025", "iso": "2025-04"}, {"label": "{tata_end} 2025", "iso": "2025-{tata_end_num}"}],
-       "learned": "Learned to turn messy numbers into a recommendation."},
+       "learned": "A regional pay gap analysis built from 1,000+ compensation records."},
       {"id": "qk", "title": "QualityKiosk Technologies, Data and AI Intern",
        "facts": ["Built 2 deterministic TypeScript estimation engines (1,027 lines) with 136 unit tests, 68 of them checking parity with the original Excel model."],
-       "note": "Internal tooling for banking QA; code confidential.",
+       "note": "Internal QA tooling for banking software; the code is private.",
        "when": [{"label": "Apr 2026", "iso": "2026-04"}, {"label": "Jun 2026", "iso": "2026-06"}],
-       "learned": "Learned what shipping reliable tools for a bank takes."}
+       "learned": "Two estimation engines and seven internal apps, built solo in seven weeks."}
     ]}
   ]
 }
