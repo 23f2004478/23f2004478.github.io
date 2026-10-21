@@ -360,8 +360,8 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 @media (min-width:700px){.beliefs{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4)}}
 .belief{position:relative;display:flex;flex-direction:column;gap:var(--s2);border:1px solid var(--rule);border-radius:6px;background:var(--box);padding:var(--s4);min-width:0}
 .belief-h{margin:0;font-size:1.0625rem;font-weight:600;line-height:1.35;color:var(--ink)}
-.belief-proof{margin:0;font-size:.875rem;color:var(--muted);line-height:1.45;max-width:40ch}
-.belief-link{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px;margin-top:auto;color:var(--accent);font-weight:600;text-decoration:none}
+.belief-proof{margin:0;font-size:.9375rem;font-weight:400;color:var(--muted);line-height:1.45;max-width:40ch}
+.belief-link{display:inline-flex;align-items:center;gap:var(--s2);min-height:44px;margin-top:auto;color:var(--accent);font-size:.875rem;font-weight:600;text-decoration:none}
 .belief-link:hover,.belief-link:focus-visible{text-decoration:underline}
 /* stretched link: whole card is tappable, not just the link row at the bottom.
    .belief-link has no position set, so this pseudo sizes against .belief (position:relative),
@@ -369,16 +369,22 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
 .belief-link::before{content:"";position:absolute;inset:0}
 /* ch10 forward path: a real vertical timeline, not belief-style cards. Three node styles:
    filled = now, open ring = committed next step, dashed ring = not yet decided. */
-.path{list-style:none;margin:var(--s5) 0 0;padding:0 0 0 var(--s6);border-left:2px solid var(--rule);position:relative;display:grid;gap:var(--s6)}
+.path{list-style:none;margin:var(--s5) 0 0;padding:0 0 0 var(--s6);border-left:2px solid var(--muted);position:relative;display:grid;gap:var(--s6)}
 .path-step{position:relative;min-width:0}
-.path-step::before{content:"";position:absolute;left:calc(-1*var(--s6) - 1px - 7px);top:3px;width:14px;height:14px;border-radius:50%;box-sizing:border-box;background:var(--paper)}
+.path-step::before{content:"";position:absolute;left:calc(-1*var(--s6) - 1px - 8px);top:2px;width:16px;height:16px;border-radius:50%;box-sizing:border-box;background:var(--paper)}
 .path-now::before{background:var(--accent);border:2px solid var(--accent)}
 .path-next::before{border:2px solid var(--accent)}
 .path-after::before{border:2px dashed var(--accent)}
 .path-k{margin:0 0 4px;font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
 .path-t{margin:0;font-size:.9375rem;color:var(--ink);line-height:1.5;max-width:52ch;overflow-wrap:anywhere}
+/* "Reach me" reuses the Beliefs/Direction eyebrow style so it reads as a small label,
+   not a heading competing with the serif CTA sentence below it (story 5c round3). The
+   generic .ch-contact h3 rule above is less specific, so this wins without !important. */
+.ch-contact h3.ch10-sub{margin:0 0 var(--s2);font-size:.8125rem}
 .ch10-cta-line{margin:0 0 var(--s3);font-family:var(--serif);font-size:1.1875rem;font-weight:500;color:var(--ink);text-wrap:balance;max-width:48ch}
 .cta-email{margin:var(--s2) 0 0;font-size:.8125rem;color:var(--muted);overflow-wrap:anywhere}
+.cta-email a{color:inherit;text-decoration:underline;text-decoration-color:var(--rule)}
+.cta-email a:hover,.cta-email a:focus-visible{text-decoration-color:currentColor}
 .who-is p{margin:0}
 .who-is p+p{margin-top:var(--s2)}
 

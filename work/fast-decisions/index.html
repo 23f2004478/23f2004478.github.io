@@ -197,7 +197,7 @@
 
       <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s2);margin-block:var(--s3);">
         <div class="panel" style="padding:var(--s3);text-align:center;">
-          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">158,527</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">158,621</div>
           <div class="small muted">Total decisions</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
@@ -263,7 +263,7 @@
     <rect x="607.0" y="208.4" width="18.5" height="1.6" rx="2" fill="var(--accent)"><title>18 Oct 2026: 331 decisions</title></rect>
     <rect x="629.5" y="191.8" width="18.5" height="18.2" rx="2" fill="var(--accent)"><title>19 Oct 2026: 3,752 decisions</title></rect>
     <rect x="652.0" y="188.9" width="18.5" height="21.1" rx="2" fill="var(--accent)"><title>20 Oct 2026: 4,354 decisions</title></rect>
-    <rect x="674.5" y="205.2" width="18.5" height="4.8" rx="2" fill="var(--accent)"><title>21 Oct 2026: 992 decisions</title></rect>
+    <rect x="674.5" y="204.7" width="18.5" height="5.3" rx="2" fill="var(--accent)"><title>21 Oct 2026: 1,086 decisions</title></rect>
   </g>
   <g id="x-axis-labels">
     <text x="76.2" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">21 Sep</text>
@@ -310,7 +310,7 @@
               <tr><td>18 Oct 2026</td><td>331</td></tr>
               <tr><td>19 Oct 2026</td><td>3,752</td></tr>
               <tr><td>20 Oct 2026</td><td>4,354</td></tr>
-              <tr><td>21 Oct 2026</td><td>992</td></tr>
+              <tr><td>21 Oct 2026</td><td>1,086</td></tr>
             </tbody>
           </table>
         </div>
@@ -331,7 +331,7 @@
             <tr><td>95th percentile (p95)</td><td class="mono">703 ms</td></tr>
             <tr><td>99th percentile (p99)</td><td class="mono">899 ms</td></tr>
             <tr><td>Handed to fallback route</td><td class="mono">86 (0.05%)</td></tr>
-            <tr><td>Score calls / choice calls</td><td class="mono">88,062 / 70,465</td></tr>
+            <tr><td>Score calls / choice calls</td><td class="mono">88,109 / 70,512</td></tr>
           </tbody>
         </table>
       </div>
@@ -367,7 +367,7 @@
             <tr><th scope="col">Decision family</th><th scope="col">Decisions</th><th scope="col">Share</th><th scope="col">Previous route</th></tr>
           </thead>
           <tbody>
-            <tr><td>A private work workflow</td><td class="mono">131,970</td><td class="mono">83%</td><td>Chat model call</td></tr>
+            <tr><td>A private work workflow</td><td class="mono">132,064</td><td class="mono">83%</td><td>Chat model call</td></tr>
             <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">16%</td><td>Chat model call</td></tr>
             <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">666</td><td class="mono">0.4%</td><td>Chat model call or fixed rule</td></tr>
           </tbody>
@@ -379,9 +379,9 @@
     <!-- Section 6: What it costs -->
     <section class="section" id="what-it-costs" data-ix="reveal">
       <h2>What it costs</h2>
-      <p>On a measured sample of 30,348 calls since 7 Oct 2026, the typed decision layer processed 18,057,078 input tokens and 3,376,522 output tokens (21,433,600 total tokens, about 706 tokens per call) and cost $0.7584, an average of about $0.0540 per day.</p>
+      <p>On a measured sample of 30,395 calls since 7 Oct 2026, the typed decision layer processed 18,084,698 input tokens and 3,381,788 output tokens (21,466,486 total tokens, about 706 tokens per call) and cost $0.7596, an average of about $0.0540 per day.</p>
       <p>Output tokens are free on this service; list price was $0.042 per million input tokens.</p>
-      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 158,527 decisions were handled by this layer instead of calling a chat model.</p>
+      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 158,621 decisions were handled by this layer instead of calling a chat model.</p>
     </section>
 
     <!-- Section 7: Where I never use it -->
@@ -412,7 +412,7 @@
     <!-- Method Note -->
     <div class="panel" style="margin-top:var(--s5);">
       <h3 style="margin-top:0;font-size:1rem;">Method note</h3>
-      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (30,348 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
+      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (30,395 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
     </div>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
