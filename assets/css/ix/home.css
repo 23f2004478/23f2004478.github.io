@@ -591,3 +591,26 @@ html .back-to-top:hover{background:var(--accent);border-color:var(--accent);colo
   .cs-card{flex:none;width:auto}
   .cs-hint{display:none}
 }
+/* ch7 desktop fit: diagrams capped and centred, caption row aligned, table cols, rail */
+.ch-7 .layers-fig .viz-cap,.ch-7 .layers-fail-fig .viz-cap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s2) var(--s3);max-width:none;margin-inline:0}
+.ch-7 .viz-cap .diag-expand-btn{margin-top:0;flex:none}
+.layers-svg{width:min(100%,420px,66vh);max-height:80vh;margin-inline:auto}
+.ch-7 .layers-fig .viz-note,.ch-7 .layers-fail-fig .viz-note{margin-inline:auto;text-align:center}
+@media (min-width:640px){
+  .ch-7 .layers-fig,.ch-7 .layers-fail-fig{max-width:760px;margin-inline:auto}
+  .layers-fail-svg{width:min(100%,720px);margin-inline:auto}
+  .layers-fail-svg text{font-size:8.5px}
+  .layers-fail-svg text[font-size="15"]{font-size:9.5px}
+  .stops-table-wrap table{table-layout:fixed}
+  .stops-table-wrap thead th:nth-child(1){width:28%}
+  .stops-table-wrap thead th:nth-child(2){width:38%}
+  .stops-table-wrap thead th:nth-child(3){width:34%}
+  .stops-table-wrap th,.stops-table-wrap td{padding:var(--s2) var(--s3);line-height:1.45;vertical-align:top}
+}
+@media (min-width:1200px){
+  .chrail .t{font-size:.9375rem;line-height:1.3}
+  .chrail .n{font-size:.9375rem}
+}
+@media (min-width:1700px){
+  .chrail{left:max(16px,calc(50% - 780px))}
+}
