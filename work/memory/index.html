@@ -188,7 +188,7 @@
   <div class="scroll-progress"></div>
   <article class="wrap page-head" data-ix="toc">
     <h1 style="view-transition-name: cs-memory;">How my agents remember: five layers of memory I can read and edit</h1>
-    <p class="deck">How 9 agents on one Azure server remember what matters across months of daily work. Small notes I can read and edit keep the active rules fresh, while full searchable history on my own server preserves every past conversation.</p>
+    <p class="deck">How 10 agents on one Azure server remember what matters across months of daily work. Small notes I can read and edit keep the active rules fresh, while full searchable history on my own server preserves every past conversation.</p>
 
     <!-- Top Executive Summary for Visitors from LinkedIn -->
     <div class="panel">
@@ -202,9 +202,9 @@
 
     <div class="stats-row">
       <div class="stat-item"><span class="stat-val">5</span><span class="stat-lbl">Memory layers</span></div>
-      <div class="stat-item"><span class="stat-val">9</span><span class="stat-lbl">Agents</span></div>
+      <div class="stat-item"><span class="stat-val">10</span><span class="stat-lbl">Agents</span></div>
       <div class="stat-item"><span class="stat-val">2,200</span><span class="stat-lbl">Char cap on notes</span></div>
-      <div class="stat-item"><span class="stat-val">399,556</span><span class="stat-lbl">Messages in history</span></div>
+      <div class="stat-item"><span class="stat-val">415,028</span><span class="stat-lbl">Messages in history</span></div>
     </div>
 
     <!-- Visual Architecture Diagram at the Top -->
@@ -315,8 +315,8 @@
       <li><strong>L1 Session window and system prompt:</strong> The live working desk. Holds the system prompt, the agent's role rules, active conversation turns, and tool results. When it grows past the compaction threshold, LCM-X folds the oldest turns into summary nodes and preserves pointers to the original messages.</li>
       <li><strong>L2 Ephemeral scratch:</strong> The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.</li>
       <li><strong>L3 Curated persistent memory:</strong> The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.</li>
-      <li><strong>L4 Curated knowledge base:</strong> The reference library. 17 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
-      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 894 SKILL.md files (252 distinct skills) across the router and 8 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
+      <li><strong>L4 Curated knowledge base:</strong> The reference library. 18 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
+      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 908 SKILL.md files (251 distinct skills) across the router and 9 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
     </ul>
 
     <h2 id="spec">Layer specifications</h2>
@@ -362,7 +362,7 @@
             <th scope="row">L4 Curated knowledge base</th>
             <td>Facts shared by all agents, loaded by domain</td>
             <td>Permanent, edited by hand</td>
-            <td>One topic per file; 17 files</td>
+            <td>One topic per file; 18 files</td>
             <td>Markdown in ~/.hermes/knowledge</td>
             <td>Read on demand; md_guard.py checks every edit and runs daily</td>
           </tr>
@@ -370,7 +370,7 @@
             <th scope="row">L5 Procedural skills library</th>
             <td>Per agent</td>
             <td>Permanent, versioned</td>
-            <td>894 SKILL.md files, 252 distinct skills</td>
+            <td>908 SKILL.md files, 251 distinct skills</td>
             <td>SKILL.md plus references and scripts</td>
             <td>Loaded when a task matches; configuration drift audited hourly by the infrastructure agent</td>
           </tr>
@@ -378,7 +378,7 @@
             <th scope="row">LCM-X (beneath L1)</th>
             <td>Full history of one agent; each agent has its own lcm.db</td>
             <td>Permanent raw rows; removal only by an explicit owner purge</td>
-            <td>Disk; 399,556 raw messages in the router agent&#x27;s store</td>
+            <td>Disk; 415,028 raw messages in the router agent&#x27;s store</td>
             <td>SQLite in WAL mode with FTS5 indexes</td>
             <td>lcm_grep, lcm_recall, lcm_expand</td>
           </tr>
@@ -445,7 +445,7 @@
           <path d="M650 92 V260 M690 92 V390" fill="none"  stroke-width="1.5" stroke-dasharray="5 4" style="stroke:var(--accent)"/>
 
           <rect x="8" y="490" width="704" height="56" rx="10"   stroke-width="1.5" style="fill:var(--box);stroke:var(--accent)"/>
-          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 399,556 raw messages, 583 summary nodes, 0 dangling references</text>
+          <text x="360" y="524" text-anchor="middle" font-size="14">lcm.db, journal_mode=WAL: 415,028 raw messages, 797 summary nodes, 0 dangling references</text>
         </g>
       </svg>
       <svg class="narrow" viewBox="0 0 320 800" role="img" aria-labelledby="mem-b-t-n" style="width:100%;height:auto">
@@ -480,22 +480,22 @@
           <text x="238" y="532" font-size="15" style="fill:var(--muted)">105 to 108</text>
           <rect x="8" y="580" width="304" height="132" rx="12"   stroke-width="1.5" style="fill:var(--box);stroke:var(--accent)"/>
           <text x="160" y="612" font-weight="600">lcm.db, journal_mode=WAL</text>
-          <text x="160" y="640" font-size="15">399,556 raw messages</text>
-          <text x="160" y="666" font-size="15">583 summary nodes</text>
+          <text x="160" y="640" font-size="15">415,028 raw messages</text>
+          <text x="160" y="666" font-size="15">797 summary nodes</text>
           <text x="160" y="692" font-size="15">0 dangling references</text>
         </g>
       </svg>
       <figcaption class="small muted">Diagram B. Compaction shortens what the model reads, not what the store keeps. Every summary node lists the ids it covers, so a search can land on any level and lcm_expand can return the original text. Bottom figures are probed from the router agent's lcm.db at build time.</figcaption>
     </figure>
     <ul>
-      <li><strong>Compaction:</strong> The router agent's database currently holds 399,556 messages from 425 sessions and 583 summary nodes (557 at depth 0, 24 at depth 1, 2 at depth 2). Maximum depth currently in use: 2.</li>
+      <li><strong>Compaction:</strong> The router agent's database currently holds 415,028 messages from 632 sessions and 797 summary nodes (749 at depth 0, 45 at depth 1, 3 at depth 2). Maximum depth currently in use: 2.</li>
       <li><strong>FTS5 search:</strong> SQLite FTS5 full-text indexing indexes all messages and summary nodes. Search ranks results by keyword match strength and recency, allowing agents to pinpoint exact filenames, error strings, and identifiers instantly.</li>
       <li><strong>Lossless expansion:</strong> If an agent needs full historical context beyond a summary, the lcm_expand tool fetches the exact source messages by store_id or node_id. Compaction reduces token load in the active prompt without losing historical fidelity.</li>
       <li><strong>Concurrent WAL mode:</strong> SQLite Write-Ahead Logging allows background compaction jobs to write without blocking active agent reads.</li>
     </ul>
 
     <h2 id="telemetry">Live telemetry and verification</h2>
-    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 22 Oct 2026.</p>
+    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 26 Oct 2026.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Telemetry figures and how to reproduce them (scrolls horizontally)">
       <table>
         <caption>Telemetry figures and how to reproduce them</caption>
@@ -540,19 +540,19 @@
           </tr>
           <tr>
             <th scope="row">Knowledge files</th>
-            <td class="mono">17</td>
+            <td class="mono">18</td>
             <td><code>ls ~/.hermes/knowledge/*.md | wc -l</code></td>
             <td>probed at build</td>
           </tr>
           <tr>
             <th scope="row">Skill files</th>
-            <td class="mono">894 (252 distinct names)</td>
+            <td class="mono">908 (251 distinct names)</td>
             <td><code>find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l</code></td>
             <td>declared, verified 7 Oct 2026</td>
           </tr>
           <tr>
             <th scope="row">Agents</th>
-            <td class="mono">9</td>
+            <td class="mono">10</td>
             <td><code>router plus ls -d ~/.hermes/profiles/*/</code></td>
             <td>probed at build</td>
           </tr>
@@ -564,19 +564,19 @@
           </tr>
           <tr>
             <th scope="row">Raw messages</th>
-            <td class="mono">399,556 across 425 sessions</td>
+            <td class="mono">415,028 across 632 sessions</td>
             <td><code>SELECT COUNT(*) FROM messages;</code></td>
             <td>probed at build</td>
           </tr>
           <tr>
             <th scope="row">Summary nodes</th>
-            <td class="mono">583 (557 at depth 0, 24 at depth 1, 2 at depth 2)</td>
+            <td class="mono">797 (749 at depth 0, 45 at depth 1, 3 at depth 2)</td>
             <td><code>SELECT depth, COUNT(*) FROM summary_nodes GROUP BY depth;</code></td>
             <td>probed at build</td>
           </tr>
           <tr>
             <th scope="row">Dangling references</th>
-            <td class="mono">0 of 38,988</td>
+            <td class="mono">0 of 44,926</td>
             <td><code>integrity query below</code></td>
             <td>probed at build</td>
           </tr>
@@ -589,7 +589,7 @@
         </tbody>
       </table>
     </div>
-    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 22 Oct 2026: 0 dangling references out of 38,988.</p>
+    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 26 Oct 2026: 0 dangling references out of 44,926.</p>
     <pre tabindex="0" aria-label="Code, scrolls sideways"><code>SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
 WHERE (s.source_type = 'messages'
        AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
@@ -681,7 +681,7 @@ WHERE (s.source_type = 'messages'
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project files at build time; last build 22 Oct 2026.</p>
+      <p class="foot-note">Figures recounted from project files at build time; last build 26 Oct 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/privacy/">Privacy</a></li>
