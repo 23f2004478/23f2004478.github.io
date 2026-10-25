@@ -192,13 +192,13 @@
     <p class="deck">Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.</p>
 
     <div class="panel telemetry-bar">
-      <p class="small muted">Last probed: <span class="mono">2026-10-25T19:15:30Z</span> &middot; Tracking window: <span class="mono">2026-09-13</span> to <span class="mono">2026-10-26</span> (<span class="mono">44</span> days). The window starts on 2026-09-13, the first day any source logged tokens.</p>
+      <p class="small muted">Last probed: <span class="mono">2026-10-25T21:56:15Z</span> &middot; Tracking window: <span class="mono">2026-09-13</span> to <span class="mono">2026-10-26</span> (<span class="mono">44</span> days). The window starts on 2026-09-13, the first day any source logged tokens.</p>
     </div>
 
     <!-- Hero Stats Row -->
     <div class="stats-row">
       <div class="stat-item">
-        <span class="stat-val">11.28 B</span>
+        <span class="stat-val">11.50 B</span>
         <span class="stat-lbl">Total tokens across 3 sources</span>
       </div>
       <div class="stat-item">
@@ -206,11 +206,11 @@
         <span class="stat-lbl">Prompt cache hit rate</span>
       </div>
       <div class="stat-item">
-        <span class="stat-val">69.2 M</span>
-        <span class="stat-lbl">Generated output (0.61%)</span>
+        <span class="stat-val">71.3 M</span>
+        <span class="stat-lbl">Generated output (0.62%)</span>
       </div>
       <div class="stat-item">
-        <span class="stat-val">$4,733.59</span>
+        <span class="stat-val">$4,767.11</span>
         <span class="stat-lbl">List price equivalent (USD)</span>
       </div>
     </div>
@@ -220,28 +220,28 @@
       <h2 id="h-where-tokens-went">Where the tokens went</h2>
       
       <div class="comp-bar-wrapper">
-        <div class="comp-bar" role="img" aria-label="Token composition: 7.6% fresh input, 89.3% cached read, 2.4% cache write, 0.61% output">
-          <div class="comp-segment comp-segment--fresh" style="width: 7.63%;"></div>
-          <div class="comp-segment comp-segment--cached" style="width: 89.33%;"></div>
-          <div class="comp-segment comp-segment--write" style="width: 2.43%;"></div>
-          <div class="comp-segment comp-segment--output" style="width: 0.61%; min-width: 3px;"></div>
+        <div class="comp-bar" role="img" aria-label="Token composition: 7.5% fresh input, 89.4% cached read, 2.5% cache write, 0.62% output">
+          <div class="comp-segment comp-segment--fresh" style="width: 7.54%;"></div>
+          <div class="comp-segment comp-segment--cached" style="width: 89.39%;"></div>
+          <div class="comp-segment comp-segment--write" style="width: 2.45%;"></div>
+          <div class="comp-segment comp-segment--output" style="width: 0.62%; min-width: 3px;"></div>
         </div>
         <div class="comp-legend">
           <div class="comp-legend-item">
             <span class="comp-legend-swatch comp-legend-swatch--fresh" aria-hidden="true"></span>
-            <div class="comp-legend-text"><span class="lbl">Fresh input</span> <span class="val">860.9 M</span> <span class="share">7.6%</span></div>
+            <div class="comp-legend-text"><span class="lbl">Fresh input</span> <span class="val">867.4 M</span> <span class="share">7.5%</span></div>
           </div>
           <div class="comp-legend-item">
             <span class="comp-legend-swatch comp-legend-swatch--cached" aria-hidden="true"></span>
-            <div class="comp-legend-text"><span class="lbl">Cached read</span> <span class="val">10.08 B</span> <span class="share">89.3%</span></div>
+            <div class="comp-legend-text"><span class="lbl">Cached read</span> <span class="val">10.28 B</span> <span class="share">89.4%</span></div>
           </div>
           <div class="comp-legend-item">
             <span class="comp-legend-swatch comp-legend-swatch--write" aria-hidden="true"></span>
-            <div class="comp-legend-text"><span class="lbl">Cache write</span> <span class="val">274.3 M</span> <span class="share">2.4%</span></div>
+            <div class="comp-legend-text"><span class="lbl">Cache write</span> <span class="val">282.1 M</span> <span class="share">2.5%</span></div>
           </div>
           <div class="comp-legend-item">
             <span class="comp-legend-swatch comp-legend-swatch--output" aria-hidden="true"></span>
-            <div class="comp-legend-text"><span class="lbl">Output</span> <span class="val">69.2 M</span> <span class="share">0.61%</span></div>
+            <div class="comp-legend-text"><span class="lbl">Output</span> <span class="val">71.3 M</span> <span class="share">0.62%</span></div>
           </div>
         </div>
       </div>
@@ -262,31 +262,31 @@
           <tbody>
           <tr>
             <th scope="row">Fresh input</th>
-            <td class="mono">860,944,324</td>
-            <td class="mono">7.63%</td>
+            <td class="mono">867,445,502</td>
+            <td class="mono">7.54%</td>
             <td>Tokens sent to models without a provider cache hit</td>
           </tr>
           <tr>
             <th scope="row">Cache read</th>
-            <td class="mono">10,079,471,293</td>
-            <td class="mono">89.33%</td>
+            <td class="mono">10,281,453,059</td>
+            <td class="mono">89.39%</td>
             <td>Tokens read from provider prompt cache at discounted rates</td>
           </tr>
           <tr>
             <th scope="row">Cache creation</th>
-            <td class="mono">274,303,116</td>
-            <td class="mono">2.43%</td>
+            <td class="mono">282,125,874</td>
+            <td class="mono">2.45%</td>
             <td>Tokens written to Anthropic prompt cache for 5-minute reuse</td>
           </tr>
           <tr>
             <th scope="row">Output</th>
-            <td class="mono">69,230,161</td>
-            <td class="mono">0.61%</td>
-            <td>Generated completion tokens (includes 4,052,013 reasoning tokens on supported models)</td>
+            <td class="mono">71,300,384</td>
+            <td class="mono">0.62%</td>
+            <td>Generated completion tokens (includes 4,204,508 reasoning tokens on supported models)</td>
           </tr>
           <tr class="table-total">
             <th scope="row">Total</th>
-            <td class="mono">11,283,948,894</td>
+            <td class="mono">11,502,324,819</td>
             <td class="mono">100.00%</td>
             <td>Exact integer sum across all four components</td>
           </tr>
@@ -321,50 +321,50 @@
           <tr>
             <th scope="row">9router proxy</th>
             <td>Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API</td>
-            <td class="mono">100,887</td>
-            <td class="mono">859,710,822</td>
-            <td class="mono">7,201,390,216</td>
+            <td class="mono">102,152</td>
+            <td class="mono">866,139,352</td>
+            <td class="mono">7,270,694,896</td>
             <td class="mono">0</td>
-            <td class="mono">44,445,492</td>
-            <td class="mono">8,105,546,530</td>
-            <td class="mono">89.3%</td>
-            <td class="mono">$2,852.91</td>
+            <td class="mono">45,161,988</td>
+            <td class="mono">8,181,996,236</td>
+            <td class="mono">89.4%</td>
+            <td class="mono">$2,879.01</td>
           </tr>
           <tr>
             <th scope="row">Hermes direct</th>
             <td>my runtime calling Claude directly on a subscription</td>
-            <td class="mono">12,465</td>
-            <td class="mono">1,200,399</td>
-            <td class="mono">1,896,073,387</td>
-            <td class="mono">246,117,139</td>
-            <td class="mono">11,646,561</td>
-            <td class="mono">2,155,037,486</td>
-            <td class="mono">88.5%</td>
-            <td class="mono">$1,880.68</td>
+            <td class="mono">13,312</td>
+            <td class="mono">1,273,005</td>
+            <td class="mono">2,028,089,705</td>
+            <td class="mono">253,847,748</td>
+            <td class="mono">12,990,061</td>
+            <td class="mono">2,296,200,519</td>
+            <td class="mono">88.8%</td>
+            <td class="mono">$1,888.10</td>
           </tr>
           <tr>
             <th scope="row">Claude Code</th>
             <td>the CLI, read from its own transcripts</td>
-            <td class="mono">6,783</td>
-            <td class="mono">33,103</td>
-            <td class="mono">982,007,690</td>
-            <td class="mono">28,185,977</td>
-            <td class="mono">13,138,108</td>
-            <td class="mono">1,023,364,878</td>
+            <td class="mono">6,804</td>
+            <td class="mono">33,145</td>
+            <td class="mono">982,668,458</td>
+            <td class="mono">28,278,126</td>
+            <td class="mono">13,148,335</td>
+            <td class="mono">1,024,128,064</td>
             <td class="mono">97.2%</td>
             <td class="mono">n/r</td>
           </tr>
           <tr class="table-total">
             <th scope="row">Total</th>
             <td>All three telemetry streams combined</td>
-            <td class="mono">120,135</td>
-            <td class="mono">860,944,324</td>
-            <td class="mono">10,079,471,293</td>
-            <td class="mono">274,303,116</td>
-            <td class="mono">69,230,161</td>
-            <td class="mono">11,283,948,894</td>
+            <td class="mono">122,268</td>
+            <td class="mono">867,445,502</td>
+            <td class="mono">10,281,453,059</td>
+            <td class="mono">282,125,874</td>
+            <td class="mono">71,300,384</td>
+            <td class="mono">11,502,324,819</td>
             <td class="mono">89.9%</td>
-            <td class="mono">$4,733.59</td>
+            <td class="mono">$4,767.11</td>
           </tr>
           </tbody>
         </table>
@@ -400,39 +400,39 @@
           <tr>
             <th scope="row">Gemini Flash</th>
             <td>ninerouter</td>
-            <td class="mono">95,467</td>
-            <td class="mono">792,843,762</td>
-            <td class="mono">6,897,001,673</td>
+            <td class="mono">96,732</td>
+            <td class="mono">799,272,292</td>
+            <td class="mono">6,966,306,353</td>
             <td class="mono">n/r</td>
-            <td class="mono">42,687,729</td>
-            <td class="mono">7,732,533,164</td>
-            <td class="mono">68.53%</td>
+            <td class="mono">43,404,225</td>
+            <td class="mono">7,808,982,870</td>
+            <td class="mono">67.89%</td>
             <td class="mono">89.7%</td>
-            <td class="mono">$2,559.54</td>
+            <td class="mono">$2,585.65</td>
           </tr>
           <tr>
             <th scope="row">Claude Opus</th>
             <td>claude_code, hermes, ninerouter</td>
-            <td class="mono">10,797</td>
-            <td class="mono">393,474</td>
-            <td class="mono">1,719,447,567</td>
+            <td class="mono">11,558</td>
+            <td class="mono">451,788</td>
+            <td class="mono">1,844,465,305</td>
             <td class="mono">n/r</td>
-            <td class="mono">15,427,580</td>
-            <td class="mono">1,856,178,415</td>
-            <td class="mono">16.45%</td>
-            <td class="mono">93.4%</td>
+            <td class="mono">16,724,150</td>
+            <td class="mono">1,988,817,082</td>
+            <td class="mono">17.29%</td>
+            <td class="mono">93.5%</td>
             <td class="mono">n/r</td>
           </tr>
           <tr>
             <th scope="row">Claude Sonnet</th>
             <td>claude_code, hermes, ninerouter</td>
-            <td class="mono">11,781</td>
-            <td class="mono">58,493,007</td>
-            <td class="mono">1,433,658,350</td>
+            <td class="mono">11,887</td>
+            <td class="mono">58,507,339</td>
+            <td class="mono">1,441,317,698</td>
             <td class="mono">n/r</td>
-            <td class="mono">7,682,722</td>
-            <td class="mono">1,647,612,812</td>
-            <td class="mono">14.60%</td>
+            <td class="mono">7,737,083</td>
+            <td class="mono">1,656,885,725</td>
+            <td class="mono">14.40%</td>
             <td class="mono">87.4%</td>
             <td class="mono">n/r</td>
           </tr>
@@ -445,21 +445,21 @@
             <td class="mono">n/r</td>
             <td class="mono">75,396</td>
             <td class="mono">29,187,339</td>
-            <td class="mono">0.26%</td>
+            <td class="mono">0.25%</td>
             <td class="mono">82.9%</td>
             <td class="mono">n/r</td>
           </tr>
           <tr>
             <th scope="row">Other</th>
             <td>claude_code, ninerouter</td>
-            <td class="mono">790</td>
-            <td class="mono">3,023,854</td>
+            <td class="mono">791</td>
+            <td class="mono">3,023,856</td>
             <td class="mono">4,356,077</td>
             <td class="mono">n/r</td>
-            <td class="mono">3,313,686</td>
-            <td class="mono">15,190,455</td>
+            <td class="mono">3,316,482</td>
+            <td class="mono">15,205,094</td>
             <td class="mono">0.13%</td>
-            <td class="mono">36.7%</td>
+            <td class="mono">36.6%</td>
             <td class="mono">n/r</td>
           </tr>
           <tr>
@@ -491,15 +491,15 @@
           <tr class="table-total">
             <th scope="row">Total</th>
             <td>All model families combined</td>
-            <td class="mono">120,135</td>
-            <td class="mono">860,944,324</td>
-            <td class="mono">10,079,471,293</td>
-            <td class="mono">274,303,116</td>
-            <td class="mono">69,230,161</td>
-            <td class="mono">11,283,948,894</td>
+            <td class="mono">122,268</td>
+            <td class="mono">867,445,502</td>
+            <td class="mono">10,281,453,059</td>
+            <td class="mono">282,125,874</td>
+            <td class="mono">71,300,384</td>
+            <td class="mono">11,502,324,819</td>
             <td class="mono">100.00%</td>
             <td class="mono">89.9%</td>
-            <td class="mono">$4,733.59</td>
+            <td class="mono">$4,767.11</td>
           </tr>
           </tbody>
         </table>
@@ -524,14 +524,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" data-detail="Mon 14 Sep &middot; 0 total &middot; fresh 0 &middot; cached 0 &middot; write 0 &middot; output 0 &middot; 0 calls" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="52527029" data-level="1" data-detail="Mon 21 Sep &middot; 52.5M total &middot; fresh 9.8M &middot; cached 42.3M &middot; write 0 &middot; output 446.6k &middot; 1,184 calls" role="gridcell" aria-label="Mon 21 Sep: 52.5 M tokens"></td><td data-date="2026-09-28" data-value="340072182" data-level="3" data-detail="Mon 28 Sep &middot; 340.1M total &middot; fresh 45.9M &middot; cached 291.3M &middot; write 335.2k &middot; output 2.5M &middot; 3,229 calls" role="gridcell" aria-label="Mon 28 Sep: 340.1 M tokens"></td><td data-date="2026-10-05" data-value="498170107" data-level="4" data-detail="Mon 5 Oct &middot; 498.2M total &middot; fresh 41.3M &middot; cached 447.4M &middot; write 6.6M &middot; output 2.8M &middot; 4,031 calls" role="gridcell" aria-label="Mon 5 Oct: 498.2 M tokens"></td><td data-date="2026-10-12" data-value="388531630" data-level="3" data-detail="Mon 12 Oct &middot; 388.5M total &middot; fresh 33.3M &middot; cached 354.2M &middot; write 0 &middot; output 1.0M &middot; 4,583 calls" role="gridcell" aria-label="Mon 12 Oct: 388.5 M tokens"></td><td data-date="2026-10-19" data-value="504985926" data-level="4" data-detail="Mon 19 Oct &middot; 505.0M total &middot; fresh 3.1M &middot; cached 460.9M &middot; write 39.5M &middot; output 1.5M &middot; 1,824 calls" role="gridcell" aria-label="Mon 19 Oct: 505.0 M tokens"></td><td data-date="2026-10-26" data-value="35567231" data-level="1" data-today="true" data-detail="Mon 26 Oct &middot; 35.6M total &middot; fresh 1.9M &middot; cached 31.5M &middot; write 1.8M &middot; output 383.3k &middot; 629 calls" role="gridcell" aria-label="Mon 26 Oct: 35.6 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="11274" data-level="1" data-detail="Tue 15 Sep &middot; 11.3k total &middot; fresh 4.7k &middot; cached 4.1k &middot; write 0 &middot; output 2.5k &middot; 12 calls" role="gridcell" aria-label="Tue 15 Sep: 11,274 tokens"></td><td data-date="2026-09-22" data-value="170634748" data-level="2" data-detail="Tue 22 Sep &middot; 170.6M total &middot; fresh 26.8M &middot; cached 142.1M &middot; write 0 &middot; output 1.8M &middot; 2,280 calls" role="gridcell" aria-label="Tue 22 Sep: 170.6 M tokens"></td><td data-date="2026-09-29" data-value="191055436" data-level="2" data-detail="Tue 29 Sep &middot; 191.1M total &middot; fresh 21.5M &middot; cached 167.9M &middot; write 247.0k &middot; output 1.4M &middot; 2,153 calls" role="gridcell" aria-label="Tue 29 Sep: 191.1 M tokens"></td><td data-date="2026-10-06" data-value="593322083" data-level="4" data-detail="Tue 6 Oct &middot; 593.3M total &middot; fresh 49.4M &middot; cached 539.5M &middot; write 1.7M &middot; output 2.7M &middot; 6,964 calls" role="gridcell" aria-label="Tue 6 Oct: 593.3 M tokens"></td><td data-date="2026-10-13" data-value="589855580" data-level="4" data-detail="Tue 13 Oct &middot; 589.9M total &middot; fresh 80.3M &middot; cached 507.3M &middot; write 217.1k &middot; output 2.1M &middot; 8,837 calls" role="gridcell" aria-label="Tue 13 Oct: 589.9 M tokens"></td><td data-date="2026-10-20" data-value="146155934" data-level="2" data-detail="Tue 20 Oct &middot; 146.2M total &middot; fresh 2.6M &middot; cached 123.2M &middot; write 19.6M &middot; output 772.0k &middot; 1,449 calls" role="gridcell" aria-label="Tue 20 Oct: 146.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="40822997" data-level="1" data-detail="Wed 16 Sep &middot; 40.8M total &middot; fresh 11.5M &middot; cached 29.2M &middot; write 0 &middot; output 169.4k &middot; 735 calls" role="gridcell" aria-label="Wed 16 Sep: 40.8 M tokens"></td><td data-date="2026-09-23" data-value="198665449" data-level="2" data-detail="Wed 23 Sep &middot; 198.7M total &middot; fresh 23.2M &middot; cached 168.1M &middot; write 6.3M &middot; output 1.1M &middot; 1,702 calls" role="gridcell" aria-label="Wed 23 Sep: 198.7 M tokens"></td><td data-date="2026-09-30" data-value="133976895" data-level="2" data-detail="Wed 30 Sep &middot; 134.0M total &middot; fresh 7.4M &middot; cached 118.2M &middot; write 7.2M &middot; output 1.3M &middot; 1,628 calls" role="gridcell" aria-label="Wed 30 Sep: 134.0 M tokens"></td><td data-date="2026-10-07" data-value="758484201" data-level="4" data-detail="Wed 7 Oct &middot; 758.5M total &middot; fresh 50.2M &middot; cached 679.6M &middot; write 25.3M &middot; output 3.4M &middot; 8,299 calls" role="gridcell" aria-label="Wed 7 Oct: 758.5 M tokens"></td><td data-date="2026-10-14" data-value="30484055" data-level="1" data-detail="Wed 14 Oct &middot; 30.5M total &middot; fresh 2.9M &middot; cached 27.5M &middot; write 92.0k &middot; output 69.8k &middot; 516 calls" role="gridcell" aria-label="Wed 14 Oct: 30.5 M tokens"></td><td data-date="2026-10-21" data-value="249207682" data-level="3" data-detail="Wed 21 Oct &middot; 249.2M total &middot; fresh 39.0M &middot; cached 192.9M &middot; write 16.5M &middot; output 840.6k &middot; 2,093 calls" role="gridcell" aria-label="Wed 21 Oct: 249.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="65046308" data-level="1" data-detail="Thu 17 Sep &middot; 65.0M total &middot; fresh 15.8M &middot; cached 49.0M &middot; write 0 &middot; output 192.2k &middot; 721 calls" role="gridcell" aria-label="Thu 17 Sep: 65.0 M tokens"></td><td data-date="2026-09-24" data-value="149901033" data-level="2" data-detail="Thu 24 Sep &middot; 149.9M total &middot; fresh 16.4M &middot; cached 131.5M &middot; write 1.1M &middot; output 930.9k &middot; 2,066 calls" role="gridcell" aria-label="Thu 24 Sep: 149.9 M tokens"></td><td data-date="2026-10-01" data-value="217602879" data-level="2" data-detail="Thu 1 Oct &middot; 217.6M total &middot; fresh 14.6M &middot; cached 191.5M &middot; write 9.5M &middot; output 2.1M &middot; 2,406 calls" role="gridcell" aria-label="Thu 1 Oct: 217.6 M tokens"></td><td data-date="2026-10-08" data-value="448012349" data-level="4" data-detail="Thu 8 Oct &middot; 448.0M total &middot; fresh 26.5M &middot; cached 412.1M &middot; write 6.6M &middot; output 2.8M &middot; 4,266 calls" role="gridcell" aria-label="Thu 8 Oct: 448.0 M tokens"></td><td data-date="2026-10-15" data-value="278208339" data-level="3" data-detail="Thu 15 Oct &middot; 278.2M total &middot; fresh 3.5M &middot; cached 265.4M &middot; write 7.3M &middot; output 2.0M &middot; 2,504 calls" role="gridcell" aria-label="Thu 15 Oct: 278.2 M tokens"></td><td data-date="2026-10-22" data-value="597576681" data-level="4" data-detail="Thu 22 Oct &middot; 597.6M total &middot; fresh 34.1M &middot; cached 546.5M &middot; write 12.9M &middot; output 4.1M &middot; 7,299 calls" role="gridcell" aria-label="Thu 22 Oct: 597.6 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="48685117" data-level="1" data-detail="Fri 18 Sep &middot; 48.7M total &middot; fresh 11.6M &middot; cached 36.6M &middot; write 0 &middot; output 471.2k &middot; 1,205 calls" role="gridcell" aria-label="Fri 18 Sep: 48.7 M tokens"></td><td data-date="2026-09-25" data-value="78260228" data-level="2" data-detail="Fri 25 Sep &middot; 78.3M total &middot; fresh 12.5M &middot; cached 65.2M &middot; write 0 &middot; output 568.9k &middot; 1,106 calls" role="gridcell" aria-label="Fri 25 Sep: 78.3 M tokens"></td><td data-date="2026-10-02" data-value="389343231" data-level="3" data-detail="Fri 2 Oct &middot; 389.3M total &middot; fresh 40.2M &middot; cached 336.1M &middot; write 9.4M &middot; output 3.6M &middot; 3,572 calls" role="gridcell" aria-label="Fri 2 Oct: 389.3 M tokens"></td><td data-date="2026-10-09" data-value="364103031" data-level="3" data-detail="Fri 9 Oct &middot; 364.1M total &middot; fresh 20.7M &middot; cached 337.6M &middot; write 3.4M &middot; output 2.4M &middot; 3,064 calls" role="gridcell" aria-label="Fri 9 Oct: 364.1 M tokens"></td><td data-date="2026-10-16" data-value="415439670" data-level="4" data-detail="Fri 16 Oct &middot; 415.4M total &middot; fresh 9.4M &middot; cached 397.2M &middot; write 6.8M &middot; output 2.1M &middot; 4,119 calls" role="gridcell" aria-label="Fri 16 Oct: 415.4 M tokens"></td><td data-date="2026-10-23" data-value="773036137" data-level="4" data-detail="Fri 23 Oct &middot; 773.0M total &middot; fresh 33.4M &middot; cached 709.2M &middot; write 26.2M &middot; output 4.3M &middot; 8,812 calls" role="gridcell" aria-label="Fri 23 Oct: 773.0 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="32014854" data-level="1" data-detail="Sat 19 Sep &middot; 32.0M total &middot; fresh 7.6M &middot; cached 24.0M &middot; write 0 &middot; output 399.7k &middot; 980 calls" role="gridcell" aria-label="Sat 19 Sep: 32.0 M tokens"></td><td data-date="2026-09-26" data-value="23220572" data-level="1" data-detail="Sat 26 Sep &middot; 23.2M total &middot; fresh 6.8M &middot; cached 16.3M &middot; write 9.1k &middot; output 139.3k &middot; 234 calls" role="gridcell" aria-label="Sat 26 Sep: 23.2 M tokens"></td><td data-date="2026-10-03" data-value="515394075" data-level="4" data-detail="Sat 3 Oct &middot; 515.4M total &middot; fresh 41.1M &middot; cached 447.2M &middot; write 23.2M &middot; output 3.9M &middot; 4,324 calls" role="gridcell" aria-label="Sat 3 Oct: 515.4 M tokens"></td><td data-date="2026-10-10" data-value="487072588" data-level="4" data-detail="Sat 10 Oct &middot; 487.1M total &middot; fresh 18.5M &middot; cached 455.4M &middot; write 10.0M &middot; output 3.2M &middot; 3,297 calls" role="gridcell" aria-label="Sat 10 Oct: 487.1 M tokens"></td><td data-date="2026-10-17" data-value="88827311" data-level="2" data-detail="Sat 17 Oct &middot; 88.8M total &middot; fresh 1.3M &middot; cached 84.6M &middot; write 2.4M &middot; output 618.7k &middot; 903 calls" role="gridcell" aria-label="Sat 17 Oct: 88.8 M tokens"></td><td data-date="2026-10-24" data-value="79479977" data-level="2" data-detail="Sat 24 Oct &middot; 79.5M total &middot; fresh 4.9M &middot; cached 68.0M &middot; write 5.0M &middot; output 1.6M &middot; 1,345 calls" role="gridcell" aria-label="Sat 24 Oct: 79.5 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" data-detail="Sun 13 Sep &middot; 0 total &middot; fresh 0 &middot; cached 0 &middot; write 0 &middot; output 0 &middot; 0 calls" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="10125765" data-level="1" data-detail="Sun 20 Sep &middot; 10.1M total &middot; fresh 1.4M &middot; cached 8.6M &middot; write 0 &middot; output 46.0k &middot; 222 calls" role="gridcell" aria-label="Sun 20 Sep: 10.1 M tokens"></td><td data-date="2026-09-27" data-value="65159776" data-level="2" data-detail="Sun 27 Sep &middot; 65.2M total &middot; fresh 11.2M &middot; cached 53.3M &middot; write 90.9k &middot; output 598.5k &middot; 919 calls" role="gridcell" aria-label="Sun 27 Sep: 65.2 M tokens"></td><td data-date="2026-10-04" data-value="251396568" data-level="3" data-detail="Sun 4 Oct &middot; 251.4M total &middot; fresh 19.4M &middot; cached 225.5M &middot; write 4.8M &middot; output 1.7M &middot; 2,877 calls" role="gridcell" aria-label="Sun 4 Oct: 251.4 M tokens"></td><td data-date="2026-10-11" data-value="350402201" data-level="3" data-detail="Sun 11 Oct &middot; 350.4M total &middot; fresh 33.6M &middot; cached 309.6M &middot; write 5.1M &middot; output 2.0M &middot; 3,720 calls" role="gridcell" aria-label="Sun 11 Oct: 350.4 M tokens"></td><td data-date="2026-10-18" data-value="306811324" data-level="3" data-detail="Sun 18 Oct &middot; 306.8M total &middot; fresh 9.3M &middot; cached 287.1M &middot; write 7.8M &middot; output 2.6M &middot; 3,082 calls" role="gridcell" aria-label="Sun 18 Oct: 306.8 M tokens"></td><td data-date="2026-10-25" data-value="326298441" data-level="3" data-detail="Sun 25 Oct &middot; 326.3M total &middot; fresh 17.2M &middot; cached 298.9M &middot; write 7.5M &middot; output 2.7M &middot; 4,944 calls" data-selected="true" aria-selected="true" role="gridcell" aria-label="Sun 25 Oct: 326.3 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
+        <tr><th scope="row" aria-hidden="true">Mon</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-14" data-value="0" data-level="0" data-detail="Mon 14 Sep &middot; 0 total &middot; fresh 0 &middot; cached 0 &middot; write 0 &middot; output 0 &middot; 0 calls" role="gridcell" aria-label="Mon 14 Sep: 0 tokens"></td><td data-date="2026-09-21" data-value="52537308" data-level="1" data-detail="Mon 21 Sep &middot; 52.5M total &middot; fresh 9.8M &middot; cached 42.3M &middot; write 3.6k &middot; output 453.2k &middot; 1,186 calls" role="gridcell" aria-label="Mon 21 Sep: 52.5 M tokens"></td><td data-date="2026-09-28" data-value="340072182" data-level="3" data-detail="Mon 28 Sep &middot; 340.1M total &middot; fresh 45.9M &middot; cached 291.3M &middot; write 335.2k &middot; output 2.5M &middot; 3,229 calls" role="gridcell" aria-label="Mon 28 Sep: 340.1 M tokens"></td><td data-date="2026-10-05" data-value="498170107" data-level="4" data-detail="Mon 5 Oct &middot; 498.2M total &middot; fresh 41.3M &middot; cached 447.4M &middot; write 6.6M &middot; output 2.8M &middot; 4,031 calls" role="gridcell" aria-label="Mon 5 Oct: 498.2 M tokens"></td><td data-date="2026-10-12" data-value="388531630" data-level="3" data-detail="Mon 12 Oct &middot; 388.5M total &middot; fresh 33.3M &middot; cached 354.2M &middot; write 0 &middot; output 1.0M &middot; 4,583 calls" role="gridcell" aria-label="Mon 12 Oct: 388.5 M tokens"></td><td data-date="2026-10-19" data-value="504985926" data-level="4" data-detail="Mon 19 Oct &middot; 505.0M total &middot; fresh 3.1M &middot; cached 460.9M &middot; write 39.5M &middot; output 1.5M &middot; 1,824 calls" role="gridcell" aria-label="Mon 19 Oct: 505.0 M tokens"></td><td data-date="2026-10-26" data-value="121936266" data-level="2" data-today="true" data-detail="Mon 26 Oct &middot; 121.9M total &middot; fresh 8.3M &middot; cached 109.1M &middot; write 3.4M &middot; output 1.2M &middot; 2,017 calls" role="gridcell" aria-label="Mon 26 Oct: 121.9 M tokens (today)"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-15" data-value="11274" data-level="1" data-detail="Tue 15 Sep &middot; 11.3k total &middot; fresh 4.7k &middot; cached 4.1k &middot; write 0 &middot; output 2.5k &middot; 12 calls" role="gridcell" aria-label="Tue 15 Sep: 11,274 tokens"></td><td data-date="2026-09-22" data-value="171300441" data-level="2" data-detail="Tue 22 Sep &middot; 171.3M total &middot; fresh 26.8M &middot; cached 142.2M &middot; write 174.1k &middot; output 2.1M &middot; 2,337 calls" role="gridcell" aria-label="Tue 22 Sep: 171.3 M tokens"></td><td data-date="2026-09-29" data-value="191055436" data-level="2" data-detail="Tue 29 Sep &middot; 191.1M total &middot; fresh 21.5M &middot; cached 167.9M &middot; write 247.0k &middot; output 1.4M &middot; 2,153 calls" role="gridcell" aria-label="Tue 29 Sep: 191.1 M tokens"></td><td data-date="2026-10-06" data-value="593322083" data-level="4" data-detail="Tue 6 Oct &middot; 593.3M total &middot; fresh 49.4M &middot; cached 539.5M &middot; write 1.7M &middot; output 2.7M &middot; 6,964 calls" role="gridcell" aria-label="Tue 6 Oct: 593.3 M tokens"></td><td data-date="2026-10-13" data-value="589855580" data-level="4" data-detail="Tue 13 Oct &middot; 589.9M total &middot; fresh 80.3M &middot; cached 507.3M &middot; write 217.1k &middot; output 2.1M &middot; 8,837 calls" role="gridcell" aria-label="Tue 13 Oct: 589.9 M tokens"></td><td data-date="2026-10-20" data-value="146155934" data-level="2" data-detail="Tue 20 Oct &middot; 146.2M total &middot; fresh 2.6M &middot; cached 123.2M &middot; write 19.6M &middot; output 772.0k &middot; 1,449 calls" role="gridcell" aria-label="Tue 20 Oct: 146.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Wed</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-16" data-value="40822997" data-level="1" data-detail="Wed 16 Sep &middot; 40.8M total &middot; fresh 11.5M &middot; cached 29.2M &middot; write 0 &middot; output 169.4k &middot; 735 calls" role="gridcell" aria-label="Wed 16 Sep: 40.8 M tokens"></td><td data-date="2026-09-23" data-value="199928362" data-level="2" data-detail="Wed 23 Sep &middot; 199.9M total &middot; fresh 23.2M &middot; cached 168.8M &middot; write 6.5M &middot; output 1.4M &middot; 1,765 calls" role="gridcell" aria-label="Wed 23 Sep: 199.9 M tokens"></td><td data-date="2026-09-30" data-value="140814185" data-level="2" data-detail="Wed 30 Sep &middot; 140.8M total &middot; fresh 7.4M &middot; cached 124.7M &middot; write 7.4M &middot; output 1.3M &middot; 1,713 calls" role="gridcell" aria-label="Wed 30 Sep: 140.8 M tokens"></td><td data-date="2026-10-07" data-value="758484201" data-level="4" data-detail="Wed 7 Oct &middot; 758.5M total &middot; fresh 50.2M &middot; cached 679.6M &middot; write 25.3M &middot; output 3.4M &middot; 8,299 calls" role="gridcell" aria-label="Wed 7 Oct: 758.5 M tokens"></td><td data-date="2026-10-14" data-value="30484055" data-level="1" data-detail="Wed 14 Oct &middot; 30.5M total &middot; fresh 2.9M &middot; cached 27.5M &middot; write 92.0k &middot; output 69.8k &middot; 516 calls" role="gridcell" aria-label="Wed 14 Oct: 30.5 M tokens"></td><td data-date="2026-10-21" data-value="249207682" data-level="3" data-detail="Wed 21 Oct &middot; 249.2M total &middot; fresh 39.0M &middot; cached 192.9M &middot; write 16.5M &middot; output 840.6k &middot; 2,093 calls" role="gridcell" aria-label="Wed 21 Oct: 249.2 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-17" data-value="65046308" data-level="1" data-detail="Thu 17 Sep &middot; 65.0M total &middot; fresh 15.8M &middot; cached 49.0M &middot; write 0 &middot; output 192.2k &middot; 721 calls" role="gridcell" aria-label="Thu 17 Sep: 65.0 M tokens"></td><td data-date="2026-09-24" data-value="154879949" data-level="2" data-detail="Thu 24 Sep &middot; 154.9M total &middot; fresh 16.4M &middot; cached 135.8M &middot; write 1.6M &middot; output 1.1M &middot; 2,162 calls" role="gridcell" aria-label="Thu 24 Sep: 154.9 M tokens"></td><td data-date="2026-10-01" data-value="217602879" data-level="2" data-detail="Thu 1 Oct &middot; 217.6M total &middot; fresh 14.6M &middot; cached 191.5M &middot; write 9.5M &middot; output 2.1M &middot; 2,406 calls" role="gridcell" aria-label="Thu 1 Oct: 217.6 M tokens"></td><td data-date="2026-10-08" data-value="448012349" data-level="4" data-detail="Thu 8 Oct &middot; 448.0M total &middot; fresh 26.5M &middot; cached 412.1M &middot; write 6.6M &middot; output 2.8M &middot; 4,266 calls" role="gridcell" aria-label="Thu 8 Oct: 448.0 M tokens"></td><td data-date="2026-10-15" data-value="279066240" data-level="3" data-detail="Thu 15 Oct &middot; 279.1M total &middot; fresh 3.5M &middot; cached 266.1M &middot; write 7.4M &middot; output 2.0M &middot; 2,525 calls" role="gridcell" aria-label="Thu 15 Oct: 279.1 M tokens"></td><td data-date="2026-10-22" data-value="597576681" data-level="4" data-detail="Thu 22 Oct &middot; 597.6M total &middot; fresh 34.1M &middot; cached 546.5M &middot; write 12.9M &middot; output 4.1M &middot; 7,299 calls" role="gridcell" aria-label="Thu 22 Oct: 597.6 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Fri</th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-18" data-value="48685117" data-level="1" data-detail="Fri 18 Sep &middot; 48.7M total &middot; fresh 11.6M &middot; cached 36.6M &middot; write 0 &middot; output 471.2k &middot; 1,205 calls" role="gridcell" aria-label="Fri 18 Sep: 48.7 M tokens"></td><td data-date="2026-09-25" data-value="78410341" data-level="2" data-detail="Fri 25 Sep &middot; 78.4M total &middot; fresh 12.5M &middot; cached 65.2M &middot; write 60.0k &middot; output 659.0k &middot; 1,122 calls" role="gridcell" aria-label="Fri 25 Sep: 78.4 M tokens"></td><td data-date="2026-10-02" data-value="389343231" data-level="3" data-detail="Fri 2 Oct &middot; 389.3M total &middot; fresh 40.2M &middot; cached 336.1M &middot; write 9.4M &middot; output 3.6M &middot; 3,572 calls" role="gridcell" aria-label="Fri 2 Oct: 389.3 M tokens"></td><td data-date="2026-10-09" data-value="364103031" data-level="3" data-detail="Fri 9 Oct &middot; 364.1M total &middot; fresh 20.7M &middot; cached 337.6M &middot; write 3.4M &middot; output 2.4M &middot; 3,064 calls" role="gridcell" aria-label="Fri 9 Oct: 364.1 M tokens"></td><td data-date="2026-10-16" data-value="415439670" data-level="4" data-detail="Fri 16 Oct &middot; 415.4M total &middot; fresh 9.4M &middot; cached 397.2M &middot; write 6.8M &middot; output 2.1M &middot; 4,119 calls" role="gridcell" aria-label="Fri 16 Oct: 415.4 M tokens"></td><td data-date="2026-10-23" data-value="773036137" data-level="4" data-detail="Fri 23 Oct &middot; 773.0M total &middot; fresh 33.4M &middot; cached 709.2M &middot; write 26.2M &middot; output 4.3M &middot; 8,812 calls" role="gridcell" aria-label="Fri 23 Oct: 773.0 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true"></th><td class="is-void" aria-hidden="true"></td><td data-date="2026-09-19" data-value="32014854" data-level="1" data-detail="Sat 19 Sep &middot; 32.0M total &middot; fresh 7.6M &middot; cached 24.0M &middot; write 0 &middot; output 399.7k &middot; 980 calls" role="gridcell" aria-label="Sat 19 Sep: 32.0 M tokens"></td><td data-date="2026-09-26" data-value="23220572" data-level="1" data-detail="Sat 26 Sep &middot; 23.2M total &middot; fresh 6.8M &middot; cached 16.3M &middot; write 9.1k &middot; output 139.3k &middot; 234 calls" role="gridcell" aria-label="Sat 26 Sep: 23.2 M tokens"></td><td data-date="2026-10-03" data-value="515394075" data-level="4" data-detail="Sat 3 Oct &middot; 515.4M total &middot; fresh 41.1M &middot; cached 447.2M &middot; write 23.2M &middot; output 3.9M &middot; 4,324 calls" role="gridcell" aria-label="Sat 3 Oct: 515.4 M tokens"></td><td data-date="2026-10-10" data-value="487072588" data-level="4" data-detail="Sat 10 Oct &middot; 487.1M total &middot; fresh 18.5M &middot; cached 455.4M &middot; write 10.0M &middot; output 3.2M &middot; 3,297 calls" role="gridcell" aria-label="Sat 10 Oct: 487.1 M tokens"></td><td data-date="2026-10-17" data-value="203913698" data-level="2" data-detail="Sat 17 Oct &middot; 203.9M total &middot; fresh 1.3M &middot; cached 194.8M &middot; write 6.9M &middot; output 916.1k &middot; 1,302 calls" role="gridcell" aria-label="Sat 17 Oct: 203.9 M tokens"></td><td data-date="2026-10-24" data-value="79479977" data-level="2" data-detail="Sat 24 Oct &middot; 79.5M total &middot; fresh 4.9M &middot; cached 68.0M &middot; write 5.0M &middot; output 1.6M &middot; 1,345 calls" role="gridcell" aria-label="Sat 24 Oct: 79.5 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr><tr><th scope="row" aria-hidden="true">Sun</th><td data-date="2026-09-13" data-value="0" data-level="0" data-detail="Sun 13 Sep &middot; 0 total &middot; fresh 0 &middot; cached 0 &middot; write 0 &middot; output 0 &middot; 0 calls" role="gridcell" aria-label="Sun 13 Sep: 0 tokens"></td><td data-date="2026-09-20" data-value="10125765" data-level="1" data-detail="Sun 20 Sep &middot; 10.1M total &middot; fresh 1.4M &middot; cached 8.6M &middot; write 0 &middot; output 46.0k &middot; 222 calls" role="gridcell" aria-label="Sun 20 Sep: 10.1 M tokens"></td><td data-date="2026-09-27" data-value="65159776" data-level="1" data-detail="Sun 27 Sep &middot; 65.2M total &middot; fresh 11.2M &middot; cached 53.3M &middot; write 90.9k &middot; output 598.5k &middot; 919 calls" role="gridcell" aria-label="Sun 27 Sep: 65.2 M tokens"></td><td data-date="2026-10-04" data-value="251396568" data-level="3" data-detail="Sun 4 Oct &middot; 251.4M total &middot; fresh 19.4M &middot; cached 225.5M &middot; write 4.8M &middot; output 1.7M &middot; 2,877 calls" role="gridcell" aria-label="Sun 4 Oct: 251.4 M tokens"></td><td data-date="2026-10-11" data-value="350402201" data-level="3" data-detail="Sun 11 Oct &middot; 350.4M total &middot; fresh 33.6M &middot; cached 309.6M &middot; write 5.1M &middot; output 2.0M &middot; 3,720 calls" role="gridcell" aria-label="Sun 11 Oct: 350.4 M tokens"></td><td data-date="2026-10-18" data-value="308968722" data-level="3" data-detail="Sun 18 Oct &middot; 309.0M total &middot; fresh 9.3M &middot; cached 288.9M &middot; write 8.1M &middot; output 2.6M &middot; 3,088 calls" role="gridcell" aria-label="Sun 18 Oct: 309.0 M tokens"></td><td data-date="2026-10-25" data-value="326298441" data-level="3" data-detail="Sun 25 Oct &middot; 326.3M total &middot; fresh 17.2M &middot; cached 298.9M &middot; write 7.5M &middot; output 2.7M &middot; 4,944 calls" data-selected="true" aria-selected="true" role="gridcell" aria-label="Sun 25 Oct: 326.3 M tokens"></td><td class="is-void" aria-hidden="true"></td></tr>
       </tbody>
     </table>
   </div>
   <div class="heatmap__legend" aria-hidden="true">
   <span>0</span>
   <span class="swatch" data-level="0" aria-label="None (0)"></span>
-  <span>&lt;65.2 M</span>
+  <span>&lt;78.4 M</span>
   <span class="swatch" data-level="1" aria-label="Low"></span>
   <span>&lt;249.2 M</span>
   <span class="swatch" data-level="2" aria-label="Medium"></span>
@@ -583,12 +583,12 @@
               </tr>
               <tr>
                 <th scope="row">Thu 15 Oct</th>
-                <td class="mono">278,208,339</td>
-                <td class="mono">3,505,352</td>
-                <td class="mono">265,449,681</td>
-                <td class="mono">7,271,493</td>
-                <td class="mono">1,981,813</td>
-                <td class="mono">2,504</td>
+                <td class="mono">279,066,240</td>
+                <td class="mono">3,514,002</td>
+                <td class="mono">266,142,394</td>
+                <td class="mono">7,424,330</td>
+                <td class="mono">1,985,514</td>
+                <td class="mono">2,525</td>
               </tr>
               <tr>
                 <th scope="row">Fri 16 Oct</th>
@@ -601,21 +601,21 @@
               </tr>
               <tr>
                 <th scope="row">Sat 17 Oct</th>
-                <td class="mono">88,827,311</td>
-                <td class="mono">1,267,402</td>
-                <td class="mono">84,566,267</td>
-                <td class="mono">2,374,969</td>
-                <td class="mono">618,673</td>
-                <td class="mono">903</td>
+                <td class="mono">203,913,698</td>
+                <td class="mono">1,297,132</td>
+                <td class="mono">194,847,768</td>
+                <td class="mono">6,852,694</td>
+                <td class="mono">916,104</td>
+                <td class="mono">1,302</td>
               </tr>
               <tr>
                 <th scope="row">Sun 18 Oct</th>
-                <td class="mono">306,811,324</td>
-                <td class="mono">9,290,730</td>
-                <td class="mono">287,124,393</td>
-                <td class="mono">7,771,468</td>
-                <td class="mono">2,624,733</td>
-                <td class="mono">3,082</td>
+                <td class="mono">308,968,722</td>
+                <td class="mono">9,292,265</td>
+                <td class="mono">288,904,832</td>
+                <td class="mono">8,142,084</td>
+                <td class="mono">2,629,541</td>
+                <td class="mono">3,088</td>
               </tr>
               <tr>
                 <th scope="row">Mon 19 Oct</th>
@@ -682,12 +682,12 @@
               </tr>
               <tr>
                 <th scope="row">Mon 26 Oct (partial)</th>
-                <td class="mono">35,567,231</td>
-                <td class="mono">1,855,917</td>
-                <td class="mono">31,533,898</td>
-                <td class="mono">1,794,124</td>
-                <td class="mono">383,292</td>
-                <td class="mono">629</td>
+                <td class="mono">121,936,266</td>
+                <td class="mono">8,298,813</td>
+                <td class="mono">109,061,516</td>
+                <td class="mono">3,412,731</td>
+                <td class="mono">1,163,206</td>
+                <td class="mono">2,017</td>
               </tr>
             </tbody>
           </table>
@@ -698,7 +698,7 @@
     <!-- Section 5: List Price vs Subscription -->
     <section class="section" id="cost" aria-labelledby="h-cost">
       <h2 id="h-cost">List price vs subscription</h2>
-      <p>At published list prices this volume comes to about $4,733.59 USD: $2,852.91 for proxied calls as computed by the proxy, and $1,880.68 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.</p>
+      <p>At published list prices this volume comes to about $4,767.11 USD: $2,879.01 for proxied calls as computed by the proxy, and $1,888.10 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.</p>
     </section>
 
     <!-- Section 6: Why the Cache Rate Matters -->
