@@ -201,7 +201,7 @@
 
       <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s2);margin-block:var(--s3);">
         <div class="panel" style="padding:var(--s3);text-align:center;">
-          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">193,712</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">193,778</div>
           <div class="small muted">Total decisions</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
@@ -209,7 +209,7 @@
           <div class="small muted">Decision types</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
-          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">308.68053436279297 ms</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">308.6543083190918 ms</div>
           <div class="small muted">Median answer time</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
@@ -272,7 +272,7 @@
     <rect x="620.6" y="169.0" width="15.1" height="41.0" rx="2" fill="var(--accent)"><title>23 Oct 2026: 8,444 decisions</title></rect>
     <rect x="639.7" y="178.3" width="15.1" height="31.7" rx="2" fill="var(--accent)"><title>24 Oct 2026: 6,520 decisions</title></rect>
     <rect x="658.8" y="172.8" width="15.1" height="37.2" rx="2" fill="var(--accent)"><title>25 Oct 2026: 7,662 decisions</title></rect>
-    <rect x="677.9" y="208.5" width="15.1" height="1.5" rx="2" fill="var(--accent)"><title>26 Oct 2026: 93 decisions</title></rect>
+    <rect x="677.9" y="208.5" width="15.1" height="1.5" rx="2" fill="var(--accent)"><title>26 Oct 2026: 159 decisions</title></rect>
   </g>
   <g id="x-axis-labels">
     <text x="74.5" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">21 Sep</text>
@@ -325,7 +325,7 @@
               <tr><td>23 Oct 2026</td><td>8,444</td></tr>
               <tr><td>24 Oct 2026</td><td>6,520</td></tr>
               <tr><td>25 Oct 2026</td><td>7,662</td></tr>
-              <tr><td>26 Oct 2026</td><td>93</td></tr>
+              <tr><td>26 Oct 2026</td><td>159</td></tr>
             </tbody>
           </table>
         </div>
@@ -342,11 +342,11 @@
             <tr><th scope="col">Measure</th><th scope="col">Value</th></tr>
           </thead>
           <tbody>
-            <tr><td>Median answer time (p50)</td><td class="mono">308.68053436279297 ms</td></tr>
+            <tr><td>Median answer time (p50)</td><td class="mono">308.6543083190918 ms</td></tr>
             <tr><td>95th percentile (p95)</td><td class="mono">538 ms</td></tr>
             <tr><td>99th percentile (p99)</td><td class="mono">844 ms</td></tr>
             <tr><td>Handed to fallback route</td><td class="mono">102 (0.05%)</td></tr>
-            <tr><td>Score calls / choice calls</td><td class="mono">105,890 / 87,822</td></tr>
+            <tr><td>Score calls / choice calls</td><td class="mono">105,912 / 87,866</td></tr>
           </tbody>
         </table>
       </div>
@@ -382,9 +382,9 @@
             <tr><th scope="col">Decision family</th><th scope="col">Decisions</th><th scope="col">Share</th><th scope="col">Previous route</th></tr>
           </thead>
           <tbody>
-            <tr><td>A private work workflow</td><td class="mono">166,683</td><td class="mono">86%</td><td>Chat model call</td></tr>
+            <tr><td>A private work workflow</td><td class="mono">166,737</td><td class="mono">86%</td><td>Chat model call</td></tr>
             <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">13%</td><td>Chat model call</td></tr>
-            <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">1,138</td><td class="mono">0.6%</td><td>Chat model call or fixed rule</td></tr>
+            <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">1,150</td><td class="mono">0.6%</td><td>Chat model call or fixed rule</td></tr>
           </tbody>
         </table>
       </div>
@@ -394,9 +394,9 @@
     <!-- Section 6: What it costs -->
     <section class="section" id="what-it-costs" data-ix="reveal">
       <h2>What it costs</h2>
-      <p>On a measured sample of 47,697 calls since 7 Oct 2026, the typed decision layer processed 28,263,801 input tokens and 5,321,080 output tokens (33,584,881 total tokens, about 704 tokens per call) and cost $1.1871, an average of about $0.0624 per day.</p>
+      <p>On a measured sample of 47,741 calls since 7 Oct 2026, the typed decision layer processed 28,294,622 input tokens and 5,325,538 output tokens (33,620,160 total tokens, about 704 tokens per call) and cost $1.1884, an average of about $0.0616 per day.</p>
       <p>Output tokens are free on this service; list price was $0.042 per million input tokens.</p>
-      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 193,712 decisions were handled by this layer instead of calling a chat model.</p>
+      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 193,778 decisions were handled by this layer instead of calling a chat model.</p>
     </section>
 
     <!-- Section 7: Where I never use it -->
@@ -427,7 +427,7 @@
     <!-- Method Note -->
     <div class="panel" style="margin-top:var(--s5);">
       <h3 style="margin-top:0;font-size:1rem;">Method note</h3>
-      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (47,697 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
+      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (47,741 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
     </div>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
