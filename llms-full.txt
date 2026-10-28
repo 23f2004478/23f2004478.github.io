@@ -82,12 +82,12 @@ Longest day 13.5 h (15 Oct 2026)
 A session ends after 15 minutes with no activity. Counts time on Discord, Telegram, the Hermes command line and Claude Code.
 Source: timestamps of my own messages to agents, 15 minute idle gap, 5 minute tail. As of 2026-10-28.
 Full operating rhythm breakdown →
-227,187
+227,191
 Agent replies i
 Turn volume & human leverage
 My messages (dictated or typed) 43,796
-Agent replies 227,187
-Tool executions 229,441
+Agent replies 227,191
+Tool executions 229,445
 About 5 agent messages for every message I sent, counting scheduled jobs.
 Counted from every agent's conversation database, duplicates removed. How I count →
 Source: assistant messages in every agent's conversation database, deduplicated. As of 2026-10-28.
@@ -737,7 +737,7 @@ Date Tokens
 25 Oct 2026 326.3 M
 26 Oct 2026 314.5 M
 27 Oct 2026 389.0 M
-28 Oct 2026 134.5 M
+28 Oct 2026 135.1 M
 Where the tokens went, by model.
 Model Family Share
 Gemini Flash 72.5%
@@ -748,11 +748,11 @@ Most volume goes to a fast, cheap model for routine steps; the expensive models 
 Messages from me
 43,796
 Agent replies
-227,187
+227,191
 Tool results
-229,441
+229,445
 Total messages
-500,424
+500,432
 About 5 agent replies for every message I send. That ratio is the point of the design: I write instructions, not code.
 ## How replies are counted
 Assistant messages across every agent conversation database, including scheduled jobs and subagents, counted once each after removing copies created when long conversations are compacted (same role, timestamp and opening text). Tool results and my own messages are counted separately.
@@ -1193,14 +1193,14 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-10-28T12:39:03Z · Tracking window: 2026-09-13 to 2026-10-28 ( 46 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-10-28T12:41:06Z · Tracking window: 2026-09-13 to 2026-10-28 ( 46 days). The window starts on 2026-09-13, the first day any source logged tokens.
 12.22 B
 Total tokens across 3 sources
 89.9%
 Prompt cache hit rate
 76.4 M
 Generated output (0.63%)
-$5,073.30
+$5,073.40
 List price equivalent (USD)
 ## Where the tokens went
 Fresh input 903.6 M 7.4%
@@ -1214,11 +1214,11 @@ Tokens
 Share of total
 Description
 Fresh input
-903,632,679
+903,642,469
 7.40%
 Tokens sent to models without a provider cache hit
 Cache read
-10,919,601,580
+10,920,121,307
 89.37%
 Tokens read from provider prompt cache at discounted rates
 Cache creation
@@ -1226,11 +1226,11 @@ Cache creation
 2.61%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-76,402,079
+76,402,794
 0.63%
 Generated completion tokens (includes 4,335,506 reasoning tokens on supported models)
 Total
-12,218,373,405
+12,218,903,637
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -1248,14 +1248,14 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-109,704
-902,110,779
-7,711,552,396
+109,708
+902,120,569
+7,712,072,123
 0
-48,431,391
-8,662,094,566
+48,432,106
+8,662,624,798
 89.5%
-$3,034.19
+$3,034.29
 Hermes direct
 my runtime calling Claude directly on a subscription
 14,552
@@ -1278,14 +1278,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-132,051
-903,632,679
-10,919,601,580
+132,055
+903,642,469
+10,920,121,307
 318,737,067
-76,402,079
-12,218,373,405
+76,402,794
+12,218,903,637
 89.9%
-$5,073.30
+$5,073.40
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1303,15 +1303,15 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-104,263
-835,058,789
-7,407,163,853
+104,267
+835,068,579
+7,407,683,580
 n/r
-46,605,568
-8,288,828,210
+46,606,283
+8,289,358,442
 67.84%
 89.9%
-$2,739.25
+$2,739.35
 Claude Opus
 claude_code, hermes, ninerouter
 12,214
@@ -1331,7 +1331,7 @@ claude_code, hermes, ninerouter
 n/r
 8,772,568
 1,829,750,176
-14.98%
+14.97%
 86.7%
 n/r
 Claude Haiku
@@ -1380,15 +1380,15 @@ n/r
 $1.85
 Total
 All model families combined
-132,051
-903,632,679
-10,919,601,580
+132,055
+903,642,469
+10,920,121,307
 318,737,067
-76,402,079
-12,218,373,405
+76,402,794
+12,218,903,637
 100.00%
 89.9%
-$5,073.30
+$5,073.40
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 773.0 M tokens on 23 Oct 2026.
@@ -1506,14 +1506,14 @@ Tue 27 Oct
 2,181,289
 5,022
 Wed 28 Oct (partial)
-134,539,954
-7,183,050
-124,652,701
+135,070,186
+7,192,840
+125,172,428
 1,984,327
-719,876
-1,559
+720,591
+1,563
 ## List price vs subscription
-At published list prices this volume comes to about $5,073.30 USD: $3,034.19 for proxied calls as computed by the proxy, and $2,039.11 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $5,073.40 USD: $3,034.29 for proxied calls as computed by the proxy, and $2,039.11 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 89.9% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
