@@ -316,7 +316,7 @@
       <li><strong>L2 Ephemeral scratch:</strong> The scratchpad. Each agent's TMPDIR points to its own cache/scratch directory. Downloads, extracted archives, and probe scripts land here. Nothing in scratch is read by subsequent sessions, and entries idle for 24 hours are pruned automatically.</li>
       <li><strong>L3 Curated persistent memory:</strong> The personal notebook. Two plain Markdown files per agent, MEMORY.md for system notes and USER.md for my profile, with hard character caps (2,200 and 2,600 characters on the router agent). Both files are loaded in full into every session, eliminating vector ranking latency and missed context. The strict cap forces active curation.</li>
       <li><strong>L4 Curated knowledge base:</strong> The reference library. 20 Markdown files in ~/.hermes/knowledge, organized with one topic per file. Contains verified facts about me, systems, and operating boundaries, edited by hand and read on demand per domain.</li>
-      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 980 SKILL.md files (249 distinct skills) across the router and 9 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
+      <li><strong>L5 Procedural skills library:</strong> The workshop tool rack. 962 SKILL.md files (241 distinct skills) across the router and 9 domain agents. Each skill defines activation triggers, step-by-step procedures, exit criteria, and runnable scripts. Skills represent executable procedures rather than raw facts, keeping them separate from L4.</li>
     </ul>
 
     <h2 id="spec">Layer specifications</h2>
@@ -370,7 +370,7 @@
             <th scope="row">L5 Procedural skills library</th>
             <td>Per agent</td>
             <td>Permanent, versioned</td>
-            <td>980 SKILL.md files, 249 distinct skills</td>
+            <td>962 SKILL.md files, 241 distinct skills</td>
             <td>SKILL.md plus references and scripts</td>
             <td>Loaded when a task matches; configuration drift audited hourly by the infrastructure agent</td>
           </tr>
@@ -495,7 +495,7 @@
     </ul>
 
     <h2 id="telemetry">Live telemetry and verification</h2>
-    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 1 Nov 2026.</p>
+    <p>Every figure on this page is either an architectural design constant or the output of a live, read-only system check probed on 2 Nov 2026.</p>
     <div class="table-scroll" tabindex="0" role="region" aria-label="Telemetry figures and how to reproduce them (scrolls horizontally)">
       <table>
         <caption>Telemetry figures and how to reproduce them</caption>
@@ -546,7 +546,7 @@
           </tr>
           <tr>
             <th scope="row">Skill files</th>
-            <td class="mono">980 (249 distinct names)</td>
+            <td class="mono">962 (241 distinct names)</td>
             <td><code>find ~/.hermes/skills ~/.hermes/profiles/*/skills -name SKILL.md | wc -l</code></td>
             <td>declared, verified 7 Oct 2026</td>
           </tr>
@@ -589,7 +589,7 @@
         </tbody>
       </table>
     </div>
-    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 1 Nov 2026: 0 dangling references out of 50,569.</p>
+    <p>Integrity check for the lossless DAG claim: every store_id and node_id referenced in a summary node must exist in the database. Result on 2 Nov 2026: 0 dangling references out of 50,569.</p>
     <pre tabindex="0" aria-label="Code, scrolls sideways"><code>SELECT COUNT(*) FROM summary_nodes s, json_each(s.source_ids) j
 WHERE (s.source_type = 'messages'
        AND NOT EXISTS (SELECT 1 FROM messages m WHERE m.store_id = j.value))
@@ -681,7 +681,7 @@ WHERE (s.source_type = 'messages'
     </div>
     <div class="foot-col">
       <h2 class="foot-h">About this site</h2>
-      <p class="foot-note">Figures recounted from project files at build time; last build 1 Nov 2026.</p>
+      <p class="foot-note">Figures recounted from project files at build time; last build 2 Nov 2026.</p>
       <ul class="foot-links">
         <li><a href="/log/sources/">How I source these numbers</a></li>
         <li><a href="/privacy/">Privacy</a></li>
