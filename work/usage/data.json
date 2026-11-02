@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-02T05:34:45Z",
+  "as_of": "2026-11-02T06:45:46Z",
   "window": {
     "start": "2026-09-13",
     "end": "2026-11-02",
@@ -12,17 +12,17 @@
     "output"
   ],
   "components": {
-    "fresh_input": 928831217,
-    "cached_read": 11156836309,
-    "cache_write": 321201615,
-    "output": 78172316,
-    "reasoning": 4342619
+    "fresh_input": 928856280,
+    "cached_read": 15583211866,
+    "cache_write": 415429422,
+    "output": 96811862,
+    "reasoning": 4341505
   },
-  "total": 12485041457,
-  "input_total": 12406869141,
-  "cache_hit_rate": 0.8992,
-  "output_share": 0.0063,
-  "calls": 137214,
+  "total": 17024309430,
+  "input_total": 16927497568,
+  "cache_hit_rate": 0.9206,
+  "output_share": 0.0057,
+  "calls": 157839,
   "by_source": [
     {
       "id": "ninerouter",
@@ -51,16 +51,16 @@
       "label": "Hermes direct",
       "api_style": "anthropic",
       "carries": "my runtime calling Claude directly on a subscription",
-      "calls": 14826,
+      "calls": 14120,
       "components": {
-        "fresh_input": 1504637,
-        "cached_read": 2162306637,
-        "cache_write": 289978806,
-        "output": 15179404,
-        "reasoning": 4342619
+        "fresh_input": 1483064,
+        "cached_read": 2092292619,
+        "cache_write": 287168891,
+        "output": 13566582,
+        "reasoning": 4341505
       },
-      "total": 2468969484,
-      "cache_hit_rate": 0.8812,
+      "total": 2394511156,
+      "cache_hit_rate": 0.8788,
       "reports": {
         "cache_write": true,
         "reasoning": true,
@@ -73,16 +73,16 @@
       "label": "Claude Code",
       "api_style": "anthropic",
       "carries": "the CLI, read from its own transcripts",
-      "calls": 7790,
+      "calls": 29121,
       "components": {
-        "fresh_input": 29794,
-        "cached_read": 1057865235,
-        "cache_write": 31222809,
-        "output": 12922146,
+        "fresh_input": 76430,
+        "cached_read": 5554254810,
+        "cache_write": 128260531,
+        "output": 33174514,
         "reasoning": 0
       },
-      "total": 1102039984,
-      "cache_hit_rate": 0.9713,
+      "total": 5715766285,
+      "cache_hit_rate": 0.9774,
       "reports": {
         "cache_write": true,
         "reasoning": false,
@@ -106,7 +106,7 @@
         "reasoning": 0
       },
       "total": 8540159513,
-      "share": 0.684,
+      "share": 0.5016,
       "cache_hit_rate": 0.8987,
       "reports": {
         "cache_write": false,
@@ -116,48 +116,23 @@
       "list_cost_usd": 2824.67
     },
     {
-      "family": "Claude Opus",
-      "sources": [
-        "claude_code",
-        "hermes",
-        "ninerouter"
-      ],
-      "calls": 13131,
-      "components": {
-        "fresh_input": 702822,
-        "cached_read": 2084159205,
-        "cache_write": 161044424,
-        "output": 19022213,
-        "reasoning": 2850551
-      },
-      "total": 2264928664,
-      "share": 0.1814,
-      "cache_hit_rate": 0.928,
-      "reports": {
-        "cache_write": false,
-        "reasoning": false,
-        "list_cost": false
-      },
-      "list_cost_usd": 1092.23
-    },
-    {
       "family": "Claude Sonnet",
       "sources": [
         "claude_code",
         "hermes",
         "ninerouter"
       ],
-      "calls": 12921,
+      "calls": 25296,
       "components": {
-        "fresh_input": 58850949,
-        "cached_read": 1408808721,
-        "cache_write": 154910809,
-        "output": 8154264,
+        "fresh_input": 58876801,
+        "cached_read": 4044201273,
+        "cache_write": 203132989,
+        "output": 19548053,
         "reasoning": 1492068
       },
-      "total": 1630724743,
-      "share": 0.1306,
-      "cache_hit_rate": 0.8683,
+      "total": 4325759116,
+      "share": 0.2541,
+      "cache_hit_rate": 0.9392,
       "reports": {
         "cache_write": false,
         "reasoning": false,
@@ -166,22 +141,47 @@
       "list_cost_usd": 1081.75
     },
     {
+      "family": "Claude Opus",
+      "sources": [
+        "claude_code",
+        "hermes",
+        "ninerouter"
+      ],
+      "calls": 21275,
+      "components": {
+        "fresh_input": 699698,
+        "cached_read": 3863802322,
+        "cache_write": 205396756,
+        "output": 26023188,
+        "reasoning": 2849437
+      },
+      "total": 4095921964,
+      "share": 0.2406,
+      "cache_hit_rate": 0.9494,
+      "reports": {
+        "cache_write": false,
+        "reasoning": false,
+        "list_cost": false
+      },
+      "list_cost_usd": 1092.23
+    },
+    {
       "family": "Claude Haiku",
       "sources": [
         "claude_code",
         "ninerouter"
       ],
-      "calls": 1082,
+      "calls": 1084,
       "components": {
-        "fresh_input": 3844164,
-        "cached_read": 27968306,
-        "cache_write": 1400288,
-        "output": 177702,
+        "fresh_input": 3844170,
+        "cached_read": 28012200,
+        "cache_write": 1470753,
+        "output": 177819,
         "reasoning": 0
       },
-      "total": 33390460,
-      "share": 0.0027,
-      "cache_hit_rate": 0.8421,
+      "total": 33504942,
+      "share": 0.002,
+      "cache_hit_rate": 0.8405,
       "reports": {
         "cache_write": false,
         "reasoning": false,
@@ -195,17 +195,17 @@
         "claude_code",
         "ninerouter"
       ],
-      "calls": 683,
+      "calls": 787,
       "components": {
-        "fresh_input": 3023136,
-        "cached_read": 3181554,
-        "cache_write": 3846094,
-        "output": 2540319,
+        "fresh_input": 3025465,
+        "cached_read": 14477548,
+        "cache_write": 5428924,
+        "output": 2784984,
         "reasoning": 0
       },
-      "total": 12591103,
-      "share": 0.001,
-      "cache_hit_rate": 0.3165,
+      "total": 25716921,
+      "share": 0.0015,
+      "cache_hit_rate": 0.6313,
       "reports": {
         "cache_write": false,
         "reasoning": false,
@@ -250,7 +250,7 @@
         "reasoning": 0
       },
       "total": 692059,
-      "share": 0.0001,
+      "share": 0.0,
       "cache_hit_rate": 0.504,
       "reports": {
         "cache_write": false,
@@ -263,28 +263,28 @@
   "by_day": [
     {
       "date": "2026-09-13",
-      "calls": 0,
+      "calls": 49,
       "components": {
-        "fresh_input": 0,
-        "cached_read": 0,
-        "cache_write": 0,
-        "output": 0,
+        "fresh_input": 98,
+        "cached_read": 4735720,
+        "cache_write": 233110,
+        "output": 89512,
         "reasoning": 0
       },
-      "total": 0,
+      "total": 5058440,
       "partial": false
     },
     {
       "date": "2026-09-14",
-      "calls": 0,
+      "calls": 12,
       "components": {
-        "fresh_input": 0,
-        "cached_read": 0,
-        "cache_write": 0,
-        "output": 0,
+        "fresh_input": 24,
+        "cached_read": 1810285,
+        "cache_write": 318652,
+        "output": 30486,
         "reasoning": 0
       },
-      "total": 0,
+      "total": 2159447,
       "partial": false
     },
     {
@@ -302,15 +302,15 @@
     },
     {
       "date": "2026-09-16",
-      "calls": 735,
+      "calls": 2291,
       "components": {
-        "fresh_input": 11475962,
-        "cached_read": 29177669,
-        "cache_write": 0,
-        "output": 169366,
+        "fresh_input": 11479102,
+        "cached_read": 118350454,
+        "cache_write": 7970933,
+        "output": 503667,
         "reasoning": 0
       },
-      "total": 40822997,
+      "total": 138304156,
       "partial": false
     },
     {
@@ -328,15 +328,15 @@
     },
     {
       "date": "2026-09-18",
-      "calls": 1205,
+      "calls": 1350,
       "components": {
-        "fresh_input": 11572262,
-        "cached_read": 36641649,
-        "cache_write": 0,
-        "output": 471206,
+        "fresh_input": 11572612,
+        "cached_read": 60969969,
+        "cache_write": 489710,
+        "output": 634546,
         "reasoning": 0
       },
-      "total": 48685117,
+      "total": 73666837,
       "partial": false
     },
     {
@@ -354,41 +354,41 @@
     },
     {
       "date": "2026-09-20",
-      "calls": 222,
+      "calls": 285,
       "components": {
-        "fresh_input": 1440910,
-        "cached_read": 8638872,
-        "cache_write": 0,
-        "output": 45983,
+        "fresh_input": 1441336,
+        "cached_read": 18155305,
+        "cache_write": 692606,
+        "output": 154417,
         "reasoning": 0
       },
-      "total": 10125765,
+      "total": 20443664,
       "partial": false
     },
     {
       "date": "2026-09-21",
-      "calls": 1186,
+      "calls": 1233,
       "components": {
-        "fresh_input": 9756514,
-        "cached_read": 42323944,
-        "cache_write": 3645,
-        "output": 453205,
+        "fresh_input": 9756608,
+        "cached_read": 59558688,
+        "cache_write": 125995,
+        "output": 544555,
         "reasoning": 0
       },
-      "total": 52537308,
+      "total": 69985846,
       "partial": false
     },
     {
       "date": "2026-09-22",
-      "calls": 2337,
+      "calls": 2442,
       "components": {
-        "fresh_input": 26764062,
-        "cached_read": 142241382,
-        "cache_write": 174066,
-        "output": 2120931,
+        "fresh_input": 26761046,
+        "cached_read": 167462136,
+        "cache_write": 1176937,
+        "output": 2105218,
         "reasoning": 0
       },
-      "total": 171300441,
+      "total": 197505337,
       "partial": false
     },
     {
@@ -406,28 +406,28 @@
     },
     {
       "date": "2026-09-24",
-      "calls": 2162,
+      "calls": 2347,
       "components": {
-        "fresh_input": 16414578,
-        "cached_read": 135799590,
-        "cache_write": 1557738,
-        "output": 1108043,
+        "fresh_input": 16408180,
+        "cached_read": 194674120,
+        "cache_write": 2662395,
+        "output": 1203867,
         "reasoning": 12483
       },
-      "total": 154879949,
+      "total": 214948562,
       "partial": false
     },
     {
       "date": "2026-09-25",
-      "calls": 1122,
+      "calls": 1111,
       "components": {
-        "fresh_input": 12507008,
-        "cached_read": 65184329,
-        "cache_write": 60029,
-        "output": 658975,
+        "fresh_input": 12506994,
+        "cached_read": 66929764,
+        "cache_write": 412693,
+        "output": 574035,
         "reasoning": 0
       },
-      "total": 78410341,
+      "total": 80423486,
       "partial": false
     },
     {
@@ -458,15 +458,15 @@
     },
     {
       "date": "2026-09-28",
-      "calls": 3229,
+      "calls": 3199,
       "components": {
-        "fresh_input": 45899401,
-        "cached_read": 291305041,
-        "cache_write": 335189,
-        "output": 2532551,
+        "fresh_input": 45897810,
+        "cached_read": 293557527,
+        "cache_write": 81347,
+        "output": 1973811,
         "reasoning": 0
       },
-      "total": 340072182,
+      "total": 341510495,
       "partial": false
     },
     {
@@ -510,15 +510,15 @@
     },
     {
       "date": "2026-10-02",
-      "calls": 3572,
+      "calls": 3655,
       "components": {
-        "fresh_input": 40228722,
-        "cached_read": 336149638,
-        "cache_write": 9398151,
-        "output": 3566720,
+        "fresh_input": 40228888,
+        "cached_read": 344238742,
+        "cache_write": 9679148,
+        "output": 3602621,
         "reasoning": 230702
       },
-      "total": 389343231,
+      "total": 397749399,
       "partial": false
     },
     {
@@ -575,28 +575,28 @@
     },
     {
       "date": "2026-10-07",
-      "calls": 8299,
+      "calls": 8361,
       "components": {
-        "fresh_input": 50153613,
-        "cached_read": 679637335,
-        "cache_write": 25291772,
-        "output": 3401481,
+        "fresh_input": 50153737,
+        "cached_read": 685265844,
+        "cache_write": 25402169,
+        "output": 3446949,
         "reasoning": 413916
       },
-      "total": 758484201,
+      "total": 764268699,
       "partial": false
     },
     {
       "date": "2026-10-08",
-      "calls": 4266,
+      "calls": 4609,
       "components": {
-        "fresh_input": 26488248,
-        "cached_read": 412052428,
-        "cache_write": 6647026,
-        "output": 2824647,
+        "fresh_input": 26488946,
+        "cached_read": 506938908,
+        "cache_write": 8080245,
+        "output": 3201791,
         "reasoning": 95467
       },
-      "total": 448012349,
+      "total": 544709890,
       "partial": false
     },
     {
@@ -627,15 +627,15 @@
     },
     {
       "date": "2026-10-11",
-      "calls": 3720,
+      "calls": 3789,
       "components": {
-        "fresh_input": 33621764,
-        "cached_read": 309616292,
-        "cache_write": 5141626,
-        "output": 2022519,
+        "fresh_input": 33621904,
+        "cached_read": 315579940,
+        "cache_write": 5242616,
+        "output": 2063818,
         "reasoning": 114312
       },
-      "total": 350402201,
+      "total": 356508278,
       "partial": false
     },
     {
@@ -653,41 +653,41 @@
     },
     {
       "date": "2026-10-13",
-      "calls": 8837,
+      "calls": 9357,
       "components": {
-        "fresh_input": 80302715,
-        "cached_read": 507261825,
-        "cache_write": 217073,
-        "output": 2073967,
+        "fresh_input": 80303757,
+        "cached_read": 585081874,
+        "cache_write": 1708847,
+        "output": 2534172,
         "reasoning": 0
       },
-      "total": 589855580,
+      "total": 669628650,
       "partial": false
     },
     {
       "date": "2026-10-14",
-      "calls": 516,
+      "calls": 1474,
       "components": {
-        "fresh_input": 2871446,
-        "cached_read": 27450800,
-        "cache_write": 91982,
-        "output": 69827,
+        "fresh_input": 2873405,
+        "cached_read": 183025489,
+        "cache_write": 5319256,
+        "output": 457379,
         "reasoning": 0
       },
-      "total": 30484055,
+      "total": 191675529,
       "partial": false
     },
     {
       "date": "2026-10-15",
-      "calls": 2525,
+      "calls": 2561,
       "components": {
-        "fresh_input": 3514002,
-        "cached_read": 266142394,
-        "cache_write": 7424330,
-        "output": 1985514,
-        "reasoning": 137359
+        "fresh_input": 3505462,
+        "cached_read": 270788443,
+        "cache_write": 7814205,
+        "output": 2015849,
+        "reasoning": 136245
       },
-      "total": 279066240,
+      "total": 284123959,
       "partial": false
     },
     {
@@ -848,80 +848,80 @@
     },
     {
       "date": "2026-10-28",
-      "calls": 1837,
+      "calls": 2587,
       "components": {
-        "fresh_input": 8889939,
-        "cached_read": 141415554,
-        "cache_write": 1984327,
-        "output": 816903,
+        "fresh_input": 8891593,
+        "cached_read": 431452824,
+        "cache_write": 4104927,
+        "output": 1781089,
         "reasoning": 3111
       },
-      "total": 153106723,
+      "total": 446230433,
       "partial": false
     },
     {
       "date": "2026-10-29",
-      "calls": 759,
+      "calls": 2861,
       "components": {
-        "fresh_input": 4773729,
-        "cached_read": 30096865,
-        "cache_write": 1684455,
-        "output": 246642,
+        "fresh_input": 4778293,
+        "cached_read": 501272167,
+        "cache_write": 15727028,
+        "output": 3051108,
         "reasoning": 7113
       },
-      "total": 36801691,
+      "total": 524828596,
       "partial": false
     },
     {
       "date": "2026-10-30",
-      "calls": 1011,
+      "calls": 9303,
       "components": {
-        "fresh_input": 6048543,
-        "cached_read": 35241824,
-        "cache_write": 0,
-        "output": 250259,
+        "fresh_input": 6066234,
+        "cached_read": 1954596145,
+        "cache_write": 37906692,
+        "output": 8826029,
         "reasoning": 0
       },
-      "total": 41540626,
+      "total": 2007395100,
       "partial": false
     },
     {
       "date": "2026-10-31",
-      "calls": 2195,
+      "calls": 4730,
       "components": {
-        "fresh_input": 8781773,
-        "cached_read": 123845868,
-        "cache_write": 533798,
-        "output": 906805,
+        "fresh_input": 8787627,
+        "cached_read": 645211823,
+        "cache_write": 8623737,
+        "output": 3192657,
         "reasoning": 0
       },
-      "total": 134068244,
+      "total": 665815844,
       "partial": false
     },
     {
       "date": "2026-11-01",
-      "calls": 725,
+      "calls": 3137,
       "components": {
-        "fresh_input": 3356441,
-        "cached_read": 21069950,
-        "cache_write": 246295,
-        "output": 198216,
+        "fresh_input": 3362283,
+        "cached_read": 577039776,
+        "cache_write": 9591966,
+        "output": 2310671,
         "reasoning": 0
       },
-      "total": 24870902,
+      "total": 592304696,
       "partial": false
     },
     {
       "date": "2026-11-02",
-      "calls": 195,
+      "calls": 537,
       "components": {
-        "fresh_input": 531163,
-        "cached_read": 10217369,
-        "cache_write": 0,
-        "output": 71288,
+        "fresh_input": 531919,
+        "cached_read": 91190232,
+        "cache_write": 1654095,
+        "output": 336347,
         "reasoning": 0
       },
-      "total": 10819820,
+      "total": 93712593,
       "partial": true
     }
   ],
@@ -934,9 +934,9 @@
   },
   "day_buckets": [
     0,
-    65046308,
-    203913698,
-    388965564,
-    773036137
+    93712593,
+    284123959,
+    498170107,
+    2007395100
   ]
 }
