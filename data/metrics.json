@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "built_on": "2026-11-04",
-  "built_at": "2026-11-04T02:30:00+05:30",
+  "built_at": "2026-11-04T05:07:30+05:30",
   "timezone": "Asia/Kolkata",
-  "hours_total": 404.7,
+  "hours_total": 411.0,
   "hours_by_day": {
     "2026-09-13": 1.5,
     "2026-09-14": 0.5,
@@ -56,8 +56,8 @@
     "2026-10-31": 11.5,
     "2026-11-01": 10.4,
     "2026-11-02": 6.6,
-    "2026-11-03": 0.0,
-    "2026-11-04": 0.0
+    "2026-11-03": 4.1,
+    "2026-11-04": 2.2
   },
   "hours_levels": [
     0,
@@ -67,8 +67,8 @@
   ],
   "hours_top_day": "2026-10-12",
   "hours_top_day_value": 18.3,
-  "active_days": 50,
-  "hours_avg_active_day": 8.1,
+  "active_days": 52,
+  "hours_avg_active_day": 7.9,
   "tracking_start": "2026-09-13",
   "method": {
     "session_gap_minutes": 15,
@@ -76,7 +76,7 @@
     "timezone": "Asia/Kolkata (IST)"
   },
   "tokens": {
-    "as_of": "2026-11-03T21:00:04Z",
+    "as_of": "2026-11-03T23:37:33Z",
     "window": {
       "start": "2026-09-13",
       "end": "2026-11-04",
@@ -89,39 +89,39 @@
       "output"
     ],
     "components": {
-      "fresh_input": 930442507,
-      "cached_read": 15661329779,
-      "cache_write": 417074870,
-      "output": 97139985,
+      "fresh_input": 931024624,
+      "cached_read": 15767575088,
+      "cache_write": 419874973,
+      "output": 97519178,
       "reasoning": 4341505
     },
-    "total": 17105987141,
-    "input_total": 17008847156,
-    "cache_hit_rate": 0.9208,
+    "total": 17215993863,
+    "input_total": 17118474685,
+    "cache_hit_rate": 0.9211,
     "output_share": 0.0057,
-    "calls": 158570,
+    "calls": 159246,
     "by_source": [
       {
         "id": "ninerouter",
         "label": "9router proxy",
         "api_style": "openai",
         "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-        "calls": 115000,
+        "calls": 115129,
         "components": {
-          "fresh_input": 928882223,
-          "cached_read": 7951368217,
+          "fresh_input": 929463086,
+          "cached_read": 7960939510,
           "cache_write": 0,
-          "output": 50183633,
+          "output": 50231993,
           "reasoning": 0
         },
-        "total": 8930434073,
-        "cache_hit_rate": 0.8954,
+        "total": 8940634589,
+        "cache_hit_rate": 0.8955,
         "reports": {
           "cache_write": false,
           "reasoning": false,
           "list_cost": true
         },
-        "list_cost_usd": 3126.42
+        "list_cost_usd": 3129.1
       },
       {
         "id": "hermes",
@@ -150,16 +150,16 @@
         "label": "Claude Code",
         "api_style": "anthropic",
         "carries": "the CLI, read from its own transcripts",
-        "calls": 29450,
+        "calls": 29997,
         "components": {
-          "fresh_input": 77220,
-          "cached_read": 5617668943,
-          "cache_write": 129905979,
-          "output": 33389770,
+          "fresh_input": 78474,
+          "cached_read": 5714342959,
+          "cache_write": 132706082,
+          "output": 33720603,
           "reasoning": 0
         },
-        "total": 5781041912,
-        "cache_hit_rate": 0.9774,
+        "total": 5880848118,
+        "cache_hit_rate": 0.9773,
         "reports": {
           "cache_write": true,
           "reasoning": false,
@@ -174,23 +174,23 @@
         "sources": [
           "ninerouter"
         ],
-        "calls": 109505,
+        "calls": 109634,
         "components": {
-          "fresh_input": 861642086,
-          "cached_read": 7646559778,
+          "fresh_input": 862222949,
+          "cached_read": 7656131071,
           "cache_write": 0,
-          "output": 48347116,
+          "output": 48395476,
           "reasoning": 0
         },
-        "total": 8556548980,
-        "share": 0.5002,
-        "cache_hit_rate": 0.8987,
+        "total": 8566749496,
+        "share": 0.4976,
+        "cache_hit_rate": 0.8988,
         "reports": {
           "cache_write": false,
           "reasoning": false,
           "list_cost": true
         },
-        "list_cost_usd": 2830.2
+        "list_cost_usd": 2832.89
       },
       {
         "family": "Claude Sonnet",
@@ -199,17 +199,17 @@
           "hermes",
           "ninerouter"
         ],
-        "calls": 25625,
+        "calls": 26171,
         "components": {
-          "fresh_input": 58877591,
-          "cached_read": 4107615406,
-          "cache_write": 204778437,
-          "output": 19763309,
+          "fresh_input": 58878845,
+          "cached_read": 4204289422,
+          "cache_write": 207578540,
+          "output": 20094142,
           "reasoning": 1492068
         },
-        "total": 4391034743,
-        "share": 0.2567,
-        "cache_hit_rate": 0.9397,
+        "total": 4490840949,
+        "share": 0.2609,
+        "cache_hit_rate": 0.9404,
         "reports": {
           "cache_write": false,
           "reasoning": false,
@@ -233,7 +233,7 @@
           "reasoning": 2849437
         },
         "total": 4095921964,
-        "share": 0.2394,
+        "share": 0.2379,
         "cache_hit_rate": 0.9494,
         "reports": {
           "cache_write": false,
@@ -257,7 +257,7 @@
           "reasoning": 0
         },
         "total": 33504942,
-        "share": 0.002,
+        "share": 0.0019,
         "cache_hit_rate": 0.8405,
         "reports": {
           "cache_write": false,
@@ -272,7 +272,7 @@
           "claude_code",
           "ninerouter"
         ],
-        "calls": 791,
+        "calls": 792,
         "components": {
           "fresh_input": 3037558,
           "cached_read": 14477608,
@@ -1003,52 +1003,52 @@
       },
       {
         "date": "2026-11-03",
-        "calls": 158,
+        "calls": 537,
         "components": {
-          "fresh_input": 540738,
-          "cached_read": 9759826,
-          "cache_write": 0,
-          "output": 59886,
+          "fresh_input": 541592,
+          "cached_read": 75618712,
+          "cache_write": 1469709,
+          "output": 260079,
           "reasoning": 0
         },
-        "total": 10360450,
+        "total": 77890092,
         "partial": false
       },
       {
         "date": "2026-11-04",
-        "calls": 0,
+        "calls": 297,
         "components": {
-          "fresh_input": 0,
-          "cached_read": 0,
-          "cache_write": 0,
-          "output": 0,
+          "fresh_input": 581263,
+          "cached_read": 40386423,
+          "cache_write": 1330394,
+          "output": 179000,
           "reasoning": 0
         },
-        "total": 0,
+        "total": 42477080,
         "partial": true
       }
     ],
     "cost": {
-      "list_total_usd": 5010.86,
-      "proxy_list_usd": 3126.42,
+      "list_total_usd": 5013.54,
+      "proxy_list_usd": 3129.1,
       "direct_list_usd": 1884.44,
       "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
       "free_tier_statement": false
     },
     "day_buckets": [
       0,
-      138304156,
-      284123959,
-      498170107,
+      80423486,
+      251396568,
+      487072588,
       2007395100
     ]
   },
-  "tokens_total": 17105987141,
-  "tokens_cache_hit_rate": 0.9208,
+  "tokens_total": 17215993863,
+  "tokens_cache_hit_rate": 0.9211,
   "tokens_by_source": {
-    "9router_proxy": 8930434073,
+    "9router_proxy": 8940634589,
     "hermes_direct_claude": 2394511156,
-    "claude_code_cli": 5781041912
+    "claude_code_cli": 5880848118
   },
   "tokens_by_day": {
     "2026-09-13": 5058440,
@@ -1102,27 +1102,27 @@
     "2026-10-31": 665815844,
     "2026-11-01": 592304696,
     "2026-11-02": 165029854,
-    "2026-11-03": 10360450,
-    "2026-11-04": 0
+    "2026-11-03": 77890092,
+    "2026-11-04": 42477080
   },
   "tokens_levels": [
     0,
-    138304156,
-    284123959,
-    498170107
+    80423486,
+    251396568,
+    487072588
   ],
   "tokens_top_day": "2026-10-30",
   "tokens_top_day_value": 2007395100,
   "model_share": {
-    "gemini": 50.0,
-    "opus": 23.9,
-    "sonnet": 25.7,
+    "gemini": 49.8,
+    "opus": 23.8,
+    "sonnet": 26.1,
     "basis": "hermes_tracked"
   },
   "model_split_pct": {
-    "Gemini Flash": 50.0,
-    "Claude Opus": 23.9,
-    "Claude Sonnet": 25.7
+    "Gemini Flash": 49.8,
+    "Claude Opus": 23.8,
+    "Claude Sonnet": 26.1
   },
   "model_split_label": "share of total logged tokens",
   "agents_total": 9,
@@ -1174,16 +1174,16 @@
   "jobs_enabled": 57,
   "jobs_recurring": 57,
   "messages": {
-    "total_dedup": 554208,
-    "agent_replies": 230742,
-    "tool_results": 232952,
-    "human": 90514
+    "total_dedup": 555960,
+    "agent_replies": 230861,
+    "tool_results": 233072,
+    "human": 92027
   },
   "leverage_ratio": 3,
   "jev": {
-    "verdicts_total": 215040,
-    "score_calls": 115422,
-    "choice_calls": 99618,
+    "verdicts_total": 215992,
+    "score_calls": 115898,
+    "choice_calls": 100094,
     "types": 37,
     "active_days": 42,
     "typical_day": 4726,
@@ -1192,8 +1192,8 @@
     "period_start": "2026-09-21",
     "period_end": "2026-11-04",
     "p50_ms": 307,
-    "p95_ms": 522,
-    "p99_ms": 840,
+    "p95_ms": 520,
+    "p99_ms": 839,
     "fallback_n": 102,
     "fallback_pct": 0.05,
     "by_day": {
@@ -1238,10 +1238,10 @@
       "2026-11-01": 1472,
       "2026-11-02": 6982,
       "2026-11-03": 8109,
-      "2026-11-04": 936
+      "2026-11-04": 1888
     },
     "by_source": {
-      "private": 186863,
+      "private": 187815,
       "research": 25891,
       "other": 2286
     },
@@ -1259,13 +1259,13 @@
     "bench_ft_high": 91
   },
   "jev_spend": {
-    "calls": 59493,
-    "input_tokens": 35720251,
-    "output_tokens": 6595717,
-    "total_tokens": 42315968,
-    "est_usd": 1.500251,
+    "calls": 59969,
+    "input_tokens": 36000159,
+    "output_tokens": 6649130,
+    "total_tokens": 42649289,
+    "est_usd": 1.512007,
     "since": "2026-10-07",
-    "per_day_usd": 0.0538,
+    "per_day_usd": 0.054,
     "tokens_per_call": 711,
     "daily": {
       "2026-10-07": {
@@ -1431,17 +1431,17 @@
         "total_tokens": 2755166
       },
       "2026-11-03": {
-        "calls": 3633,
-        "input_tokens": 2145530,
-        "output_tokens": 406305,
-        "total_tokens": 2551835
+        "calls": 4109,
+        "input_tokens": 2425438,
+        "output_tokens": 459718,
+        "total_tokens": 2885156
       }
     }
   },
   "tokens_saving": {
     "jobs_enabled": 57,
     "jobs_no_agent": 56,
-    "compressed_sessions": 829
+    "compressed_sessions": 830
   },
   "harnesses": [
     {
@@ -1449,37 +1449,37 @@
       "label": "Hermes",
       "carries": "the agent: chat, cron and kanban workers across every profile",
       "components": {
-        "fresh_input": 930365287,
-        "cached_read": 10043660836,
+        "fresh_input": 930946150,
+        "cached_read": 10053232129,
         "cache_write": 287168891,
-        "output": 63750215
+        "output": 63798575
       },
-      "total": 11324945229,
-      "calls": 129120,
+      "total": 11335145745,
+      "calls": 129249,
       "efficiency": {
         "cache_hit_rate": 0.8919,
         "cache_write_share": 0.0255,
         "output_share": 0.0056,
-        "tokens_per_call": 87709,
+        "tokens_per_call": 87700,
         "output_per_call": 494,
-        "fresh_input_per_call": 7205,
-        "tokens_per_completed": 2618484,
+        "fresh_input_per_call": 7203,
+        "tokens_per_completed": 2620237,
         "completed_unit": "kanban task or cron run"
       },
       "active_hours": 275.3,
       "active_days": 46,
       "tasks": {
-        "kanban_done": 541,
-        "kanban_total": 651,
+        "kanban_done": 542,
+        "kanban_total": 652,
         "kanban_run_failures": 168,
         "cron_runs_completed": 3784,
-        "cron_runs_failed": 734,
-        "cron_success_rate": 0.8375,
-        "sessions": 2508,
-        "tool_calls": 104282
+        "cron_runs_failed": 735,
+        "cron_success_rate": 0.8374,
+        "sessions": 2510,
+        "tool_calls": 104429
       },
       "tasks_note": "kanban tasks done plus cron runs completed, summed over every profile and board",
-      "completed": 4325,
+      "completed": 4326,
       "by_model": {
         "9router|claude-opus-5": {
           "model": "claude-opus-5",
@@ -2178,22 +2178,22 @@
           "via": "9router",
           "group": "Gemini Flash",
           "components": {
-            "fresh_input": 162912993,
-            "cached_read": 1424283810,
+            "fresh_input": 163369659,
+            "cached_read": 1433855103,
             "cache_write": 0,
-            "output": 8339192
+            "output": 8373234
           },
-          "total": 1595535995,
-          "calls": 17048,
+          "total": 1605597996,
+          "calls": 17167,
           "efficiency": {
-            "cache_hit_rate": 0.8974,
+            "cache_hit_rate": 0.8977,
             "cache_write_share": 0.0,
             "output_share": 0.0052,
-            "tokens_per_call": 93591,
-            "output_per_call": 489,
-            "fresh_input_per_call": 9556
+            "tokens_per_call": 93528,
+            "output_per_call": 488,
+            "fresh_input_per_call": 9516
           },
-          "cost_usd": 527.96,
+          "cost_usd": 530.34,
           "turns_completed": 0,
           "tool_calls": 0,
           "by_day": {
@@ -2399,9 +2399,16 @@
               0,
               52372,
               137
+            ],
+            "2026-11-04": [
+              456666,
+              9571293,
+              0,
+              34042,
+              119
             ]
           },
-          "share": 0.1409
+          "share": 0.1416
         },
         "9router|gemini-3.7-flash-high": {
           "model": "gemini-3.7-flash-high",
@@ -2561,7 +2568,7 @@
               1062
             ]
           },
-          "share": 0.3626
+          "share": 0.3622
         },
         "9router|gemini-3.6-flash-low": {
           "model": "gemini-3.6-flash-low",
@@ -2839,22 +2846,22 @@
           "via": "9router",
           "group": "Gemini Flash",
           "components": {
-            "fresh_input": 62506379,
+            "fresh_input": 62570207,
             "cached_read": 745761501,
             "cache_write": 0,
-            "output": 2835539
+            "output": 2837594
           },
-          "total": 811103419,
-          "calls": 21698,
+          "total": 811169302,
+          "calls": 21705,
           "efficiency": {
-            "cache_hit_rate": 0.9227,
+            "cache_hit_rate": 0.9226,
             "cache_write_share": 0.0,
             "output_share": 0.0035,
-            "tokens_per_call": 37381,
+            "tokens_per_call": 37372,
             "output_per_call": 131,
-            "fresh_input_per_call": 2881
+            "fresh_input_per_call": 2883
           },
-          "cost_usd": 234.98,
+          "cost_usd": 235.1,
           "turns_completed": 0,
           "tool_calls": 0,
           "by_day": {
@@ -3102,6 +3109,13 @@
               0,
               1602,
               18
+            ],
+            "2026-11-04": [
+              63828,
+              0,
+              0,
+              2055,
+              7
             ]
           },
           "share": 0.0716
@@ -3111,22 +3125,22 @@
           "via": "9router",
           "group": "Gemini Flash",
           "components": {
-            "fresh_input": 150059256,
+            "fresh_input": 150119625,
             "cached_read": 1439827283,
             "cache_write": 0,
-            "output": 10768471
+            "output": 10780734
           },
-          "total": 1600655010,
-          "calls": 21227,
+          "total": 1600727642,
+          "calls": 21230,
           "efficiency": {
             "cache_hit_rate": 0.9056,
             "cache_write_share": 0.0,
             "output_share": 0.0067,
-            "tokens_per_call": 75407,
-            "output_per_call": 507,
-            "fresh_input_per_call": 7069
+            "tokens_per_call": 75399,
+            "output_per_call": 508,
+            "fresh_input_per_call": 7071
           },
-          "cost_usd": 535.71,
+          "cost_usd": 535.9,
           "turns_completed": 0,
           "tool_calls": 0,
           "by_day": {
@@ -3346,9 +3360,16 @@
               0,
               5912,
               3
+            ],
+            "2026-11-04": [
+              60369,
+              0,
+              0,
+              12263,
+              3
             ]
           },
-          "share": 0.1413
+          "share": 0.1412
         },
         "9router|gemini-3.6-flash-high": {
           "model": "gemini-3.6-flash-high",
@@ -3494,7 +3515,7 @@
               360
             ]
           },
-          "share": 0.0278
+          "share": 0.0277
         },
         "9router|claude-opus-4-6-thinking": {
           "model": "claude-opus-4-6-thinking",
@@ -7300,7 +7321,7 @@
               17
             ]
           },
-          "share": 0.0768
+          "share": 0.0767
         },
         "direct|claude-sonnet-5-5": {
           "model": "claude-sonnet-5-5",
@@ -7536,7 +7557,7 @@
               72
             ]
           },
-          "share": 0.1008
+          "share": 0.1007
         },
         "direct|(unattributed)": {
           "model": "(unattributed)",
@@ -7915,6 +7936,13 @@
           0,
           59886,
           158
+        ],
+        "2026-11-04": [
+          580863,
+          9571293,
+          0,
+          48360,
+          129
         ]
       },
       "day_fields": [
@@ -9151,34 +9179,34 @@
       "label": "Claude Code (Mac)",
       "carries": "the CLI on the MacBook, mirrored without any prompt text",
       "components": {
-        "fresh_input": 47424,
-        "cached_read": 4559787692,
-        "cache_write": 98677174,
-        "output": 20467616
+        "fresh_input": 48678,
+        "cached_read": 4656461708,
+        "cache_write": 101477277,
+        "output": 20798449
       },
-      "total": 4678979906,
-      "calls": 21657,
+      "total": 4778786112,
+      "calls": 22204,
       "efficiency": {
-        "cache_hit_rate": 0.9788,
-        "cache_write_share": 0.0212,
+        "cache_hit_rate": 0.9787,
+        "cache_write_share": 0.0213,
         "output_share": 0.0044,
-        "tokens_per_call": 216049,
-        "output_per_call": 945,
+        "tokens_per_call": 215222,
+        "output_per_call": 937,
         "fresh_input_per_call": 2,
-        "tokens_per_completed": 4040570,
+        "tokens_per_completed": 3768759,
         "completed_unit": "completed turn"
       },
-      "active_hours": 67.5,
-      "active_days": 28,
+      "active_hours": 73.3,
+      "active_days": 30,
       "tasks": {
-        "sessions": 73,
-        "prompts": 3588,
-        "turns_completed": 1158,
-        "tool_calls": 4953,
-        "tool_calls_per_turn": 4.28
+        "sessions": 86,
+        "prompts": 3966,
+        "turns_completed": 1268,
+        "tool_calls": 5082,
+        "tool_calls_per_turn": 4.01
       },
       "tasks_note": "assistant turns that ended normally (stop_reason end_turn)",
-      "completed": 1158,
+      "completed": 1268,
       "by_model": {
         "claude-code|claude-opus-5": {
           "model": "claude-opus-5",
@@ -9282,7 +9310,7 @@
               8
             ]
           },
-          "share": 0.0498
+          "share": 0.0488
         },
         "claude-code|claude-fable-5-1": {
           "model": "claude-fable-5-1",
@@ -9351,7 +9379,7 @@
               32
             ]
           },
-          "share": 0.0028
+          "share": 0.0027
         },
         "claude-code|claude-opus-5-5": {
           "model": "claude-opus-5-5",
@@ -9490,31 +9518,31 @@
               354
             ]
           },
-          "share": 0.3574
+          "share": 0.35
         },
         "claude-code|claude-sonnet-5-5": {
           "model": "claude-sonnet-5-5",
           "via": "claude-code",
           "group": "Claude Sonnet",
           "components": {
-            "fresh_input": 26642,
-            "cached_read": 2698806685,
-            "cache_write": 49867628,
-            "output": 11609045
+            "fresh_input": 27896,
+            "cached_read": 2795480701,
+            "cache_write": 52667731,
+            "output": 11939878
           },
-          "total": 2760310000,
-          "calls": 12704,
+          "total": 2860116206,
+          "calls": 13250,
           "efficiency": {
-            "cache_hit_rate": 0.9818,
-            "cache_write_share": 0.0181,
+            "cache_hit_rate": 0.9815,
+            "cache_write_share": 0.0185,
             "output_share": 0.0042,
-            "tokens_per_call": 217279,
-            "output_per_call": 914,
+            "tokens_per_call": 215858,
+            "output_per_call": 901,
             "fresh_input_per_call": 2
           },
           "cost_usd": 0.0,
-          "turns_completed": 705,
-          "tool_calls": 3187,
+          "turns_completed": 815,
+          "tool_calls": 3316,
           "by_day": {
             "2026-10-13": [
               504,
@@ -9585,9 +9613,23 @@
               3299543,
               480315,
               671
+            ],
+            "2026-11-03": [
+              854,
+              65858886,
+              1469709,
+              200193,
+              378
+            ],
+            "2026-11-04": [
+              400,
+              30815130,
+              1330394,
+              130640,
+              168
             ]
           },
-          "share": 0.5899
+          "share": 0.5985
         },
         "claude-code|<synthetic>": {
           "model": "<synthetic>",
@@ -9600,7 +9642,7 @@
             "output": 0
           },
           "total": 0,
-          "calls": 19,
+          "calls": 20,
           "efficiency": {
             "cache_hit_rate": 0.0,
             "cache_write_share": 0.0,
@@ -9654,6 +9696,13 @@
               0,
               0,
               4
+            ],
+            "2026-11-03": [
+              0,
+              0,
+              0,
+              0,
+              1
             ]
           },
           "share": 0.0
@@ -9916,6 +9965,20 @@
           3299543,
           480315,
           671
+        ],
+        "2026-11-03": [
+          854,
+          65858886,
+          1469709,
+          200193,
+          379
+        ],
+        "2026-11-04": [
+          400,
+          30815130,
+          1330394,
+          130640,
+          168
         ]
       },
       "day_fields": [
