@@ -868,7 +868,7 @@ Most choices my agents make are narrow: is this headline relevant, which categor
 System 1 vs System 2: System 1 is fast, cheap judgment that answers one narrow question in under a second; System 2 is slow, expensive reasoning that I save for work that needs it.
 ## What this layer does
 The typed decision model returns one of two typed answers: a choice among options I list, or a calibrated score between 0 and 1. It does not write text and it does not chat. If it cannot answer, the call falls back to its previous route, so no decision is lost.
-250,146
+252,134
 Total decisions
 37
 Decision types
@@ -878,7 +878,7 @@ Median answer time
 Handed to fallback
 Source: my verdict log, test rows excluded, 21 Sep 2026 to 14 Nov 2026, refreshed every 6 hours.
 ## Decisions per day
-Daily volume of typed decisions across 52 active days. The tall bar on 7 Oct 2026 is a one-off backlog sweep of 32,951 decisions; a typical active day is about 4,496 decisions.
+Daily volume of typed decisions across 52 active days. The tall bar on 7 Oct 2026 is a one-off backlog sweep of 32,951 decisions; a typical active day is about 4,500 decisions.
 Date Decisions
 21 Sep 2026 5,967
 22 Sep 2026 10
@@ -931,15 +931,15 @@ Date Decisions
 11 Nov 2026 49
 12 Nov 2026 109
 13 Nov 2026 1,185
-14 Nov 2026 2,402
+14 Nov 2026 4,390
 Source: verdict log on my server, read at build time.
 ## How fast, how often it falls back
 Measure Value
 Median answer time (p50) 304 ms
-95th percentile (p95) 480 ms
-99th percentile (p99) 813 ms
+95th percentile (p95) 479 ms
+99th percentile (p99) 812 ms
 Handed to fallback route 104 (0.04%)
-Score calls / choice calls 133,171 / 116,975
+Score calls / choice calls 134,165 / 117,969
 Fallback means the typed model did not return a usable verdict and the call site used its backup route. It measures availability, not correctness. I do not have a labelled truth set for these decisions, so I do not report an accuracy figure for my own data.
 ## What it replaced
 Status Call sites
@@ -951,14 +951,14 @@ Rejected after review 1
 A call site is one place in my code that asks for a decision. One site can ask more than one type of question. These are counts of call sites, not measured before-and-after savings.
 ## Where the decisions come from
 Decision family Decisions Share Previous route
-A private work workflow 221,575 89% Chat model call
+A private work workflow 223,563 89% Chat model call
 Research headline relevance 25,891 10% Chat model call
 Everything else (memory curation, email category, next action, model tier choice) 2,680 1.1% Chat model call or fixed rule
 About three quarters of all decisions come from one private workflow in my work. I report its volume and nothing else about it.
 ## What it costs
-On a measured sample of 76,849 calls since 7 Oct 2026, the typed decision layer processed 45,944,894 input tokens and 8,542,127 output tokens (54,487,021 total tokens, about 709 tokens per call) and cost $1.9297, an average of about $0.0507 per day.
+On a measured sample of 77,843 calls since 7 Oct 2026, the typed decision layer processed 46,531,537 input tokens and 8,653,726 output tokens (55,185,263 total tokens, about 709 tokens per call) and cost $1.9543, an average of about $0.0510 per day.
 Output tokens are free on this service; list price was $0.042 per million input tokens.
-Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 250,146 decisions were handled by this layer instead of calling a chat model.
+Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 252,134 decisions were handled by this layer instead of calling a chat model.
 ## Where I never use it
 A typed model is probabilistic, so I exclude it by file from anything irreversible or trust critical. It never decides:
 Sending email or messages
@@ -974,7 +974,7 @@ The current service runs on limited credit, so I am testing a free and local typ
 Decisions that matter stay deterministic or come to me because a cheap wrong answer that cannot be undone is not cheap.
 How typed decisions fit into my broader cost strategy is documented in the savings ladder on Model routing and tiered compute
 ## Method note
-Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (76,849 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
+Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (77,843 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.
 
 
 # How my agents remember: five layers of memory I can read and edit
@@ -1246,14 +1246,14 @@ Source: https://krishnendu.me/work/usage/
 
 ## Token ledger
 Every token my agents read, cached, and generated across 9router, Hermes direct Claude, and Claude Code transcripts.
-Last probed: 2026-11-14T01:11:38Z · Tracking window: 2026-09-13 to 2026-11-14 ( 63 days). The window starts on 2026-09-13, the first day any source logged tokens.
+Last probed: 2026-11-14T07:11:30Z · Tracking window: 2026-09-13 to 2026-11-14 ( 63 days). The window starts on 2026-09-13, the first day any source logged tokens.
 23.28 B
 Total tokens across 3 sources
 93.5%
 Prompt cache hit rate
 125.4 M
 Generated output (0.54%)
-$4,996.87
+$4,996.88
 List price equivalent (USD)
 ## Where the tokens went
 Fresh input 955.5 M 4.1%
@@ -1267,7 +1267,7 @@ Tokens
 Share of total
 Description
 Fresh input
-955,492,646
+955,493,934
 4.11%
 Tokens sent to models without a provider cache hit
 Cache read
@@ -1279,11 +1279,11 @@ Cache creation
 2.36%
 Tokens written to Anthropic prompt cache for 5-minute reuse
 Output
-125,409,472
+125,409,476
 0.54%
 Generated completion tokens (includes 4,354,333 reasoning tokens on supported models)
 Total
-23,275,005,151
+23,275,006,443
 100.00%
 Exact integer sum across all four components
 ## By source (how each logger counts)
@@ -1301,14 +1301,14 @@ Cache hit rate
 List price (USD)
 9router proxy
 Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API
-120,107
-953,861,053
+120,108
+953,862,341
 8,242,199,395
 0
-51,895,116
-9,247,955,564
+51,895,120
+9,247,956,856
 89.6%
-$3,240.67
+$3,240.68
 Hermes direct
 my runtime calling Claude directly on a subscription
 14,227
@@ -1331,14 +1331,14 @@ the CLI, read from its own transcripts
 n/r
 Total
 All three telemetry streams combined
-190,462
-955,492,646
+190,463
+955,493,934
 21,643,817,618
 550,285,415
-125,409,472
-23,275,005,151
+125,409,476
+23,275,006,443
 93.5%
-$4,996.87
+$4,996.88
 Pricing note: Direct Claude calls run on a flat subscription. The dollar figures shown represent published list prices for equivalent token volumes, not invoices.
 ## By model family
 Which family gets which kind of work is explained on the routing page . The split it produced:
@@ -1356,12 +1356,12 @@ Cache hit rate
 List price (USD)
 Gemini Flash
 ninerouter
-114,324
-884,669,399
+114,325
+884,670,687
 7,923,232,325
 n/r
-49,969,892
-8,857,871,616
+49,969,896
+8,857,872,908
 38.06%
 90.0%
 $2,927.73
@@ -1433,15 +1433,15 @@ n/r
 $1.85
 Total
 All model families combined
-190,462
-955,492,646
+190,463
+955,493,934
 21,643,817,618
 550,285,415
-125,409,472
-23,275,005,151
+125,409,476
+23,275,006,443
 100.00%
 93.5%
-$4,996.87
+$4,996.88
 Values marked n/r indicate metrics not reported by that model provider's telemetry API.
 ## Daily volume (contribution grid)
 Daily token volume across all models and sources. Peak day recorded 2.01 B tokens on 30 Oct 2026.
@@ -1559,14 +1559,14 @@ Fri 13 Nov
 8,151,258
 10,257
 Sat 14 Nov (partial)
-591,625,692
-1,041,838
+591,626,984
+1,043,126
 578,846,673
 9,038,001
-2,699,180
-2,931
+2,699,184
+2,932
 ## List price vs subscription
-At published list prices this volume comes to about $4,996.87 USD: $3,240.67 for proxied calls as computed by the proxy, and $1,756.20 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
+At published list prices this volume comes to about $4,996.88 USD: $3,240.68 for proxied calls as computed by the proxy, and $1,756.20 as estimated by my runtime for direct Claude calls. I did not pay that figure. The direct Claude calls run on a flat subscription. I do not publish my bill, so read the list price as the honest upper bound and the subscription as the reason a personal system at this volume is affordable.
 ## Why the cache rate matters
 An agent resends its system prompt, its tools and the conversation so far on every call. Without a prompt cache, every one of those tokens is read fresh at full price and full latency. A hit rate near 93.5% means almost all of that context was served from a stored prefix. It is the single number that decides whether a long running agent is affordable, and it is a design outcome, not luck: stable prompt prefixes, tool definitions that do not change between calls, and context that grows by appending rather than rewriting.
 ## What this tells you
