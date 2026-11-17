@@ -201,7 +201,7 @@
 
       <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s2);margin-block:var(--s3);">
         <div class="panel" style="padding:var(--s3);text-align:center;">
-          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">272,501</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">274,531</div>
           <div class="small muted">Total decisions</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
@@ -294,7 +294,7 @@
     <rect x="651.2" y="169.4" width="7.5" height="40.6" rx="2" fill="var(--accent)"><title>14 Nov 2026: 8,351 decisions</title></rect>
     <rect x="662.6" y="170.7" width="7.5" height="39.3" rx="2" fill="var(--accent)"><title>15 Nov 2026: 8,096 decisions</title></rect>
     <rect x="674.1" y="170.9" width="7.5" height="39.1" rx="2" fill="var(--accent)"><title>16 Nov 2026: 8,054 decisions</title></rect>
-    <rect x="685.5" y="208.5" width="7.5" height="1.5" rx="2" fill="var(--accent)"><title>17 Nov 2026: 256 decisions</title></rect>
+    <rect x="685.5" y="198.9" width="7.5" height="11.1" rx="2" fill="var(--accent)"><title>17 Nov 2026: 2,286 decisions</title></rect>
   </g>
   <g id="x-axis-labels">
     <text x="70.7" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">21 Sep</text>
@@ -377,7 +377,7 @@
               <tr><td>14 Nov 2026</td><td>8,351</td></tr>
               <tr><td>15 Nov 2026</td><td>8,096</td></tr>
               <tr><td>16 Nov 2026</td><td>8,054</td></tr>
-              <tr><td>17 Nov 2026</td><td>256</td></tr>
+              <tr><td>17 Nov 2026</td><td>2,286</td></tr>
             </tbody>
           </table>
         </div>
@@ -395,10 +395,10 @@
           </thead>
           <tbody>
             <tr><td>Median answer time (p50)</td><td class="mono">302 ms</td></tr>
-            <tr><td>95th percentile (p95)</td><td class="mono">464 ms</td></tr>
+            <tr><td>95th percentile (p95)</td><td class="mono">463 ms</td></tr>
             <tr><td>99th percentile (p99)</td><td class="mono">802 ms</td></tr>
             <tr><td>Handed to fallback route</td><td class="mono">104 (0.04%)</td></tr>
-            <tr><td>Score calls / choice calls</td><td class="mono">144,277 / 128,224</td></tr>
+            <tr><td>Score calls / choice calls</td><td class="mono">145,284 / 129,247</td></tr>
           </tbody>
         </table>
       </div>
@@ -434,8 +434,8 @@
             <tr><th scope="col">Decision family</th><th scope="col">Decisions</th><th scope="col">Share</th><th scope="col">Previous route</th></tr>
           </thead>
           <tbody>
-            <tr><td>A private work workflow</td><td class="mono">243,919</td><td class="mono">90%</td><td>Chat model call</td></tr>
-            <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">10%</td><td>Chat model call</td></tr>
+            <tr><td>A private work workflow</td><td class="mono">245,949</td><td class="mono">90%</td><td>Chat model call</td></tr>
+            <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">9%</td><td>Chat model call</td></tr>
             <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">2,691</td><td class="mono">1.0%</td><td>Chat model call or fixed rule</td></tr>
           </tbody>
         </table>
@@ -446,9 +446,9 @@
     <!-- Section 6: What it costs -->
     <section class="section" id="what-it-costs" data-ix="reveal">
       <h2>What it costs</h2>
-      <p>On a measured sample of 88,098 calls since 7 Oct 2026, the typed decision layer processed 52,689,317 input tokens and 9,801,183 output tokens (62,490,500 total tokens, about 709 tokens per call) and cost $2.2130, an average of about $0.0542 per day.</p>
+      <p>On a measured sample of 89,121 calls since 7 Oct 2026, the typed decision layer processed 53,303,352 input tokens and 9,915,443 output tokens (63,218,795 total tokens, about 709 tokens per call) and cost $2.2387, an average of about $0.0545 per day.</p>
       <p>Output tokens are free on this service; list price was $0.042 per million input tokens.</p>
-      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 272,501 decisions were handled by this layer instead of calling a chat model.</p>
+      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 274,531 decisions were handled by this layer instead of calling a chat model.</p>
     </section>
 
     <!-- Section 7: Where I never use it -->
@@ -479,7 +479,7 @@
     <!-- Method Note -->
     <div class="panel" style="margin-top:var(--s5);">
       <h3 style="margin-top:0;font-size:1rem;">Method note</h3>
-      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (88,098 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
+      <p class="small muted">Decision counts, latency percentiles, fallback counts, and call site numbers are read from the verdict log and decision registry at build time and refreshed every 6 hours. Test rows (identifiers starting with smoke, test, or probe) are excluded before counting. Times are wall-clock per call as logged by my client, including network latency. Fallback measures availability when the model returned no usable answer, not correctness against ground truth. Token and spend counts are from the meter started on 7 Oct 2026 (89,121 calls); earlier calls were not token-metered. Jev runs through its own service rather than the model gateway, so none of these calls appear in the Token ledger.</p>
     </div>
   </article>
 <nav class="pager wrap" aria-label="Case study navigation">
