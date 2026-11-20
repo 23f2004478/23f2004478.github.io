@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-11-20T13:12:07Z",
+  "as_of": "2026-11-20T19:11:57Z",
   "window": {
     "start": "2026-09-13",
-    "end": "2026-11-20",
-    "days": 69
+    "end": "2026-11-21",
+    "days": 70
   },
   "categories": [
     "fresh_input",
@@ -12,39 +12,39 @@
     "output"
   ],
   "components": {
-    "fresh_input": 959764467,
-    "cached_read": 22997431366,
+    "fresh_input": 959964095,
+    "cached_read": 22997481889,
     "cache_write": 575215494,
-    "output": 131678951,
+    "output": 131688684,
     "reasoning": 4354333
   },
-  "total": 24664090278,
-  "input_total": 24532411327,
+  "total": 24664350162,
+  "input_total": 24532661478,
   "cache_hit_rate": 0.9374,
   "output_share": 0.0053,
-  "calls": 198703,
+  "calls": 198718,
   "by_source": [
     {
       "id": "ninerouter",
       "label": "9router proxy",
       "api_style": "openai",
       "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-      "calls": 121528,
+      "calls": 121543,
       "components": {
-        "fresh_input": 958118671,
-        "cached_read": 8247543021,
+        "fresh_input": 958318299,
+        "cached_read": 8247593544,
         "cache_write": 0,
-        "output": 52192744,
+        "output": 52202477,
         "reasoning": 0
       },
-      "total": 9257854436,
+      "total": 9258114320,
       "cache_hit_rate": 0.8959,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 3251.27
+      "list_cost_usd": 3251.64
     },
     {
       "id": "hermes",
@@ -122,15 +122,15 @@
       "sources": [
         "ninerouter"
       ],
-      "calls": 115517,
+      "calls": 115530,
       "components": {
-        "fresh_input": 888773868,
-        "cached_read": 7927665693,
+        "fresh_input": 888943597,
+        "cached_read": 7927716216,
         "cache_write": 0,
-        "output": 50220155,
+        "output": 50229879,
         "reasoning": 0
       },
-      "total": 8866659716,
+      "total": 8866889692,
       "share": 0.3595,
       "cache_hit_rate": 0.8992,
       "reports": {
@@ -138,7 +138,7 @@
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 2936.94
+      "list_cost_usd": 2937.22
     },
     {
       "family": "Claude Sonnet",
@@ -147,15 +147,15 @@
         "hermes",
         "ninerouter"
       ],
-      "calls": 35565,
+      "calls": 35567,
       "components": {
-        "fresh_input": 59485836,
+        "fresh_input": 59515735,
         "cached_read": 5827300597,
         "cache_write": 242644883,
-        "output": 29068416,
+        "output": 29068425,
         "reasoning": 1348125
       },
-      "total": 6158499732,
+      "total": 6158529640,
       "share": 0.2497,
       "cache_hit_rate": 0.9507,
       "reports": {
@@ -163,7 +163,7 @@
         "reasoning": false,
         "list_cost": false
       },
-      "list_cost_usd": 948.19
+      "list_cost_usd": 948.28
     },
     {
       "family": "Other",
@@ -1147,21 +1147,34 @@
     },
     {
       "date": "2026-11-20",
-      "calls": 19,
+      "calls": 34,
       "components": {
-        "fresh_input": 21836,
-        "cached_read": 0,
+        "fresh_input": 221464,
+        "cached_read": 50523,
         "cache_write": 0,
-        "output": 3103,
+        "output": 12836,
         "reasoning": 0
       },
-      "total": 24939,
+      "total": 284823,
+      "partial": false
+    },
+    {
+      "date": "2026-11-21",
+      "calls": 0,
+      "components": {
+        "fresh_input": 0,
+        "cached_read": 0,
+        "cache_write": 0,
+        "output": 0,
+        "reasoning": 0
+      },
+      "total": 0,
       "partial": true
     }
   ],
   "cost": {
-    "list_total_usd": 4997.28,
-    "proxy_list_usd": 3251.27,
+    "list_total_usd": 4997.65,
+    "proxy_list_usd": 3251.64,
     "direct_list_usd": 1746.01,
     "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
     "free_tier_statement": false
