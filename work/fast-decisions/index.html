@@ -201,7 +201,7 @@
 
       <div class="metrics-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:var(--s2);margin-block:var(--s3);">
         <div class="panel" style="padding:var(--s3);text-align:center;">
-          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">303,563</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;" class="mono">303,577</div>
           <div class="small muted">Total decisions</div>
         </div>
         <div class="panel" style="padding:var(--s3);text-align:center;">
@@ -302,7 +302,7 @@
     <rect x="657.0" y="208.5" width="6.0" height="1.5" rx="2" fill="var(--accent)"><title>22 Nov 2026: 262 decisions</title></rect>
     <rect x="667.0" y="208.1" width="6.0" height="1.9" rx="2" fill="var(--accent)"><title>23 Nov 2026: 391 decisions</title></rect>
     <rect x="677.0" y="208.5" width="6.0" height="1.5" rx="2" fill="var(--accent)"><title>24 Nov 2026: 133 decisions</title></rect>
-    <rect x="687.0" y="208.5" width="6.0" height="1.5" rx="2" fill="var(--accent)"><title>25 Nov 2026: 1 decisions</title></rect>
+    <rect x="687.0" y="208.5" width="6.0" height="1.5" rx="2" fill="var(--accent)"><title>25 Nov 2026: 15 decisions</title></rect>
   </g>
   <g id="x-axis-labels">
     <text x="70.0" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">21 Sep</text>
@@ -395,7 +395,7 @@
               <tr><td>22 Nov 2026</td><td>262</td></tr>
               <tr><td>23 Nov 2026</td><td>391</td></tr>
               <tr><td>24 Nov 2026</td><td>133</td></tr>
-              <tr><td>25 Nov 2026</td><td>1</td></tr>
+              <tr><td>25 Nov 2026</td><td>15</td></tr>
             </tbody>
           </table>
         </div>
@@ -416,7 +416,7 @@
             <tr><td>95th percentile (p95)</td><td class="mono">469 ms</td></tr>
             <tr><td>99th percentile (p99)</td><td class="mono">800 ms</td></tr>
             <tr><td>Handed to fallback route</td><td class="mono">110 (0.04%)</td></tr>
-            <tr><td>Score calls / choice calls</td><td class="mono">159,752 / 143,811</td></tr>
+            <tr><td>Score calls / choice calls</td><td class="mono">159,766 / 143,811</td></tr>
           </tbody>
         </table>
       </div>
@@ -454,7 +454,7 @@
           <tbody>
             <tr><td>A private work workflow</td><td class="mono">273,876</td><td class="mono">90%</td><td>Chat model call</td></tr>
             <tr><td>Research headline relevance</td><td class="mono">25,891</td><td class="mono">9%</td><td>Chat model call</td></tr>
-            <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">3,796</td><td class="mono">1.3%</td><td>Chat model call or fixed rule</td></tr>
+            <tr><td>Everything else (memory curation, email category, next action, model tier choice)</td><td class="mono">3,810</td><td class="mono">1.3%</td><td>Chat model call or fixed rule</td></tr>
           </tbody>
         </table>
       </div>
@@ -466,7 +466,7 @@
       <h2>What it costs</h2>
       <p>On a measured sample of 103,682 calls since 7 Oct 2026, the typed decision layer processed 62,719,885 input tokens and 11,529,206 output tokens (74,249,091 total tokens, about 716 tokens per call) and cost $2.6342, an average of about $0.0543 per day.</p>
       <p>Output tokens are free on this service; list price was $0.042 per million input tokens.</p>
-      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 303,563 decisions were handled by this layer instead of calling a chat model.</p>
+      <p>Earlier verdicts in the log are not metered for tokens. Because I do not record the tokens a chat model would have used for each decision, I do not publish an estimated reduction figure. The measured fact is narrower: 303,577 decisions were handled by this layer instead of calling a chat model.</p>
     </section>
 
     <!-- Section 7: Where I never use it -->
