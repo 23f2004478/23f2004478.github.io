@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-25T19:11:58Z",
+  "as_of": "2026-11-26T01:11:31Z",
   "window": {
     "start": "2026-09-13",
     "end": "2026-11-26",
@@ -12,39 +12,39 @@
     "output"
   ],
   "components": {
-    "fresh_input": 980848352,
-    "cached_read": 25259209248,
+    "fresh_input": 981430577,
+    "cached_read": 25267695967,
     "cache_write": 638528297,
-    "output": 146860065,
+    "output": 146892663,
     "reasoning": 4354333
   },
-  "total": 27025445962,
-  "input_total": 26878585897,
+  "total": 27034547504,
+  "input_total": 26887654841,
   "cache_hit_rate": 0.9398,
   "output_share": 0.0054,
-  "calls": 215567,
+  "calls": 215678,
   "by_source": [
     {
       "id": "ninerouter",
       "label": "9router proxy",
       "api_style": "openai",
       "carries": "Gemini Flash, Claude Sonnet and a few other models over an OpenAI style API",
-      "calls": 126317,
+      "calls": 126428,
       "components": {
-        "fresh_input": 979176674,
-        "cached_read": 8520428260,
+        "fresh_input": 979758899,
+        "cached_read": 8528914979,
         "cache_write": 0,
-        "output": 53896846,
+        "output": 53929444,
         "reasoning": 0
       },
-      "total": 9553501780,
-      "cache_hit_rate": 0.8969,
+      "total": 9562603322,
+      "cache_hit_rate": 0.897,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 3364.48
+      "list_cost_usd": 3367.09
     },
     {
       "id": "hermes",
@@ -108,7 +108,7 @@
         "reasoning": 3006208
       },
       "total": 10240433621,
-      "share": 0.3789,
+      "share": 0.3788,
       "cache_hit_rate": 0.9656,
       "reports": {
         "cache_write": false,
@@ -122,23 +122,23 @@
       "sources": [
         "ninerouter"
       ],
-      "calls": 119185,
+      "calls": 119292,
       "components": {
-        "fresh_input": 902322458,
-        "cached_read": 8131344717,
+        "fresh_input": 902896309,
+        "cached_read": 8139831436,
         "cache_write": 0,
-        "output": 51436294,
+        "output": 51466717,
         "reasoning": 0
       },
-      "total": 9085103469,
-      "share": 0.3362,
-      "cache_hit_rate": 0.9001,
+      "total": 9094194462,
+      "share": 0.3364,
+      "cache_hit_rate": 0.9002,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 2998.48
+      "list_cost_usd": 3001.05
     },
     {
       "family": "Claude Sonnet",
@@ -217,23 +217,23 @@
       "sources": [
         "ninerouter"
       ],
-      "calls": 706,
+      "calls": 710,
       "components": {
-        "fresh_input": 5933147,
+        "fresh_input": 5941521,
         "cached_read": 22777086,
         "cache_write": 0,
-        "output": 289857,
+        "output": 292032,
         "reasoning": 0
       },
-      "total": 29000090,
+      "total": 29010639,
       "share": 0.0011,
-      "cache_hit_rate": 0.7933,
+      "cache_hit_rate": 0.7931,
       "reports": {
         "cache_write": false,
         "reasoning": false,
         "list_cost": true
       },
-      "list_cost_usd": 26.03
+      "list_cost_usd": 26.07
     },
     {
       "family": "DeepSeek",
@@ -1317,29 +1317,29 @@
     },
     {
       "date": "2026-11-26",
-      "calls": 0,
+      "calls": 111,
       "components": {
-        "fresh_input": 0,
-        "cached_read": 0,
+        "fresh_input": 582225,
+        "cached_read": 8486719,
         "cache_write": 0,
-        "output": 0,
+        "output": 32598,
         "reasoning": 0
       },
-      "total": 0,
+      "total": 9101542,
       "partial": true
     }
   ],
   "cost": {
-    "list_total_usd": 5110.49,
-    "proxy_list_usd": 3364.48,
+    "list_total_usd": 5113.1,
+    "proxy_list_usd": 3367.09,
     "direct_list_usd": 1746.01,
     "basis": "published per token list prices; proxy figure computed by 9router, direct figure estimated by Hermes; not invoices",
     "free_tier_statement": false
   },
   "day_buckets": [
     0,
-    79479977,
-    258372966,
+    77890092,
+    251546203,
     515394075,
     2007395100
   ]
