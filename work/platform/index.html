@@ -809,7 +809,7 @@
       <div class="stats-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--s4);margin:var(--s6) 0;">
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Total tokens</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="tokens_total" value="27474449879">27.47 B</data> tokens</div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="tokens_total" value="27477122089">27.48 B</data> tokens</div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Cache hit rate</div>
@@ -916,7 +916,7 @@
     <rect x="663.8" y="69.1" width="4.3" height="140.9" rx="2" fill="var(--accent)"><title>24 Nov 2026: 663.3 million</title></rect>
     <rect x="672.1" y="194.2" width="4.3" height="15.8" rx="2" fill="var(--accent)"><title>25 Nov 2026: 74.3 million</title></rect>
     <rect x="680.4" y="127.1" width="4.3" height="82.9" rx="2" fill="var(--accent)"><title>26 Nov 2026: 390.1 million</title></rect>
-    <rect x="688.7" y="208.5" width="4.3" height="1.5" rx="2" fill="var(--accent)"><title>27 Nov 2026: 0 thousand</title></rect>
+    <rect x="688.7" y="208.5" width="4.3" height="1.5" rx="2" fill="var(--accent)"><title>27 Nov 2026: 2.7 million</title></rect>
   </g>
   <g id="x-labels-tok">
     <text x="69.1" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">13 Sep</text>
@@ -933,7 +933,7 @@
     <text x="690.9" y="228" font-family="'Source Sans 3',sans-serif" font-size="13"  text-anchor="middle" style="fill:var(--muted)">27 Nov</text>
   </g>
 </svg>
-        <figcaption>Tokens processed by day: <data class="m" data-m="tokens_total" value="27474449879">27.47 B</data> tokens in total; <data class="m" data-m="cache_hit_rate" value="94.0">94.0%</data> of input tokens were served from cache. <button class="show-data" type="button" aria-expanded="false" aria-controls="tok-data" hidden>Show data</button></figcaption>
+        <figcaption>Tokens processed by day: <data class="m" data-m="tokens_total" value="27477122089">27.48 B</data> tokens in total; <data class="m" data-m="cache_hit_rate" value="94.0">94.0%</data> of input tokens were served from cache. <button class="show-data" type="button" aria-expanded="false" aria-controls="tok-data" hidden>Show data</button></figcaption>
         <div class="dtable sr-only sr_only" id="tok-data">
           <table>
             <thead><tr><th>Date</th><th>Tokens</th></tr></thead>
@@ -1013,7 +1013,7 @@
               <tr><td>24 Nov 2026</td><td><data class="m" data-m="tokens_by_day" value="663269225">663.3 M</data></td></tr>
               <tr><td>25 Nov 2026</td><td><data class="m" data-m="tokens_by_day" value="74348072">74.3 M</data></td></tr>
               <tr><td>26 Nov 2026</td><td><data class="m" data-m="tokens_by_day" value="390070372">390.1 M</data></td></tr>
-              <tr><td>27 Nov 2026</td><td><data class="m" data-m="tokens_by_day" value="0">0 k</data></td></tr>
+              <tr><td>27 Nov 2026</td><td><data class="m" data-m="tokens_by_day" value="2672210">2.7 M</data></td></tr>
             </tbody>
           </table>
         </div>
@@ -1022,7 +1022,7 @@
       <figure class="fig" id="fig-model-split">
         <svg id="model_split" class="dg wide chart" viewBox="0 0 720 120" width="100%" role="img" aria-labelledby="model-t model-d" style="width:100%;height:auto;max-width:720px">
   <title id="model-t">Where the tokens went, by model</title>
-  <desc id="model-d">Model token distribution: Gemini Flash 33.1 percent, Claude Opus 38.3 percent, Claude Sonnet 25.7 percent.</desc>
+  <desc id="model-d">Model token distribution: Gemini Flash 33.1 percent, Claude Opus 38.3 percent, Claude Sonnet 25.6 percent.</desc>
   
   <rect x="40" y="35" width="640" height="34" rx="6" style="fill:var(--rule)"/>
 
@@ -1033,7 +1033,7 @@
     <title>Claude Opus: 38.3 percent</title>
   </rect>
   <rect x="497.0" y="35" width="183.0" height="34" rx="6"  opacity="0.35" style="fill:var(--accent)">
-    <title>Claude Sonnet: 25.7 percent</title>
+    <title>Claude Sonnet: 25.6 percent</title>
   </rect>
 
   <g font-family="'Source Sans 3',sans-serif" font-size="13" font-weight="600" style="fill:var(--ink)">
@@ -1044,7 +1044,7 @@
     <text x="290" y="99">Claude Opus 38.3 percent</text>
 
     <circle cx="500" cy="95" r="4.5"  opacity="0.35" style="fill:var(--accent)"/>
-    <text x="510" y="99">Claude Sonnet 25.7 percent</text>
+    <text x="510" y="99">Claude Sonnet 25.6 percent</text>
   </g>
 </svg>
         <figcaption>Where the tokens went, by model. <button class="show-data" type="button" aria-expanded="false" aria-controls="model-data" hidden>Show data</button></figcaption>
@@ -1073,15 +1073,15 @@
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Agent replies</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_agent_replies" value="238225">238,225</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_agent_replies" value="238266">238,266</data></div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Tool results</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_tool_results" value="240808">240,808</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_tool_results" value="240850">240,850</data></div>
         </div>
         <div class="panel" style="margin:0;">
           <div class="mono" style="font-size:var(--fs-xs);color:var(--muted);text-transform:uppercase;margin-bottom:var(--s2);">Total messages</div>
-          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_total" value="632275">632,275</data></div>
+          <div style="font-size:var(--fs-xl);font-weight:700;"><data class="m" data-m="messages_total" value="632358">632,358</data></div>
         </div>
       </div>
 
